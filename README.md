@@ -8,8 +8,7 @@ Template maker untuk TapSite.ai yang memungkinkan developer membuat template blo
 
 1. **`resources/templates/`** - Berisi semua template yang tersedia
 2. **`routes/web.ts`** - Definisi route aplikasi
-3. **`app/controllers/`** - Controller untuk menangani logika aplikasi
-4. **`/blog-documentation`** - Dokumentasi API blog untuk integrasi template
+3. **`app/controllers/`** - Controller untuk menangani logika aplikasi 
 
 ## 🎨 Struktur Template
 
