@@ -302,7 +302,7 @@ Project ini menggunakan **Squirrelly** sebagai templating engine. Syntax yang se
 
 - [Squirrelly Documentation](https://squirrelly.js.org/)
 - [TailwindCSS Documentation](https://tailwindcss.com/docs)
-- [Blog API Documentation](/blog-documentation)
+- [Blog API Documentation](/BLOG_API_DOCUMENTATION.md)
 
 ## 🤝 Contributing
 
