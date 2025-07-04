@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template Blog Maker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <div class="container mx-auto px-4 py-8">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold mb-4">Blog Templates</h1>
+            <a target="_blank" href="/blog-documentation" class="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                <i class="fas fa-book mr-2"></i>
+                Blog API Documentation
+            </a>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {{@each(it.templates) => template}}
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img src="{{template.thumbnail}}" alt="{{template.title}}" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">{{template.title}}</h3>
+                     <p class="text-gray-600 mb-4">{{template.description}}</p>
+                     
+                     {{@if(template.creator_name)}}
+
+                      <div class="flex justify-between mb-3 items-center">
+                        <span class="text-sm text-gray-500">v{{template.version}}</span>
+                         <div class="flex items-center   text-sm text-gray-500">
+                         <i class="fas fa-user mr-2"></i>
+                         <span>Created by </span>
+                         {{@if(template.creator_website)}}
+                         <a href="{{template.creator_website}}" target="_blank" class="text-blue-600 hover:text-blue-800 ml-1 font-medium">
+                             {{template.creator_name}}
+                         </a>
+                         {{#else}}
+                         <span class="ml-1 font-medium">{{template.creator_name}}</span>
+                         {{/if}}
+                     </div>
+                    </div>
+                   
+                     {{/if}}
+                     
+                    
+
+                    <div>
+                        <div class="mb-1 text-gray-500 text-sm">Preview : </div>
+                          <div class="flex flex-wrap gap-1">
+                             <!-- Preview Buttons -->
+                             <a href="/preview/{{template.template_id}}/home" target="_blank" class="bg-blue-500 text-white px-2 py-1 text-xs rounded hover:bg-blue-600 flex items-center">
+                                 <i class="fas fa-home mr-1"></i>Home
+                             </a>
+                             <a href="/preview/{{template.template_id}}/posts" target="_blank" class="bg-blue-500 text-white px-2 py-1 text-xs rounded hover:bg-blue-600 flex items-center">
+                                 <i class="fas fa-list mr-1"></i>Posts
+                             </a>
+                             <a href="/preview/{{template.template_id}}/post" target="_blank" class="bg-blue-500 text-white px-2 py-1 text-xs rounded hover:bg-blue-600 flex items-center">
+                                 <i class="fas fa-file-alt mr-1"></i>Post
+                             </a>
+                             <a href="/preview/{{template.template_id}}/search" target="_blank" class="bg-blue-500 text-white px-2 py-1 text-xs rounded hover:bg-blue-600 flex items-center">
+                                 <i class="fas fa-search mr-1"></i>Search
+                             </a>
+                             <a href="/preview/{{template.template_id}}/tag" target="_blank" class="bg-blue-500 text-white px-2 py-1 text-xs rounded hover:bg-blue-600 flex items-center">
+                                 <i class="fas fa-tag mr-1"></i>Tag
+                             </a>
+                             <a href="/preview/{{template.template_id}}/category" target="_blank" class="bg-blue-500 text-white px-2 py-1 text-xs rounded hover:bg-blue-600 flex items-center">
+                                 <i class="fas fa-folder mr-1"></i>Category
+                             </a>
+                         </div>
+                    </div>
+
+                       <div>
+                        <div class="mb-1 mt-3 text-gray-500 text-sm">Builder : </div>
+                          <div class="flex flex-wrap gap-1">
+                             <!-- Preview Buttons -->
+                             <a href="/builder/{{template.template_id}}/home" target="_blank" class="bg-blue-500 text-white px-2 py-1 text-xs rounded hover:bg-blue-600 flex items-center">
+                                 <i class="fas fa-home mr-1"></i>Home
+                             </a>
+                             <a href="/builder/{{template.template_id}}/posts" target="_blank" class="bg-blue-500 text-white px-2 py-1 text-xs rounded hover:bg-blue-600 flex items-center">
+                                 <i class="fas fa-list mr-1"></i>Posts
+                             </a>
+                             <a href="/builder/{{template.template_id}}/post" target="_blank" class="bg-blue-500 text-white px-2 py-1 text-xs rounded hover:bg-blue-600 flex items-center">
+                                 <i class="fas fa-file-alt mr-1"></i>Post
+                             </a>
+                             <a href="/builder/{{template.template_id}}/search" target="_blank" class="bg-blue-500 text-white px-2 py-1 text-xs rounded hover:bg-blue-600 flex items-center">
+                                 <i class="fas fa-search mr-1"></i>Search
+                             </a>
+                             <a href="/builder/{{template.template_id}}/tag" target="_blank" class="bg-blue-500 text-white px-2 py-1 text-xs rounded hover:bg-blue-600 flex items-center">
+                                 <i class="fas fa-tag mr-1"></i>Tag
+                             </a>
+                             <a href="/builder/{{template.template_id}}/category" target="_blank" class="bg-blue-500 text-white px-2 py-1 text-xs rounded hover:bg-blue-600 flex items-center">
+                                 <i class="fas fa-folder mr-1"></i>Category
+                             </a>
+                         </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</body>
+</html>

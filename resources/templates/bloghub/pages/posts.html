@@ -1,0 +1,651 @@
+ 
+  <nav class="bg-white/95 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+
+            <a href="/blog" class="flex items-center space-x-3">
+                                <div class="flex-shrink-0">
+                    <img src="https://tapsite.ai/favicon-96x96.png" alt="BlogHub" class="h-10 w-10 rounded-xl object-cover">
+                </div>
+                                                <span class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">BlogHub</span>
+                            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                                <a href="/" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Home</a>
+                                <a href="/blog" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Blog</a>
+                                <a href="/contact" class="text-gray-700 hover:text-blue-600 font-medium transition-colors">Contact</a>
+                            </div>
+            <div class="flex items-center space-x-4">
+                <div class="relative hidden sm:block"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.3-4.3"></path>
+                    </svg><input type="text" placeholder="Search articles..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all w-64">
+                </div>
+                <!-- Hamburger Button -->
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors">
+                    <!-- Hamburger Icon -->
+                    <svg id="hamburger-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
+                        <line x1="4" x2="20" y1="6" y2="6"></line>
+                        <line x1="4" x2="20" y1="12" y2="12"></line>
+                        <line x1="4" x2="20" y1="18" y2="18"></line>
+                    </svg>
+                    <!-- Close Icon (hidden by default) -->
+                    <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 hidden">
+                        <path d="M18 6 6 18"></path>
+                        <path d="m6 6 12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="md:hidden border-t border-gray-200 py-4 space-y-4 hidden">
+            <div class="relative mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.3-4.3"></path>
+                </svg><input type="text" placeholder="Search articles..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all w-full">
+            </div>
+
+                        <a href="/" class="block text-gray-700 hover:text-blue-600 font-medium py-2">Home</a>
+                        <a href="/blog" class="block text-gray-700 hover:text-blue-600 font-medium py-2">Blog</a>
+                        <a href="/contact" class="block text-gray-700 hover:text-blue-600 font-medium py-2">Contact</a>
+                    </div>
+    </div>
+</nav>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const hamburgerIcon = document.getElementById('hamburger-icon');
+        const closeIcon = document.getElementById('close-icon');
+
+        mobileMenuButton.addEventListener('click', function () {
+            mobileMenu.classList.toggle('hidden');
+            hamburgerIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        });
+    });
+</script><section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">All Blog Posts</h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">Discover our latest articles, insights, and stories from our blog.</p>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
+            <div class="flex items-center space-x-4">
+                <!-- No filters needed -->
+            </div>
+            <div class="text-sm text-gray-600">
+                Showing <span id="posts-count">3</span> posts
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div id="posts-loading" class="text-center py-12 hidden">
+            <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+            <p class="mt-4 text-gray-600">Loading posts...</p>
+        </div>
+
+        <!-- Error State -->
+        <div id="posts-error" class="text-center py-12 hidden">
+            <div class="text-red-500 mb-4">
+                <svg class="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.5 0L4.268 18.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                </svg>
+            </div>
+            <p class="text-gray-600 mb-4">Failed to load posts. Please try again later.</p>
+            <button id="retry-button" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                Try Again
+            </button>
+        </div>
+
+        <!-- Posts Grid -->
+        <div id="posts-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <article class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-gray-100">
+                <a href="/post/getting-started-with-typescript" class="relative block">
+                    <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Getting Started with TypeScript" class="w-full h-48 object-cover"  >
+                    <div class="absolute top-4 left-4">
+                        <span class="bg-white/90 backdrop-blur-sm text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">
+                            Programming
+                        </span>
+                    </div>
+                </a>
+                <div class="p-6">
+                    <a href="/post/getting-started-with-typescript" class="block">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-blue-600 transition-colors">
+                            Getting Started with TypeScript
+                        </h3>
+                    </a>
+                    <p class="text-gray-600 mb-4 leading-relaxed">
+                        Learn the basics of TypeScript and how to integrate it into your projects.
+                    </p>
+                    <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+                        <div class="flex items-center space-x-4">
+                            <span class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1">
+                                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                John Doe
+                            </span>
+                            <span class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                                3 Juli 2025
+                            </span>
+                        </div>
+                        
+                        <span class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            5 min read
+                        </span>
+                        
+                    </div>
+                    <a href="/post/getting-started-with-typescript" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+                        Read More
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1">
+                            <path d="m9 18 6-6-6-6"></path>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+        
+            <article class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-gray-100">
+                <a href="/post/advanced-react-patterns" class="relative block">
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Advanced React Patterns" class="w-full h-48 object-cover"  >
+                    <div class="absolute top-4 left-4">
+                        <span class="bg-white/90 backdrop-blur-sm text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">
+                            React
+                        </span>
+                    </div>
+                </a>
+                <div class="p-6">
+                    <a href="/post/advanced-react-patterns" class="block">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-blue-600 transition-colors">
+                            Advanced React Patterns
+                        </h3>
+                    </a>
+                    <p class="text-gray-600 mb-4 leading-relaxed">
+                        Explore advanced patterns and techniques for building scalable React applications.
+                    </p>
+                    <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+                        <div class="flex items-center space-x-4">
+                            <span class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1">
+                                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                Jane Smith
+                            </span>
+                            <span class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                                2 Juli 2025
+                            </span>
+                        </div>
+                        
+                        <span class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            8 min read
+                        </span>
+                        
+                    </div>
+                    <a href="/post/advanced-react-patterns" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+                        Read More
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1">
+                            <path d="m9 18 6-6-6-6"></path>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+        
+            <article class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-gray-100">
+                <a href="/post/database-design-best-practices" class="relative block">
+                    <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1200&amp;q=80" alt="Database Design Best Practices" class="w-full h-48 object-cover"  >
+                    <div class="absolute top-4 left-4">
+                        <span class="bg-white/90 backdrop-blur-sm text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">
+                            Database
+                        </span>
+                    </div>
+                </a>
+                <div class="p-6">
+                    <a href="/post/database-design-best-practices" class="block">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-blue-600 transition-colors">
+                            Database Design Best Practices
+                        </h3>
+                    </a>
+                    <p class="text-gray-600 mb-4 leading-relaxed">
+                        Learn how to design efficient and scalable database schemas.
+                    </p>
+                    <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+                        <div class="flex items-center space-x-4">
+                            <span class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1">
+                                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                Mike Johnson
+                            </span>
+                            <span class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                                1 Juli 2025
+                            </span>
+                        </div>
+                        
+                        <span class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            12 min read
+                        </span>
+                        
+                    </div>
+                    <a href="/post/database-design-best-practices" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+                        Read More
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1">
+                            <path d="m9 18 6-6-6-6"></path>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+        </div>
+
+        <!-- Empty State -->
+        <div id="posts-empty" class="text-center py-12 hidden">
+            <div class="text-gray-400 mb-4">
+                <svg class="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+            </div>
+            <p class="text-gray-600">No posts found.</p>
+        </div>
+
+        <!-- Pagination -->
+        <div id="pagination-container" class="mt-12 flex justify-center hidden">
+            <div class="flex items-center space-x-2">
+                <button id="prev-page" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed" disabled="">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+                <div id="page-numbers" class="flex space-x-1">
+                    <!-- Page numbers will be inserted here -->
+                </div>
+                <button id="next-page" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Load More Button (Alternative to pagination) -->
+        <div id="load-more-container" class="mt-12 text-center hidden">
+            <button id="load-more-button" class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold">
+                Load More Posts
+            </button>
+        </div>
+    </div>
+</section>
+
+<script>
+(function() {
+    // Configuration
+    const POSTS_PER_PAGE = 6;
+    const API_BASE = '/api/blog';
+    
+    // State
+    let currentPage = 1;
+    let totalPages = 1;
+    let totalPosts = 0;
+    let isLoading = false;
+    let allPosts = [];
+    
+    // DOM Elements
+    const postsLoadingEl = document.getElementById('posts-loading');
+    const postsErrorEl = document.getElementById('posts-error');
+    const postsGridEl = document.getElementById('posts-grid');
+    const postsEmptyEl = document.getElementById('posts-empty');
+    const postsCountEl = document.getElementById('posts-count');
+
+
+    const paginationContainerEl = document.getElementById('pagination-container');
+    const loadMoreContainerEl = document.getElementById('load-more-container');
+    const retryButtonEl = document.getElementById('retry-button');
+    const prevPageEl = document.getElementById('prev-page');
+    const nextPageEl = document.getElementById('next-page');
+    const pageNumbersEl = document.getElementById('page-numbers');
+    const loadMoreButtonEl = document.getElementById('load-more-button');
+    
+    // Utility Functions
+    function formatDate(timestamp) {
+        const date = new Date(timestamp);
+        return date.toLocaleDateString('id-ID', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+    }
+    
+    function getFallbackImage() {
+        return "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23f3f4f6'/%3E%3Ctext x='200' y='100' text-anchor='middle' dy='0.3em' font-family='Arial, sans-serif' font-size='16' fill='%23374151'%3ENo Image Available%3C/text%3E%3C/svg%3E";
+    }
+    
+    function truncateText(text, maxLength = 150) {
+        if (text.length <= maxLength) return text;
+        return text.substring(0, maxLength).trim() + '...';
+    }
+    
+    // Create post HTML
+    function createPostHTML(post) {
+        const imageUrl = post.featured_image || getFallbackImage();
+        const postUrl = `/post/${post.slug}`;
+        const excerpt = truncateText(post.excerpt || post.content || '', 150);
+        
+        return `
+            <article class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-gray-100">
+                <a href="${postUrl}" class="relative block">
+                    <img src="${imageUrl}" 
+                         alt="${post.title}" 
+                         class="w-full h-48 object-cover"
+                         onerror="this.src='${getFallbackImage()}'">
+                    <div class="absolute top-4 left-4">
+                        <span class="bg-white/90 backdrop-blur-sm text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">
+                            ${post.category || 'Uncategorized'}
+                        </span>
+                    </div>
+                </a>
+                <div class="p-6">
+                    <a href="${postUrl}" class="block">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-blue-600 transition-colors">
+                            ${post.title}
+                        </h3>
+                    </a>
+                    <p class="text-gray-600 mb-4 leading-relaxed">
+                        ${excerpt}
+                    </p>
+                    <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+                        <div class="flex items-center space-x-4">
+                            <span class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1">
+                                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                ${post.author || 'Anonymous'}
+                            </span>
+                            <span class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                                ${formatDate(post.published_at || Date.now())}
+                            </span>
+                        </div>
+                        ${post.read_time ? `
+                        <span class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            ${post.read_time} min read
+                        </span>
+                        ` : ''}
+                    </div>
+                    <a href="${postUrl}" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+                        Read More
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1">
+                            <path d="m9 18 6-6-6-6"></path>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+        `;
+    }
+    
+    // Show different states
+    function showState(state) {
+        const states = {
+            loading: postsLoadingEl,
+            error: postsErrorEl,
+            grid: postsGridEl,
+            empty: postsEmptyEl
+        };
+        
+        Object.values(states).forEach(el => el.classList.add('hidden'));
+        if (states[state]) {
+            states[state].classList.remove('hidden');
+        }
+    }
+    
+    // Fetch posts from API
+    async function fetchPosts(page = 1) {
+        if (isLoading) return;
+        
+        isLoading = true;
+        showState('loading');
+        
+        try {
+            const params = new URLSearchParams({
+                page: page.toString(),
+                limit: POSTS_PER_PAGE.toString()
+            });
+            
+            const response = await fetch(`${API_BASE}/posts?${params}`);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const data = await response.json();
+            
+            // Handle API response format
+            if (data.posts && data.pagination) {
+                allPosts = data.posts;
+                totalPosts = data.pagination.total_posts;
+                totalPages = data.pagination.total_pages;
+                currentPage = data.pagination.current_page;
+            } else {
+                // Fallback
+                allPosts = [];
+                totalPosts = 0;
+                totalPages = 1;
+            }
+            
+            renderPosts();
+            updatePagination();
+            updatePostsCount();
+            
+        } catch (error) {
+            console.error('Error fetching posts:', error);
+            showState('error');
+        } finally {
+            isLoading = false;
+        }
+    }
+    
+
+    
+    // Render posts
+    function renderPosts() {
+        if (allPosts.length === 0) {
+            showState('empty');
+            return;
+        }
+        
+        const postsHTML = allPosts.map(post => createPostHTML(post)).join('');
+        postsGridEl.innerHTML = postsHTML;
+        showState('grid');
+    }
+    
+
+    
+    // Update pagination
+    function updatePagination() {
+        if (totalPages <= 1) {
+            paginationContainerEl.classList.add('hidden');
+            return;
+        }
+        
+        paginationContainerEl.classList.remove('hidden');
+        
+        // Update prev/next buttons
+        prevPageEl.disabled = currentPage <= 1;
+        nextPageEl.disabled = currentPage >= totalPages;
+        
+        // Generate page numbers
+        let pageNumbersHTML = '';
+        const maxVisiblePages = 5;
+        let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+        let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+        
+        if (endPage - startPage + 1 < maxVisiblePages) {
+            startPage = Math.max(1, endPage - maxVisiblePages + 1);
+        }
+        
+        for (let i = startPage; i <= endPage; i++) {
+            const isActive = i === currentPage;
+            pageNumbersHTML += `
+                <button class="px-3 py-2 text-sm border rounded-lg ${
+                    isActive 
+                        ? 'bg-blue-600 text-white border-blue-600' 
+                        : 'border-gray-300 hover:bg-gray-50'
+                }" onclick="goToPage(${i})">
+                    ${i}
+                </button>
+            `;
+        }
+        
+        pageNumbersEl.innerHTML = pageNumbersHTML;
+    }
+    
+    // Update posts count
+    function updatePostsCount() {
+        postsCountEl.textContent = totalPosts.toString();
+    }
+    
+    // Go to specific page
+    window.goToPage = function(page) {
+        if (page >= 1 && page <= totalPages && page !== currentPage) {
+            currentPage = page;
+            fetchPosts(currentPage);
+        }
+    };
+    
+    // Event Listeners
+
+    
+    retryButtonEl.addEventListener('click', function() {
+        fetchPosts(currentPage);
+    });
+    
+    prevPageEl.addEventListener('click', function() {
+        if (currentPage > 1) {
+            goToPage(currentPage - 1);
+        }
+    });
+    
+    nextPageEl.addEventListener('click', function() {
+        if (currentPage < totalPages) {
+            goToPage(currentPage + 1);
+        }
+    });
+    
+    loadMoreButtonEl.addEventListener('click', function() {
+        if (currentPage < totalPages) {
+            currentPage++;
+            // For load more, we would append to existing posts
+            // This is an alternative implementation
+            fetchPosts(currentPage);
+        }
+    });
+    
+    // Initialize
+    function init() {
+        fetchPosts(1);
+    }
+    
+    // Start the application
+    init();
+})();
+</script><footer class="bg-gray-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="lg:col-span-2">
+                <div class="flex items-center space-x-3 mb-6">
+                    <div class="bg-gradient-to-r from-blue-600 to-indigo-600 p-2 rounded-xl"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open h-6 w-6 text-white">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                        </svg></div><span class="text-2xl font-bold">BlogHub</span>
+                </div>
+                <p class="text-gray-400 mb-6 leading-relaxed max-w-md">Your go-to destination for insightful articles on
+                    technology, design, business, and lifestyle. We bring you quality content that informs, inspires,
+                    and empowers.</p>
+                <div class="flex space-x-4"><a href="#" class="bg-gray-800 p-3 rounded-full hover:bg-blue-600 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook h-5 w-5">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg></a><a href="#" class="bg-gray-800 p-3 rounded-full hover:bg-blue-600 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter h-5 w-5">
+                            <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z">
+                            </path>
+                        </svg></a><a href="#" class="bg-gray-800 p-3 rounded-full hover:bg-blue-600 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram h-5 w-5">
+                            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                        </svg></a><a href="#" class="bg-gray-800 p-3 rounded-full hover:bg-blue-600 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-youtube h-5 w-5">
+                            <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17">
+                            </path>
+                            <path d="m10 15 5-3-5-3z"></path>
+                        </svg></a></div>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-6">Quick Links</h3>
+                <ul class="space-y-3">
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Categories</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Write for Us</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-6">Get In Touch</h3>
+                <ul class="space-y-3">
+                    <li class="flex items-center space-x-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail h-5 w-5 text-blue-400">
+                            <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                        </svg><span class="text-gray-400">hello@bloghub.com</span></li>
+                    <li class="flex items-center space-x-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone h-5 w-5 text-blue-400">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                            </path>
+                        </svg><span class="text-gray-400">+1 (555) 123-4567</span></li>
+                    <li class="flex items-start space-x-3"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin h-5 w-5 text-blue-400 mt-0.5">
+                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg><span class="text-gray-400">123 Content Street<br>Digital City, DC 12345</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">© 2024 BlogHub. All rights reserved.</p>
+                <p class="text-gray-400 text-sm mt-2 md:mt-0">Made with ❤️ for content creators and readers</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+ 

@@ -1,0 +1,348 @@
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-2">
+                    <div
+                        class="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-user w-6 h-6 text-white">
+                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                    <span class="text-xl font-bold text-slate-800">Alex Rivera</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home"
+                        class="text-slate-600 hover:text-blue-600 transition-colors duration-200 font-medium">Home</a>
+                    <a href="#about"
+                        class="text-slate-600 hover:text-blue-600 transition-colors duration-200 font-medium">About</a>
+                    <a href="#blog" class="text-blue-600 font-medium">Blog</a>
+                    <a href="#skills"
+                        class="text-slate-600 hover:text-blue-600 transition-colors duration-200 font-medium">Skills</a>
+                    <a href="#contact"
+                        class="text-slate-600 hover:text-blue-600 transition-colors duration-200 font-medium">Contact</a>
+                    <button
+                        class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors duration-200 font-medium">Get
+                        In Touch</button>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-slate-600 hover:text-blue-600 transition-colors duration-200">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-menu w-6 h-6">
+                            <line x1="4" x2="20" y1="12" y2="12"></line>
+                            <line x1="4" x2="20" y1="6" y2="6"></line>
+                            <line x1="4" x2="20" y1="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search Header -->
+    <div class="bg-white border-b border-gray-200 pt-28">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="text-center mb-8">
+                <h1 class="text-3xl font-bold text-gray-900 mb-4">
+                    Search Results
+                </h1>
+                <p class="text-gray-600 text-lg">
+                    Found <span class="font-semibold text-blue-600">12 articles</span> for "<span
+                        class="font-semibold">React Hooks</span>"
+                </p>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="max-w-2xl mx-auto mb-8">
+                <div class="relative">
+                    <input type="text" placeholder="Search articles..." value="React Hooks"
+                        class="w-full px-4 py-3 pl-12 pr-4 text-gray-900 bg-gray-50 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="fas fa-search text-gray-400"></i>
+                    </div>
+                    <button class="absolute inset-y-0 right-0 pr-3 flex items-center text-blue-600 hover:text-blue-700">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+ 
+        </div>
+    </div>
+
+    <!-- Search Results -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid gap-8">
+            <!-- Search Result Item 1 -->
+            <article
+                class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300">
+                <div class="md:flex">
+                    <div class="md:w-1/3">
+                        <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="React Hooks Guide" class="w-full h-48 md:h-full object-cover">
+                    </div>
+                    <div class="md:w-2/3 p-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
+                                React
+                            </span>
+                            <span class="text-gray-500 text-sm">
+                                March 15, 2024 • 8 min read
+                            </span>
+                        </div>
+                        <h2 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                            <a href="/post/react-hooks-complete-guide">Complete Guide to React Hooks: useState,
+                                useEffect, and Beyond</a>
+                        </h2>
+                        <p class="text-gray-600 mb-4 line-clamp-3">
+                            Master React Hooks with this comprehensive guide covering useState, useEffect, useContext,
+                            and custom hooks. Learn best practices and common patterns for modern React development.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=facearea&facepad=2&w=32&h=32&q=80"
+                                    alt="Alex Rivera" class="w-8 h-8 rounded-full">
+                                <span class="text-sm text-gray-600">Alex Rivera</span>
+                            </div>
+                            <a href="/post/react-hooks-complete-guide"
+                                class="text-blue-600 hover:text-blue-700 font-medium text-sm transition-colors">
+                                Read more →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Search Result Item 2 -->
+            <article
+                class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300">
+                <div class="md:flex">
+                    <div class="md:w-1/3">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="Custom React Hooks" class="w-full h-48 md:h-full object-cover">
+                    </div>
+                    <div class="md:w-2/3 p-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
+                                React
+                            </span>
+                            <span class="text-gray-500 text-sm">
+                                March 10, 2024 • 6 min read
+                            </span>
+                        </div>
+                        <h2 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                            <a href="/post/building-custom-react-hooks">Building Custom React Hooks for Reusable
+                                Logic</a>
+                        </h2>
+                        <p class="text-gray-600 mb-4 line-clamp-3">
+                            Learn how to create custom React hooks to encapsulate and reuse stateful logic across your
+                            components. Includes practical examples and best practices.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=facearea&facepad=2&w=32&h=32&q=80"
+                                    alt="Alex Rivera" class="w-8 h-8 rounded-full">
+                                <span class="text-sm text-gray-600">Alex Rivera</span>
+                            </div>
+                            <a href="/post/testing-react-hooks-best-practices"
+                                class="text-blue-600 hover:text-blue-700 font-medium text-sm transition-colors">
+                                Read more →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Search Result Item 3 -->
+            <article
+                class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300">
+                <div class="md:flex">
+                    <div class="md:w-1/3">
+                        <img src="https://images.unsplash.com/photo-1627398242454-45a1465c2479?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="React Hooks Performance" class="w-full h-48 md:h-full object-cover">
+                    </div>
+                    <div class="md:w-2/3 p-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
+                                React
+                            </span>
+                            <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
+                                Performance
+                            </span>
+                            <span class="text-gray-500 text-sm">
+                                March 5, 2024 • 10 min read
+                            </span>
+                        </div>
+                        <h2 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                            <a href="/post/react-hooks-performance-optimization">React Hooks Performance Optimization
+                                Techniques</a>
+                        </h2>
+                        <p class="text-gray-600 mb-4 line-clamp-3">
+                            Discover advanced techniques for optimizing React hooks performance, including useMemo,
+                            useCallback, and custom optimization strategies.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=facearea&facepad=2&w=32&h=32&q=80"
+                                    alt="Alex Rivera" class="w-8 h-8 rounded-full">
+                                <span class="text-sm text-gray-600">Alex Rivera</span>
+                            </div>
+                            <a href="/post/react-hooks-performance-optimization"
+                                class="text-blue-600 hover:text-blue-700 font-medium text-sm transition-colors">
+                                Read more →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Search Result Item 4 -->
+            <article
+                class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300">
+                <div class="md:flex">
+                    <div class="md:w-1/3">
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                            alt="React Hooks Testing" class="w-full h-48 md:h-full object-cover">
+                    </div>
+                    <div class="md:w-2/3 p-6">
+                        <div class="flex items-center gap-3 mb-3">
+                            <span
+                                class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs font-medium px-2.5 py-0.5 rounded-full">
+                                React
+                            </span>
+                            <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
+                                Testing
+                            </span>
+                            <span class="text-gray-500 text-sm">
+                                February 28, 2024 • 7 min read
+                            </span>
+                        </div>
+                        <h2 class="text-xl font-bold text-gray-900 mb-3 hover:text-blue-600 transition-colors">
+                            <a href="/post/testing-react-hooks-best-practices">Testing React Hooks: Best Practices and
+                                Tools</a>
+                        </h2>
+                        <p class="text-gray-600 mb-4 line-clamp-3">
+                            Learn how to effectively test React hooks using Jest, React Testing Library, and other
+                            modern testing tools. Includes examples and common patterns.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=facearea&facepad=2&w=32&h=32&q=80"
+                                    alt="Alex Rivera" class="w-8 h-8 rounded-full">
+                                <span class="text-sm text-gray-600">Alex Rivera</span>
+                            </div>
+                            <a href="/post/testing-react-hooks-best-practices"
+                                class="text-blue-600 hover:text-blue-700 font-medium text-sm transition-colors">
+                                Read more →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+    
+
+        <!-- No Results State (Hidden by default) -->
+        <div class="text-center py-16 hidden">
+            <div class="max-w-md mx-auto">
+                <i class="fas fa-search text-6xl text-gray-300 mb-6"></i>
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                    No results found
+                </h3>
+                <p class="text-gray-600 mb-6">
+                    We couldn't find any articles matching your search. Try adjusting your search terms or filters.
+                </p>
+                <button
+                    class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-6 rounded-lg transition-colors duration-200">
+                    Clear Search
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Newsletter Section -->
+    <section class="bg-blue-600 py-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-white mb-4">
+                Stay Updated with Latest Articles
+            </h2>
+            <p class="text-blue-100 text-lg mb-8">
+                Get notified when I publish new articles about web development, React, and modern JavaScript.
+            </p>
+            <div class="max-w-md mx-auto flex gap-3">
+                <input type="email" placeholder="Enter your email"
+                    class="flex-1 px-4 py-3 rounded-lg border-0 focus:ring-2 focus:ring-blue-300 focus:outline-none">
+                <button
+                    class="bg-white text-blue-600 font-medium px-6 py-3 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+                    Subscribe
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <h3 class="text-2xl font-bold mb-4">Alex Rivera</h3>
+                    <p class="text-gray-400 mb-6 max-w-md">
+                        Full-stack developer passionate about creating amazing web experiences with modern technologies
+                        like React, TypeScript, and Node.js.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="/" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="/posts" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="/about" class="text-gray-400 hover:text-white transition-colors">About</a></li>
+                        <li><a href="/contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Categories</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">React</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">TypeScript</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">JavaScript</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">CSS</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Node.js</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400">
+                    © 2024 Alex Rivera. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    </style>

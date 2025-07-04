@@ -1,0 +1,416 @@
+<section class="bg-gradient-to-br from-green-600 via-teal-600 to-blue-700 text-white py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <nav class="flex justify-center mb-6" aria-label="Breadcrumb">
+                <ol class="flex items-center space-x-2 text-green-200">
+                    <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-chevron-right">
+                            <path d="m9 18 6-6-6-6"></path>
+                        </svg></li>
+                    <li><a href="/blog" class="hover:text-white transition-colors">Blog</a></li>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-chevron-right">
+                            <path d="m9 18 6-6-6-6"></path>
+                        </svg></li>
+                    <li class="text-white font-medium">Search</li>
+                </ol>
+            </nav>
+            <div class="inline-flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-search mr-2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.3-4.3"></path>
+                </svg>
+                <span class="text-sm font-medium">Search Results</span>
+            </div>
+            <h1 class="text-4xl lg:text-5xl font-bold mb-4">Search Results</h1>
+            <p id="header-description" class="text-xl text-green-100 mb-8 max-w-2xl mx-auto">Enter a search term to find articles</p>
+            <div id="header-stats" class="flex items-center justify-center space-x-6 text-green-200 hidden">
+                <span class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-file-text mr-2">
+                        <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
+                        <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+                        <path d="M10 9H8"></path>
+                        <path d="M16 13H8"></path>
+                        <path d="M16 17v-2a2 2 0 0 0-2-2H8"></path>
+                    </svg>
+                    <span id="header-results-count">0</span> Results Found
+                </span>
+                <span id="header-search-time" class="flex items-center hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-zap mr-2">
+                        <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path>
+                    </svg>
+                    <span id="header-time-value">0</span>ms
+                </span>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="py-12 bg-white border-b border-gray-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <form id="search-form" class="space-y-6">
+            <!-- Main Search Input -->
+            <div class="relative">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-search absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.3-4.3"></path>
+                </svg>
+                <input type="text" id="search-input" name="q" placeholder="Search for articles, topics, or keywords..."
+                    class="w-full pl-12 pr-4 py-4 text-lg border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all shadow-sm">
+            </div>
+
+            <!-- Search Button -->
+            <div class="flex justify-center">
+                <button type="submit"
+                    class="bg-blue-600 text-white px-8 py-3 rounded-xl font-semibold hover:bg-blue-700 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                    Search Articles
+                </button>
+            </div>
+        </form>
+    </div>
+</section>
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Loading State -->
+        <div id="loading-state" class="text-center py-16">
+            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+            <p class="text-gray-600">Searching articles...</p>
+        </div>
+
+        <!-- Search Results Header -->
+        <div id="search-header" class="mb-8 hidden">
+            <h2 class="text-2xl font-bold text-gray-900 mb-2">Search Results</h2>
+            <p class="text-gray-600">Found <span id="results-count">0</span> articles for "<span
+                    id="search-query"></span>"</p>
+        </div>
+
+        <!-- Results Grid -->
+        <div id="results-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 hidden">
+            <!-- Search results will be dynamically inserted here -->
+        </div>
+
+        <!-- No Results State -->
+        <div id="no-results-state" class="text-center py-16 hidden">
+            <div class="bg-gray-100 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-search-x text-gray-400">
+                    <path d="m13.5 8.5-5 5"></path>
+                    <path d="m8.5 8.5 5 5"></path>
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.3-4.3"></path>
+                </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">No Results Found</h3>
+            <p class="text-gray-600 mb-8 max-w-md mx-auto">We couldn't find any articles matching "<span
+                    id="no-results-query"></span>". Try different keywords or browse our categories.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="/blog"
+                    class="inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-arrow-left mr-2">
+                        <path d="M5 12h14"></path>
+                        <path d="m12 5-7 7 7 7"></path>
+                    </svg>
+                    Browse All Articles
+                </a>
+                <a href="/blog/categories"
+                    class="inline-flex items-center bg-gray-100 text-gray-700 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="lucide lucide-folder mr-2">
+                        <path
+                            d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z">
+                        </path>
+                    </svg>
+                    View Categories
+                </a>
+            </div>
+        </div>
+
+        <!-- Empty Search State -->
+        <div id="empty-search-state" class="text-center py-16 hidden">
+            <div class="bg-gray-100 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-search text-gray-400">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.3-4.3"></path>
+                </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Start Your Search</h3>
+            <p class="text-gray-600 mb-8 max-w-md mx-auto">Enter a search term above to find articles.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="/blog"
+                    class="inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors">
+                    Browse All Articles
+                </a>
+                <a href="/blog/categories"
+                    class="inline-flex items-center bg-gray-100 text-gray-700 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition-colors">
+                    View Categories
+                </a>
+            </div>
+        </div>
+
+        <!-- Error State -->
+        <div id="error-state" class="text-center py-16 hidden">
+            <div class="bg-red-100 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-6">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="text-red-500">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="15" x2="9" y1="9" y2="15"></line>
+                    <line x1="9" x2="15" y1="9" y2="15"></line>
+                </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4">Search Error</h3>
+            <p class="text-gray-600 mb-8 max-w-md mx-auto">Something went wrong while searching. Please try again later.
+            </p>
+            <button onclick="performSearch()"
+                class="inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors">
+                Try Again
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Get search query from URL
+        function getSearchQueryFromURL() {
+            const pathParts = window.location.pathname.split('/');
+            const searchIndex = pathParts.indexOf('search');
+            return searchIndex !== -1 && pathParts[searchIndex + 1] ? decodeURIComponent(pathParts[searchIndex + 1]) : null;
+        }
+
+        // Show/hide different states
+        function showState(state) {
+            const states = ['loading-state', 'search-header', 'results-grid', 'no-results-state', 'empty-search-state', 'error-state'];
+            states.forEach(s => {
+                const element = document.getElementById(s);
+                if (element) {
+                    element.classList.toggle('hidden', s !== state && s !== 'search-header');
+                }
+            });
+
+            // Special handling for search header - show with results
+            const searchHeader = document.getElementById('search-header');
+            if (searchHeader) {
+                searchHeader.classList.toggle('hidden', state !== 'results-grid');
+            }
+        }
+
+        // Create article HTML
+        function createArticleHTML(article) {
+            const defaultImage = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23f3f4f6'/%3E%3Ctext x='200' y='100' text-anchor='middle' dy='0.3em' font-family='Arial, sans-serif' font-size='16' fill='%23374151'%3ENo Image Available%3C/text%3E%3C/svg%3E";
+
+            // Create tags HTML
+            let tagsHTML = '';
+            if (article.tags && article.tags.length > 0) {
+                const displayTags = article.tags.slice(0, 2);
+                tagsHTML = `
+                    <div class="absolute top-4 right-4">
+                        <div class="flex flex-wrap gap-1">
+                            ${displayTags.map(tag => `<span class="bg-black/20 backdrop-blur-sm text-white px-2 py-1 rounded-full text-xs font-medium">#${tag}</span>`).join('')}
+                        </div>
+                    </div>
+                `;
+            }
+
+            return `
+                <article class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 overflow-hidden border border-gray-100 relative">
+                    <div class="relative overflow-hidden">
+                        <img src="${article.featured_image || defaultImage}" alt="${article.title}" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-white/90 backdrop-blur-sm text-blue-600 px-3 py-1 rounded-full text-sm font-semibold shadow-lg">${article.category}</span>
+                        </div>
+                        ${tagsHTML}
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight group-hover:text-blue-600 transition-colors line-clamp-2">
+                            ${article.title}
+                        </h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed line-clamp-3">${article.excerpt}</p>
+                        <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+                            <div class="flex items-center space-x-4">
+                                <span class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="lucide lucide-user h-4 w-4 mr-1">
+                                        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
+                                    ${article.author}
+                                </span>
+                                <span class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                        stroke-linejoin="round" class="lucide lucide-calendar h-4 w-4 mr-1">
+                                        <path d="M8 2v4"></path>
+                                        <path d="M16 2v4"></path>
+                                        <rect width="18" height="18" x="3" y="4" rx="2"></rect>
+                                        <path d="M3 10h18"></path>
+                                    </svg>
+                                    ${article.published_date}
+                                </span>
+                            </div>
+                            <span class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="lucide lucide-clock h-4 w-4 mr-1">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                                ${article.read_time} min read
+                            </span>
+                        </div>
+                        <a href="${article.url || '/post/' + article.slug}" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors group">
+                            Read More
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                class="lucide lucide-chevron-right ml-1 h-4 w-4 group-hover:translate-x-1 transition-transform">
+                                <path d="m9 18 6-6-6-6"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+            `;
+        }
+
+        // Update header with search info
+        function updateHeader(searchQuery, resultsCount, searchTime) {
+            const headerDescription = document.getElementById('header-description');
+            const headerStats = document.getElementById('header-stats');
+            const headerResultsCount = document.getElementById('header-results-count');
+            const headerSearchTime = document.getElementById('header-search-time');
+            const headerTimeValue = document.getElementById('header-time-value');
+
+            if (searchQuery) {
+                headerDescription.innerHTML = `Showing results for "<span class="font-semibold">${searchQuery}</span>"`;
+                headerStats.classList.remove('hidden');
+                headerResultsCount.textContent = resultsCount || 0;
+                
+                if (searchTime) {
+                    headerSearchTime.classList.remove('hidden');
+                    headerTimeValue.textContent = searchTime;
+                } else {
+                    headerSearchTime.classList.add('hidden');
+                }
+            } else {
+                headerDescription.textContent = 'Enter a search term to find articles';
+                headerStats.classList.add('hidden');
+            }
+        }
+
+        // Perform search with query parameter
+        async function performSearchWithQuery(query) {
+            if (!query) {
+                updateHeader(null);
+                showState('empty-search-state');
+                return;
+            }
+
+            const startTime = Date.now();
+            showState('loading-state');
+
+            try {
+                const response = await fetch(`/api/blog/posts/search/${encodeURIComponent(query)}`);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                const searchTime = Date.now() - startTime;
+
+                if (data.success && data.data && data.data.length > 0) {
+                    // Update header
+                    updateHeader(query, data.data.length, searchTime);
+
+                    // Show search results
+                    const resultsGrid = document.getElementById('results-grid');
+                    resultsGrid.innerHTML = data.data.map(article => createArticleHTML(article)).join('');
+
+                    // Update search header in results section
+                    const searchQueryElement = document.getElementById('search-query');
+                    const resultsCountElement = document.getElementById('results-count');
+                    if (searchQueryElement) searchQueryElement.textContent = query;
+                    if (resultsCountElement) resultsCountElement.textContent = data.data.length;
+
+                    showState('results-grid');
+                } else {
+                    // Update header for no results
+                    updateHeader(query, 0, searchTime);
+
+                    // Show no results state
+                    const noResultsQueryElement = document.getElementById('no-results-query');
+                    if (noResultsQueryElement) {
+                        noResultsQueryElement.textContent = query;
+                    }
+                    showState('no-results-state');
+                }
+            } catch (error) {
+                console.error('Error performing search:', error);
+                updateHeader(query, 0);
+                showState('error-state');
+            }
+        }
+
+        // Perform search from URL
+        async function performSearch() {
+            const searchQuery = getSearchQueryFromURL();
+            
+            // Update search input with current query
+            const searchInput = document.getElementById('search-input');
+            if (searchInput && searchQuery) {
+                searchInput.value = searchQuery;
+            }
+            
+            await performSearchWithQuery(searchQuery);
+        }
+
+        // Handle form submission
+        function handleSearchSubmit(event) {
+            event.preventDefault();
+            const searchInput = document.getElementById('search-input');
+            const query = searchInput.value.trim();
+            
+            if (query) {
+                // Update URL and perform search
+                const newUrl = `/search/${encodeURIComponent(query)}`;
+                window.history.pushState({ query }, '', newUrl);
+                performSearchWithQuery(query);
+            }
+        }
+
+        // Handle browser back/forward
+        function handlePopState(event) {
+            performSearch();
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set up form handler
+            const searchForm = document.getElementById('search-form');
+            if (searchForm) {
+                searchForm.addEventListener('submit', handleSearchSubmit);
+            }
+
+            // Set up popstate handler for browser navigation
+            window.addEventListener('popstate', handlePopState);
+
+            // Perform initial search
+            performSearch();
+        });
+    </script>
+</section>

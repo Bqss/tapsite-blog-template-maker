@@ -1,0 +1,221 @@
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Explore by Category</h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">Stay up-to-date with the latest trends and insights in
+                your chosen category.</p>
+        </div>
+        <!-- Categories Loading State -->
+        <div id="categories-loading" class="flex justify-center mb-12">
+            <div class="inline-block animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600"></div>
+        </div>
+
+        <!-- Categories Container -->
+        <div id="categories-container" class="flex flex-wrap justify-center gap-4 mb-12 hidden">
+            <!-- Categories will be dynamically inserted here -->
+        </div>
+        <!-- Loading State -->
+        <div id="articles-loading" class="text-center py-12">
+            <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+            <p class="mt-4 text-gray-600">Loading articles...</p>
+        </div>
+
+        <!-- Error State -->
+        <div id="articles-error" class="text-center py-12 hidden">
+            <div class="text-red-500 mb-4">
+                <svg class="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.5 0L4.268 18.5c-.77.833.192 2.5 1.732 2.5z" />
+                </svg>
+            </div>
+            <p class="text-gray-600">Failed to load articles. Please try again later.</p>
+        </div>
+
+        <!-- Articles Grid -->
+        <div id="articles-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 hidden">
+            <!-- Articles will be dynamically inserted here -->
+        </div>
+
+        <script>
+        // Function to format date
+        function formatDate(timestamp) {
+            const date = new Date(timestamp);
+            return date.toLocaleDateString('id-ID', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        }
+
+        // Function to get fallback image
+        function getFallbackImage() {
+            return "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23f3f4f6'/%3E%3Ctext x='200' y='100' text-anchor='middle' dy='0.3em' font-family='Arial, sans-serif' font-size='16' fill='%23374151'%3ENo Image Available%3C/text%3E%3C/svg%3E";
+        }
+
+        // Function to create article HTML
+        function createArticleHTML(article) {
+            const imageUrl = article.featured_image || getFallbackImage();
+            const postUrl = `/post/${article.slug}`;
+            
+            return `
+                <article class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-gray-100">
+                    <a href="${postUrl}" class="relative">
+                        <img src="${imageUrl}" 
+                             alt="${article.title}" 
+                             class="w-full h-48 object-cover"
+                             onerror="this.src='${getFallbackImage()}'">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-white/90 backdrop-blur-sm text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">
+                                ${article.category}
+                            </span>
+                        </div>
+                    </a>
+                    <div class="p-6">
+                        <a href="${postUrl}" class="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-blue-600 transition-colors">
+                            ${article.title}
+                        </a>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            ${article.excerpt}
+                        </p>
+                        <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+                            <div class="flex items-center space-x-4">
+                                <span class="flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user h-4 w-4 mr-1">
+                                        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
+                                    ${article.author}
+                                </span>
+                            </div>
+                            <span class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock h-4 w-4 mr-1">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                                ${article.read_time} min read
+                            </span>
+                        </div>
+                        <a href="${postUrl}" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+                            Read More
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right ml-1 h-4 w-4">
+                                <path d="m9 18 6-6-6-6"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </article>
+            `;
+        }
+
+        // Function to load articles
+        async function loadArticles() {
+            console.log("trigger")
+            const loadingEl = document.getElementById('articles-loading');
+            const errorEl = document.getElementById('articles-error');
+            const gridEl = document.getElementById('articles-grid');
+
+            try {
+                // Show loading state
+                loadingEl.classList.remove('hidden');
+                errorEl.classList.add('hidden');
+                gridEl.classList.add('hidden');
+
+                // Fetch articles from API
+                const response = await fetch('/api/blog/posts/recent');
+
+
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const articles = await response.json();
+ 
+
+                // Hide loading state
+                loadingEl.classList.add('hidden');
+
+                if (articles && articles.length > 0) {
+                    // Generate HTML for all articles
+                    const articlesHTML = articles.map(article => createArticleHTML(article)).join('');
+                    
+                    // Insert articles into grid
+                    gridEl.innerHTML = articlesHTML;
+                    gridEl.classList.remove('hidden');
+                } else {
+                    // Show empty state
+                    gridEl.innerHTML = `
+                        <div class="col-span-full text-center py-12">
+                            <p class="text-gray-600">No articles found.</p>
+                        </div>
+                    `;
+                    gridEl.classList.remove('hidden');
+                }
+
+            } catch (error) {
+                console.error('Error loading articles:', error);
+                
+                // Hide loading state and show error
+                loadingEl.classList.add('hidden');
+                errorEl.classList.remove('hidden');
+                gridEl.classList.add('hidden');
+            }
+        }
+
+        // Function to load categories
+        async function loadCategories() {
+            const loadingEl = document.getElementById('categories-loading');
+            const containerEl = document.getElementById('categories-container');
+
+            try {
+                // Fetch categories from API
+                const response = await fetch('/api/blog/categories');
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const categories = await response.json();
+
+                // Hide loading state
+                loadingEl.classList.add('hidden');
+
+                if (categories && categories.length > 0) {
+                    // Generate HTML for categories
+                    const categoriesHTML = categories.map((cat, index) => {
+                        const isFirst = index === 0;
+                        const baseClasses = "px-6 py-3 rounded-full font-semibold transition-all transform hover:scale-105";
+                        const activeClasses = "bg-blue-600 text-white shadow-lg";
+                        const inactiveClasses = "bg-gray-100 text-gray-700 hover:bg-gray-200";
+                        const classes = isFirst ? `${baseClasses} ${activeClasses}` : `${baseClasses} ${inactiveClasses}`;
+                        
+                        return `
+                            <a href="/category/${encodeURIComponent(cat.name)}"
+                                class="${classes}">
+                                ${cat.name} ${cat.posts ? `(${cat.posts})` : ''}
+                            </a>
+                        `;
+                    }).join('');
+                    
+                    // Insert categories into container
+                    containerEl.innerHTML = categoriesHTML;
+                    containerEl.classList.remove('hidden');
+                } else {
+                    // Hide loading and container if no categories
+                    containerEl.classList.add('hidden');
+                }
+
+            } catch (error) {
+                console.error('Error loading categories:', error);
+                // Hide loading state on error
+                loadingEl.classList.add('hidden');
+                containerEl.classList.add('hidden');
+            }
+        }
+
+        // Load categories and articles when page loads
+         document.addEventListener('DOMContentLoaded', () => {
+             loadCategories();
+             loadArticles();
+         });
+        </script>
+    </div>
+</section>

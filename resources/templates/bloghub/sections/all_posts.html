@@ -1,0 +1,359 @@
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">All Blog Posts</h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">Discover our latest articles, insights, and stories from our blog.</p>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
+            <div class="flex items-center space-x-4">
+                <!-- No filters needed -->
+            </div>
+            <div class="text-sm text-gray-600">
+                Showing <span id="posts-count">0</span> posts
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div id="posts-loading" class="text-center py-12">
+            <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+            <p class="mt-4 text-gray-600">Loading posts...</p>
+        </div>
+
+        <!-- Error State -->
+        <div id="posts-error" class="text-center py-12 hidden">
+            <div class="text-red-500 mb-4">
+                <svg class="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.5 0L4.268 18.5c-.77.833.192 2.5 1.732 2.5z" />
+                </svg>
+            </div>
+            <p class="text-gray-600 mb-4">Failed to load posts. Please try again later.</p>
+            <button id="retry-button" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                Try Again
+            </button>
+        </div>
+
+        <!-- Posts Grid -->
+        <div id="posts-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 hidden">
+            <!-- Posts will be dynamically inserted here -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="posts-empty" class="text-center py-12 hidden">
+            <div class="text-gray-400 mb-4">
+                <svg class="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+            </div>
+            <p class="text-gray-600">No posts found.</p>
+        </div>
+
+        <!-- Pagination -->
+        <div id="pagination-container" class="mt-12 flex justify-center hidden">
+            <div class="flex items-center space-x-2">
+                <button id="prev-page" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                </button>
+                <div id="page-numbers" class="flex space-x-1">
+                    <!-- Page numbers will be inserted here -->
+                </div>
+                <button id="next-page" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Load More Button (Alternative to pagination) -->
+        <div id="load-more-container" class="mt-12 text-center hidden">
+            <button id="load-more-button" class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold">
+                Load More Posts
+            </button>
+        </div>
+    </div>
+</section>
+
+<script>
+(function() {
+    // Configuration
+    const POSTS_PER_PAGE = 6;
+    const API_BASE = '/api/blog';
+    
+    // State
+    let currentPage = 1;
+    let totalPages = 1;
+    let totalPosts = 0;
+    let isLoading = false;
+    let allPosts = [];
+    
+    // DOM Elements
+    const postsLoadingEl = document.getElementById('posts-loading');
+    const postsErrorEl = document.getElementById('posts-error');
+    const postsGridEl = document.getElementById('posts-grid');
+    const postsEmptyEl = document.getElementById('posts-empty');
+    const postsCountEl = document.getElementById('posts-count');
+
+
+    const paginationContainerEl = document.getElementById('pagination-container');
+    const loadMoreContainerEl = document.getElementById('load-more-container');
+    const retryButtonEl = document.getElementById('retry-button');
+    const prevPageEl = document.getElementById('prev-page');
+    const nextPageEl = document.getElementById('next-page');
+    const pageNumbersEl = document.getElementById('page-numbers');
+    const loadMoreButtonEl = document.getElementById('load-more-button');
+    
+    // Utility Functions
+    function formatDate(timestamp) {
+        const date = new Date(timestamp);
+        return date.toLocaleDateString('id-ID', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+    }
+    
+    function getFallbackImage() {
+        return "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23f3f4f6'/%3E%3Ctext x='200' y='100' text-anchor='middle' dy='0.3em' font-family='Arial, sans-serif' font-size='16' fill='%23374151'%3ENo Image Available%3C/text%3E%3C/svg%3E";
+    }
+    
+    function truncateText(text, maxLength = 150) {
+        if (text.length <= maxLength) return text;
+        return text.substring(0, maxLength).trim() + '...';
+    }
+    
+    // Create post HTML
+    function createPostHTML(post) {
+        const imageUrl = post.featured_image || getFallbackImage();
+        const postUrl = `/post/${post.slug}`;
+        const excerpt = truncateText(post.excerpt || post.content || '', 150);
+        
+        return `
+            <article class="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden border border-gray-100">
+                <a href="${postUrl}" class="relative block">
+                    <img src="${imageUrl}" 
+                         alt="${post.title}" 
+                         class="w-full h-48 object-cover"
+                         onerror="this.src='${getFallbackImage()}'">
+                    <div class="absolute top-4 left-4">
+                        <span class="bg-white/90 backdrop-blur-sm text-blue-600 px-3 py-1 rounded-full text-sm font-semibold">
+                            ${post.category || 'Uncategorized'}
+                        </span>
+                    </div>
+                </a>
+                <div class="p-6">
+                    <a href="${postUrl}" class="block">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-blue-600 transition-colors">
+                            ${post.title}
+                        </h3>
+                    </a>
+                    <p class="text-gray-600 mb-4 leading-relaxed">
+                        ${excerpt}
+                    </p>
+                    <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+                        <div class="flex items-center space-x-4">
+                            <span class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1">
+                                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                                ${post.author || 'Anonymous'}
+                            </span>
+                            <span class="flex items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                                ${formatDate(post.published_at || Date.now())}
+                            </span>
+                        </div>
+                        ${post.read_time ? `
+                        <span class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            ${post.read_time} min read
+                        </span>
+                        ` : ''}
+                    </div>
+                    <a href="${postUrl}" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+                        Read More
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-1">
+                            <path d="m9 18 6-6-6-6"></path>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+        `;
+    }
+    
+    // Show different states
+    function showState(state) {
+        const states = {
+            loading: postsLoadingEl,
+            error: postsErrorEl,
+            grid: postsGridEl,
+            empty: postsEmptyEl
+        };
+        
+        Object.values(states).forEach(el => el.classList.add('hidden'));
+        if (states[state]) {
+            states[state].classList.remove('hidden');
+        }
+    }
+    
+    // Fetch posts from API
+    async function fetchPosts(page = 1) {
+        if (isLoading) return;
+        
+        isLoading = true;
+        showState('loading');
+        
+        try {
+            const params = new URLSearchParams({
+                page: page.toString(),
+                limit: POSTS_PER_PAGE.toString()
+            });
+            
+            const response = await fetch(`${API_BASE}/posts?${params}`);
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            
+            const data = await response.json();
+            
+            // Handle API response format
+            if (data.posts && data.pagination) {
+                allPosts = data.posts;
+                totalPosts = data.pagination.total_posts;
+                totalPages = data.pagination.total_pages;
+                currentPage = data.pagination.current_page;
+            } else {
+                // Fallback
+                allPosts = [];
+                totalPosts = 0;
+                totalPages = 1;
+            }
+            
+            renderPosts();
+            updatePagination();
+            updatePostsCount();
+            
+        } catch (error) {
+            console.error('Error fetching posts:', error);
+            showState('error');
+        } finally {
+            isLoading = false;
+        }
+    }
+    
+
+    
+    // Render posts
+    function renderPosts() {
+        if (allPosts.length === 0) {
+            showState('empty');
+            return;
+        }
+        
+        const postsHTML = allPosts.map(post => createPostHTML(post)).join('');
+        postsGridEl.innerHTML = postsHTML;
+        showState('grid');
+    }
+    
+
+    
+    // Update pagination
+    function updatePagination() {
+        if (totalPages <= 1) {
+            paginationContainerEl.classList.add('hidden');
+            return;
+        }
+        
+        paginationContainerEl.classList.remove('hidden');
+        
+        // Update prev/next buttons
+        prevPageEl.disabled = currentPage <= 1;
+        nextPageEl.disabled = currentPage >= totalPages;
+        
+        // Generate page numbers
+        let pageNumbersHTML = '';
+        const maxVisiblePages = 5;
+        let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+        let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+        
+        if (endPage - startPage + 1 < maxVisiblePages) {
+            startPage = Math.max(1, endPage - maxVisiblePages + 1);
+        }
+        
+        for (let i = startPage; i <= endPage; i++) {
+            const isActive = i === currentPage;
+            pageNumbersHTML += `
+                <button class="px-3 py-2 text-sm border rounded-lg ${
+                    isActive 
+                        ? 'bg-blue-600 text-white border-blue-600' 
+                        : 'border-gray-300 hover:bg-gray-50'
+                }" onclick="goToPage(${i})">
+                    ${i}
+                </button>
+            `;
+        }
+        
+        pageNumbersEl.innerHTML = pageNumbersHTML;
+    }
+    
+    // Update posts count
+    function updatePostsCount() {
+        postsCountEl.textContent = totalPosts.toString();
+    }
+    
+    // Go to specific page
+    window.goToPage = function(page) {
+        if (page >= 1 && page <= totalPages && page !== currentPage) {
+            currentPage = page;
+            fetchPosts(currentPage);
+        }
+    };
+    
+    // Event Listeners
+
+    
+    retryButtonEl.addEventListener('click', function() {
+        fetchPosts(currentPage);
+    });
+    
+    prevPageEl.addEventListener('click', function() {
+        if (currentPage > 1) {
+            goToPage(currentPage - 1);
+        }
+    });
+    
+    nextPageEl.addEventListener('click', function() {
+        if (currentPage < totalPages) {
+            goToPage(currentPage + 1);
+        }
+    });
+    
+    loadMoreButtonEl.addEventListener('click', function() {
+        if (currentPage < totalPages) {
+            currentPage++;
+            // For load more, we would append to existing posts
+            // This is an alternative implementation
+            fetchPosts(currentPage);
+        }
+    });
+    
+    // Initialize
+    function init() {
+        fetchPosts(1);
+    }
+    
+    // Start the application
+    init();
+})();
+</script>
