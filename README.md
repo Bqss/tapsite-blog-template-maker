@@ -294,7 +294,7 @@ Project ini menggunakan **Squirrelly** sebagai templating engine. Syntax yang se
 {{it.variable}}
 
 <!-- Escaped HTML -->
-{{it.html_content}}
+{{* it.html_content}}
 ```
 
 ## 📚 Resources
