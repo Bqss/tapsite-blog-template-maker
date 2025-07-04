@@ -1,428 +1,321 @@
-# Laju
+# TapSite.ai Template Maker
 
-A high-performance TypeScript web framework combining HyperExpress, Svelte 5, and Inertia.js for building modern full-stack applications. Features server-side rendering, real-time capabilities, and seamless client-server state management.
+Template maker untuk TapSite.ai yang memungkinkan developer membuat template blog yang dapat dikustomisasi dengan mudah.
 
-Visit [laju.dev](https://laju.dev)
+## 📁 Struktur Project
 
-## Features
+### Folder Penting
 
-- Fast server-side rendering with HyperExpress
-- Modern frontend with Svelte 5
-- TypeScript support for better type safety
-- Inertia.js integration for seamless client-server communication
-- Built-in authentication system
-- BetterSQLite3 database with Knex query builder
-- Email support with Nodemailer
-- Google APIs integration
-- Redis caching support
-- Asset bundling with Vite
-- TailwindCSS for styling
+1. **`resources/templates/`** - Berisi semua template yang tersedia
+2. **`routes/web.ts`** - Definisi route aplikasi
+3. **`app/controllers/`** - Controller untuk menangani logika aplikasi
+4. **`/blog-documentation`** - Dokumentasi API blog untuk integrasi template
 
-## Prerequisites
+## 🎨 Struktur Template
 
-- Node.js (Latest LTS version recommended)
-- npm or yarn
-- Redis server (optional, for caching)
-- Docker & Docker Compose (optional, for development with container)
+Setiap template memiliki struktur yang baku dan harus mengikuti konvensi berikut:
 
-## Installation
-
-### Menggunakan Docker (Direkomendasikan)
-
-1. Pastikan Docker dan Docker Compose sudah terinstall
-2. Clone repository
-3. Jalankan dengan Docker Compose:
-```bash
-docker-compose up -d
+```
+resources/templates/[template_id]/
+├── template.json          # Metadata template
+├── data.json             # Data seeder (fake data)
+├── thumbnail.webp        # Preview thumbnail
+├── pages/                # Halaman template
+│   ├── home.html        # Preview halaman home
+│   ├── home.json        # Struktur sections halaman home
+│   ├── posts.html       # Preview halaman daftar post
+│   ├── posts.json       # Struktur sections halaman posts
+│   ├── post.html        # Preview halaman detail post
+│   ├── post.json        # Struktur sections halaman post
+│   ├── category.html    # Preview halaman kategori
+│   ├── category.json    # Struktur sections halaman kategori
+│   ├── tag.html         # Preview halaman tag
+│   ├── tag.json         # Struktur sections halaman tag
+│   ├── search.html      # Preview halaman pencarian
+│   └── search.json      # Struktur sections halaman search
+└── sections/            # Komponen HTML sections
+    ├── navigation.html  # Section navigasi
+    ├── hero.html        # Section hero
+    ├── footer.html      # Section footer
+    └── ...              # Section lainnya
 ```
 
-Aplikasi akan berjalan di:
-- Frontend (Vite): http://localhost:5173
-- Backend: http://localhost:5555
+## 📄 File Konfigurasi Template
 
-### Quick Start (Tanpa Docker)
-```bash
-npx create-laju-app project-name
-cd project-name
-npm run dev
-```
+### 1. template.json
 
-### Manual Installation
+File metadata yang berisi informasi dasar template:
 
-1. Clone the repository
-2. Install dependencies:
-```bash
-npm install
-```
-3. Copy `.env.example` to `.env` and configure your environment variables:
-```bash
-cp .env.example .env
-```
-
-4. Set up Google OAuth credentials:
-   1. Go to the [Google Cloud Console](https://console.cloud.google.com/)
-   2. Create a new project or select an existing one
-   3. Enable the Google+ API and Google OAuth2 API
-   4. Go to "Credentials" in the left sidebar
-   5. Click "Create Credentials" and select "OAuth client ID"
-   6. Select "Web application" as the application type
-   7. Set the following:
-      - Name: Your application name
-      - Authorized JavaScript origins: `http://localhost:5555` (for development)
-      - Authorized redirect URIs: `http://localhost:5555/google/callback`
-   8. Click "Create"
-   9. Copy the generated Client ID and Client Secret
-   10. Add them to your `.env` file:
-   ```
-   GOOGLE_CLIENT_ID=your_client_id_here
-   GOOGLE_CLIENT_SECRET=your_client_secret_here
-   ```
-
-5. Run database migrations:
-```bash
-npx knex migrate:latest
-```
-
-## Development
-
-### Menggunakan Docker
-
-Untuk memulai server development dengan Docker:
-
-```bash
-docker-compose up -d
-```
-
-Untuk melihat log:
-```bash
-docker-compose logs -f
-```
-
-Untuk menghentikan container:
-```bash
-docker-compose down
-```
-
-### Tanpa Docker
-
-To start the development server:
-
-```bash
-npm run dev
-```
-
-This will:
-- Start the Vite development server for frontend assets
-- Run the backend server with nodemon for auto-reloading
-
-## Building for Production
-
-### Build dengan Docker
-
-1. Edit Dockerfile, uncomment baris terakhir untuk menggunakan mode production:
-```dockerfile
-# CMD [ "npm", "run", "dev", "--", "--host"] ]
-CMD [ "pm2-runtime", "start", "./build/server.js" ]
-```
-
-2. Build dan jalankan container:
-```bash
-docker-compose -f docker-compose.prod.yml up -d --build
-```
-
-### Build tanpa Docker
-
-To build the application for production:
-
-```bash
-npm run build
-```
-
-This command will:
-- Clean the build directory
-- Build frontend assets with Vite
-- Compile TypeScript files
-- Copy necessary files to the build directory
-
-## Project Structure
-
-- `/app` - Core application files
-  - `/middlewares` - Custom middleware functions
-  - `/services` - Service layer implementations
-  - `/controllers` - Application controllers
-- `/resources` - Frontend resources
-  - `/views` - Svelte components and views
-  - `/js` - JavaScript assets and modules
-- `/routes` - Route definitions
-- `/commands` - Custom CLI commands
-- `/migrations` - Database migrations
-- `/public` - Static files
-- `/dist` - Compiled assets (generated)
-- `/build` - Production build output
-
-## Key Dependencies
-
-### Backend
-- HyperExpress - High-performance web server
-- Knex - SQL query builder
-- BetterSQLite3 - Database
-- Nodemailer - Email sending
-- Redis - Caching (optional)
-
-### Frontend
-- Svelte 5 - UI framework
-- Inertia.js - Client-server communication
-- TailwindCSS - Utility-first CSS framework
-- Vite - Build tool and dev server
-
-## Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production 
-
-## CLI Commands
-
-### Create Controller
-```bash
-node laju make:controller ControllerName
-```
-This will create a new controller in `app/controllers` with basic CRUD methods.
-
-Example:
-```bash
-node laju make:controller UserController
-```
-
-### Create Command
-```bash
-node laju make:command CommandName
-```
-This will create a new command in `commands` that can be scheduled with cron jobs.
-
-Example:
-```bash
-node laju make:command SendDailyEmails
-```
-
-To schedule the command with cron, add it to your crontab:
-```bash
-# Run command every day at midnight
-0 0 * * * cd /path/to/your/app/build && node commands/SendDailyEmails.js
-```
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a new Pull Request
-
-## License
-
-ISC License
-
-## Tutorial: Building Your First App
-
-This tutorial will guide you through building a simple application using this framework.
-
-### 1. Setting Up a New Route and Controller
-
-First, let's create a new route and controller for a blog post feature.
-
-1. Create a new controller file `app/controllers/PostController.ts`:
-
-```typescript
-import { Request, Response } from "../../type";
-import DB from "../services/DB";
-
-class Controller {
-  public async index(request: Request, response: Response) {
-    const posts = await DB.from("posts");
-    return response.inertia("posts/index", { posts });
-  }
-
-  public async create(request: Request, response: Response) {
-    return response.inertia("posts/create");
-  }
-
-  public async store(request: Request, response: Response) {
-    const { title, content } = await request.json();
-    
-    await DB.table("posts").insert({
-      title,
-      content,
-      created_at: Date.now(),
-      updated_at: Date.now()
-    });
-
-    return response.redirect("/posts");
-  }
-}
-
-export default new Controller();
-```
-
-2. Add routes in `routes/web.ts`:
-
-```typescript
-import PostController from "../app/controllers/PostController";
-
-// Add these routes with your existing routes
-Route.get("/posts", PostController.index);
-Route.get("/posts/create", PostController.create);
-Route.post("/posts", PostController.store);
-```
-
-### 2. Creating the Database Migration
-
-Create a migration for the posts table:
-
-```bash
-npx knex migrate:make create_posts_table
-```
-
-In the generated migration file:
-
-```typescript
-import { Knex } from "knex";
-
-export async function up(knex: Knex): Promise<void> {
-  await knex.schema.createTable('posts', function (table) {
-    table.increments('id').primary();
-    table.string('title').notNullable();
-    table.text('content').notNullable();
-    table.bigInteger('created_at');
-    table.bigInteger('updated_at');
-  });
-}
-
-export async function down(knex: Knex): Promise<void> {
-  await knex.schema.dropTable('posts');
+```json
+{
+    "title": "Nama Template",
+    "description": "Deskripsi template",
+    "template_id": "template_id_unik",
+    "creator_name": "Nama Pembuat",
+    "creator_website": "https://website.com",
+    "version": "1.0.0",
+    "thumbnail": "/templates/template_id/thumbnail.webp"
 }
 ```
 
-Run the migration:
+### 2. data.json
 
-```bash
-npx knex migrate:latest
+File yang berisi data seeder untuk template. Contoh:
+
+```json
+{
+    "blog_logo": "https://example.com/logo.png",
+    "blog_title": "Blog Title",
+    "navigation": [
+        {
+            "name": "Home",
+            "url": "/"
+        },
+        {
+            "name": "Blog",
+            "url": "/blog"
+        }
+    ],
+    "post": {
+        "title": "Sample Post Title",
+        "excerpt": "Sample excerpt...",
+        "content": "<p>Full post content...</p>",
+        "category": "Technology",
+        "featured_image": "https://example.com/image.jpg",
+        "author": "Author Name",
+        "read_time": 5,
+        "published_at": 1640995200000
+    }
+}
 ```
 
-### 3. Creating Svelte Components
+## 📑 Struktur Pages
 
-1. Create `resources/views/posts/index.svelte`:
+Setiap halaman memiliki 2 file:
 
-```svelte
-<script>
-  export let posts = [];
-</script>
+### 1. File HTML (.html)
+File preview statis untuk menampilkan tampilan template.
 
-<div class="max-w-4xl mx-auto p-4">
-  <div class="flex justify-between items-center mb-6">
-    <h1 class="text-2xl font-bold">Blog Posts</h1>
-    <a 
-      href="/posts/create" 
-      class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-    >
-      Create Post
+### 2. File JSON (.json)
+File konfigurasi yang mendefinisikan sections yang digunakan dalam halaman:
+
+```json
+{
+  "sections": [
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "blog_title",
+        "blog_logo",
+        "navigation"
+      ]
+    },
+    {
+      "title": "hero",
+      "id": "hero",
+      "type": "html",
+      "resetable": true
+    }
+  ]
+}
+```
+
+### Properties Section:
+- **`title`**: Nama section untuk display
+- **`id`**: ID unik yang mengarah ke file HTML di folder sections (contoh: `navigation` → `sections/navigation.html`)
+- **`type`**: 
+  - `"html"` - Section statis tanpa templating
+  - `"template"` - Section dengan templating menggunakan Squirrelly
+- **`resetable`**: Boolean untuk menentukan apakah section bisa direset
+- **`data`**: Array key dari data.json yang akan digunakan dalam templating (hanya untuk type "template")
+
+## 🧩 Sections
+
+Setiap section adalah file HTML yang dapat berupa:
+
+### 1. Section Statis (type: "html")
+HTML biasa tanpa templating:
+
+```html
+<section class="hero">
+    <h1>Welcome to Our Blog</h1>
+    <p>Static content here</p>
+</section>
+```
+
+### 2. Section Template (type: "template")
+HTML dengan Squirrelly templating syntax:
+
+```html
+<nav class="navigation">
+    <a href="/blog" class="logo">
+        {{@if(it.blog_logo)}}
+        <img src="{{it.blog_logo}}" alt="{{it.blog_title}}">
+        {{/if}}
+        {{@if(it.blog_title)}}
+        <span>{{it.blog_title}}</span>
+        {{/if}}
     </a>
-  </div>
-
-  <div class="space-y-4">
-    {#each posts as post}
-      <div class="border p-4 rounded">
-        <h2 class="text-xl font-semibold">{post.title}</h2>
-        <p class="mt-2 text-gray-600">{post.content}</p>
-      </div>
-    {/each}
-  </div>
-</div>
+    <div class="nav-links">
+        {{@each (it.navigation) => item}}
+        <a href="{{item.url}}">{{item.name}}</a>
+        {{/each}}
+    </div>
+</nav>
 ```
 
-2. Create `resources/views/posts/create.svelte`:
+## 🔗 API Blog Integration
 
-```svelte
-<script>
-  import { router } from '@inertiajs/svelte';
+Template dapat mengintegrasikan data blog melalui API endpoints yang tersedia:
 
-  let form = {
-    title: '',
-    content: ''
-  };
+### Endpoints Utama:
+- `GET /api/blog/posts` - Daftar semua post
+- `GET /api/blog/posts/:slug` - Detail post
+- `GET /api/blog/posts/category/:name` - Post berdasarkan kategori
+- `GET /api/blog/posts/tag/:name` - Post berdasarkan tag
+- `GET /api/blog/posts/search/:query` - Pencarian post
+- `GET /api/blog/posts/trending` - Post trending
+- `GET /api/blog/posts/recent` - Post terbaru
+- `GET /api/blog/categories` - Daftar kategori
+- `GET /api/blog/tags` - Daftar tag
 
-  function handleSubmit() {
-    router.post('/posts', form);
-  }
-</script>
+Lihat dokumentasi lengkap di `/blog-documentation` atau `BLOG_API_DOCUMENTATION.md`
 
-<div class="max-w-4xl mx-auto p-4">
-  <h1 class="text-2xl font-bold mb-6">Create New Post</h1>
+## 🚀 Cara Membuat Template Baru
 
-  <form on:submit|preventDefault={handleSubmit} class="space-y-4">
-    <div>
-      <label class="block text-sm font-medium mb-1">Title</label>
-      <input
-        type="text"
-        bind:value={form.title}
-        class="w-full px-3 py-2 border rounded"
-      />
-    </div>
-
-    <div>
-      <label class="block text-sm font-medium mb-1">Content</label>
-      <textarea
-        bind:value={form.content}
-        class="w-full px-3 py-2 border rounded h-32"
-      ></textarea>
-    </div>
-
-    <div>
-      <button
-        type="submit"
-        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-      >
-        Create Post
-      </button>
-    </div>
-  </form>
-</div>
+### 1. Buat Folder Template
+```bash
+mkdir resources/templates/template_baru
 ```
 
-### 4. Testing Your Application
+### 2. Buat File Konfigurasi
 
-1. Start the development server:
+**template.json:**
+```json
+{
+    "title": "Template Baru",
+    "description": "Deskripsi template baru",
+    "template_id": "template_baru",
+    "creator_name": "Nama Anda",
+    "creator_website": "https://website-anda.com",
+    "version": "1.0.0",
+    "thumbnail": "/templates/template_baru/thumbnail.webp"
+}
+```
+
+**data.json:**
+```json
+{
+    "blog_title": "My Blog",
+    "blog_logo": "https://example.com/logo.png",
+    "navigation": [
+        {"name": "Home", "url": "/"},
+        {"name": "Blog", "url": "/blog"}
+    ]
+}
+```
+
+### 3. Buat Folder dan File Pages
+```bash
+mkdir resources/templates/template_baru/pages
+mkdir resources/templates/template_baru/sections
+```
+
+Buat 6 halaman wajib:
+- `home.html` & `home.json`
+- `posts.html` & `posts.json`
+- `post.html` & `post.json`
+- `category.html` & `category.json`
+- `tag.html` & `tag.json`
+- `search.html` & `search.json`
+
+### 4. Buat Sections
+Buat file HTML untuk setiap section yang didefinisikan dalam file JSON pages.
+
+### 5. Tambahkan Thumbnail
+Tambahkan file `thumbnail.webp` untuk preview template.
+
+## 🛠️ Development
+
+### Menjalankan Server
 ```bash
 npm run dev
 ```
 
-2. Visit `http://localhost:5555/posts` in your browser
-3. Try creating a new post using the form
-4. View the list of posts on the index page
+### Testing Template
+1. Akses `/` untuk melihat daftar template
+2. Klik template untuk preview
+3. Gunakan `/builder/:template_id/:page` untuk testing builder mode
 
-### Key Concepts
+### Preview URLs:
+- Home: `/preview/:template_id/home`
+- Posts: `/preview/:template_id/posts`
+- Post: `/preview/:template_id/post`
+- Category: `/preview/:template_id/category`
+- Tag: `/preview/:template_id/tag`
+- Search: `/preview/:template_id/search`
 
-1. **Routing**: Routes are defined in `routes/web.ts` using the HyperExpress router
-2. **Controllers**: Handle business logic and return Inertia responses
-3. **Database**: Use Knex.js for database operations and migrations
-4. **Frontend**: Svelte components with Inertia.js for seamless page transitions
-5. **Styling**: TailwindCSS for utility-first styling
+### Builder URLs:
+- Home: `/builder/:template_id/home`
+- Posts: `/builder/:template_id/posts`
+- Post: `/builder/:template_id/post`
+- Category: `/builder/:template_id/category`
+- Tag: `/builder/:template_id/tag`
+- Search: `/builder/:template_id/search`
 
-### Best Practices
+## 📝 Best Practices
 
-1. **File Organization**
-   - Keep controllers in `app/controllers`
-   - Create inertia pages in `resources/js/Pages`
-   - Place Svelte components in `resources/js/Components`
-   - Database migrations in `migrations`
+1. **Naming Convention**: Gunakan snake_case untuk ID template dan section
+2. **Responsive Design**: Pastikan template responsive di semua device
+3. **Performance**: Optimasi gambar dan CSS untuk loading yang cepat
+4. **Accessibility**: Gunakan semantic HTML dan ARIA labels
+5. **SEO Friendly**: Implementasikan meta tags dan structured data
+6. **Consistent Styling**: Gunakan design system yang konsisten
+7. **Error Handling**: Handle kasus ketika data tidak tersedia
 
-2. **Code Structure**
-   - Use TypeScript types for better type safety
-   - Keep controllers focused on single responsibilities
-   - Use Inertia.js for state management between server and client
+## 🔧 Templating Engine
 
-3. **Database**
-   - Always use migrations for database changes
-   - Use the Query Builder for complex queries
-   - Include timestamps for tracking record changes
+Project ini menggunakan **Squirrelly** sebagai templating engine. Syntax yang sering digunakan:
 
-Need help with anything specific? Feel free to ask!
+```html
+<!-- Conditional -->
+{{@if(it.variable)}}
+    Content jika variable ada
+{{/if}}
+
+<!-- Loop -->
+{{@each (it.array) => item}}
+    <div>{{item.property}}</div>
+{{/each}}
+
+<!-- Variable -->
+{{it.variable}}
+
+<!-- Escaped HTML -->
+{{it.html_content}}
+```
+
+## 📚 Resources
+
+- [Squirrelly Documentation](https://squirrelly.js.org/)
+- [TailwindCSS Documentation](https://tailwindcss.com/docs)
+- [Blog API Documentation](/blog-documentation)
+
+## 🤝 Contributing
+
+1. Fork repository
+2. Buat branch feature (`git checkout -b feature/template-baru`)
+3. Commit changes (`git commit -am 'Add template baru'`)
+4. Push ke branch (`git push origin feature/template-baru`)
+5. Buat Pull Request
+
+## 📄 License
+
+MIT License - lihat file LICENSE untuk detail.
+
+---
+
+**Happy templating! 🎨**
