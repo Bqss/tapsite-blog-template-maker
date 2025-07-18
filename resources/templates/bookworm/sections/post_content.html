@@ -1,0 +1,51 @@
+<!-- Post Content (Sinkronisasi dengan post.html) -->
+<article class="py-16 bg-white">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Post Header -->
+    <header class="mb-12 text-center">
+      <div class="mb-6">
+        <span class="bg-amber-100 text-amber-800 px-4 py-2 rounded-full text-sm font-medium">
+          {{it.post.category}}
+        </span>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-serif font-bold text-slate-900 mb-6 leading-tight">
+        {{it.post.title}}
+      </h1>
+      <div class="flex items-center justify-center space-x-6 text-slate-600 mb-8">
+        <div class="flex items-center space-x-2">
+          <div class="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center">
+            <span class="text-amber-600 font-medium">{{it.author.name.charAt(0)}}</span>
+          </div>
+          <div class="text-left">
+            <div class="font-medium text-slate-900">{{it.author.name}}</div>
+            <div class="text-sm text-slate-500">{{it.post.published_at}}</div>
+          </div>
+        </div>
+        <div class="text-slate-400">•</div>
+        <div class="text-sm">{{it.post.read_time}} min read</div>
+      </div>
+      <!-- Featured Image -->
+      <div class="mb-8">
+        <img src="{{it.post.featured_image}}" alt="{{it.post.title}}"
+          class="w-full h-64 md:h-96 object-cover rounded-xl shadow-lg">
+        <p class="text-sm text-slate-500 mt-2 italic">{{it.post.featured_caption}}</p>
+      </div>
+    </header>
+    <!-- Post Content -->
+    <article class="ProseMirror focus:outline-none max-w-full space-y-4 leading-relaxed">
+      {{* it.post.content}}
+    </article>
+    <!-- Post Tags -->
+    <div class="mt-12 pt-8 border-t border-slate-200">
+      <h3 class="text-lg font-serif font-bold text-slate-900 mb-4">Tags</h3>
+      <div class="flex flex-wrap gap-2">
+        {{@each(it.post.tags)=>tag}}
+        <a href="/tag/{{tag}}"
+          class="bg-amber-50 text-amber-700 hover:bg-amber-100 px-3 py-1 rounded-full text-sm font-medium transition-colors">
+          #{{tag}}
+        </a>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</article>

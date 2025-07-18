@@ -1,0 +1,33 @@
+<!-- Navigation -->
+<nav class="bg-gradient-to-r from-slate-900 to-slate-800 text-white sticky top-0 z-50 border-b border-amber-200">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-3">
+          <div class="relative">
+            <div class="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center shadow-lg">
+              <div class="text-slate-800 text-lg font-serif">{{it.blog_logo}}</div>
+            </div>
+            <div class="absolute -top-1 -right-1 w-4 h-4 bg-amber-400 rounded-full"></div>
+          </div>
+          <div>
+            <div class="text-xl font-serif font-bold text-amber-100">{{it.blog_title}}</div>
+            <div class="text-xs text-amber-300">{{it.blog_tagline}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="hidden md:flex items-center space-x-8">
+        {{@each(it.navigation)=>item}}
+        <a href="{{item.url}}" class="text-amber-100 hover:text-amber-300 transition-colors text-sm font-medium">{{item.name}}</a>
+        {{/each}}
+      </div>
+      <div class="flex items-center space-x-3">
+        <div class="relative">
+          <input type="text" placeholder="Search books..." 
+                 class="bg-slate-700 text-white placeholder-slate-400 px-4 py-2 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 w-40">
+          <div class="absolute right-3 top-1/2 transform -translate-y-1/2 text-slate-400">🔍</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav> 

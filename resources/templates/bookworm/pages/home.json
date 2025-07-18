@@ -1,0 +1,62 @@
+{
+  "title": "Literary Chronicles - All Posts",
+  "description": "Explore our collection of literary insights and book reviews",
+  "sections": [
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": ["blog_title", "blog_logo", "navigation"]
+    },
+    {
+      "title": "hero",
+      "id": "hero",
+      "type": "template",
+      "resetable": true,
+      "data": ["hero_content", "currently_reading"]
+    },
+    {
+      "title": "featured_quote",
+      "id": "featured_quote",
+      "type": "template",
+      "resetable": true,
+      "data": ["featured_quote"]
+    },
+    {
+      "title": "popular posts",
+      "id": "popular_posts",
+      "type": "template",
+      "resetable": true,
+      "data": ["popular_posts"]
+    },
+    {
+      "title": "reading_lists",
+      "id": "reading_lists",
+      "type": "template",
+      "resetable": true,
+      "data": ["reading_lists"]
+    },
+    {
+      "title": "author_spotlight",
+      "id": "author_spotlight",
+      "type": "template",
+      "resetable": true,
+      "data": ["author"]
+    },
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "blog_title",
+        "blog_logo",
+        "blog_tagline",
+        "blog_description",
+        "navigation",
+        "social_links"
+      ]
+    }
+  ]
+}

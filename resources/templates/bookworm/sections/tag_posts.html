@@ -1,0 +1,240 @@
+<!-- Tag Header -->
+<section class="py-16 bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="mb-8">
+      <div class="inline-block p-4 bg-white rounded-full shadow-lg mb-4">
+        <span class="text-3xl">🏷️</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-serif font-bold text-slate-900 mb-4">
+        Posts tagged with <span class="text-amber-600 italic" id="tag-name"></span>
+      </h1>
+      <p class="text-lg text-slate-600">Explore all posts related to this topic</p>
+    </div>
+    
+    <div class="flex justify-center space-x-8 text-sm text-slate-600">
+      <div class="flex items-center space-x-2">
+        <span class="text-amber-600">📖</span>
+        <span><span id="post-count">0</span> posts</span>
+      </div>
+      <div class="flex items-center space-x-2">
+        <span class="text-amber-600">🏷️</span>
+        <span id="tag-label"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tag Posts -->
+<section class="py-16 bg-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Loading State -->
+    <div id="loading-state" class="text-center py-12">
+      <div class="inline-block p-4 bg-amber-50 rounded-full mb-4 animate-pulse">
+        <span class="text-3xl">🔄</span>
+      </div>
+      <h2 class="text-2xl font-serif font-bold text-slate-900 mb-2">Loading Posts</h2>
+      <p class="text-slate-600">Please wait while we fetch the posts...</p>
+    </div>
+
+    <!-- Posts Grid -->
+    <div id="posts-grid" class="grid lg:grid-cols-3 gap-8 hidden">
+      <!-- Posts will be dynamically inserted here -->
+    </div>
+
+    <!-- No Posts State -->
+    <div id="no-posts-state" class="text-center py-12 hidden">
+      <div class="inline-block p-4 bg-amber-50 rounded-full mb-4">
+        <span class="text-4xl">📚</span>
+      </div>
+      <h2 class="text-2xl font-serif font-bold text-slate-900 mb-2">No Posts Found</h2>
+      <p class="text-slate-600 mb-8">We couldn't find any posts with this tag</p>
+      <a href="/" class="text-amber-600 hover:text-amber-700 font-medium">← Back to Home</a>
+    </div>
+
+    <!-- Error State -->
+    <div id="error-state" class="text-center py-12 hidden">
+      <div class="inline-block p-4 bg-red-50 rounded-full mb-4">
+        <span class="text-4xl">⚠️</span>
+      </div>
+      <h2 class="text-2xl font-serif font-bold text-slate-900 mb-2">Error Loading Posts</h2>
+      <p class="text-slate-600 mb-8">Something went wrong. Please try again later.</p>
+      <button onclick="fetchTagPosts()" class="text-amber-600 hover:text-amber-700 font-medium">Try Again</button>
+    </div>
+
+    <!-- Pagination -->
+    <div id="pagination" class="mt-12 flex justify-center hidden">
+      <!-- Pagination will be dynamically inserted here -->
+    </div>
+  </div>
+</section>
+
+<!-- Related Tags -->
+<section class="py-16 bg-slate-50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-serif font-bold text-slate-900 mb-4">Related Tags</h2>
+      <p class="text-slate-600">Explore more topics and themes</p>
+    </div>
+    
+    <div id="tags-container" class="flex flex-wrap justify-center gap-3">
+      <!-- Tags will be dynamically inserted here -->
+    </div>
+  </div>
+</section>
+
+<script>
+// Show specific state and hide others
+function showState(state) {
+  const states = ['loading-state', 'posts-grid', 'no-posts-state', 'error-state', 'pagination'];
+  states.forEach(s => {
+    document.getElementById(s).classList.toggle('hidden', s !== state);
+  });
+}
+
+// Create article HTML
+function createArticleHTML(post) {
+  return `
+    <article class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow border border-slate-100 group">
+      <div class="aspect-w-16 aspect-h-9 bg-gradient-to-br from-amber-100 to-orange-100 rounded-t-xl mb-4">
+        <img src="${post.featured_image || '/placeholder.jpg'}" 
+             alt="${post.title}" 
+             class="w-full h-48 object-cover rounded-t-xl">
+      </div>
+      <div class="p-6">
+        <div class="flex items-center justify-between mb-4">
+          <span class="bg-amber-100 text-amber-800 text-xs px-3 py-1 rounded-full">${post.category}</span>
+          <span class="text-slate-400 text-sm">${post.read_time} min read</span>
+        </div>
+        <h3 class="text-xl font-serif font-bold text-slate-900 mb-3 leading-tight group-hover:text-amber-700 transition-colors">
+          <a href="/post/${post.slug}">${post.title}</a>
+        </h3>
+        <p class="text-slate-600 mb-4 leading-relaxed">
+          ${post.excerpt}
+        </p>
+        <div class="flex items-center justify-between">
+          <div class="flex items-center space-x-2">
+            <div class="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
+              <span class="text-amber-600 text-sm font-medium">${post.author.charAt(0)}</span>
+            </div>
+            <div>
+              <div class="text-sm font-medium text-slate-900">${post.author}</div>
+              <div class="text-xs text-slate-500">${new Date(post.published_at).toLocaleDateString()}</div>
+            </div>
+          </div>
+          <a href="/post/${post.slug}" class="text-amber-600 hover:text-amber-700 text-sm font-medium">Read more →</a>
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+// Create tag HTML
+function createTagHTML(tag) {
+  return `
+    <a href="/tag/${tag.toLowerCase().replace(/\s+/g, '-')}" 
+       class="bg-white hover:bg-amber-50 text-slate-700 hover:text-amber-700 px-4 py-2 rounded-full text-sm font-medium transition-colors border border-slate-200 hover:border-amber-200">
+      #${tag}
+    </a>
+  `;
+}
+
+// Create pagination HTML
+function createPaginationHTML(currentPage, totalPages, tagName) {
+  let html = '<nav class="flex items-center space-x-2">';
+  
+  if (currentPage > 1) {
+    html += `
+      <a href="/tag/${tagName}?page=${currentPage - 1}" 
+         class="px-4 py-2 bg-amber-100 text-amber-700 rounded-lg hover:bg-amber-200 transition-colors font-medium">
+        ← Previous
+      </a>
+    `;
+  }
+  
+  for (let i = 1; i <= totalPages; i++) {
+    if (i === currentPage) {
+      html += `<span class="px-4 py-2 bg-amber-600 text-white rounded-lg font-medium">${i}</span>`;
+    } else {
+      html += `
+        <a href="/tag/${tagName}?page=${i}" 
+           class="px-4 py-2 bg-slate-100 text-slate-700 rounded-lg hover:bg-slate-200 transition-colors font-medium">
+          ${i}
+        </a>
+      `;
+    }
+  }
+  
+  if (currentPage < totalPages) {
+    html += `
+      <a href="/tag/${tagName}?page=${currentPage + 1}" 
+         class="px-4 py-2 bg-amber-100 text-amber-700 rounded-lg hover:bg-amber-200 transition-colors font-medium">
+        Next →
+      </a>
+    `;
+  }
+  
+  html += '</nav>';
+  return html;
+}
+
+// Get tag name from URL
+function getTagFromURL() {
+  const pathParts = window.location.pathname.split('/');
+  const tagIndex = pathParts.indexOf('tag');
+  return tagIndex !== -1 && pathParts[tagIndex + 1] ? decodeURIComponent(pathParts[tagIndex + 1]) : null;
+}
+
+// Fetch and display tag posts
+async function fetchTagPosts(page = 1) {
+  const tagName = getTagFromURL();
+  if (!tagName) return;
+
+  showState('loading-state');
+  
+  try {
+    // Fetch posts for this tag
+    const response = await fetch(`/api/blog/posts/tag/${encodeURIComponent(tagName)}?page=${page}&limit=6`);
+    if (!response.ok) throw new Error('Failed to fetch posts');
+    
+    const data = await response.json();
+    
+    if (!data || data.length === 0) {
+      showState('no-posts-state');
+      return;
+    }
+    
+    // Update header
+    const formattedTagName = tagName.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    document.getElementById('tag-name').textContent = `"${formattedTagName}"`;
+    document.getElementById('tag-label').textContent = formattedTagName;
+    document.getElementById('post-count').textContent = data.length;
+    
+    // Update posts grid
+    document.getElementById('posts-grid').innerHTML = data.map(createArticleHTML).join('');
+    
+    // Fetch all tags for related tags section
+    const tagsResponse = await fetch('/api/blog/tags');
+    if (tagsResponse.ok) {
+      const tags = await tagsResponse.json();
+      // Filter out current tag and take up to 8 related tags
+      const relatedTags = tags
+        .filter(tag => tag.toLowerCase() !== tagName.toLowerCase())
+        .slice(0, 8);
+      
+      document.getElementById('tags-container').innerHTML = relatedTags.map(createTagHTML).join('');
+    }
+    
+    showState('posts-grid');
+    
+  } catch (error) {
+    console.error('Error fetching tag posts:', error);
+    showState('error-state');
+  }
+}
+
+// Initial load
+window.addEventListener('DOMContentLoaded', () => {
+  const page = parseInt(new URLSearchParams(window.location.search).get('page') || '1');
+  fetchTagPosts(page);
+});
+</script> 

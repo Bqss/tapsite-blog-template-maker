@@ -1,0 +1,90 @@
+{
+  "title": "{{it.post.title}} - The BookWorm",
+  "description": "{{it.post.excerpt}}",
+  "keywords": ["books", "literature", "reading", "book reviews"],
+  "page_type": "post",
+  "data_sources": {
+    "post": "current_post",
+    "author": "post_author",
+    "related_posts": "related_posts"
+  },
+  "meta": {
+    "robots": "index, follow",
+    "canonical": "/post/{{it.post.slug}}",
+    "author": "{{it.author.name}}",
+    "published_time": "{{it.post.published_at}}",
+    "modified_time": "{{it.post.updated_at}}"
+  },
+  "structured_data": {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "{{it.post.title}}",
+    "description": "{{it.post.excerpt}}",
+    "author": {
+      "@type": "Person",
+      "name": "{{it.author.name}}"
+    },
+    "datePublished": "{{it.post.published_at}}",
+    "dateModified": "{{it.post.updated_at}}",
+    "image": "{{it.post.featured_image}}"
+  },
+  "sections": [
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "navigation"
+      ]
+    },
+    {
+      "title": "breadcrumb",
+      "id": "breadcrumb",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "post.title"
+      ]
+    },
+    {
+      "title": "post content",
+      "id": "post_content",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "post",
+        "author"
+      ]
+    },
+    {
+      "title": "related posts",
+      "id": "related_posts",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "related_posts"
+      ]
+    },
+
+    {
+      "title": "community banner",
+      "id": "community_banner",
+      "type": "template",
+      "resetable": true,
+      "data": []
+    },
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "site.name",
+        "site.description",
+        "navigation",
+        "social_links"
+      ]
+    }
+  ]
+} 

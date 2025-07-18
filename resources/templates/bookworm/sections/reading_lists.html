@@ -1,0 +1,99 @@
+<!-- Categories Section -->
+<section class="py-16 bg-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-serif font-bold text-slate-900 mb-4">Explore Categories</h2>
+      <p class="text-slate-600">Discover curated content across various topics</p>
+    </div>
+    
+    <!-- Categories Loading State -->
+    <div id="categories-loading" class="flex justify-center mb-12">
+      <div class="inline-block animate-spin rounded-full h-6 w-6 border-b-2 border-slate-600"></div>
+    </div>
+
+    <!-- Categories Grid -->
+    <div id="categories-grid" class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 hidden">
+      <!-- Categories will be dynamically inserted here -->
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const loadingEl = document.getElementById('categories-loading');
+      const gridEl = document.getElementById('categories-grid');
+
+      // Color combinations for categories
+      const colorSchemes = [
+        { gradient: 'from-blue-50 to-blue-100', border: 'border-blue-200', color: 'blue' },
+        { gradient: 'from-emerald-50 to-emerald-100', border: 'border-emerald-200', color: 'emerald' },
+        { gradient: 'from-amber-50 to-amber-100', border: 'border-amber-200', color: 'amber' },
+        { gradient: 'from-rose-50 to-rose-100', border: 'border-rose-200', color: 'rose' },
+        { gradient: 'from-purple-50 to-purple-100', border: 'border-purple-200', color: 'purple' },
+        { gradient: 'from-teal-50 to-teal-100', border: 'border-teal-200', color: 'teal' },
+        { gradient: 'from-orange-50 to-orange-100', border: 'border-orange-200', color: 'orange' },
+        { gradient: 'from-cyan-50 to-cyan-100', border: 'border-cyan-200', color: 'cyan' }
+      ];
+
+      // Category icons mapping
+      const categoryIcons = {
+        'Technology': '💻',
+        'Lifestyle': '🌟',
+        'Travel': '✈️',
+        'Food': '🍳',
+        'Health': '💪',
+        'Business': '💼',
+        'Art': '🎨',
+        'Science': '🔬',
+        'default': '📚'
+      };
+
+      try {
+        // Fetch categories from API
+        const response = await fetch('/api/blog/categories');
+        if (!response.ok) throw new Error('Failed to fetch categories');
+        const categories = await response.json();
+
+        // Hide loading state
+        loadingEl.classList.add('hidden');
+
+        if (categories && categories.length > 0) {
+          // Generate HTML for categories
+          const categoriesHTML = categories.map((cat, index) => {
+            const colorScheme = colorSchemes[index % colorSchemes.length];
+            const icon = categoryIcons[cat.name] || categoryIcons.default;
+            
+            return `
+              <a href="/category/${encodeURIComponent(cat.name)}" 
+                 class="bg-gradient-to-br ${colorScheme.gradient} p-6 rounded-xl border ${colorScheme.border} hover:border-${colorScheme.color}-300 transition-colors cursor-pointer group">
+                <div class="text-3xl mb-4 transform group-hover:scale-110 transition-transform">${icon}</div>
+                <h3 class="font-serif font-bold text-slate-900 mb-2">${cat.name}</h3>
+                <p class="text-slate-600 text-sm mb-3">${cat.description || 'Explore our collection of articles'}</p>
+                <span class="text-${colorScheme.color}-600 text-sm font-medium">${cat.posts || 0} articles</span>
+              </a>
+            `;
+          }).join('');
+          
+          // Insert categories into grid
+          gridEl.innerHTML = categoriesHTML;
+          gridEl.classList.remove('hidden');
+        } else {
+          gridEl.innerHTML = `
+            <div class="col-span-full text-center py-8">
+              <p class="text-slate-600">No categories found</p>
+            </div>
+          `;
+          gridEl.classList.remove('hidden');
+        }
+      } catch (error) {
+        console.error('Error loading categories:', error);
+        loadingEl.classList.add('hidden');
+        gridEl.innerHTML = `
+          <div class="col-span-full text-center py-8">
+            <p class="text-red-600">Failed to load categories. Please try again later.</p>
+          </div>
+        `;
+        gridEl.classList.remove('hidden');
+      }
+    });
+  </script>
+</section> 

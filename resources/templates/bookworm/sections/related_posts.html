@@ -1,0 +1,66 @@
+<!-- Related Posts (Client-side fetch from API) -->
+<section id="related-posts" class="py-16 bg-slate-50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-serif font-bold text-slate-900 mb-4">More Literary Adventures</h2>
+      <p class="text-slate-600">Continue exploring our collection of book reviews and insights</p>
+    </div>
+    <div id="related-posts-list" class="grid md:grid-cols-3 gap-8"></div>
+    <div class="text-center mt-12">
+      <a href="/posts" class="inline-block bg-amber-600 hover:bg-amber-700 text-white px-8 py-3 rounded-lg font-medium transition-colors">
+        View All Posts
+      </a>
+    </div>
+  </div>
+</section>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const section = document.getElementById('related-posts');
+    if (!section) return;
+    const container = document.getElementById('related-posts-list');
+    // Slug bisa diinject via global var atau data attribute
+    
+
+    fetch(`/api/blog/posts/related/getting-started-with-typescript?limit=3`)
+      .then(res => res.json())
+      .then(posts => {
+        if (!Array.isArray(posts) || posts.length === 0) {
+          container.innerHTML = '<p class="text-slate-500 col-span-3">No related posts found.</p>';
+          return;
+        }
+        const formatter = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        container.innerHTML = posts.map(post => `
+          <article class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow border border-slate-100 group">
+            <div class="aspect-w-16 aspect-h-9 bg-gradient-to-br from-amber-100 to-orange-100 rounded-t-xl mb-4">
+              <img src="${post.featured_image}" alt="${post.title}" class="w-full h-48 object-cover rounded-t-xl">
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-4">
+                <span class="bg-blue-100 text-blue-800 text-xs px-3 py-1 rounded-full">${post.category}</span>
+                <span class="text-slate-400 text-sm">${post.read_time} min read</span>
+              </div>
+              <h3 class="text-xl font-serif font-bold text-slate-900 mb-3 leading-tight group-hover:text-amber-700 transition-colors">
+                <a href="/post/${post.slug}">${post.title}</a>
+              </h3>
+              <p class="text-slate-600 mb-4 leading-relaxed">${post.excerpt}</p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                  <div class="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
+                    <span class="text-amber-600 text-sm font-medium">${post.author?.[0] || ''}</span>
+                  </div>
+                  <div>
+                    <div class="text-sm font-medium text-slate-900">${post.author}</div>
+                    <div class="text-xs text-slate-500">${formatter.format(post.published_at)}</div>
+                  </div>
+                </div>
+                <a href="/post/${post.slug}" class="text-amber-600 hover:text-amber-700 text-sm font-medium">Read more →</a>
+              </div>
+            </div>
+          </article>
+        `).join('');
+      })
+      .catch(() => {
+        container.innerHTML = '<p class="text-red-500 col-span-3">Failed to load related posts.</p>';
+      });
+  });
+</script> 

@@ -1,0 +1,229 @@
+<!-- Posts Listing -->
+<section class="py-16 bg-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Loading State -->
+    <div id="posts-loading" class="py-12 text-center">
+      <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-amber-600 border-t-transparent"></div>
+    </div>
+
+    <!-- Error State -->
+    <div id="posts-error" class="py-12 text-center hidden">
+      <div class="bg-red-50 rounded-lg p-6 max-w-md mx-auto">
+        <p class="text-red-600 mb-4">Failed to load posts</p>
+        <button onclick="loadPosts()" class="text-amber-600 font-medium hover:text-amber-700">
+          Try Again
+        </button>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div id="posts-content" class="hidden">
+      <!-- Category Filter -->
+      <div id="categories-container" class="flex flex-wrap justify-center gap-4 mb-12"></div>
+
+      <!-- Posts Grid -->
+      <div id="posts-grid" class="grid lg:grid-cols-3 gap-8"></div>
+
+      <!-- Pagination -->
+      <div id="pagination" class="mt-12 flex justify-center"></div>
+      <!-- Static Pagination Fallback (visible when JS disabled or before load) -->
+      <noscript>
+        <div class="mt-12 flex justify-center">
+          <nav class="flex items-center space-x-2">
+            <a href="/posts?page=1" class="px-4 py-2 bg-amber-100 text-amber-700 rounded-lg hover:bg-amber-200 transition-colors font-medium" aria-label="Previous page">← Previous</a>
+            <span class="px-4 py-2 bg-amber-600 text-white rounded-lg font-medium">1</span>
+            <a href="/posts?page=2" class="px-4 py-2 bg-slate-100 text-slate-700 rounded-lg hover:bg-slate-200 transition-colors font-medium">2</a>
+            <a href="/posts?page=3" class="px-4 py-2 bg-slate-100 text-slate-700 rounded-lg hover:bg-slate-200 transition-colors font-medium">3</a>
+            <a href="/posts?page=2" class="px-4 py-2 bg-amber-100 text-amber-700 rounded-lg hover:bg-amber-200 transition-colors font-medium" aria-label="Next page">Next →</a>
+          </nav>
+        </div>
+      </noscript>
+    </div>
+  </div>
+</section>
+
+<script>
+let currentPage = 1;
+let currentCategory = null;
+
+async function loadPosts(page = 1, category = null) {
+  const postsLoading = document.getElementById('posts-loading');
+  const postsError = document.getElementById('posts-error');
+  const postsContent = document.getElementById('posts-content');
+  
+  try {
+    postsLoading.classList.remove('hidden');
+    postsError.classList.add('hidden');
+    postsContent.classList.add('hidden');
+    
+    // Load categories if not loaded
+    if (!currentCategory) {
+      const categoriesResponse = await fetch('/api/blog/categories');
+      const categories = await categoriesResponse.json();
+      renderCategories(categories);
+    }
+    
+    // Load posts
+    const postsUrl = category 
+      ? `/api/blog/posts/category/${category}?page=${page}&limit=9`
+      : `/api/blog/posts?page=${page}&limit=9`;
+      
+    const response = await fetch(postsUrl);
+    const data = await response.json();
+    
+    // Support both {posts, pagination} and {posts, current_page, total_pages}
+    renderPosts(data.posts || data.data || []);
+
+    const paginationInfo = data.pagination ? data.pagination : {
+      current_page: data.current_page || 1,
+      total_pages: data.total_pages || 1
+    };
+    renderPagination(paginationInfo);
+    
+    currentPage = page;
+    currentCategory = category;
+    
+    postsLoading.classList.add('hidden');
+    postsContent.classList.remove('hidden');
+  } catch (error) {
+    console.error('Failed to load posts:', error);
+    postsLoading.classList.add('hidden');
+    postsError.classList.remove('hidden');
+  }
+}
+
+function renderCategories(categories) {
+  const container = document.getElementById('categories-container');
+  container.innerHTML = '';
+  
+  const allCategoryLink = document.createElement('a');
+  allCategoryLink.href = '#';
+  allCategoryLink.className = `${!currentCategory ? 'bg-amber-100 text-amber-700' : 'bg-slate-100 text-slate-700'} px-4 py-2 rounded-full text-sm font-medium hover:bg-amber-200 transition-colors`;
+  allCategoryLink.textContent = 'All Posts';
+  allCategoryLink.onclick = (e) => {
+    e.preventDefault();
+    loadPosts(1, null);
+  };
+  container.appendChild(allCategoryLink);
+  
+  categories.forEach(cat => {
+    // Support both {category, post_count} and {name, post_count/count}
+    const categoryName = cat.category || cat.name || 'Unknown';
+    const postCount = cat.post_count ?? cat.count ?? 0;
+
+    const link = document.createElement('a');
+    link.href = '#';
+    link.className = `${currentCategory === categoryName ? 'bg-amber-100 text-amber-700' : 'bg-slate-100 text-slate-700'} px-4 py-2 rounded-full text-sm font-medium hover:bg-slate-200 transition-colors`;
+    link.textContent = `${categoryName} (${postCount})`;
+    link.onclick = (e) => {
+      e.preventDefault();
+      loadPosts(1, categoryName);
+    };
+    container.appendChild(link);
+  });
+}
+
+function renderPosts(posts) {
+  const grid = document.getElementById('posts-grid');
+  grid.innerHTML = '';
+  
+  posts.forEach(post => {
+    const article = document.createElement('article');
+    article.className = 'bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow border border-slate-100 group';
+    article.innerHTML = `
+      <div class="p-6">
+        <div class="flex items-center justify-between mb-4">
+          <span class="bg-amber-100 text-amber-800 text-xs px-3 py-1 rounded-full">${post.category}</span>
+          <span class="text-slate-400 text-sm">${post.read_time} min read</span>
+        </div>
+        <h3 class="text-xl font-serif font-bold text-slate-900 mb-3 leading-tight group-hover:text-amber-700 transition-colors">
+          <a href="/post/${post.slug}">${post.title}</a>
+        </h3>
+        <p class="text-slate-600 mb-4 leading-relaxed">${post.excerpt}</p>
+        <div class="flex items-center justify-between">
+          <div class="flex items-center space-x-2">
+            <div class="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
+              <span class="text-amber-600 text-sm font-medium">${post.author[0]}</span>
+            </div>
+            <div>
+              <div class="text-sm font-medium text-slate-900">${post.author}</div>
+              <div class="text-xs text-slate-500">${formatDate(post.published_at)}</div>
+            </div>
+          </div>
+          <a href="/post/${post.slug}" class="text-amber-600 hover:text-amber-700 text-sm font-medium">Read more →</a>
+        </div>
+      </div>
+    `;
+    grid.appendChild(article);
+  });
+}
+
+function renderPagination(pagination) {
+  const container = document.getElementById('pagination');
+  container.innerHTML = '';
+  
+  if (!pagination || pagination.total_pages <= 1) return;
+  
+  const nav = document.createElement('nav');
+  nav.className = 'flex items-center space-x-2';
+  
+  // Previous button
+  if (pagination.current_page > 1) {
+    const prevButton = document.createElement('a');
+    prevButton.href = '#';
+    prevButton.className = 'px-4 py-2 bg-amber-100 text-amber-700 rounded-lg hover:bg-amber-200 transition-colors font-medium';
+    prevButton.textContent = '← Previous';
+    prevButton.onclick = (e) => {
+      e.preventDefault();
+      loadPosts(pagination.current_page - 1, currentCategory);
+    };
+    nav.appendChild(prevButton);
+  }
+  
+  // Page numbers
+  for (let i = 1; i <= pagination.total_pages; i++) {
+    const pageLink = document.createElement(i === pagination.current_page ? 'span' : 'a');
+    pageLink.className = i === pagination.current_page
+      ? 'px-4 py-2 bg-amber-600 text-white rounded-lg font-medium'
+      : 'px-4 py-2 bg-slate-100 text-slate-700 rounded-lg hover:bg-slate-200 transition-colors font-medium';
+    pageLink.textContent = i;
+    if (i !== pagination.current_page) {
+      pageLink.href = '#';
+      pageLink.onclick = (e) => {
+        e.preventDefault();
+        loadPosts(i, currentCategory);
+      };
+    }
+    nav.appendChild(pageLink);
+  }
+  
+  // Next button
+  if (pagination.current_page < pagination.total_pages) {
+    const nextButton = document.createElement('a');
+    nextButton.href = '#';
+    nextButton.className = 'px-4 py-2 bg-amber-100 text-amber-700 rounded-lg hover:bg-amber-200 transition-colors font-medium';
+    nextButton.textContent = 'Next →';
+    nextButton.onclick = (e) => {
+      e.preventDefault();
+      loadPosts(pagination.current_page + 1, currentCategory);
+    };
+    nav.appendChild(nextButton);
+  }
+  
+  container.appendChild(nav);
+}
+
+function formatDate(timestamp) {
+  const date = new Date(timestamp);
+  const now = new Date();
+  const diffTime = Math.abs(now - date);
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  
+  if (diffDays === 1) return 'yesterday';
+  if (diffDays < 7) return `${diffDays} days ago`;
+  if (diffDays < 30) return `${Math.floor(diffDays / 7)} weeks ago`;
+  return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+}
+
+// Initial load
+document.addEventListener('DOMContentLoaded', () => loadPosts());</script> 

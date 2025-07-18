@@ -1,0 +1,95 @@
+<!-- Popular Posts Section -->
+<section class="py-16 bg-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-serif font-bold text-slate-900 mb-4">Popular Articles</h2>
+      <p class="text-slate-600">Our most-read stories and literary insights</p>
+    </div>
+
+    <!-- Loading State -->
+    <div id="popular-posts-loading" class="py-12 text-center">
+      <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-amber-600 border-t-transparent"></div>
+    </div>
+
+    <!-- Error State -->
+    <div id="popular-posts-error" class="py-12 text-center hidden">
+      <div class="bg-red-50 rounded-lg p-6 max-w-md mx-auto">
+        <p class="text-red-600 mb-4">Failed to load popular posts</p>
+        <button onclick="loadPopularPosts()" class="text-amber-600 font-medium hover:text-amber-700">
+          Try Again
+        </button>
+      </div>
+    </div>
+
+    <!-- Posts Grid -->
+    <div id="popular-posts-grid" class="grid md:grid-cols-3 gap-8 hidden"></div>
+  </div>
+</section>
+
+<script>
+async function loadPopularPosts() {
+  const loadingEl = document.getElementById('popular-posts-loading');
+  const errorEl = document.getElementById('popular-posts-error');
+  const gridEl = document.getElementById('popular-posts-grid');
+  
+  try {
+    loadingEl.classList.remove('hidden');
+    errorEl.classList.add('hidden');
+    gridEl.classList.add('hidden');
+    
+    const response = await fetch('/api/blog/posts/popular?limit=6');
+    const posts = await response.json();
+    
+    gridEl.innerHTML = posts.map(post => `
+      <article class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow border border-slate-100 group">
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-4">
+            <span class="bg-amber-100 text-amber-800 text-xs px-3 py-1 rounded-full">${post.category}</span>
+            <span class="text-slate-400 text-sm">${post.read_time} min read</span>
+          </div>
+          <h3 class="text-xl font-serif font-bold text-slate-900 mb-3 leading-tight group-hover:text-amber-700 transition-colors">
+            <a href="/post/${post.slug}">${post.title}</a>
+          </h3>
+          <p class="text-slate-600 mb-4 leading-relaxed">
+            ${post.excerpt}
+          </p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <div class="w-8 h-8 bg-amber-100 rounded-full flex items-center justify-center">
+                <span class="text-amber-600 text-sm font-medium">${post.author[0]}</span>
+              </div>
+              <div>
+                <div class="text-sm font-medium text-slate-900">${post.author}</div>
+                <div class="text-xs text-slate-500">${formatDate(post.published_at)}</div>
+              </div>
+            </div>
+            <a href="/post/${post.slug}" class="text-amber-600 hover:text-amber-700 text-sm font-medium">Read more →</a>
+          </div>
+        </div>
+      </article>
+    `).join('');
+    
+    gridEl.classList.remove('hidden');
+  } catch (error) {
+    console.error('Failed to load popular posts:', error);
+    errorEl.classList.remove('hidden');
+  } finally {
+    loadingEl.classList.add('hidden');
+  }
+}
+
+function formatDate(timestamp) {
+  const date = new Date(timestamp);
+  const now = new Date();
+  const diffTime = Math.abs(now - date);
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  
+  if (diffDays === 1) return 'yesterday';
+  if (diffDays < 7) return `${diffDays} days ago`;
+  if (diffDays < 30) return `${Math.floor(diffDays / 7)} weeks ago`;
+  return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+}
+
+// Load popular posts when the page loads
+document.addEventListener('DOMContentLoaded', loadPopularPosts);
+</script> 

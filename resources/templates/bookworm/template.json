@@ -1,0 +1,9 @@
+{
+  "title" : "BookWorm",
+  "description" : "Book Reviews & Literary blog with library-style layouts",
+  "template_id" : "bookworm",
+  "creator_name" : "Bsfrswt",
+  "creator_website" : "https://tapsite.ai",
+  "version" : "1.0.0",
+  "thumbnail" : "/templates/bookworm/thumbnail.webp"
+}
