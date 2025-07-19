@@ -1,0 +1,250 @@
+<!-- Category Header -->
+<section class="bg-gradient-to-br from-violet-50 via-purple-50 to-pink-50 py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <span class="bg-violet-100 text-violet-800 text-sm px-4 py-2 rounded-full inline-block mb-6">Category</span>
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6" id="category-name">Loading...</h1>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto" id="category-description">
+        Loading category description...
+      </p>
+      <div class="mt-6 text-gray-500">
+        <span id="post-count">0</span> articles in this category
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Category Posts -->
+<section class="py-16 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Loading State -->
+    <div id="category-posts-loading" class="text-center py-12">
+      <div class="inline-block p-4 bg-violet-50 rounded-full mb-4 animate-pulse">
+        <span class="text-3xl">🎨</span>
+      </div>
+      <h2 class="text-2xl font-bold text-gray-900 mb-2">Loading Posts</h2>
+      <p class="text-gray-600">Please wait while we fetch the creative content...</p>
+    </div>
+
+    <!-- Error State -->
+    <div id="category-posts-error" class="text-center py-12 hidden">
+      <div class="inline-block p-4 bg-red-50 rounded-full mb-4">
+        <span class="text-3xl">⚠️</span>
+      </div>
+      <h2 class="text-2xl font-bold text-gray-900 mb-2">Error Loading Posts</h2>
+      <p class="text-gray-600 mb-8">Something went wrong. Please try again later.</p>
+      <button onclick="loadCategoryPosts()" class="text-violet-600 hover:text-violet-700 font-medium">Try Again</button>
+    </div>
+
+    <!-- Empty State -->
+    <div id="category-posts-empty" class="text-center py-12 hidden">
+      <div class="inline-block p-4 bg-violet-50 rounded-full mb-4">
+        <span class="text-3xl">🎨</span>
+      </div>
+      <h2 class="text-2xl font-bold text-gray-900 mb-2">No Posts Found</h2>
+      <p class="text-gray-600 mb-8">We couldn't find any posts in this category</p>
+      <a href="/" class="text-violet-600 hover:text-violet-700 font-medium">← Back to Home</a>
+    </div>
+
+    <!-- Posts Grid -->
+    <div id="category-posts-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 hidden">
+      <!-- Posts will be dynamically inserted here -->
+    </div>
+
+    <!-- Pagination -->
+    <div id="category-pagination" class="flex justify-center mt-12 hidden">
+      <!-- Pagination will be dynamically inserted here -->
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    // Get category from URL
+    function getCategoryFromURL() {
+      const pathParts = window.location.pathname.split('/');
+      const categoryIndex = pathParts.indexOf('category');
+      return categoryIndex !== -1 && pathParts[categoryIndex + 1] 
+        ? decodeURIComponent(pathParts[categoryIndex + 1]) 
+        : null;
+    }
+
+    // Get current page from URL
+    function getCurrentPage() {
+      const params = new URLSearchParams(window.location.search);
+      return parseInt(params.get('page')) || 1;
+    }
+
+    // Function to format post HTML
+    function createPostHTML(post) {
+      return `
+        <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+          <div class="aspect-video bg-gradient-to-br from-violet-200 to-purple-200 relative">
+            <div class="absolute top-4 left-4 bg-violet-600 text-white text-xs px-3 py-1 rounded-full">${post.category}</div>
+            ${post.featured_image ? `<img src="${post.featured_image}" alt="${post.title}" class="w-full h-full object-cover">` : ''}
+            <div class="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm text-violet-800 px-3 py-1 rounded-full text-sm">
+              ${post.read_time} min read
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-3">
+              <a href="/post/${post.slug}" class="hover:text-violet-600 transition-colors">
+                ${post.title}
+              </a>
+            </h3>
+            <p class="text-gray-600 mb-4">${post.excerpt}</p>
+            <div class="flex items-center justify-between text-sm text-gray-500">
+              <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 bg-violet-100 rounded-full flex items-center justify-center">
+                  <span class="text-violet-600 font-semibold">${post.author.substring(0, 2)}</span>
+                </div>
+                <span>${post.author}</span>
+              </div>
+              <span>${new Date(post.published_at).toLocaleDateString()}</span>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    // Function to create pagination HTML
+    function createPaginationHTML(currentPage, totalPages) {
+      let html = '<nav class="flex items-center space-x-2">';
+
+      // Previous button
+      if (currentPage > 1) {
+        html += `
+          <a href="?page=${currentPage - 1}" 
+             class="bg-white text-gray-700 hover:bg-violet-50 hover:text-violet-600 px-4 py-2 rounded-lg transition-colors">
+            Previous
+          </a>
+        `;
+      }
+
+      // Page numbers
+      for (let i = 1; i <= totalPages; i++) {
+        html += `
+          <a href="?page=${i}" 
+             class="${i === currentPage 
+               ? 'bg-violet-600 text-white' 
+               : 'bg-white text-gray-700 hover:bg-violet-50 hover:text-violet-600'} 
+               px-4 py-2 rounded-lg transition-colors">
+            ${i}
+          </a>
+        `;
+      }
+
+      // Next button
+      if (currentPage < totalPages) {
+        html += `
+          <a href="?page=${currentPage + 1}" 
+             class="bg-white text-gray-700 hover:bg-violet-50 hover:text-violet-600 px-4 py-2 rounded-lg transition-colors">
+            Next
+          </a>
+        `;
+      }
+
+      html += '</nav>';
+      return html;
+    }
+
+    // Function to show/hide states
+    function showState(state) {
+      const loadingEl = document.getElementById('category-posts-loading');
+      const errorEl = document.getElementById('category-posts-error');
+      const emptyEl = document.getElementById('category-posts-empty');
+      const gridEl = document.getElementById('category-posts-grid');
+      const paginationEl = document.getElementById('category-pagination');
+
+      loadingEl.classList.add('hidden');
+      errorEl.classList.add('hidden');
+      emptyEl.classList.add('hidden');
+      gridEl.classList.add('hidden');
+      paginationEl.classList.add('hidden');
+
+      if (state === 'loading') loadingEl.classList.remove('hidden');
+      if (state === 'error') errorEl.classList.remove('hidden');
+      if (state === 'empty') emptyEl.classList.remove('hidden');
+      if (state === 'grid') {
+        gridEl.classList.remove('hidden');
+        paginationEl.classList.remove('hidden');
+      }
+    }
+
+    // Function to load category posts
+    async function loadCategoryPosts() {
+      const category = getCategoryFromURL();
+      const page = getCurrentPage();
+
+      if (!category) {
+        showState('error');
+        return;
+      }
+
+      showState('loading');
+
+      try {
+        // First fetch category details
+        const categoryResponse = await fetch(`/api/blog/categories`);
+        if (!categoryResponse.ok) throw new Error('Failed to fetch categories');
+        
+        const categories = await categoryResponse.json();
+        const currentCategory = categories.find(c => 
+          c.name.toLowerCase().replace(/\s+/g, '-') === category.toLowerCase()
+        );
+
+        if (currentCategory) {
+          document.getElementById('category-name').textContent = currentCategory.name;
+          document.getElementById('category-description').textContent = currentCategory.description || 'Explore our creative content in this category';
+          document.getElementById('post-count').textContent = currentCategory.posts || 0;
+        }
+
+        // Then fetch posts for this category
+        const response = await fetch(`/api/blog/posts/category/${encodeURIComponent(category)}?page=${page}&limit=6`);
+        if (!response.ok) throw new Error('Failed to fetch category posts');
+
+        const data = await response.json();
+
+        if (!data|| data.length === 0) {
+          showState('empty');
+          return;
+        }
+
+        // Render posts
+        const gridEl = document.getElementById('category-posts-grid');
+        gridEl.innerHTML = data.map(post => createPostHTML(post)).join('');
+
+        // Render pagination if needed
+        if (data.pagination && data.pagination.total_pages > 1) {
+          const paginationEl = document.getElementById('category-pagination');
+          paginationEl.innerHTML = createPaginationHTML(data.pagination.current_page, data.pagination.total_pages);
+        }
+
+        showState('grid');
+
+      } catch (error) {
+        console.error('Error loading category posts:', error);
+        showState('error');
+      }
+    }
+
+    // Load posts when page loads
+    document.addEventListener('DOMContentLoaded', loadCategoryPosts);
+
+    // Handle pagination clicks
+    document.getElementById('category-pagination').addEventListener('click', (e) => {
+      if (e.target.tagName === 'A') {
+        e.preventDefault();
+        const url = new URL(e.target.href);
+        const newPage = url.searchParams.get('page');
+        if (newPage) {
+          history.pushState({}, '', url);
+          loadCategoryPosts();
+        }
+      }
+    });
+
+    // Handle browser back/forward
+    window.addEventListener('popstate', loadCategoryPosts);
+  })();
+</script>

@@ -1,0 +1,123 @@
+<!-- Related Posts -->
+<section class="bg-gray-50 py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">Related Articles</h2>
+      <p class="text-gray-600">More creative insights you might enjoy</p>
+    </div>
+
+    <!-- Loading State -->
+    <div id="related-posts-loading" class="py-12 text-center">
+      <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-violet-600 border-t-transparent"></div>
+      <p class="mt-4 text-gray-600">Loading related posts...</p>
+    </div>
+
+    <!-- Error State -->
+    <div id="related-posts-error" class="py-12 text-center hidden">
+      <div class="bg-red-50 rounded-lg p-6 max-w-md mx-auto">
+        <p class="text-red-600 mb-4">Failed to load related posts</p>
+        <button onclick="loadRelatedPosts()" class="text-violet-600 font-medium hover:text-violet-700">
+          Try Again
+        </button>
+      </div>
+    </div>
+    
+    <!-- Posts Grid -->
+    <div id="related-posts-grid" class="grid md:grid-cols-3 gap-8 hidden"></div>
+  </div>
+</section>
+
+<script>
+(function() {
+  // Get current post slug from URL
+  function getPostSlug() {
+    const pathParts = window.location.pathname.split('/');
+    return pathParts[pathParts.length - 1];
+  }
+
+  // Function to format date
+  function formatDate(timestamp) {
+    return new Date(timestamp).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  }
+
+  // Function to format post HTML
+  function createPostHTML(post) {
+    return `
+      <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+        <div class="aspect-video bg-gradient-to-br from-violet-200 to-purple-200 relative">
+          <div class="absolute top-4 left-4 bg-violet-600 text-white text-xs px-3 py-1 rounded-full">${post.category}</div>
+          ${post.featured_image ? `<img src="${post.featured_image}" alt="${post.title}" class="w-full h-full object-cover">` : ''}
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">
+            <a href="/post/${post.slug}" class="hover:text-violet-600 transition-colors">
+              ${post.title}
+            </a>
+          </h3>
+          <p class="text-gray-600 mb-4">${post.excerpt}</p>
+          <div class="flex items-center justify-between text-sm text-gray-500">
+            <div class="flex items-center space-x-4">
+              <span>${post.author}</span>
+              <span>${formatDate(post.published_at)}</span>
+            </div>
+            <span>${post.read_time} min read</span>
+          </div>
+        </div>
+      </article>
+    `;
+  }
+
+  // Function to show/hide states
+  function showState(state) {
+    const loadingEl = document.getElementById('related-posts-loading');
+    const errorEl = document.getElementById('related-posts-error');
+    const gridEl = document.getElementById('related-posts-grid');
+
+    loadingEl.classList.add('hidden');
+    errorEl.classList.add('hidden');
+    gridEl.classList.add('hidden');
+
+    if (state === 'loading') loadingEl.classList.remove('hidden');
+    if (state === 'error') errorEl.classList.remove('hidden');
+    if (state === 'grid') gridEl.classList.remove('hidden');
+  }
+
+  // Function to load related posts
+  async function loadRelatedPosts() {
+    const slug = getPostSlug();
+    if (!slug) {
+      showState('error');
+      return;
+    }
+
+    showState('loading');
+
+    try {
+      const response = await fetch(`/api/blog/posts/related/${slug}?limit=3`);
+      if (!response.ok) throw new Error('Failed to fetch related posts');
+      
+      const posts = await response.json();
+      
+      if (!posts || posts.length === 0) {
+        throw new Error('No related posts found');
+      }
+
+      // Render posts
+      const gridEl = document.getElementById('related-posts-grid');
+      gridEl.innerHTML = posts.map(post => createPostHTML(post)).join('');
+      showState('grid');
+
+    } catch (error) {
+      console.error('Error loading related posts:', error);
+      showState('error');
+    }
+  }
+
+  // Load posts when page loads
+  document.addEventListener('DOMContentLoaded', loadRelatedPosts);
+})();
+</script> 

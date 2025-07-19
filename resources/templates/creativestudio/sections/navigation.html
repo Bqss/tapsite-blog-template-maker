@@ -1,0 +1,27 @@
+<!-- Navigation -->
+<nav class="bg-white shadow-lg sticky top-0 z-50 backdrop-blur-md bg-white/95">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <div class="flex items-center space-x-8">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 bg-gradient-to-r from-violet-600 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
+            <span class="text-white text-xl font-bold">{{it.site.name.substring(0,2)}}</span>
+          </div>
+          <div class="text-2xl font-bold bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent">{{it.site.name}}</div>
+        </div>
+        <div class="hidden md:flex space-x-8">
+          {{@each(it.navigation) => item}}
+          <a href="{{item.url}}" class="text-gray-700 hover:text-violet-600 transition-colors font-medium">{{item.name}}</a>
+          {{/each}}
+        </div>
+      </div>
+      <div class="flex items-center space-x-4">
+        <div class="relative">
+          <input type="text" placeholder="Search articles..." 
+                 class="bg-gray-100 text-gray-700 placeholder-gray-500 px-4 py-2 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-violet-400 w-48">
+          <div class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">🔍</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav> 

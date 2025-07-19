@@ -1,0 +1,247 @@
+<!-- Search Form -->
+<section class="bg-gradient-to-br from-violet-50 via-purple-50 to-pink-50 py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Search Results</h1>
+      <div class="max-w-2xl mx-auto">
+        <form id="search-form" class="flex gap-4">
+          <input type="text" id="search-input" name="q" placeholder="Search for articles..."
+            class="flex-1 bg-white text-gray-700 px-6 py-4 rounded-xl text-lg focus:outline-none focus:ring-2 focus:ring-violet-400">
+          <button type="submit"
+            class="bg-violet-600 text-white px-8 py-4 rounded-xl hover:bg-violet-700 transition-colors">
+            Search
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Search Results -->
+<section class="py-16 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Loading State -->
+    <div id="loading-state" class="text-center py-16">
+      <div class="inline-block animate-spin rounded-full h-12 w-12 border-4 border-violet-600 border-t-transparent">
+      </div>
+      <p class="mt-4 text-gray-600">Searching articles...</p>
+    </div>
+
+    <!-- Results State -->
+    <div id="results-state" class="hidden">
+      <div class="text-center mb-12">
+        <p class="text-gray-600">Found <span id="results-count">0</span> results for "<span id="search-query"></span>"
+        </p>
+      </div>
+
+      <div id="results-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+
+      <!-- Pagination -->
+      <div id="pagination" class="flex justify-center mt-12"></div>
+    </div>
+
+    <!-- No Results State -->
+    <div id="no-results-state" class="text-center py-16 hidden">
+      <div class="bg-violet-100 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-6">
+        <svg class="w-12 h-12 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </div>
+      <h3 class="text-2xl font-bold text-gray-900 mb-4">No Results Found</h3>
+      <p class="text-gray-600 mb-8">We couldn't find any articles matching "<span id="no-results-query"></span>"</p>
+      <a href="/posts"
+        class="inline-block bg-violet-600 text-white px-8 py-3 rounded-xl hover:bg-violet-700 transition-colors">
+        Browse All Posts
+      </a>
+    </div>
+
+    <!-- Error State -->
+    <div id="error-state" class="text-center py-16 hidden">
+      <div class="bg-red-100 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-6">
+        <svg class="w-12 h-12 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.5 0L4.268 18.5c-.77.833.192 2.5 1.732 2.5z">
+          </path>
+        </svg>
+      </div>
+      <h3 class="text-2xl font-bold text-gray-900 mb-4">Search Error</h3>
+      <p class="text-gray-600 mb-8">Something went wrong while searching. Please try again later.</p>
+      <button onclick="performSearch()"
+        class="inline-block bg-violet-600 text-white px-8 py-3 rounded-xl hover:bg-violet-700 transition-colors">
+        Try Again
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    // Get search query from URL
+    function getSearchQueryFromURL() {
+      const pathParts = window.location.pathname.split('/');
+      const searchIndex = pathParts.indexOf('search');
+      return searchIndex !== -1 && pathParts[searchIndex + 1] ? decodeURIComponent(pathParts[searchIndex + 1]) : null;
+    }
+
+    // Show/hide different states
+    function showState(state) {
+      const states = ['loading-state', 'results-state', 'no-results-state', 'error-state'];
+      states.forEach(s => {
+        const element = document.getElementById(s);
+        if (element) {
+          element.classList.toggle('hidden', s !== state);
+        }
+      });
+    }
+
+    // Create article HTML
+    function createArticleHTML(article) {
+      return `
+      <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+        <div class="aspect-video bg-gradient-to-br from-violet-200 to-purple-200 relative">
+          <div class="absolute top-4 left-4 bg-violet-600 text-white text-xs px-3 py-1 rounded-full">${article.category}</div>
+          ${article.featured_image ? `<img src="${article.featured_image}" alt="${article.title}" class="w-full h-full object-cover">` : ''}
+          ${article.tags ? `
+            <div class="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm text-violet-800 px-3 py-1 rounded-full text-sm">
+              ${article.tags[0]}
+            </div>
+          ` : ''}
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">
+            <a href="/post/${article.slug}" class="hover:text-violet-600 transition-colors">
+              ${article.title}
+            </a>
+          </h3>
+          <p class="text-gray-600 mb-4">${article.excerpt}</p>
+          <div class="flex items-center justify-between text-sm text-gray-500">
+            <span>${article.author}</span>
+            <span>${article.read_time} min read</span>
+          </div>
+        </div>
+      </article>
+    `;
+    }
+
+    // Create pagination HTML
+    function createPaginationHTML(currentPage, totalPages, query) {
+      let html = '<nav class="flex items-center space-x-2">';
+
+      // Previous button
+      if (currentPage > 1) {
+        html += `
+        <a href="?q=${encodeURIComponent(query)}&page=${currentPage - 1}" 
+           class="bg-white text-gray-700 hover:bg-violet-50 hover:text-violet-600 px-4 py-2 rounded-lg transition-colors">
+          Previous
+        </a>
+      `;
+      }
+
+      // Page numbers
+      for (let i = 1; i <= totalPages; i++) {
+        html += `
+        <a href="?q=${encodeURIComponent(query)}&page=${i}" 
+           class="${i === currentPage ? 'bg-violet-600 text-white' : 'bg-white text-gray-700 hover:bg-violet-50 hover:text-violet-600'} px-4 py-2 rounded-lg transition-colors">
+          ${i}
+        </a>
+      `;
+      }
+
+      // Next button
+      if (currentPage < totalPages) {
+        html += `
+        <a href="?q=${encodeURIComponent(query)}&page=${currentPage + 1}" 
+           class="bg-white text-gray-700 hover:bg-violet-50 hover:text-violet-600 px-4 py-2 rounded-lg transition-colors">
+          Next
+        </a>
+      `;
+      }
+
+      html += '</nav>';
+      return html;
+    }
+
+    // Perform search
+    async function performSearch() {
+      const query = getSearchQueryFromURL();
+      if (!query) {
+        showState('no-results-state');
+        return;
+      }
+
+      showState('loading-state');
+
+      try {
+        const response = await fetch(`/api/blog/posts/search/${encodeURIComponent(query)}?limit=6`);
+        if (!response.ok) throw new Error('Search failed');
+
+        const data = await response.json();
+
+        // Update query displays
+        document.querySelectorAll('#search-query, #no-results-query').forEach(el => el.textContent = query);
+        document.getElementById('search-input').value = query;
+
+        if (!data || data.length === 0) {
+          showState('no-results-state');
+          return;
+        }
+
+        // Update results count
+        document.getElementById('results-count').textContent = data.length;
+
+        // Render results
+        const gridEl = document.getElementById('results-grid');
+        gridEl.innerHTML = data.map(post => createArticleHTML(post)).join('');
+
+        // Render pagination if needed
+        if (data.pagination && data.pagination.total_pages > 1) {
+          const paginationEl = document.getElementById('pagination');
+          paginationEl.innerHTML = createPaginationHTML(data.pagination.current_page, data.pagination.total_pages, query);
+        }
+
+        showState('results-state');
+
+      } catch (error) {
+        console.error('Search error:', error);
+        showState('error-state');
+      }
+    }
+
+    // Handle search form submit
+    document.getElementById('search-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const query = document.getElementById('search-input').value.trim();
+      if (query) {
+        const url = new URL(window.location);
+        url.searchParams.set('q', query);
+        url.searchParams.delete('page');
+        history.pushState({}, '', url);
+        performSearch();
+      }
+    });
+
+    // Handle pagination clicks
+    document.getElementById('pagination').addEventListener('click', (e) => {
+      if (e.target.tagName === 'A') {
+        e.preventDefault();
+        const url = new URL(e.target.href);
+        history.pushState({}, '', url);
+        performSearch();
+      }
+    });
+
+    // Initialize search
+    document.addEventListener('DOMContentLoaded', () => {
+      const query = getSearchQueryFromURL();
+      if (query) {
+        document.getElementById('search-input').value = query;
+        performSearch();
+      } else {
+        showState('no-results-state');
+      }
+    });
+
+    // Handle browser back/forward
+    window.addEventListener('popstate', performSearch);
+  })();
+</script>

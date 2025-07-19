@@ -1,0 +1,226 @@
+<!-- Posts Grid -->
+<section class="py-16 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Loading State -->
+    <div id="posts-loading" class="py-12 text-center">
+      <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-violet-600 border-t-transparent"></div>
+      <p class="mt-4 text-gray-600">Loading posts...</p>
+    </div>
+
+    <!-- Error State -->
+    <div id="posts-error" class="py-12 text-center hidden">
+      <div class="bg-red-50 rounded-lg p-6 max-w-md mx-auto">
+        <p class="text-red-600 mb-4">Failed to load posts</p>
+        <button onclick="loadPosts()" class="text-violet-600 font-medium hover:text-violet-700">
+          Try Again
+        </button>
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div id="posts-empty" class="py-12 text-center hidden">
+      <div class="bg-gray-50 rounded-lg p-6 max-w-md mx-auto">
+        <p class="text-gray-600 mb-4">No posts found</p>
+        <a href="/" class="text-violet-600 font-medium hover:text-violet-700">
+          Back to Home
+        </a>
+      </div>
+    </div>
+
+    <!-- Posts Grid -->
+    <div id="posts-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 hidden"></div>
+
+    <!-- Pagination -->
+    <div id="pagination" class="mt-12 flex justify-center hidden"></div>
+  </div>
+</section>
+
+<script>
+(function() {
+  // Function to format date
+  function formatDate(timestamp) {
+    const now = new Date();
+    const date = new Date(timestamp);
+    const diffTime = Math.abs(now - date);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    if (diffDays === 1) return 'yesterday';
+    if (diffDays <= 7) return `${diffDays} days ago`;
+    
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  }
+
+  // Function to format post HTML
+  function createPostHTML(post) {
+    return `
+      <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+        <div class="aspect-video bg-gradient-to-br from-violet-200 to-purple-200 relative">
+          <div class="absolute top-4 left-4 bg-violet-600 text-white text-xs px-3 py-1 rounded-full">${post.category}</div>
+          ${post.featured_image ? `<img src="${post.featured_image}" alt="${post.title}" class="w-full h-full object-cover">` : ''}
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">
+            <a href="/post/${post.slug}" class="hover:text-violet-600 transition-colors">
+              ${post.title}
+            </a>
+          </h3>
+          <p class="text-gray-600 mb-4">${post.excerpt}</p>
+          <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+            <div class="flex items-center space-x-2">
+              <div class="w-8 h-8 bg-violet-100 rounded-full flex items-center justify-center">
+                <span class="text-violet-600 font-semibold text-xs">${post.author.substring(0,2)}</span>
+              </div>
+              <span>${post.author}</span>
+            </div>
+            <span>${post.read_time} min read</span>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2 text-gray-500 text-sm">
+              <span>👁️ ${post.view_count || 0}</span>
+            </div>
+            <span class="text-gray-500 text-sm">${formatDate(post.published_at)}</span>
+          </div>
+        </div>
+      </article>
+    `;
+  }
+
+  // Function to show/hide states
+  function showState(state) {
+    const loadingEl = document.getElementById('posts-loading');
+    const errorEl = document.getElementById('posts-error');
+    const emptyEl = document.getElementById('posts-empty');
+    const gridEl = document.getElementById('posts-grid');
+    const paginationEl = document.getElementById('pagination');
+
+    loadingEl.classList.add('hidden');
+    errorEl.classList.add('hidden');
+    emptyEl.classList.add('hidden');
+    gridEl.classList.add('hidden');
+    paginationEl.classList.add('hidden');
+
+    if (state === 'loading') loadingEl.classList.remove('hidden');
+    if (state === 'error') errorEl.classList.remove('hidden');
+    if (state === 'empty') emptyEl.classList.remove('hidden');
+    if (state === 'grid') {
+      gridEl.classList.remove('hidden');
+      paginationEl.classList.remove('hidden');
+    }
+  }
+
+  // Function to load posts
+  async function loadPosts() {
+    showState('loading');
+
+    try {
+      // Get current filters from URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const page = parseInt(urlParams.get('page')) || 1;
+      const category = urlParams.get('category');
+      const sort = urlParams.get('sort') || 'latest';
+
+      // Build API URL
+      let url = category 
+        ? `/api/blog/posts/category/${encodeURIComponent(category)}?page=${page}&limit=6`
+        : `/api/blog/posts?page=${page}&limit=6`;
+
+      // Add sort parameter if needed
+      if (sort === 'popular') url = '/api/blog/posts/popular?limit=6';
+      if (sort === 'views') url = '/api/blog/posts/trending?limit=6';
+
+      const response = await fetch(url);
+      if (!response.ok) throw new Error('Failed to fetch posts');
+      
+      const data = await response.json();
+      
+      if (!data.posts || data.posts.length === 0) {
+        showState('empty');
+        return;
+      }
+
+      // Update total posts count
+      document.getElementById('total-posts').textContent = `${data.pagination.total_posts} articles`;
+
+      // Render posts
+      const gridEl = document.getElementById('posts-grid');
+      gridEl.innerHTML = data.posts.map(post => createPostHTML(post)).join('');
+
+      // Update pagination
+      const paginationEl = document.getElementById('pagination');
+      const currentPage = data.pagination.current_page;
+      const totalPages = data.pagination.total_pages;
+
+      let paginationHTML = '<nav class="flex items-center space-x-2">';
+      
+      // Previous button
+      if (currentPage > 1) {
+        paginationHTML += `
+          <a href="?page=${currentPage - 1}" class="px-4 py-2 text-gray-500 hover:text-violet-600 transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+          </a>
+        `;
+      }
+      
+      // Page numbers
+      for (let i = 1; i <= totalPages; i++) {
+        paginationHTML += `
+          <a href="?page=${i}" 
+             class="${i === currentPage ? 'px-4 py-2 bg-violet-600 text-white rounded-lg font-semibold' : 'px-4 py-2 text-gray-700 hover:text-violet-600 hover:bg-violet-50 rounded-lg transition-colors'}">
+            ${i}
+          </a>
+        `;
+      }
+      
+      // Next button
+      if (currentPage < totalPages) {
+        paginationHTML += `
+          <a href="?page=${currentPage + 1}" class="px-4 py-2 text-gray-500 hover:text-violet-600 transition-colors">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </a>
+        `;
+      }
+      
+      paginationHTML += '</nav>';
+      paginationEl.innerHTML = paginationHTML;
+
+      showState('grid');
+
+    } catch (error) {
+      console.error('Error loading posts:', error);
+      showState('error');
+    }
+  }
+
+  // Handle pagination clicks
+  document.getElementById('pagination').addEventListener('click', (e) => {
+    e.preventDefault();
+    if (e.target.tagName === 'A') {
+      const url = new URL(e.target.href);
+      const page = url.searchParams.get('page');
+      if (page) {
+        const currentUrl = new URL(window.location);
+        currentUrl.searchParams.set('page', page);
+        history.pushState({}, '', currentUrl);
+        loadPosts();
+      }
+    }
+  });
+
+  // Load posts when page loads
+  document.addEventListener('DOMContentLoaded', loadPosts);
+
+  // Reload posts when filters change
+  window.addEventListener('filterChange', loadPosts);
+
+  // Handle browser back/forward
+  window.addEventListener('popstate', loadPosts);
+})();
+</script> 

@@ -1,0 +1,66 @@
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <!-- About -->
+      <div>
+        <div class="flex items-center space-x-3 mb-6">
+          <div
+            class="w-10 h-10 bg-gradient-to-r from-violet-600 to-purple-600 rounded-xl flex items-center justify-center">
+            <span class="text-white text-xl font-bold">{{it.site.name.substring(0,2)}}</span>
+          </div>
+          <div class="text-xl font-bold">{{it.site.name}}</div>
+        </div>
+        <p class="text-gray-400 mb-6">{{it.site.description}}</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h3 class="text-lg font-semibold mb-6">Quick Links</h3>
+        <ul class="space-y-4">
+          {{@each(it.navigation) => link}}
+          <li>
+            <a href="{{link.url}}" class="text-gray-400 hover:text-white transition-colors">{{link.name}}</a>
+          </li>
+          {{/each}}
+        </ul>
+      </div>
+
+      <!-- Topics -->
+      <div>
+        <h3 class="text-lg font-semibold mb-6">Topics</h3>
+        <ul class="space-y-4">
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Digital Art</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Design Theory</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Tool Reviews</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Art Trends</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter -->
+      <div>
+        <h3 class="text-lg font-semibold mb-6">Newsletter</h3>
+        <p class="text-gray-400 mb-4">Subscribe to our newsletter to get the latest news and updates.</p>
+        <div class="flex flex-col space-y-3">
+          <input type="email" placeholder="Enter your email"
+            class="bg-gray-800 text-white px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500">
+          <button class="bg-violet-600 text-white px-6 py-3 rounded-lg hover:bg-violet-700 transition-colors">
+            Subscribe Now
+          </button>
+        </div>
+        <p class="text-gray-500 text-sm mt-4">Join 1000+ subscribers</p>
+      </div>
+    </div>
+
+    <div class="border-t border-gray-800 mt-12 pt-8">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <p class="text-gray-400 text-sm">© {{new Date().getFullYear()}} {{it.site.name}}. All rights reserved.</p>
+        <div class="flex space-x-6 mt-4 md:mt-0">
+          <a href="#" class="text-gray-400 hover:text-white transition-colors">Terms</a>
+          <a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy</a>
+          <a href="#" class="text-gray-400 hover:text-white transition-colors">Contact</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

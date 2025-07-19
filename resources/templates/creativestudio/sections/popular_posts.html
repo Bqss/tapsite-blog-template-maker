@@ -1,0 +1,113 @@
+<!-- Popular Posts -->
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold text-gray-900 mb-4">Popular This Week</h2>
+      <p class="text-gray-600">Most viewed articles from our creative community</p>
+    </div>
+
+    <!-- Loading State -->
+    <div id="popular-posts-loading" class="py-12 text-center">
+      <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-violet-600 border-t-transparent"></div>
+      <p class="mt-4 text-gray-600">Loading popular posts...</p>
+    </div>
+
+    <!-- Error State -->
+    <div id="popular-posts-error" class="py-12 text-center hidden">
+      <div class="bg-red-50 rounded-lg p-6 max-w-md mx-auto">
+        <p class="text-red-600 mb-4">Failed to load popular posts</p>
+        <button onclick="loadPopularPosts()" class="text-violet-600 font-medium hover:text-violet-700">
+          Try Again
+        </button>
+      </div>
+    </div>
+
+    <!-- Posts Grid -->
+    <div id="popular-posts-grid" class="grid md:grid-cols-2 gap-8 hidden"></div>
+  </div>
+</section>
+
+<script>
+(function() {
+  // Function to format date
+  function formatDate(timestamp) {
+    return new Date(timestamp).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  }
+
+  // Function to format post HTML
+  function createPostHTML(post) {
+    return `
+      <article class="bg-gradient-to-br from-violet-50 to-purple-50 rounded-2xl p-8 hover:shadow-lg transition-shadow">
+        <div class="flex items-start space-x-4">
+          <div class="w-16 h-16 bg-gradient-to-br from-violet-200 to-purple-200 rounded-xl flex items-center justify-center text-2xl">
+            ${post.featured_image ? `<img src="${post.featured_image}" alt="${post.title}" class="w-full h-full object-cover rounded-xl">` : '📝'}
+          </div>
+          <div class="flex-1">
+            <span class="text-sm text-violet-600 font-medium">${post.category}</span>
+            <h3 class="text-xl font-bold text-gray-900 mt-1 mb-2">
+              <a href="/post/${post.slug}" class="hover:text-violet-600 transition-colors">
+                ${post.title}
+              </a>
+            </h3>
+            <p class="text-gray-600 mb-4">${post.excerpt}</p>
+            <div class="flex items-center justify-between text-sm text-gray-500">
+              <div class="flex items-center space-x-4">
+                <span>${post.author} • ${post.read_time} min read</span>
+                <span>${formatDate(post.published_at)}</span>
+              </div>
+              <span>${post.view_count} views</span>
+            </div>
+          </div>
+        </div>
+      </article>
+    `;
+  }
+
+  // Function to show/hide states
+  function showState(state) {
+    const loadingEl = document.getElementById('popular-posts-loading');
+    const errorEl = document.getElementById('popular-posts-error');
+    const gridEl = document.getElementById('popular-posts-grid');
+
+    loadingEl.classList.add('hidden');
+    errorEl.classList.add('hidden');
+    gridEl.classList.add('hidden');
+
+    if (state === 'loading') loadingEl.classList.remove('hidden');
+    if (state === 'error') errorEl.classList.remove('hidden');
+    if (state === 'grid') gridEl.classList.remove('hidden');
+  }
+
+  // Function to load popular posts
+  async function loadPopularPosts() {
+    showState('loading');
+
+    try {
+      const response = await fetch('/api/blog/posts/popular?limit=6');
+      if (!response.ok) throw new Error('Failed to fetch popular posts');
+      
+      const posts = await response.json();
+      
+      if (!posts || posts.length === 0) {
+        throw new Error('No posts found');
+      }
+
+      // Render posts
+      const gridEl = document.getElementById('popular-posts-grid');
+      gridEl.innerHTML = posts.map(post => createPostHTML(post)).join('');
+      showState('grid');
+
+    } catch (error) {
+      console.error('Error loading popular posts:', error);
+      showState('error');
+    }
+  }
+
+  // Load posts when page loads
+  document.addEventListener('DOMContentLoaded', loadPopularPosts);
+})();
+</script> 

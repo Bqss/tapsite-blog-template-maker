@@ -1,0 +1,67 @@
+{
+  "title": "Creative Studio - Where Creativity Finds Expression",
+  "description": "A vibrant community blog where artists, designers, and creative minds share their processes, insights, tutorials, and inspiration to fuel creativity and foster artistic growth.",
+  "keywords": [
+    "creative blog",
+    "design tutorials",
+    "digital art",
+    "creative inspiration",
+    "design process"
+  ],
+  "page_type": "home",
+  "sections": [
+    {
+      "title": "Navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": ["navigation", "site"]
+    },
+    {
+      "title": "Hero Section",
+      "id": "hero",
+      "type": "template",
+      "resetable": true,
+      "data": ["featuredPost"]
+    },
+    {
+      "title": "Latest Posts",
+      "id": "latest_posts",
+      "type": "template",
+      "resetable": true,
+      "data": {
+        "posts": "posts"
+      }
+    },
+    {
+      "title": "Popular Posts",
+      "id": "popular_posts",
+      "type": "template",
+      "resetable": true,
+      "data": {
+        "popularPosts": "popularPosts"
+      }
+    },
+    {
+      "title": "Footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": ["navigation", "site"]
+    }
+  ],
+  "meta": {
+    "robots": "index, follow",
+    "canonical": "https://creativestudio.com",
+    "author": "Creative Studio Team",
+    "published_time": "2024-01-01T00:00:00Z",
+    "modified_time": "2024-01-01T00:00:00Z"
+  },
+  "structured_data": {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Creative Studio",
+    "description": "A vibrant community blog where artists, designers, and creative minds share their processes, insights, tutorials, and inspiration.",
+    "url": "https://creativestudio.com"
+  }
+}

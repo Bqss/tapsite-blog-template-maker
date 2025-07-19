@@ -1,0 +1,116 @@
+<!-- Latest Blog Posts -->
+<section class="py-16 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold text-gray-900 mb-4">Latest Creative Insights</h2>
+      <p class="text-gray-600">Fresh tutorials, design tips, and creative inspiration from our community</p>
+    </div>
+
+    <!-- Loading State -->
+    <div id="latest-posts-loading" class="py-12 text-center">
+      <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-violet-600 border-t-transparent"></div>
+      <p class="mt-4 text-gray-600">Loading latest posts...</p>
+    </div>
+
+    <!-- Error State -->
+    <div id="latest-posts-error" class="py-12 text-center hidden">
+      <div class="bg-red-50 rounded-lg p-6 max-w-md mx-auto">
+        <p class="text-red-600 mb-4">Failed to load latest posts</p>
+        <button onclick="loadLatestPosts()" class="text-violet-600 font-medium hover:text-violet-700">
+          Try Again
+        </button>
+      </div>
+    </div>
+
+    <!-- Posts Grid -->
+    <div id="latest-posts-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 hidden"></div>
+  </div>
+</section>
+
+<script>
+(function() {
+  // Function to format date
+  function formatDate(timestamp) {
+    return new Date(timestamp).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  }
+
+  // Function to format post HTML
+  function createPostHTML(post) {
+    return `
+      <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+        <div class="aspect-video bg-gradient-to-br from-violet-200 to-purple-200 relative">
+          <div class="absolute top-4 left-4 bg-violet-600 text-white text-xs px-3 py-1 rounded-full">${post.category}</div>
+          ${post.featured_image ? `<img src="${post.featured_image}" alt="${post.title}" class="w-full h-full object-cover">` : ''}
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">
+            <a href="/post/${post.slug}" class="hover:text-violet-600 transition-colors">
+              ${post.title}
+            </a>
+          </h3>
+          <p class="text-gray-600 mb-4">${post.excerpt}</p>
+          <div class="flex items-center justify-between text-sm text-gray-500">
+            <div class="flex items-center space-x-2">
+              <div class="w-8 h-8 bg-violet-100 rounded-full flex items-center justify-center">
+                <span class="text-violet-600 font-semibold">${post.author.substring(0,2)}</span>
+              </div>
+              <span>${post.author}</span>
+            </div>
+            <div class="flex items-center space-x-4">
+              <span>${post.read_time} min read</span>
+              <span>${formatDate(post.published_at)}</span>
+            </div>
+          </div>
+        </div>
+      </article>
+    `;
+  }
+
+  // Function to show/hide states
+  function showState(state) {
+    const loadingEl = document.getElementById('latest-posts-loading');
+    const errorEl = document.getElementById('latest-posts-error');
+    const gridEl = document.getElementById('latest-posts-grid');
+
+    loadingEl.classList.add('hidden');
+    errorEl.classList.add('hidden');
+    gridEl.classList.add('hidden');
+
+    if (state === 'loading') loadingEl.classList.remove('hidden');
+    if (state === 'error') errorEl.classList.remove('hidden');
+    if (state === 'grid') gridEl.classList.remove('hidden');
+  }
+
+  // Function to load latest posts
+  async function loadLatestPosts() {
+    showState('loading');
+
+    try {
+      const response = await fetch('/api/blog/posts/recent?limit=6');
+      if (!response.ok) throw new Error('Failed to fetch latest posts');
+      
+      const posts = await response.json();
+      
+      if (!posts || posts.length === 0) {
+        throw new Error('No posts found');
+      }
+
+      // Render posts
+      const gridEl = document.getElementById('latest-posts-grid');
+      gridEl.innerHTML = posts.map(post => createPostHTML(post)).join('');
+      showState('grid');
+
+    } catch (error) {
+      console.error('Error loading latest posts:', error);
+      showState('error');
+    }
+  }
+
+  // Load posts when page loads
+  document.addEventListener('DOMContentLoaded', loadLatestPosts);
+})();
+</script> 

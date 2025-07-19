@@ -1,0 +1,351 @@
+<!-- Tag Header -->
+<section class="bg-gradient-to-br from-violet-50 via-purple-50 to-pink-50 py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <div class="flex justify-center mb-6">
+        <div class="w-20 h-20 bg-gradient-to-br from-violet-200 to-purple-200 rounded-2xl flex items-center justify-center">
+          <span class="text-4xl">🏷️</span>
+        </div>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+        <span id="tag-title" class="bg-violet-100 text-violet-800 px-4 py-2 rounded-full"></span>
+      </h1>
+      <p id="tag-description" class="text-xl text-gray-600 max-w-3xl mx-auto mb-8"></p>
+      <div class="flex justify-center items-center space-x-6 text-gray-600">
+        <span class="flex items-center">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+          <span id="post-count">0</span> articles
+        </span>
+        <span class="flex items-center">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+          </svg>
+          <span id="total-views">0</span> total views
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Related Tags -->
+<section class="py-8 bg-white border-b border-gray-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h2 class="text-lg font-semibold text-gray-900 mb-4">Related Tags</h2>
+      <div id="related-tags" class="flex flex-wrap justify-center gap-2">
+        <!-- Related tags will be dynamically inserted here -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Filter and Sort -->
+<section class="py-8 bg-gray-50 border-b border-gray-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+      <div class="flex flex-wrap gap-2">
+        <button class="bg-violet-600 text-white px-4 py-2 rounded-full text-sm font-medium">All Articles</button>
+        <button class="bg-gray-100 text-gray-700 hover:bg-violet-100 hover:text-violet-600 px-4 py-2 rounded-full text-sm font-medium transition-colors">Latest</button>
+        <button class="bg-gray-100 text-gray-700 hover:bg-violet-100 hover:text-violet-600 px-4 py-2 rounded-full text-sm font-medium transition-colors">Popular</button>
+        <button class="bg-gray-100 text-gray-700 hover:bg-violet-100 hover:text-violet-600 px-4 py-2 rounded-full text-sm font-medium transition-colors">Featured</button>
+      </div>
+      <div class="flex items-center space-x-4">
+        <span id="articles-count" class="text-gray-600 text-sm">0 articles</span>
+        <select id="sort-select" class="bg-gray-100 text-gray-700 px-3 py-2 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-violet-400">
+          <option value="latest">Latest First</option>
+          <option value="popular">Most Popular</option>
+          <option value="views">Most Viewed</option>
+          <option value="oldest">Oldest First</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Posts Grid -->
+<section class="py-16 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Loading State -->
+    <div id="loading-state" class="text-center py-16">
+      <div class="inline-block animate-spin rounded-full h-12 w-12 border-4 border-violet-600 border-t-transparent"></div>
+      <p class="mt-4 text-gray-600">Loading articles...</p>
+    </div>
+
+    <!-- Posts Grid -->
+    <div id="posts-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 hidden"></div>
+
+    <!-- Empty State -->
+    <div id="empty-state" class="text-center py-16 hidden">
+      <div class="bg-violet-100 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-6">
+        <svg class="w-12 h-12 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </div>
+      <h3 class="text-2xl font-bold text-gray-900 mb-4">No Articles Found</h3>
+      <p class="text-gray-600 mb-8">We couldn't find any articles tagged with "<span id="empty-tag"></span>". Try exploring other tags!</p>
+      <a href="/posts" class="inline-block bg-violet-600 text-white px-8 py-3 rounded-xl hover:bg-violet-700 transition-colors">
+        Browse All Posts
+      </a>
+    </div>
+
+    <!-- Error State -->
+    <div id="error-state" class="text-center py-16 hidden">
+      <div class="bg-red-100 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-6">
+        <svg class="w-12 h-12 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.5 0L4.268 18.5c-.77.833.192 2.5 1.732 2.5z"></path>
+        </svg>
+      </div>
+      <h3 class="text-2xl font-bold text-gray-900 mb-4">Error Loading Articles</h3>
+      <p class="text-gray-600 mb-8">Something went wrong while loading the articles. Please try again later.</p>
+      <button onclick="loadTagPosts()" class="inline-block bg-violet-600 text-white px-8 py-3 rounded-xl hover:bg-violet-700 transition-colors">
+        Try Again
+      </button>
+    </div>
+
+    <!-- Pagination -->
+    <div id="pagination" class="flex justify-center mt-12 hidden"></div>
+  </div>
+</section>
+
+<script>
+// Show specific state and hide others
+function showState(state) {
+  const states = ['loading-state', 'posts-grid', 'empty-state', 'error-state', 'pagination'];
+  states.forEach(s => {
+    document.getElementById(s).classList.toggle('hidden', s !== state);
+  });
+}
+
+// Create article HTML
+function createArticleHTML(post) {
+  const tagColors = {
+    'Tutorial': 'violet',
+    'Process': 'pink',
+    'Tools': 'blue',
+    'Inspiration': 'emerald'
+  };
+  const color = tagColors[post.category] || 'violet';
+
+  return `
+    <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+      <div class="aspect-video bg-gradient-to-br from-${color}-200 to-${post.category === 'Process' ? 'rose' : color === 'emerald' ? 'teal' : 'purple'}-200 relative">
+        <div class="absolute top-4 left-4 bg-${color}-600 text-white text-xs px-3 py-1 rounded-full">${post.category}</div>
+        ${post.featured_image ? `<img src="${post.featured_image}" alt="${post.title}" class="w-full h-full object-cover">` : ''}
+        ${post.tags ? `
+          <div class="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm text-${color}-800 px-3 py-1 rounded-full text-sm">
+            ${post.tags[0]}
+          </div>
+        ` : ''}
+      </div>
+      <div class="p-6">
+        <h3 class="text-xl font-bold text-gray-900 mb-3">
+          <a href="/post/${post.slug}" class="hover:text-violet-600 transition-colors">
+            ${post.title}
+          </a>
+        </h3>
+        <p class="text-gray-600 mb-4">${post.excerpt}</p>
+        <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+          <div class="flex items-center space-x-2">
+            <div class="w-8 h-8 bg-${color}-100 rounded-full flex items-center justify-center">
+              <span class="text-${color}-600 font-semibold text-xs">${post.author.split(' ').map(n => n[0]).join('')}</span>
+            </div>
+            <span>${post.author}</span>
+          </div>
+          <span>${post.read_time} min read</span>
+        </div>
+        <div class="flex items-center justify-between">
+          <div class="flex items-center space-x-2 text-gray-500 text-sm">
+            <span>👁️ ${post.views || 0}</span>
+            <span>💬 ${post.comments_count || 0}</span>
+          </div>
+          <span class="text-gray-500 text-sm">${getTimeAgo(post.published_at)}</span>
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+// Get time ago
+function getTimeAgo(timestamp) {
+  const now = new Date();
+  const date = new Date(timestamp);
+  const seconds = Math.floor((now - date) / 1000);
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+  const days = Math.floor(hours / 24);
+  const weeks = Math.floor(days / 7);
+
+  if (weeks > 0) return `${weeks} week${weeks > 1 ? 's' : ''} ago`;
+  if (days > 0) return `${days} day${days > 1 ? 's' : ''} ago`;
+  if (hours > 0) return `${hours} hour${hours > 1 ? 's' : ''} ago`;
+  if (minutes > 0) return `${minutes} minute${minutes > 1 ? 's' : ''} ago`;
+  return 'just now';
+}
+
+// Create tag HTML
+function createTagHTML(tag, color) {
+  return `
+    <a href="/tag/${encodeURIComponent(tag)}" 
+       class="bg-${color}-100 text-${color}-800 px-3 py-1 rounded-full text-sm hover:bg-${color}-200 transition-colors">
+      ${tag}
+    </a>
+  `;
+}
+
+// Create pagination HTML
+function createPaginationHTML(currentPage, totalPages) {
+  let html = '<nav class="flex items-center space-x-2">';
+  
+  if (currentPage > 1) {
+    html += `
+      <a href="?page=${currentPage - 1}" 
+         class="bg-white text-gray-700 hover:bg-violet-50 hover:text-violet-600 px-4 py-2 rounded-lg transition-colors">
+        Previous
+      </a>
+    `;
+  }
+  
+  for (let i = 1; i <= totalPages; i++) {
+    html += `
+      <a href="?page=${i}" 
+         class="${i === currentPage ? 'bg-violet-600 text-white' : 'bg-white text-gray-700 hover:bg-violet-50 hover:text-violet-600'} px-4 py-2 rounded-lg transition-colors">
+        ${i}
+      </a>
+    `;
+  }
+  
+  if (currentPage < totalPages) {
+    html += `
+      <a href="?page=${currentPage + 1}" 
+         class="bg-white text-gray-700 hover:bg-violet-50 hover:text-violet-600 px-4 py-2 rounded-lg transition-colors">
+        Next
+      </a>
+    `;
+  }
+  
+  html += '</nav>';
+  return html;
+}
+
+// Get tag from URL
+function getTagFromURL() {
+  const pathParts = window.location.pathname.split('/');
+  const tagIndex = pathParts.indexOf('tag');
+  return tagIndex !== -1 && pathParts[tagIndex + 1] ? decodeURIComponent(pathParts[tagIndex + 1]) : null;
+}
+
+// Load tags
+async function loadTags() {
+  try {
+    const response = await fetch('/api/blog/tags');
+    if (!response.ok) throw new Error('Failed to fetch tags');
+    
+    const tags = await response.json();
+    const currentTag = getTagFromURL();
+    
+    // Update tag info
+    if (currentTag) {
+      document.getElementById('tag-title').textContent = `#${currentTag}`;
+      document.getElementById('tag-description').textContent = `Discover articles about ${currentTag}, digital innovation, and creative solutions from our community of tech enthusiasts and creative professionals.`;
+      document.getElementById('empty-tag').textContent = currentTag;
+    }
+
+    // Render related tags
+    const colors = ['violet', 'purple', 'pink', 'blue', 'emerald', 'orange'];
+    const relatedTagsEl = document.getElementById('related-tags');
+    relatedTagsEl.innerHTML = tags
+      .filter(tag => tag !== currentTag)
+      .slice(0, 6)
+      .map((tag, i) => createTagHTML(tag, colors[i % colors.length]))
+      .join('');
+
+  } catch (error) {
+    console.error('Error loading tags:', error);
+  }
+}
+
+// Load tag posts
+async function loadTagPosts() {
+  const tagName = getTagFromURL();
+  if (!tagName) {
+    showState('error-state');
+    return;
+  }
+
+  showState('loading-state');
+
+  try {
+    // Get current page and sort from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const page = parseInt(urlParams.get('page')) || 1;
+    const sort = urlParams.get('sort') || 'latest';
+
+    const response = await fetch(`/api/blog/posts/tag/${encodeURIComponent(tagName)}?page=${page}&limit=6`);
+    if (!response.ok) throw new Error('Failed to fetch posts');
+    
+    const data = await response.json();
+    
+    if (!data || data.length === 0) {
+      showState('empty-state');
+      return;
+    }
+
+    // Update counts
+    document.getElementById('post-count').textContent = data.length;
+    document.getElementById('articles-count').textContent = `${data.length} articles`;
+    document.getElementById('total-views').textContent = data.reduce((sum, post) => sum + (post.views || 0), 0).toLocaleString();
+
+    // Sort posts if needed
+    let sortedPosts = [...data];
+    if (sort === 'popular') sortedPosts.sort((a, b) => (b.views || 0) - (a.views || 0));
+    else if (sort === 'oldest') sortedPosts.sort((a, b) => new Date(a.published_at) - new Date(b.published_at));
+    else sortedPosts.sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
+
+    // Render posts
+    const postsGridEl = document.getElementById('posts-grid');
+    postsGridEl.innerHTML = sortedPosts.map(post => createArticleHTML(post)).join('');
+
+    // Render pagination if needed
+    if (data.pagination && data.pagination.total_pages > 1) {
+      const paginationEl = document.getElementById('pagination');
+      paginationEl.innerHTML = createPaginationHTML(data.pagination.current_page, data.pagination.total_pages);
+      paginationEl.classList.remove('hidden');
+    }
+
+    showState('posts-grid');
+
+  } catch (error) {
+    console.error('Error loading posts:', error);
+    showState('error-state');
+  }
+}
+
+// Initialize
+loadTags();
+loadTagPosts();
+
+// Handle sort change
+document.getElementById('sort-select').addEventListener('change', (e) => {
+  const url = new URL(window.location);
+  url.searchParams.set('sort', e.target.value);
+  history.pushState({}, '', url);
+  loadTagPosts();
+});
+
+// Handle pagination clicks
+document.getElementById('pagination').addEventListener('click', (e) => {
+  if (e.target.tagName === 'A') {
+    e.preventDefault();
+    const url = new URL(e.target.href);
+    history.pushState({}, '', url);
+    loadTagPosts();
+    window.scrollTo(0, 0);
+  }
+});
+
+// Handle browser back/forward
+window.addEventListener('popstate', loadTagPosts);
+</script> 
