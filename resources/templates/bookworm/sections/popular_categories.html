@@ -1,0 +1,144 @@
+<!-- Popular Categories -->
+<section class="py-16 bg-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Loading State -->
+    <div id="categories-loading" class="text-center py-12">
+      <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-amber-600"></div>
+      <p class="mt-4 text-slate-600">Loading categories...</p>
+    </div>
+
+    <!-- Error State -->
+    <div id="categories-error" class="text-center py-12 hidden">
+      <div class="text-red-500 mb-4">
+        <svg class="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.5 0L4.268 18.5c-.77.833.192 2.5 1.732 2.5z" />
+        </svg>
+      </div>
+      <p class="text-slate-600">Failed to load categories. Please try again later.</p>
+    </div>
+
+    <!-- Empty State -->
+    <div id="categories-empty" class="text-center py-12 hidden">
+      <p class="text-slate-600">No categories found.</p>
+    </div>
+
+    <!-- Categories Content -->
+    <div id="categories-content" class="hidden">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-serif font-bold text-slate-900 mb-4">Popular Categories</h2>
+        <p class="text-slate-600">Explore our most-read literary topics</p>
+      </div>
+      
+      <div id="categories-grid" class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <!-- Categories will be dynamically inserted here -->
+      </div>
+
+      <div id="tags-container" class="text-center mt-12 hidden">
+        <h3 class="text-xl font-serif font-bold text-slate-900 mb-4">Popular Tags</h3>
+        <div id="tags-grid" class="flex flex-wrap justify-center gap-3">
+          <!-- Tags will be dynamically inserted here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      // API endpoints
+      const CATEGORIES_API = '/api/blog/categories';
+      const TAGS_API = '/api/blog/tags';
+
+      // DOM elements
+      const loadingEl = document.getElementById('categories-loading');
+      const errorEl = document.getElementById('categories-error');
+      const emptyEl = document.getElementById('categories-empty');
+      const contentEl = document.getElementById('categories-content');
+      const categoriesGridEl = document.getElementById('categories-grid');
+      const tagsContainerEl = document.getElementById('tags-container');
+      const tagsGridEl = document.getElementById('tags-grid');
+
+      // Show/hide states
+      function showState(stateId) {
+        [loadingEl, errorEl, emptyEl, contentEl].forEach(el => {
+          if (el.id === stateId) {
+            el.classList.remove('hidden');
+          } else {
+            el.classList.add('hidden');
+          }
+        });
+      }
+
+      // Category icons mapping
+      const categoryIcons = {
+        'Literary Fiction': '📚',
+        'Book Reviews': '⭐',
+        'Reading Tips': '💡',
+        'Author Spotlights': '✍️',
+        'default': '📖'
+      };
+
+      // Create category HTML
+      function createCategoryHTML(category) {
+        const icon = categoryIcons[category.name] || categoryIcons.default;
+        return `
+          <a href="/category/${encodeURIComponent(category.slug)}" class="block bg-white p-6 rounded-xl border border-slate-100 hover:border-amber-200 transition-colors group">
+            <div class="text-3xl mb-4">${icon}</div>
+            <h3 class="font-serif font-bold text-slate-900 mb-2 group-hover:text-amber-700 transition-colors">${category.name}</h3>
+            <p class="text-slate-600 text-sm mb-3">${category.description || `Explore articles about ${category.name}`}</p>
+            <span class="text-amber-600 text-sm font-medium">${category.posts || 0} posts</span>
+          </a>
+        `;
+      }
+
+      // Create tag HTML
+      function createTagHTML(tag) {
+        return `
+          <a href="/tag/${encodeURIComponent(tag)}" class="bg-amber-50 hover:bg-amber-100 text-amber-700 px-4 py-2 rounded-full text-sm font-medium transition-colors">
+            #${tag}
+          </a>
+        `;
+      }
+
+      // Load categories and tags
+      async function loadCategoriesAndTags() {
+        showState('categories-loading');
+
+        try {
+          // Fetch categories
+          const categoriesResponse = await fetch(CATEGORIES_API);
+          if (!categoriesResponse.ok) throw new Error('Failed to fetch categories');
+          const categories = await categoriesResponse.json();
+
+          // Fetch tags
+          const tagsResponse = await fetch(TAGS_API);
+          if (!tagsResponse.ok) throw new Error('Failed to fetch tags');
+          const tags = await tagsResponse.json();
+
+          if (categories.length === 0 && tags.length === 0) {
+            showState('categories-empty');
+            return;
+          }
+
+          // Render categories
+          if (categories.length > 0) {
+            categoriesGridEl.innerHTML = categories.map(category => createCategoryHTML(category)).join('');
+          }
+
+          // Render tags
+          if (tags.length > 0) {
+            tagsGridEl.innerHTML = tags.map(tag => createTagHTML(tag)).join('');
+            tagsContainerEl.classList.remove('hidden');
+          }
+
+          showState('categories-content');
+        } catch (error) {
+          console.error('Error loading categories and tags:', error);
+          showState('categories-error');
+        }
+      }
+
+      // Load data when page loads
+      document.addEventListener('DOMContentLoaded', loadCategoriesAndTags);
+    })();
+  </script>
+</section> 
