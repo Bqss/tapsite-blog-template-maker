@@ -4,7 +4,7 @@
       "title": "navigation",
       "id": "navigation",
       "type": "template",
-       "resetable" : true,
+      "resetable" : true,
       "data": [
         "blog_title",
         "blog_logo",
