@@ -1,0 +1,11 @@
+{
+  "title": "All Articles - EduMentor Platform",
+  "description": "Browse all educational articles on EduMentor.",
+  "sections": [
+    { "title": "styles", "id": "styles", "type": "template", "resetable": true },
+    { "title": "navigation", "id": "navigation", "type": "template", "resetable": true, "data": ["site.name", "site.logo", "navigation"] },
+    { "title": "posts list", "id": "posts_list", "type": "template", "resetable": true, "data": ["posts", "pagination"] },
+    { "title": "newsletter", "id": "newsletter", "type": "template", "resetable": true },
+    { "title": "footer", "id": "footer", "type": "template", "resetable": true, "data": ["site.name", "site.description", "navigation", "social_links"] }
+  ]
+} 

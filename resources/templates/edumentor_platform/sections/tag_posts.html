@@ -1,0 +1,250 @@
+<div class="bg-white border-b border-gray-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <nav class="flex" aria-label="Breadcrumb">
+      <ol class="flex items-center space-x-4">
+        <li><a href="#" class="text-gray-500 hover:text-edu-blue">Home</a></li>
+        <li><span class="text-gray-300">/</span></li>
+        <li><a href="#" class="text-gray-500 hover:text-edu-blue">Tags</a></li>
+        <li><span class="text-gray-300">/</span></li>
+        <li><span class="text-edu-blue font-medium">JavaScript</span></li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+<!-- Tag Header -->
+<section class="bg-gradient-to-br from-yellow-500 to-orange-500 py-20 text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <div class="flex items-center space-x-3 mb-6">
+          <div class="w-16 h-16 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+            </svg>
+          </div>
+          <div>
+            <h1 id="tag-title" class="font-display text-4xl lg:text-5xl font-bold">JavaScript</h1>
+            <p class="text-yellow-100 text-lg">Programming Language</p>
+          </div>
+        </div>
+
+        <p class="text-xl text-yellow-100 mb-8 leading-relaxed">
+          Discover comprehensive JavaScript articles and tutorials. From basic syntax to advanced concepts like async
+          programming, frameworks, and modern ES6+ features.
+        </p>
+
+        <!-- Tag Statistics -->
+        <div class="grid grid-cols-3 gap-6">
+          <div class="text-center">
+            <div class="font-display text-3xl font-bold">24</div>
+            <div class="text-yellow-200 text-sm">Articles</div>
+          </div>
+          <div class="text-center">
+            <div class="font-display text-3xl font-bold">15K+</div>
+            <div class="text-yellow-200 text-sm">Readers</div>
+          </div>
+          <div class="text-center">
+            <div class="font-display text-3xl font-bold">4.8</div>
+            <div class="text-yellow-200 text-sm">Average Rating</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative">
+        <!-- Learning Progress Visualization -->
+        <div class="bg-white bg-opacity-10 rounded-2xl p-8">
+          <h3 class="font-display text-2xl font-bold mb-6">Popular JavaScript Topics</h3>
+          <div class="space-y-4">
+            <div class="flex items-center justify-between">
+              <span class="font-medium">ES6+ Features</span>
+              <span class="text-yellow-200">8 articles</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="font-medium">Async Programming</span>
+              <span class="text-yellow-200">6 articles</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="font-medium">DOM Manipulation</span>
+              <span class="text-yellow-200">5 articles</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="font-medium">Frameworks (React)</span>
+              <span class="text-yellow-200">5 articles</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Articles Section -->
+<section class="py-16 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between mb-12">
+      <div>
+        <h2 class="font-display text-3xl font-bold text-edu-gray mb-2">JavaScript Articles</h2>
+        <p class="text-gray-600">Explore our collection of JavaScript tutorials and guides</p>
+      </div>
+      <div class="flex items-center space-x-2">
+        <button class="px-4 py-2 bg-edu-blue text-white rounded-lg text-sm font-medium">
+          Latest
+        </button>
+        <button
+          class="px-4 py-2 text-gray-600 hover:bg-white hover:shadow-md rounded-lg text-sm font-medium transition-all">
+          Popular
+        </button>
+        <button
+          class="px-4 py-2 text-gray-600 hover:bg-white hover:shadow-md rounded-lg text-sm font-medium transition-all">
+          Beginner
+        </button>
+      </div>
+    </div>
+
+    <!-- Dynamic States -->
+    <div id="tag-loading" class="text-center py-12 text-gray-500">Loading...</div>
+    <div id="tag-error" class="hidden text-center py-12 text-red-500">Failed to load posts.</div>
+    <div id="tag-empty" class="hidden text-center py-12 text-gray-500">No posts found.</div>
+
+    <div id="tag-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+    <!-- Pagination -->
+    <div id="tag-pagination" class="mt-12 flex justify-center hidden"></div>
+  </div>
+</section>
+
+<!-- Related Tags -->
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="font-display text-3xl font-bold text-edu-gray mb-8 text-center">
+      Related Tags
+    </h2>
+    <div id="related-tags" class="flex flex-wrap justify-center gap-3"></div>
+  </div>
+</section>
+
+<script>
+(function () {
+  /* DOM references */
+  const loadingEl      = document.getElementById('tag-loading');
+  const errorEl        = document.getElementById('tag-error');
+  const emptyEl        = document.getElementById('tag-empty');
+  const gridEl         = document.getElementById('tag-grid');
+  const paginationEl   = document.getElementById('tag-pagination');
+  const tagTitleEl     = document.getElementById('tag-title');
+  const relatedTagsEl  = document.getElementById('related-tags');
+
+  /* Helpers */
+  const toggleState = (target) => {
+    [loadingEl, errorEl, emptyEl, gridEl, paginationEl].forEach((el) => {
+      if (!el) return;
+      el.classList.toggle('hidden', el !== target);
+    });
+  };
+
+  const getTagFromURL = () => {
+    const parts = window.location.pathname.split('/');
+    const idx = parts.indexOf('tag');
+    return idx !== -1 && parts[idx + 1] ? decodeURIComponent(parts[idx + 1]) : null;
+  };
+
+  const articleCard = (post) => {
+    const img = post.featured_image
+      ? `<img src="${post.featured_image}" alt="${post.title}" class="w-full h-48 object-cover">`
+      : '';
+
+    return `
+      <article class="article-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100 hover:shadow-xl hover:-translate-y-1">
+        <div class="relative">${img}</div>
+        <div class="p-6">
+          <h3 class="font-display text-xl font-bold text-edu-gray mb-3 line-clamp-2">
+            <a href="/post/${post.slug}">${post.title}</a>
+          </h3>
+          <p class="text-gray-600 mb-4 line-clamp-3">${post.excerpt || ''}</p>
+          <div class="flex items-center justify-between text-xs text-gray-500">
+            <span>${post.author || ''}</span>
+            <span>${post.read_time || 0} min read</span>
+          </div>
+        </div>
+      </article>`;
+  };
+
+  const buildPagination = (current, total, tag) => {
+    let html = '<nav class="flex items-center space-x-2">';
+
+    const pageLink = (i, label = i) =>
+      `<a href="/tag/${encodeURIComponent(tag)}?page=${i}" class="px-3 py-2 border border-gray-200 rounded-lg">${label}</a>`;
+
+    if (current > 1) html += pageLink(current - 1, '←');
+
+    for (let i = 1; i <= total; i++) {
+      html +=
+        i === current
+          ? `<span class="px-3 py-2 bg-edu-blue text-white rounded-lg">${i}</span>`
+          : pageLink(i);
+    }
+
+    if (current < total) html += pageLink(current + 1, '→');
+
+    return html + '</nav>';
+  };
+
+  /* Data loaders */
+  const loadPosts = async (page = 1) => {
+    const tag = getTagFromURL();
+    if (!tag) return toggleState(errorEl);
+
+    tagTitleEl.textContent = tag.charAt(0).toUpperCase() + tag.slice(1);
+    toggleState(loadingEl);
+
+    try {
+      const res = await fetch(`/api/blog/posts/tag/${encodeURIComponent(tag)}?page=${page}&limit=6`);
+      if (!res.ok) throw new Error('Network');
+
+      const data = await res.json();
+      const posts = data.posts || data;
+
+      if (!posts.length) return toggleState(emptyEl);
+
+      gridEl.innerHTML = posts.map(articleCard).join('');
+
+      if (data.pagination && data.pagination.total_pages > 1) {
+        paginationEl.innerHTML = buildPagination(data.pagination.current_page, data.pagination.total_pages, tag);
+        paginationEl.classList.remove('hidden');
+      } else {
+        paginationEl.classList.add('hidden');
+      }
+
+      toggleState(gridEl);
+    } catch (err) {
+      console.error(err);
+      toggleState(errorEl);
+    }
+  };
+
+  const loadRelatedTags = async () => {
+    try {
+      const res = await fetch('/api/blog/tags');
+      if (!res.ok) throw new Error('Network');
+
+      const allTags = await res.json();
+      const current = getTagFromURL();
+      relatedTagsEl.innerHTML = allTags
+        .filter((t) => t !== current)
+        .slice(0, 12)
+        .map((t) => `<a href="/tag/${encodeURIComponent(t)}" class="related-tag">${t}</a>`)  
+        .join('');
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  /* Init */
+  document.addEventListener('DOMContentLoaded', () => {
+    const page = parseInt(new URLSearchParams(window.location.search).get('page') || '1', 10);
+    loadPosts(page);
+    loadRelatedTags();
+  });
+})();
+</script>

@@ -1,0 +1,483 @@
+<!-- Styles and Scripts -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'edu-blue': '#2563EB',
+                    'edu-light-blue': '#3B82F6',
+                    'edu-green': '#10B981',
+                    'edu-gray': '#1E293B',
+                    'edu-light': '#F8FAFC'
+                },
+                fontFamily: {
+                    'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    'display': ['Poppins', 'system-ui', 'sans-serif']
+                }
+            }
+        }
+    }
+</script>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+    
+    .article-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<div class="bg-edu-light min-h-screen font-sans text-edu-gray">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-edu-blue rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                        </svg>
+                    </div>
+                    <a href="/home" class="font-display text-xl font-bold text-edu-gray">EduBlog Platform</a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/home" class="text-gray-600 hover:text-edu-blue transition-colors font-medium">Home</a>
+                    <a href="/posts" class="text-gray-600 hover:text-edu-blue transition-colors font-medium">Articles</a>
+                    <a href="/category/programming" class="text-gray-600 hover:text-edu-blue transition-colors font-medium">Programming</a>
+                    <a href="/category/study-tips" class="text-gray-600 hover:text-edu-blue transition-colors font-medium">Study Tips</a>
+                    <a href="/category/career" class="text-gray-600 hover:text-edu-blue transition-colors font-medium">Career</a>
+                    <a href="/search" class="text-gray-600 hover:text-edu-blue transition-colors font-medium">Search</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <a href="/search" class="text-gray-600 hover:text-edu-blue transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                    </a>
+                    <button class="bg-edu-blue text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors">
+                        Subscribe
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Breadcrumb -->
+        <nav class="mb-8" aria-label="Breadcrumb">
+            <ol class="flex items-center space-x-2 text-sm text-gray-500">
+                <li><a href="/home" class="hover:text-edu-blue transition-colors">Home</a></li>
+                <li><span class="mx-2">›</span></li>
+                <li><a href="/category/programming" class="hover:text-edu-blue transition-colors">Programming</a></li>
+                <li><span class="mx-2">›</span></li>
+                <li class="text-gray-700">10 Tips Efektif untuk Belajar Programming Bagi Pemula</li>
+            </ol>
+        </nav>
+
+        <!-- Article Header -->
+        <article class="bg-white rounded-lg shadow-sm overflow-hidden">
+            <!-- Featured Image -->
+            <div class="aspect-video bg-gradient-to-br from-edu-blue to-edu-green flex items-center justify-center">
+                <div class="text-center text-white">
+                    <div class="text-6xl mb-4">💻</div>
+                    <p class="text-lg font-medium">Programming Tutorial</p>
+                </div>
+            </div>
+
+            <!-- Article Content -->
+            <div class="p-8">
+                <!-- Title and Meta -->
+                <div class="mb-8">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="bg-edu-blue text-white px-3 py-1 rounded-full text-sm font-medium">Programming</span>
+                        <span class="text-gray-500 text-sm">•</span>
+                        <span class="text-gray-500 text-sm">December 15, 2024</span>
+                    </div>
+                    
+                    <h1 class="text-3xl md:text-4xl font-bold text-edu-gray mb-4 font-display">
+                        10 Tips Efektif untuk Belajar Programming Bagi Pemula
+                    </h1>
+                    
+                    <div class="flex items-center space-x-4 mb-6">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-10 h-10 bg-edu-blue rounded-full flex items-center justify-center">
+                                <span class="text-white font-bold">S</span>
+                            </div>
+                            <div>
+                                <p class="text-gray-900 font-medium">Dr. Sarah Chen</p>
+                                <p class="text-gray-500 text-sm">Tech Educator & Writer</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4 text-sm text-gray-500">
+                            <span class="flex items-center gap-1">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                8 min read
+                            </span>
+                            <span class="flex items-center gap-1">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                </svg>
+                                1,234 views
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Article Body -->
+                <div class="prose prose-lg max-w-none">
+                    <p class="text-xl text-gray-700 mb-6 leading-relaxed">
+                        Belajar programming bisa terasa menakutkan bagi pemula, tapi dengan strategi yang tepat, siapa pun bisa menguasainya. Artikel ini akan membahas 10 tips praktis yang telah terbukti membantu ribuan pemula berhasil dalam perjalanan programming mereka.
+                    </p>
+
+                    <h2 class="text-2xl font-bold text-edu-gray mt-8 mb-4">Mengapa Programming Penting di Era Digital?</h2>
+                    
+                    <p class="mb-6">
+                        Di era digital saat ini, kemampuan programming bukan lagi hanya untuk developer profesional. Dari otomatisasi tugas harian hingga membangun solusi bisnis, programming telah menjadi skill yang sangat berharga di berbagai industri.
+                    </p>
+
+                    <p class="mb-6">
+                        Menurut data dari Bureau of Labor Statistics, pekerjaan di bidang teknologi diproyeksikan tumbuh 15% dari 2021 hingga 2031, jauh lebih cepat dari rata-rata pekerjaan lainnya. Ini menunjukkan betapa pentingnya memiliki skill programming di masa depan.
+                    </p>
+
+                    <h2 class="text-2xl font-bold text-edu-gray mt-8 mb-4">10 Tips Efektif untuk Belajar Programming</h2>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">1. Mulai dengan Bahasa Programming yang Tepat</h3>
+                    <p class="mb-4">
+                        Pemilihan bahasa programming pertama sangat penting. Untuk pemula, saya merekomendasikan:
+                    </p>
+                    <ul class="mb-6 space-y-2">
+                        <li class="flex items-start gap-2">
+                            <span class="text-edu-blue mt-1">•</span>
+                            <span><strong>Python</strong> - Sintaks sederhana dan mudah dipahami</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-edu-blue mt-1">•</span>
+                            <span><strong>JavaScript</strong> - Versatile dan banyak digunakan di web development</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-edu-blue mt-1">•</span>
+                            <span><strong>Java</strong> - Struktur yang jelas dan banyak resource pembelajaran</span>
+                        </li>
+                    </ul>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">2. Bangun Fondasi yang Kuat</h3>
+                    <p class="mb-4">
+                        Sebelum terjun ke project kompleks, pastikan Anda memahami konsep dasar programming:
+                    </p>
+                    <ol class="mb-6 space-y-2">
+                        <li class="flex items-start gap-3">
+                            <span class="bg-edu-blue text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mt-0.5">1</span>
+                            <span>Variabel dan tipe data</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="bg-edu-blue text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mt-0.5">2</span>
+                            <span>Control flow (if/else, loops)</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="bg-edu-blue text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mt-0.5">3</span>
+                            <span>Functions dan parameters</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="bg-edu-blue text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mt-0.5">4</span>
+                            <span>Data structures (arrays, objects)</span>
+                        </li>
+                    </ol>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">3. Praktik Coding Setiap Hari</h3>
+                    <p class="mb-4">
+                        Konsistensi adalah kunci dalam belajar programming. Luangkan waktu minimal 30 menit setiap hari untuk coding, bahkan jika hanya menyelesaikan satu problem kecil. Seperti belajar bahasa, programming membutuhkan latihan reguler agar skill tetap tajam.
+                    </p>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">4. Belajar dari Project Nyata</h3>
+                    <p class="mb-4">
+                        Setelah memahami dasar-dasar, mulai bangun project sederhana seperti:
+                    </p>
+                    <ul class="mb-6 space-y-2">
+                        <li class="flex items-start gap-2">
+                            <span class="text-edu-green mt-1">✓</span>
+                            <span>Calculator sederhana</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-edu-green mt-1">✓</span>
+                            <span>To-do list application</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-edu-green mt-1">✓</span>
+                            <span>Personal website atau blog</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-edu-green mt-1">✓</span>
+                            <span>Simple game seperti tic-tac-toe</span>
+                        </li>
+                    </ul>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">5. Bergabung dengan Komunitas Developer</h3>
+                    <p class="mb-4">
+                        Komunitas programming sangat membantu dalam perjalanan belajar. Manfaatkan platform seperti:
+                    </p>
+                    <ul class="mb-6 space-y-2">
+                        <li class="flex items-start gap-2">
+                            <span class="text-purple-500 mt-1">•</span>
+                            <span><strong>GitHub</strong> - Untuk berbagi code dan belajar dari developer lain</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-purple-500 mt-1">•</span>
+                            <span><strong>Stack Overflow</strong> - Untuk bertanya dan mencari solusi</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-purple-500 mt-1">•</span>
+                            <span><strong>Discord/Slack communities</strong> - Untuk diskusi real-time</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-purple-500 mt-1">•</span>
+                            <span><strong>Local meetups</strong> - Untuk networking dan belajar offline</span>
+                        </li>
+                    </ul>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">6. Jangan Takut dengan Error dan Bug</h3>
+                    <p class="mb-4">
+                        Error adalah bagian normal dari programming. Setiap developer, bahkan yang berpengalaman, menghadapi bug setiap hari. Yang penting adalah belajar cara debugging yang efektif:
+                    </p>
+                    <ul class="mb-6 space-y-2">
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">•</span>
+                            <span>Baca error message dengan teliti</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">•</span>
+                            <span>Gunakan console.log atau print statements untuk debugging</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">•</span>
+                            <span>Pecah masalah besar menjadi bagian-bagian kecil</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-500 mt-1">•</span>
+                            <span>Gunakan debugger tools yang tersedia</span>
+                        </li>
+                    </ul>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">7. Fokus pada Problem Solving</h3>
+                    <p class="mb-4">
+                        Programming pada dasarnya adalah problem solving. Sebelum menulis code, luangkan waktu untuk:
+                    </p>
+                    <ol class="mb-6 space-y-2">
+                        <li class="flex items-start gap-3">
+                            <span class="bg-yellow-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mt-0.5">1</span>
+                            <span>Memahami masalah yang ingin diselesaikan</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="bg-yellow-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mt-0.5">2</span>
+                            <span>Membuat rencana atau algoritma</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="bg-yellow-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mt-0.5">3</span>
+                            <span>Menulis pseudocode sebelum coding</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="bg-yellow-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mt-0.5">4</span>
+                            <span>Testing dan refactoring code</span>
+                        </li>
+                    </ol>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">8. Manfaatkan Resource Online yang Berkualitas</h3>
+                    <p class="mb-4">
+                        Ada banyak resource gratis dan berbayar untuk belajar programming. Beberapa yang saya rekomendasikan:
+                    </p>
+                    <ul class="mb-6 space-y-2">
+                        <li class="flex items-start gap-2">
+                            <span class="text-blue-500 mt-1">•</span>
+                            <span><strong>FreeCodeCamp</strong> - Curriculum lengkap dan gratis</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-blue-500 mt-1">•</span>
+                            <span><strong>Codecademy</strong> - Interactive learning platform</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-blue-500 mt-1">•</span>
+                            <span><strong>YouTube channels</strong> - Traversy Media, The Net Ninja, dll</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-blue-500 mt-1">•</span>
+                            <span><strong>Documentation</strong> - Selalu baca official docs</span>
+                        </li>
+                    </ul>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">9. Belajar Version Control (Git)</h3>
+                    <p class="mb-4">
+                        Git adalah tool yang wajib dikuasai setiap developer. Mulai belajar Git dari awal untuk:
+                    </p>
+                    <ul class="mb-6 space-y-2">
+                        <li class="flex items-start gap-2">
+                            <span class="text-orange-500 mt-1">•</span>
+                            <span>Melacak perubahan code</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-orange-500 mt-1">•</span>
+                            <span>Berkolaborasi dengan developer lain</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-orange-500 mt-1">•</span>
+                            <span>Backup code secara otomatis</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-orange-500 mt-1">•</span>
+                            <span>Mengelola different versions of project</span>
+                        </li>
+                    </ul>
+
+                    <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">10. Sabar dan Konsisten</h3>
+                    <p class="mb-6">
+                        Belajar programming adalah marathon, bukan sprint. Akan ada hari-hari frustasi ketika code tidak berjalan seperti yang diharapkan. Ini normal dan dialami semua developer. Yang penting adalah tetap konsisten dan tidak menyerah.
+                    </p>
+
+                    <h2 class="text-2xl font-bold text-edu-gray mt-8 mb-4">Kesimpulan</h2>
+                    
+                    <p class="mb-6">
+                        Belajar programming memang membutuhkan waktu dan dedikasi, tapi dengan mengikuti 10 tips di atas, perjalanan Anda akan lebih terarah dan efektif. Ingat, setiap expert pernah menjadi pemula. Yang membedakan adalah konsistensi dan kemauan untuk terus belajar.
+                    </p>
+
+                    <p class="text-lg font-medium text-edu-blue mb-6">
+                        Mulai hari ini, pilih satu tip yang paling relevan dengan situasi Anda dan terapkan. Good luck dengan programming journey Anda! 🚀
+                    </p>
+                </div>
+
+                <!-- Tags -->
+                <div class="border-t border-gray-200 pt-6 mt-8">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3">Tags:</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <a href="/tag/programming" class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-gray-200 transition-colors">#Programming</a>
+                        <a href="/tag/tips" class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-gray-200 transition-colors">#Tips</a>
+                        <a href="/tag/pemula" class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-gray-200 transition-colors">#Pemula</a>
+                        <a href="/tag/belajar" class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-gray-200 transition-colors">#Belajar</a>
+                        <a href="/tag/coding" class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-gray-200 transition-colors">#Coding</a>
+                        <a href="/tag/developer" class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-gray-200 transition-colors">#Developer</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- Related Posts -->
+        <section class="mt-12">
+            <h2 class="text-2xl font-bold text-edu-gray mb-6">Artikel Terkait</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <article class="article-card bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-all duration-300">
+                    <div class="aspect-video bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                        <span class="text-white text-4xl">📚</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 mb-2">Strategi Mengatasi Procrastination dalam Belajar Online</h3>
+                        <p class="text-sm text-gray-600 mb-3">Cara ampuh mengatasi kebiasaan menunda-nunda saat belajar online</p>
+                        <div class="flex items-center justify-between text-xs text-gray-500">
+                            <span>Prof. Michael Rodriguez</span>
+                            <span>6 min read</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="article-card bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-all duration-300">
+                    <div class="aspect-video bg-gradient-to-br from-green-500 to-teal-500 flex items-center justify-center">
+                        <span class="text-white text-4xl">💼</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 mb-2">Membangun Portofolio Digital yang Menarik</h3>
+                        <p class="text-sm text-gray-600 mb-3">Panduan step-by-step membuat portofolio digital yang profesional</p>
+                        <div class="flex items-center justify-between text-xs text-gray-500">
+                            <span>Lisa Thompson</span>
+                            <span>12 min read</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="article-card bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-all duration-300">
+                    <div class="aspect-video bg-gradient-to-br from-yellow-500 to-orange-500 flex items-center justify-center">
+                        <span class="text-white text-4xl">⚡</span>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-semibold text-gray-900 mb-2">Teknik Pomodoro: Revolusi Produktivitas</h3>
+                        <p class="text-sm text-gray-600 mb-3">Mengenal teknik Pomodoro untuk meningkatkan fokus belajar</p>
+                        <div class="flex items-center justify-between text-xs text-gray-500">
+                            <span>Dr. Ahmad Fauzi</span>
+                            <span>7 min read</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+</div>
+
+<!-- Footer -->
+<footer class="bg-edu-gray text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="col-span-1 md:col-span-2">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 bg-edu-blue rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-display text-xl font-bold">EduBlog Platform</h3>
+                </div>
+                <p class="text-gray-300 mb-6 max-w-md">
+                    Platform blog pendidikan untuk berbagi pengetahuan, tips belajar, dan artikel edukatif
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.097.118.112.221.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div>
+                <h4 class="font-semibold text-lg mb-4">Kategori</h4>
+                <ul class="space-y-2">
+                    <li><a href="/category/programming" class="text-gray-300 hover:text-white transition-colors">Programming</a></li>
+                    <li><a href="/category/study-tips" class="text-gray-300 hover:text-white transition-colors">Study Tips</a></li>
+                    <li><a href="/category/career" class="text-gray-300 hover:text-white transition-colors">Career</a></li>
+                    <li><a href="/category/productivity" class="text-gray-300 hover:text-white transition-colors">Productivity</a></li>
+                    <li><a href="/category/technology" class="text-gray-300 hover:text-white transition-colors">Technology</a></li>
+                    <li><a href="/category/design" class="text-gray-300 hover:text-white transition-colors">Design</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="font-semibold text-lg mb-4">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="/posts" class="text-gray-300 hover:text-white transition-colors">All Articles</a></li>
+                    <li><a href="/search" class="text-gray-300 hover:text-white transition-colors">Search</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors">About</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Contact</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Privacy Policy</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="border-t border-gray-700 mt-12 pt-8 text-center">
+            <p class="text-gray-400">
+                &copy; 2024 EduBlog Platform. All rights reserved. Made with ❤️ for education.
+            </p>
+        </div>
+    </div>
+</footer> 

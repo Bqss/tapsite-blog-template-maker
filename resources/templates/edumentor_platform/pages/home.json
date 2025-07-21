@@ -1,0 +1,53 @@
+{
+  "title": "EduMentor Platform - Learn, Grow, and Share Knowledge",
+  "description": "Educational blog platform for sharing learning tips, career guidance, and educational articles",
+  "sections": [
+    {
+      "title": "styles",
+      "id": "styles",
+      "type": "template",
+      "resetable": true
+    },
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "site.name",
+        "site.logo",
+        "navigation"
+      ]
+    },
+    {
+      "title": "hero",
+      "id": "hero",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "hero"
+      ]
+    },
+    {
+      "title": "featured articles",
+      "id": "featured_articles",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "featured"
+      ]
+    },
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "site.name",
+        "site.description",
+        "navigation",
+        "social_links"
+      ]
+    }
+  ]
+} 

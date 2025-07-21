@@ -1,0 +1,129 @@
+<!-- Featured Articles -->
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="font-display text-3xl lg:text-4xl font-bold text-edu-gray mb-4">Artikel Terpopuler</h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Artikel pilihan yang paling banyak dibaca dan bermanfaat untuk pengembangan diri
+      </p>
+    </div>
+    
+    <!-- Dynamic Featured Articles -->
+    <div id="featured-loading" class="text-center py-12">
+      <div class="inline-block p-4 bg-edu-light rounded-full mb-4 animate-pulse"><span class="text-3xl">🔄</span></div>
+      <p class="text-gray-600">Loading featured articles...</p>
+    </div>
+    <div id="featured-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 hidden"></div>
+    <div id="featured-empty" class="text-center py-12 hidden"><span>Belum ada artikel.</span></div>
+    <div id="featured-error" class="text-center py-12 hidden"><span>Error memuat artikel.</span></div>
+
+    <!-- Existing static cards removed -->
+  </div>
+</section>
+
+<script>
+(function(){
+  function show(state){['featured-loading','featured-grid','featured-empty','featured-error'].forEach(id=>document.getElementById(id).classList.toggle('hidden',id!==state));}
+  function card(post){return `<article class=\"article-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100 hover:shadow-xl hover:-translate-y-1\"><div class=\"relative\"><div class=\"aspect-video bg-gradient-to-br from-edu-blue to-edu-green flex items-center justify-center\"><img src=\"${post.featured_image||'/placeholder.jpg'}\" alt=\"${post.title}\" class=\"absolute inset-0 w-full h-full object-cover\"></div><div class=\"absolute top-4 left-4\"><span class=\"bg-edu-blue text-white px-3 py-1 rounded-full text-sm font-medium\">${post.category}</span></div></div><div class=\"p-6\"><div class=\"flex items-center space-x-2 mb-3\"><div class=\"w-8 h-8 bg-edu-blue rounded-full flex items-center justify-center\"><span class=\"text-white text-xs font-bold\">${post.author.charAt(0)}</span></div><span class=\"text-gray-600 text-sm\">${post.author}</span><span class=\"text-gray-400 text-sm\">•</span><span class=\"text-gray-500 text-sm\">${post.read_time||0} min read</span></div><h3 class=\"font-display text-xl font-semibold text-edu-gray mb-3 line-clamp-2\"><a href=\"/post/${post.slug}\" class=\"hover:text-edu-blue transition-colors\">${post.title}</a></h3><p class=\"text-gray-600 text-sm mb-4 line-clamp-3\">${post.excerpt}</p><div class=\"flex items-center justify-between\"><span class=\"text-xs text-gray-500\">${new Date(post.published_at).toLocaleDateString()}</span><a href=\"/post/${post.slug}\" class=\"text-edu-blue font-medium hover:text-edu-light-blue transition-colors\">Baca Selengkapnya →</a></div></div></article>`;}
+  async function load(){show('featured-loading');try{const res=await fetch('/api/blog/posts/trending?limit=3');if(!res.ok)throw new Error();const data=await res.json();if(!data||data.length===0){show('featured-empty');return;}document.getElementById('featured-grid').innerHTML=data.map(card).join('');show('featured-grid');}catch(e){console.error(e);show('featured-error');}}
+  document.addEventListener('DOMContentLoaded',load);
+})();
+</script>
+
+<!-- Categories Section -->
+<section class="py-16 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="font-display text-3xl lg:text-4xl font-bold text-edu-gray mb-4">Jelajahi Kategori</h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Temukan artikel berdasarkan minat dan kebutuhan belajar Anda
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <a href="/category/programming"
+        class="category-card bg-white rounded-xl p-6 shadow-lg hover:shadow-xl border border-gray-100">
+        <div class="flex items-center space-x-4">
+          <div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center">
+            <span class="text-white text-xl">💻</span>
+          </div>
+          <div>
+            <h3 class="font-display text-lg font-semibold text-edu-gray">Programming</h3>
+            <p class="text-gray-600 text-sm">15 articles</p>
+          </div>
+        </div>
+        <p class="text-gray-600 mt-3 text-sm">Tips, tutorial, dan panduan programming untuk semua level</p>
+      </a>
+
+      <a href="/category/study-tips"
+        class="category-card bg-white rounded-xl p-6 shadow-lg hover:shadow-xl border border-gray-100">
+        <div class="flex items-center space-x-4">
+          <div class="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center">
+            <span class="text-white text-xl">📚</span>
+          </div>
+          <div>
+            <h3 class="font-display text-lg font-semibold text-edu-gray">Study Tips</h3>
+            <p class="text-gray-600 text-sm">12 articles</p>
+          </div>
+        </div>
+        <p class="text-gray-600 mt-3 text-sm">Strategi dan teknik belajar efektif untuk akademik</p>
+      </a>
+
+      <a href="/category/career"
+        class="category-card bg-white rounded-xl p-6 shadow-lg hover:shadow-xl border border-gray-100">
+        <div class="flex items-center space-x-4">
+          <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center">
+            <span class="text-white text-xl">💼</span>
+          </div>
+          <div>
+            <h3 class="font-display text-lg font-semibold text-edu-gray">Career</h3>
+            <p class="text-gray-600 text-sm">10 articles</p>
+          </div>
+        </div>
+        <p class="text-gray-600 mt-3 text-sm">Panduan karir, tips interview, dan pengembangan profesional</p>
+      </a>
+
+      <a href="/category/productivity"
+        class="category-card bg-white rounded-xl p-6 shadow-lg hover:shadow-xl border border-gray-100">
+        <div class="flex items-center space-x-4">
+          <div class="w-12 h-12 bg-yellow-500 rounded-lg flex items-center justify-center">
+            <span class="text-white text-xl">⚡</span>
+          </div>
+          <div>
+            <h3 class="font-display text-lg font-semibold text-edu-gray">Productivity</h3>
+            <p class="text-gray-600 text-sm">8 articles</p>
+          </div>
+        </div>
+        <p class="text-gray-600 mt-3 text-sm">Tips produktivitas dan manajemen waktu untuk pelajar</p>
+      </a>
+
+      <a href="/category/technology"
+        class="category-card bg-white rounded-xl p-6 shadow-lg hover:shadow-xl border border-gray-100">
+        <div class="flex items-center space-x-4">
+          <div class="w-12 h-12 bg-red-500 rounded-lg flex items-center justify-center">
+            <span class="text-white text-xl">🚀</span>
+          </div>
+          <div>
+            <h3 class="font-display text-lg font-semibold text-edu-gray">Technology</h3>
+            <p class="text-gray-600 text-sm">14 articles</p>
+          </div>
+        </div>
+        <p class="text-gray-600 mt-3 text-sm">Tren teknologi terbaru dan analisis industri</p>
+      </a>
+
+      <a href="/category/design"
+        class="category-card bg-white rounded-xl p-6 shadow-lg hover:shadow-xl border border-gray-100">
+        <div class="flex items-center space-x-4">
+          <div class="w-12 h-12 bg-indigo-500 rounded-lg flex items-center justify-center">
+            <span class="text-white text-xl">🎨</span>
+          </div>
+          <div>
+            <h3 class="font-display text-lg font-semibold text-edu-gray">Design</h3>
+            <p class="text-gray-600 text-sm">9 articles</p>
+          </div>
+        </div>
+        <p class="text-gray-600 mt-3 text-sm">Tutorial design, UI/UX, dan creative skills</p>
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,28 @@
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'edu-blue': '#2563EB',
+                    'edu-light-blue': '#3B82F6',
+                    'edu-green': '#10B981',
+                    'edu-purple': '#8B5CF6',
+                    'edu-orange': '#F59E0B',
+                    'edu-gray': '#1E293B',
+                    'edu-light': '#F8FAFC'
+                }
+            }
+        }
+    }
+</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+  .article-card:hover { transform: translateY(-4px); }
+  .category-tag { @apply px-3 py-1 rounded-full text-xs font-medium; }
+  .gradient-overlay { background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%); }
+  .featured-card { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+  .reading-time { @apply bg-white bg-opacity-90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-gray-700; }
+</style>
+
+<div class="bg-edu-light min-h-screen font-sans text-edu-gray">

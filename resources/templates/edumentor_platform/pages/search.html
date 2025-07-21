@@ -1,0 +1,521 @@
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'edu-blue': '#2563EB',
+                        'edu-light-blue': '#3B82F6',
+                        'edu-green': '#10B981',
+                        'edu-purple': '#8B5CF6',
+                        'edu-orange': '#F59E0B',
+                        'edu-gray': '#1E293B',
+                        'edu-light': '#F8FAFC'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+        .article-result:hover { transform: translateY(-2px); }
+        .filter-tag { @apply bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm cursor-pointer hover:bg-edu-blue hover:text-white transition-colors; }
+        .filter-tag.active { @apply bg-edu-blue text-white; }
+        .reading-time { @apply bg-white bg-opacity-90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-gray-700; }
+    </style>
+
+    <div class="bg-edu-light min-h-screen font-sans text-edu-gray">
+        <!-- Navigation -->
+        <nav class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-gradient-to-r from-edu-blue to-edu-purple rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                            </svg>
+                        </div>
+                        <span class="font-display text-xl font-bold text-edu-gray">EduMentor</span>
+                    </div>
+                    
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="#" class="text-gray-600 hover:text-edu-blue transition-colors font-medium">Home</a>
+                        <a href="#" class="text-gray-600 hover:text-edu-blue transition-colors font-medium">Categories</a>
+                        <a href="#" class="text-gray-600 hover:text-edu-blue transition-colors font-medium">Articles</a>
+                        <a href="#" class="text-edu-blue font-medium border-b-2 border-edu-blue pb-1">Search</a>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4">
+                        <button class="bg-gradient-to-r from-edu-blue to-edu-purple text-white px-4 py-2 rounded-lg font-medium hover:shadow-lg transition-all">
+                            Subscribe
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Search Header -->
+        <section class="bg-gradient-to-br from-edu-blue to-edu-purple py-16 text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-8">
+                    <h1 class="font-display text-3xl lg:text-5xl font-bold mb-4">
+                        Find Your Next 
+                        <span class="bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">
+                            Learning
+                        </span>
+                    </h1>
+                    <p class="text-xl text-blue-100 max-w-2xl mx-auto">
+                        Search through our comprehensive library of educational articles, tutorials, and insights
+                    </p>
+                </div>
+                
+                <!-- Advanced Search Bar -->
+                <div class="max-w-4xl mx-auto">
+                    <div class="bg-white rounded-2xl p-6 shadow-2xl">
+                        <div class="flex flex-col lg:flex-row gap-4">
+                            <div class="flex-1 relative">
+                                <input type="text" 
+                                       placeholder="Search articles, tutorials, topics..." 
+                                       value="web development"
+                                       class="w-full pl-12 pr-4 py-4 text-gray-700 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-edu-blue text-lg">
+                                <svg class="w-6 h-6 text-gray-400 absolute left-4 top-1/2 transform -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                                </svg>
+                            </div>
+                            <button class="bg-edu-blue text-white px-8 py-4 rounded-xl font-semibold hover:bg-blue-700 transition-colors text-lg">
+                                Search
+                            </button>
+                        </div>
+                        
+                        <!-- Quick Filters -->
+                        <div class="flex flex-wrap gap-2 mt-4">
+                            <span class="filter-tag active">All</span>
+                            <span class="filter-tag">Beginner</span>
+                            <span class="filter-tag">Intermediate</span>
+                            <span class="filter-tag">Advanced</span>
+                            <span class="filter-tag">Tutorial</span>
+                            <span class="filter-tag">Guide</span>
+                            <span class="filter-tag">Tips</span>
+                            <span class="filter-tag">Latest</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                <!-- Filters Sidebar -->
+                <div class="lg:col-span-1">
+                    <div class="bg-white rounded-xl shadow-lg p-6 sticky top-24">
+                        <h3 class="font-display text-lg font-semibold text-edu-gray mb-6">Refine Your Search</h3>
+                        
+                        <!-- Categories -->
+                        <div class="mb-6">
+                            <h4 class="font-medium text-edu-gray mb-3">Categories</h4>
+                            <div class="space-y-2">
+                                <label class="flex items-center">
+                                    <input type="checkbox" checked class="mr-3 text-edu-blue">
+                                    <span class="text-gray-700">Programming</span>
+                                    <span class="ml-auto text-gray-500 text-sm">(24)</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-3 text-edu-blue">
+                                    <span class="text-gray-700">Data Science</span>
+                                    <span class="ml-auto text-gray-500 text-sm">(18)</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-3 text-edu-blue">
+                                    <span class="text-gray-700">Design</span>
+                                    <span class="ml-auto text-gray-500 text-sm">(15)</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-3 text-edu-blue">
+                                    <span class="text-gray-700">Career</span>
+                                    <span class="ml-auto text-gray-500 text-sm">(12)</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-3 text-edu-blue">
+                                    <span class="text-gray-700">Study Tips</span>
+                                    <span class="ml-auto text-gray-500 text-sm">(9)</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Difficulty Level -->
+                        <div class="mb-6">
+                            <h4 class="font-medium text-edu-gray mb-3">Difficulty Level</h4>
+                            <div class="space-y-2">
+                                <label class="flex items-center">
+                                    <input type="radio" name="difficulty" checked class="mr-3 text-edu-blue">
+                                    <span class="text-gray-700">All Levels</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="radio" name="difficulty" class="mr-3 text-edu-blue">
+                                    <span class="text-gray-700">Beginner</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="radio" name="difficulty" class="mr-3 text-edu-blue">
+                                    <span class="text-gray-700">Intermediate</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="radio" name="difficulty" class="mr-3 text-edu-blue">
+                                    <span class="text-gray-700">Advanced</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Read Time -->
+                        <div class="mb-6">
+                            <h4 class="font-medium text-edu-gray mb-3">Read Time</h4>
+                            <div class="space-y-2">
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-3 text-edu-blue">
+                                    <span class="text-gray-700">Quick Read (< 5 min)</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-3 text-edu-blue">
+                                    <span class="text-gray-700">Medium (5-10 min)</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-3 text-edu-blue">
+                                    <span class="text-gray-700">Long Read (10+ min)</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Content Type -->
+                        <div class="mb-6">
+                            <h4 class="font-medium text-edu-gray mb-3">Content Type</h4>
+                            <div class="space-y-2">
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-3 text-edu-blue">
+                                    <span class="text-gray-700">Tutorial</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-3 text-edu-blue">
+                                    <span class="text-gray-700">Guide</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-3 text-edu-blue">
+                                    <span class="text-gray-700">Tips & Tricks</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-3 text-edu-blue">
+                                    <span class="text-gray-700">Case Study</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Publication Date -->
+                        <div class="mb-6">
+                            <h4 class="font-medium text-edu-gray mb-3">Publication Date</h4>
+                            <div class="space-y-2">
+                                <label class="flex items-center">
+                                    <input type="radio" name="date" class="mr-3 text-edu-blue">
+                                    <span class="text-gray-700">This Week</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="radio" name="date" class="mr-3 text-edu-blue">
+                                    <span class="text-gray-700">This Month</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="radio" name="date" class="mr-3 text-edu-blue">
+                                    <span class="text-gray-700">This Year</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Search Results -->
+                <div class="lg:col-span-3">
+                    <div class="flex justify-between items-center mb-6">
+                        <div>
+                            <h2 class="font-display text-2xl font-bold text-edu-gray">Search Results</h2>
+                            <p class="text-gray-600">Found 24 articles for "web development"</p>
+                        </div>
+                        <select class="border border-gray-300 rounded-lg px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-edu-blue">
+                            <option>Most Relevant</option>
+                            <option>Most Recent</option>
+                            <option>Most Popular</option>
+                            <option>Shortest Read</option>
+                        </select>
+                    </div>
+
+                    <div class="space-y-6">
+                        <!-- Article Result 1 -->
+                        <article class="article-result bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100 hover:shadow-xl">
+                            <div class="grid grid-cols-1 lg:grid-cols-3 gap-0">
+                                <div class="relative">
+                                    <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=200&fit=crop" 
+                                         alt="Web Development" 
+                                         class="w-full h-48 lg:h-full object-cover">
+                                    <div class="absolute top-4 left-4">
+                                        <span class="bg-edu-blue text-white px-3 py-1 rounded-full text-sm font-medium">Programming</span>
+                                    </div>
+                                    <div class="absolute bottom-4 right-4">
+                                        <div class="reading-time">8 min read</div>
+                                    </div>
+                                </div>
+                                <div class="lg:col-span-2 p-6">
+                                    <h3 class="font-display text-xl font-bold text-edu-gray mb-3">
+                                        The Complete Guide to Modern Web Development in 2024
+                                    </h3>
+                                    <p class="text-gray-600 mb-4 line-clamp-3">
+                                        Learn the essential skills, tools, and frameworks that every web developer needs to know in 2024. From HTML basics to advanced JavaScript frameworks, this comprehensive guide covers everything you need to start your web development journey.
+                                    </p>
+                                    
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-3">
+                                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face" 
+                                                 alt="Author" 
+                                                 class="w-8 h-8 rounded-full">
+                                            <div class="text-sm">
+                                                <div class="font-medium text-edu-gray">Sarah Johnson</div>
+                                                <div class="text-gray-500">2 days ago</div>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                            <span class="flex items-center">
+                                                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                                </svg>
+                                                3.2k
+                                            </span>
+                                            <span class="flex items-center">
+                                                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                                </svg>
+                                                89
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Article Result 2 -->
+                        <article class="article-result bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100 hover:shadow-xl">
+                            <div class="grid grid-cols-1 lg:grid-cols-3 gap-0">
+                                <div class="relative">
+                                    <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&h=200&fit=crop" 
+                                         alt="JavaScript" 
+                                         class="w-full h-48 lg:h-full object-cover">
+                                    <div class="absolute top-4 left-4">
+                                        <span class="bg-yellow-500 text-white px-3 py-1 rounded-full text-sm font-medium">JavaScript</span>
+                                    </div>
+                                    <div class="absolute bottom-4 right-4">
+                                        <div class="reading-time">6 min read</div>
+                                    </div>
+                                </div>
+                                <div class="lg:col-span-2 p-6">
+                                    <h3 class="font-display text-xl font-bold text-edu-gray mb-3">
+                                        Modern JavaScript: ES6+ Features You Should Know
+                                    </h3>
+                                    <p class="text-gray-600 mb-4 line-clamp-3">
+                                        Explore the latest JavaScript features that will make your code more efficient, readable, and maintainable. Learn about arrow functions, destructuring, async/await, and more advanced ES6+ features.
+                                    </p>
+                                    
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-3">
+                                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=32&h=32&fit=crop&crop=face" 
+                                                 alt="Author" 
+                                                 class="w-8 h-8 rounded-full">
+                                            <div class="text-sm">
+                                                <div class="font-medium text-edu-gray">James Wilson</div>
+                                                <div class="text-gray-500">1 week ago</div>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                            <span class="flex items-center">
+                                                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                                </svg>
+                                                2.8k
+                                            </span>
+                                            <span class="flex items-center">
+                                                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                                </svg>
+                                                67
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Article Result 3 -->
+                        <article class="article-result bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100 hover:shadow-xl">
+                            <div class="grid grid-cols-1 lg:grid-cols-3 gap-0">
+                                <div class="relative">
+                                    <img src="https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=400&h=200&fit=crop" 
+                                         alt="React" 
+                                         class="w-full h-48 lg:h-full object-cover">
+                                    <div class="absolute top-4 left-4">
+                                        <span class="bg-cyan-500 text-white px-3 py-1 rounded-full text-sm font-medium">React</span>
+                                    </div>
+                                    <div class="absolute bottom-4 right-4">
+                                        <div class="reading-time">12 min read</div>
+                                    </div>
+                                </div>
+                                <div class="lg:col-span-2 p-6">
+                                    <h3 class="font-display text-xl font-bold text-edu-gray mb-3">
+                                        Getting Started with React: A Beginner's Guide
+                                    </h3>
+                                    <p class="text-gray-600 mb-4 line-clamp-3">
+                                        Learn the fundamentals of React, one of the most popular JavaScript libraries for building user interfaces. This comprehensive guide covers components, props, state, and more.
+                                    </p>
+                                    
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-3">
+                                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face" 
+                                                 alt="Author" 
+                                                 class="w-8 h-8 rounded-full">
+                                            <div class="text-sm">
+                                                <div class="font-medium text-edu-gray">Mike Chen</div>
+                                                <div class="text-gray-500">2 weeks ago</div>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                            <span class="flex items-center">
+                                                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                                </svg>
+                                                1.9k
+                                            </span>
+                                            <span class="flex items-center">
+                                                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                                </svg>
+                                                45
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Article Result 4 -->
+                        <article class="article-result bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100 hover:shadow-xl">
+                            <div class="grid grid-cols-1 lg:grid-cols-3 gap-0">
+                                <div class="relative">
+                                    <img src="https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=400&h=200&fit=crop" 
+                                         alt="CSS" 
+                                         class="w-full h-48 lg:h-full object-cover">
+                                    <div class="absolute top-4 left-4">
+                                        <span class="bg-pink-500 text-white px-3 py-1 rounded-full text-sm font-medium">CSS</span>
+                                    </div>
+                                    <div class="absolute bottom-4 right-4">
+                                        <div class="reading-time">7 min read</div>
+                                    </div>
+                                </div>
+                                <div class="lg:col-span-2 p-6">
+                                    <h3 class="font-display text-xl font-bold text-edu-gray mb-3">
+                                        Mastering CSS Grid: A Complete Guide
+                                    </h3>
+                                    <p class="text-gray-600 mb-4 line-clamp-3">
+                                        Learn how to create complex layouts with CSS Grid. This comprehensive guide covers everything from basic grid concepts to advanced layout techniques.
+                                    </p>
+                                    
+                                    <div class="flex items-center justify-between">
+                                        <div class="flex items-center space-x-3">
+                                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=32&h=32&fit=crop&crop=face" 
+                                                 alt="Author" 
+                                                 class="w-8 h-8 rounded-full">
+                                            <div class="text-sm">
+                                                <div class="font-medium text-edu-gray">Emma Davis</div>
+                                                <div class="text-gray-500">3 weeks ago</div>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                            <span class="flex items-center">
+                                                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 616 0z"/>
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                                </svg>
+                                                1.4k
+                                            </span>
+                                            <span class="flex items-center">
+                                                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                                </svg>
+                                                33
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="flex justify-center mt-12">
+                        <nav class="flex items-center space-x-2">
+                            <button class="px-3 py-2 text-gray-500 hover:text-edu-blue transition-colors">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                                </svg>
+                            </button>
+                            <button class="px-4 py-2 bg-edu-blue text-white rounded-lg">1</button>
+                            <button class="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">2</button>
+                            <button class="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">3</button>
+                            <span class="px-2 text-gray-500">...</span>
+                            <button class="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg">8</button>
+                            <button class="px-3 py-2 text-gray-500 hover:text-edu-blue transition-colors">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                                </svg>
+                            </button>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="bg-edu-gray text-white py-12 mt-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div class="col-span-1 md:col-span-2">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="w-10 h-10 bg-gradient-to-r from-edu-blue to-edu-purple rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                                </svg>
+                            </div>
+                            <span class="font-display text-xl font-bold">EduMentor</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">
+                            Empowering learners worldwide with quality educational content and resources.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold mb-4">Categories</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li><a href="#" class="hover:text-white transition-colors">Programming</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Data Science</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Design</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Career</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold mb-4">Company</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li><a href="#" class="hover:text-white transition-colors">About</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Privacy</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Terms</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                    <p>&copy; 2024 EduMentor. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div> 

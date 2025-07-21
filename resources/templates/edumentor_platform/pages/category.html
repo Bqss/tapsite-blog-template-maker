@@ -1,0 +1,609 @@
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'edu-blue': '#2563EB',
+                        'edu-light-blue': '#3B82F6',
+                        'edu-green': '#10B981',
+                        'edu-purple': '#8B5CF6',
+                        'edu-orange': '#F59E0B',
+                        'edu-gray': '#1E293B',
+                        'edu-light': '#F8FAFC'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+        .article-card:hover { transform: translateY(-4px); }
+        .reading-time { @apply bg-white bg-opacity-90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-gray-700; }
+        .category-tag { @apply px-3 py-1 rounded-full text-xs font-medium; }
+    </style>
+
+    <div class="bg-edu-light min-h-screen font-sans text-edu-gray">
+        <!-- Navigation -->
+        <nav class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-gradient-to-r from-edu-blue to-edu-purple rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                            </svg>
+                        </div>
+                        <span class="font-display text-xl font-bold text-edu-gray">EduMentor</span>
+                    </div>
+                    
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="#" class="text-gray-600 hover:text-edu-blue transition-colors font-medium">Home</a>
+                        <a href="#" class="text-edu-blue font-medium border-b-2 border-edu-blue pb-1">Categories</a>
+                        <a href="#" class="text-gray-600 hover:text-edu-blue transition-colors font-medium">Articles</a>
+                        <a href="#" class="text-gray-600 hover:text-edu-blue transition-colors font-medium">About</a>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4">
+                        <button class="text-gray-600 hover:text-edu-blue transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                        </button>
+                        <button class="bg-gradient-to-r from-edu-blue to-edu-purple text-white px-4 py-2 rounded-lg font-medium hover:shadow-lg transition-all">
+                            Subscribe
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Breadcrumb -->
+        <div class="bg-white border-b border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+                <nav class="flex" aria-label="Breadcrumb">
+                    <ol class="flex items-center space-x-4">
+                        <li><a href="#" class="text-gray-500 hover:text-edu-blue">Home</a></li>
+                        <li><span class="text-gray-300">/</span></li>
+                        <li><a href="#" class="text-gray-500 hover:text-edu-blue">Categories</a></li>
+                        <li><span class="text-gray-300">/</span></li>
+                        <li><span class="text-edu-blue font-medium">Programming</span></li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Category Header -->
+        <section class="bg-gradient-to-br from-edu-blue to-edu-purple py-20 text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div class="flex items-center space-x-3 mb-6">
+                            <div class="w-16 h-16 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h1 class="font-display text-4xl lg:text-5xl font-bold">Programming</h1>
+                                <p class="text-blue-100 text-lg">Educational Articles</p>
+                            </div>
+                        </div>
+                        
+                        <p class="text-xl text-blue-100 mb-8 leading-relaxed">
+                            Explore comprehensive programming articles, tutorials, and guides. From beginner basics to advanced concepts, enhance your coding skills with expert insights.
+                        </p>
+                        
+                        <div class="grid grid-cols-3 gap-6">
+                            <div class="text-center">
+                                <div class="font-display text-3xl font-bold">48</div>
+                                <div class="text-blue-200 text-sm">Articles</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="font-display text-3xl font-bold">12K+</div>
+                                <div class="text-blue-200 text-sm">Readers</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="font-display text-3xl font-bold">4.8</div>
+                                <div class="text-blue-200 text-sm">Avg Rating</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=400&fit=crop" 
+                             alt="Programming" 
+                             class="rounded-2xl shadow-2xl">
+                        <div class="absolute inset-0 bg-gradient-to-r from-purple-600 to-transparent opacity-30 rounded-2xl"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filters & Sorting -->
+        <section class="bg-white border-b border-gray-200 sticky top-16 z-40">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+                    <div class="flex items-center space-x-4">
+                        <span class="text-gray-700 font-medium">Filter by:</span>
+                        <select class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-edu-blue">
+                            <option>All Levels</option>
+                            <option>Beginner</option>
+                            <option>Intermediate</option>
+                            <option>Advanced</option>
+                        </select>
+                        <select class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-edu-blue">
+                            <option>All Languages</option>
+                            <option>JavaScript</option>
+                            <option>Python</option>
+                            <option>Java</option>
+                            <option>C++</option>
+                        </select>
+                        <select class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-edu-blue">
+                            <option>All Types</option>
+                            <option>Tutorial</option>
+                            <option>Guide</option>
+                            <option>Tips</option>
+                        </select>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <span class="text-gray-700 font-medium">Sort by:</span>
+                        <select class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-edu-blue">
+                            <option>Most Recent</option>
+                            <option>Most Popular</option>
+                            <option>Most Liked</option>
+                            <option>Shortest Read</option>
+                        </select>
+                        <div class="flex border border-gray-300 rounded-lg">
+                            <button class="px-3 py-2 bg-edu-blue text-white rounded-l-lg">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/>
+                                </svg>
+                            </button>
+                            <button class="px-3 py-2 text-gray-600 hover:bg-gray-50 rounded-r-lg">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Articles Grid -->
+        <section class="py-16 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center mb-12">
+                    <h2 class="font-display text-3xl font-bold text-edu-gray">Programming Articles</h2>
+                    <span class="text-gray-600">Showing 1-12 of 48 articles</span>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Article 1 -->
+                    <article class="article-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100 hover:shadow-xl">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=250&fit=crop" 
+                                 alt="Python Programming" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-4 left-4">
+                                <span class="category-tag bg-edu-green text-white">Beginner</span>
+                            </div>
+                            <div class="absolute top-4 right-4">
+                                <span class="category-tag bg-yellow-500 text-white">Python</span>
+                            </div>
+                            <div class="absolute bottom-4 right-4">
+                                <div class="reading-time">6 min read</div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-display text-xl font-bold text-edu-gray mb-3 line-clamp-2">
+                                Python for Beginners: Your First Steps into Programming
+                            </h3>
+                            <p class="text-gray-600 mb-4 line-clamp-3">
+                                Start your programming journey with Python. Learn the basics of syntax, variables, and functions in this comprehensive beginner's guide.
+                            </p>
+                            
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face" 
+                                         alt="Author" 
+                                         class="w-8 h-8 rounded-full">
+                                    <div class="text-sm">
+                                        <div class="font-medium text-edu-gray">Mike Chen</div>
+                                        <div class="text-gray-500">3 days ago</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                    <span class="flex items-center">
+                                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 616 0z"/>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                        </svg>
+                                        2.1k
+                                    </span>
+                                    <span class="flex items-center">
+                                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                        </svg>
+                                        45
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 2 -->
+                    <article class="article-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100 hover:shadow-xl">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&h=250&fit=crop" 
+                                 alt="JavaScript" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-4 left-4">
+                                <span class="category-tag bg-edu-orange text-white">Intermediate</span>
+                            </div>
+                            <div class="absolute top-4 right-4">
+                                <span class="category-tag bg-yellow-500 text-white">JavaScript</span>
+                            </div>
+                            <div class="absolute bottom-4 right-4">
+                                <div class="reading-time">9 min read</div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-display text-xl font-bold text-edu-gray mb-3 line-clamp-2">
+                                Modern JavaScript: ES6+ Features You Should Know
+                            </h3>
+                            <p class="text-gray-600 mb-4 line-clamp-3">
+                                Explore the latest JavaScript features that will make your code more efficient, readable, and maintainable.
+                            </p>
+                            
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=32&h=32&fit=crop&crop=face" 
+                                         alt="Author" 
+                                         class="w-8 h-8 rounded-full">
+                                    <div class="text-sm">
+                                        <div class="font-medium text-edu-gray">James Wilson</div>
+                                        <div class="text-gray-500">1 week ago</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                    <span class="flex items-center">
+                                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 616 0z"/>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                        </svg>
+                                        4.1k
+                                    </span>
+                                    <span class="flex items-center">
+                                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                        </svg>
+                                        89
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 3 -->
+                    <article class="article-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100 hover:shadow-xl">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=400&h=250&fit=crop" 
+                                 alt="React" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-4 left-4">
+                                <span class="category-tag bg-edu-blue text-white">Intermediate</span>
+                            </div>
+                            <div class="absolute top-4 right-4">
+                                <span class="category-tag bg-cyan-500 text-white">React</span>
+                            </div>
+                            <div class="absolute bottom-4 right-4">
+                                <div class="reading-time">12 min read</div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-display text-xl font-bold text-edu-gray mb-3 line-clamp-2">
+                                Getting Started with React: A Beginner's Guide
+                            </h3>
+                            <p class="text-gray-600 mb-4 line-clamp-3">
+                                Learn the fundamentals of React, one of the most popular JavaScript libraries for building user interfaces.
+                            </p>
+                            
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face" 
+                                         alt="Author" 
+                                         class="w-8 h-8 rounded-full">
+                                    <div class="text-sm">
+                                        <div class="font-medium text-edu-gray">Mike Chen</div>
+                                        <div class="text-gray-500">2 weeks ago</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                    <span class="flex items-center">
+                                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 616 0z"/>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                        </svg>
+                                        1.9k
+                                    </span>
+                                    <span class="flex items-center">
+                                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                        </svg>
+                                        45
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 4 -->
+                    <article class="article-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100 hover:shadow-xl">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=250&fit=crop" 
+                                 alt="Node.js" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-4 left-4">
+                                <span class="category-tag bg-red-500 text-white">Advanced</span>
+                            </div>
+                            <div class="absolute top-4 right-4">
+                                <span class="category-tag bg-green-500 text-white">Node.js</span>
+                            </div>
+                            <div class="absolute bottom-4 right-4">
+                                <div class="reading-time">15 min read</div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-display text-xl font-bold text-edu-gray mb-3 line-clamp-2">
+                                Building Scalable APIs with Node.js and Express
+                            </h3>
+                            <p class="text-gray-600 mb-4 line-clamp-3">
+                                Learn how to build robust, scalable APIs using Node.js and Express. Cover best practices and performance optimization.
+                            </p>
+                            
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face" 
+                                         alt="Author" 
+                                         class="w-8 h-8 rounded-full">
+                                    <div class="text-sm">
+                                        <div class="font-medium text-edu-gray">Sarah Johnson</div>
+                                        <div class="text-gray-500">3 weeks ago</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                    <span class="flex items-center">
+                                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 616 0z"/>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                        </svg>
+                                        3.2k
+                                    </span>
+                                    <span class="flex items-center">
+                                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                        </svg>
+                                        78
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 5 -->
+                    <article class="article-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100 hover:shadow-xl">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=400&h=250&fit=crop" 
+                                 alt="Java" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-4 left-4">
+                                <span class="category-tag bg-edu-green text-white">Beginner</span>
+                            </div>
+                            <div class="absolute top-4 right-4">
+                                <span class="category-tag bg-orange-500 text-white">Java</span>
+                            </div>
+                            <div class="absolute bottom-4 right-4">
+                                <div class="reading-time">8 min read</div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-display text-xl font-bold text-edu-gray mb-3 line-clamp-2">
+                                Java Fundamentals: Object-Oriented Programming
+                            </h3>
+                            <p class="text-gray-600 mb-4 line-clamp-3">
+                                Master the core concepts of object-oriented programming in Java. Learn about classes, objects, inheritance, and polymorphism.
+                            </p>
+                            
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=32&h=32&fit=crop&crop=face" 
+                                         alt="Author" 
+                                         class="w-8 h-8 rounded-full">
+                                    <div class="text-sm">
+                                        <div class="font-medium text-edu-gray">Emma Davis</div>
+                                        <div class="text-gray-500">1 month ago</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                    <span class="flex items-center">
+                                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 616 0z"/>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                        </svg>
+                                        2.8k
+                                    </span>
+                                    <span class="flex items-center">
+                                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                        </svg>
+                                        54
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 6 -->
+                    <article class="article-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100 hover:shadow-xl">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=400&h=250&fit=crop" 
+                                 alt="C++" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-4 left-4">
+                                <span class="category-tag bg-red-500 text-white">Advanced</span>
+                            </div>
+                            <div class="absolute top-4 right-4">
+                                <span class="category-tag bg-blue-600 text-white">C++</span>
+                            </div>
+                            <div class="absolute bottom-4 right-4">
+                                <div class="reading-time">20 min read</div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-display text-xl font-bold text-edu-gray mb-3 line-clamp-2">
+                                Advanced C++: Memory Management and Performance
+                            </h3>
+                            <p class="text-gray-600 mb-4 line-clamp-3">
+                                Deep dive into advanced C++ concepts including memory management, smart pointers, and performance optimization techniques.
+                            </p>
+                            
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=32&h=32&fit=crop&crop=face" 
+                                         alt="Author" 
+                                         class="w-8 h-8 rounded-full">
+                                    <div class="text-sm">
+                                        <div class="font-medium text-edu-gray">Alex Thompson</div>
+                                        <div class="text-gray-500">2 months ago</div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-4 text-sm text-gray-500">
+                                    <span class="flex items-center">
+                                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 616 0z"/>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                        </svg>
+                                        1.5k
+                                    </span>
+                                    <span class="flex items-center">
+                                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                        </svg>
+                                        32
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Load More Button -->
+                <div class="text-center mt-12">
+                    <button class="bg-gradient-to-r from-edu-blue to-edu-purple text-white px-8 py-3 rounded-xl font-semibold hover:shadow-lg transition-all">
+                        Load More Articles
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Related Categories -->
+        <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="font-display text-3xl font-bold text-edu-gray mb-8 text-center">
+                    Explore Related Categories
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <a href="#" class="group bg-gradient-to-br from-edu-green to-emerald-600 rounded-2xl p-6 text-white hover:shadow-xl transition-all">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="w-10 h-10 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                                </svg>
+                            </div>
+                            <span class="font-semibold">Data Science</span>
+                        </div>
+                        <p class="text-sm text-green-100">24 articles</p>
+                    </a>
+                    
+                    <a href="#" class="group bg-gradient-to-br from-edu-orange to-orange-600 rounded-2xl p-6 text-white hover:shadow-xl transition-all">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="w-10 h-10 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z"/>
+                                </svg>
+                            </div>
+                            <span class="font-semibold">Design</span>
+                        </div>
+                        <p class="text-sm text-orange-100">18 articles</p>
+                    </a>
+                    
+                    <a href="#" class="group bg-gradient-to-br from-edu-purple to-purple-600 rounded-2xl p-6 text-white hover:shadow-xl transition-all">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="w-10 h-10 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m8 0H8m8 0v2a2 2 0 01-2 2H10a2 2 0 01-2-2V8m8 0V6a2 2 0 00-2-2H10a2 2 0 00-2 2v2"/>
+                                </svg>
+                            </div>
+                            <span class="font-semibold">Career</span>
+                        </div>
+                        <p class="text-sm text-purple-100">15 articles</p>
+                    </a>
+                    
+                    <a href="#" class="group bg-gradient-to-br from-pink-500 to-pink-600 rounded-2xl p-6 text-white hover:shadow-xl transition-all">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="w-10 h-10 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                                </svg>
+                            </div>
+                            <span class="font-semibold">Study Tips</span>
+                        </div>
+                        <p class="text-sm text-pink-100">12 articles</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-edu-gray text-white py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div class="col-span-1 md:col-span-2">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="w-10 h-10 bg-gradient-to-r from-edu-blue to-edu-purple rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                                </svg>
+                            </div>
+                            <span class="font-display text-xl font-bold">EduMentor</span>
+                        </div>
+                        <p class="text-gray-300 mb-4">
+                            Empowering learners worldwide with quality educational content and resources.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold mb-4">Categories</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li><a href="#" class="hover:text-white transition-colors">Programming</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Data Science</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Design</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Career</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold mb-4">Company</h3>
+                        <ul class="space-y-2 text-gray-300">
+                            <li><a href="#" class="hover:text-white transition-colors">About</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Privacy</a></li>
+                            <li><a href="#" class="hover:text-white transition-colors">Terms</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                    <p>&copy; 2024 EduMentor. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div> 

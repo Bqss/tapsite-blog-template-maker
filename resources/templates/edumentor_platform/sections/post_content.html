@@ -1,0 +1,146 @@
+<main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <!-- Breadcrumb -->
+  <nav class="mb-8" aria-label="Breadcrumb">
+      <ol class="flex items-center space-x-2 text-sm text-gray-500">
+          <li><a href="/home" class="hover:text-edu-blue transition-colors">Home</a></li>
+          <li><span class="mx-2">›</span></li>
+            <li><a href="/category/{{it.post.category}}" class="hover:text-edu-blue transition-colors">{{it.post.category}}</a></li>
+          <li><span class="mx-2">›</span></li>
+            <li class="text-gray-700">{{it.post.title}}</li>
+      </ol>
+  </nav>
+
+    <!-- Article -->
+  <article class="bg-white rounded-lg shadow-sm overflow-hidden">
+      <!-- Featured Image -->
+        {{@if(it.post.featured_image)}}
+        <img src="{{it.post.featured_image}}" alt="{{it.post.title}}" class="w-full aspect-video object-cover" />
+        {{/if}}
+
+      <div class="p-8">
+            <!-- Title & Meta -->
+          <div class="mb-8">
+              <div class="flex items-center gap-2 mb-4">
+                    {{@if(it.post.category)}}
+                    <span class="bg-edu-blue text-white px-3 py-1 rounded-full text-sm font-medium">{{it.post.category}}</span>
+                    {{/if}}
+                  <span class="text-gray-500 text-sm">•</span>
+                    <span class="text-gray-500 text-sm">{{it.post.published_at}}</span>
+              </div>
+              
+                <h1 class="text-3xl md:text-4xl font-bold text-edu-gray mb-4 font-display">{{it.post.title}}</h1>
+              
+              <div class="flex items-center space-x-4 mb-6">
+                  <div class="flex items-center space-x-2">
+                        {{@if(it.author.avatar)}}
+                        <img src="{{it.author.avatar}}" alt="{{it.author.name}}" class="w-10 h-10 rounded-full object-cover" />
+                        {{#else}}
+                      <div class="w-10 h-10 bg-edu-blue rounded-full flex items-center justify-center">
+                            <span class="text-white font-bold">{{it.author.name.charAt(0).toUpperCase()}}</span>
+                      </div>
+                        {{/if}}
+                      <div>
+                            <p class="text-gray-900 font-medium">{{it.author.name}}</p>
+                            <p class="text-gray-500 text-sm">{{it.author.role}}</p>
+                      </div>
+                  </div>
+                  <div class="flex items-center space-x-4 text-sm text-gray-500">
+                      <span class="flex items-center gap-1">
+                          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                            {{it.post.read_time}} min read
+                      </span>
+                      <span class="flex items-center gap-1">
+                          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                          </svg>
+                            {{it.post.view_count}} views
+                      </span>
+                  </div>
+              </div>
+          </div>
+
+          <!-- Article Body -->
+            <div class="ProseMirror focus:outline-none max-w-full space-y-4 leading-relaxed">{{* it.post.content}}</div>
+
+          <!-- Tags -->
+            {{@if(it.post.tags && it.post.tags.length)}}
+          <div class="border-t border-gray-200 pt-6 mt-8">
+              <h3 class="text-lg font-semibold text-gray-900 mb-3">Tags:</h3>
+              <div class="flex flex-wrap gap-2">
+                    {{@each(it.post.tags)=>tag}}
+                    <a href="/tag/{{tag}}" class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-gray-200 transition-colors">#{{tag}}</a>
+                    {{/each}}
+              </div>
+          </div>
+            {{/if}}
+      </div>
+  </article>
+
+  <!-- Related Posts -->
+  <section class="mt-12">
+      <h2 class="text-2xl font-bold text-edu-gray mb-6">Artikel Terkait</h2>
+        <div id="related-loading" class="text-center py-8 text-gray-500">Loading...</div>
+        <div id="related-error" class="hidden text-center py-8 text-red-500">Failed to load related posts.</div>
+        <div id="related-empty" class="hidden text-center py-8 text-gray-500">No related posts found.</div>
+        <div id="related-posts-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 hidden"></div>
+    </section>
+</main>
+
+<script>
+(function () {
+    const API_URL = '/api/blog/posts/related/{{it.post.slug}}?limit=6';
+    const loadingEl = document.getElementById('related-loading');
+    const errorEl = document.getElementById('related-error');
+    const emptyEl = document.getElementById('related-empty');
+    const gridEl = document.getElementById('related-posts-grid');
+
+    function showState(el) {
+        [loadingEl, errorEl, emptyEl, gridEl].forEach(e => {
+            if (e === el) {
+                e.classList.remove('hidden');
+            } else {
+                e.classList.add('hidden');
+            }
+        });
+    }
+
+    function createCardHTML(post) {
+        return `
+            <a href="/post/${post.slug}" class="article-card bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-all duration-300">
+                ${post.featured_image ? `<img src="${post.featured_image}" alt="${post.title}" class="w-full h-48 object-cover">` : ''}
+              <div class="p-4">
+                    <h3 class="font-semibold text-gray-900 mb-2 line-clamp-2">${post.title}</h3>
+                    ${post.excerpt ? `<p class="text-sm text-gray-600 mb-3 line-clamp-3">${post.excerpt}</p>` : ''}
+                  <div class="flex items-center justify-between text-xs text-gray-500">
+                        <span>${post.author || ''}</span>
+                        <span>${post.read_time || 0} min read</span>
+                  </div>
+              </div>
+            </a>
+        `;
+    }
+
+    async function loadRelated() {
+        showState(loadingEl);
+        try {
+            const res = await fetch(API_URL);
+            if (!res.ok) throw new Error('Network error');
+            const data = await res.json();
+            if (!data || data.length === 0) {
+                showState(emptyEl);
+                return;
+            }
+            gridEl.innerHTML = data.map(createCardHTML).join('');
+            showState(gridEl);
+        } catch (err) {
+            console.error(err);
+            showState(errorEl);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadRelated);
+})();
+</script>

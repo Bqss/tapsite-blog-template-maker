@@ -1,0 +1,463 @@
+<!-- Styles and Scripts -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'edu-blue': '#2563EB',
+                    'edu-light-blue': '#3B82F6',
+                    'edu-green': '#10B981',
+                    'edu-gray': '#1E293B',
+                    'edu-light': '#F8FAFC'
+                },
+                fontFamily: {
+                    'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    'display': ['Poppins', 'system-ui', 'sans-serif']
+                }
+            }
+        }
+    }
+</script>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+    
+    .article-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    
+    .hero-gradient {
+        background: linear-gradient(135deg, #2563EB 0%, #3B82F6 50%, #10B981 100%);
+    }
+    
+    .feature-icon {
+        background: linear-gradient(135deg, #3B82F6, #10B981);
+    }
+    
+    .category-card {
+        transition: all 0.3s ease;
+    }
+    
+    .category-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<div class="bg-edu-light min-h-screen font-sans text-edu-gray">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-edu-blue rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                        </svg>
+                    </div>
+                    <a href="/home" class="font-display text-xl font-bold text-edu-gray">EduBlog Platform</a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/home" class="text-edu-blue font-medium border-b-2 border-edu-blue pb-1">Home</a>
+                    <a href="/posts" class="text-gray-600 hover:text-edu-blue transition-colors font-medium">Articles</a>
+                    <a href="/category/programming" class="text-gray-600 hover:text-edu-blue transition-colors font-medium">Programming</a>
+                    <a href="/category/study-tips" class="text-gray-600 hover:text-edu-blue transition-colors font-medium">Study Tips</a>
+                    <a href="/category/career" class="text-gray-600 hover:text-edu-blue transition-colors font-medium">Career</a>
+                    <a href="/search" class="text-gray-600 hover:text-edu-blue transition-colors font-medium">Search</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <a href="/search" class="text-gray-600 hover:text-edu-blue transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                    </a>
+                    <button class="bg-edu-blue text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors">
+                        Subscribe
+                    </button>
+                    <button class="md:hidden text-gray-600 hover:text-edu-blue transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient py-20 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h1 class="font-display text-4xl lg:text-6xl font-bold mb-6 leading-tight">
+                        Belajar, Berkembang, dan Berbagi Pengetahuan
+                    </h1>
+                    <p class="text-xl text-blue-100 mb-8 leading-relaxed">
+                        Platform blog pendidikan untuk berbagi tips belajar, panduan karir, dan artikel edukatif yang membantu perkembangan akademik dan profesional Anda.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="/posts" class="bg-white text-edu-blue px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 transition-colors text-center">
+                            Mulai Membaca
+                        </a>
+                        <a href="/category/programming" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-edu-blue transition-colors text-center">
+                            Jelajahi Kategori
+                        </a>
+                    </div>
+                    
+                    <!-- Stats -->
+                    <div class="grid grid-cols-3 gap-8 mt-12">
+                        <div class="text-center">
+                            <div class="font-display text-3xl font-bold">100+</div>
+                            <div class="text-blue-200 text-sm">Artikel Edukatif</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="font-display text-3xl font-bold">50K+</div>
+                            <div class="text-blue-200 text-sm">Pembaca Aktif</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="font-display text-3xl font-bold">15+</div>
+                            <div class="text-blue-200 text-sm">Kategori</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <div class="aspect-video bg-gradient-to-br from-blue-500 to-green-500 rounded-2xl flex items-center justify-center text-white">
+                        <div class="text-center">
+                            <div class="text-6xl mb-4">🎓</div>
+                            <p class="text-lg font-medium">Educational Learning</p>
+                        </div>
+                    </div>
+                    <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-lg">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-edu-green rounded-full flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-edu-gray">Artikel Terbaru!</div>
+                                <div class="text-gray-500 text-sm">Tips Belajar Programming</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Articles -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-display text-3xl lg:text-4xl font-bold text-edu-gray mb-4">Artikel Terpopuler</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Artikel pilihan yang paling banyak dibaca dan bermanfaat untuk pengembangan diri
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Article 1 -->
+                <article class="article-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100 hover:shadow-xl hover:-translate-y-1">
+                    <div class="relative">
+                        <div class="aspect-video bg-gradient-to-br from-edu-blue to-edu-green flex items-center justify-center">
+                            <div class="text-center text-white">
+                                <div class="text-4xl mb-2">💻</div>
+                                <p class="text-sm opacity-80">Programming</p>
+                            </div>
+                        </div>
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-edu-blue text-white px-3 py-1 rounded-full text-sm font-medium">Programming</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center space-x-2 mb-3">
+                            <div class="w-8 h-8 bg-edu-blue rounded-full flex items-center justify-center">
+                                <span class="text-white text-xs font-bold">S</span>
+                            </div>
+                            <span class="text-gray-600 text-sm">Dr. Sarah Chen</span>
+                            <span class="text-gray-400 text-sm">•</span>
+                            <span class="text-gray-500 text-sm">8 min read</span>
+                        </div>
+                        <h3 class="font-display text-xl font-semibold text-edu-gray mb-3 line-clamp-2">
+                            <a href="/post/tips-efektif-belajar-programming-pemula" class="hover:text-edu-blue transition-colors">
+                                10 Tips Efektif untuk Belajar Programming Bagi Pemula
+                            </a>
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                            Panduan lengkap untuk memulai perjalanan programming dengan tips praktis dan strategi belajar yang terbukti efektif.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Dec 15, 2024</span>
+                            <a href="/post/tips-efektif-belajar-programming-pemula" class="text-edu-blue font-medium hover:text-edu-light-blue transition-colors">
+                                Baca Selengkapnya →
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="article-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100 hover:shadow-xl hover:-translate-y-1">
+                    <div class="relative">
+                        <div class="aspect-video bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                            <div class="text-center text-white">
+                                <div class="text-4xl mb-2">📚</div>
+                                <p class="text-sm opacity-80">Study Tips</p>
+                            </div>
+                        </div>
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-purple-500 text-white px-3 py-1 rounded-full text-sm font-medium">Study Tips</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center space-x-2 mb-3">
+                            <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center">
+                                <span class="text-white text-xs font-bold">M</span>
+                            </div>
+                            <span class="text-gray-600 text-sm">Prof. Michael Rodriguez</span>
+                            <span class="text-gray-400 text-sm">•</span>
+                            <span class="text-gray-500 text-sm">6 min read</span>
+                        </div>
+                        <h3 class="font-display text-xl font-semibold text-edu-gray mb-3 line-clamp-2">
+                            <a href="/post/strategi-mengatasi-procrastination-belajar-online" class="hover:text-edu-blue transition-colors">
+                                Strategi Mengatasi Procrastination dalam Belajar Online
+                            </a>
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                            Cara ampuh mengatasi kebiasaan menunda-nunda saat belajar online dan membangun disiplin diri yang kuat.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Dec 14, 2024</span>
+                            <a href="/post/strategi-mengatasi-procrastination-belajar-online" class="text-edu-blue font-medium hover:text-edu-light-blue transition-colors">
+                                Baca Selengkapnya →
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="article-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100 hover:shadow-xl hover:-translate-y-1">
+                    <div class="relative">
+                        <div class="aspect-video bg-gradient-to-br from-green-500 to-teal-500 flex items-center justify-center">
+                            <div class="text-center text-white">
+                                <div class="text-4xl mb-2">💼</div>
+                                <p class="text-sm opacity-80">Career</p>
+                            </div>
+                        </div>
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium">Career</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center space-x-2 mb-3">
+                            <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                                <span class="text-white text-xs font-bold">L</span>
+                            </div>
+                            <span class="text-gray-600 text-sm">Lisa Thompson</span>
+                            <span class="text-gray-400 text-sm">•</span>
+                            <span class="text-gray-500 text-sm">12 min read</span>
+                        </div>
+                        <h3 class="font-display text-xl font-semibold text-edu-gray mb-3 line-clamp-2">
+                            <a href="/post/membangun-portofolio-digital-fresh-graduate" class="hover:text-edu-blue transition-colors">
+                                Membangun Portofolio Digital yang Menarik untuk Fresh Graduate
+                            </a>
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                            Panduan step-by-step membuat portofolio digital yang eye-catching dan profesional untuk meningkatkan peluang karir.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">Dec 13, 2024</span>
+                            <a href="/post/membangun-portofolio-digital-fresh-graduate" class="text-edu-blue font-medium hover:text-edu-light-blue transition-colors">
+                                Baca Selengkapnya →
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-display text-3xl lg:text-4xl font-bold text-edu-gray mb-4">Jelajahi Kategori</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Temukan artikel berdasarkan minat dan kebutuhan belajar Anda
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <a href="/category/programming" class="category-card bg-white rounded-xl p-6 shadow-lg hover:shadow-xl border border-gray-100">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center">
+                            <span class="text-white text-xl">💻</span>
+                        </div>
+                        <div>
+                            <h3 class="font-display text-lg font-semibold text-edu-gray">Programming</h3>
+                            <p class="text-gray-600 text-sm">15 articles</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mt-3 text-sm">Tips, tutorial, dan panduan programming untuk semua level</p>
+                </a>
+                
+                <a href="/category/study-tips" class="category-card bg-white rounded-xl p-6 shadow-lg hover:shadow-xl border border-gray-100">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center">
+                            <span class="text-white text-xl">📚</span>
+                        </div>
+                        <div>
+                            <h3 class="font-display text-lg font-semibold text-edu-gray">Study Tips</h3>
+                            <p class="text-gray-600 text-sm">12 articles</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mt-3 text-sm">Strategi dan teknik belajar efektif untuk akademik</p>
+                </a>
+                
+                <a href="/category/career" class="category-card bg-white rounded-xl p-6 shadow-lg hover:shadow-xl border border-gray-100">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center">
+                            <span class="text-white text-xl">💼</span>
+                        </div>
+                        <div>
+                            <h3 class="font-display text-lg font-semibold text-edu-gray">Career</h3>
+                            <p class="text-gray-600 text-sm">10 articles</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mt-3 text-sm">Panduan karir, tips interview, dan pengembangan profesional</p>
+                </a>
+                
+                <a href="/category/productivity" class="category-card bg-white rounded-xl p-6 shadow-lg hover:shadow-xl border border-gray-100">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-yellow-500 rounded-lg flex items-center justify-center">
+                            <span class="text-white text-xl">⚡</span>
+                        </div>
+                        <div>
+                            <h3 class="font-display text-lg font-semibold text-edu-gray">Productivity</h3>
+                            <p class="text-gray-600 text-sm">8 articles</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mt-3 text-sm">Tips produktivitas dan manajemen waktu untuk pelajar</p>
+                </a>
+                
+                <a href="/category/technology" class="category-card bg-white rounded-xl p-6 shadow-lg hover:shadow-xl border border-gray-100">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-red-500 rounded-lg flex items-center justify-center">
+                            <span class="text-white text-xl">🚀</span>
+                        </div>
+                        <div>
+                            <h3 class="font-display text-lg font-semibold text-edu-gray">Technology</h3>
+                            <p class="text-gray-600 text-sm">14 articles</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mt-3 text-sm">Tren teknologi terbaru dan analisis industri</p>
+                </a>
+                
+                <a href="/category/design" class="category-card bg-white rounded-xl p-6 shadow-lg hover:shadow-xl border border-gray-100">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-indigo-500 rounded-lg flex items-center justify-center">
+                            <span class="text-white text-xl">🎨</span>
+                        </div>
+                        <div>
+                            <h3 class="font-display text-lg font-semibold text-edu-gray">Design</h3>
+                            <p class="text-gray-600 text-sm">9 articles</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mt-3 text-sm">Tutorial design, UI/UX, dan creative skills</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-16 bg-edu-blue text-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="font-display text-3xl lg:text-4xl font-bold mb-4">
+                Dapatkan Tips Belajar Terbaru
+            </h2>
+            <p class="text-xl text-blue-100 mb-8">
+                Berlangganan newsletter kami untuk mendapatkan artikel edukatif dan tips belajar langsung di inbox Anda.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                <input type="email" placeholder="Masukkan email Anda" class="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                <button class="bg-edu-green text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-600 transition-colors">
+                    Subscribe
+                </button>
+            </div>
+            <p class="text-blue-200 text-sm mt-4">
+                Gratis, tanpa spam, dan bisa unsubscribe kapan saja.
+            </p>
+        </div>
+    </section>
+</div>
+
+<!-- Footer -->
+<footer class="bg-edu-gray text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="col-span-1 md:col-span-2">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 bg-edu-blue rounded-lg flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-display text-xl font-bold">EduBlog Platform</h3>
+                </div>
+                <p class="text-gray-300 mb-6 max-w-md">
+                    Platform blog pendidikan untuk berbagi pengetahuan, tips belajar, dan artikel edukatif
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.097.118.112.221.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div>
+                <h4 class="font-semibold text-lg mb-4">Kategori</h4>
+                <ul class="space-y-2">
+                    <li><a href="/category/programming" class="text-gray-300 hover:text-white transition-colors">Programming</a></li>
+                    <li><a href="/category/study-tips" class="text-gray-300 hover:text-white transition-colors">Study Tips</a></li>
+                    <li><a href="/category/career" class="text-gray-300 hover:text-white transition-colors">Career</a></li>
+                    <li><a href="/category/productivity" class="text-gray-300 hover:text-white transition-colors">Productivity</a></li>
+                    <li><a href="/category/technology" class="text-gray-300 hover:text-white transition-colors">Technology</a></li>
+                    <li><a href="/category/design" class="text-gray-300 hover:text-white transition-colors">Design</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="font-semibold text-lg mb-4">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="/posts" class="text-gray-300 hover:text-white transition-colors">All Articles</a></li>
+                    <li><a href="/search" class="text-gray-300 hover:text-white transition-colors">Search</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors">About</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Contact</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Privacy Policy</a></li>
+                    <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="border-t border-gray-700 mt-12 pt-8 text-center">
+            <p class="text-gray-400">
+                &copy; 2024 EduBlog Platform. All rights reserved. Made with ❤️ for education.
+            </p>
+        </div>
+    </div>
+</footer> 

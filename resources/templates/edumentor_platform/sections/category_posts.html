@@ -1,0 +1,222 @@
+<!-- Category Posts Section -->
+<section class="bg-gray-50">
+  <!-- Category Header -->
+  <section class="bg-gradient-to-br from-edu-blue to-edu-purple py-20 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="flex items-center space-x-3 mb-6">
+            <div class="w-16 h-16 bg-white bg-opacity-20 rounded-2xl flex items-center justify-center">
+              <span id="category-icon" class="text-4xl">📚</span>
+            </div>
+            <div>
+              <h1 id="category-name" class="font-display text-4xl lg:text-5xl font-bold">Loading...</h1>
+              <p class="text-blue-100 text-lg" id="category-label">Educational Articles</p>
+            </div>
+          </div>
+          <p id="category-description" class="text-xl text-blue-100 mb-8 leading-relaxed">Loading description...</p>
+          <div class="grid grid-cols-3 gap-6 text-center" id="category-stats">
+            <!-- Stats dynamically filled -->
+          </div>
+        </div>
+        <div class="relative hidden lg:block">
+          <img id="category-image" src="" alt="category" class="rounded-2xl shadow-2xl h-80 w-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-r from-purple-600 to-transparent opacity-30 rounded-2xl"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filters (static UI for now) -->
+  <section class="bg-white border-b border-gray-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+        <div class="flex items-center space-x-4">
+          <span class="text-gray-700 font-medium">Sort by:</span>
+          <select class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-edu-blue">
+            <option>Most Recent</option>
+            <option>Most Popular</option>
+            <option>Most Liked</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Articles List -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center mb-12">
+        <h2 class="font-display text-3xl font-bold text-edu-gray" id="articles-heading">Articles</h2>
+        <span id="articles-count" class="text-gray-600"></span>
+      </div>
+
+      <!-- States -->
+      <div id="loading-state" class="text-center py-12">
+        <div class="inline-block p-4 bg-edu-light rounded-full mb-4 animate-pulse">
+          <span class="text-3xl">🔄</span>
+        </div>
+        <h2 class="text-2xl font-bold text-edu-gray mb-2">Loading Articles</h2>
+        <p class="text-gray-600">Please wait while we fetch the articles...</p>
+      </div>
+
+      <div id="articles-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 hidden"></div>
+
+      <div id="no-articles-state" class="text-center py-12 hidden">
+        <div class="inline-block p-4 bg-edu-light rounded-full mb-4">
+          <span class="text-4xl">😔</span>
+        </div>
+        <h2 class="text-2xl font-bold text-edu-gray mb-2">No Articles Found</h2>
+        <p class="text-gray-600 mb-8">We couldn't find any articles in this category</p>
+        <a href="/" class="text-edu-blue hover:text-edu-light-blue font-medium">← Back to Home</a>
+      </div>
+
+      <div id="error-state" class="text-center py-12 hidden">
+        <div class="inline-block p-4 bg-red-50 rounded-full mb-4">
+          <span class="text-4xl">⚠️</span>
+        </div>
+        <h2 class="text-2xl font-bold text-edu-gray mb-2">Error Loading Articles</h2>
+        <p class="text-gray-600 mb-8">Something went wrong. Please try again later.</p>
+        <button onclick="fetchCategoryArticles()" class="text-edu-blue hover:text-edu-light-blue font-medium">Try Again</button>
+      </div>
+
+      <!-- Pagination -->
+      <div id="pagination" class="mt-12 flex justify-center hidden"></div>
+    </div>
+  </section>
+</section>
+
+<script>
+(function() {
+  // Utility: slug from URL
+  function getSlug() {
+    const parts = window.location.pathname.split('/');
+    const idx = parts.indexOf('category');
+    return idx !== -1 && parts[idx + 1] ? decodeURIComponent(parts[idx + 1]) : null;
+  }
+
+  // State toggler
+  function show(state) {
+    const states = ['loading-state', 'articles-grid', 'no-articles-state', 'error-state', 'pagination'];
+    states.forEach(id => document.getElementById(id).classList.toggle('hidden', id !== state));
+  }
+
+  // Build article card
+  function articleCardHTML(post) {
+    return `
+      <article class="article-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100 hover:shadow-xl hover:-translate-y-1">
+        <div class="relative">
+          <img src="${post.featured_image || '/placeholder.jpg'}" alt="${post.title}" class="w-full h-48 object-cover" />
+          <div class="absolute top-4 left-4">
+            <span class="category-tag bg-edu-green text-white">${post.level || 'Beginner'}</span>
+          </div>
+          <div class="absolute top-4 right-4">
+            <span class="category-tag bg-yellow-500 text-white">${post.language || ''}</span>
+          </div>
+          <div class="absolute bottom-4 right-4">
+            <div class="reading-time">${post.read_time || 0} min read</div>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="font-display text-xl font-bold text-edu-gray mb-3 line-clamp-2">
+            <a href="/post/${post.slug}" class="hover:text-edu-blue transition-colors">${post.title}</a>
+          </h3>
+          <p class="text-gray-600 mb-4 line-clamp-3">${post.excerpt}</p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+              <img src="${post.author_avatar || 'https://via.placeholder.com/32'}" alt="author" class="w-8 h-8 rounded-full" />
+              <div class="text-sm">
+                <div class="font-medium text-edu-gray">${post.author}</div>
+                <div class="text-gray-500">${new Date(post.published_at).toLocaleDateString()}</div>
+              </div>
+            </div>
+            <div class="flex items-center space-x-4 text-sm text-gray-500">
+              <span class="flex items-center">
+                ⭐ ${post.rating || 4.5}
+              </span>
+            </div>
+          </div>
+        </div>
+      </article>`;
+  }
+
+  // Build pagination (simple)
+  function paginationHTML(current, total, slug) {
+    let html = '<nav class="flex items-center space-x-2">';
+    if (current > 1) {
+      html += `<a href="/category/${slug}?page=${current-1}" class="px-4 py-2 bg-edu-light-blue text-white rounded-lg hover:bg-edu-blue transition-colors font-medium">← Prev</a>`;
+    }
+    for (let i = 1; i <= total; i++) {
+      html += i === current
+        ? `<span class="px-4 py-2 bg-edu-blue text-white rounded-lg font-medium">${i}</span>`
+        : `<a href="/category/${slug}?page=${i}" class="px-4 py-2 bg-white border border-gray-200 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors font-medium">${i}</a>`;
+    }
+    if (current < total) {
+      html += `<a href="/category/${slug}?page=${current+1}" class="px-4 py-2 bg-edu-light-blue text-white rounded-lg hover:bg-edu-blue transition-colors font-medium">Next →</a>`;
+    }
+    html += '</nav>';
+    return html;
+  }
+
+  async function fetchCategoryArticles(page = 1) {
+    const slug = getSlug();
+    if (!slug) return;
+    show('loading-state');
+    try {
+      // Fetch categories
+      const catRes = await fetch('/api/blog/categories');
+      if (!catRes.ok) throw new Error('Categories error');
+      const categories = await catRes.json();
+      const current = categories.find(c => c.name.toLowerCase() === slug.toLowerCase());
+      if (!current) throw new Error('Category not found');
+
+      // Update header info
+      document.getElementById('category-name').textContent = current.name;
+      document.getElementById('category-label').textContent = current.name;
+      document.getElementById('articles-heading').textContent = `${current.name} Articles`;
+      document.getElementById('category-description').textContent = current.description || '';
+      document.getElementById('category-icon').textContent = current.icon || '📚';
+      document.getElementById('category-image').src = current.cover || 'https://via.placeholder.com/600x400';
+
+      // Stats
+      document.getElementById('category-stats').innerHTML = `
+        <div><div class="font-display text-3xl font-bold">${current.posts}</div><div class="text-blue-200 text-sm">Articles</div></div>
+        <div><div class="font-display text-3xl font-bold">${current.readers || '—'}</div><div class="text-blue-200 text-sm">Readers</div></div>
+        <div><div class="font-display text-3xl font-bold">${current.rating || '—'}</div><div class="text-blue-200 text-sm">Avg Rating</div></div>`;
+
+      // Fetch posts
+      const postsRes = await fetch(`/api/blog/posts/category/${encodeURIComponent(slug)}?page=${page}&limit=6`);
+      if (!postsRes.ok) throw new Error('Posts error');
+      const data = await postsRes.json();
+      const posts = data.posts || data; // handle array or paginated
+
+      if (!posts || posts.length === 0) {
+        show('no-articles-state');
+        return;
+      }
+
+      // Render grid
+      document.getElementById('articles-grid').innerHTML = posts.map(articleCardHTML).join('');
+      document.getElementById('articles-count').textContent = `Showing ${(page-1)*6 + 1}-${(page-1)*6 + posts.length} of ${data.pagination ? data.pagination.total_posts : posts.length} articles`;
+
+      // Pagination
+      if (data.pagination && data.pagination.total_pages > 1) {
+        document.getElementById('pagination').innerHTML = paginationHTML(data.pagination.current_page, data.pagination.total_pages, slug);
+        document.getElementById('pagination').classList.remove('hidden');
+      } else {
+        document.getElementById('pagination').classList.add('hidden');
+      }
+
+      show('articles-grid');
+    } catch (e) {
+      console.error(e);
+      show('error-state');
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const page = parseInt(new URLSearchParams(window.location.search).get('page') || '1');
+    fetchCategoryArticles(page);
+  });
+})();
+</script> 
