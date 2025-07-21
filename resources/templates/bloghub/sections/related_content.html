@@ -1,0 +1,170 @@
+<!-- Related Content Section -->
+<section class="py-16 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">You Might Also Like</h2>
+      <p class="text-xl text-gray-600">Discover more content related to this topic</p>
+    </div>
+    
+    <!-- Loading State -->
+    <div id="related-posts-loading" class="py-12 text-center">
+      <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mb-4"></div>
+      <p class="text-gray-600">Loading related posts...</p>
+    </div>
+    
+    <!-- Error State -->
+    <div id="related-posts-error" class="py-12 text-center hidden">
+      <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-100 text-red-600 mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        </svg>
+      </div>
+      <p class="text-gray-800 font-medium mb-2">Failed to load related posts</p>
+      <p class="text-gray-600 mb-6">Please try again later</p>
+      <button id="retry-related-posts" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+        </svg>
+        Try Again
+      </button>
+    </div>
+    
+    <!-- Empty State -->
+    <div id="related-posts-empty" class="py-12 text-center hidden">
+      <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gray-100 text-gray-400 mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+      </div>
+      <p class="text-gray-800 font-medium mb-2">No related posts found</p>
+      <p class="text-gray-600">Check out our other content instead</p>
+    </div>
+    
+    <!-- Posts Grid -->
+    <div id="related-posts-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 hidden"></div>
+    
+    <!-- View All Posts Button -->
+    <div class="text-center mt-12">
+      <a href="/posts" class="inline-flex items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors">
+        View All Posts
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Get DOM elements
+    const loadingEl = document.getElementById('related-posts-loading');
+    const errorEl = document.getElementById('related-posts-error');
+    const emptyEl = document.getElementById('related-posts-empty');
+    const gridEl = document.getElementById('related-posts-grid');
+    const retryBtn = document.getElementById('retry-related-posts');
+    
+    // Function to get post slug from URL
+    function getPostSlug() {
+      const pathParts = window.location.pathname.split('/');
+      const postIndex = pathParts.indexOf('post');
+      return postIndex !== -1 && pathParts[postIndex + 1]
+        ? decodeURIComponent(pathParts[postIndex + 1])
+        : null;
+    }
+    
+    // Function to format date
+    function formatDate(dateString) {
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      return new Date(dateString).toLocaleDateString('en-US', options);
+    }
+    
+    // Function to create post HTML
+    function createPostHTML(post) {
+      return `
+        <article class="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow border border-gray-100 group">
+          <div class="aspect-w-16 aspect-h-9 bg-gradient-to-br from-blue-100 to-indigo-100">
+            ${post.featured_image ? `
+              <img src="${post.featured_image}" alt="${post.title}" class="w-full h-48 object-cover">
+            ` : `
+              <div class="w-full h-48 flex items-center justify-center bg-gradient-to-br from-blue-100 to-indigo-100">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                </svg>
+              </div>
+            `}
+          </div>
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-4">
+              <a href="/category/${post.category}" class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
+                ${post.category}
+              </a>
+              <span class="text-gray-500 text-sm">${post.read_time} min read</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+              <a href="/post/${post.slug}">${post.title}</a>
+            </h3>
+            <p class="text-gray-600 mb-4 line-clamp-2">${post.excerpt}</p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-3">
+                <div class="text-sm">
+                  <p class="text-gray-900 font-medium">${post.author}</p>
+                  <p class="text-gray-500">${formatDate(post.published_at)}</p>
+                </div>
+              </div>
+              <a href="/post/${post.slug}" class="text-blue-600 hover:text-blue-700 font-medium text-sm">Read more →</a>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+    
+    // Function to show/hide states
+    function showState(state) {
+      loadingEl.classList.toggle('hidden', state !== 'loading');
+      errorEl.classList.toggle('hidden', state !== 'error');
+      emptyEl.classList.toggle('hidden', state !== 'empty');
+      gridEl.classList.toggle('hidden', state !== 'grid');
+    }
+    
+    // Function to load related posts
+    function loadRelatedPosts() {
+      const slug = getPostSlug();
+      if (!slug) {
+        showState('empty');
+        return;
+      }
+      
+      showState('loading');
+      
+      fetch(`/api/blog/posts/related/${encodeURIComponent(slug)}?limit=3`)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Failed to fetch related posts');
+          }
+          return response.json();
+        })
+        .then(posts => {
+          if (!Array.isArray(posts) || posts.length === 0) {
+            showState('empty');
+            return;
+          }
+          
+          gridEl.innerHTML = posts.map(post => createPostHTML(post)).join('');
+          showState('grid');
+        })
+        .catch(error => {
+          console.error('Error loading related posts:', error);
+          showState('error');
+        });
+    }
+    
+    // Add event listener for retry button
+    if (retryBtn) {
+      retryBtn.addEventListener('click', loadRelatedPosts);
+    }
+    
+    // Load related posts when page loads
+    loadRelatedPosts();
+  });
+</script>
