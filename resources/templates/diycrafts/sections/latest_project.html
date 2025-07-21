@@ -1,0 +1,75 @@
+<!-- Pinterest-Style Project Gallery -->
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold text-gray-900 mb-4">Latest Craft Projects</h2>
+      <p class="text-gray-600">Get inspired by our community's amazing creations</p>
+    </div>
+    
+    <!-- Masonry-style Grid -->
+    <div id="projects-grid" class="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6">
+      <!-- Projects will be dynamically inserted here -->
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      // Get current page from URL
+      function getCurrentPage() {
+        const params = new URLSearchParams(window.location.search);
+        return parseInt(params.get('page')) || 1;
+      }
+
+      // Function to create project HTML
+      function createProjectHTML(project) {
+        return `
+          <div class="break-inside-avoid bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+            <div class="aspect-square bg-gradient-to-br from-${project.color || 'orange'}-200 to-${project.color_secondary || 'yellow'}-200 relative flex items-center justify-center">
+              <div class="text-center">
+                <div class="text-5xl mb-2">${project.icon || '🎨'}</div>
+                <div class="text-${project.color || 'orange'}-800 font-medium">${project.category}</div>
+              </div>
+              ${project.likes > 0 ? `
+              <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm rounded-full p-2">
+                <span class="text-red-500">❤️</span>
+              </div>
+              ` : ''}
+            </div>
+            <div class="p-4">
+              <h3 class="font-bold text-gray-900 mb-2">${project.title}</h3>
+              <p class="text-gray-600 text-sm mb-3">${project.excerpt}</p>
+              <div class="flex items-center justify-between text-xs text-gray-500">
+                <span>${project.author}</span>
+                <span>${new Date(project.published_at).toLocaleDateString()}</span>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      // Function to load projects
+      async function loadProjects() {
+        try {
+          // Fetch posts with category and pagination
+          const page = getCurrentPage();
+          const response = await fetch(`/api/blog/posts?page=${page}&limit=12`);
+          if (!response.ok) throw new Error('Failed to fetch projects');
+
+          const data = await response.json();
+
+          if (data.posts && data.posts.length > 0) {
+            // Render projects
+            const gridEl = document.getElementById('projects-grid');
+            gridEl.innerHTML = data.posts.map(project => createProjectHTML(project)).join('');
+          }
+
+        } catch (error) {
+          console.error('Error loading projects:', error);
+        }
+      }
+
+      // Load projects when page loads
+      document.addEventListener('DOMContentLoaded', loadProjects);
+    })();
+  </script>
+</section> 

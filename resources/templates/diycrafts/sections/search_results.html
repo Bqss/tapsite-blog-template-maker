@@ -1,0 +1,344 @@
+<!-- Search Header -->
+<section class="bg-gradient-to-br from-pink-50 via-purple-50 to-yellow-50 py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Breadcrumb -->
+    <div class="flex items-center space-x-2 text-sm text-gray-600 mb-8">
+      <a href="/" class="hover:text-pink-600 transition-colors">Home</a>
+      <span>→</span>
+      <span class="text-pink-600">Search Results</span>
+    </div>
+
+    <div class="text-center">
+      <!-- Search Icon -->
+      <div class="inline-flex items-center space-x-3 bg-white/70 backdrop-blur-sm px-8 py-4 rounded-3xl mb-8 shadow-lg">
+        <div
+          class="w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center">
+          <span class="text-white text-2xl">🔍</span>
+        </div>
+        <div class="text-left">
+          <div class="text-2xl font-bold text-gray-900">Search Results</div>
+          <div class="text-pink-600 font-medium" id="search-query">for "macrame"</div>
+        </div>
+      </div>
+
+      <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+        Found
+        <span class="text-pink-500" id="total-tutorials">12</span>
+        <br>
+        <span class="text-purple-500">Tutorials</span>
+      </h1>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Discover amazing macrame projects from wall hangings to plant holders
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Loading State -->
+<div id="loading-state" class="text-center py-12">
+  <div class="inline-block p-4 bg-pink-50 rounded-full mb-4 animate-pulse">
+    <span class="text-3xl">🎨</span>
+  </div>
+  <h2 class="text-2xl font-bold text-gray-900 mb-2">Loading Tutorials</h2>
+  <p class="text-gray-600">Finding creative inspiration for you...</p>
+</div>
+
+<!-- Error State -->
+<div id="error-state" class="text-center py-12 hidden">
+  <div class="inline-block p-4 bg-red-50 rounded-full mb-4">
+    <span class="text-3xl">⚠️</span>
+  </div>
+  <h2 class="text-2xl font-bold text-gray-900 mb-2">Search Error</h2>
+  <p class="text-gray-600 mb-8">Something went wrong. Please try again later.</p>
+  <button onclick="performSearch()"
+    class="bg-pink-500 text-white px-6 py-3 rounded-full font-medium hover:bg-pink-600 transition-colors">
+    Try Again
+  </button>
+</div>
+
+<!-- No Results State -->
+<div id="no-results-state" class="text-center py-12 hidden">
+  <div class="inline-block p-4 bg-pink-50 rounded-full mb-4">
+    <span class="text-4xl">🎨</span>
+  </div>
+  <h2 class="text-2xl font-bold text-gray-900 mb-2">No Results Found</h2>
+  <p class="text-gray-600 mb-8">We couldn't find any tutorials matching your search</p>
+  <a href="/" class="text-pink-600 hover:text-pink-700 font-medium">← Back to Home</a>
+</div>
+
+<!-- Results State -->
+<div id="results-state" class="hidden">
+  <!-- Search Stats & Filters -->
+  <section class="py-12 bg-white border-b">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Search Stats -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+        <div class="text-center">
+          <div class="text-3xl font-bold text-pink-500 mb-2" id="total-posts">0</div>
+          <div class="text-gray-600">Total Results</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold text-green-500 mb-2" id="beginner-count">0</div>
+          <div class="text-gray-600">Beginner Friendly</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold text-purple-500 mb-2" id="avg-rating">0</div>
+          <div class="text-gray-600">Average Rating</div>
+        </div>
+        <div class="text-center">
+          <div class="text-3xl font-bold text-yellow-500 mb-2" id="avg-time">0</div>
+          <div class="text-gray-600">Average Time</div>
+        </div>
+      </div>
+
+      <!-- Category Filters -->
+      <div class="flex flex-wrap gap-3 justify-center" id="category-filters">
+        <!-- Categories will be dynamically inserted here -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Search Results -->
+  <section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Search Results</h2>
+        <p class="text-gray-600">Perfect matches for your search</p>
+      </div>
+
+      <div id="results-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Results will be dynamically inserted here -->
+      </div>
+
+      <!-- Load More Button -->
+      <div class="text-center mt-12">
+        <button id="load-more"
+          class="bg-pink-500 text-white px-8 py-4 rounded-full font-semibold hover:bg-pink-600 transition-all transform hover:scale-105 shadow-lg">
+          🔍 Load More Results
+        </button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+  // Get search query from URL
+  function getSearchQueryFromURL() {
+    const pathParts = window.location.pathname.split('/');
+    const searchIndex = pathParts.indexOf('search');
+    return searchIndex !== -1 && pathParts[searchIndex + 1] ? decodeURIComponent(pathParts[searchIndex + 1]) : null;
+  }
+
+  // Show specific state and hide others
+  function showState(state) {
+    const states = ['loading-state', 'results-state', 'no-results-state', 'error-state'];
+    states.forEach(s => {
+      document.getElementById(s).classList.toggle('hidden', s !== state);
+    });
+  }
+
+  // Category styles mapping
+  const categoryStyles = {
+    'Home Decor': { gradient: 'from-pink-200 to-rose-200', icon: '🏠' },
+    'Paper Crafts': { gradient: 'from-purple-200 to-pink-200', icon: '📄' },
+    'Jewelry': { gradient: 'from-yellow-200 to-orange-200', icon: '💍' },
+    'Upcycling': { gradient: 'from-green-200 to-blue-200', icon: '♻️' },
+    'Kids Crafts': { gradient: 'from-red-200 to-pink-200', icon: '🎨' },
+    'default': { gradient: 'from-pink-200 to-purple-200', icon: '🎯' }
+  };
+
+  // Create result card HTML
+  function createResultHTML(post) {
+    const style = categoryStyles[post.category] || categoryStyles.default;
+
+    return `
+    <div class="bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+      <div class="aspect-square bg-gradient-to-br ${style.gradient} relative flex items-center justify-center">
+        ${post.featured_image ? `
+          <img src="${post.featured_image}" alt="${post.title}" class="w-full h-full object-cover">
+        ` : `
+          <div class="text-center">
+            <div class="text-6xl mb-2">${style.icon}</div>
+            <div class="text-${post.category.toLowerCase()}-800 font-medium">${post.category}</div>
+          </div>
+        `}
+        ${post.is_new ? `
+          <div class="absolute top-4 right-4 bg-pink-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+            New
+          </div>
+        ` : ''}
+        <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-gray-700">
+          ${post.read_time || '30'} min
+        </div>
+      </div>
+      <div class="p-6">
+        <div class="flex items-center space-x-2 mb-3">
+          <span class="bg-pink-100 text-pink-700 px-2 py-1 rounded-full text-xs">${post.category}</span>
+          <span class="bg-${post.difficulty === 'Beginner' ? 'green' : post.difficulty === 'Intermediate' ? 'yellow' : 'red'}-100 
+                     text-${post.difficulty === 'Beginner' ? 'green' : post.difficulty === 'Intermediate' ? 'yellow' : 'red'}-700 
+                     px-2 py-1 rounded-full text-xs">
+            ${post.difficulty || 'Beginner'}
+          </span>
+        </div>
+        <h3 class="font-bold text-gray-900 mb-2 text-lg">${post.title}</h3>
+        <p class="text-gray-600 text-sm mb-4">${post.excerpt}</p>
+        <div class="flex items-center justify-between">
+          <div class="flex items-center space-x-2">
+            <div class="w-8 h-8 bg-gradient-to-br from-pink-400 to-purple-500 rounded-full flex items-center justify-center">
+              <span class="text-white text-xs font-bold">${post.author ? post.author.charAt(0) + post.author.charAt(1) : 'CT'}</span>
+            </div>
+            <div class="text-sm text-gray-600">${post.author || 'Craft Team'}</div>
+          </div>
+          <div class="flex items-center space-x-1">
+            <span class="text-yellow-400">⭐</span>
+            <span class="text-sm text-gray-600">${post.rating || '4.5'}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+  }
+
+  // Fetch and render categories
+  async function fetchCategories() {
+    try {
+      const response = await fetch('/api/blog/categories');
+      if (!response.ok) throw new Error('Failed to fetch categories');
+
+      const categories = await response.json();
+      const categoryFilters = document.getElementById('category-filters');
+
+      // Add "All Categories" filter
+      categoryFilters.innerHTML = `
+      <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-pink-100 hover:text-pink-700 transition-colors active" data-filter="all">
+        All Categories
+      </button>
+    `;
+
+      // Add category filters
+      categories.forEach(category => {
+        const style = categoryStyles[category.name] || categoryStyles.default;
+        categoryFilters.innerHTML += `
+        <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-gray-100 text-gray-700 hover:bg-${style.gradient.split('-')[2]}-100 hover:text-${style.gradient.split('-')[2]}-700 transition-colors" data-filter="${category.slug}">
+          ${style.icon} ${category.name}
+        </button>
+      `;
+      });
+    } catch (error) {
+      console.error('Error fetching categories:', error);
+    }
+  }
+
+  // Update stats with total tutorials count
+  function updateStats(posts) {
+    const totalPosts = posts.length;
+    const beginnerCount = posts.filter(p => (p.difficulty || 'Beginner') === 'Beginner').length;
+    const avgRating = (posts.reduce((sum, p) => sum + (parseFloat(p.rating) || 4.5), 0) / totalPosts).toFixed(1);
+    const avgTime = Math.round(posts.reduce((sum, p) => sum + (parseInt(p.read_time) || 30), 0) / totalPosts);
+
+    document.getElementById('total-posts').textContent = totalPosts;
+    document.getElementById('total-tutorials').textContent = totalPosts;
+    document.getElementById('beginner-count').textContent = beginnerCount;
+    document.getElementById('avg-rating').textContent = avgRating;
+    document.getElementById('avg-time').textContent = avgTime + 'min';
+  }
+
+  // Filter handling
+  let currentFilters = {
+    category: 'all',
+    difficulty: 'all'
+  };
+
+  function handleFilter(type, value) {
+    currentFilters[type] = value;
+    performSearch(1, currentFilters);
+  }
+
+  // Add filter button event listeners
+  document.addEventListener('DOMContentLoaded', () => {
+    // Fetch categories on page load
+    fetchCategories();
+
+    // Add click handlers for filter buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const filterType = btn.closest('#category-filters') ? 'category' : 'difficulty';
+        const filterValue = btn.dataset.filter;
+
+        // Update active state
+        btn.closest('div').querySelectorAll('.filter-btn').forEach(b => {
+          b.classList.remove('bg-pink-100', 'text-pink-700');
+          b.classList.add('bg-gray-100', 'text-gray-700');
+        });
+        btn.classList.remove('bg-gray-100', 'text-gray-700');
+        btn.classList.add('bg-pink-100', 'text-pink-700');
+
+        handleFilter(filterType, filterValue);
+      });
+    });
+  });
+
+  // Perform search
+  async function performSearch(page = 1, filters = currentFilters) {
+    const query = getSearchQueryFromURL();
+    if (!query) return;
+
+    document.getElementById('search-query').textContent = `"${query}"`;
+
+
+    showState('loading-state');
+
+    try {
+      let url = `/api/blog/posts/search/${encodeURIComponent(query)}?page=${page}&limit=6`;
+      if (filters.category !== 'all') url += `&category=${filters.category}`;
+      if (filters.difficulty !== 'all') url += `&difficulty=${filters.difficulty}`;
+
+      const response = await fetch(url);
+      if (!response.ok) throw new Error('Search failed');
+
+      const data = await response.json();
+
+      if (data.length === 0) {
+        showState('no-results-state');
+        return;
+      }
+
+      // Update results
+      document.getElementById('total-tutorials').textContent = data.length;
+      document.getElementById('results-grid').innerHTML = data.map(createResultHTML).join('');
+      updateStats(data);
+
+      showState('results-state');
+
+      // Update URL without page reload
+      const urlParams = new URLSearchParams();
+      urlParams.set('q', query);
+      urlParams.set('page', page);
+      if (filters.category !== 'all') urlParams.set('category', filters.category);
+      if (filters.difficulty !== 'all') urlParams.set('difficulty', filters.difficulty);
+
+      const newUrl = `${window.location.pathname}?${urlParams.toString()}`;
+      window.history.pushState({}, '', newUrl);
+
+    } catch (error) {
+      console.error('Search error:', error);
+      showState('error-state');
+    }
+  }
+
+  document.getElementById('load-more').addEventListener('click', () => {
+    const currentPage = parseInt(new URLSearchParams(window.location.search).get('page') || '1');
+    performSearch(currentPage + 1);
+  });
+
+  // Initial search if query exists
+  const initialQuery = getSearchQueryFromURL();
+  if (initialQuery) {
+    performSearch(parseInt(new URLSearchParams(window.location.search).get('page') || '1'));
+  }
+
+  window.addEventListener("DOMContentLoaded", () => {
+    performSearch(parseInt(new URLSearchParams(window.location.search).get('page') || '1'));
+  });
+</script>

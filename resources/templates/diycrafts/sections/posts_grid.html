@@ -1,0 +1,289 @@
+<!-- Filters & Sort -->
+<section class="py-8 bg-white border-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0">
+      <!-- Category Filters -->
+      <div id="category-filters" class="flex flex-wrap gap-2">
+        <button data-category="" class="bg-pink-500 text-white px-4 py-2 rounded-full font-medium hover:bg-pink-600 transition-colors">
+          All Categories
+        </button>
+        <!-- Categories will be dynamically inserted here -->
+      </div>
+      
+      <!-- Sort Options -->
+      <div class="flex items-center space-x-4">
+        <span class="text-gray-600">Sort by:</span>
+        <select id="sort-select" class="bg-white border-2 border-gray-200 rounded-full px-4 py-2 focus:outline-none focus:border-pink-400">
+          <option value="latest">Latest</option>
+          <option value="popular">Most Popular</option>
+          <option value="rating">Top Rated</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tutorial Grid -->
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Loading State -->
+    <div id="posts-loading" class="text-center py-12">
+      <div class="inline-block p-4 bg-pink-50 rounded-full mb-4 animate-pulse">
+        <span class="text-3xl">🎨</span>
+      </div>
+      <h2 class="text-2xl font-bold text-gray-900 mb-2">Loading Tutorials</h2>
+      <p class="text-gray-600">Finding creative inspiration for you...</p>
+    </div>
+
+    <!-- Error State -->
+    <div id="posts-error" class="text-center py-12 hidden">
+      <div class="inline-block p-4 bg-red-50 rounded-full mb-4">
+        <span class="text-3xl">⚠️</span>
+      </div>
+      <h2 class="text-2xl font-bold text-gray-900 mb-2">Error Loading Tutorials</h2>
+      <p class="text-gray-600 mb-8">Something went wrong. Please try again later.</p>
+      <button onclick="loadPosts()" class="bg-pink-500 text-white px-6 py-3 rounded-full font-medium hover:bg-pink-600 transition-colors">
+        Try Again
+      </button>
+    </div>
+
+    <!-- Empty State -->
+    <div id="posts-empty" class="text-center py-12 hidden">
+      <div class="inline-block p-4 bg-pink-50 rounded-full mb-4">
+        <span class="text-3xl">🎨</span>
+      </div>
+      <h2 class="text-2xl font-bold text-gray-900 mb-2">No Tutorials Found</h2>
+      <p class="text-gray-600">Try adjusting your filters or check back later for new tutorials!</p>
+    </div>
+
+    <!-- Posts Grid -->
+    <div id="posts-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 hidden">
+      <!-- Posts will be dynamically inserted here -->
+    </div>
+    
+    <!-- Load More Button -->
+    <div id="load-more" class="text-center mt-12 hidden">
+      <button onclick="loadMorePosts()" class="bg-pink-500 text-white px-8 py-4 rounded-full font-semibold hover:bg-pink-600 transition-all transform hover:scale-105 shadow-lg">
+        🎨 Load More Tutorials
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function() {
+    // State management
+    let currentPage = 1;
+    let currentCategory = '';
+    let currentSort = 'latest';
+    let isLoading = false;
+    let hasMore = true;
+
+    // Category styles mapping
+    const categoryStyles = {
+      'Home Decor': { icon: '🏠', color: 'pink' },
+      'Paper Crafts': { icon: '📄', color: 'purple' },
+      'Jewelry': { icon: '💍', color: 'yellow' },
+      'Upcycling': { icon: '♻️', color: 'green' },
+      'Kids Crafts': { icon: '🎨', color: 'red' },
+      'default': { icon: '🎯', color: 'pink' }
+    };
+
+    // Function to show/hide states
+    function showState(state) {
+      const states = ['loading', 'error', 'empty', 'grid'];
+      states.forEach(s => {
+        const el = document.getElementById(`posts-${s}`);
+        if (s === state) {
+          el.classList.remove('hidden');
+        } else {
+          el.classList.add('hidden');
+        }
+      });
+
+      // Handle load more button
+      const loadMoreEl = document.getElementById('load-more');
+      if (state === 'grid' && hasMore) {
+        loadMoreEl.classList.remove('hidden');
+      } else {
+        loadMoreEl.classList.add('hidden');
+      }
+    }
+
+    // Function to create category button HTML
+    function createCategoryButtonHTML(category) {
+      const style = categoryStyles[category.name] || categoryStyles.default;
+      const isActive = currentCategory === category.slug;
+      
+      return `
+        <button data-category="${category.slug}" 
+                class="${isActive ? 'bg-pink-500 text-white' : 'bg-gray-100 text-gray-700'} 
+                       px-4 py-2 rounded-full font-medium 
+                       hover:bg-pink-100 hover:text-pink-600 transition-colors">
+          ${style.icon} ${category.name}
+        </button>
+      `;
+    }
+
+    // Function to create post card HTML
+    function createPostHTML(post) {
+      const style = categoryStyles[post.category] || categoryStyles.default;
+      const gradient = `from-${style.color}-200 to-${style.color === 'pink' ? 'rose' : style.color}-200`;
+      
+      return `
+        <div class="bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+          <div class="aspect-square bg-gradient-to-br ${gradient} relative flex items-center justify-center">
+            <div class="text-center">
+              <div class="text-6xl mb-2">${style.icon}</div>
+              <div class="text-${style.color}-800 font-medium">${post.category}</div>
+            </div>
+            ${post.is_new ? `
+              <div class="absolute top-4 right-4 bg-pink-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                New
+              </div>
+            ` : ''}
+            <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-gray-700">
+              ${post.read_time || '30'} min
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center space-x-2 mb-3">
+              <span class="bg-${style.color}-100 text-${style.color}-700 px-2 py-1 rounded-full text-xs">
+                ${post.category}
+              </span>
+              <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-xs">
+                ${post.difficulty || 'Beginner'}
+              </span>
+            </div>
+            <h3 class="font-bold text-gray-900 mb-2 text-lg">${post.title}</h3>
+            <p class="text-gray-600 text-sm mb-4">${post.excerpt}</p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-2">
+                <div class="w-8 h-8 bg-gradient-to-br from-${style.color}-400 to-${style.color === 'pink' ? 'purple' : style.color}-500 rounded-full flex items-center justify-center">
+                  <span class="text-white text-xs font-bold">${post.author.substring(0, 2).toUpperCase()}</span>
+                </div>
+                <div class="text-sm text-gray-600">${post.author}</div>
+              </div>
+              ${post.rating ? `
+                <div class="flex items-center space-x-1">
+                  <span class="text-yellow-400">⭐</span>
+                  <span class="text-sm text-gray-600">${post.rating}</span>
+                </div>
+              ` : ''}
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // Function to load categories
+    async function loadCategories() {
+      try {
+        const response = await fetch('/api/blog/categories');
+        if (!response.ok) throw new Error('Failed to fetch categories');
+
+        const categories = await response.json();
+        
+        if (categories && categories.length > 0) {
+          const filtersEl = document.getElementById('category-filters');
+          const categoryButtons = categories.map(category => createCategoryButtonHTML(category)).join('');
+          
+          // Keep the "All Categories" button and add new categories
+          const allButton = filtersEl.querySelector('button[data-category=""]').outerHTML;
+          filtersEl.innerHTML = allButton + categoryButtons;
+
+          // Add click handlers
+          filtersEl.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', () => {
+              currentCategory = button.dataset.category;
+              currentPage = 1;
+              loadPosts(true);
+              
+              // Update active state
+              filtersEl.querySelectorAll('button').forEach(btn => {
+                if (btn.dataset.category === currentCategory) {
+                  btn.classList.remove('bg-gray-100', 'text-gray-700');
+                  btn.classList.add('bg-pink-500', 'text-white');
+                } else {
+                  btn.classList.remove('bg-pink-500', 'text-white');
+                  btn.classList.add('bg-gray-100', 'text-gray-700');
+                }
+              });
+            });
+          });
+        }
+      } catch (error) {
+        console.error('Error loading categories:', error);
+      }
+    }
+
+    // Function to load posts
+    async function loadPosts(reset = false) {
+      if (isLoading) return;
+      isLoading = true;
+
+      if (reset) {
+        showState('loading');
+      }
+
+      try {
+        let url = `/api/blog/posts?page=${currentPage}&limit=8`;
+        if (currentCategory) {
+          url = `/api/blog/posts/category/${encodeURIComponent(currentCategory)}?page=${currentPage}&limit=8`;
+        }
+        if (currentSort !== 'latest') {
+          url += `&sort=${currentSort}`;
+        }
+
+        const response = await fetch(url);
+        if (!response.ok) throw new Error('Failed to fetch posts');
+
+        const data = await response.json();
+        
+        if (!data || (Array.isArray(data) && data.length === 0)) {
+          if (reset) showState('empty');
+          hasMore = false;
+          return;
+        }
+
+        const posts = Array.isArray(data) ? data : data.posts;
+        const gridEl = document.getElementById('posts-grid');
+
+        if (reset) {
+          gridEl.innerHTML = '';
+        }
+
+        gridEl.innerHTML += posts.map(post => createPostHTML(post)).join('');
+        showState('grid');
+
+        // Update hasMore based on pagination info
+        hasMore = data.pagination ? currentPage < data.pagination.total_pages : posts.length >= 8;
+
+      } catch (error) {
+        console.error('Error loading posts:', error);
+        if (reset) showState('error');
+      } finally {
+        isLoading = false;
+      }
+    }
+
+    // Function to load more posts
+    function loadMorePosts() {
+      if (!isLoading && hasMore) {
+        currentPage++;
+        loadPosts();
+      }
+    }
+
+    // Handle sort changes
+    document.getElementById('sort-select').addEventListener('change', (e) => {
+      currentSort = e.target.value;
+      currentPage = 1;
+      loadPosts(true);
+    });
+
+    // Initial load
+    loadCategories();
+    loadPosts(true);
+  })();
+</script>

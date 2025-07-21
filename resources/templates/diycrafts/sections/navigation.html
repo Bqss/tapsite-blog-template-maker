@@ -1,0 +1,41 @@
+<!-- Craft Workshop Navigation -->
+<nav class="bg-white shadow-lg border-b-4 border-pink-400">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-20">
+      <!-- Logo & Brand -->
+      <div class="flex items-center space-x-3">
+        <div class="relative">
+          <div class="w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
+            <span class="text-white text-xl">🎨</span>
+          </div>
+          <div class="absolute -top-1 -right-1 w-4 h-4 bg-yellow-400 rounded-full animate-pulse"></div>
+        </div>
+        <div>
+          <div class="text-2xl font-bold text-gray-900">{{it.site.name}}</div>
+          <div class="text-xs text-pink-600 font-medium">{{it.site.tagline}}</div>
+        </div>
+      </div>
+
+      <!-- Craft Categories Menu -->
+      <div class="hidden lg:flex items-center space-x-1">
+        {{@each (it.navigation) => item}}
+        <a href="{{item.url}}" class="px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-600 rounded-full transition-all duration-300 flex items-center space-x-2">
+          <span>{{item.name}}</span>
+        </a>
+        {{/each}}
+      </div>
+
+      <!-- Search & Tools -->
+      <div class="flex items-center space-x-4">
+        <div class="relative">
+          <input type="text" placeholder="Search tutorials..." 
+                 class="bg-pink-50 border-2 border-pink-200 text-gray-700 placeholder-pink-400 px-4 py-2 rounded-full text-sm focus:outline-none focus:border-pink-400 focus:bg-white transition-all w-56">
+          <div class="absolute right-3 top-1/2 transform -translate-y-1/2 text-pink-400">🔍</div>
+        </div>
+        <button class="bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 transition-colors font-medium">
+          ✨ Create
+        </button>
+      </div>
+    </div>
+  </div>
+</nav> 

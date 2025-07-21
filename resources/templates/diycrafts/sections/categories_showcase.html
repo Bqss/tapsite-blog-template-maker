@@ -1,0 +1,56 @@
+<!-- Craft Categories Showcase -->
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold text-gray-900 mb-4">Choose Your Craft Adventure</h2>
+      <p class="text-gray-600">Explore different categories and find your perfect project</p>
+    </div>
+    
+    <div id="categories-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+      <!-- Categories will be dynamically inserted here -->
+    </div>
+  </div>
+
+  <script>
+    (function() {
+      // Function to create category HTML
+      function createCategoryHTML(category) {
+        return `
+          <div class="group cursor-pointer">
+            <a href="/category/${encodeURIComponent(category.slug)}" 
+               class="block bg-gradient-to-br from-${category.color || 'orange'}-100 to-${category.color || 'orange'}-200 rounded-3xl p-6 text-center 
+                      hover:from-${category.color || 'orange'}-200 hover:to-${category.color || 'orange'}-300 
+                      transition-all duration-300 transform group-hover:scale-105 shadow-lg">
+              <div class="text-4xl mb-3">${category.icon || '🎨'}</div>
+              <div class="font-semibold text-gray-900">${category.name}</div>
+              <div class="text-sm text-gray-600">${category.posts || 0} projects</div>
+            </a>
+          </div>
+        `;
+      }
+
+      // Function to load categories
+      async function loadCategories() {
+        try {
+          // Fetch categories
+          const response = await fetch('/api/blog/categories');
+          if (!response.ok) throw new Error('Failed to fetch categories');
+
+          const categories = await response.json();
+
+          if (categories && categories.length > 0) {
+            // Render categories
+            const gridEl = document.getElementById('categories-grid');
+            gridEl.innerHTML = categories.map(category => createCategoryHTML(category)).join('');
+          }
+
+        } catch (error) {
+          console.error('Error loading categories:', error);
+        }
+      }
+
+      // Load categories when page loads
+      document.addEventListener('DOMContentLoaded', loadCategories);
+    })();
+  </script>
+</section> 

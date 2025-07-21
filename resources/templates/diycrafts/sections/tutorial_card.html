@@ -1,0 +1,40 @@
+<!-- Tutorial Card Component -->
+<div class="bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+  <div class="aspect-square bg-gradient-to-br {{cardColor}} relative flex items-center justify-center">
+    <div class="text-center">
+      <div class="text-6xl mb-2">{{icon}}</div>
+      <div class="{{textColor}} font-medium">{{cardTitle}}</div>
+    </div>
+    {{#if badge}}
+    <div class="absolute top-4 right-4 bg-{{badgeColor}}-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+      {{badge}}
+    </div>
+    {{/if}}
+    <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-gray-700">
+      {{time}}
+    </div>
+  </div>
+  <div class="p-6">
+    <div class="flex items-center space-x-2 mb-3">
+      <span class="bg-{{categoryColor}}-100 text-{{categoryColor}}-700 px-2 py-1 rounded-full text-xs">{{category}}</span>
+      <span class="bg-{{difficultyColor}}-100 text-{{difficultyColor}}-700 px-2 py-1 rounded-full text-xs">{{difficulty}}</span>
+      {{#if cost}}
+      <span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs">{{cost}}</span>
+      {{/if}}
+    </div>
+    <h3 class="font-bold text-gray-900 mb-2 text-lg">{{title}}</h3>
+    <p class="text-gray-600 text-sm mb-4">{{excerpt}}</p>
+    <div class="flex items-center justify-between">
+      <div class="flex items-center space-x-2">
+        <div class="w-8 h-8 bg-gradient-to-br {{authorColor}} rounded-full flex items-center justify-center">
+          <span class="text-white text-xs font-bold">{{authorInitials}}</span>
+        </div>
+        <div class="text-sm text-gray-600">{{author}}</div>
+      </div>
+      <div class="flex items-center space-x-1">
+        <span class="text-yellow-400">⭐</span>
+        <span class="text-sm text-gray-600">{{rating}}</span>
+      </div>
+    </div>
+  </div>
+</div> 

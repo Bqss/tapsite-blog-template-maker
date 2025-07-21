@@ -1,0 +1,368 @@
+<!-- Tag Header -->
+<section class="bg-gradient-to-br from-pink-50 via-purple-50 to-yellow-50 py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Breadcrumb -->
+    <div class="flex items-center space-x-2 text-sm text-gray-600 mb-8">
+      <a href="/" class="hover:text-pink-600 transition-colors">Home</a>
+      <span>→</span>
+      <a href="/tags" class="hover:text-pink-600 transition-colors">Tags</a>
+      <span>→</span>
+      <span id="header-tag-name" class="text-pink-600">#tag</span>
+    </div>
+
+    <div class="text-center">
+      <!-- Tag Badge -->
+      <div class="inline-flex items-center space-x-3 bg-white/70 backdrop-blur-sm px-8 py-4 rounded-3xl mb-8 shadow-lg">
+        <div
+          class="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center">
+          <span class="text-white text-2xl">🏷️</span>
+        </div>
+        <div class="text-left">
+          <div id="tag-badge-name" class="text-2xl font-bold text-gray-900">#tag</div>
+          <div class="text-green-600 font-medium">Craft tutorials and inspiration</div>
+        </div>
+      </div>
+
+      <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+        <span id="tag-title" class="text-green-500">#tag</span>
+        <br>
+        Craft Tutorials
+      </h1>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Explore our collection of creative craft tutorials and projects
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Tag Stats -->
+<section class="py-12 bg-white border-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <div class="text-center">
+        <div id="total-tutorials" class="text-3xl font-bold text-green-500 mb-2">0</div>
+        <div class="text-gray-600">Tutorials</div>
+      </div>
+      <div class="text-center">
+        <div id="avg-time" class="text-3xl font-bold text-pink-500 mb-2">0</div>
+        <div class="text-gray-600">Average Time</div>
+      </div>
+      <div class="text-center">
+        <div id="avg-rating" class="text-3xl font-bold text-purple-500 mb-2">0</div>
+        <div class="text-gray-600">Average Rating</div>
+      </div>
+      <div class="text-center">
+        <div class="text-3xl font-bold text-yellow-500 mb-2">95%</div>
+        <div class="text-gray-600">Success Rate</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Related Tags -->
+<section class="py-8 bg-white border-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-6">
+      <h2 class="text-xl font-bold text-gray-900 mb-2">Related Tags</h2>
+      <p class="text-gray-600">Explore similar tutorials</p>
+    </div>
+
+    <div id="related-tags" class="flex flex-wrap justify-center gap-3">
+      <!-- Related tags will be dynamically inserted here -->
+    </div>
+  </div>
+</section>
+
+<!-- Loading State -->
+<div id="loading-state" class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-pink-500 mx-auto mb-4"></div>
+    <p class="text-gray-600">Loading tutorials...</p>
+  </div>
+</div>
+
+<!-- Error State -->
+<div id="error-state" class="py-16 bg-white hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="text-red-500 text-5xl mb-4">😕</div>
+    <h3 class="text-xl font-bold text-gray-900 mb-2">Oops! Something went wrong</h3>
+    <p class="text-gray-600 mb-4">Unable to load tutorials. Please try again later.</p>
+    <button onclick="fetchTagPosts()" class="bg-pink-500 text-white px-6 py-2 rounded-full hover:bg-pink-600 transition-colors">
+      Try Again
+    </button>
+  </div>
+</div>
+
+<!-- Empty State -->
+<div id="empty-state" class="py-16 bg-white hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="text-gray-400 text-5xl mb-4">🔍</div>
+    <h3 class="text-xl font-bold text-gray-900 mb-2">No tutorials found</h3>
+    <p class="text-gray-600">We couldn't find any tutorials with this tag.</p>
+  </div>
+</div>
+
+<!-- Tutorial Grid -->
+<section id="tutorials-container" class="py-16 bg-white hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 id="tutorials-title" class="text-3xl font-bold text-gray-900 mb-4">#tag Tutorials</h2>
+      <p class="text-gray-600">Perfect projects to inspire your creativity</p>
+    </div>
+
+    <div id="tutorials-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Tutorials will be dynamically inserted here -->
+    </div>
+
+    <!-- Load More Button -->
+    <div class="text-center mt-12">
+      <button id="load-more-btn" onclick="loadMorePosts()"
+        class="bg-green-500 text-white px-8 py-4 rounded-full font-semibold hover:bg-green-600 transition-all transform hover:scale-105 shadow-lg hidden">
+        🌱 Load More Tutorials
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Tips Section -->
+<section class="py-16 bg-gradient-to-br from-green-50 to-emerald-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 id="tips-title" class="text-3xl font-bold text-gray-900 mb-4">Crafting Tips</h2>
+      <p class="text-gray-600">Essential advice for crafters</p>
+    </div>
+
+    <div id="tips-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Tips will be dynamically inserted here -->
+    </div>
+  </div>
+</section>
+
+<script>
+let currentPage = 1;
+const postsPerPage = 6;
+let isLoading = false;
+let hasMorePosts = true;
+
+// Get tag name from URL
+function getTagFromURL() {
+    const pathParts = window.location.pathname.split('/');
+    const tagIndex = pathParts.indexOf('tag');
+    return tagIndex !== -1 && pathParts[tagIndex + 1] ? decodeURIComponent(pathParts[tagIndex + 1]) : null;
+}
+
+// Fetch and update related tags
+async function updateRelatedTags(currentTag) {
+    const relatedTagsContainer = document.getElementById('related-tags');
+    
+    try {
+        const response = await fetch('/api/blog/tags');
+        if (!response.ok) throw new Error('Failed to fetch tags');
+        
+        const tags = await response.json();
+        // Filter out the current tag and get up to 5 random tags
+        const relatedTags = tags
+            .filter(tag => tag.toLowerCase() !== currentTag.toLowerCase())
+            .sort(() => 0.5 - Math.random())
+            .slice(0, 5);
+
+        relatedTagsContainer.innerHTML = `
+            <span class="bg-green-500 text-white px-4 py-2 rounded-full text-sm font-medium">
+                #${currentTag}
+            </span>
+            ${relatedTags.map(tag => `
+                <a href="/tag/${encodeURIComponent(tag.toLowerCase())}"
+                    class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-pink-100 hover:text-pink-600 transition-colors">
+                    #${tag}
+                </a>
+            `).join('')}
+        `;
+    } catch (error) {
+        console.error('Error fetching related tags:', error);
+        // In case of error, hide the related tags section
+        relatedTagsContainer.innerHTML = '';
+    }
+}
+
+// Update tips section
+function updateTips(tagName) {
+    const tipsTitle = document.getElementById('tips-title');
+    const tipsGrid = document.getElementById('tips-grid');
+    
+    tipsTitle.textContent = `${tagName} Crafting Tips`;
+    
+    const tips = [
+        { emoji: '📚', title: 'Start Simple', description: 'Begin with basic projects and gradually work your way up to more complex crafts' },
+        { emoji: '🛠️', title: 'Quality Tools', description: 'Invest in good basic tools - they\'ll make your crafting experience much more enjoyable' },
+        { emoji: '👥', title: 'Join Community', description: 'Connect with other crafters for support and inspiration' }
+    ];
+    
+    tipsGrid.innerHTML = tips.map(tip => `
+        <div class="bg-white rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all">
+            <div class="text-5xl mb-4">${tip.emoji}</div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2">${tip.title}</h3>
+            <p class="text-gray-600">${tip.description}</p>
+        </div>
+    `).join('');
+}
+
+// Update header with tag info
+function updateHeader(tagName, postsCount = 0, avgTime = 0) {
+    const elements = {
+        headerTagName: document.getElementById('header-tag-name'),
+        tagBadgeName: document.getElementById('tag-badge-name'),
+        tagTitle: document.getElementById('tag-title'),
+        tutorialsTitle: document.getElementById('tutorials-title'),
+        totalTutorials: document.getElementById('total-tutorials'),
+        avgTime: document.getElementById('avg-time')
+    };
+
+    const tag = `#${tagName}`;
+    elements.headerTagName.textContent = tag;
+    elements.tagBadgeName.textContent = tag;
+    elements.tagTitle.textContent = tag;
+    elements.tutorialsTitle.textContent = `${tag} Tutorials`;
+    elements.totalTutorials.textContent = postsCount;
+    elements.avgTime.textContent = avgTime;
+}
+
+// Show/hide different states
+function showState(state) {
+    const states = ['loading-state', 'tutorials-container', 'empty-state', 'error-state'];
+    states.forEach(s => {
+        const element = document.getElementById(s);
+        if (element) {
+            element.classList.toggle('hidden', s !== state);
+        }
+    });
+}
+
+// Create tutorial card
+function createTutorialCard(post) {
+    // Helper function to generate random color pairs
+    const colorPairs = [
+        ['pink', 'rose'],
+        ['purple', 'indigo'],
+        ['green', 'emerald'],
+        ['yellow', 'orange'],
+        ['red', 'pink']
+    ];
+    const randomPair = colorPairs[Math.floor(Math.random() * colorPairs.length)];
+    
+    // Helper function to get emoji based on category
+    const categoryEmojis = {
+        'Home Decor': '🏠',
+        'Kids Crafts': '🎨',
+        'Paper Crafts': '📄',
+        'Upcycling': '♻️',
+        'Yarn Craft': '🧶',
+        'Flower Craft': '🌸'
+    };
+
+    const template = document.createElement('template');
+    template.innerHTML = `
+        <div class="bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+            <div class="aspect-square bg-gradient-to-br from-${randomPair[0]}-200 to-${randomPair[1]}-200 relative flex items-center justify-center">
+                <div class="text-center">
+                    <div class="text-6xl mb-2">${categoryEmojis[post.category] || '🎨'}</div>
+                    <div class="text-${randomPair[0]}-800 font-medium">${post.category}</div>
+                </div>
+                <div class="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                    Beginner
+                </div>
+                <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-gray-700">
+                    ${post.read_time} min
+                </div>
+            </div>
+            <div class="p-6">
+                <div class="flex items-center space-x-2 mb-3">
+                    <span class="bg-${randomPair[0]}-100 text-${randomPair[0]}-700 px-2 py-1 rounded-full text-xs">${post.category}</span>
+                    <span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs">$15</span>
+                </div>
+                <h3 class="font-bold text-gray-900 mb-2 text-lg">${post.title}</h3>
+                <p class="text-gray-600 text-sm mb-4">${post.excerpt}</p>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 bg-gradient-to-br from-${randomPair[0]}-400 to-${randomPair[1]}-500 rounded-full flex items-center justify-center">
+                            <span class="text-white text-xs font-bold">${post.author.split(' ').map(n => n[0]).join('')}</span>
+                        </div>
+                        <div class="text-sm text-gray-600">${post.author}</div>
+                    </div>
+                    <div class="flex items-center space-x-1">
+                        <span class="text-yellow-400">⭐</span>
+                        <span class="text-sm text-gray-600">4.8</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    return template.content.firstElementChild;
+}
+
+// Fetch posts by tag
+async function fetchTagPosts(page = 1) {
+    if (isLoading) return;
+    
+    const tagName = getTagFromURL();
+    if (!tagName) {
+        showState('error-state');
+        return;
+    }
+
+    isLoading = true;
+    if (page === 1) {
+        showState('loading-state');
+        updateHeader(tagName);
+        updateRelatedTags(tagName);
+        updateTips(tagName);
+    }
+    
+    try {
+        const response = await fetch(`/api/blog/posts/tag/${encodeURIComponent(tagName)}?page=${page}&limit=${postsPerPage}`);
+        const data = await response.json();
+        
+        if (!response.ok) throw new Error('Failed to fetch posts');
+        
+        if (data.length === 0 && page === 1) {
+            showState('empty-state');
+            return;
+        }
+        
+        if (page === 1) {
+            document.getElementById('tutorials-grid').innerHTML = '';
+            // Update header with stats
+            const avgTime = Math.round(data.reduce((sum, post) => sum + post.read_time, 0) / data.length);
+            updateHeader(tagName, data.length, avgTime);
+        }
+        
+        // Process and render posts
+        data.forEach(post => {
+            const postElement = createTutorialCard(post);
+            document.getElementById('tutorials-grid').appendChild(postElement);
+        });
+        
+        hasMorePosts = data.current_page < data.length;
+        document.getElementById('load-more-btn').classList.toggle('hidden', !hasMorePosts);
+        
+        showState('tutorials-container');
+    } catch (error) {
+        console.error('Error fetching posts:', error);
+        if (page === 1) showState('error-state');
+    } finally {
+        isLoading = false;
+    }
+}
+
+// Load more posts
+function loadMorePosts() {
+    if (!hasMorePosts || isLoading) return;
+    currentPage++;
+    fetchTagPosts(currentPage);
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+    fetchTagPosts();
+});
+</script> 

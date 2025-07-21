@@ -1,0 +1,322 @@
+
+<!-- Category Header -->
+<section class="bg-gradient-to-br from-pink-50 via-purple-50 to-yellow-50 py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Breadcrumb -->
+    <div class="flex items-center space-x-2 text-sm text-gray-600 mb-8">
+      <a href="/" class="hover:text-pink-600 transition-colors">Home</a>
+      <span>→</span>
+      <a href="/category" class="hover:text-pink-600 transition-colors">Categories</a>
+      <span>→</span>
+      <span id="breadcrumb-category" class="text-pink-600">Loading...</span>
+    </div>
+    
+    <div class="text-center">
+      <!-- Category Icon & Badge -->
+      <div class="inline-flex items-center space-x-4 bg-white/70 backdrop-blur-sm px-8 py-4 rounded-3xl mb-8 shadow-lg">
+        <div id="category-icon-wrapper" class="w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-600 rounded-full flex items-center justify-center">
+          <span id="category-icon" class="text-white text-3xl">🎨</span>
+        </div>
+        <div class="text-left">
+          <div id="category-name" class="text-2xl font-bold text-gray-900">Loading...</div>
+          <div class="text-pink-600 font-medium"><span id="tutorial-count">0</span> tutorials available</div>
+        </div>
+      </div>
+      
+      <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+        <span id="heading-category" class="text-pink-500">Loading...</span>
+        <br>
+        Craft Tutorials
+      </h1>
+      <p id="category-description" class="text-xl text-gray-600 max-w-2xl mx-auto">Loading description...</p>
+    </div>
+  </div>
+</section>
+
+<!-- Category Stats (simple) -->
+<section class="py-12 bg-white border-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="inline-flex items-center space-x-2 text-gray-700">
+      <span class="text-3xl text-pink-500">📚</span>
+      <span><span id="stats-total">0</span> Total Tutorials</span>
+    </div>
+  </div>
+</section>
+
+<!-- Filters & Sort (UI kept static) -->
+<section class="py-8 bg-white border-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0">
+      <!-- Difficulty Filters -->
+      <div class="flex flex-wrap gap-2">
+        <button class="bg-pink-500 text-white px-4 py-2 rounded-full font-medium hover:bg-pink-600 transition-colors">
+          All Levels
+        </button>
+        <button class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-medium hover:bg-green-100 hover:text-green-600 transition-colors">
+          🟢 Beginner
+        </button>
+        <button class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-medium hover:bg-yellow-100 hover:text-yellow-600 transition-colors">
+          🟡 Intermediate
+        </button>
+        <button class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-medium hover:bg-red-100 hover:text-red-600 transition-colors">
+          🔴 Advanced
+        </button>
+      </div>
+      
+      <!-- Sort Options -->
+      <div class="flex items-center space-x-4">
+        <span class="text-gray-600">Sort by:</span>
+        <select class="bg-white border-2 border-gray-200 rounded-full px-4 py-2 focus:outline-none focus:border-pink-400">
+          <option>Latest</option>
+          <option>Most Popular</option>
+          <option>Highest Rated</option>
+          <option>Time Required</option>
+          <option>Cost (Low to High)</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Tutorial -->
+<section class="py-16 bg-gradient-to-br from-pink-50 to-purple-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">Featured in Home Decor</h2>
+      <p class="text-gray-600">Our most popular home decor tutorial this month</p>
+    </div>
+    
+    <div class="bg-white rounded-3xl shadow-2xl overflow-hidden">
+      <div class="grid lg:grid-cols-2">
+        <!-- Tutorial Content -->
+        <div class="p-8 lg:p-12">
+          <div class="flex items-center space-x-3 mb-6">
+            <div class="bg-pink-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
+              🔥 Most Popular
+            </div>
+            <div class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">
+              ✅ Beginner
+            </div>
+          </div>
+          
+          <h3 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+            Macrame Wall Hanging Workshop
+          </h3>
+          <p class="text-gray-600 mb-6 text-lg">
+            Create a stunning bohemian-style wall hanging that will transform any room. This comprehensive tutorial covers everything from basic knots to advanced patterns.
+          </p>
+          
+          <!-- Tutorial Stats -->
+          <div class="grid grid-cols-3 gap-4 mb-8">
+            <div class="text-center">
+              <div class="text-2xl font-bold text-pink-500">⏱️</div>
+              <div class="text-sm text-gray-600">30 mins</div>
+            </div>
+            <div class="text-center">
+              <div class="text-2xl font-bold text-green-500">💰</div>
+              <div class="text-sm text-gray-600">$15 cost</div>
+            </div>
+            <div class="text-center">
+              <div class="text-2xl font-bold text-yellow-500">⭐</div>
+              <div class="text-sm text-gray-600">4.8 rating</div>
+            </div>
+          </div>
+          
+          <button class="bg-pink-500 text-white px-8 py-4 rounded-full font-semibold hover:bg-pink-600 transition-all transform hover:scale-105 shadow-lg">
+            🎯 Start This Tutorial
+          </button>
+        </div>
+        
+        <!-- Visual Preview -->
+        <div class="bg-gradient-to-br from-pink-100 to-purple-100 flex items-center justify-center p-8">
+          <div class="text-center">
+            <div class="text-8xl mb-4">🧵</div>
+            <div class="text-2xl font-bold text-gray-700 mb-2">Macrame Magic</div>
+            <div class="text-gray-600">Step-by-step visual guide</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tutorial Grid -->
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">All <span id="grid-category-label">Category</span> Tutorials</h2>
+      <p class="text-gray-600">Discover amazing projects</p>
+    </div>
+    
+    <!-- States -->
+    <div id="loading-state" class="text-center py-12">
+      <div class="inline-block p-4 bg-pink-50 rounded-full mb-4 animate-pulse">
+        <span class="text-3xl">🔄</span>
+      </div>
+      <h2 class="text-2xl font-bold text-gray-900 mb-2">Loading Tutorials</h2>
+      <p class="text-gray-600">Please wait while we fetch the tutorials...</p>
+      </div>
+      
+    <div id="posts-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 hidden"></div>
+
+    <div id="no-posts-state" class="text-center py-12 hidden">
+      <div class="inline-block p-4 bg-pink-50 rounded-full mb-4">
+        <span class="text-4xl">😔</span>
+      </div>
+      <h2 class="text-2xl font-bold text-gray-900 mb-2">No Tutorials Found</h2>
+      <p class="text-gray-600 mb-8">We couldn't find tutorials in this category</p>
+      <a href="/" class="text-pink-600 hover:text-pink-700 font-medium">← Back to Home</a>
+      </div>
+      
+    <div id="error-state" class="text-center py-12 hidden">
+      <div class="inline-block p-4 bg-red-50 rounded-full mb-4">
+        <span class="text-4xl">⚠️</span>
+      </div>
+      <h2 class="text-2xl font-bold text-gray-900 mb-2">Error Loading Tutorials</h2>
+      <p class="text-gray-600 mb-8">Something went wrong. Please try again later.</p>
+      <button onclick="fetchCategoryTutorials()" class="text-pink-600 hover:text-pink-700 font-medium">Try Again</button>
+    </div>
+    
+    <!-- Pagination placeholder -->
+    <div id="pagination" class="mt-12 flex justify-center hidden"></div>
+  </div>
+</section>
+
+<!-- Related Categories -->
+<section class="py-16 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">Explore More Categories</h2>
+      <p class="text-gray-600">Discover other craft categories you might enjoy</p>
+    </div>
+    <div id="other-categories" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"></div>
+  </div>
+</section>
+
+<script>
+(function() {
+  // Icon mapping (extend as needed)
+  const categoryIcons = {
+    "home-decor": "🏠",
+    "paper-crafts": "📄",
+    "upcycling": "♻️",
+    "jewelry": "💍",
+    "kids-crafts": "🎨",
+    "seasonal": "🎄"
+  };
+
+  // Utility to get category slug from URL
+  function getCategorySlug() {
+    const parts = window.location.pathname.split('/');
+    const idx = parts.indexOf('category');
+    return idx !== -1 && parts[idx + 1] ? decodeURIComponent(parts[idx + 1]) : null;
+  }
+
+  // State toggler
+  function showState(state) {
+    const states = ['loading-state', 'posts-grid', 'no-posts-state', 'error-state', 'pagination'];
+    states.forEach(id => document.getElementById(id).classList.toggle('hidden', id !== state));
+  }
+
+  // Tutorial card HTML
+  function createTutorialCardHTML(post) {
+    return `
+      <div class="bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+        <div class="aspect-square bg-gradient-to-br from-pink-100 to-purple-100 relative flex items-center justify-center">
+          <img src="${post.featured_image || '/placeholder.jpg'}" alt="${post.title}" class="absolute inset-0 w-full h-full object-cover rounded-t-3xl" />
+          <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-gray-700">
+            ${post.read_time || 0} min
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center space-x-2 mb-3">
+            <span class="bg-pink-100 text-pink-700 px-2 py-1 rounded-full text-xs">${post.category}</span>
+            <span class="bg-gray-100 text-gray-700 px-2 py-1 rounded-full text-xs">$${post.cost || 0}</span>
+      </div>
+          <h3 class="font-bold text-gray-900 mb-2 text-lg">${post.title}</h3>
+          <p class="text-gray-600 text-sm mb-4">${post.excerpt}</p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <div class="w-8 h-8 bg-gradient-to-br from-pink-400 to-purple-500 rounded-full flex items-center justify-center">
+                <span class="text-white text-xs font-bold">${post.author.charAt(0)}</span>
+        </div>
+              <div class="text-sm text-gray-600">${post.author}</div>
+      </div>
+            <div class="flex items-center space-x-1">
+              <span class="text-yellow-400">⭐</span>
+              <span class="text-sm text-gray-600">${post.rating || 4.5}</span>
+        </div>
+      </div>
+        </div>
+      </div>`;
+  }
+
+  // Category card HTML
+  function createCategoryCardHTML(category) {
+    return `
+      <a href="/category/${encodeURIComponent(category.slug)}" class="group cursor-pointer">
+        <div class="bg-gradient-to-br from-pink-100 to-purple-100 rounded-3xl p-6 text-center hover:from-pink-200 hover:to-purple-200 transition-all duration-300 transform group-hover:scale-105 shadow-lg">
+          <div class="text-4xl mb-3">${categoryIcons[category.slug] || '🎨'}</div>
+          <div class="font-semibold text-gray-900">${category.name}</div>
+          <div class="text-sm text-gray-600">${category.posts} tutorials</div>
+        </div>
+      </a>`;
+  }
+
+  // Main fetch function
+  async function fetchCategoryTutorials(page = 1) {
+    const slug = getCategorySlug();
+    if (!slug) return;
+    showState('loading-state');
+
+    try {
+      // Fetch categories list
+      const categoriesRes = await fetch('/api/blog/categories');
+      if (!categoriesRes.ok) throw new Error('Failed to fetch categories');
+      const categories = await categoriesRes.json();
+
+      // Current category
+      const current = categories.find(c => c.name.toLowerCase() === slug.toLowerCase());
+      if (!current) throw new Error('Category not found');
+
+      // Update header UI
+      document.getElementById('breadcrumb-category').textContent = current.name;
+      document.getElementById('category-name').textContent = current.name;
+      document.getElementById('heading-category').textContent = current.name;
+      document.getElementById('grid-category-label').textContent = current.name;
+      document.getElementById('tutorial-count').textContent = current.posts;
+      document.getElementById('stats-total').textContent = current.posts;
+      document.getElementById('category-description').textContent = current.description || '';
+      document.getElementById('category-icon').textContent = categoryIcons[slug] || '🎨';
+
+      // Other categories section
+      const others = categories.filter(c => c.slug !== slug).slice(0, 5);
+      document.getElementById('other-categories').innerHTML = others.map(createCategoryCardHTML).join('');
+
+      // Fetch posts for category
+      const postsRes = await fetch(`/api/blog/posts/category/${encodeURIComponent(slug)}?page=${page}&limit=6`);
+      if (!postsRes.ok) throw new Error('Failed to fetch posts');
+      const data = await postsRes.json();
+
+      if (!data || data.length === 0) {
+        showState('no-posts-state');
+        return;
+      }
+
+      // Render posts grid
+      document.getElementById('posts-grid').innerHTML = data.map(createTutorialCardHTML).join('');
+
+      showState('posts-grid');
+    } catch (err) {
+      console.error(err);
+      showState('error-state');
+    }
+  }
+
+  // Initial load
+  document.addEventListener('DOMContentLoaded', () => {
+    const pg = parseInt(new URLSearchParams(window.location.search).get('page') || '1');
+    fetchCategoryTutorials(pg);
+  });
+})();
+</script>

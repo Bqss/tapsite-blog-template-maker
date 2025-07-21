@@ -1,0 +1,9 @@
+{
+  "title" : "DIY Crafts",
+  "description" : "Craft Tutorials & Projects blog with bright colors and step-by-step guides",
+  "template_id" : "diycrafts",
+  "creator_name" : "Maulana Shalihin",
+  "creator_website" : "https://tapsite.ai",
+  "version" : "1.0.0",
+  "thumbnail" : "/templates/diycrafts/thumbnail.webp"
+}

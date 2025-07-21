@@ -1,0 +1,138 @@
+<main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <!-- Article Header -->
+  <article class="bg-white rounded-lg shadow-sm overflow-hidden">
+    <!-- Featured Image -->
+    <div class="aspect-video bg-gradient-to-br from-pink-100 to-purple-100 relative">
+      <img src="{{it.post.featured_image}}" alt="{{it.post.title}}" class="w-full h-full object-cover">
+
+    </div>
+
+    <!-- Article Content -->
+    <div class="p-8">
+      <!-- Title and Meta -->
+      <div class="mb-8">
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          {{it.post.title}}
+        </h1>
+
+        <div class="flex flex-wrap items-center gap-4 text-sm text-gray-600 mb-6">
+          <span class="flex items-center gap-1">
+            <span class="text-pink-500">📅</span>
+            {{it.post.published_at}}
+          </span>
+          <span class="flex items-center gap-1">
+            <span class="text-purple-500">⏱️</span>
+            {{it.post.read_time}} minutes
+          </span>
+          <span class="flex items-center gap-1">
+            <span class="text-yellow-500">📊</span>
+            {{it.post.difficulty ?? 'Beginner'}}
+          </span>
+        </div>
+
+        <div class="flex flex-wrap gap-2 mb-6">
+          <a href="/category/{{it.post.category}}"
+            class="px-3 py-1 bg-pink-100 text-pink-700 rounded-full text-sm hover:bg-pink-200 transition-colors">
+            {{it.post.category}}
+          </a>
+        </div>
+      </div>
+
+      <!-- Article Body -->
+      <div class="ProseMirror focus:outline-none max-w-full space-y-4 leading-relaxed">
+        {{* it.post.content}}
+      </div>
+
+      <!-- Tags -->
+      <div class="border-t border-gray-200 pt-6 mt-8">
+        <h3 class="text-lg font-semibold text-gray-900 mb-3">Tags:</h3>
+        <div class="flex flex-wrap gap-2">
+          {{@each(it.post.tags)=>tag}}
+          <a href="/tag/{{tag}}"
+            class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-gray-200 transition-colors">
+            #{{tag}}
+          </a>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Related Posts -->
+  <section class="mt-12">
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">You Might Also Like</h2>
+    <div id="related-posts" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Related posts will be dynamically inserted here -->
+    </div>
+  </section>
+</main>
+
+<script>
+  (function () {
+    // Category styles mapping
+    const categoryStyles = {
+      'Home Decor': { gradient: 'from-pink-100 to-purple-100', icon: '🏠' },
+      'Paper Crafts': { gradient: 'from-purple-100 to-pink-100', icon: '📄' },
+      'Jewelry': { gradient: 'from-yellow-100 to-orange-100', icon: '💍' },
+      'Upcycling': { gradient: 'from-green-100 to-blue-100', icon: '♻️' },
+      'Kids Crafts': { gradient: 'from-red-100 to-pink-100', icon: '🎨' },
+      'default': { gradient: 'from-pink-100 to-purple-100', icon: '🎯' }
+    };
+
+    // Function to create related post HTML
+    function createRelatedPostHTML(related_post) {
+      const style = categoryStyles[related_post.category] || categoryStyles.default;
+
+      return `
+        <article class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+          <div class="aspect-video bg-gradient-to-br ${style.gradient} flex items-center justify-center">
+            ${related_post.featured_image ? `
+              <img src="${related_post.featured_image}" alt="${related_post.title}" class="w-full h-full object-cover">
+            ` : `<span class="text-4xl">${style.icon}</span>`}
+          </div>
+          <div class="p-4">
+            <h3 class="font-semibold text-gray-900 mb-2">${related_post.title}</h3>
+            <p class="text-sm text-gray-600 mb-3">${related_post.excerpt}</p>
+            <div class="flex items-center justify-between text-xs text-gray-500">
+              <span>🕐 ${related_post.read_time || '30'} min</span>
+              <span>📊 ${related_post.difficulty || 'Beginner'}</span>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    // Function to load related posts
+    async function loadRelatedPosts() {
+      try {
+        // Get current post slug from URL
+        const pathParts = window.location.pathname.split('/');
+        const postIndex = pathParts.indexOf('post');
+        const slug = postIndex !== -1 && pathParts[postIndex + 1]
+          ? decodeURIComponent(pathParts[postIndex + 1])
+          : null;
+
+        if (!slug) return;
+
+        // Fetch related posts
+        const response = await fetch(`/api/blog/posts/related/${encodeURIComponent(slug)}`);
+        if (!response.ok) throw new Error('Failed to fetch related posts');
+
+        const relatedPosts = await response.json();
+
+        if (relatedPosts && relatedPosts.length > 0) {
+          document.getElementById('related-posts').innerHTML = relatedPosts
+            .slice(0, 3)
+            .map(related_post => createRelatedPostHTML(related_post))
+            .join('');
+        }
+
+      } catch (error) {
+        console.error('Error loading related posts:', error);
+      }
+    }
+
+    // Load related posts when page loads
+    document.addEventListener('DOMContentLoaded', loadRelatedPosts);
+  })();
+</script>

@@ -1,0 +1,480 @@
+<!-- Craft Workshop Navigation -->
+<nav class="bg-white shadow-lg border-b-4 border-pink-400">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-20">
+      <!-- Logo & Brand -->
+      <div class="flex items-center space-x-3">
+        <div class="relative">
+          <div class="w-12 h-12 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
+            <span class="text-white text-xl">🎨</span>
+          </div>
+          <div class="absolute -top-1 -right-1 w-4 h-4 bg-yellow-400 rounded-full animate-pulse"></div>
+        </div>
+        <div>
+          <div class="text-2xl font-bold text-gray-900">DIY Crafts</div>
+          <div class="text-xs text-pink-600 font-medium">Workshop Studio</div>
+        </div>
+      </div>
+
+      <!-- Craft Categories Menu -->
+      <div class="hidden lg:flex items-center space-x-1">
+        <a href="#" class="px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-600 rounded-full transition-all duration-300 flex items-center space-x-2">
+          <span>🏠</span><span>Home Decor</span>
+        </a>
+        <a href="#" class="px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-600 rounded-full transition-all duration-300 flex items-center space-x-2">
+          <span>📄</span><span>Paper Crafts</span>
+        </a>
+        <a href="#" class="px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-600 rounded-full transition-all duration-300 flex items-center space-x-2">
+          <span>♻️</span><span>Upcycling</span>
+        </a>
+        <a href="#" class="px-4 py-2 text-gray-700 hover:bg-pink-50 hover:text-pink-600 rounded-full transition-all duration-300 flex items-center space-x-2">
+          <span>💍</span><span>Jewelry</span>
+        </a>
+      </div>
+
+      <!-- Search & Tools -->
+      <div class="flex items-center space-x-4">
+        <div class="relative">
+          <input type="text" placeholder="Search tutorials..." 
+                 class="bg-pink-50 border-2 border-pink-200 text-gray-700 placeholder-pink-400 px-4 py-2 rounded-full text-sm focus:outline-none focus:border-pink-400 focus:bg-white transition-all w-56">
+          <div class="absolute right-3 top-1/2 transform -translate-y-1/2 text-pink-400">🔍</div>
+        </div>
+        <button class="bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 transition-colors font-medium">
+          ✨ Create
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Page Header -->
+<section class="bg-gradient-to-br from-pink-50 via-purple-50 to-yellow-50 py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <div class="inline-flex items-center space-x-2 bg-white/70 backdrop-blur-sm px-6 py-3 rounded-full mb-6 shadow-lg">
+        <span class="text-2xl">📚</span>
+        <span class="text-pink-600 font-semibold">All Craft Tutorials</span>
+      </div>
+      <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+        Craft
+        <span class="text-pink-500">Tutorial</span>
+        <br>
+        <span class="text-purple-500">Library</span>
+      </h1>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Explore hundreds of step-by-step tutorials for every skill level and craft category
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Filters & Sort -->
+<section class="py-8 bg-white border-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0">
+      <!-- Category Filters -->
+      <div class="flex flex-wrap gap-2">
+        <button class="bg-pink-500 text-white px-4 py-2 rounded-full font-medium hover:bg-pink-600 transition-colors">
+          All Categories
+        </button>
+        <button class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-medium hover:bg-pink-100 hover:text-pink-600 transition-colors">
+          🏠 Home Decor
+        </button>
+        <button class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-medium hover:bg-pink-100 hover:text-pink-600 transition-colors">
+          📄 Paper Crafts
+        </button>
+        <button class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-medium hover:bg-pink-100 hover:text-pink-600 transition-colors">
+          ♻️ Upcycling
+        </button>
+        <button class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-medium hover:bg-pink-100 hover:text-pink-600 transition-colors">
+          💍 Jewelry
+        </button>
+        <button class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-medium hover:bg-pink-100 hover:text-pink-600 transition-colors">
+          🎨 Kids Crafts
+        </button>
+      </div>
+      
+      <!-- Sort Options -->
+      <div class="flex items-center space-x-4">
+        <span class="text-gray-600">Sort by:</span>
+        <select class="bg-white border-2 border-gray-200 rounded-full px-4 py-2 focus:outline-none focus:border-pink-400">
+          <option>Latest</option>
+          <option>Most Popular</option>
+          <option>Difficulty</option>
+          <option>Time Required</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tutorial Grid -->
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+      <!-- Tutorial Card 1 -->
+      <div class="bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+        <div class="aspect-square bg-gradient-to-br from-pink-200 to-rose-200 relative flex items-center justify-center">
+          <div class="text-center">
+            <div class="text-6xl mb-2">🧵</div>
+            <div class="text-pink-800 font-medium">Macrame Art</div>
+          </div>
+          <div class="absolute top-4 right-4 bg-pink-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+            New
+          </div>
+          <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-gray-700">
+            30 min
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center space-x-2 mb-3">
+            <span class="bg-pink-100 text-pink-700 px-2 py-1 rounded-full text-xs">Home Decor</span>
+            <span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs">Beginner</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2 text-lg">Macrame Wall Hanging</h3>
+          <p class="text-gray-600 text-sm mb-4">Create a beautiful boho-style wall hanging with simple knots and basic materials</p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <div class="w-8 h-8 bg-gradient-to-br from-pink-400 to-purple-500 rounded-full flex items-center justify-center">
+                <span class="text-white text-xs font-bold">SM</span>
+              </div>
+              <div class="text-sm text-gray-600">Sarah M.</div>
+            </div>
+            <div class="flex items-center space-x-1">
+              <span class="text-yellow-400">⭐</span>
+              <span class="text-sm text-gray-600">4.8</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tutorial Card 2 -->
+      <div class="bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+        <div class="aspect-square bg-gradient-to-br from-purple-200 to-indigo-200 relative flex items-center justify-center">
+          <div class="text-center">
+            <div class="text-6xl mb-2">📄</div>
+            <div class="text-purple-800 font-medium">Paper Magic</div>
+          </div>
+          <div class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+            Popular
+          </div>
+          <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-gray-700">
+            2 hrs
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center space-x-2 mb-3">
+            <span class="bg-purple-100 text-purple-700 px-2 py-1 rounded-full text-xs">Paper Crafts</span>
+            <span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full text-xs">Intermediate</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2 text-lg">Paper Flower Bouquet</h3>
+          <p class="text-gray-600 text-sm mb-4">Skip expensive flowers and create lasting bouquets with crepe paper and wire</p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <div class="w-8 h-8 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full flex items-center justify-center">
+                <span class="text-white text-xs font-bold">PA</span>
+              </div>
+              <div class="text-sm text-gray-600">Paper A.</div>
+            </div>
+            <div class="flex items-center space-x-1">
+              <span class="text-yellow-400">⭐</span>
+              <span class="text-sm text-gray-600">4.6</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tutorial Card 3 -->
+      <div class="bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+        <div class="aspect-square bg-gradient-to-br from-green-200 to-emerald-200 relative flex items-center justify-center">
+          <div class="text-center">
+            <div class="text-6xl mb-2">♻️</div>
+            <div class="text-green-800 font-medium">Eco Craft</div>
+          </div>
+          <div class="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+            Eco
+          </div>
+          <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-gray-700">
+            45 min
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center space-x-2 mb-3">
+            <span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs">Upcycling</span>
+            <span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs">Beginner</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2 text-lg">Tin Can Herb Garden</h3>
+          <p class="text-gray-600 text-sm mb-4">Transform old tin cans into charming planters for your windowsill herbs</p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <div class="w-8 h-8 bg-gradient-to-br from-green-400 to-blue-500 rounded-full flex items-center justify-center">
+                <span class="text-white text-xs font-bold">EC</span>
+              </div>
+              <div class="text-sm text-gray-600">Eco C.</div>
+            </div>
+            <div class="flex items-center space-x-1">
+              <span class="text-yellow-400">⭐</span>
+              <span class="text-sm text-gray-600">4.7</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tutorial Card 4 -->
+      <div class="bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+        <div class="aspect-square bg-gradient-to-br from-yellow-200 to-orange-200 relative flex items-center justify-center">
+          <div class="text-center">
+            <div class="text-6xl mb-2">💍</div>
+            <div class="text-yellow-800 font-medium">Jewelry Art</div>
+          </div>
+          <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-gray-700">
+            1 hr
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center space-x-2 mb-3">
+            <span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full text-xs">Jewelry</span>
+            <span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full text-xs">Intermediate</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2 text-lg">Wire-Wrapped Earrings</h3>
+          <p class="text-gray-600 text-sm mb-4">Learn elegant wire-wrapping techniques to create stunning handmade earrings</p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <div class="w-8 h-8 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
+                <span class="text-white text-xs font-bold">JM</span>
+              </div>
+              <div class="text-sm text-gray-600">Jewelry M.</div>
+            </div>
+            <div class="flex items-center space-x-1">
+              <span class="text-yellow-400">⭐</span>
+              <span class="text-sm text-gray-600">4.9</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tutorial Card 5 -->
+      <div class="bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+        <div class="aspect-square bg-gradient-to-br from-red-200 to-pink-200 relative flex items-center justify-center">
+          <div class="text-center">
+            <div class="text-6xl mb-2">🎨</div>
+            <div class="text-red-800 font-medium">Kids Fun</div>
+          </div>
+          <div class="absolute top-4 right-4 bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+            Family
+          </div>
+          <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-gray-700">
+            30 min
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center space-x-2 mb-3">
+            <span class="bg-red-100 text-red-700 px-2 py-1 rounded-full text-xs">Kids Crafts</span>
+            <span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs">Beginner</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2 text-lg">Handprint Keepsakes</h3>
+          <p class="text-gray-600 text-sm mb-4">Create precious memories with handprint art perfect for grandparents</p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <div class="w-8 h-8 bg-gradient-to-br from-red-400 to-pink-500 rounded-full flex items-center justify-center">
+                <span class="text-white text-xs font-bold">KC</span>
+              </div>
+              <div class="text-sm text-gray-600">Kids C.</div>
+            </div>
+            <div class="flex items-center space-x-1">
+              <span class="text-yellow-400">⭐</span>
+              <span class="text-sm text-gray-600">4.8</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tutorial Card 6 -->
+      <div class="bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+        <div class="aspect-square bg-gradient-to-br from-indigo-200 to-purple-200 relative flex items-center justify-center">
+          <div class="text-center">
+            <div class="text-6xl mb-2">🎄</div>
+            <div class="text-indigo-800 font-medium">Holiday Craft</div>
+          </div>
+          <div class="absolute top-4 right-4 bg-indigo-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+            Seasonal
+          </div>
+          <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-gray-700">
+            1.5 hrs
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center space-x-2 mb-3">
+            <span class="bg-indigo-100 text-indigo-700 px-2 py-1 rounded-full text-xs">Seasonal</span>
+            <span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full text-xs">Intermediate</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2 text-lg">Holiday Ornaments</h3>
+          <p class="text-gray-600 text-sm mb-4">Create festive decorations for your tree with simple materials</p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <div class="w-8 h-8 bg-gradient-to-br from-indigo-400 to-purple-500 rounded-full flex items-center justify-center">
+                <span class="text-white text-xs font-bold">HC</span>
+              </div>
+              <div class="text-sm text-gray-600">Holiday C.</div>
+            </div>
+            <div class="flex items-center space-x-1">
+              <span class="text-yellow-400">⭐</span>
+              <span class="text-sm text-gray-600">4.7</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tutorial Card 7 -->
+      <div class="bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+        <div class="aspect-square bg-gradient-to-br from-teal-200 to-cyan-200 relative flex items-center justify-center">
+          <div class="text-center">
+            <div class="text-6xl mb-2">🧶</div>
+            <div class="text-teal-800 font-medium">Yarn Craft</div>
+          </div>
+          <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-gray-700">
+            2 hrs
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center space-x-2 mb-3">
+            <span class="bg-teal-100 text-teal-700 px-2 py-1 rounded-full text-xs">Home Decor</span>
+            <span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full text-xs">Intermediate</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2 text-lg">Chunky Knit Blanket</h3>
+          <p class="text-gray-600 text-sm mb-4">Create a cozy throw blanket using arm knitting techniques</p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <div class="w-8 h-8 bg-gradient-to-br from-teal-400 to-cyan-500 rounded-full flex items-center justify-center">
+                <span class="text-white text-xs font-bold">YC</span>
+              </div>
+              <div class="text-sm text-gray-600">Yarn C.</div>
+            </div>
+            <div class="flex items-center space-x-1">
+              <span class="text-yellow-400">⭐</span>
+              <span class="text-sm text-gray-600">4.5</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Tutorial Card 8 -->
+      <div class="bg-white rounded-3xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+        <div class="aspect-square bg-gradient-to-br from-rose-200 to-pink-200 relative flex items-center justify-center">
+          <div class="text-center">
+            <div class="text-6xl mb-2">🌸</div>
+            <div class="text-rose-800 font-medium">Floral Craft</div>
+          </div>
+          <div class="absolute top-4 right-4 bg-rose-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+            Trending
+          </div>
+          <div class="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-gray-700">
+            1 hr
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center space-x-2 mb-3">
+            <span class="bg-rose-100 text-rose-700 px-2 py-1 rounded-full text-xs">Home Decor</span>
+            <span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs">Beginner</span>
+          </div>
+          <h3 class="font-bold text-gray-900 mb-2 text-lg">Dried Flower Wreath</h3>
+          <p class="text-gray-600 text-sm mb-4">Make a beautiful wreath using dried flowers and natural materials</p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <div class="w-8 h-8 bg-gradient-to-br from-rose-400 to-pink-500 rounded-full flex items-center justify-center">
+                <span class="text-white text-xs font-bold">FC</span>
+              </div>
+              <div class="text-sm text-gray-600">Floral C.</div>
+            </div>
+            <div class="flex items-center space-x-1">
+              <span class="text-yellow-400">⭐</span>
+              <span class="text-sm text-gray-600">4.6</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Load More Button -->
+    <div class="text-center mt-12">
+      <button class="bg-pink-500 text-white px-8 py-4 rounded-full font-semibold hover:bg-pink-600 transition-all transform hover:scale-105 shadow-lg">
+        🎨 Load More Tutorials
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Newsletter Section -->
+<section class="py-16 bg-gradient-to-br from-pink-50 to-purple-50">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="bg-gradient-to-r from-pink-500 to-purple-600 rounded-3xl p-8 lg:p-12 text-white">
+      <h2 class="text-3xl lg:text-4xl font-bold mb-4">Never Miss a Tutorial</h2>
+      <p class="text-pink-100 mb-8 text-lg">Get weekly craft inspiration and exclusive tutorials delivered to your inbox</p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+        <input type="email" placeholder="Enter your email" 
+               class="flex-1 px-6 py-4 rounded-full text-gray-900 focus:outline-none focus:ring-4 focus:ring-pink-300">
+        <button class="bg-white text-pink-500 px-8 py-4 rounded-full font-semibold hover:bg-pink-50 transition-all">
+          ✨ Subscribe
+        </button>
+      </div>
+      
+      <div class="mt-8 flex justify-center space-x-6">
+        <span class="text-pink-200">📧 Weekly newsletter</span>
+        <span class="text-pink-200">🎁 Exclusive content</span>
+        <span class="text-pink-200">📱 Mobile-friendly</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid md:grid-cols-4 gap-8">
+      <div>
+        <div class="flex items-center space-x-2 mb-4">
+          <div class="w-8 h-8 bg-pink-500 rounded-full flex items-center justify-center">
+            <span class="text-white">🎨</span>
+          </div>
+          <span class="text-xl font-bold">DIY Crafts</span>
+        </div>
+        <p class="text-gray-400">Creating beautiful things together, one project at a time.</p>
+      </div>
+      
+      <div>
+        <h4 class="font-semibold mb-4">Categories</h4>
+        <ul class="space-y-2 text-gray-400">
+          <li><a href="#" class="hover:text-white transition-colors">Home Decor</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Paper Crafts</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Upcycling</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Jewelry Making</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4 class="font-semibold mb-4">Resources</h4>
+        <ul class="space-y-2 text-gray-400">
+          <li><a href="#" class="hover:text-white transition-colors">Tutorials</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Supplies Guide</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Community</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Blog</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4 class="font-semibold mb-4">Connect</h4>
+        <ul class="space-y-2 text-gray-400">
+          <li><a href="#" class="hover:text-white transition-colors">Instagram</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Pinterest</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">YouTube</a></li>
+          <li><a href="#" class="hover:text-white transition-colors">Facebook</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+      <p>&copy; 2024 DIY Crafts Workshop. Made with ❤️ for crafters everywhere.</p>
+    </div>
+  </div>
+</footer> 
