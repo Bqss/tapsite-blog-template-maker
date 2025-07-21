@@ -1,0 +1,19 @@
+<!-- Newsletter Banner Section -->
+<section class="py-16 bg-gradient-to-r from-food-red to-food-orange text-white">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="mb-8">
+      <span class="text-6xl mb-4 block">{{it.newsletter.emoji}}</span>
+      <h2 class="font-display text-3xl lg:text-4xl font-bold mb-4">{{it.newsletter.title}}</h2>
+      <p class="text-xl text-red-100">{{it.newsletter.subtitle}}</p>
+    </div>
+
+    <div class="flex flex-col sm:flex-row max-w-md mx-auto gap-4">
+      <input type="email" placeholder="{{it.newsletter.placeholder}}" class="flex-1 px-6 py-4 rounded-xl text-food-gray focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50">
+      <button class="bg-white text-food-red px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-colors">
+        {{it.newsletter.button_label}}
+      </button>
+    </div>
+
+    <p class="text-sm text-red-100 mt-4">{{it.newsletter.note}}</p>
+  </div>
+</section> 

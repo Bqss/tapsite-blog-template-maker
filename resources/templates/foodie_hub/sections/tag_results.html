@@ -1,0 +1,75 @@
+<!-- Tag Header -->
+<section class="bg-gradient-to-r from-food-red to-food-orange py-16 text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <div class="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-6">
+        <span class="text-4xl">🏷️</span>
+      </div>
+      <h1 id="tag-title" class="font-display text-4xl lg:text-5xl font-bold mb-4">#tag</h1>
+      <p class="text-xl text-red-100 max-w-2xl mx-auto">
+        Essential cooking tips and techniques to elevate your culinary skills
+      </p>
+      <div class="mt-8">
+        <span id="tag-article-count" class="bg-white bg-opacity-20 px-4 py-2 rounded-full text-sm font-medium">0 articles</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Recipe Grid -->
+<section class="py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div id="tag-articles-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <p class="col-span-full text-center text-gray-500">Loading...</p>
+    </div>
+  </div>
+</section>
+
+<!-- Related Tags -->
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-2xl font-bold text-food-gray mb-6 text-center">Related Tags</h2>
+    <div class="flex flex-wrap justify-center gap-3" id="related-tags">
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', async () => {
+    const parts = window.location.pathname.split('/');
+    const tag = decodeURIComponent(parts[parts.indexOf('tag')+1] || '');
+    if(!tag) return;
+    document.getElementById('tag-title').textContent = `#${tag}`;
+
+    const grid = document.getElementById('tag-articles-grid');
+    const countEl = document.getElementById('tag-article-count');
+    try{
+      const res = await fetch(`/api/blog/posts/tag/${encodeURIComponent(tag)}`);
+      if(!res.ok) throw new Error();
+      const data = await res.json();
+      countEl.textContent = `${data.length} articles`;
+      if(!data.length){grid.innerHTML='<p class="col-span-full text-center text-gray-500">No articles found.</p>';return;}
+      grid.innerHTML = data.map(post=>`<div class=\"bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow\">
+        <div class=\"relative\">
+          <img src=\"${post.featured_image || ''}\" alt=\"${post.title}\" class=\"w-full h-48 object-cover\">
+          <div class=\"absolute top-4 left-4\"><span class=\"bg-food-green text-white px-3 py-1 rounded-full text-sm font-medium\">${post.category}</span></div>
+        </div>
+        <div class=\"p-6\">
+          <h3 class=\"font-display text-xl font-semibold text-food-gray mb-2 line-clamp-2\">${post.title}</h3>
+          <p class=\"text-gray-600 mb-4 line-clamp-3\">${post.excerpt}</p>
+          <div class=\"flex items-center justify-between\">
+            <div class=\"flex items-center space-x-2 text-sm text-gray-500\"><span>👁️ ${post.view_count||0}</span></div>
+            <a href=\"/post/${post.slug}\" class=\"text-food-red hover:text-red-700 font-medium\">Read More</a>
+          </div>
+        </div>
+      </div>`).join('');
+    }catch(e){console.error(e);grid.innerHTML='<p class="col-span-full text-center text-red-500">Error loading articles.</p>';}
+
+    // related tags
+    const relEl=document.getElementById('related-tags');
+    try{
+      const r=await fetch('/api/blog/tags');
+      if(r.ok){const tags=await r.json();relEl.innerHTML=tags.filter(t=>t!==tag).slice(0,6).map(t=>`<a href=\"/tag/${t}\" class=\"bg-food-cream text-food-gray px-4 py-2 rounded-full hover:bg-food-red hover:text-white transition-colors\">#${t}</a>`).join('');}
+    }catch(err){console.error(err);}
+  });
+</script>

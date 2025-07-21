@@ -1,0 +1,23 @@
+<!-- Quick Filters Section -->
+<section class="py-8 bg-white border-b border-gray-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center space-x-4">
+        <span class="font-medium text-food-gray">{{it.quick_filters.label}}</span>
+        <div class="flex flex-wrap gap-2">
+          {{@each(it.quick_filters.filters)=>filter}}
+          <button class="{{@if(filter.active)}}bg-food-red text-white{{else}}bg-gray-100 text-gray-700 hover:bg-gray-200{{/if}} px-4 py-2 rounded-full text-sm font-medium">{{filter.label}}</button>
+          {{/each}}
+        </div>
+      </div>
+      <div class="flex items-center space-x-2">
+        <span class="text-gray-600 text-sm">{{it.quick_filters.sort_label}}</span>
+        <select class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-food-red">
+          {{@each(it.quick_filters.sort_options)=>opt}}
+          <option value="{{opt.value}}" {{@if(opt.selected)}}selected{{/if}}>{{opt.label}}</option>
+          {{/each}}
+        </select>
+      </div>
+    </div>
+  </div>
+</section> 

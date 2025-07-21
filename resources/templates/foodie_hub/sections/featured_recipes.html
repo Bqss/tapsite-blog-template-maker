@@ -1,0 +1,181 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
+  .recipe-card:hover { transform: translateY(-8px); }
+  .recipe-card:hover .recipe-image { transform: scale(1.05); }
+  .difficulty-easy { @apply bg-green-100 text-green-800; }
+  .difficulty-medium { @apply bg-yellow-100 text-yellow-800; }
+  .difficulty-hard { @apply bg-red-100 text-red-800; }
+</style>
+
+<section class="py-8 bg-white border-b border-gray-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+          <div class="flex items-center space-x-4">
+              <span class="font-medium text-food-gray">Quick Filters:</span>
+              <div class="flex flex-wrap gap-2">
+                  <button class="bg-food-red text-white px-4 py-2 rounded-full text-sm font-medium">All Recipes</button>
+                  <button class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-200">Under 30 min</button>
+                  <button class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-200">Vegetarian</button>
+                  <button class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-200">Easy</button>
+                  <button class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-200">Healthy</button>
+              </div>
+          </div>
+          <div class="flex items-center space-x-2">
+              <span class="text-gray-600 text-sm">Sort by:</span>
+              <select class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-food-red">
+                  <option>Most Popular</option>
+                  <option>Newest</option>
+
+                  <option>Difficulty</option>
+              </select>
+          </div>
+      </div>
+  </div>
+</section>
+
+<!-- Featured Recipes -->
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+          <h2 class="font-display text-3xl lg:text-4xl font-bold text-food-gray mb-4">Featured Recipes</h2>
+          <p class="text-xl text-gray-600">Handpicked recipes from our community of food lovers</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Recipe Card 1 -->
+          <div class="bg-white rounded-2xl shadow-lg overflow-hidden recipe-card transition-all duration-300 hover:shadow-xl">
+              <div class="relative">
+                  <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=400&h=300&fit=crop" 
+                       alt="Creamy Pasta Carbonara" 
+                       class="w-full h-48 object-cover recipe-image transition-transform duration-300">
+                  <div class="absolute top-4 left-4">
+                      <span class="bg-food-red text-white px-3 py-1 rounded-full text-sm font-medium">Main Course</span>
+                  </div>
+                  <div class="absolute bottom-4 left-4 right-4">
+                      <div class="flex items-center space-x-2 text-white">
+                          <div class="bg-black bg-opacity-50 px-2 py-1 rounded-full text-xs">👁️ 1.2K views</div>
+                          <div class="bg-black bg-opacity-50 px-2 py-1 rounded-full text-xs">Medium</div>
+                      </div>
+                  </div>
+              </div>
+              <div class="p-6">
+                  <h3 class="font-display text-xl font-semibold text-food-gray mb-2">Creamy Pasta Carbonara</h3>
+                  <p class="text-gray-600 mb-4">A classic Italian dish with creamy sauce, crispy pancetta, and perfectly cooked pasta that will transport you straight to Rome.</p>
+                  <div class="flex items-center justify-between">
+                      <div class="flex items-center space-x-2">
+                          <div class="w-8 h-8 bg-food-red rounded-full flex items-center justify-center">
+                              <span class="text-white text-sm font-medium">M</span>
+                          </div>
+                          <div>
+                              <p class="text-sm font-medium text-food-gray">Chef Marco</p>
+                              <p class="text-xs text-gray-500">2 days ago</p>
+                          </div>
+                      </div>
+                      <div class="flex items-center space-x-2">
+                          <button class="text-gray-400 hover:text-food-red transition-colors">
+                              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                              </svg>
+                          </button>
+                          <button class="text-gray-400 hover:text-food-red transition-colors">
+                              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
+                              </svg>
+                          </button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <!-- Recipe Card 2 -->
+          <div class="bg-white rounded-2xl shadow-lg overflow-hidden recipe-card transition-all duration-300 hover:shadow-xl">
+              <div class="relative">
+                  <img src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=400&h=300&fit=crop" 
+                       alt="Rainbow Sushi Bowl" 
+                       class="w-full h-48 object-cover recipe-image transition-transform duration-300">
+                  <div class="absolute top-4 left-4">
+                      <span class="bg-food-green text-white px-3 py-1 rounded-full text-sm font-medium">Healthy</span>
+                  </div>
+                  <div class="absolute bottom-4 left-4 right-4">
+                      <div class="flex items-center space-x-2 text-white">
+                          <div class="bg-black bg-opacity-50 px-2 py-1 rounded-full text-xs">👁️ 890 views</div>
+                          <div class="bg-black bg-opacity-50 px-2 py-1 rounded-full text-xs">Easy</div>
+                      </div>
+                  </div>
+              </div>
+              <div class="p-6">
+                  <h3 class="font-display text-xl font-semibold text-food-gray mb-2">Rainbow Sushi Bowl</h3>
+                  <p class="text-gray-600 mb-4">A colorful and nutritious bowl packed with fresh vegetables, avocado, and seasoned rice - perfect for a healthy lunch.</p>
+                  <div class="flex items-center justify-between">
+                      <div class="flex items-center space-x-2">
+                          <div class="w-8 h-8 bg-food-red rounded-full flex items-center justify-center">
+                              <span class="text-white text-sm font-medium">S</span>
+                          </div>
+                          <div>
+                              <p class="text-sm font-medium text-food-gray">Chef Sarah</p>
+                              <p class="text-xs text-gray-500">1 day ago</p>
+                          </div>
+                      </div>
+                      <div class="flex items-center space-x-2">
+                          <button class="text-gray-400 hover:text-food-red transition-colors">
+                              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                              </svg>
+                          </button>
+                          <button class="text-gray-400 hover:text-food-red transition-colors">
+                              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
+                              </svg>
+                          </button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <!-- Recipe Card 3 -->
+          <div class="bg-white rounded-2xl shadow-lg overflow-hidden recipe-card transition-all duration-300 hover:shadow-xl">
+              <div class="relative">
+                  <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&h=300&fit=crop" 
+                       alt="Fluffy Pancakes" 
+                       class="w-full h-48 object-cover recipe-image transition-transform duration-300">
+                  <div class="absolute top-4 left-4">
+                      <span class="bg-food-orange text-white px-3 py-1 rounded-full text-sm font-medium">Breakfast</span>
+                  </div>
+                  <div class="absolute bottom-4 left-4 right-4">
+                      <div class="flex items-center space-x-2 text-white">
+                          <div class="bg-black bg-opacity-50 px-2 py-1 rounded-full text-xs">👁️ 2.1K views</div>
+                          <div class="bg-black bg-opacity-50 px-2 py-1 rounded-full text-xs">Easy</div>
+                      </div>
+                  </div>
+              </div>
+              <div class="p-6">
+                  <h3 class="font-display text-xl font-semibold text-food-gray mb-2">Fluffy Pancakes</h3>
+                  <p class="text-gray-600 mb-4">Start your morning right with these incredibly fluffy pancakes topped with fresh berries and maple syrup.</p>
+                  <div class="flex items-center justify-between">
+                      <div class="flex items-center space-x-2">
+                          <div class="w-8 h-8 bg-food-red rounded-full flex items-center justify-center">
+                              <span class="text-white text-sm font-medium">E</span>
+                          </div>
+                          <div>
+                              <p class="text-sm font-medium text-food-gray">Chef Emma</p>
+                              <p class="text-xs text-gray-500">3 days ago</p>
+                          </div>
+                      </div>
+                      <div class="flex items-center space-x-2">
+                          <button class="text-gray-400 hover:text-food-red transition-colors">
+                              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                              </svg>
+                          </button>
+                          <button class="text-gray-400 hover:text-food-red transition-colors">
+                              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
+                              </svg>
+                          </button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>

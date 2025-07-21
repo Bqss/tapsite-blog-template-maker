@@ -1,0 +1,249 @@
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'food-red': '#DC2626',
+                    'food-orange': '#F59E0B',
+                    'food-green': '#10B981',
+                    'food-warm': '#FB923C',
+                    'food-cream': '#FEF7ED',
+                    'food-gray': '#1F2937'
+                },
+                fontFamily: {
+                    'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    'display': ['Playfair Display', 'serif']
+                }
+            }
+        }
+    }
+</script>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
+    .article-card:hover { transform: translateY(-8px); }
+    .article-card:hover .article-image { transform: scale(1.05); }
+</style>
+
+<div class="bg-food-cream min-h-screen font-sans text-food-gray">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg border-b border-orange-100 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-food-red rounded-xl flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4"/>
+                        </svg>
+                    </div>
+                    <a href="/blog" class="font-display text-xl font-bold text-food-red">FoodieHub</a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/blog" class="text-gray-600 hover:text-food-red transition-colors font-medium">Home</a>
+                    <a href="/blog/posts" class="text-gray-600 hover:text-food-red transition-colors font-medium">Articles</a>
+                    <a href="/blog/category/Main Course" class="text-gray-600 hover:text-food-red transition-colors font-medium">Categories</a>
+                    <a href="/blog/search" class="text-gray-600 hover:text-food-red transition-colors font-medium">Search</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button class="text-gray-600 hover:text-food-red transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                    </button>
+                    <button class="text-gray-600 hover:text-food-red transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                        </svg>
+                    </button>
+                    <button class="bg-food-red text-white px-4 py-2 rounded-lg font-medium hover:bg-red-700 transition-colors">
+                        Share Article
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <nav class="bg-white py-4 border-b border-gray-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center space-x-2 text-sm">
+                <a href="/blog" class="text-gray-500 hover:text-food-red transition-colors">Home</a>
+                <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+                <a href="/blog/category/Main Course" class="text-gray-500 hover:text-food-red transition-colors">Food & Recipes</a>
+                <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+                <span class="text-food-red font-medium">Resep Nasi Goreng Spesial</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Content -->
+    <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Article Header -->
+        <header class="mb-8">
+            <div class="flex items-center space-x-2 mb-4">
+                <span class="bg-food-red text-white px-3 py-1 rounded-full text-sm font-medium">Food & Recipes</span>
+                <span class="text-gray-500 text-sm">•</span>
+                <span class="text-gray-500 text-sm">2.5K views</span>
+            </div>
+            
+            <h1 class="font-display text-3xl lg:text-4xl font-bold text-food-gray mb-6 leading-tight">
+                Resep Nasi Goreng Spesial: Rahasia Membuat Nasi Goreng Restaurant Style di Rumah
+            </h1>
+            
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-4">
+                    <div class="w-12 h-12 bg-food-red rounded-full flex items-center justify-center">
+                        <span class="text-white font-semibold">C</span>
+                    </div>
+                    <div>
+                        <p class="font-medium text-food-gray">Chef Maria Santos</p>
+                        <p class="text-sm text-gray-500">Dipublikasikan 2 hari yang lalu</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button class="text-gray-400 hover:text-food-red transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Featured Image -->
+        <div class="mb-8">
+            <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=800&h=500&fit=crop" 
+                 alt="Nasi Goreng Spesial dengan telur mata sapi dan kerupuk" 
+                 class="w-full h-64 lg:h-96 object-cover rounded-2xl shadow-lg">
+        </div>
+
+        <!-- Article Content -->
+        <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-200 mb-8">
+            <section class="mb-8">
+                <h2 class="font-display text-2xl font-bold text-food-gray mb-4">Pengantar</h2>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                    Nasi goreng adalah salah satu hidangan paling populer di Indonesia yang digemari oleh semua kalangan. Resep nasi goreng spesial ini akan mengajarkan Anda cara membuat nasi goreng dengan cita rasa restaurant style yang lezat dan menggugah selera.
+                </p>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                    Dengan kombinasi bumbu yang tepat, teknik memasak yang benar, dan bahan-bahan berkualitas, Anda dapat menciptakan nasi goreng yang tidak kalah dengan yang disajikan di restoran-restoran terkenal.
+                </p>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="font-display text-2xl font-bold text-food-gray mb-4">Bahan-Bahan yang Diperlukan</h2>
+                
+                <h3 class="text-xl font-semibold text-food-gray mb-3">Bahan Utama:</h3>
+                <ul class="list-disc pl-6 mb-4 space-y-2 text-gray-700">
+                    <li>3 piring nasi putih (sebaiknya nasi yang sudah dingin/sisa kemarin)</li>
+                    <li>2 butir telur ayam, kocok lepas</li>
+                    <li>200 gram ayam fillet, potong dadu kecil</li>
+                    <li>100 gram udang kupas, buang kepala dan ekor</li>
+                    <li>2 batang daun bawang, iris tipis</li>
+                    <li>1 buah wortel, potong dadu kecil</li>
+                    <li>100 gram kacang polong (bisa gunakan yang beku)</li>
+                </ul>
+
+                <h3 class="text-xl font-semibold text-food-gray mb-3">Bumbu Halus:</h3>
+                <ul class="list-disc pl-6 mb-4 space-y-2 text-gray-700">
+                    <li>6 siung bawang putih</li>
+                    <li>4 siung bawang merah</li>
+                    <li>3 buah cabai merah keriting</li>
+                    <li>2 buah cabai rawit (sesuai selera)</li>
+                    <li>1 cm jahe</li>
+                    <li>1 sdt terasi bakar</li>
+                </ul>
+
+                <h3 class="text-xl font-semibold text-food-gray mb-3">Bumbu Pelengkap:</h3>
+                <ul class="list-disc pl-6 mb-4 space-y-2 text-gray-700">
+                    <li>3 sdm kecap manis</li>
+                    <li>2 sdm kecap asin</li>
+                    <li>1 sdt garam</li>
+                    <li>1/2 sdt merica bubuk</li>
+                    <li>2 sdm minyak goreng</li>
+                    <li>1 sdt gula pasir</li>
+                </ul>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="font-display text-2xl font-bold text-food-gray mb-4">Cara Membuat</h2>
+                
+                <h3 class="text-xl font-semibold text-food-gray mb-3">Langkah 1: Persiapan Bahan</h3>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                    Siapkan semua bahan dan bumbu yang diperlukan. Haluskan bumbu halus menggunakan blender atau ulek hingga benar-benar halus. Pastikan nasi yang digunakan sudah dingin dan tidak menggumpal.
+                </p>
+
+                <h3 class="text-xl font-semibold text-food-gray mb-3">Langkah 2: Tumis Bumbu</h3>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                    Panaskan minyak dalam wajan besar dengan api sedang. Tumis bumbu halus hingga harum dan matang, sekitar 3-4 menit. Jangan sampai gosong karena akan memberikan rasa pahit.
+                </p>
+
+                <h3 class="text-xl font-semibold text-food-gray mb-3">Langkah 3: Masak Protein</h3>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                    Masukkan potongan ayam dan udang ke dalam wajan. Aduk rata dan masak hingga berubah warna dan matang. Tambahkan telur kocok, aduk cepat hingga telur matang dan tercampur rata.
+                </p>
+
+                <h3 class="text-xl font-semibold text-food-gray mb-3">Langkah 4: Tambahkan Sayuran</h3>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                    Masukkan wortel dan kacang polong. Tumis sebentar hingga sayuran sedikit layu namun masih renyah. Ini akan memberikan tekstur yang menarik pada nasi goreng.
+                </p>
+
+                <h3 class="text-xl font-semibold text-food-gray mb-3">Langkah 5: Masukkan Nasi</h3>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                    Masukkan nasi putih ke dalam wajan. Aduk rata dengan spatula kayu, pastikan nasi tidak menggumpal. Tambahkan kecap manis, kecap asin, garam, merica, dan gula. Aduk terus hingga bumbu merata dan nasi berubah warna.
+                </p>
+
+                <h3 class="text-xl font-semibold text-food-gray mb-3">Langkah 6: Finishing Touch</h3>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                    Tambahkan daun bawang yang sudah diiris tipis. Aduk sebentar hingga layu. Koreksi rasa, tambahkan garam atau kecap jika diperlukan. Angkat dan sajikan selagi hangat.
+                </p>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="font-display text-2xl font-bold text-food-gray mb-4">Tips dan Trik</h2>
+                
+                <div class="bg-food-cream p-6 rounded-lg mb-6">
+                    <h4 class="font-semibold text-food-gray mb-3">Tips Sukses:</h4>
+                    <ul class="space-y-2 text-gray-700">
+                        <li>• Gunakan nasi yang sudah dingin untuk hasil yang tidak lengket</li>
+                        <li>• Jangan terlalu banyak menambahkan kecap agar warna tidak terlalu gelap</li>
+                        <li>• Gunakan api besar saat menumis nasi untuk hasil yang "wok hei"</li>
+                        <li>• Tambahkan sedikit minyak wijen untuk aroma yang lebih sedap</li>
+                    </ul>
+                </div>
+
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                    Nasi goreng spesial ini dapat disajikan dengan berbagai pelengkap seperti kerupuk, acar, atau telur mata sapi. Hidangan ini cocok untuk sarapan, makan siang, atau makan malam bersama keluarga.
+                </p>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="font-display text-2xl font-bold text-food-gray mb-4">Kesimpulan</h2>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                    Membuat nasi goreng spesial dengan cita rasa restaurant style di rumah ternyata tidak sulit. Kunci utamanya adalah pada pemilihan bahan yang berkualitas, teknik memasak yang tepat, dan keseimbangan bumbu yang pas.
+                </p>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                    Dengan mengikuti resep dan tips yang telah dibagikan, Anda dapat menciptakan nasi goreng yang lezat dan menggugah selera. Selamat mencoba dan semoga berhasil!
+                </p>
+            </section>
+        </div>
+
+        <!-- Tags -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-200">
+            <h3 class="font-semibold text-food-gray mb-4">Tags:</h3>
+            <div class="flex flex-wrap gap-2">
+                <span class="bg-food-cream text-food-red px-3 py-1 rounded-full text-sm hover:bg-red-100 transition-colors cursor-pointer">Resep</span>
+                <span class="bg-food-cream text-food-red px-3 py-1 rounded-full text-sm hover:bg-red-100 transition-colors cursor-pointer">Nasi Goreng</span>
+                <span class="bg-food-cream text-food-red px-3 py-1 rounded-full text-sm hover:bg-red-100 transition-colors cursor-pointer">Masakan Indonesia</span>
+                <span class="bg-food-cream text-food-red px-3 py-1 rounded-full text-sm hover:bg-red-100 transition-colors cursor-pointer">Makanan</span>
+                <span class="bg-food-cream text-food-red px-3 py-1 rounded-full text-sm hover:bg-red-100 transition-colors cursor-pointer">Kuliner</span>
+            </div>
+        </div>
+    </article>
+</div> 

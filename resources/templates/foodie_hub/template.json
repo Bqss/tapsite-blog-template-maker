@@ -1,0 +1,9 @@
+{
+  "title" : "FoodieHub",
+  "description" : "Template untuk food blog dengan recipe discovery dan culinary content showcase",
+  "template_id" : "foodie_hub",
+  "creator_name" : "Maulana Shalihin",
+  "creator_website" : "https://tapsite.ai",
+  "version" : "1.0.0",
+  "thumbnail" : "/templates/foodie_hub/thumbnail.webp"
+}

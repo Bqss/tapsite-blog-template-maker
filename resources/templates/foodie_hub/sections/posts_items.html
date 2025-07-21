@@ -1,0 +1,56 @@
+<!-- Filters -->
+<section class="py-8 bg-white border-b border-gray-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center space-x-4">
+        <span class="font-medium text-food-gray">Filter by:</span>
+        <div class="flex flex-wrap gap-2">
+          <button class="bg-food-red text-white px-4 py-2 rounded-full text-sm font-medium">All</button>
+          <button
+            class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-200">Appetizers</button>
+          <button class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-200">Main
+            Course</button>
+          <button
+            class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-200">Desserts</button>
+          <button
+            class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-200">Beverages</button>
+          <button
+            class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-200">Healthy</button>
+        </div>
+      </div>
+      <div class="flex items-center space-x-4">
+        <span class="text-gray-600 text-sm">Sort by:</span>
+        <select
+          class="border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-food-red">
+          <option>Most Popular</option>
+          <option>Newest</option>
+
+          <option>Difficulty</option>
+
+        </select>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Recipe Grid -->
+<section class="py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="posts-grid">
+      <p class="col-span-full text-center text-gray-500">Loading...</p>
+    </div>
+  </div>
+</section>
+<script>
+  document.addEventListener('DOMContentLoaded',async()=>{
+    const grid=document.getElementById('posts-grid');
+    const api=`/api/blog/posts?limit=9&page=1`;
+    try{
+      const res=await fetch(api);
+      if(!res.ok) throw new Error();
+      const data=(await res.json()).posts||[];
+      if(!data.length){grid.innerHTML='<p class="col-span-full text-center text-gray-500">No posts found.</p>';return;}
+      grid.innerHTML=data.map(post=>`<div class=\"bg-white rounded-2xl shadow-lg overflow-hidden recipe-card transition-all duration-300 hover:shadow-xl\"><div class=\"relative\"><img src=\"${post.featured_image||''}\" alt=\"${post.title}\" class=\"w-full h-48 object-cover recipe-image transition-transform duration-300\"><div class=\"absolute top-4 left-4\"><span class=\"bg-food-red text-white px-3 py-1 rounded-full text-sm font-medium\">${post.category}</span></div><div class=\"absolute bottom-4 left-4 right-4\"><div class=\"flex items-center space-x-2 text-white\"><div class=\"bg-black bg-opacity-50 px-2 py-1 rounded-full text-xs\">👁️ ${post.view_count||0} views</div></div></div></div><div class=\"p-6\"><h3 class=\"font-display text-xl font-semibold text-food-gray mb-2 line-clamp-2\">${post.title}</h3><p class=\"text-gray-600 mb-4 line-clamp-3\">${post.excerpt}</p><div class=\"flex items-center justify-between\"><div class=\"flex items-center space-x-2\"><div class=\"w-8 h-8 bg-food-red rounded-full flex items-center justify-center\"><span class=\"text-white text-sm font-medium\">${post.author.charAt(0).toUpperCase()}</span></div><div><p class=\"text-sm font-medium text-food-gray\">${post.author}</p></div></div><a href=\"/post/${post.slug}\" class=\"text-food-red hover:text-red-700 font-medium\">Read More</a></div></div></div>`).join('');
+    }catch(e){console.error(e);grid.innerHTML='<p class="col-span-full text-center text-red-500">Error loading posts.</p>';}
+  });
+</script>

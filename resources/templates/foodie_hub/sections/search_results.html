@@ -1,0 +1,174 @@
+<!-- Search Header -->
+<section class="bg-gradient-to-r from-food-red to-food-orange py-16 text-white">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="w-20 h-20 bg-white bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-6">
+      <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+      </svg>
+    </div>
+    <h1 class="font-display text-4xl lg:text-5xl font-bold mb-4" id="search-header">Search Recipes</h1>
+    <p class="text-xl text-red-100 mb-8">
+      Find your perfect recipe from our collection of delicious dishes
+    </p>
+
+    <!-- Search Form -->
+    <div class="max-w-2xl mx-auto">
+      <div class="relative">
+        <input type="text" placeholder="Search for recipes, ingredients, or cuisine..."
+          class="w-full px-6 py-4 pl-12 text-lg text-food-gray bg-white rounded-2xl focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-30"
+          value="nasi goreng" id="search-input">
+        <svg class="absolute left-4 top-1/2 transform -translate-y-1/2 w-6 h-6 text-gray-400" fill="none"
+          stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      </div>
+      <button
+        class="mt-4 bg-white text-food-red px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition-colors">
+        Search Recipes
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Search Results -->
+<section class="py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-8">
+      <h2 class="text-2xl font-bold text-food-gray mb-2">Search Results</h2>
+      <p class="text-gray-600" id="search-info">
+        Found <span class="font-semibold text-food-red">3 recipes</span> for "<span class="font-semibold">nasi
+          goreng</span>"
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="search-grid">
+      <!-- Search Result 1 -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?w=400&h=300&fit=crop"
+            alt="Nasi Goreng Spesial" class="w-full h-48 object-cover">
+          <div class="absolute top-4 left-4">
+            <span class="bg-food-red text-white px-3 py-1 rounded-full text-sm font-medium">Main Course</span>
+          </div>
+
+        </div>
+        <div class="p-6">
+          <h3 class="font-display text-xl font-semibold text-food-gray mb-2">
+            <mark class="bg-yellow-200 text-food-gray px-1 rounded">Nasi Goreng</mark> Spesial
+          </h3>
+          <p class="text-gray-600 mb-4">
+            Resep <mark class="bg-yellow-200 text-food-gray px-1 rounded">nasi goreng</mark> dengan cita rasa restaurant
+            style yang lezat dan menggugah selera.
+          </p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <span class="text-sm text-gray-500">👁️ 2.5K</span>
+            </div>
+            <a href="/blog/post/nasi-goreng-spesial" class="text-food-red hover:text-red-700 font-medium">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Search Result 2 -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?w=400&h=300&fit=crop"
+            alt="Nasi Goreng Seafood" class="w-full h-48 object-cover">
+          <div class="absolute top-4 left-4">
+            <span class="bg-food-red text-white px-3 py-1 rounded-full text-sm font-medium">Main Course</span>
+          </div>
+
+        </div>
+        <div class="p-6">
+          <h3 class="font-display text-xl font-semibold text-food-gray mb-2">
+            <mark class="bg-yellow-200 text-food-gray px-1 rounded">Nasi Goreng</mark> Seafood
+          </h3>
+          <p class="text-gray-600 mb-4">
+            <mark class="bg-yellow-200 text-food-gray px-1 rounded">Nasi goreng</mark> dengan campuran seafood segar
+            seperti udang, cumi, dan kerang.
+          </p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <span class="text-sm text-gray-500">👁️ 1.8K</span>
+            </div>
+            <a href="/blog/post/nasi-goreng-seafood" class="text-food-red hover:text-red-700 font-medium">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Search Result 3 -->
+      <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1596797038530-2c107229654b?w=400&h=300&fit=crop"
+            alt="Nasi Goreng Kampung" class="w-full h-48 object-cover">
+          <div class="absolute top-4 left-4">
+            <span class="bg-food-red text-white px-3 py-1 rounded-full text-sm font-medium">Main Course</span>
+          </div>
+
+        </div>
+        <div class="p-6">
+          <h3 class="font-display text-xl font-semibold text-food-gray mb-2">
+            <mark class="bg-yellow-200 text-food-gray px-1 rounded">Nasi Goreng</mark> Kampung
+          </h3>
+          <p class="text-gray-600 mb-4">
+            <mark class="bg-yellow-200 text-food-gray px-1 rounded">Nasi goreng</mark> tradisional dengan cita rasa
+            kampung yang autentik dan pedas.
+          </p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <span class="text-sm text-gray-500">👁️ 1.2K</span>
+            </div>
+            <a href="/blog/post/nasi-goreng-kampung" class="text-food-red hover:text-red-700 font-medium">Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Popular Searches -->
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-2xl font-bold text-food-gray mb-6 text-center">Popular Searches</h2>
+    <div class="flex flex-wrap justify-center gap-3">
+      <a href="/blog/search/pasta"
+        class="bg-food-cream text-food-gray px-4 py-2 rounded-full hover:bg-food-red hover:text-white transition-colors">pasta</a>
+      <a href="/blog/search/chicken"
+        class="bg-food-cream text-food-gray px-4 py-2 rounded-full hover:bg-food-red hover:text-white transition-colors">chicken</a>
+      <a href="/blog/search/dessert"
+        class="bg-food-cream text-food-gray px-4 py-2 rounded-full hover:bg-food-red hover:text-white transition-colors">dessert</a>
+      <a href="/blog/search/vegetarian"
+        class="bg-food-cream text-food-gray px-4 py-2 rounded-full hover:bg-food-red hover:text-white transition-colors">vegetarian</a>
+      <a href="/blog/search/quick-meal"
+        class="bg-food-cream text-food-gray px-4 py-2 rounded-full hover:bg-food-red hover:text-white transition-colors">quick
+        meal</a>
+      <a href="/blog/search/healthy"
+        class="bg-food-cream text-food-gray px-4 py-2 rounded-full hover:bg-food-red hover:text-white transition-colors">healthy</a>
+      <a href="/blog/search/spicy"
+        class="bg-food-cream text-food-gray px-4 py-2 rounded-full hover:bg-food-red hover:text-white transition-colors">spicy</a>
+      <a href="/blog/search/italian"
+        class="bg-food-cream text-food-gray px-4 py-2 rounded-full hover:bg-food-red hover:text-white transition-colors">italian</a>
+    </div>
+  </div>
+</section>
+<script>
+  document.addEventListener('DOMContentLoaded',async()=>{
+    const parts=window.location.pathname.split('/');
+    const query=decodeURIComponent(parts[parts.indexOf('search')+1]||'');
+    document.getElementById('search-header').textContent=`Search: ${query}`;
+    const input=document.querySelector('#search-input');if(input)input.value=query;
+    const info=document.getElementById('search-info');
+    const grid=document.getElementById('search-grid');
+    grid.innerHTML='<p class="col-span-full text-center text-gray-500">Loading...</p>';
+    try{
+      const res=await fetch(`/api/blog/posts/search/${encodeURIComponent(query)}`);
+      if(!res.ok)throw new Error();
+      const data=await res.json();
+      info.innerHTML=`Found <span class='font-semibold text-food-red'>${data.length}</span> recipes for "<span class='font-semibold'>${query}</span>"`;
+      if(!data.length){grid.innerHTML='<p class="col-span-full text-center text-gray-500">No recipes found.</p>';return;}
+      grid.innerHTML=data.map(post=>`<div class=\"bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow\"><div class=\"relative\"><img src=\"${post.featured_image||''}\" alt=\"${post.title}\" class=\"w-full h-48 object-cover\"><div class=\"absolute top-4 left-4\"><span class=\"bg-food-red text-white px-3 py-1 rounded-full text-sm font-medium\">${post.category}</span></div></div><div class=\"p-6\"><h3 class=\"font-display text-xl font-semibold text-food-gray mb-2 line-clamp-2\">${post.title}</h3><p class=\"text-gray-600 mb-4 line-clamp-3\">${post.excerpt}</p><div class=\"flex items-center justify-between\"><div class=\"flex items-center space-x-2 text-sm text-gray-500\"><span>👁️ ${post.view_count||0}</span></div><a href=\"/post/${post.slug}\" class=\"text-food-red hover:text-red-700 font-medium\">Read More</a></div></div></div>`).join('');
+    }catch(e){console.error(e);grid.innerHTML='<p class="col-span-full text-center text-red-500">Error loading search results.</p>';}
+  });
+</script>
