@@ -1,0 +1,144 @@
+<!-- FinanceWise – Dynamic Post Content Section -->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Slab:wght@300;400;500;600;700&display=swap');
+
+  .finance-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 25px -5px rgba(30, 64, 175, 0.1), 0 10px 10px -5px rgba(30, 64, 175, 0.04);
+  }
+
+  .hero-gradient {
+    background: linear-gradient(135deg, #1E40AF 0%, #1D4ED8 50%, #1F2937 100%);
+  }
+
+  .article-content h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: #1F2937;
+  }
+  .article-content h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #1E40AF;
+    border-bottom: 2px solid #E5E7EB;
+    padding-bottom: 0.5rem;
+  }
+  .article-content h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: #374151;
+  }
+</style>
+
+<!-- Breadcrumb -->
+<nav class="bg-white border-b border-gray-200">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+    <div class="flex items-center space-x-2 text-sm">
+      <a href="/" class="text-gray-500 hover:text-finance-blue transition-colors">Home</a>
+      <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+      <a href="/category/{{it.post.category}}" class="text-gray-500 hover:text-finance-blue transition-colors">{{it.post.category}}</a>
+      <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+      <span class="text-finance-blue font-medium line-clamp-1">{{it.post.title}}</span>
+    </div>
+  </div>
+</nav>
+
+<!-- Article Header -->
+<header class="bg-white py-12">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <!-- Category & Tags -->
+      <div class="flex flex-wrap items-center justify-center gap-2 mb-6">
+        <span class="bg-finance-blue text-white px-4 py-2 rounded-full text-sm font-medium">{{it.post.category}}</span>
+      </div>
+
+      <!-- Title -->
+      <h1 class="font-display text-4xl lg:text-5xl font-bold text-finance-dark mb-6 leading-tight">
+        {{it.post.title}}
+      </h1>
+
+      <!-- Excerpt -->
+      {{@if(it.post.excerpt)}}
+      <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+        {{it.post.excerpt}}
+      </p>
+      {{/if}}
+
+      <!-- Meta Info -->
+      <div class="flex flex-wrap items-center justify-center gap-6 text-sm text-gray-500">
+        <div class="flex items-center space-x-2">
+          {{@if(it.author.avatar)}}
+            <img src="{{it.author.avatar}}" alt="{{it.author.name}}" class="w-8 h-8 rounded-full object-cover" />
+          {{#else}}
+            <div class="w-8 h-8 rounded-full bg-finance-blue text-white flex items-center justify-center text-xs font-semibold">
+              {{it.author.name.charAt(0).toUpperCase()}}
+            </div>
+          {{/if}}
+          <span>{{it.author.name}}</span>
+        </div>
+        <span class="flex items-center space-x-1">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span>{{it.post.read_time}} min read</span>
+        </span>
+        <span class="flex items-center space-x-1">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+          </svg>
+          <span>{{it.post.view_count}} views</span>
+        </span>
+        <span class="flex items-center space-x-1 date-format">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          <span>{{it.post.published_at}}</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Featured Image -->
+{{@if(it.post.featured_image)}}
+<div class="bg-white">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <img src="{{it.post.featured_image}}" alt="{{it.post.title}}" class="w-full h-64 lg:h-80 object-cover rounded-2xl shadow-lg" />
+  </div>
+</div>
+{{/if}}
+
+<!-- Article Content -->
+<article class="bg-white py-12">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="ProseMirror focus:outline-none max-w-full space-y-4 leading-relaxed">
+      {{* it.post.content}}
+    </div>
+  </div>
+</article>
+
+<!-- Tags -->
+{{@if(it.post.tags && it.post.tags.length)}}
+<section class="bg-gray-50 py-8">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-wrap gap-2">
+      {{@each(it.post.tags)=>tag}}
+        <a href="/tag/{{tag}}" class="bg-finance-blue text-white px-3 py-1 rounded-full text-sm hover:bg-finance-navy transition-colors">{{tag}}</a>
+      {{/each}}
+    </div>
+  </div>
+</section>
+{{/if}}

@@ -1,0 +1,128 @@
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div id="posts-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+
+    <!-- Simple Pagination Controls -->
+    <div id="pagination" class="flex justify-center mt-16 hidden">
+      <button id="prev-page" class="px-4 py-2 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-50 transition-colors mr-2">Previous</button>
+      <span id="page-info" class="px-4 py-2 text-gray-700"></span>
+      <button id="next-page" class="px-4 py-2 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-50 transition-colors ml-2">Next</button>
+    </div>
+
+    <script type="module">
+      document.addEventListener("DOMContentLoaded", () => {
+        const API_BASE = "/api/blog";
+        const container = document.getElementById("posts-container");
+        const pagination = document.getElementById("pagination");
+        const prevBtn = document.getElementById("prev-page");
+        const nextBtn = document.getElementById("next-page");
+        const pageInfo = document.getElementById("page-info");
+
+        let currentPage = 1;
+        let currentCategory = null;
+
+        function categoryLabelColor(name) {
+          const map = {
+            Programming: "bg-finance-blue",
+            Investment: "bg-finance-blue",
+            "Personal Finance": "bg-finance-green",
+            Retirement: "bg-purple-500",
+            "Market Analysis": "bg-red-500",
+            "Real Estate": "bg-orange-500",
+            "Tax Planning": "bg-teal-500",
+          };
+          return map[name] || "bg-finance-blue";
+        }
+
+        function renderPostCard(post) {
+          const article = document.createElement("article");
+          article.className =
+            "finance-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100";
+
+          article.innerHTML = `
+            <div class="relative">
+              <img src="${post.featured_image || "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400&q=80"}" alt="${post.title}" class="w-full h-48 object-cover">
+              <div class="absolute top-4 left-4">
+                <span class="${categoryLabelColor(post.category)} text-white px-3 py-1 rounded-full text-sm font-medium">${post.category}</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center space-x-2 mb-3">
+                <span class="text-gray-600 text-sm">${post.author || "Unknown"}</span>
+                <span class="text-gray-400 text-sm">•</span>
+                <span class="text-gray-500 text-sm">${new Date(post.published_at).toLocaleDateString("id-ID", { day: "2-digit", month: "short", year: "numeric" })}</span>
+              </div>
+              <h3 class="font-display text-xl font-semibold text-finance-dark mb-3">
+                ${post.title}
+              </h3>
+              <p class="text-gray-600 text-sm mb-4">
+                ${post.excerpt}
+              </p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                  <span class="text-xs text-gray-500">${post.read_time || 5} min read</span>
+                </div>
+                <a href="/post/${post.slug}" class="text-finance-blue font-medium hover:text-finance-navy transition-colors">
+                  Baca →
+                </a>
+              </div>
+            </div>
+          `;
+          return article;
+        }
+
+        function updatePagination(info) {
+          if (!info) {
+            pagination.classList.add("hidden");
+            return;
+          }
+          pagination.classList.remove("hidden");
+          pageInfo.textContent = `Page ${info.current_page} of ${info.total_pages}`;
+          prevBtn.disabled = info.current_page === 1;
+          nextBtn.disabled = info.current_page === info.total_pages;
+        }
+
+        async function fetchPosts(page = 1) {
+          let url;
+          if (currentCategory) {
+            url = `${API_BASE}/posts/category/${encodeURIComponent(currentCategory)}?limit=6&page=${page}`;
+          } else {
+            url = `${API_BASE}/posts?limit=6&page=${page}`;
+          }
+
+          const res = await fetch(url);
+          const data = await res.json();
+          const posts = data.posts || data; // Some endpoints return array
+          const paginationInfo = data.pagination || null;
+
+          container.innerHTML = "";
+          posts.forEach((post) => container.appendChild(renderPostCard(post)));
+
+          updatePagination(paginationInfo);
+        }
+
+        // Pagination event listeners
+        prevBtn?.addEventListener("click", () => {
+          if (currentPage > 1) {
+            currentPage -= 1;
+            fetchPosts(currentPage);
+          }
+        });
+        nextBtn?.addEventListener("click", () => {
+          currentPage += 1;
+          fetchPosts(currentPage);
+        });
+
+        // Listen to category changes
+        window.addEventListener("category:changed", (e) => {
+          currentCategory = e.detail;
+          currentPage = 1;
+          fetchPosts();
+        });
+
+        // Initial fetch
+        fetchPosts();
+      });
+    </script>
+  </div>
+</section>

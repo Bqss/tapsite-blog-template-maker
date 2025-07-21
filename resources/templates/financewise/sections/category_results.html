@@ -1,0 +1,271 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Slab:wght@300;400;500;600;700&display=swap');
+
+  .finance-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 25px -5px rgba(30, 64, 175, 0.1), 0 10px 10px -5px rgba(30, 64, 175, 0.04);
+  }
+
+  .category-gradient {
+    background: linear-gradient(135deg, #1E40AF 0%, #1D4ED8 50%, #059669 100%);
+  }
+</style>
+
+<nav class="bg-white border-b border-gray-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+    <div class="flex items-center space-x-2 text-sm">
+      <a href="#" class="text-gray-500 hover:text-finance-blue transition-colors">Home</a>
+      <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+      <span class="text-finance-blue font-medium">Investment</span>
+    </div>
+  </div>
+</nav>
+
+<!-- Category Header -->
+<header class="category-gradient py-20 text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="inline-flex items-center bg-white bg-opacity-20 rounded-full px-6 py-3 mb-6">
+      <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+      </svg>
+      <span class="font-medium">Kategori</span>
+    </div>
+    <h1 id="header-category-title" class="font-display text-4xl lg:text-6xl font-bold mb-6">
+      Investment Strategies
+    </h1>
+    <p class="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
+      Pelajari strategi investasi terbaik untuk membangun kekayaan jangka panjang dengan risiko yang terukur dan return
+      yang optimal
+    </p>
+
+    <div class="flex items-center justify-center space-x-8 text-sm">
+      <div class="flex items-center space-x-2">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+        </svg>
+        <span>35 Artikel</span>
+      </div>
+      <div class="flex items-center space-x-2">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+        </svg>
+        <span>125K+ Views</span>
+      </div>
+      <div class="flex items-center space-x-2">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+        </svg>
+        <span>15K+ Pembaca</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Category Articles -->
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div id="category-articles-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Featured Article -->
+      <div class="lg:col-span-2">
+        <article
+          class="finance-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
+          <div class="relative">
+            <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&h=300&fit=crop"
+              alt="Index Fund Investing" class="w-full h-64 object-cover">
+            <div class="absolute top-6 left-6">
+              <span class="bg-finance-blue text-white px-4 py-2 rounded-full text-sm font-medium">Featured</span>
+            </div>
+            <div class="absolute bottom-6 left-6 right-6">
+              <div class="bg-black bg-opacity-50 backdrop-blur-sm rounded-xl p-4">
+                <h3 class="font-display text-2xl font-bold text-white mb-2">
+                  Panduan Lengkap Investasi Index Fund untuk Pemula
+                </h3>
+                <p class="text-gray-200 mb-4">
+                  Pelajari cara memulai investasi index fund dengan strategi yang tepat dan risiko rendah.
+                </p>
+                <div class="flex items-center space-x-4 text-sm text-gray-300">
+                  <span>15 min read</span>
+                  <span>•</span>
+                  <span>2,847 views</span>
+                  <span>•</span>
+                  <span>15 Des 2024</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Side Articles -->
+      <div class="space-y-6">
+        <article
+          class="finance-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
+          <div class="relative">
+            <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=400&h=200&fit=crop"
+              alt="ETF vs Mutual Funds" class="w-full h-32 object-cover">
+          </div>
+          <div class="p-4">
+            <h4 class="font-display text-lg font-semibold text-finance-dark mb-2">
+              ETF vs Mutual Funds: Mana yang Lebih Baik?
+            </h4>
+            <p class="text-gray-600 text-sm mb-3">
+              Perbandingan lengkap antara ETF dan reksa dana untuk investor pemula.
+            </p>
+            <div class="flex items-center justify-between text-xs text-gray-500">
+              <span>12 min read</span>
+              <span>1,245 views</span>
+            </div>
+          </div>
+        </article>
+
+        <article
+          class="finance-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
+          <div class="relative">
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=200&fit=crop"
+              alt="Dollar Cost Averaging" class="w-full h-32 object-cover">
+          </div>
+          <div class="p-4">
+            <h4 class="font-display text-lg font-semibold text-finance-dark mb-2">
+              Strategi Dollar Cost Averaging
+            </h4>
+            <p class="text-gray-600 text-sm mb-3">
+              Cara mengurangi risiko volatilitas dengan investasi berkala.
+            </p>
+            <div class="flex items-center justify-between text-xs text-gray-500">
+              <span>10 min read</span>
+              <span>1,876 views</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+
+    <!-- Pagination -->
+    <div class="flex justify-center mt-16">
+      <div class="flex items-center space-x-2">
+        <button class="px-4 py-2 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-50 transition-colors">
+          Previous
+        </button>
+        <button class="px-4 py-2 rounded-lg bg-finance-blue text-white font-medium">1</button>
+        <button
+          class="px-4 py-2 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-50 transition-colors">2</button>
+        <button
+          class="px-4 py-2 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-50 transition-colors">3</button>
+        <button class="px-4 py-2 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-50 transition-colors">
+          Next
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Related Categories -->
+<section class="py-16 bg-finance-light">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="font-display text-3xl font-bold text-finance-dark mb-4">Kategori Terkait</h2>
+      <p class="text-xl text-gray-600">Jelajahi topik keuangan lainnya</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="related-categories-grid">
+      <p class="col-span-full text-center text-gray-500">Loading...</p>
+    </div>
+  </div>
+</section>
+<script>
+  document.addEventListener('DOMContentLoaded', async () => {
+    const parts = window.location.pathname.split('/');
+    const category = decodeURIComponent(parts[parts.length - 1] || parts[parts.length - 2]);
+    const titleEl = document.getElementById('header-category-title');
+    if (titleEl) titleEl.textContent = category;
+
+    const grid = document.getElementById('category-articles-grid');
+    if (!grid) return;
+    grid.innerHTML = '<p class="col-span-full text-center text-gray-500">Loading...</p>';
+
+    try {
+      const res = await fetch(`/api/blog/posts/category/${encodeURIComponent(category)}`);
+      if (!res.ok) throw new Error('Failed');
+      const data = await res.json();
+      if (!Array.isArray(data) || data.length === 0) {
+        grid.innerHTML = '<p class="col-span-full text-center text-gray-500">No articles found.</p>';
+        return;
+      }
+      grid.innerHTML = data.map(post => `
+        <article class=\"finance-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100\">
+          <div class=\"relative\">
+            <img src=\"${post.featured_image || ''}\" alt=\"${post.title}\" class=\"w-full h-48 object-cover\">
+            <div class=\"absolute top-4 left-4\">
+              <span class=\"bg-finance-blue text-white px-3 py-1 rounded-full text-sm font-medium\">${post.category}</span>
+            </div>
+          </div>
+          <div class=\"p-6\">
+            <div class=\"flex items-center space-x-2 mb-3\">
+              <span class=\"text-gray-600 text-sm\">${post.author}</span>
+              <span class=\"text-gray-400 text-sm\">•</span>
+              <span class=\"text-gray-500 text-sm\">${new Date(post.published_at).toLocaleDateString()}</span>
+            </div>
+            <h3 class=\"font-display text-xl font-semibold text-finance-dark mb-3 line-clamp-2\">${post.title}</h3>
+            <p class=\"text-gray-600 text-sm mb-4 line-clamp-3\">${post.excerpt}</p>
+            <div class=\"flex items-center justify-between\">
+              <div class=\"flex items-center space-x-2 text-xs text-gray-500\">
+                <span>${post.read_time} min read</span>
+                <span>• ${post.view_count || 0} views</span>
+              </div>
+              <a href=\"/post/${post.slug}\" class=\"text-finance-blue font-medium hover:text-finance-navy transition-colors\">Baca →</a>
+            </div>
+          </div>
+        </article>
+      `).join('');
+    } catch (err) {
+      console.error(err);
+      grid.innerHTML = '<p class="col-span-full text-center text-red-500">Error loading articles.</p>';
+    }
+
+    const relatedGrid = document.getElementById('related-categories-grid');
+    if(relatedGrid){
+      relatedGrid.innerHTML = '<p class="col-span-full text-center text-gray-500">Loading...</p>';
+      try{
+        const catRes = await fetch('/api/blog/categories');
+        if(catRes.ok){
+          const cats = await catRes.json();
+          const others = cats.filter(c=>c.name!==category);
+          if(others.length){
+            const gradients=['from-finance-green to-emerald-500','from-purple-500 to-purple-600','from-orange-500 to-orange-600','from-finance-blue to-blue-600'];
+            relatedGrid.innerHTML = others.map((c,idx)=>{
+              const grad=gradients[idx%gradients.length];
+              return `
+              <div class=\"bg-gradient-to-r ${grad} text-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300\">
+                <div class=\"flex items-center space-x-4 mb-4\">
+                  <div class=\"w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center\">
+                    <span class=\"text-2xl\">📚</span>
+                  </div>
+                  <div>
+                    <h3 class=\"font-display text-xl font-bold\">${c.name}</h3>
+                    <p class=\"text-white text-sm opacity-80\">${c.posts} artikel</p>
+                  </div>
+                </div>
+                <p class=\"text-white mb-4 opacity-90 line-clamp-3\">${c.description || ''}</p>
+                <a href=\"/category/${encodeURIComponent(c.name)}\" class=\"text-white font-medium hover:underline transition-colors\">Lihat Artikel →</a>
+              </div>`
+            }).join('');
+          }else{
+            relatedGrid.innerHTML = '<p class="col-span-full text-center text-gray-500">No related categories.</p>';
+          }
+        }else{
+          relatedGrid.innerHTML = '<p class="col-span-full text-center text-gray-500">Failed to load categories.</p>';
+        }
+      }catch(e){
+        console.error(e);
+        relatedGrid.innerHTML='<p class="col-span-full text-center text-red-500">Error loading categories.</p>';
+      }
+    }
+  });
+</script>

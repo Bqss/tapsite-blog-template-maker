@@ -1,0 +1,494 @@
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'finance-blue': '#1E40AF',
+                    'finance-navy': '#1D4ED8',
+                    'finance-green': '#059669',
+                    'finance-light': '#F8FAFC',
+                    'finance-dark': '#1F2937'
+                }
+            }
+        }
+    }
+</script>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Slab:wght@300;400;500;600;700&display=swap');
+    
+    .finance-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 20px 25px -5px rgba(30, 64, 175, 0.1), 0 10px 10px -5px rgba(30, 64, 175, 0.04);
+    }
+    
+    .tag-gradient {
+        background: linear-gradient(135deg, #059669 0%, #10B981 50%, #34D399 100%);
+    }
+</style>
+
+<div class="bg-finance-light min-h-screen font-sans text-finance-dark">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm border-b border-blue-100 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-finance-blue rounded-xl flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                        </svg>
+                    </div>
+                    <span class="font-display text-xl font-bold text-finance-dark">FinanceWise</span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-gray-600 hover:text-finance-blue transition-colors font-medium">Home</a>
+                    <a href="#" class="text-gray-600 hover:text-finance-blue transition-colors font-medium">Articles</a>
+                    <a href="#" class="text-gray-600 hover:text-finance-blue transition-colors font-medium">Investing</a>
+                    <a href="#" class="text-gray-600 hover:text-finance-blue transition-colors font-medium">Retirement</a>
+                    <a href="#" class="text-gray-600 hover:text-finance-blue transition-colors font-medium">Personal Finance</a>
+                    <a href="#" class="text-gray-600 hover:text-finance-blue transition-colors font-medium">Search</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button class="text-gray-600 hover:text-finance-blue transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                    </button>
+                    <button class="bg-finance-blue text-white px-4 py-2 rounded-lg font-medium hover:bg-finance-navy transition-colors">
+                        Start Investing
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <nav class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <div class="flex items-center space-x-2 text-sm">
+                <a href="#" class="text-gray-500 hover:text-finance-blue transition-colors">Home</a>
+                <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+                <a href="#" class="text-gray-500 hover:text-finance-blue transition-colors">Tags</a>
+                <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+                <span class="text-finance-blue font-medium">Passive Investing</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Tag Header -->
+    <header class="tag-gradient py-20 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="inline-flex items-center bg-white bg-opacity-20 rounded-full px-6 py-3 mb-6">
+                <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
+                </svg>
+                <span class="font-medium">Tag</span>
+            </div>
+            <h1 class="font-display text-4xl lg:text-6xl font-bold mb-6">
+                Passive Investing
+            </h1>
+            <p class="text-xl text-green-100 mb-8 max-w-3xl mx-auto">
+                Artikel tentang strategi investasi pasif yang fokus pada diversifikasi, biaya rendah, dan pertumbuhan jangka panjang yang stabil
+            </p>
+            
+            <div class="flex items-center justify-center space-x-8 text-sm">
+                <div class="flex items-center space-x-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                    </svg>
+                    <span>18 Artikel</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                    </svg>
+                    <span>78K+ Views</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                    </svg>
+                    <span>12K+ Pembaca</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Tag Articles -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Article 1 -->
+                <article class="finance-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&h=250&fit=crop" 
+                             alt="Index Fund Investing" 
+                             class="w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-finance-blue text-white px-3 py-1 rounded-full text-sm font-medium">Investment</span>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-finance-green text-white px-3 py-1 rounded-full text-sm font-medium">Passive Investing</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center space-x-2 mb-3">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=40&h=40&fit=crop&crop=face" 
+                                 alt="Sarah Financial" 
+                                 class="w-8 h-8 rounded-full">
+                            <span class="text-gray-600 text-sm">Sarah Financial</span>
+                            <span class="text-gray-400 text-sm">•</span>
+                            <span class="text-gray-500 text-sm">15 Des 2024</span>
+                        </div>
+                        <h3 class="font-display text-xl font-semibold text-finance-dark mb-3">
+                            Panduan Lengkap Investasi Index Fund untuk Pemula
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Pelajari cara memulai investasi index fund dengan strategi passive investing yang tepat dan risiko rendah.
+                        </p>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-xs text-gray-500">15 min read</span>
+                                <span class="text-xs text-gray-500">• 2,847 views</span>
+                            </div>
+                            <button class="text-finance-blue font-medium hover:text-finance-navy transition-colors">
+                                Baca →
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="finance-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=400&h=250&fit=crop" 
+                             alt="ETF Investing" 
+                             class="w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-finance-blue text-white px-3 py-1 rounded-full text-sm font-medium">Investment</span>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-finance-green text-white px-3 py-1 rounded-full text-sm font-medium">Passive Investing</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center space-x-2 mb-3">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" 
+                                 alt="Mike Investment" 
+                                 class="w-8 h-8 rounded-full">
+                            <span class="text-gray-600 text-sm">Mike Investment</span>
+                            <span class="text-gray-400 text-sm">•</span>
+                            <span class="text-gray-500 text-sm">12 Des 2024</span>
+                        </div>
+                        <h3 class="font-display text-xl font-semibold text-finance-dark mb-3">
+                            ETF vs Index Fund: Mana yang Lebih Baik?
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Perbandingan lengkap antara ETF dan index fund dalam strategi passive investing untuk investor pemula.
+                        </p>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-xs text-gray-500">12 min read</span>
+                                <span class="text-xs text-gray-500">• 1,924 views</span>
+                            </div>
+                            <button class="text-finance-blue font-medium hover:text-finance-navy transition-colors">
+                                Baca →
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="finance-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=250&fit=crop" 
+                             alt="Dollar Cost Averaging" 
+                             class="w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-finance-blue text-white px-3 py-1 rounded-full text-sm font-medium">Investment</span>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-finance-green text-white px-3 py-1 rounded-full text-sm font-medium">Passive Investing</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center space-x-2 mb-3">
+                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=40&h=40&fit=crop&crop=face" 
+                                 alt="Strategy Expert" 
+                                 class="w-8 h-8 rounded-full">
+                            <span class="text-gray-600 text-sm">Strategy Expert</span>
+                            <span class="text-gray-400 text-sm">•</span>
+                            <span class="text-gray-500 text-sm">10 Des 2024</span>
+                        </div>
+                        <h3 class="font-display text-xl font-semibold text-finance-dark mb-3">
+                            Strategi Dollar Cost Averaging untuk Passive Investing
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Cara menerapkan strategi dollar cost averaging dalam passive investing untuk mengurangi risiko volatilitas.
+                        </p>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-xs text-gray-500">14 min read</span>
+                                <span class="text-xs text-gray-500">• 2,156 views</span>
+                            </div>
+                            <button class="text-finance-blue font-medium hover:text-finance-navy transition-colors">
+                                Baca →
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 4 -->
+                <article class="finance-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=250&fit=crop" 
+                             alt="Portfolio Diversification" 
+                             class="w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-finance-blue text-white px-3 py-1 rounded-full text-sm font-medium">Investment</span>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-finance-green text-white px-3 py-1 rounded-full text-sm font-medium">Passive Investing</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center space-x-2 mb-3">
+                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=40&h=40&fit=crop&crop=face" 
+                                 alt="Portfolio Pro" 
+                                 class="w-8 h-8 rounded-full">
+                            <span class="text-gray-600 text-sm">Portfolio Pro</span>
+                            <span class="text-gray-400 text-sm">•</span>
+                            <span class="text-gray-500 text-sm">8 Des 2024</span>
+                        </div>
+                        <h3 class="font-display text-xl font-semibold text-finance-dark mb-3">
+                            Diversifikasi Portofolio dengan Passive Investing
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Strategi diversifikasi portofolio menggunakan pendekatan passive investing untuk mengurangi risiko.
+                        </p>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-xs text-gray-500">16 min read</span>
+                                <span class="text-xs text-gray-500">• 1,789 views</span>
+                            </div>
+                            <button class="text-finance-blue font-medium hover:text-finance-navy transition-colors">
+                                Baca →
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 5 -->
+                <article class="finance-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=250&fit=crop" 
+                             alt="Long Term Investing" 
+                             class="w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-finance-blue text-white px-3 py-1 rounded-full text-sm font-medium">Investment</span>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-finance-green text-white px-3 py-1 rounded-full text-sm font-medium">Passive Investing</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center space-x-2 mb-3">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=40&h=40&fit=crop&crop=face" 
+                                 alt="Long Term Expert" 
+                                 class="w-8 h-8 rounded-full">
+                            <span class="text-gray-600 text-sm">Long Term Expert</span>
+                            <span class="text-gray-400 text-sm">•</span>
+                            <span class="text-gray-500 text-sm">5 Des 2024</span>
+                        </div>
+                        <h3 class="font-display text-xl font-semibold text-finance-dark mb-3">
+                            Keuntungan Passive Investing untuk Jangka Panjang
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Mengapa passive investing adalah strategi terbaik untuk membangun kekayaan jangka panjang.
+                        </p>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-xs text-gray-500">18 min read</span>
+                                <span class="text-xs text-gray-500">• 2,341 views</span>
+                            </div>
+                            <button class="text-finance-blue font-medium hover:text-finance-navy transition-colors">
+                                Baca →
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 6 -->
+                <article class="finance-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=400&h=250&fit=crop" 
+                             alt="Low Cost Investing" 
+                             class="w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-finance-blue text-white px-3 py-1 rounded-full text-sm font-medium">Investment</span>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-finance-green text-white px-3 py-1 rounded-full text-sm font-medium">Passive Investing</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center space-x-2 mb-3">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face" 
+                                 alt="Cost Expert" 
+                                 class="w-8 h-8 rounded-full">
+                            <span class="text-gray-600 text-sm">Cost Expert</span>
+                            <span class="text-gray-400 text-sm">•</span>
+                            <span class="text-gray-500 text-sm">3 Des 2024</span>
+                        </div>
+                        <h3 class="font-display text-xl font-semibold text-finance-dark mb-3">
+                            Mengapa Biaya Rendah Penting dalam Passive Investing
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Dampak biaya investasi terhadap return jangka panjang dalam strategi passive investing.
+                        </p>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-xs text-gray-500">13 min read</span>
+                                <span class="text-xs text-gray-500">• 1,654 views</span>
+                            </div>
+                            <button class="text-finance-blue font-medium hover:text-finance-navy transition-colors">
+                                Baca →
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Pagination -->
+            <div class="flex justify-center mt-16">
+                <div class="flex items-center space-x-2">
+                    <button class="px-4 py-2 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-50 transition-colors">
+                        Previous
+                    </button>
+                    <button class="px-4 py-2 rounded-lg bg-finance-blue text-white font-medium">1</button>
+                    <button class="px-4 py-2 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-50 transition-colors">2</button>
+                    <button class="px-4 py-2 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-50 transition-colors">3</button>
+                    <button class="px-4 py-2 rounded-lg border border-gray-300 text-gray-600 hover:bg-gray-50 transition-colors">
+                        Next
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Tags -->
+    <section class="py-16 bg-finance-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-display text-3xl font-bold text-finance-dark mb-4">Tag Terkait</h2>
+                <p class="text-xl text-gray-600">Jelajahi topik investasi lainnya</p>
+            </div>
+            
+            <div class="flex flex-wrap justify-center gap-4">
+                <span class="bg-finance-green text-white px-6 py-3 rounded-full text-sm font-medium">Passive Investing</span>
+                <button class="bg-white text-gray-600 border-2 border-gray-300 px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-50 transition-colors">
+                    Index Fund
+                </button>
+                <button class="bg-white text-gray-600 border-2 border-gray-300 px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-50 transition-colors">
+                    ETF
+                </button>
+                <button class="bg-white text-gray-600 border-2 border-gray-300 px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-50 transition-colors">
+                    Dollar Cost Averaging
+                </button>
+                <button class="bg-white text-gray-600 border-2 border-gray-300 px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-50 transition-colors">
+                    Diversification
+                </button>
+                <button class="bg-white text-gray-600 border-2 border-gray-300 px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-50 transition-colors">
+                    Long Term
+                </button>
+                <button class="bg-white text-gray-600 border-2 border-gray-300 px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-50 transition-colors">
+                    Low Cost
+                </button>
+                <button class="bg-white text-gray-600 border-2 border-gray-300 px-6 py-3 rounded-full text-sm font-medium hover:bg-gray-50 transition-colors">
+                    Portfolio
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-16 bg-finance-light">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="bg-gradient-to-r from-finance-blue to-finance-navy p-8 rounded-2xl text-white">
+                <h2 class="font-display text-3xl font-bold mb-4">Update Passive Investing Terbaru</h2>
+                <p class="text-xl text-blue-100 mb-8">
+                    Dapatkan strategi passive investing terbaru dan tips wealth building langsung ke email Anda
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                    <input type="email" 
+                           placeholder="Masukkan email Anda" 
+                           class="flex-1 px-4 py-3 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white">
+                    <button class="bg-white text-finance-blue px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
+                        Berlangganan
+                    </button>
+                </div>
+                <p class="text-sm text-blue-200 mt-4">
+                    Bergabung dengan 100,000+ passive investor. Berhenti berlangganan kapan saja.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-finance-dark text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-finance-blue rounded-xl flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                            </svg>
+                        </div>
+                        <span class="font-display text-xl font-bold">FinanceWise</span>
+                    </div>
+                    <p class="text-gray-300 mb-6 max-w-md">
+                        Panduan lengkap untuk edukasi keuangan, strategi investasi, dan membangun kekayaan dengan passive investing.
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Passive Investing</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Index Fund</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">ETF</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Dollar Cost Averaging</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Diversification</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Strategi Investasi</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Long Term</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Low Cost</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Portfolio</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Risk Management</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-400">© 2024 FinanceWise. Semua hak dilindungi. Saran investasi hanya untuk tujuan edukasi.</p>
+            </div>
+        </div>
+    </footer>
+</div> 

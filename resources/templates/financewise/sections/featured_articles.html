@@ -1,0 +1,147 @@
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="font-display text-3xl lg:text-4xl font-bold text-finance-dark mb-4">Expert Financial Guidance</h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Professional investment strategies and financial education from certified experts
+      </p>
+    </div>
+
+    <!-- Loading State -->
+    <div id="latest-posts-loading" class="text-center py-12 hidden">
+      <span class="text-gray-500 animate-pulse">Loading latest guides...</span>
+    </div>
+
+    <!-- Error State -->
+    <div id="latest-posts-error" class="text-center py-12 hidden">
+      <p class="text-red-500">Failed to load guides. Please try again later.</p>
+    </div>
+
+    <!-- Articles Grid -->
+    <div id="latest-posts-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 hidden">
+      <!-- Dynamic articles will be injected here -->
+    </div>
+
+    <div class="text-center mt-12">
+      <button
+        class="bg-finance-blue text-white px-8 py-3 rounded-lg font-semibold hover:bg-finance-navy transition-colors">
+        View All Financial Guides
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function() {
+    // Function to format date
+    function formatDate(timestamp) {
+      return new Date(timestamp).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+    }
+  
+    // Utility to get fallback image when none provided
+    function getFallbackImage() {
+      return "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='250' viewBox='0 0 400 250'%3E%3Crect width='400' height='250' fill='%23f3f4f6'/%3E%3Ctext x='200' y='125' text-anchor='middle' dy='0.3em' font-family='Arial, sans-serif' font-size='16' fill='%23374151'%3ENo Image%3C/text%3E%3C/svg%3E";
+    }
+
+    // Function to format post HTML according to Financewise card design
+    function createPostHTML(post) {
+      const imageUrl = post.featured_image || getFallbackImage();
+
+      // Optional tag helpers (risk & returns)
+      const riskTag = post.risk ? `<div class="absolute top-4 right-4">
+        <span class="bg-white text-finance-dark px-3 py-1 rounded-full text-sm font-medium">${post.risk}</span>
+      </div>` : "";
+
+      const returnTag = post.returns ? `<span class="bg-black bg-opacity-50 px-2 py-1 rounded-full">📈 ${post.returns}</span>` : "";
+
+      return `
+        <article class="finance-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
+          <div class="relative">
+            <img src="${imageUrl}" alt="${post.title}" class="w-full h-48 object-cover" onerror="this.src='${getFallbackImage()}'">
+            <div class="absolute top-4 left-4">
+              <span class="bg-finance-blue text-white px-3 py-1 rounded-full text-sm font-medium">${post.category}</span>
+            </div>
+            ${riskTag}
+            <div class="absolute bottom-4 left-4 right-4">
+              <div class="flex items-center justify-between text-white text-sm">
+                ${returnTag}
+                <span class="bg-black bg-opacity-50 px-2 py-1 rounded-full">⏱️ ${post.read_time} min read</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center space-x-2 mb-3">
+              <div class="w-8 h-8 bg-finance-blue/10 rounded-full flex items-center justify-center">
+                <span class="text-finance-blue text-sm font-medium">${post.author.charAt(0)}</span>
+              </div>
+              <span class="text-gray-600 text-sm">${post.author}</span>
+            </div>
+            <h3 class="font-display text-xl font-semibold text-finance-dark mb-3 line-clamp-2">
+              <a href="/post/${post.slug}" class="hover:text-finance-blue transition-colors">
+                ${post.title}
+              </a>
+            </h3>
+            <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+              ${post.excerpt}
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-2">
+                <span class="text-xs text-gray-500">${post.level || 'Beginner Level'}</span>
+              </div>
+              <a href="/post/${post.slug}" class="text-finance-blue font-medium hover:text-finance-navy transition-colors">
+                Read Guide →
+              </a>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+  
+    // Function to show/hide states
+    function showState(state) {
+      const loadingEl = document.getElementById('latest-posts-loading');
+      const errorEl = document.getElementById('latest-posts-error');
+      const gridEl = document.getElementById('latest-posts-grid');
+  
+      loadingEl.classList.add('hidden');
+      errorEl.classList.add('hidden');
+      gridEl.classList.add('hidden');
+  
+      if (state === 'loading') loadingEl.classList.remove('hidden');
+      if (state === 'error') errorEl.classList.remove('hidden');
+      if (state === 'grid') gridEl.classList.remove('hidden');
+    }
+  
+    // Function to load latest posts
+    async function loadLatestPosts() {
+      showState('loading');
+  
+      try {
+        const response = await fetch('/api/blog/posts/recent?limit=6');
+        if (!response.ok) throw new Error('Failed to fetch latest posts');
+        
+        const posts = await response.json();
+        
+        if (!posts || posts.length === 0) {
+          throw new Error('No posts found');
+        }
+  
+        // Render posts
+        const gridEl = document.getElementById('latest-posts-grid');
+        gridEl.innerHTML = posts.map(post => createPostHTML(post)).join('');
+        showState('grid');
+  
+      } catch (error) {
+        console.error('Error loading latest posts:', error);
+        showState('error');
+      }
+    }
+  
+    // Load posts when page loads
+    document.addEventListener('DOMContentLoaded', loadLatestPosts);
+  })();
+  </script> 

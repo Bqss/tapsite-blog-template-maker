@@ -1,0 +1,55 @@
+{
+  "title": "FinanceWise - Expert Financial Education and Investment Strategies",
+  "description": "Professional financial education, investment strategies, and wealth-building advice for financial independence",
+  "sections": [
+    {
+      "title": "styles",
+      "id": "styles",
+      "type": "template",
+      "resetable": true
+    },
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": ["site", "navigation"]
+    },
+    {
+      "title": "hero",
+      "id": "hero",
+      "type": "template",
+      "resetable": true,
+      "data": ["hero"]
+    },
+    {
+      "title": "featured articles",
+      "id": "featured_articles",
+      "type": "template",
+      "resetable": true,
+      "data": ["featured"]
+    },
+
+    {
+      "title": "featured categories",
+      "id": "featured_categories",
+      "type": "template",
+      "resetable": true,
+      "data": ["featured_categories"]
+    },
+    {
+      "title": "newsletter",
+      "id": "newsletter",
+      "type": "template",
+      "resetable": true,
+      "data": ["newsletter"]
+    },
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": ["site.name", "site.description", "navigation", "social_links"]
+    }
+  ]
+}

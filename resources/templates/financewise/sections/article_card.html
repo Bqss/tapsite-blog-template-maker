@@ -1,0 +1,59 @@
+<!-- Article Card Component -->
+<article class="finance-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
+    <div class="relative">
+        <img src="{{it.featured_image || 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&h=250&fit=crop'}}" 
+             alt="{{it.title}}" 
+             class="w-full h-48 object-cover">
+        <div class="absolute top-4 left-4">
+            <span class="bg-finance-blue text-white px-3 py-1 rounded-full text-sm font-medium">{{it.category}}</span>
+        </div>
+        <div class="absolute top-4 right-4">
+            <span class="bg-white text-finance-dark px-3 py-1 rounded-full text-sm font-medium">
+                {{if(it.category === 'Investment')}}High Growth{{/if}}
+                {{if(it.category === 'Personal Finance')}}Low Risk{{/if}}
+                {{if(it.category === 'Retirement')}}Long Term{{/if}}
+                {{if(it.category === 'Real Estate')}}Moderate Risk{{/if}}
+                {{if(it.category === 'Market Analysis')}}Expert Level{{/if}}
+                {{if(it.category === 'Tax Planning')}}Strategic{{/if}}
+            </span>
+        </div>
+        <div class="absolute bottom-4 left-4 right-4">
+            <div class="flex items-center justify-between text-white text-sm">
+                <span class="bg-black bg-opacity-50 px-2 py-1 rounded-full">💰 Financial</span>
+                <span class="bg-black bg-opacity-50 px-2 py-1 rounded-full">⏱️ {{it.read_time || 8}} min read</span>
+            </div>
+        </div>
+    </div>
+    <div class="p-6">
+        <div class="flex items-center space-x-2 mb-3">
+            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=40&h=40&fit=crop&crop=face" 
+                 alt="{{it.author}}" 
+                 class="w-8 h-8 rounded-full">
+            <span class="text-gray-600 text-sm">{{it.author}}</span>
+            <span class="text-gray-400 text-sm">•</span>
+            <span class="text-gray-500 text-sm">{{it.published_at | date("MMM DD, YYYY")}}</span>
+        </div>
+        <h3 class="font-display text-xl font-semibold text-finance-dark mb-3 line-clamp-2">
+            {{it.title}}
+        </h3>
+        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+            {{it.excerpt}}
+        </p>
+        
+        <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <span class="text-xs text-gray-500">
+                    {{if(it.read_time <= 5)}}Beginner Level{{/if}}
+                    {{if(it.read_time > 5 && it.read_time <= 10)}}Intermediate Level{{/if}}
+                    {{if(it.read_time > 10)}}Advanced Level{{/if}}
+                </span>
+                {{if(it.views)}}
+                <span class="text-xs text-gray-500">• {{it.views}} views</span>
+                {{/if}}
+            </div>
+            <a href="{{@global.site_url}}/post/{{it.slug}}" class="text-finance-blue font-medium hover:text-finance-navy transition-colors">
+                Read Guide →
+            </a>
+        </div>
+    </div>
+</article> 

@@ -1,0 +1,106 @@
+<section class="py-16 bg-finance-light">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+          <h2 class="font-display text-3xl lg:text-4xl font-bold text-finance-dark mb-4">Investment Categories</h2>
+          <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+              Explore different investment strategies and risk levels to build your portfolio
+          </p>
+      </div>
+      
+      <!-- Loading State -->
+      <div id="categories-loading" class="text-center py-12 hidden">
+        <span class="text-gray-500 animate-pulse">Loading categories...</span>
+      </div>
+
+      <!-- Error State -->
+      <div id="categories-error" class="text-center py-12 hidden">
+        <p class="text-red-500">Failed to load categories. Please try again later.</p>
+      </div>
+
+      <!-- Categories Grid -->
+      <div id="categories-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 hidden">
+        <!-- Dynamic category cards will be injected here -->
+      </div>
+  </div>
+</section>
+
+<script>
+  (function() {
+    // Color and icon pools for visual variety
+    const COLOR_PAIRS = [
+      { dark: '#1E40AF', light: '#3B82F6', icon: '📈' }, // blue
+      { dark: '#059669', light: '#10B981', icon: '💰' }, // green
+      { dark: '#7C3AED', light: '#A855F7', icon: '🏖️' }, // purple
+      { dark: '#DC2626', light: '#EF4444', icon: '📊' }, // red
+      { dark: '#F59E0B', light: '#FBBF24', icon: '🏠' }, // orange
+      { dark: '#10B981', light: '#34D399', icon: '📋' }  // emerald
+    ];
+
+    // Helper to select color/icon based on index
+    function getStyleForIndex(index) {
+      const pair = COLOR_PAIRS[index % COLOR_PAIRS.length];
+      return pair;
+    }
+
+    // Build category card HTML
+    function createCategoryHTML(category, index) {
+      const { dark, light, icon } = getStyleForIndex(index);
+      return `
+        <div class="category-card text-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300" style="--category-color: ${dark}; --category-color-light: ${light};">
+          <div class="flex items-center space-x-4 mb-4">
+            <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+              <span class="text-2xl">${icon}</span>
+            </div>
+            <div>
+              <h3 class="font-display text-xl font-bold">${category.name}</h3>
+              <p class="text-sm opacity-90">${category.posts || 0} guides</p>
+            </div>
+          </div>
+          <button class="text-white font-medium hover:opacity-90 transition-colors" onclick="window.location.href='/category/${encodeURIComponent(category.name)}'">
+            Explore ${category.name} →
+          </button>
+        </div>`;
+    }
+
+    // Show / hide state elements
+    function showState(state) {
+      const loadingEl = document.getElementById('categories-loading');
+      const errorEl = document.getElementById('categories-error');
+      const gridEl = document.getElementById('categories-grid');
+
+      loadingEl.classList.add('hidden');
+      errorEl.classList.add('hidden');
+      gridEl.classList.add('hidden');
+
+      if (state === 'loading') loadingEl.classList.remove('hidden');
+      if (state === 'error') errorEl.classList.remove('hidden');
+      if (state === 'grid') gridEl.classList.remove('hidden');
+    }
+
+    // Fetch categories from API
+    async function loadCategories() {
+      showState('loading');
+
+      try {
+        const response = await fetch('/api/blog/categories');
+        if (!response.ok) throw new Error('Failed to fetch categories');
+
+        const categories = await response.json();
+
+        if (!categories || categories.length === 0) {
+          throw new Error('No categories found');
+        }
+
+        const gridEl = document.getElementById('categories-grid');
+        gridEl.innerHTML = categories.map((cat, idx) => createCategoryHTML(cat, idx)).join('');
+
+        showState('grid');
+      } catch (error) {
+        console.error(error);
+        showState('error');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadCategories);
+  })();
+</script>

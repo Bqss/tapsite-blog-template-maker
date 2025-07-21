@@ -1,0 +1,564 @@
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'finance-blue': '#1E40AF',
+                    'finance-navy': '#1D4ED8',
+                    'finance-green': '#059669',
+                    'finance-light': '#F8FAFC',
+                    'finance-dark': '#1F2937'
+                },
+                fontFamily: {
+                    'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    'display': ['Roboto Slab', 'serif']
+                }
+            }
+        }
+    }
+</script>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Slab:wght@300;400;500;600;700&display=swap');
+    
+    .finance-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 20px 25px -5px rgba(30, 64, 175, 0.1), 0 10px 10px -5px rgba(30, 64, 175, 0.04);
+    }
+    
+    .category-card {
+        background: linear-gradient(135deg, var(--category-color, #1E40AF) 0%, var(--category-color-light, #3B82F6) 100%);
+    }
+    
+    .hero-gradient {
+        background: linear-gradient(135deg, #1E40AF 0%, #1D4ED8 50%, #1F2937 100%);
+    }
+    
+    .market-card {
+        background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+        border-left: 4px solid #1E40AF;
+    }
+    
+    .calculator-card {
+        background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%);
+        border-left: 4px solid #059669;
+    }
+    
+    .trend-up {
+        color: #059669;
+    }
+    
+    .trend-down {
+        color: #DC2626;
+    }
+</style>
+
+<div class="bg-finance-light min-h-screen font-sans text-finance-dark">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm border-b border-blue-100 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-finance-blue rounded-xl flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                        </svg>
+                    </div>
+                    <span class="font-display text-xl font-bold text-finance-dark">FinanceWise</span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-finance-blue font-medium border-b-2 border-finance-blue pb-1">Home</a>
+                    <a href="#" class="text-gray-600 hover:text-finance-blue transition-colors font-medium">Articles</a>
+                    <a href="#" class="text-gray-600 hover:text-finance-blue transition-colors font-medium">Investing</a>
+                    <a href="#" class="text-gray-600 hover:text-finance-blue transition-colors font-medium">Retirement</a>
+                    <a href="#" class="text-gray-600 hover:text-finance-blue transition-colors font-medium">Personal Finance</a>
+                    <a href="#" class="text-gray-600 hover:text-finance-blue transition-colors font-medium">Search</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button class="text-gray-600 hover:text-finance-blue transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                    </button>
+                    <button class="bg-finance-blue text-white px-4 py-2 rounded-lg font-medium hover:bg-finance-navy transition-colors">
+                        Start Investing
+                    </button>
+                    <button class="md:hidden text-gray-600 hover:text-finance-blue transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Hero Section -->
+    <section class="hero-gradient py-20 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="inline-flex items-center bg-white bg-opacity-20 rounded-full px-4 py-2 mb-6">
+                        <span class="text-sm font-medium">💼 Smart Money, Smarter Decisions</span>
+                    </div>
+                    <h1 class="font-display text-4xl lg:text-6xl font-bold mb-6 leading-tight">
+                        Master Your<br/>
+                        <span class="bg-gradient-to-r from-finance-green to-green-300 bg-clip-text text-transparent">Financial Future</span>
+                    </h1>
+                    <p class="text-xl text-blue-100 mb-8 leading-relaxed">
+                        Expert financial education, investment strategies, and wealth-building advice to help you achieve financial independence and security.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="bg-white text-finance-blue px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-colors">
+                            Start Learning
+                        </button>
+                        <button class="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-finance-blue transition-colors">
+                            View Market Data
+                        </button>
+                    </div>
+                    
+                    <!-- Financial Stats -->
+                    <div class="grid grid-cols-3 gap-8 mt-12">
+                        <div class="text-center">
+                            <div class="font-display text-3xl font-bold">500+</div>
+                            <div class="text-blue-200 text-sm">Financial Guides</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="font-display text-3xl font-bold">$2M+</div>
+                            <div class="text-blue-200 text-sm">Wealth Created</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="font-display text-3xl font-bold">100K+</div>
+                            <div class="text-blue-200 text-sm">Investors Educated</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="relative">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="space-y-4">
+                            <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=300&h=300&fit=crop" 
+                                 alt="Investment Growth" 
+                                 class="w-full h-40 object-cover rounded-2xl shadow-xl transform rotate-3 hover:rotate-0 transition-transform">
+                            <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=300&h=200&fit=crop" 
+                                 alt="Financial Planning" 
+                                 class="w-full h-32 object-cover rounded-2xl shadow-xl transform -rotate-2 hover:rotate-0 transition-transform">
+                        </div>
+                        <div class="space-y-4 mt-8">
+                            <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=300&h=200&fit=crop" 
+                                 alt="Retirement Planning" 
+                                 class="w-full h-32 object-cover rounded-2xl shadow-xl transform -rotate-3 hover:rotate-0 transition-transform">
+                            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=300&h=300&fit=crop" 
+                                 alt="Market Analysis" 
+                                 class="w-full h-40 object-cover rounded-2xl shadow-xl transform rotate-2 hover:rotate-0 transition-transform">
+                        </div>
+                    </div>
+                    
+                    <!-- Floating Finance Icons -->
+                    <div class="absolute -top-4 -right-4 bg-white p-3 rounded-full shadow-lg animate-bounce">
+                        <span class="text-2xl">💰</span>
+                    </div>
+                    <div class="absolute top-1/2 -left-6 bg-white p-3 rounded-full shadow-lg animate-pulse">
+                        <span class="text-2xl">📊</span>
+                    </div>
+                    <div class="absolute -bottom-4 right-1/3 bg-white p-3 rounded-full shadow-lg animate-bounce delay-300">
+                        <span class="text-2xl">🎯</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Financial Articles -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-display text-3xl lg:text-4xl font-bold text-finance-dark mb-4">Expert Financial Guidance</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Professional investment strategies and financial education from certified experts
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Article 1 -->
+                <article class="finance-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=400&h=250&fit=crop" 
+                             alt="Index Fund Investing" 
+                             class="w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-finance-blue text-white px-3 py-1 rounded-full text-sm font-medium">Investment</span>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-white text-finance-dark px-3 py-1 rounded-full text-sm font-medium">Low Risk</span>
+                        </div>
+                        <div class="absolute bottom-4 left-4 right-4">
+                            <div class="flex items-center justify-between text-white text-sm">
+                                <span class="bg-black bg-opacity-50 px-2 py-1 rounded-full">📈 7-10% Return</span>
+                                <span class="bg-black bg-opacity-50 px-2 py-1 rounded-full">⏱️ 15 min read</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center space-x-2 mb-3">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=40&h=40&fit=crop&crop=face" 
+                                 alt="Sarah Financial" 
+                                 class="w-8 h-8 rounded-full">
+                            <span class="text-gray-600 text-sm">Sarah Financial</span>
+                            <span class="text-gray-400 text-sm">•</span>
+                            <span class="text-gray-500 text-sm">CFA, CFP</span>
+                        </div>
+                        <h3 class="font-display text-xl font-semibold text-finance-dark mb-3 line-clamp-2">
+                            Complete Guide to Index Fund Investing
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                            Learn how index funds provide diversified, low-cost investment opportunities for long-term wealth building.
+                        </p>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-xs text-gray-500">Beginner Level</span>
+                            </div>
+                            <button class="text-finance-blue font-medium hover:text-finance-navy transition-colors">
+                                Read Guide →
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="finance-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=400&h=250&fit=crop" 
+                             alt="Emergency Fund" 
+                             class="w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-finance-green text-white px-3 py-1 rounded-full text-sm font-medium">Personal Finance</span>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-white text-finance-dark px-3 py-1 rounded-full text-sm font-medium">Very Low Risk</span>
+                        </div>
+                        <div class="absolute bottom-4 left-4 right-4">
+                            <div class="flex items-center justify-between text-white text-sm">
+                                <span class="bg-black bg-opacity-50 px-2 py-1 rounded-full">🛡️ 3-6 Months</span>
+                                <span class="bg-black bg-opacity-50 px-2 py-1 rounded-full">⏱️ 12 min read</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center space-x-2 mb-3">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" 
+                                 alt="Mike Budget" 
+                                 class="w-8 h-8 rounded-full">
+                            <span class="text-gray-600 text-sm">Mike Budget</span>
+                            <span class="text-gray-400 text-sm">•</span>
+                            <span class="text-gray-500 text-sm">CFP, AFC</span>
+                        </div>
+                        <h3 class="font-display text-xl font-semibold text-finance-dark mb-3 line-clamp-2">
+                            Emergency Fund Essentials: How Much to Save
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                            Build a robust emergency fund with complete guide covering savings targets and account types.
+                        </p>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-xs text-gray-500">Beginner Level</span>
+                            </div>
+                            <button class="text-finance-blue font-medium hover:text-finance-navy transition-colors">
+                                Read Guide →
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="finance-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=400&h=250&fit=crop" 
+                             alt="Retirement Planning" 
+                             class="w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-purple-500 text-white px-3 py-1 rounded-full text-sm font-medium">Retirement</span>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-white text-finance-dark px-3 py-1 rounded-full text-sm font-medium">Moderate Risk</span>
+                        </div>
+                        <div class="absolute bottom-4 left-4 right-4">
+                            <div class="flex items-center justify-between text-white text-sm">
+                                <span class="bg-black bg-opacity-50 px-2 py-1 rounded-full">🎯 8-12% Return</span>
+                                <span class="bg-black bg-opacity-50 px-2 py-1 rounded-full">⏱️ 18 min read</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center space-x-2 mb-3">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face" 
+                                 alt="Dr. Retirement" 
+                                 class="w-8 h-8 rounded-full">
+                            <span class="text-gray-600 text-sm">Dr. Retirement</span>
+                            <span class="text-gray-400 text-sm">•</span>
+                            <span class="text-gray-500 text-sm">PhD, RICP</span>
+                        </div>
+                        <h3 class="font-display text-xl font-semibold text-finance-dark mb-3 line-clamp-2">
+                            Retirement Planning in Your 30s
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                            Strategic retirement planning advice for 30-somethings to maximize compound growth and build wealth.
+                        </p>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-xs text-gray-500">Intermediate Level</span>
+                            </div>
+                            <button class="text-finance-blue font-medium hover:text-finance-navy transition-colors">
+                                Read Guide →
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="bg-finance-blue text-white px-8 py-3 rounded-lg font-semibold hover:bg-finance-navy transition-colors">
+                    View All Financial Guides
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investment Categories -->
+    <section class="py-16 bg-finance-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-display text-3xl lg:text-4xl font-bold text-finance-dark mb-4">Investment Categories</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Explore different investment strategies and risk levels to build your portfolio
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Category 1 -->
+                <div class="category-card text-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300" style="--category-color: #1E40AF; --category-color-light: #3B82F6;">
+                    <div class="flex items-center space-x-4 mb-4">
+                        <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+                            <span class="text-2xl">📈</span>
+                        </div>
+                        <div>
+                            <h3 class="font-display text-xl font-bold">Investment Strategies</h3>
+                            <p class="text-blue-100 text-sm">35 guides • Low-High Risk</p>
+                        </div>
+                    </div>
+                    <p class="text-blue-100 mb-4">Long-term wealth building through various investment vehicles</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-white bg-opacity-20 px-2 py-1 rounded-full text-xs">Index Funds</span>
+                        <span class="bg-white bg-opacity-20 px-2 py-1 rounded-full text-xs">ETFs</span>
+                        <span class="bg-white bg-opacity-20 px-2 py-1 rounded-full text-xs">Stocks</span>
+                    </div>
+                    <button class="text-white font-medium hover:text-blue-100 transition-colors">
+                        Explore Strategies →
+                    </button>
+                </div>
+
+                <!-- Category 2 -->
+                <div class="category-card text-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300" style="--category-color: #059669; --category-color-light: #10B981;">
+                    <div class="flex items-center space-x-4 mb-4">
+                        <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+                            <span class="text-2xl">💰</span>
+                        </div>
+                        <div>
+                            <h3 class="font-display text-xl font-bold">Personal Finance</h3>
+                            <p class="text-green-100 text-sm">42 guides • Very Low-Low Risk</p>
+                        </div>
+                    </div>
+                    <p class="text-green-100 mb-4">Budgeting, saving, and managing day-to-day finances</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-white bg-opacity-20 px-2 py-1 rounded-full text-xs">Budgeting</span>
+                        <span class="bg-white bg-opacity-20 px-2 py-1 rounded-full text-xs">Emergency Fund</span>
+                        <span class="bg-white bg-opacity-20 px-2 py-1 rounded-full text-xs">Banking</span>
+                    </div>
+                    <button class="text-white font-medium hover:text-green-100 transition-colors">
+                        Explore Finance →
+                    </button>
+                </div>
+
+                <!-- Category 3 -->
+                <div class="category-card text-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300" style="--category-color: #7C3AED; --category-color-light: #A855F7;">
+                    <div class="flex items-center space-x-4 mb-4">
+                        <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+                            <span class="text-2xl">🏖️</span>
+                        </div>
+                        <div>
+                            <h3 class="font-display text-xl font-bold">Retirement Planning</h3>
+                            <p class="text-purple-100 text-sm">28 guides • Low-High Risk</p>
+                        </div>
+                    </div>
+                    <p class="text-purple-100 mb-4">Building wealth for retirement through strategic planning</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-white bg-opacity-20 px-2 py-1 rounded-full text-xs">401k</span>
+                        <span class="bg-white bg-opacity-20 px-2 py-1 rounded-full text-xs">IRA</span>
+                        <span class="bg-white bg-opacity-20 px-2 py-1 rounded-full text-xs">Social Security</span>
+                    </div>
+                    <button class="text-white font-medium hover:text-purple-100 transition-colors">
+                        Explore Retirement →
+                    </button>
+                </div>
+
+                <!-- Category 4 -->
+                <div class="category-card text-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300" style="--category-color: #DC2626; --category-color-light: #EF4444;">
+                    <div class="flex items-center space-x-4 mb-4">
+                        <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+                            <span class="text-2xl">📊</span>
+                        </div>
+                        <div>
+                            <h3 class="font-display text-xl font-bold">Market Analysis</h3>
+                            <p class="text-red-100 text-sm">25 guides • Moderate-High Risk</p>
+                        </div>
+                    </div>
+                    <p class="text-red-100 mb-4">Understanding market trends and economic indicators</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-white bg-opacity-20 px-2 py-1 rounded-full text-xs">Market Trends</span>
+                        <span class="bg-white bg-opacity-20 px-2 py-1 rounded-full text-xs">Economic Data</span>
+                        <span class="bg-white bg-opacity-20 px-2 py-1 rounded-full text-xs">Sector Analysis</span>
+                    </div>
+                    <button class="text-white font-medium hover:text-red-100 transition-colors">
+                        Explore Markets →
+                    </button>
+                </div>
+
+                <!-- Category 5 -->
+                <div class="category-card text-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300" style="--category-color: #F59E0B; --category-color-light: #FBBF24;">
+                    <div class="flex items-center space-x-4 mb-4">
+                        <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+                            <span class="text-2xl">🏠</span>
+                        </div>
+                        <div>
+                            <h3 class="font-display text-xl font-bold">Real Estate</h3>
+                            <p class="text-orange-100 text-sm">22 guides • Moderate-High Risk</p>
+                        </div>
+                    </div>
+                    <p class="text-orange-100 mb-4">Property investment and real estate wealth building</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-white bg-opacity-20 px-2 py-1 rounded-full text-xs">Rental Properties</span>
+                        <span class="bg-white bg-opacity-20 px-2 py-1 rounded-full text-xs">REITs</span>
+                        <span class="bg-white bg-opacity-20 px-2 py-1 rounded-full text-xs">Property Flipping</span>
+                    </div>
+                    <button class="text-white font-medium hover:text-orange-100 transition-colors">
+                        Explore Real Estate →
+                    </button>
+                </div>
+
+                <!-- Category 6 -->
+                <div class="category-card text-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300" style="--category-color: #10B981; --category-color-light: #34D399;">
+                    <div class="flex items-center space-x-4 mb-4">
+                        <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+                            <span class="text-2xl">📋</span>
+                        </div>
+                        <div>
+                            <h3 class="font-display text-xl font-bold">Tax Planning</h3>
+                            <p class="text-emerald-100 text-sm">18 guides • Low Risk</p>
+                        </div>
+                    </div>
+                    <p class="text-emerald-100 mb-4">Optimizing taxes and understanding tax-advantaged accounts</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-white bg-opacity-20 px-2 py-1 rounded-full text-xs">Tax Strategies</span>
+                        <span class="bg-white bg-opacity-20 px-2 py-1 rounded-full text-xs">Tax Loss Harvesting</span>
+                        <span class="bg-white bg-opacity-20 px-2 py-1 rounded-full text-xs">Estate Planning</span>
+                    </div>
+                    <button class="text-white font-medium hover:text-emerald-100 transition-colors">
+                        Explore Tax Planning →
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Newsletter -->
+    <section class="py-16 bg-finance-light">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="bg-gradient-to-r from-finance-blue to-finance-navy p-8 rounded-2xl text-white">
+                <h2 class="font-display text-3xl font-bold mb-4">Stay Financially Informed</h2>
+                <p class="text-xl text-blue-100 mb-8">
+                    Get weekly market insights, investment strategies, and financial planning tips delivered to your inbox
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                    <input type="email" 
+                           placeholder="Enter your email address" 
+                           class="flex-1 px-4 py-3 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white">
+                    <button class="bg-white text-finance-blue px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
+                        Subscribe
+                    </button>
+                </div>
+                <p class="text-sm text-blue-200 mt-4">
+                    Join 100,000+ smart investors. Unsubscribe anytime.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-finance-dark text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-finance-blue rounded-xl flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                            </svg>
+                        </div>
+                        <span class="font-display text-xl font-bold">FinanceWise</span>
+                    </div>
+                    <p class="text-gray-300 mb-6 max-w-md">
+                        Your comprehensive guide to financial education, investment strategies, and wealth building with expert analysis and practical advice.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Investment Topics</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Index Funds</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Retirement Planning</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Real Estate</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Market Analysis</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Tax Planning</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Tools & Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Financial Calculators</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Market Data</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Investment Guides</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Risk Assessment</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Portfolio Tracker</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-400">© 2024 FinanceWise. All rights reserved. Investment advice for educational purposes only. Consult a financial advisor for personalized guidance.</p>
+            </div>
+        </div>
+    </footer>
+</div> 

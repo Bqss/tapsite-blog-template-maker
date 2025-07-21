@@ -1,0 +1,54 @@
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'finance-blue': '#1E40AF',
+                    'finance-navy': '#1D4ED8',
+                    'finance-green': '#059669',
+                    'finance-light': '#F8FAFC',
+                    'finance-dark': '#1F2937'
+                },
+                fontFamily: {
+                    'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    'display': ['Roboto Slab', 'serif']
+                }
+            }
+        }
+    }
+</script>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Slab:wght@300;400;500;600;700&display=swap');
+    
+    .finance-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 20px 25px -5px rgba(30, 64, 175, 0.1), 0 10px 10px -5px rgba(30, 64, 175, 0.04);
+    }
+    
+    .category-card {
+        background: linear-gradient(135deg, var(--category-color, #1E40AF) 0%, var(--category-color-light, #3B82F6) 100%);
+    }
+    
+    .hero-gradient {
+        background: linear-gradient(135deg, #1E40AF 0%, #1D4ED8 50%, #1F2937 100%);
+    }
+    
+    .market-card {
+        background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+        border-left: 4px solid #1E40AF;
+    }
+    
+    .calculator-card {
+        background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%);
+        border-left: 4px solid #059669;
+    }
+    
+    .trend-up {
+        color: #059669;
+    }
+    
+    .trend-down {
+        color: #DC2626;
+    }
+</style> 

@@ -1,0 +1,579 @@
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'finance-blue': '#1E40AF',
+                    'finance-navy': '#1D4ED8',
+                    'finance-green': '#059669',
+                    'finance-light': '#F8FAFC',
+                    'finance-dark': '#1F2937'
+                },
+                fontFamily: {
+                    'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    'display': ['Roboto Slab', 'serif']
+                }
+            }
+        }
+    }
+</script>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Slab:wght@300;400;500;600;700&display=swap');
+    
+    .finance-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 20px 25px -5px rgba(30, 64, 175, 0.1), 0 10px 10px -5px rgba(30, 64, 175, 0.04);
+    }
+    
+    .hero-gradient {
+        background: linear-gradient(135deg, #1E40AF 0%, #1D4ED8 50%, #1F2937 100%);
+    }
+    
+    .trend-up {
+        color: #059669;
+    }
+    
+    .trend-down {
+        color: #DC2626;
+    }
+    
+    .article-content h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
+        color: #1F2937;
+    }
+    
+    .article-content h2 {
+        font-size: 2rem;
+        font-weight: 600;
+        line-height: 1.3;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        color: #1E40AF;
+        border-bottom: 2px solid #E5E7EB;
+        padding-bottom: 0.5rem;
+    }
+    
+    .article-content h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        line-height: 1.4;
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+        color: #374151;
+    }
+    
+    .article-content p {
+        font-size: 1.125rem;
+        line-height: 1.7;
+        margin-bottom: 1.25rem;
+        color: #4B5563;
+    }
+    
+    .article-content ul, .article-content ol {
+        margin-bottom: 1.5rem;
+        padding-left: 1.5rem;
+    }
+    
+    .article-content li {
+        font-size: 1.125rem;
+        line-height: 1.7;
+        margin-bottom: 0.5rem;
+        color: #4B5563;
+    }
+    
+    .article-content ul li {
+        list-style-type: disc;
+    }
+    
+    .article-content ol li {
+        list-style-type: decimal;
+    }
+    
+    .article-content strong {
+        font-weight: 600;
+        color: #1F2937;
+    }
+    
+    .article-content blockquote {
+        border-left: 4px solid #1E40AF;
+        padding-left: 1rem;
+        margin: 1.5rem 0;
+        font-style: italic;
+        color: #6B7280;
+    }
+</style>
+
+<div class="bg-finance-light min-h-screen font-sans text-finance-dark">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm border-b border-blue-100 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-finance-blue rounded-xl flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                        </svg>
+                    </div>
+                    <span class="font-display text-xl font-bold text-finance-dark">FinanceWise</span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="text-gray-600 hover:text-finance-blue transition-colors font-medium">Home</a>
+                    <a href="#" class="text-gray-600 hover:text-finance-blue transition-colors font-medium">Articles</a>
+                    <a href="#" class="text-gray-600 hover:text-finance-blue transition-colors font-medium">Investing</a>
+                    <a href="#" class="text-gray-600 hover:text-finance-blue transition-colors font-medium">Retirement</a>
+                    <a href="#" class="text-gray-600 hover:text-finance-blue transition-colors font-medium">Personal Finance</a>
+                    <a href="#" class="text-gray-600 hover:text-finance-blue transition-colors font-medium">Search</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button class="text-gray-600 hover:text-finance-blue transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                    </button>
+                    <button class="bg-finance-blue text-white px-4 py-2 rounded-lg font-medium hover:bg-finance-navy transition-colors">
+                        Start Investing
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <nav class="bg-white border-b border-gray-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <div class="flex items-center space-x-2 text-sm">
+                <a href="#" class="text-gray-500 hover:text-finance-blue transition-colors">Home</a>
+                <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+                <a href="#" class="text-gray-500 hover:text-finance-blue transition-colors">Investment</a>
+                <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+                <span class="text-finance-blue font-medium">Index Fund Investing</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Article Header -->
+    <header class="bg-white py-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="flex items-center justify-center space-x-4 mb-6">
+                    <span class="bg-finance-blue text-white px-4 py-2 rounded-full text-sm font-medium">Investment</span>
+                    <span class="bg-finance-green text-white px-4 py-2 rounded-full text-sm font-medium">Beginner Guide</span>
+                </div>
+                
+                <h1 class="font-display text-4xl lg:text-5xl font-bold text-finance-dark mb-6 leading-tight">
+                    Panduan Lengkap Investasi Index Fund untuk Pemula
+                </h1>
+                
+                <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
+                    Pelajari cara memulai investasi index fund dengan strategi yang tepat, risiko rendah, dan potensi keuntungan jangka panjang yang stabil.
+                </p>
+                
+                <div class="flex items-center justify-center space-x-8 text-sm text-gray-500">
+                    <div class="flex items-center space-x-2">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=40&h=40&fit=crop&crop=face" 
+                             alt="Sarah Financial" 
+                             class="w-8 h-8 rounded-full">
+                        <span>Sarah Financial, CFA</span>
+                    </div>
+                    <div class="flex items-center space-x-1">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <span>15 min read</span>
+                    </div>
+                    <div class="flex items-center space-x-1">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                        </svg>
+                        <span>2,847 views</span>
+                    </div>
+                    <div class="flex items-center space-x-1">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        </svg>
+                        <span>15 Desember 2024</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Featured Image -->
+    <div class="bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=800&h=400&fit=crop" 
+                 alt="Index Fund Investing" 
+                 class="w-full h-64 lg:h-80 object-cover rounded-2xl shadow-lg">
+        </div>
+    </div>
+
+    <!-- Article Content -->
+    <article class="bg-white py-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="article-content prose prose-lg max-w-none">
+                <h2>Apa itu Index Fund?</h2>
+                
+                <p>Index fund adalah jenis reksa dana yang dirancang untuk mengikuti pergerakan indeks pasar tertentu, seperti S&P 500, Dow Jones, atau IHSG. Berbeda dengan reksa dana aktif yang dikelola oleh manajer investasi, index fund menggunakan strategi pasif dengan tujuan meniru kinerja indeks acuan.</p>
+                
+                <p>Konsep dasar index fund sangat sederhana: <strong>alih-alih mencoba mengalahkan pasar, index fund berusaha menyamai performa pasar</strong>. Hal ini dicapai dengan membeli semua saham yang ada dalam indeks dengan proporsi yang sama.</p>
+
+                <h2>Mengapa Index Fund Cocok untuk Pemula?</h2>
+                
+                <p>Index fund menjadi pilihan investasi yang sangat cocok untuk pemula karena beberapa alasan fundamental:</p>
+
+                <h3>1. Risiko yang Terdiversifikasi</h3>
+                <p>Dengan membeli index fund, Anda secara otomatis berinvestasi pada ratusan atau bahkan ribuan perusahaan sekaligus. Ini memberikan diversifikasi instan yang sulit dicapai jika membeli saham individual.</p>
+
+                <h3>2. Biaya Rendah</h3>
+                <p>Index fund memiliki expense ratio yang sangat rendah karena tidak memerlukan penelitian aktif dan perdagangan yang sering. Biaya tahunan umumnya berkisar antara 0,03% hingga 0,20% dari nilai investasi.</p>
+
+                <h3>3. Kinerja Jangka Panjang yang Solid</h3>
+                <p>Secara historis, index fund telah memberikan return rata-rata 7-10% per tahun dalam jangka panjang, mengalahkan mayoritas reksa dana yang dikelola secara aktif.</p>
+
+                <h2>Jenis-Jenis Index Fund</h2>
+
+                <p>Terdapat berbagai jenis index fund yang dapat Anda pilih sesuai dengan tujuan investasi:</p>
+
+                <h3>1. Index Fund Saham Domestik</h3>
+                <ul>
+                    <li><strong>Large-Cap Index Fund</strong> - Mengikuti perusahaan besar dengan kapitalisasi pasar tinggi</li>
+                    <li><strong>Mid-Cap Index Fund</strong> - Fokus pada perusahaan menengah dengan potensi pertumbuhan</li>
+                    <li><strong>Small-Cap Index Fund</strong> - Berinvestasi pada perusahaan kecil dengan volatilitas tinggi</li>
+                    <li><strong>Total Stock Market Index Fund</strong> - Mencakup seluruh pasar saham domestik</li>
+                </ul>
+
+                <h3>2. Index Fund Saham Internasional</h3>
+                <ul>
+                    <li><strong>Developed Markets Index Fund</strong> - Saham dari negara maju seperti Eropa dan Jepang</li>
+                    <li><strong>Emerging Markets Index Fund</strong> - Saham dari negara berkembang dengan pertumbuhan tinggi</li>
+                    <li><strong>Global Index Fund</strong> - Kombinasi saham domestik dan internasional</li>
+                </ul>
+
+                <h3>3. Index Fund Obligasi</h3>
+                <ul>
+                    <li><strong>Government Bond Index Fund</strong> - Obligasi pemerintah dengan risiko rendah</li>
+                    <li><strong>Corporate Bond Index Fund</strong> - Obligasi korporasi dengan yield lebih tinggi</li>
+                    <li><strong>International Bond Index Fund</strong> - Obligasi dari berbagai negara</li>
+                </ul>
+
+                <h2>Cara Memulai Investasi Index Fund</h2>
+
+                <p>Berikut adalah langkah-langkah praktis untuk memulai investasi index fund:</p>
+
+                <h3>Langkah 1: Tentukan Tujuan Investasi</h3>
+                <p>Sebelum memilih index fund, tentukan terlebih dahulu tujuan investasi Anda:</p>
+                <ul>
+                    <li>Jangka waktu investasi (jangka pendek, menengah, atau panjang)</li>
+                    <li>Toleransi risiko (konservatif, moderat, atau agresif)</li>
+                    <li>Target return yang diharapkan</li>
+                    <li>Kebutuhan likuiditas</li>
+                </ul>
+
+                <h3>Langkah 2: Pilih Platform Investasi</h3>
+                <p>Anda dapat berinvestasi index fund melalui berbagai platform:</p>
+                <ol>
+                    <li><strong>Broker Online</strong> - Seperti Fidelity, Vanguard, atau Charles Schwab</li>
+                    <li><strong>Robo-Advisor</strong> - Platform otomatis seperti Betterment atau Wealthfront</li>
+                    <li><strong>Bank Investasi</strong> - Melalui layanan wealth management bank</li>
+                    <li><strong>Aplikasi Investasi</strong> - Platform mobile seperti Robinhood atau E*TRADE</li>
+                </ol>
+
+                <h3>Langkah 3: Buka Rekening Investasi</h3>
+                <p>Pilih jenis rekening yang sesuai dengan kebutuhan:</p>
+                <ul>
+                    <li><strong>Taxable Account</strong> - Untuk investasi umum dengan fleksibilitas tinggi</li>
+                    <li><strong>IRA (Individual Retirement Account)</strong> - Untuk persiapan pensiun dengan keuntungan pajak</li>
+                    <li><strong>401(k)</strong> - Melalui program pensiun perusahaan</li>
+                    <li><strong>529 Plan</strong> - Untuk dana pendidikan anak</li>
+                </ul>
+
+                <h3>Langkah 4: Pilih Index Fund yang Tepat</h3>
+                <p>Pertimbangkan faktor-faktor berikut saat memilih index fund:</p>
+                <ul>
+                    <li><strong>Expense Ratio</strong> - Pilih yang paling rendah (biasanya di bawah 0,20%)</li>
+                    <li><strong>Tracking Error</strong> - Seberapa dekat kinerja fund dengan indeks acuan</li>
+                    <li><strong>Minimum Investment</strong> - Jumlah minimum yang diperlukan untuk memulai</li>
+                    <li><strong>Reputasi Fund Manager</strong> - Pilih perusahaan dengan track record baik</li>
+                </ul>
+
+                <h2>Strategi Investasi Index Fund</h2>
+
+                <h3>1. Dollar-Cost Averaging (DCA)</h3>
+                <p>Strategi ini melibatkan investasi jumlah tetap secara berkala (misalnya bulanan) terlepas dari kondisi pasar. Keuntungan DCA:</p>
+                <ul>
+                    <li>Mengurangi dampak volatilitas pasar</li>
+                    <li>Membangun disiplin investasi</li>
+                    <li>Menghindari timing pasar yang sulit</li>
+                    <li>Memanfaatkan compound interest</li>
+                </ul>
+
+                <h3>2. Asset Allocation</h3>
+                <p>Bagi portofolio Anda berdasarkan usia dan toleransi risiko:</p>
+                <ul>
+                    <li><strong>Usia 20-30 tahun</strong>: 80-90% saham, 10-20% obligasi</li>
+                    <li><strong>Usia 30-40 tahun</strong>: 70-80% saham, 20-30% obligasi</li>
+                    <li><strong>Usia 40-50 tahun</strong>: 60-70% saham, 30-40% obligasi</li>
+                    <li><strong>Usia 50+ tahun</strong>: 40-60% saham, 40-60% obligasi</li>
+                </ul>
+
+                <h3>3. Rebalancing</h3>
+                <p>Lakukan rebalancing portofolio secara berkala (setiap 6-12 bulan) untuk mempertahankan alokasi aset yang diinginkan. Ini membantu:</p>
+                <ul>
+                    <li>Menjaga tingkat risiko sesuai target</li>
+                    <li>Mengunci keuntungan dari aset yang berkinerja baik</li>
+                    <li>Membeli aset yang underperform dengan harga murah</li>
+                </ul>
+
+                <h2>Keuntungan dan Risiko Index Fund</h2>
+
+                <h3>Keuntungan Index Fund</h3>
+                <ul>
+                    <li><strong>Diversifikasi Otomatis</strong> - Risiko tersebar di banyak saham</li>
+                    <li><strong>Biaya Rendah</strong> - Expense ratio minimal dibanding reksa dana aktif</li>
+                    <li><strong>Transparansi</strong> - Komposisi portofolio selalu jelas</li>
+                    <li><strong>Konsistensi</strong> - Performa mengikuti pasar secara keseluruhan</li>
+                    <li><strong>Likuiditas Tinggi</strong> - Mudah dijual kapan saja</li>
+                    <li><strong>Tax Efficiency</strong> - Turnover rendah mengurangi pajak capital gain</li>
+                </ul>
+
+                <h3>Risiko Index Fund</h3>
+                <ul>
+                    <li><strong>Market Risk</strong> - Nilai akan turun saat pasar bearish</li>
+                    <li><strong>Tracking Error</strong> - Kinerja mungkin tidak persis sama dengan indeks</li>
+                    <li><strong>Sector Concentration</strong> - Beberapa indeks didominasi sektor tertentu</li>
+                    <li><strong>Currency Risk</strong> - Untuk index fund internasional</li>
+                    <li><strong>Liquidity Risk</strong> - Pada kondisi pasar ekstrem</li>
+                </ul>
+
+                <h2>Tips Sukses Investasi Index Fund</h2>
+
+                <h3>1. Mulai Sedini Mungkin</h3>
+                <p>Waktu adalah aset terbesar dalam investasi. Semakin awal Anda memulai, semakin besar manfaat compound interest yang akan Anda dapatkan.</p>
+
+                <h3>2. Investasi Secara Konsisten</h3>
+                <p>Buat rencana investasi bulanan dan patuhi secara disiplin. Konsistensi lebih penting daripada jumlah yang besar.</p>
+
+                <h3>3. Jangan Panic Selling</h3>
+                <p>Saat pasar turun, jangan terburu-buru menjual. Ingat bahwa investasi index fund adalah untuk jangka panjang, dan pasar selalu pulih seiring waktu.</p>
+
+                <h3>4. Fokus pada Biaya</h3>
+                <p>Perbedaan expense ratio 0,1% mungkin terlihat kecil, tetapi dalam jangka panjang dapat menghemat ribuan dollar.</p>
+
+                <h3>5. Diversifikasi Global</h3>
+                <p>Jangan hanya fokus pada pasar domestik. Pertimbangkan untuk menambahkan index fund internasional untuk diversifikasi yang lebih baik.</p>
+
+                <h2>Kesimpulan</h2>
+                
+                <p>Index fund adalah instrumen investasi yang sangat cocok untuk pemula karena kesederhanaannya, biaya rendah, dan potensi return jangka panjang yang solid. Dengan mengikuti strategi yang tepat dan tetap konsisten, Anda dapat membangun kekayaan secara bertahap melalui investasi index fund.</p>
+                
+                <p><strong>Ingat, investasi adalah marathon, bukan sprint</strong>. Mulailah dengan jumlah yang nyaman, tingkatkan secara bertahap, dan biarkan waktu bekerja untuk Anda. Dengan pendekatan yang tepat, index fund dapat menjadi fondasi yang kuat untuk mencapai tujuan keuangan jangka panjang Anda.</p>
+
+                <blockquote>
+                    <p>"Don't look for the needle in the haystack. Just buy the haystack!" - John Bogle, Founder of Vanguard</p>
+                </blockquote>
+            </div>
+        </div>
+    </article>
+
+    <!-- Tags -->
+    <section class="bg-gray-50 py-8">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap gap-2">
+                <span class="bg-finance-blue text-white px-3 py-1 rounded-full text-sm">Index Fund</span>
+                <span class="bg-finance-green text-white px-3 py-1 rounded-full text-sm">Investment</span>
+                <span class="bg-purple-500 text-white px-3 py-1 rounded-full text-sm">Passive Investing</span>
+                <span class="bg-orange-500 text-white px-3 py-1 rounded-full text-sm">Diversification</span>
+                <span class="bg-red-500 text-white px-3 py-1 rounded-full text-sm">Long Term</span>
+                <span class="bg-teal-500 text-white px-3 py-1 rounded-full text-sm">Beginner Guide</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Articles -->
+    <section class="bg-white py-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="font-display text-3xl font-bold text-finance-dark mb-4">Artikel Terkait</h2>
+                <p class="text-xl text-gray-600">Pelajari lebih lanjut tentang strategi investasi lainnya</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Related Article 1 -->
+                <article class="finance-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=400&h=250&fit=crop" 
+                             alt="Emergency Fund" 
+                             class="w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-finance-green text-white px-3 py-1 rounded-full text-sm font-medium">Personal Finance</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-xl font-semibold text-finance-dark mb-3">
+                            Cara Membangun Emergency Fund yang Solid
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Pelajari strategi membangun dana darurat yang cukup untuk menghadapi situasi finansial yang tidak terduga.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">12 min read</span>
+                            <button class="text-finance-blue font-medium hover:text-finance-navy transition-colors">
+                                Baca Artikel →
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Related Article 2 -->
+                <article class="finance-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=400&h=250&fit=crop" 
+                             alt="Retirement Planning" 
+                             class="w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-purple-500 text-white px-3 py-1 rounded-full text-sm font-medium">Retirement</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-xl font-semibold text-finance-dark mb-3">
+                            Perencanaan Pensiun di Usia 30-an
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Strategi perencanaan pensiun yang efektif untuk memaksimalkan pertumbuhan compound di usia produktif.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">18 min read</span>
+                            <button class="text-finance-blue font-medium hover:text-finance-navy transition-colors">
+                                Baca Artikel →
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Related Article 3 -->
+                <article class="finance-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=250&fit=crop" 
+                             alt="Market Analysis" 
+                             class="w-full h-48 object-cover">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-medium">Market Analysis</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-xl font-semibold text-finance-dark mb-3">
+                            Memahami Analisis Fundamental vs Teknikal
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            Pelajari perbedaan dan cara menggunakan analisis fundamental dan teknikal dalam investasi saham.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs text-gray-500">22 min read</span>
+                            <button class="text-finance-blue font-medium hover:text-finance-navy transition-colors">
+                                Baca Artikel →
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-16 bg-finance-light">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="bg-gradient-to-r from-finance-blue to-finance-navy p-8 rounded-2xl text-white">
+                <h2 class="font-display text-3xl font-bold mb-4">Dapatkan Update Finansial Terbaru</h2>
+                <p class="text-xl text-blue-100 mb-8">
+                    Terima insight pasar, strategi investasi, dan tips perencanaan keuangan langsung ke email Anda
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                    <input type="email" 
+                           placeholder="Masukkan email Anda" 
+                           class="flex-1 px-4 py-3 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white">
+                    <button class="bg-white text-finance-blue px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
+                        Berlangganan
+                    </button>
+                </div>
+                <p class="text-sm text-blue-200 mt-4">
+                    Bergabung dengan 100,000+ investor cerdas. Berhenti berlangganan kapan saja.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-finance-dark text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-finance-blue rounded-xl flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                            </svg>
+                        </div>
+                        <span class="font-display text-xl font-bold">FinanceWise</span>
+                    </div>
+                    <p class="text-gray-300 mb-6 max-w-md">
+                        Panduan lengkap untuk edukasi keuangan, strategi investasi, dan membangun kekayaan dengan analisis ahli dan saran praktis.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Topik Investasi</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Index Fund</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Perencanaan Pensiun</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Real Estate</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Analisis Pasar</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Perencanaan Pajak</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold text-lg mb-4">Tools & Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Kalkulator Keuangan</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Data Pasar</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Panduan Investasi</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Penilaian Risiko</a></li>
+                        <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Tracker Portofolio</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                <p class="text-gray-400">© 2024 FinanceWise. Semua hak dilindungi. Saran investasi hanya untuk tujuan edukasi. Konsultasikan dengan penasihat keuangan untuk panduan yang dipersonalisasi.</p>
+            </div>
+        </div>
+    </footer>
+</div> 
