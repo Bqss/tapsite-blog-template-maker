@@ -1,3 +1,42 @@
+<section class="bg-gradient-to-r from-amber-50 to-orange-50 py-8">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav class="flex items-center space-x-2 text-sm">
+      <a href="/" class="text-amber-600 hover:text-amber-700 font-medium">📚 Home</a>
+      <span class="text-slate-400">→</span>
+      <span class="text-slate-600 font-medium">All Posts</span>
+    </nav>
+  </div>
+</section>
+
+<!-- Page Header -->
+<section class="py-16 bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="mb-8">
+      <div class="inline-block p-4 bg-white rounded-full shadow-lg mb-4">
+        <span class="text-3xl">📚</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-serif font-bold text-slate-900 mb-4">
+        Literary <span class="text-amber-600 italic">Chronicles</span>
+      </h1>
+      <p class="text-lg text-slate-600">Explore all our book reviews, literary insights, and reading adventures</p>
+    </div>
+
+    <div class="flex justify-center space-x-8 text-sm text-slate-600">
+      <div class="flex items-center space-x-2">
+        <span class="text-amber-600">📖</span>
+        <span id="stats-posts">Loading...</span>
+      </div>
+      <div class="flex items-center space-x-2">
+        <span class="text-amber-600">🏷️</span>
+        <span id="stats-categories">Loading...</span>
+      </div>
+      <div class="flex items-center space-x-2">
+        <span class="text-amber-600">✍️</span>
+        <span id="stats-authors">Loading...</span>
+      </div>
+    </div>
+  </div>
+</section>
 <!-- Posts Listing -->
 <section class="py-16 bg-white">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -45,23 +84,82 @@
 <script>
 let currentPage = 1;
 let currentCategory = null;
+let isStatisticsLoaded = false;
 
-async function loadPosts(page = 1, category = null) {
-  const postsLoading = document.getElementById('posts-loading');
-  const postsError = document.getElementById('posts-error');
-  const postsContent = document.getElementById('posts-content');
-  
+async function loadStatistics() {
   try {
-    postsLoading.classList.remove('hidden');
-    postsError.classList.add('hidden');
-    postsContent.classList.add('hidden');
+    // Use Promise.all for parallel API calls
+    const [postsResponse, categoriesResponse] = await Promise.all([
+      fetch('/api/blog/posts?limit=1'),
+      fetch('/api/blog/categories')
+    ]);
     
-    // Load categories if not loaded
-    if (!currentCategory) {
-      const categoriesResponse = await fetch('/api/blog/categories');
-      const categories = await categoriesResponse.json();
-      renderCategories(categories);
-    }
+    const postsData = await postsResponse.json();
+    const categoriesData = await categoriesResponse.json();
+    
+    // Extract data from response
+    const totalPosts = postsData.pagination?.total_posts || postsData.total_posts || 0;
+    const totalCategories = categoriesData.length || 0;
+    const totalAuthors = 'Multiple authors'; // Keep as static for now
+    
+    // Call updateStatisticsDisplay with the data
+    updateStatisticsDisplay({ totalPosts, totalCategories, totalAuthors });
+  } catch (error) {
+    console.error('Failed to load statistics:', error);
+    // Fallback to static values if API fails
+    updateStatisticsDisplay({ 
+      totalPosts: '25 posts', 
+      totalCategories: '4 categories', 
+      totalAuthors: 'Multiple authors' 
+    });
+  }
+ }
+ 
+ function updateStatisticsDisplay(data) {
+   // Destructure parameter
+   const { totalPosts, totalCategories, totalAuthors } = data;
+   
+   // Get DOM elements using getElementById
+   const postsElement = document.getElementById('stats-posts');
+   const categoriesElement = document.getElementById('stats-categories');
+   const authorsElement = document.getElementById('stats-authors');
+   
+   // Update textContent with proper format and null checks
+   if (postsElement) {
+     postsElement.textContent = typeof totalPosts === 'number' ? `${totalPosts} posts` : totalPosts;
+   }
+   
+   if (categoriesElement) {
+     categoriesElement.textContent = typeof totalCategories === 'number' ? `${totalCategories} categories` : totalCategories;
+   }
+   
+   if (authorsElement) {
+     authorsElement.textContent = totalAuthors;
+   }
+ }
+ 
+ async function loadPosts(page = 1, category = null) {
+    const postsLoading = document.getElementById('posts-loading');
+    const postsError = document.getElementById('posts-error');
+    const postsContent = document.getElementById('posts-content');
+    
+    try {
+      postsLoading.classList.remove('hidden');
+      postsError.classList.add('hidden');
+      postsContent.classList.add('hidden');
+      
+      // Load categories if not loaded
+      if (!currentCategory) {
+        const categoriesResponse = await fetch('/api/blog/categories');
+        const categories = await categoriesResponse.json();
+        renderCategories(categories);
+      }
+      
+      // Load statistics only on initial load (page 1 and no category filter)
+      if (page === 1 && !category && !isStatisticsLoaded) {
+        loadStatistics();
+        isStatisticsLoaded = true;
+      }
     
     // Load posts
     const postsUrl = category 
@@ -226,4 +324,4 @@ function formatDate(timestamp) {
 }
 
 // Initial load
-document.addEventListener('DOMContentLoaded', () => loadPosts());</script> 
+document.addEventListener('DOMContentLoaded', () => loadPosts());</script>

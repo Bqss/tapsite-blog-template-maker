@@ -8,13 +8,6 @@
       "data": ["navigation"]
     },
     {
-      "title": "posts header",
-      "id": "posts_header",
-      "type": "template",
-      "resetable": true,
-      "data": ["blog_title", "blog_description"]
-    },
-    {
       "title": "posts listing",
       "id": "posts_listing",
       "type": "template",
