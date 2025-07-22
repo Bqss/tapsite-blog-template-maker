@@ -1,0 +1,10 @@
+
+{
+  "title" : "TravelTales",
+  "description" : "Travel blog with destination discovery and travel content showcase",
+  "template_id" : "traveltales",
+  "creator_name" : "Maulana Shalihin",
+  "creator_website" : "https://tapsite.ai",
+  "version" : "1.0.0",
+  "thumbnail" : "/templates/traveltales/thumbnail.webp"
+}

@@ -1,0 +1,56 @@
+{
+  "page": {
+    "title": "Travel Posts - TravelTales | Discover Amazing Destinations & Travel Experiences",
+    "description": "Browse our collection of travel guides, destination tips, and adventure stories. Find inspiration for your next trip with expert advice on backpacking, luxury travel, cultural experiences, and more.",
+    "keywords": "travel posts, travel guides, destination guides, adventure travel, backpacking, luxury travel, cultural tourism, budget travel, solo travel, family travel",
+    "canonical": "/posts",
+    "og": {
+      "title": "Travel Posts - TravelTales",
+      "description": "Browse our collection of travel guides, destination tips, and adventure stories. Find inspiration for your next trip with expert advice on backpacking, luxury travel, cultural experiences, and more.",
+      "image": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200&h=630&fit=crop",
+      "url": "/posts",
+      "type": "website"
+    },
+    "twitter": {
+      "card": "summary_large_image",
+      "title": "Travel Posts - TravelTales",
+      "description": "Browse our collection of travel guides, destination tips, and adventure stories. Find inspiration for your next trip.",
+      "image": "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200&h=630&fit=crop"
+    },
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Travel Posts",
+      "description": "Browse our collection of travel guides, destination tips, and adventure stories",
+      "url": "/posts",
+      "mainEntity": {
+        "@type": "ItemList",
+        "name": "Travel Articles",
+        "description": "Collection of travel guides and destination articles",
+        "numberOfItems": 148
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Travel Posts",
+            "item": "/posts"
+          }
+        ]
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  }
+} 

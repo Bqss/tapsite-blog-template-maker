@@ -1,0 +1,100 @@
+{
+  "title": "TravelTales - Explore the World One Story at a Time",
+  "description": "Join us on incredible journeys around the globe. Discover hidden gems, cultural treasures, and unforgettable adventures through our detailed travel guides and inspiring stories",
+  "sections": [
+    {
+      "title": "styles",
+      "id": "styles",
+      "type": "template",
+      "resetable": true
+    },
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "site.name",
+        "site.logo",
+        "navigation",
+        "search_enabled",
+        "cta_button"
+      ]
+    },
+    {
+      "title": "hero",
+      "id": "hero",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "hero"
+      ]
+    },
+    {
+      "title": "featured stories",
+      "id": "featured_stories",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "featured"
+      ]
+    },
+    {
+      "title": "destinations",
+      "id": "destinations",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "destinations"
+      ]
+    },
+    {
+      "title": "travel guides",
+      "id": "travel_guides",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "guides"
+      ]
+    },
+    {
+      "title": "photo gallery",
+      "id": "photo_gallery",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "gallery"
+      ]
+    },
+    {
+      "title": "travel tips",
+      "id": "travel_tips",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "tips"
+      ]
+    },
+    {
+      "title": "newsletter",
+      "id": "newsletter",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "newsletter"
+      ]
+    },
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "site.name",
+        "site.description",
+        "navigation",
+        "social_links"
+      ]
+    }
+  ]
+} 

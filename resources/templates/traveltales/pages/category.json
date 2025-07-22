@@ -1,0 +1,70 @@
+{
+  "page": {
+    "title": "Adventure Travel - TravelTales | Thrilling Outdoor Activities & Extreme Sports",
+    "description": "Discover thrilling adventure travel experiences including mountain trekking, rock climbing, water sports, and extreme adventures. Expert guides for adrenaline-seeking travelers.",
+    "keywords": "adventure travel, mountain trekking, rock climbing, water sports, extreme sports, outdoor activities, adventure sports, adrenaline travel, adventure tourism",
+    "canonical": "/category/adventure-travel",
+    "og": {
+      "title": "Adventure Travel - TravelTales",
+      "description": "Discover thrilling adventure travel experiences including mountain trekking, rock climbing, water sports, and extreme adventures. Expert guides for adrenaline-seeking travelers.",
+      "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=630&fit=crop",
+      "url": "/category/adventure-travel",
+      "type": "website"
+    },
+    "twitter": {
+      "card": "summary_large_image",
+      "title": "Adventure Travel - TravelTales",
+      "description": "Discover thrilling adventure travel experiences including mountain trekking, rock climbing, water sports, and extreme adventures.",
+      "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=630&fit=crop"
+    },
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Adventure Travel",
+      "description": "Thrilling outdoor activities and extreme sports for adrenaline seekers",
+      "url": "/category/adventure-travel",
+      "mainEntity": {
+        "@type": "ItemList",
+        "name": "Adventure Travel Articles",
+        "description": "Collection of adventure travel guides and extreme sports articles",
+        "numberOfItems": 35
+      },
+      "about": {
+        "@type": "Thing",
+        "name": "Adventure Travel",
+        "description": "Travel focused on thrilling outdoor activities, extreme sports, and adrenaline-pumping experiences",
+        "sameAs": [
+          "https://en.wikipedia.org/wiki/Adventure_travel"
+        ]
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Travel Types",
+            "item": "/travel-types"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Adventure Travel",
+            "item": "/category/adventure-travel"
+          }
+        ]
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "/search?q={search_term_string}&category=adventure-travel",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  }
+} 

@@ -1,0 +1,72 @@
+{
+  "page": {
+    "title": "Adventure Travel Tag - TravelTales | Thrilling Experiences & Extreme Sports",
+    "description": "Explore adventure travel content including thrilling experiences, extreme sports, and adrenaline-pumping activities from around the world. Find your next adventure.",
+    "keywords": "adventure, adventure travel, extreme sports, thrilling experiences, adrenaline travel, outdoor adventures, adventure tourism, adventure activities",
+    "canonical": "/tag/adventure",
+    "og": {
+      "title": "Adventure Travel Tag - TravelTales",
+      "description": "Explore adventure travel content including thrilling experiences, extreme sports, and adrenaline-pumping activities from around the world.",
+      "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=630&fit=crop",
+      "url": "/tag/adventure",
+      "type": "website"
+    },
+    "twitter": {
+      "card": "summary_large_image",
+      "title": "Adventure Travel Tag - TravelTales",
+      "description": "Explore adventure travel content including thrilling experiences, extreme sports, and adrenaline-pumping activities.",
+      "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=630&fit=crop"
+    },
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Adventure Tag",
+      "description": "Collection of adventure travel content and extreme sports articles",
+      "url": "/tag/adventure",
+      "mainEntity": {
+        "@type": "ItemList",
+        "name": "Adventure Travel Content",
+        "description": "Articles tagged with adventure including thrilling experiences and extreme sports",
+        "numberOfItems": 42
+      },
+      "about": {
+        "@type": "DefinedTerm",
+        "name": "Adventure",
+        "description": "Thrilling experiences, extreme sports, and adrenaline-pumping activities",
+        "inDefinedTermSet": {
+          "@type": "DefinedTermSet",
+          "name": "Travel Tags",
+          "description": "Collection of travel-related tags and categories"
+        }
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Tags",
+            "item": "/tags"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Adventure",
+            "item": "/tag/adventure"
+          }
+        ]
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "/search?q={search_term_string}&tag=adventure",
+        "query-input": "required name=search_term_string"
+      }
+    }
+  }
+} 
