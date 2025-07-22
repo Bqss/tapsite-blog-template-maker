@@ -1,0 +1,239 @@
+{
+  "site": {
+    "name": "ParentingHub",
+    "tagline": "Nurturing Families, Growing Together",
+    "description": "Your trusted parenting companion featuring expert advice, child development insights, and family-friendly activities for every stage of parenthood",
+    "logo": "https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=200&h=80&fit=crop"
+  },
+  "posts": [
+    {
+      "id": 1,
+      "title": "Complete Guide to Toddler Sleep Training: Gentle Methods That Work",
+      "slug": "complete-guide-toddler-sleep-training-gentle-methods",
+      "excerpt": "Evidence-based sleep training techniques for toddlers aged 1-3 years with gentle, family-friendly approaches that respect your child's needs.",
+      "content": "Sleep training doesn't have to be stressful for parents or children. This comprehensive guide covers gentle, effective methods that help toddlers develop healthy sleep habits while maintaining the parent-child bond.",
+      "category": "Sleep & Rest",
+      "age_group": "Toddlers (1-3 years)",
+      "author": "Dr. Sarah Parent",
+      "read_time": 12,
+      "difficulty": "Intermediate",
+      "safety_rating": "High",
+      "featured_image": "https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=800&h=600&fit=crop",
+      "gallery": [
+        "https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=600&h=400&fit=crop"
+      ],
+      "tags": ["Sleep Training", "Toddlers", "Bedtime Routine", "Gentle Parenting"],
+      "milestones": ["Independent Sleep", "Bedtime Routine", "Night Weaning"],
+      "activities": ["Bedtime Stories", "Calming Music", "Sleep Ritual"],
+      "safety_tips": ["Safe sleep environment", "Age-appropriate bedding", "Room temperature control"],
+      "published_at": "2024-12-15T10:00:00Z"
+    },
+    {
+      "id": 2,
+      "title": "Positive Discipline Strategies for Preschoolers: Building Character Without Punishment",
+      "slug": "positive-discipline-strategies-preschoolers-building-character",
+      "excerpt": "Learn effective positive discipline techniques that teach preschoolers self-control, empathy, and problem-solving skills without resorting to punishment.",
+      "content": "Positive discipline focuses on teaching rather than punishing. This guide provides practical strategies for guiding preschooler behavior while building their emotional intelligence and self-esteem.",
+      "category": "Behavior & Discipline",
+      "age_group": "Preschoolers (3-5 years)",
+      "author": "Maria Montessori",
+      "read_time": 15,
+      "difficulty": "Intermediate",
+      "safety_rating": "High",
+      "featured_image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&h=600&fit=crop",
+      "gallery": [
+        "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=600&h=400&fit=crop"
+      ],
+      "tags": ["Positive Discipline", "Preschoolers", "Behavior Management", "Emotional Intelligence"],
+      "milestones": ["Self-Control", "Empathy Development", "Problem Solving"],
+      "activities": ["Emotion Cards", "Problem-Solving Games", "Calm Down Corner"],
+      "safety_tips": ["Emotional safety", "Consistent boundaries", "Age-appropriate expectations"],
+      "published_at": "2024-12-14T14:30:00Z"
+    },
+    {
+      "id": 3,
+      "title": "Baby's First Year Milestones: What to Expect and When to Celebrate",
+      "slug": "baby-first-year-milestones-what-expect-celebrate",
+      "excerpt": "Comprehensive guide to infant development milestones in the first year, including physical, cognitive, and social-emotional growth markers.",
+      "content": "Every baby develops at their own pace, but understanding typical milestones helps parents support their child's growth and recognize when to seek additional support.",
+      "category": "Development",
+      "age_group": "Infants (0-12 months)",
+      "author": "Dr. Emma Pediatric",
+      "read_time": 18,
+      "difficulty": "Beginner",
+      "safety_rating": "High",
+      "featured_image": "https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=800&h=600&fit=crop",
+      "gallery": [
+        "https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1519689680058-324335c77eba?w=600&h=400&fit=crop"
+      ],
+      "tags": ["Baby Development", "Milestones", "Infant Growth", "First Year"],
+      "milestones": ["Rolling Over", "Sitting Up", "First Words", "Walking"],
+      "activities": ["Tummy Time", "Peek-a-Boo", "Sensory Play", "Reading Together"],
+      "safety_tips": ["Safe sleep practices", "Babyproofing", "Age-appropriate toys"],
+      "published_at": "2024-12-13T09:15:00Z"
+    },
+    {
+      "id": 4,
+      "title": "Screen Time Guidelines for Kids: Healthy Digital Habits for Modern Families",
+      "slug": "screen-time-guidelines-kids-healthy-digital-habits",
+      "excerpt": "Expert recommendations for managing screen time across different age groups, plus tips for creating healthy digital habits and family media plans.",
+      "content": "In our digital world, teaching children healthy screen time habits is essential. This guide provides age-appropriate guidelines and practical strategies for balanced technology use.",
+      "category": "Digital Wellness",
+      "age_group": "All Ages",
+      "author": "Dr. Tech Balance",
+      "read_time": 10,
+      "difficulty": "Beginner",
+      "safety_rating": "High",
+      "featured_image": "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&h=600&fit=crop",
+      "gallery": [
+        "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1519689680058-324335c77eba?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=600&h=400&fit=crop"
+      ],
+      "tags": ["Screen Time", "Digital Wellness", "Technology", "Family Rules"],
+      "milestones": ["Digital Literacy", "Self-Regulation", "Healthy Boundaries"],
+      "activities": ["Family Media Plan", "Tech-Free Time", "Educational Apps"],
+      "safety_tips": ["Content filtering", "Privacy settings", "Online safety education"],
+      "published_at": "2024-12-12T16:45:00Z"
+    },
+    {
+      "id": 5,
+      "title": "Fun Educational Activities for School-Age Kids: Learning Through Play",
+      "slug": "fun-educational-activities-school-age-kids-learning-play",
+      "excerpt": "Creative and engaging educational activities that make learning fun for elementary school children while supporting academic and social development.",
+      "content": "Learning doesn't stop when school ends. These engaging activities help school-age children continue learning while having fun, building confidence, and developing new skills.",
+      "category": "Learning & Education",
+      "age_group": "School Age (6-12 years)",
+      "author": "Teacher Lisa",
+      "read_time": 14,
+      "difficulty": "Easy",
+      "safety_rating": "High",
+      "featured_image": "https://images.unsplash.com/photo-1519689680058-324335c77eba?w=800&h=600&fit=crop",
+      "gallery": [
+        "https://images.unsplash.com/photo-1519689680058-324335c77eba?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=600&h=400&fit=crop"
+      ],
+      "tags": ["Educational Activities", "School Age", "Learning Through Play", "STEM"],
+      "milestones": ["Academic Skills", "Critical Thinking", "Creativity"],
+      "activities": ["Science Experiments", "Math Games", "Reading Challenges", "Art Projects"],
+      "safety_tips": ["Supervised activities", "Age-appropriate materials", "Clear instructions"],
+      "published_at": "2024-12-11T11:20:00Z"
+    }
+  ],
+  "age_groups": [
+    {
+      "name": "Infants (0-12 months)",
+      "description": "Newborn and infant care, feeding, sleep, and early development",
+      "icon": "👶",
+      "article_count": 25,
+      "color": "#F59E0B",
+      "key_topics": ["Feeding", "Sleep", "Development", "Safety", "Bonding"]
+    },
+    {
+      "name": "Toddlers (1-3 years)",
+      "description": "Toddler behavior, potty training, language development, and activities",
+      "icon": "🧒",
+      "article_count": 32,
+      "color": "#10B981",
+      "key_topics": ["Potty Training", "Tantrums", "Language", "Independence", "Safety"]
+    },
+    {
+      "name": "Preschoolers (3-5 years)",
+      "description": "Preschool readiness, social skills, and early learning activities",
+      "icon": "👧",
+      "article_count": 28,
+      "color": "#8B5CF6",
+      "key_topics": ["School Readiness", "Social Skills", "Discipline", "Learning", "Creativity"]
+    },
+    {
+      "name": "School Age (6-12 years)",
+      "description": "School support, homework help, friendships, and extracurricular activities",
+      "icon": "🎒",
+      "article_count": 35,
+      "color": "#3B82F6",
+      "key_topics": ["Education", "Friendships", "Activities", "Responsibility", "Growth"]
+    },
+    {
+      "name": "Teenagers (13+ years)",
+      "description": "Teen communication, independence, and preparing for adulthood",
+      "icon": "🧑‍🎓",
+      "article_count": 22,
+      "color": "#EF4444",
+      "key_topics": ["Communication", "Independence", "Peer Pressure", "Future Planning", "Identity"]
+    },
+    {
+      "name": "All Ages",
+      "description": "General parenting advice, family activities, and universal tips",
+      "icon": "👨‍👩‍👧‍👦",
+      "article_count": 18,
+      "color": "#059669",
+      "key_topics": ["Family Time", "Values", "Health", "Safety", "Traditions"]
+    }
+  ],
+  "parenting_experts": [
+    {
+      "name": "Dr. Sarah Parent",
+      "title": "Pediatric Sleep Specialist",
+      "expertise": "Sleep training, bedtime routines, infant sleep",
+      "bio": "Board-certified pediatrician specializing in children's sleep health with 15+ years experience",
+      "articles": 18,
+      "credentials": "MD, Board Certified Pediatrics",
+      "avatar": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=100&h=100&fit=crop&crop=face"
+    },
+    {
+      "name": "Maria Montessori",
+      "title": "Child Development Expert",
+      "expertise": "Positive discipline, emotional development, early childhood education",
+      "bio": "Child development specialist and certified Montessori educator with expertise in gentle parenting approaches",
+      "articles": 25,
+      "credentials": "PhD Child Development, Montessori Certified",
+      "avatar": "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=100&h=100&fit=crop&crop=face"
+    },
+    {
+      "name": "Dr. Emma Pediatric",
+      "title": "Developmental Pediatrician",
+      "expertise": "Child milestones, developmental delays, early intervention",
+      "bio": "Developmental pediatrician helping families understand and support their children's growth and development",
+      "articles": 22,
+      "credentials": "MD, Developmental Pediatrics",
+      "avatar": "https://images.unsplash.com/photo-1594824604989-b57a8b5ce969?w=100&h=100&fit=crop&crop=face"
+    }
+  ],
+  "family_activities": [
+    {
+      "title": "Family Game Night",
+      "description": "Weekly board game sessions that build family bonds and teach valuable skills",
+      "age_group": "All Ages",
+      "duration": "1-2 hours",
+      "materials": ["Board games", "Snacks", "Comfortable seating"]
+    },
+    {
+      "title": "Nature Scavenger Hunt",
+      "description": "Outdoor exploration activity that encourages observation and physical activity",
+      "age_group": "Toddlers & Up",
+      "duration": "30-60 minutes",
+      "materials": ["Scavenger hunt list", "Collection bag", "Camera"]
+    },
+    {
+      "title": "Cooking Together",
+      "description": "Age-appropriate cooking activities that teach life skills and nutrition",
+      "age_group": "Preschoolers & Up",
+      "duration": "45-90 minutes",
+      "materials": ["Simple recipes", "Child-safe utensils", "Ingredients"]
+    },
+    {
+      "title": "Story Time & Discussion",
+      "description": "Reading together followed by meaningful conversations about the story",
+      "age_group": "All Ages",
+      "duration": "20-30 minutes",
+      "materials": ["Age-appropriate books", "Comfortable reading space"]
+    }
+  ]
+} 

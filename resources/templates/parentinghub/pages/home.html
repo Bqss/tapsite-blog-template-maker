@@ -1,0 +1,642 @@
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'family-green': '#10B981',
+                        'family-emerald': '#059669',
+                        'family-orange': '#F59E0B',
+                        'family-light': '#FEF7ED',
+                        'family-dark': '#374151'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'display': ['Quicksand', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap');
+        
+        .family-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(16, 185, 129, 0.1), 0 10px 10px -5px rgba(16, 185, 129, 0.04);
+        }
+        
+        .age-group-card {
+            background: linear-gradient(135deg, var(--age-color, #10B981) 0%, var(--age-color-light, #34D399) 100%);
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #10B981 0%, #059669 50%, #374151 100%);
+        }
+        
+        .milestone-badge {
+            background: linear-gradient(135deg, #FEF7ED 0%, #FED7AA 100%);
+            border-left: 4px solid #F59E0B;
+        }
+        
+        .safety-tip {
+            background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%);
+            border-left: 4px solid #10B981;
+        }
+    </style>
+
+    <div class="bg-family-light min-h-screen font-sans text-family-dark">
+        <!-- Navigation -->
+        <nav class="bg-white shadow-sm border-b border-green-100 sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-family-green rounded-xl flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                            </svg>
+                        </div>
+                        <span class="font-display text-xl font-bold text-family-dark">ParentingHub</span>
+                    </div>
+                    
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="/" class="text-family-green font-medium border-b-2 border-family-green pb-1">Home</a>
+                        <a href="/posts" class="text-gray-600 hover:text-family-green transition-colors font-medium">All Posts</a>
+                        <a href="/category/Technology" class="text-gray-600 hover:text-family-green transition-colors font-medium">Technology</a>
+                        <a href="/category/Business" class="text-gray-600 hover:text-family-green transition-colors font-medium">Business</a>
+                        <a href="/category/Design" class="text-gray-600 hover:text-family-green transition-colors font-medium">Design</a>
+                        <a href="/category/Parenting" class="text-gray-600 hover:text-family-green transition-colors font-medium">Parenting</a>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4">
+                        <button class="text-gray-600 hover:text-family-green transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                        </button>
+                        <button class="bg-family-green text-white px-4 py-2 rounded-lg font-medium hover:bg-family-emerald transition-colors">
+                            Join Community
+                        </button>
+                        <button class="md:hidden text-gray-600 hover:text-family-green transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero-gradient py-20 text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div class="inline-flex items-center bg-white bg-opacity-20 rounded-full px-4 py-2 mb-6">
+                            <span class="text-sm font-medium">👨‍👩‍👧‍👦 Nurturing Families, Growing Together</span>
+                        </div>
+                        <h1 class="font-display text-4xl lg:text-6xl font-bold mb-6 leading-tight">
+                            Your Parenting<br/>
+                            <span class="bg-gradient-to-r from-family-orange to-yellow-300 bg-clip-text text-transparent">Journey Starts Here</span>
+                        </h1>
+                        <p class="text-xl text-green-100 mb-8 leading-relaxed">
+                            Expert parenting advice, child development insights, and family-friendly activities to support you through every stage of your parenting journey.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <button class="bg-white text-family-green px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-colors">
+                                Find Age-Appropriate Tips
+                            </button>
+                            <button class="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-family-green transition-colors">
+                                Join Parent Community
+                            </button>
+                        </div>
+                        
+                        <!-- Family Stats -->
+                        <div class="grid grid-cols-3 gap-8 mt-12">
+                            <div class="text-center">
+                                <div class="font-display text-3xl font-bold">500+</div>
+                                <div class="text-green-200 text-sm">Parenting Articles</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="font-display text-3xl font-bold">100K+</div>
+                                <div class="text-green-200 text-sm">Happy Families</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="font-display text-3xl font-bold">50+</div>
+                                <div class="text-green-200 text-sm">Expert Contributors</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="relative">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="space-y-4">
+                                <img src="https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=300&h=300&fit=crop" 
+                                     alt="Happy Family" 
+                                     class="w-full h-40 object-cover rounded-2xl shadow-xl transform rotate-3 hover:rotate-0 transition-transform">
+                                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=300&h=200&fit=crop" 
+                                     alt="Parent Child Bonding" 
+                                     class="w-full h-32 object-cover rounded-2xl shadow-xl transform -rotate-2 hover:rotate-0 transition-transform">
+                            </div>
+                            <div class="space-y-4 mt-8">
+                                <img src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=300&h=200&fit=crop" 
+                                     alt="Baby Development" 
+                                     class="w-full h-32 object-cover rounded-2xl shadow-xl transform -rotate-3 hover:rotate-0 transition-transform">
+                                <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=300&h=300&fit=crop" 
+                                     alt="Family Activities" 
+                                     class="w-full h-40 object-cover rounded-2xl shadow-xl transform rotate-2 hover:rotate-0 transition-transform">
+                            </div>
+                        </div>
+                        
+                        <!-- Floating Family Icons -->
+                        <div class="absolute -top-4 -right-4 bg-white p-3 rounded-full shadow-lg animate-bounce">
+                            <span class="text-2xl">🍼</span>
+                        </div>
+                        <div class="absolute top-1/2 -left-6 bg-white p-3 rounded-full shadow-lg animate-pulse">
+                            <span class="text-2xl">🧸</span>
+                        </div>
+                        <div class="absolute -bottom-4 right-1/3 bg-white p-3 rounded-full shadow-lg animate-bounce delay-300">
+                            <span class="text-2xl">📚</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Parenting Articles -->
+        <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="font-display text-3xl lg:text-4xl font-bold text-family-dark mb-4">Expert Parenting Guidance</h2>
+                    <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                        Evidence-based advice and practical tips from parenting experts and experienced parents
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Article 1 -->
+                    <article class="family-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=400&h=250&fit=crop" 
+                                 alt="Toddler Sleep Training" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-family-green text-white px-3 py-1 rounded-full text-sm font-medium">Sleep & Rest</span>
+                            </div>
+                            <div class="absolute top-4 right-4">
+                                <span class="bg-white text-family-dark px-3 py-1 rounded-full text-sm font-medium">Toddlers</span>
+                            </div>
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <div class="flex items-center space-x-2 text-white text-sm">
+                                    <span class="bg-black bg-opacity-50 px-2 py-1 rounded-full">⭐ High Safety</span>
+                                    <span class="bg-black bg-opacity-50 px-2 py-1 rounded-full">📖 12 min read</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=40&h=40&fit=crop&crop=face" 
+                                     alt="Dr. Sarah Parent" 
+                                     class="w-8 h-8 rounded-full">
+                                <span class="text-gray-600 text-sm">Dr. Sarah Parent</span>
+                                <span class="text-gray-400 text-sm">•</span>
+                                <span class="text-gray-500 text-sm">Sleep Specialist</span>
+                            </div>
+                            <h3 class="font-display text-xl font-semibold text-family-dark mb-3 line-clamp-2">
+                                Complete Guide to Toddler Sleep Training: Gentle Methods
+                            </h3>
+                            <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                                Evidence-based sleep training techniques for toddlers with gentle, family-friendly approaches that respect your child's needs.
+                            </p>
+                            
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-xs text-gray-500">Ages 1-3</span>
+                                </div>
+                                <button class="text-family-green font-medium hover:text-family-emerald transition-colors">
+                                    Read Guide →
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 2 -->
+                    <article class="family-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=250&fit=crop" 
+                                 alt="Positive Discipline" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-purple-500 text-white px-3 py-1 rounded-full text-sm font-medium">Behavior</span>
+                            </div>
+                            <div class="absolute top-4 right-4">
+                                <span class="bg-white text-family-dark px-3 py-1 rounded-full text-sm font-medium">Preschoolers</span>
+                            </div>
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <div class="flex items-center space-x-2 text-white text-sm">
+                                    <span class="bg-black bg-opacity-50 px-2 py-1 rounded-full">⭐ High Safety</span>
+                                    <span class="bg-black bg-opacity-50 px-2 py-1 rounded-full">📖 15 min read</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=40&h=40&fit=crop&crop=face" 
+                                     alt="Maria Montessori" 
+                                     class="w-8 h-8 rounded-full">
+                                <span class="text-gray-600 text-sm">Maria Montessori</span>
+                                <span class="text-gray-400 text-sm">•</span>
+                                <span class="text-gray-500 text-sm">Child Development</span>
+                            </div>
+                            <h3 class="font-display text-xl font-semibold text-family-dark mb-3 line-clamp-2">
+                                Positive Discipline Strategies for Preschoolers
+                            </h3>
+                            <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                                Learn effective positive discipline techniques that teach self-control and empathy without punishment.
+                            </p>
+                            
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-xs text-gray-500">Ages 3-5</span>
+                                </div>
+                                <button class="text-family-green font-medium hover:text-family-emerald transition-colors">
+                                    Read Guide →
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 3 -->
+                    <article class="family-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=400&h=250&fit=crop" 
+                                 alt="Baby Milestones" 
+                                 class="w-full h-48 object-cover">
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">Development</span>
+                            </div>
+                            <div class="absolute top-4 right-4">
+                                <span class="bg-white text-family-dark px-3 py-1 rounded-full text-sm font-medium">Infants</span>
+                            </div>
+                            <div class="absolute bottom-4 left-4 right-4">
+                                <div class="flex items-center space-x-2 text-white text-sm">
+                                    <span class="bg-black bg-opacity-50 px-2 py-1 rounded-full">⭐ High Safety</span>
+                                    <span class="bg-black bg-opacity-50 px-2 py-1 rounded-full">📖 18 min read</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center space-x-2 mb-3">
+                                <img src="https://images.unsplash.com/photo-1594824604989-b57a8b5ce969?w=40&h=40&fit=crop&crop=face" 
+                                     alt="Dr. Emma Pediatric" 
+                                     class="w-8 h-8 rounded-full">
+                                <span class="text-gray-600 text-sm">Dr. Emma Pediatric</span>
+                                <span class="text-gray-400 text-sm">•</span>
+                                <span class="text-gray-500 text-sm">Pediatrician</span>
+                            </div>
+                            <h3 class="font-display text-xl font-semibold text-family-dark mb-3 line-clamp-2">
+                                Baby's First Year Milestones: What to Expect
+                            </h3>
+                            <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                                Comprehensive guide to infant development milestones including physical, cognitive, and social-emotional growth.
+                            </p>
+                            
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-xs text-gray-500">Ages 0-12 months</span>
+                                </div>
+                                <button class="text-family-green font-medium hover:text-family-emerald transition-colors">
+                                    Read Guide →
+                                </button>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                
+                <div class="text-center mt-12">
+                    <button class="bg-family-green text-white px-8 py-3 rounded-lg font-semibold hover:bg-family-emerald transition-colors">
+                        View All Parenting Guides
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Age Groups -->
+        <section class="py-16 bg-family-light">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="font-display text-3xl lg:text-4xl font-bold text-family-dark mb-4">Find Age-Appropriate Guidance</h2>
+                    <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                        Tailored parenting advice for every stage of your child's development
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Age Group 1 -->
+                    <div class="age-group-card text-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300" style="--age-color: #F59E0B; --age-color-light: #FBBF24;">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+                                <span class="text-2xl">👶</span>
+                            </div>
+                            <div>
+                                <h3 class="font-display text-xl font-bold">Infants</h3>
+                                <p class="text-orange-100 text-sm">0-12 months • 25 guides</p>
+                            </div>
+                        </div>
+                        <p class="text-orange-100 mb-4">Newborn care, feeding, sleep, and early development milestones</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-white bg-opacity-20 px-2 py-1 rounded-full text-xs">Feeding</span>
+                            <span class="bg-white bg-opacity-20 px-2 py-1 rounded-full text-xs">Sleep</span>
+                            <span class="bg-white bg-opacity-20 px-2 py-1 rounded-full text-xs">Development</span>
+                        </div>
+                        <button class="text-white font-medium hover:text-orange-100 transition-colors">
+                            Explore Infant Care →
+                        </button>
+                    </div>
+
+                    <!-- Age Group 2 -->
+                    <div class="age-group-card text-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300" style="--age-color: #10B981; --age-color-light: #34D399;">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+                                <span class="text-2xl">🧒</span>
+                            </div>
+                            <div>
+                                <h3 class="font-display text-xl font-bold">Toddlers</h3>
+                                <p class="text-green-100 text-sm">1-3 years • 32 guides</p>
+                            </div>
+                        </div>
+                        <p class="text-green-100 mb-4">Potty training, tantrums, language development, and independence</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-white bg-opacity-20 px-2 py-1 rounded-full text-xs">Potty Training</span>
+                            <span class="bg-white bg-opacity-20 px-2 py-1 rounded-full text-xs">Language</span>
+                            <span class="bg-white bg-opacity-20 px-2 py-1 rounded-full text-xs">Tantrums</span>
+                        </div>
+                        <button class="text-white font-medium hover:text-green-100 transition-colors">
+                            Explore Toddler Care →
+                        </button>
+                    </div>
+
+                    <!-- Age Group 3 -->
+                    <div class="age-group-card text-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300" style="--age-color: #8B5CF6; --age-color-light: #A78BFA;">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+                                <span class="text-2xl">👧</span>
+                            </div>
+                            <div>
+                                <h3 class="font-display text-xl font-bold">Preschoolers</h3>
+                                <p class="text-purple-100 text-sm">3-5 years • 28 guides</p>
+                            </div>
+                        </div>
+                        <p class="text-purple-100 mb-4">School readiness, social skills, and early learning activities</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-white bg-opacity-20 px-2 py-1 rounded-full text-xs">School Prep</span>
+                            <span class="bg-white bg-opacity-20 px-2 py-1 rounded-full text-xs">Social Skills</span>
+                            <span class="bg-white bg-opacity-20 px-2 py-1 rounded-full text-xs">Learning</span>
+                        </div>
+                        <button class="text-white font-medium hover:text-purple-100 transition-colors">
+                            Explore Preschooler Care →
+                        </button>
+                    </div>
+
+                    <!-- Age Group 4 -->
+                    <div class="age-group-card text-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300" style="--age-color: #3B82F6; --age-color-light: #60A5FA;">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+                                <span class="text-2xl">🎒</span>
+                            </div>
+                            <div>
+                                <h3 class="font-display text-xl font-bold">School Age</h3>
+                                <p class="text-blue-100 text-sm">6-12 years • 35 guides</p>
+                            </div>
+                        </div>
+                        <p class="text-blue-100 mb-4">Education support, friendships, and extracurricular activities</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-white bg-opacity-20 px-2 py-1 rounded-full text-xs">Education</span>
+                            <span class="bg-white bg-opacity-20 px-2 py-1 rounded-full text-xs">Friendships</span>
+                            <span class="bg-white bg-opacity-20 px-2 py-1 rounded-full text-xs">Activities</span>
+                        </div>
+                        <button class="text-white font-medium hover:text-blue-100 transition-colors">
+                            Explore School Age →
+                        </button>
+                    </div>
+
+                    <!-- Age Group 5 -->
+                    <div class="age-group-card text-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300" style="--age-color: #EF4444; --age-color-light: #F87171;">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+                                <span class="text-2xl">🧑‍🎓</span>
+                            </div>
+                            <div>
+                                <h3 class="font-display text-xl font-bold">Teenagers</h3>
+                                <p class="text-red-100 text-sm">13+ years • 22 guides</p>
+                            </div>
+                        </div>
+                        <p class="text-red-100 mb-4">Teen communication, independence, and preparing for adulthood</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-white bg-opacity-20 px-2 py-1 rounded-full text-xs">Communication</span>
+                            <span class="bg-white bg-opacity-20 px-2 py-1 rounded-full text-xs">Independence</span>
+                            <span class="bg-white bg-opacity-20 px-2 py-1 rounded-full text-xs">Future</span>
+                        </div>
+                        <button class="text-white font-medium hover:text-red-100 transition-colors">
+                            Explore Teen Parenting →
+                        </button>
+                    </div>
+
+                    <!-- Age Group 6 -->
+                    <div class="age-group-card text-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300" style="--age-color: #059669; --age-color-light: #10B981;">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+                                <span class="text-2xl">👨‍👩‍👧‍👦</span>
+                            </div>
+                            <div>
+                                <h3 class="font-display text-xl font-bold">All Ages</h3>
+                                <p class="text-emerald-100 text-sm">Universal • 18 guides</p>
+                            </div>
+                        </div>
+                        <p class="text-emerald-100 mb-4">General parenting advice, family activities, and universal tips</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-white bg-opacity-20 px-2 py-1 rounded-full text-xs">Family Time</span>
+                            <span class="bg-white bg-opacity-20 px-2 py-1 rounded-full text-xs">Values</span>
+                            <span class="bg-white bg-opacity-20 px-2 py-1 rounded-full text-xs">Health</span>
+                        </div>
+                        <button class="text-white font-medium hover:text-emerald-100 transition-colors">
+                            Explore Family Tips →
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Family Activities & Safety Tips -->
+        <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="font-display text-3xl lg:text-4xl font-bold text-family-dark mb-4">Family Activities & Safety</h2>
+                    <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                        Fun activities to strengthen family bonds and essential safety tips for peace of mind
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Family Activities -->
+                    <div>
+                        <h3 class="font-display text-2xl font-bold text-family-dark mb-6">🎨 Family Activities</h3>
+                        <div class="space-y-4">
+                            <div class="milestone-badge p-4 rounded-xl">
+                                <h4 class="font-semibold text-family-dark mb-2">Family Game Night</h4>
+                                <p class="text-gray-600 text-sm mb-2">Weekly board game sessions that build family bonds and teach valuable skills</p>
+                                <div class="flex items-center space-x-4 text-xs text-gray-500">
+                                    <span>👨‍👩‍👧‍👦 All Ages</span>
+                                    <span>⏱️ 1-2 hours</span>
+                                    <span>🎲 Board games needed</span>
+                                </div>
+                            </div>
+                            
+                            <div class="milestone-badge p-4 rounded-xl">
+                                <h4 class="font-semibold text-family-dark mb-2">Nature Scavenger Hunt</h4>
+                                <p class="text-gray-600 text-sm mb-2">Outdoor exploration that encourages observation and physical activity</p>
+                                <div class="flex items-center space-x-4 text-xs text-gray-500">
+                                    <span>🧒 Toddlers & Up</span>
+                                    <span>⏱️ 30-60 minutes</span>
+                                    <span>🌳 Outdoor activity</span>
+                                </div>
+                            </div>
+                            
+                            <div class="milestone-badge p-4 rounded-xl">
+                                <h4 class="font-semibold text-family-dark mb-2">Cooking Together</h4>
+                                <p class="text-gray-600 text-sm mb-2">Age-appropriate cooking activities that teach life skills and nutrition</p>
+                                <div class="flex items-center space-x-4 text-xs text-gray-500">
+                                    <span>👧 Preschoolers & Up</span>
+                                    <span>⏱️ 45-90 minutes</span>
+                                    <span>👨‍🍳 Kitchen required</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Safety Tips -->
+                    <div>
+                        <h3 class="font-display text-2xl font-bold text-family-dark mb-6">🛡️ Safety Tips</h3>
+                        <div class="space-y-4">
+                            <div class="safety-tip p-4 rounded-xl">
+                                <h4 class="font-semibold text-family-dark mb-2">Safe Sleep Environment</h4>
+                                <p class="text-gray-600 text-sm mb-2">Create a safe sleep space with appropriate bedding and room temperature control</p>
+                                <div class="flex items-center space-x-4 text-xs text-gray-500">
+                                    <span>👶 Infants</span>
+                                    <span>⭐ Critical Safety</span>
+                                    <span>🌡️ Temperature control</span>
+                                </div>
+                            </div>
+                            
+                            <div class="safety-tip p-4 rounded-xl">
+                                <h4 class="font-semibold text-family-dark mb-2">Childproofing Essentials</h4>
+                                <p class="text-gray-600 text-sm mb-2">Essential childproofing measures for homes with mobile babies and toddlers</p>
+                                <div class="flex items-center space-x-4 text-xs text-gray-500">
+                                    <span>🧒 Mobile babies</span>
+                                    <span>⭐ High Priority</span>
+                                    <span>🏠 Home safety</span>
+                                </div>
+                            </div>
+                            
+                            <div class="safety-tip p-4 rounded-xl">
+                                <h4 class="font-semibold text-family-dark mb-2">Digital Safety Guidelines</h4>
+                                <p class="text-gray-600 text-sm mb-2">Age-appropriate screen time limits and online safety education for children</p>
+                                <div class="flex items-center space-x-4 text-xs text-gray-500">
+                                    <span>🎒 School age & up</span>
+                                    <span>⭐ Important</span>
+                                    <span>💻 Digital wellness</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter -->
+        <section class="py-16 bg-family-light">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <div class="bg-gradient-to-r from-family-green to-family-emerald p-8 rounded-2xl text-white">
+                    <h2 class="font-display text-3xl font-bold mb-4">Join Our Parenting Community</h2>
+                    <p class="text-xl text-green-100 mb-8">
+                        Get weekly parenting tips, developmental milestones, and family activity ideas delivered to your inbox
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                        <input type="email" 
+                               placeholder="Enter your email address" 
+                               class="flex-1 px-4 py-3 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white">
+                        <button class="bg-white text-family-green px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors">
+                            Join Community
+                        </button>
+                    </div>
+                    <p class="text-sm text-green-200 mt-4">
+                        Join 100,000+ parents worldwide. Unsubscribe anytime.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-family-dark text-white py-12">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div class="col-span-1 md:col-span-2">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="w-10 h-10 bg-family-green rounded-xl flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                </svg>
+                            </div>
+                            <span class="font-display text-xl font-bold">ParentingHub</span>
+                        </div>
+                        <p class="text-gray-300 mb-6 max-w-md">
+                            Your trusted parenting companion featuring expert advice, child development insights, and family-friendly activities for every stage of parenthood.
+                        </p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.097.118.112.22.085.339-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-semibold text-lg mb-4">Age Groups</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Infants (0-12 months)</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Toddlers (1-3 years)</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Preschoolers (3-5 years)</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">School Age (6-12 years)</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Teenagers (13+ years)</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-semibold text-lg mb-4">Resources</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Development Milestones</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Safety Guidelines</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Family Activities</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Expert Advice</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Parent Community</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                    <p class="text-gray-400">© 2024 ParentingHub. All rights reserved. Supporting families at every stage of the parenting journey.</p>
+                </div>
+            </div>
+        </footer>
+    </div> 

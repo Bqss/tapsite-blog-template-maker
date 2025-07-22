@@ -1,0 +1,90 @@
+{
+  "title": "ParentingHub - Expert Parenting Advice & Community",
+  "description": "Find expert parenting advice, child development insights, and family-friendly activities to support your parenting journey",
+  "sections": [
+    {
+      "title": "styles",
+      "id": "styles",
+      "type": "template",
+      "resetable": true
+    },
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "site.name",
+        "site.logo",
+        "navigation",
+        "cta_button"
+      ]
+    },
+    {
+      "title": "hero",
+      "id": "hero",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "hero"
+      ]
+    },
+    {
+      "title": "featured articles",
+      "id": "featured_articles",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "featured"
+      ]
+    },
+    {
+      "title": "age groups",
+      "id": "age_groups",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "age_groups"
+      ]
+    },
+    {
+      "title": "parenting tips",
+      "id": "parenting_tips",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "tips"
+      ]
+    },
+    {
+      "title": "milestones",
+      "id": "milestones",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "milestones"
+      ]
+    },
+    {
+      "title": "community",
+      "id": "community",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "community"
+      ]
+    },
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "site.name",
+        "site.description",
+        "navigation",
+        "social_links"
+      ]
+    }
+  ]
+} 

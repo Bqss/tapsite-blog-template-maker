@@ -1,0 +1,374 @@
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'family-green': '#10B981',
+                    'family-emerald': '#059669',
+                    'family-orange': '#F59E0B',
+                    'family-light': '#FEF7ED',
+                    'family-dark': '#374151'
+                },
+                fontFamily: {
+                    'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    'display': ['Quicksand', 'sans-serif']
+                }
+            }
+        }
+    }
+</script>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap');
+    
+    .family-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 25px -5px rgba(16, 185, 129, 0.1), 0 10px 10px -5px rgba(16, 185, 129, 0.04);
+    }
+</style>
+
+<div class="bg-family-light min-h-screen font-sans text-family-dark">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm border-b border-green-100 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-family-green rounded-xl flex items-center justify-center">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                        </svg>
+                    </div>
+                    <a href="/" class="font-display text-xl font-bold text-family-dark">ParentingHub</a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/" class="text-gray-600 hover:text-family-green transition-colors font-medium">Home</a>
+                    <a href="/posts" class="text-gray-600 hover:text-family-green transition-colors font-medium">All Posts</a>
+                    <a href="/category/Technology" class="text-gray-600 hover:text-family-green transition-colors font-medium">Technology</a>
+                    <a href="/category/Business" class="text-gray-600 hover:text-family-green transition-colors font-medium">Business</a>
+                    <a href="/category/Design" class="text-gray-600 hover:text-family-green transition-colors font-medium">Design</a>
+                    <a href="/category/Parenting" class="text-gray-600 hover:text-family-green transition-colors font-medium">Parenting</a>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <button class="text-gray-600 hover:text-family-green transition-colors">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                    </button>
+                    <button class="bg-family-green text-white px-4 py-2 rounded-lg font-medium hover:bg-family-emerald transition-colors">
+                        Join Community
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="bg-gradient-to-r from-family-green to-family-emerald py-16 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="inline-flex items-center bg-white bg-opacity-20 rounded-full px-4 py-2 mb-4">
+                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                    <span class="text-sm font-medium">Search</span>
+                </div>
+                <h1 class="font-display text-4xl lg:text-5xl font-bold mb-4">
+                    Cari Artikel Parenting
+                </h1>
+                <p class="text-xl text-green-100 mb-8 max-w-2xl mx-auto">
+                    Temukan artikel parenting yang sesuai dengan kebutuhan Anda
+                </p>
+                
+                <!-- Search Form -->
+                <div class="max-w-2xl mx-auto">
+                    <div class="relative">
+                        <input type="text" 
+                               placeholder="Cari artikel parenting..." 
+                               value="tips parenting"
+                               class="w-full px-6 py-4 text-lg rounded-2xl text-family-dark focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50 pr-16">
+                        <button class="absolute right-2 top-2 bg-family-green text-white p-3 rounded-xl hover:bg-family-emerald transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <!-- Search Results -->
+            <div class="lg:col-span-3">
+                <div class="flex items-center justify-between mb-8">
+                    <h2 class="text-2xl font-bold text-family-dark">Search Results</h2>
+                    <div class="flex items-center space-x-4">
+                        <span class="text-sm text-gray-500">Ditemukan 3 artikel untuk "tips parenting"</span>
+                    </div>
+                </div>
+
+                <!-- Search Filters -->
+                <div class="bg-white rounded-2xl shadow-lg p-6 mb-8">
+                    <h3 class="font-display text-lg font-bold text-family-dark mb-4">Filter Pencarian</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Kategori</label>
+                            <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-family-green focus:border-transparent">
+                                <option>Semua Kategori</option>
+                                <option>Technology</option>
+                                <option>Business</option>
+                                <option>Design</option>
+                                <option selected>Parenting</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Urutkan</label>
+                            <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-family-green focus:border-transparent">
+                                <option>Relevansi</option>
+                                <option>Tanggal</option>
+                                <option>Paling Banyak Dibaca</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Waktu</label>
+                            <select class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-family-green focus:border-transparent">
+                                <option>Semua Waktu</option>
+                                <option>Minggu Ini</option>
+                                <option>Bulan Ini</option>
+                                <option>Tahun Ini</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Search Results -->
+                <div class="space-y-8">
+                    <!-- Result 1 -->
+                    <article class="family-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
+                        <div class="md:flex">
+                            <div class="md:w-1/3">
+                                <img src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
+                                     alt="Search Result" 
+                                     class="w-full h-48 md:h-full object-cover">
+                            </div>
+                            <div class="md:w-2/3 p-6">
+                                <div class="flex items-center space-x-4 mb-3">
+                                    <span class="bg-family-green text-white px-3 py-1 rounded-full text-sm font-medium">Parenting</span>
+                                    <span class="text-sm text-gray-500">March 20, 2024</span>
+                                </div>
+                                <h3 class="font-display text-xl font-bold text-family-dark mb-3 leading-tight">
+                                    <a href="/post/mendidik-anak-tanpa-gadget" class="hover:text-family-green transition-colors">
+                                        Mendidik Anak Tanpa Gadget: Mengembalikan Masa Kecil yang Sesungguhnya
+                                    </a>
+                                </h3>
+                                <p class="text-gray-600 mb-4 line-clamp-3">
+                                    Pelajari cara mendidik anak tanpa ketergantungan gadget. Temukan alternatif kegiatan seru dan edukatif untuk mendukung perkembangan anak secara holistik.
+                                </p>
+                                <div class="flex items-center justify-between text-sm text-gray-500">
+                                    <div class="flex items-center space-x-2">
+                                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" 
+                                             alt="Author" class="w-6 h-6 rounded-full">
+                                        <span>Maulana Shalihin</span>
+                                    </div>
+                                    <div class="flex items-center space-x-4">
+                                        <span>8 min read</span>
+                                        <span>1,247 views</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Result 2 -->
+                    <article class="family-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
+                        <div class="md:flex">
+                            <div class="md:w-1/3">
+                                <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
+                                     alt="Search Result" 
+                                     class="w-full h-48 md:h-full object-cover">
+                            </div>
+                            <div class="md:w-2/3 p-6">
+                                <div class="flex items-center space-x-4 mb-3">
+                                    <span class="bg-family-orange text-white px-3 py-1 rounded-full text-sm font-medium">Parenting</span>
+                                    <span class="text-sm text-gray-500">March 19, 2024</span>
+                                </div>
+                                <h3 class="font-display text-xl font-bold text-family-dark mb-3 leading-tight">
+                                    <a href="/post/membangun-kebahagiaan-keluarga" class="hover:text-family-green transition-colors">
+                                        Membangun Kebahagiaan Keluarga di Era Digital
+                                    </a>
+                                </h3>
+                                <p class="text-gray-600 mb-4 line-clamp-3">
+                                    Tips praktis untuk menciptakan waktu berkualitas bersama anak dan membangun hubungan yang harmonis dalam keluarga modern.
+                                </p>
+                                <div class="flex items-center justify-between text-sm text-gray-500">
+                                    <div class="flex items-center space-x-2">
+                                        <img src="https://images.unsplash.com/photo-1494790108755-2616c2e20d8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" 
+                                             alt="Author" class="w-6 h-6 rounded-full">
+                                        <span>Dr. Sarah Pratiwi</span>
+                                    </div>
+                                    <div class="flex items-center space-x-4">
+                                        <span>6 min read</span>
+                                        <span>2,156 views</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Result 3 -->
+                    <article class="family-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
+                        <div class="md:flex">
+                            <div class="md:w-1/3">
+                                <img src="https://images.unsplash.com/photo-1476703993599-0035a21b17a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
+                                     alt="Search Result" 
+                                     class="w-full h-48 md:h-full object-cover">
+                            </div>
+                            <div class="md:w-2/3 p-6">
+                                <div class="flex items-center space-x-4 mb-3">
+                                    <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium">Parenting</span>
+                                    <span class="text-sm text-gray-500">March 18, 2024</span>
+                                </div>
+                                <h3 class="font-display text-xl font-bold text-family-dark mb-3 leading-tight">
+                                    <a href="/post/komunikasi-efektif-dengan-anak" class="hover:text-family-green transition-colors">
+                                        Komunikasi Efektif dengan Anak: Membangun Hubungan yang Kuat
+                                    </a>
+                                </h3>
+                                <p class="text-gray-600 mb-4 line-clamp-3">
+                                    Strategi komunikasi yang tepat untuk membangun hubungan yang kuat dan saling percaya antara orang tua dan anak.
+                                </p>
+                                <div class="flex items-center justify-between text-sm text-gray-500">
+                                    <div class="flex items-center space-x-2">
+                                        <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" 
+                                             alt="Author" class="w-6 h-6 rounded-full">
+                                        <span>Rina Sari</span>
+                                    </div>
+                                    <div class="flex items-center space-x-4">
+                                        <span>7 min read</span>
+                                        <span>3,421 views</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="lg:col-span-1">
+                <div class="space-y-8">
+                    <!-- Popular Searches -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6">
+                        <h3 class="font-display text-xl font-bold text-family-dark mb-4">Popular Searches</h3>
+                        <div class="space-y-3">
+                            <a href="/search?q=tips parenting" class="block text-gray-700 hover:text-family-green transition-colors">
+                                tips parenting
+                            </a>
+                            <a href="/search?q=mendidik anak" class="block text-gray-700 hover:text-family-green transition-colors">
+                                mendidik anak
+                            </a>
+                            <a href="/search?q=keluarga bahagia" class="block text-gray-700 hover:text-family-green transition-colors">
+                                keluarga bahagia
+                            </a>
+                            <a href="/search?q=komunikasi anak" class="block text-gray-700 hover:text-family-green transition-colors">
+                                komunikasi anak
+                            </a>
+                            <a href="/search?q=perkembangan anak" class="block text-gray-700 hover:text-family-green transition-colors">
+                                perkembangan anak
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Search Suggestions -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6">
+                        <h3 class="font-display text-xl font-bold text-family-dark mb-4">Search Suggestions</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="/tag/Parenting" class="bg-family-light text-family-green px-3 py-1 rounded-full text-sm font-medium hover:bg-family-green hover:text-white transition-colors">
+                                #Parenting
+                            </a>
+                            <a href="/tag/Anak" class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium hover:bg-family-green hover:text-white transition-colors">
+                                #Anak
+                            </a>
+                            <a href="/tag/Keluarga" class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium hover:bg-family-green hover:text-white transition-colors">
+                                #Keluarga
+                            </a>
+                            <a href="/tag/Ayah" class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium hover:bg-family-green hover:text-white transition-colors">
+                                #Ayah
+                            </a>
+                            <a href="/tag/Kasih-Sayang" class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium hover:bg-family-green hover:text-white transition-colors">
+                                #Kasih Sayang
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Categories -->
+                    <div class="bg-white rounded-2xl shadow-lg p-6">
+                        <h3 class="font-display text-xl font-bold text-family-dark mb-4">Categories</h3>
+                        <div class="space-y-3">
+                            <a href="/category/Technology" class="flex items-center justify-between py-2 px-3 rounded-lg hover:bg-family-light transition-colors">
+                                <span class="text-gray-700">Technology</span>
+                                <span class="text-sm text-gray-500">12</span>
+                            </a>
+                            <a href="/category/Business" class="flex items-center justify-between py-2 px-3 rounded-lg hover:bg-family-light transition-colors">
+                                <span class="text-gray-700">Business</span>
+                                <span class="text-sm text-gray-500">8</span>
+                            </a>
+                            <a href="/category/Design" class="flex items-center justify-between py-2 px-3 rounded-lg hover:bg-family-light transition-colors">
+                                <span class="text-gray-700">Design</span>
+                                <span class="text-sm text-gray-500">6</span>
+                            </a>
+                            <a href="/category/Parenting" class="flex items-center justify-between py-2 px-3 rounded-lg bg-family-light">
+                                <span class="text-family-green font-medium">Parenting</span>
+                                <span class="text-sm text-family-green">24</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-family-dark text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-10 h-10 bg-family-green rounded-xl flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                            </svg>
+                        </div>
+                        <span class="font-display text-xl font-bold">ParentingHub</span>
+                    </div>
+                    <p class="text-gray-300 mb-4">
+                        Platform parenting terpercaya dengan panduan ahli dan dukungan komunitas untuk orang tua Indonesia
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Categories</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/category/Technology" class="text-gray-400 hover:text-white transition-colors">Technology</a></li>
+                        <li><a href="/category/Business" class="text-gray-400 hover:text-white transition-colors">Business</a></li>
+                        <li><a href="/category/Design" class="text-gray-400 hover:text-white transition-colors">Design</a></li>
+                        <li><a href="/category/Parenting" class="text-gray-400 hover:text-white transition-colors">Parenting</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="/posts" class="text-gray-400 hover:text-white transition-colors">All Posts</a></li>
+                        <li><a href="/search" class="text-gray-400 hover:text-white transition-colors">Search</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 ParentingHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</div> 
