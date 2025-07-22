@@ -1,0 +1,131 @@
+{
+    "blog_logo": "https://tapsite.ai/favicon-96x96.png",
+    "blog_title": "Personal Branding",
+    "blog_description": "Platform personal branding untuk profesional dan entrepreneur Indonesia",
+    "navigation": [
+        {
+            "name": "Home",
+            "url": "/"
+        },
+        {
+            "name": "Technology",
+            "url": "/category/Technology"
+        },
+        {
+            "name": "Business",
+            "url": "/category/Business"
+        },
+        {
+            "name": "Design",
+            "url": "/category/Design"
+        },
+        {
+            "name": "Parenting",
+            "url": "/category/Parenting"
+        }
+    ],
+    "author": {
+        "name": "Maulana Shalihin",
+        "role": "Full-Stack Developer & Tech Entrepreneur",
+        "bio": "Passionate full-stack developer dan tech entrepreneur dengan pengalaman 8+ tahun dalam membangun aplikasi web modern. Fokus pada teknologi terdepan dan berbagi pengetahuan untuk komunitas developer Indonesia.",
+        "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80",
+        "expertise": [
+            "React & TypeScript",
+            "Node.js & Express",
+            "Database Design",
+            "Cloud Architecture",
+            "Mobile Development",
+            "Tech Leadership"
+        ],
+        "social": {
+            "twitter": "https://twitter.com/maulanashalihin",
+            "linkedin": "https://linkedin.com/in/maulanashalihin",
+            "github": "https://github.com/maulanashalihin",
+            "website": "https://maulanashalihin.com"
+        }
+    },
+    "hero": {
+        "title": "Membangun Solusi Digital yang Berdampak",
+        "subtitle": "Full-stack developer dan tech entrepreneur yang passionate dalam menciptakan aplikasi web modern dan berbagi pengetahuan untuk komunitas developer Indonesia",
+        "cta_primary": "Lihat Karya Saya",
+        "cta_secondary": "Download CV",
+        "welcome_message": "👋 Selamat datang di ruang digital saya"
+    },
+    "about": {
+        "title": "Tentang Saya",
+        "subtitle": "Seorang developer yang percaya bahwa teknologi terbaik adalah yang tidak terlihat, intuitif, dan benar-benar membantu orang yang menggunakannya.",
+        "description": "Dengan pengalaman lebih dari 8 tahun dalam full-stack development, saya telah bekerja dengan startup dan perusahaan besar, membantu mereka mewujudkan visi digital mereka. Perjalanan saya dimulai dari halaman HTML sederhana dan berkembang menjadi arsitektur sistem kompleks yang melayani jutaan pengguna.",
+        "additional_info": "Ketika tidak coding, Anda akan menemukan saya menulis tentang tren teknologi, mentoring junior developer, atau menjelajahi alam dengan kamera. Saya percaya solusi terbaik datang dari memahami tantangan teknis dan cerita manusia di baliknya.",
+        "values": [
+            {
+                "title": "Clean Code Advocate",
+                "description": "Menulis kode yang maintainable dan scalable yang menceritakan sebuah story",
+                "icon": "code"
+            },
+            {
+                "title": "User-Centered Design",
+                "description": "Menciptakan pengalaman yang benar-benar disukai pengguna",
+                "icon": "heart"
+            },
+            {
+                "title": "Continuous Learner",
+                "description": "Selalu mengeksplorasi teknologi dan metodologi baru",
+                "icon": "coffee"
+            },
+            {
+                "title": "Performance Focused",
+                "description": "Optimasi untuk kecepatan, aksesibilitas, dan kepuasan pengguna",
+                "icon": "zap"
+            }
+        ]
+    },
+    "featured_post": {
+        "title": "Membangun Aplikasi Web Modern dengan React dan TypeScript",
+        "excerpt": "Temukan cara membangun aplikasi web yang scalable dan maintainable menggunakan kombinasi powerful React dan TypeScript. Pelajari best practices dan tips praktis untuk development modern.",
+        "category": "Technology",
+        "featured_image": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
+        "published_at": "15 Maret 2024",
+        "read_time": 8,
+        "author": "Maulana Shalihin",
+        "tags": [
+            "Teknologi",
+            "AI",
+            "Indonesia",
+            "Bisnis",
+            "UMKM",
+            "Digitalisasi"
+        ]
+    },
+    "skills": [
+        {
+            "category": "Frontend",
+            "technologies": ["React", "TypeScript", "Next.js", "Vue.js", "Tailwind CSS"]
+        },
+        {
+            "category": "Backend",
+            "technologies": ["Node.js", "Express", "Python", "PostgreSQL", "MongoDB"]
+        },
+        {
+            "category": "DevOps",
+            "technologies": ["Docker", "AWS", "CI/CD", "Kubernetes", "Terraform"]
+        },
+        {
+            "category": "Mobile",
+            "technologies": ["React Native", "Flutter", "iOS", "Android"]
+        }
+    ],
+    "stats": {
+        "experience_years": "8+",
+        "projects_completed": "50+",
+        "clients_served": "25+",
+        "code_commits": "10k+"
+    },
+    "color_scheme": {
+        "primary": "#2563eb",
+        "secondary": "#7c3aed",
+        "accent": "#06b6d4",
+        "neutral": "#64748b",
+        "background": "#f8fafc",
+        "text": "#1e293b"
+    }
+} 

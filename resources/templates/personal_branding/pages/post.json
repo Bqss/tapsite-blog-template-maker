@@ -1,0 +1,52 @@
+{
+    "seo": {
+        "title": "{{post.title}} - {{it.author.name}}",
+        "description": "{{post.excerpt}}",
+        "keywords": "{{post.tags}}, web development, programming, teknologi, Indonesia, {{it.author.name}}",
+        "og_title": "{{post.title}}",
+        "og_description": "{{post.excerpt}}",
+        "og_image": "{{post.featured_image}}",
+        "og_url": "{{it.author.social.website}}/post/{{post.slug}}",
+        "og_type": "article",
+        "twitter_card": "summary_large_image",
+        "twitter_site": "@maulanashalihin",
+        "twitter_creator": "@maulanashalihin",
+        "canonical_url": "{{it.author.social.website}}/post/{{post.slug}}",
+        "robots": "index, follow",
+        "author": "{{it.author.name}}",
+        "language": "id-ID",
+        "article_published_time": "{{post.published_at}}",
+        "article_modified_time": "{{post.updated_at}}",
+        "article_author": "{{it.author.name}}",
+        "article_section": "{{post.category}}"
+    },
+    "schema": {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "{{post.title}}",
+        "description": "{{post.excerpt}}",
+        "image": "{{post.featured_image}}",
+        "url": "{{it.author.social.website}}/post/{{post.slug}}",
+        "datePublished": "{{post.published_at}}",
+        "dateModified": "{{post.updated_at}}",
+        "author": {
+            "@type": "Person",
+            "name": "{{it.author.name}}",
+            "url": "{{it.author.social.website}}"
+        },
+        "publisher": {
+            "@type": "Person",
+            "name": "{{it.author.name}}",
+            "url": "{{it.author.social.website}}"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "{{it.author.social.website}}/post/{{post.slug}}"
+        },
+        "articleSection": "{{post.category}}",
+        "keywords": "{{post.tags}}",
+        "inLanguage": "id-ID",
+        "wordCount": "{{post.word_count}}",
+        "timeRequired": "PT{{post.read_time}}M"
+    }
+} 

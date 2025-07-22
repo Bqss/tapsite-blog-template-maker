@@ -1,0 +1,63 @@
+<nav class="fixed w-full z-50 transition-all duration-300 bg-white shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center py-4">
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user w-6 h-6 text-white">
+                        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </div>
+                <span class="text-xl font-bold text-slate-800">{{it.author.name}}</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="/" class="text-slate-600 hover:text-blue-600 transition-colors duration-200 font-medium">Home</a>
+                <a href="/category/Technology" class="text-slate-600 hover:text-blue-600 transition-colors duration-200 font-medium">Technology</a>
+                <a href="/category/Business" class="text-slate-600 hover:text-blue-600 transition-colors duration-200 font-medium">Business</a>
+                <a href="/category/Design" class="text-slate-600 hover:text-blue-600 transition-colors duration-200 font-medium">Design</a>
+                <a href="/category/Parenting" class="text-slate-600 hover:text-blue-600 transition-colors duration-200 font-medium">Parenting</a>
+                <button class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors duration-200 font-medium">
+                    Hubungi Saya
+                </button>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-btn" class="text-slate-600 hover:text-blue-600 transition-colors duration-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu w-6 h-6">
+                        <line x1="4" x2="20" y1="12" y2="12"></line>
+                        <line x1="4" x2="20" y1="6" y2="6"></line>
+                        <line x1="4" x2="20" y1="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-slate-200 py-4">
+            <div class="space-y-2">
+                <a href="/" class="block px-4 py-2 text-slate-600 hover:text-blue-600 transition-colors duration-200 font-medium">Home</a>
+                <a href="/category/Technology" class="block px-4 py-2 text-slate-600 hover:text-blue-600 transition-colors duration-200 font-medium">Technology</a>
+                <a href="/category/Business" class="block px-4 py-2 text-slate-600 hover:text-blue-600 transition-colors duration-200 font-medium">Business</a>
+                <a href="/category/Design" class="block px-4 py-2 text-slate-600 hover:text-blue-600 transition-colors duration-200 font-medium">Design</a>
+                <a href="/category/Parenting" class="block px-4 py-2 text-slate-600 hover:text-blue-600 transition-colors duration-200 font-medium">Parenting</a>
+                <div class="px-4 py-2">
+                    <button class="w-full bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition-colors duration-200 font-medium">
+                        Hubungi Saya
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const mobileMenuButton = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', function () {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+    });
+</script> 

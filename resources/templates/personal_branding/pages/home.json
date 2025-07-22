@@ -1,0 +1,99 @@
+{
+  "title": "Personal Branding - Professional Portfolio and Blog",
+  "description": "Personal branding website showcasing professional portfolio, skills, and insights through blog posts",
+  "sections": [
+    {
+      "title": "styles",
+      "id": "styles",
+      "type": "template",
+      "resetable": true
+    },
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "site.name",
+        "site.logo",
+        "navigation",
+        "cta_button"
+      ]
+    },
+    {
+      "title": "hero",
+      "id": "hero",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "hero"
+      ]
+    },
+    {
+      "title": "about",
+      "id": "about",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "about"
+      ]
+    },
+    {
+      "title": "blog",
+      "id": "blog",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "blog"
+      ]
+    },
+    {
+      "title": "skills",
+      "id": "skills",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "skills"
+      ]
+    },
+    {
+      "title": "portfolio",
+      "id": "portfolio",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "portfolio"
+      ]
+    },
+    {
+      "title": "testimonials",
+      "id": "testimonials",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "testimonials"
+      ]
+    },
+    {
+      "title": "contact",
+      "id": "contact",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "contact"
+      ]
+    },
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "site.name",
+        "site.description",
+        "navigation",
+        "social_links"
+      ]
+    }
+  ]
+} 

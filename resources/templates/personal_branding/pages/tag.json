@@ -1,0 +1,38 @@
+{
+    "seo": {
+        "title": "{{tag.name}} - {{it.author.name}}",
+        "description": "Artikel dengan tag {{tag.name}} oleh {{it.author.name}}. Temukan konten terkait {{tag.name}} dan topik seputar teknologi dan development.",
+        "keywords": "{{tag.name}}, artikel, tutorial, web development, programming, teknologi, Indonesia, {{it.author.name}}",
+        "og_title": "{{tag.name}} - {{it.author.name}}",
+        "og_description": "Artikel dengan tag {{tag.name}} oleh {{it.author.name}}",
+        "og_image": "{{it.author.avatar}}",
+        "og_url": "{{it.author.social.website}}/tag/{{tag.slug}}",
+        "og_type": "website",
+        "twitter_card": "summary_large_image",
+        "twitter_site": "@maulanashalihin",
+        "twitter_creator": "@maulanashalihin",
+        "canonical_url": "{{it.author.social.website}}/tag/{{tag.slug}}",
+        "robots": "index, follow",
+        "author": "{{it.author.name}}",
+        "language": "id-ID"
+    },
+    "schema": {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "{{tag.name}} - {{it.author.name}}",
+        "description": "Kumpulan artikel dengan tag {{tag.name}}",
+        "url": "{{it.author.social.website}}/tag/{{tag.slug}}",
+        "author": {
+            "@type": "Person",
+            "name": "{{it.author.name}}",
+            "url": "{{it.author.social.website}}"
+        },
+        "publisher": {
+            "@type": "Person",
+            "name": "{{it.author.name}}",
+            "url": "{{it.author.social.website}}"
+        },
+        "inLanguage": "id-ID",
+        "about": "{{tag.name}}"
+    }
+} 

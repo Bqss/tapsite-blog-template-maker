@@ -1,0 +1,33 @@
+<section id="about" class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">{{it.about.title}}</h2>
+            <p class="text-xl text-slate-600 max-w-3xl mx-auto">{{it.about.subtitle}}</p>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="space-y-6">
+                {{@each(it.about.paragraphs)=>paragraph}}
+                <p class="text-lg text-slate-600 leading-relaxed">{{paragraph}}</p>
+                {{/each}}
+                {{@if(it.about.cta)}}
+                <div class="pt-4">
+                    <button class="text-blue-600 font-medium hover:text-blue-700 transition-colors duration-200">
+                        {{it.about.cta.text}} →
+                    </button>
+                </div>
+                {{/if}}
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {{@each(it.about.features)=>feature}}
+                <div class="p-6 bg-slate-50 rounded-2xl hover:bg-blue-50 hover:shadow-lg transition-all duration-300 group">
+                    <div class="text-blue-600 mb-4 group-hover:scale-110 transition-transform duration-200">
+                        {{* feature.icon}}
+                    </div>
+                    <h3 class="font-semibold text-slate-900 mb-2">{{feature.title}}</h3>
+                    <p class="text-slate-600 text-sm">{{feature.description}}</p>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</section> 
