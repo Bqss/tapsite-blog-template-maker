@@ -1,0 +1,58 @@
+{
+  "title": "NewsWire Central - Breaking News & In-Depth Reporting",
+  "description": "Stay informed with the latest breaking news, in-depth analysis, and comprehensive coverage from NewsWire Central",
+  "sections": [
+    {
+      "title": "styles",
+      "id": "styles",
+      "type": "template",
+      "resetable": true
+    },
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": ["site", "navigation", "subscribe_button", "search_placeholder"]
+    },
+    {
+      "title": "breaking news ticker",
+      "id": "breaking_news_ticker",
+      "type": "template",
+      "resetable": true,
+      "data": ["hero.ticker"]
+    },
+    {
+      "title": "top headlines",
+      "id": "top_headlines",
+      "type": "template",
+      "resetable": true,
+      "data": ["posts", "categories"]
+    },
+    {
+      "title": "technology news",
+      "id": "category_news",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "technology"
+      ]
+    },
+    {
+      "title": "business news",
+      "id": "category_news",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "business"
+      ]
+    },
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": ["site", "navigation", "social_links", "footer_columns", "current_year"]
+    }
+  ]
+} 

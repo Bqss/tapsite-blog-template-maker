@@ -1,0 +1,270 @@
+{
+    "blog_logo": "https://tapsite.ai/favicon-96x96.png",
+    "blog_title": "NewsWire Central",
+    "blog_description": "Breaking news and in-depth reporting from around the world",
+    "navigation": [
+        {
+            "name": "Home",
+            "url": "/",
+            "icon": "home"
+        },
+        {
+            "name": "Breaking",
+            "url": "/breaking",
+            "icon": "alert",
+            "urgent": true
+        },
+        {
+            "name": "World",
+            "url": "/world",
+            "icon": "globe"
+        },
+        {
+            "name": "Tech",
+            "url": "/tech",
+            "icon": "cpu"
+        },
+        {
+            "name": "Sports",
+            "url": "/sports",
+            "icon": "trophy"
+        },
+        {
+            "name": "Politics",
+            "url": "/politics",
+            "icon": "government"
+        },
+        {
+            "name": "Business",
+            "url": "/business",
+            "icon": "trending-up"
+        }
+    ],
+    "breaking_news": [
+        {
+            "id": 1,
+            "title": "Major Economic Summit Reaches Historic Agreement",
+            "url": "/breaking/economic-summit-agreement",
+            "timestamp": "2024-03-20T14:30:00Z",
+            "priority": "urgent",
+            "category": "Politics"
+        },
+        {
+            "id": 2,
+            "title": "Tech Giant Announces Revolutionary AI Breakthrough",
+            "url": "/breaking/ai-breakthrough-announcement",
+            "timestamp": "2024-03-20T13:45:00Z",
+            "priority": "high",
+            "category": "Tech"
+        },
+        {
+            "id": 3,
+            "title": "International Space Mission Achieves New Milestone",
+            "url": "/breaking/space-mission-milestone",
+            "timestamp": "2024-03-20T12:15:00Z",
+            "priority": "medium",
+            "category": "Science"
+        }
+    ],
+    "trending_topics": [
+        {
+            "name": "Climate Summit",
+            "count": 247,
+            "trend": "up"
+        },
+        {
+            "name": "AI Regulation",
+            "count": 189,
+            "trend": "up"
+        },
+        {
+            "name": "Space Exploration",
+            "count": 156,
+            "trend": "stable"
+        },
+        {
+            "name": "Cryptocurrency",
+            "count": 134,
+            "trend": "down"
+        },
+        {
+            "name": "Healthcare Innovation",
+            "count": 98,
+            "trend": "up"
+        }
+    ],
+    "author": {
+        "name": "Sarah Mitchell",
+        "role": "Senior News Editor",
+        "bio": "Award-winning journalist with over 12 years of experience in breaking news, investigative reporting, and editorial leadership. Specializes in political coverage and international affairs.",
+        "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80",
+        "credentials": [
+            "Columbia Journalism School Graduate",
+            "Pulitzer Prize Nominee",
+            "Reuters Institute Fellow",
+            "Associated Press Veteran"
+        ],
+        "social": {
+            "twitter": "https://twitter.com/sarahmitchell",
+            "linkedin": "https://linkedin.com/in/sarahmitchell",
+            "email": "sarah.mitchell@newswire.com"
+        }
+    },
+    "post": {
+        "title": "Global Climate Summit Reaches Unprecedented Agreement on Carbon Reduction Targets",
+        "excerpt": "World leaders from 195 countries have reached a historic agreement on ambitious carbon reduction targets, marking the most significant climate action deal in decades.",
+        "content": "<h1>Global Climate Summit Reaches Unprecedented Agreement on Carbon Reduction Targets</h1><p><strong>GENEVA</strong> - In a landmark decision that could reshape the global response to climate change, world leaders from 195 countries have reached a historic agreement on ambitious carbon reduction targets during the three-day Global Climate Summit.</p><h2>Key Provisions of the Agreement</h2><p>The agreement, dubbed the 'Geneva Climate Accord,' establishes the most aggressive carbon reduction targets ever agreed upon internationally:</p><ul><li><strong>50% reduction in global emissions by 2030</strong> compared to 2019 levels</li><li><strong>Net-zero emissions by 2045</strong> for developed nations</li><li><strong>$500 billion climate fund</strong> to support developing countries' transition to clean energy</li><li><strong>Mandatory reporting</strong> on progress every six months</li></ul><h2>Breaking Down the Numbers</h2><p>The financial commitment represents the largest climate investment in history. The $500 billion fund will be distributed as follows:</p><ul><li>40% for renewable energy infrastructure</li><li>30% for climate adaptation measures</li><li>20% for technology transfer programs</li><li>10% for emergency climate response</li></ul><h3>Industry Response</h3><p>Major corporations have already begun responding to the agreement. Tech giant Microsoft announced plans to accelerate its carbon-negative goals, while automotive manufacturers are preparing to phase out internal combustion engines ahead of schedule.</p><blockquote><p>'This agreement represents a turning point in human history. We now have a clear roadmap to prevent catastrophic climate change while ensuring economic prosperity for all nations.'</p><cite>- Dr. Elena Rodriguez, Climate Summit Chair</cite></blockquote><h2>Implementation Timeline</h2><p>The agreement will be implemented in phases:</p><ol><li><strong>Phase 1 (2024-2026):</strong> Establishment of monitoring systems and initial funding distribution</li><li><strong>Phase 2 (2027-2030):</strong> Aggressive emission reduction measures and technology deployment</li><li><strong>Phase 3 (2031-2045):</strong> Final push toward net-zero emissions and long-term sustainability</li></ol><h2>Challenges Ahead</h2><p>Despite the historic nature of the agreement, significant challenges remain. Economic analysts warn that the transition will require unprecedented coordination between governments, businesses, and civil society.</p><p>The agreement now moves to national parliaments for ratification, with most countries expected to approve the measures within the next six months.</p><p><em>This is a developing story. Updates will be provided as more information becomes available.</em></p>",
+        "category": "World",
+        "featured_image": "https://images.unsplash.com/photo-1569163139394-de4e4f43e4e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
+        "published_at": "March 20, 2024, 2:30 PM EST",
+        "updated_at": "March 20, 2024, 3:45 PM EST",
+        "read_time": 6,
+        "view_count": 15847,
+        "priority": "urgent",
+        "tags": [
+            "climate-change",
+            "global-summit",
+            "carbon-reduction",
+            "international-politics",
+            "environment",
+            "breaking-news"
+        ],
+        "location": "Geneva, Switzerland",
+        "source": "NewsWire Central Staff"
+    },
+    "featured_stories": [
+        {
+            "title": "Tech Innovation Drives Economic Growth in Q1 2024",
+            "excerpt": "Technology sector shows unprecedented growth as AI investments surge across global markets.",
+            "category": "Tech",
+            "priority": "high",
+            "image": "https://images.unsplash.com/photo-1518186285589-2f7649de83e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+            "published_at": "March 20, 2024",
+            "read_time": 4,
+            "author": "Michael Chen"
+        },
+        {
+            "title": "International Trade Relations Show Signs of Improvement",
+            "excerpt": "Diplomatic efforts yield positive results as major economies work toward resolving trade disputes.",
+            "category": "Politics",
+            "priority": "medium",
+            "image": "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+            "published_at": "March 19, 2024",
+            "read_time": 7,
+            "author": "Jennifer Adams"
+        },
+        {
+            "title": "Sports Championship Finals Draw Record Viewership",
+            "excerpt": "Global audience reaches all-time high as championship series captivates fans worldwide.",
+            "category": "Sports",
+            "priority": "medium",
+            "image": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+            "published_at": "March 19, 2024",
+            "read_time": 3,
+            "author": "David Rodriguez"
+        }
+    ],
+    "news_categories": [
+        {
+            "name": "Breaking",
+            "count": 12,
+            "color": "#dc2626",
+            "icon": "alert-circle"
+        },
+        {
+            "name": "World",
+            "count": 45,
+            "color": "#2563eb",
+            "icon": "globe"
+        },
+        {
+            "name": "Politics",
+            "count": 38,
+            "color": "#7c3aed",
+            "icon": "government"
+        },
+        {
+            "name": "Tech",
+            "count": 29,
+            "color": "#059669",
+            "icon": "cpu"
+        },
+        {
+            "name": "Sports",
+            "count": 23,
+            "color": "#ea580c",
+            "icon": "trophy"
+        },
+        {
+            "name": "Business",
+            "count": 31,
+            "color": "#0891b2",
+            "icon": "trending-up"
+        }
+    ],
+    "live_updates": [
+        {
+            "time": "15:45",
+            "title": "Climate Summit: Final negotiations underway",
+            "description": "Delegates work through final details of historic agreement"
+        },
+        {
+            "time": "15:30",
+            "title": "Stock markets react positively to summit news",
+            "description": "Green energy stocks surge following climate agreement"
+        },
+        {
+            "time": "15:15",
+            "title": "World leaders praise collaborative effort",
+            "description": "UN Secretary-General calls agreement 'a victory for humanity'"
+        }
+    ],
+    "weather_widget": {
+        "location": "New York, NY",
+        "temperature": "22°C",
+        "condition": "Partly Cloudy",
+        "humidity": "65%",
+        "wind": "12 km/h"
+    },
+    "color_scheme": {
+        "primary": "#dc2626",
+        "secondary": "#2563eb",
+        "accent": "#f59e0b",
+        "urgent": "#ef4444",
+        "warning": "#f97316",
+        "success": "#10b981",
+        "neutral": "#6b7280",
+        "background": "#ffffff",
+        "text": "#111827"
+    },
+    "social_media": {
+        "twitter": "https://twitter.com/newswirecentral",
+        "facebook": "https://facebook.com/newswirecentral",
+        "youtube": "https://youtube.com/newswirecentral",
+        "instagram": "https://instagram.com/newswirecentral"
+    },
+    "site": {
+        "name": "NewsWire Central",
+        "logo": "https://tapsite.ai/favicon-96x96.png",
+        "description": "Breaking news and in-depth reporting from around the world"
+    },
+    "subscribe_button": "Subscribe",
+    "search_placeholder": "Search news...",
+    "hero": {
+        "ticker": [
+            {"headline": "Major Economic Summit Reaches Historic Agreement", "time": "3:45 PM EST"},
+            {"headline": "Tech Giant Announces Revolutionary AI Breakthrough", "time": "2:30 PM EST"},
+            {"headline": "International Space Mission Achieves New Milestone", "time": "1:15 PM EST"}
+        ]
+    },
+    "social_links": [
+        {"label": "Twitter", "url": "https://twitter.com/newswirecentral", "emoji": "🐦"},
+        {"label": "Facebook", "url": "https://facebook.com/newswirecentral", "emoji": "📘"},
+        {"label": "YouTube", "url": "https://youtube.com/newswirecentral", "emoji": "🎥"}
+    ],
+    "footer_columns": [
+        {"title": "Sections", "links": [{"label":"World","url":"/world"},{"label":"Politics","url":"/politics"},{"label":"Tech","url":"/tech"},{"label":"Business","url":"/business"}]},
+        {"title": "Resources", "links": [{"label":"About","url":"/about"},{"label":"Contact","url":"/contact"},{"label":"Privacy","url":"/privacy"}]}
+    ],
+    "current_year": 2024
+} 

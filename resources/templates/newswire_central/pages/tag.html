@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climate Summit - NewsWire Central</title>
+    <meta name="description" content="All news and analysis related to Climate Summit from NewsWire Central - breaking news, expert analysis, and in-depth reporting">
+    <link rel="icon" href="https://tapsite.ai/favicon-96x96.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#dc2626',
+                        secondary: '#2563eb',
+                        accent: '#f59e0b',
+                        urgent: '#ef4444',
+                        warning: '#f97316',
+                        success: '#10b981',
+                        neutral: '#6b7280'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes scroll {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .ticker-scroll {
+            animation: scroll 60s linear infinite;
+        }
+        .ticker-scroll:hover {
+            animation-play-state: paused;
+        }
+        .priority-urgent {
+            background-color: #dc2626;
+            color: white;
+        }
+        .priority-high {
+            background-color: #ea580c;
+            color: white;
+        }
+        .priority-medium {
+            background-color: #2563eb;
+            color: white;
+        }
+        .tag-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            align-items: center;
+        }
+        .tag-item {
+            transition: all 0.3s ease;
+        }
+        .tag-item:hover {
+            transform: translateY(-2px);
+        }
+        .trending-pulse {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Breaking News Ticker -->
+    <div class="bg-red-600 text-white py-2 overflow-hidden">
+        <div class="flex items-center">
+            <div class="bg-red-800 px-4 py-1 text-sm font-bold uppercase tracking-wider">
+                Breaking News
+            </div>
+            <div class="flex-1 overflow-hidden ml-4">
+                <div class="ticker-scroll whitespace-nowrap">
+                    <span class="inline-block mr-8">
+                        <span class="priority-urgent px-2 py-1 text-xs font-bold rounded mr-2">URGENT</span>
+                        <span class="font-medium">Major Economic Summit Reaches Historic Agreement</span>
+                        <span class="text-red-200 ml-2">• 2:30 PM EST</span>
+                    </span>
+                    <span class="inline-block mr-8">
+                        <span class="priority-high px-2 py-1 text-xs font-bold rounded mr-2">HIGH</span>
+                        <span class="font-medium">Tech Giant Announces Revolutionary AI Breakthrough</span>
+                        <span class="text-red-200 ml-2">• 1:45 PM EST</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tag Header -->
+    <div class="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-12 mb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl font-bold mb-4">#Parenting</h1>
+                <p class="text-xl text-blue-100 mb-6">Articles tagged with parenting</p>
+                <div class="flex items-center justify-center space-x-8 text-blue-100">
+                    <div class="text-center">
+                        <div class="text-2xl font-bold">12</div>
+                        <div class="text-sm">Articles</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold">3.2K</div>
+                        <div class="text-sm">Total Views</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold">Popular</div>
+                        <div class="text-sm">Tag Status</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-gray-200 sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="/" class="flex items-center space-x-3">
+                        <img src="https://tapsite.ai/favicon-96x96.png" alt="NewsWire Central" class="h-10 w-10 rounded-lg">
+                        <span class="text-2xl font-bold text-red-600">NewsWire Central</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/" class="text-gray-700 hover:text-red-600 font-medium transition-colors py-2">Home</a>
+                    <a href="/posts" class="text-gray-700 hover:text-red-600 font-medium transition-colors py-2">All Posts</a>
+                    <a href="/category/Technology" class="text-gray-700 hover:text-red-600 font-medium transition-colors py-2">Technology</a>
+                    <a href="/category/Business" class="text-gray-700 hover:text-red-600 font-medium transition-colors py-2">Business</a>
+                    <a href="/category/Design" class="text-gray-700 hover:text-red-600 font-medium transition-colors py-2">Design</a>
+                    <a href="/category/Parenting" class="text-gray-700 hover:text-red-600 font-medium transition-colors py-2">Parenting</a>
+                </div>
+
+                <!-- Search and Mobile Menu -->
+                <div class="flex items-center space-x-4">
+                    <div class="relative hidden sm:block">
+                        <input type="text" placeholder="Search parenting..." 
+                               class="pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all w-64">
+                        <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                    <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg hover:bg-gray-100">
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden border-t border-gray-200 py-4 space-y-4 hidden">
+                <div class="relative mb-4">
+                    <input type="text" placeholder="Search parenting..." 
+                           class="pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all w-full">
+                    <svg class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </div>
+                <a href="/" class="text-gray-700 hover:text-red-600 block font-medium py-2">Home</a>
+                <a href="/posts" class="text-gray-700 hover:text-red-600 block font-medium py-2">All Posts</a>
+                <a href="/category/Technology" class="text-gray-700 hover:text-red-600 block font-medium py-2">Technology</a>
+                <a href="/category/Business" class="text-gray-700 hover:text-red-600 block font-medium py-2">Business</a>
+                <a href="/category/Design" class="text-gray-700 hover:text-red-600 block font-medium py-2">Design</a>
+                <a href="/category/Parenting" class="text-gray-700 hover:text-red-600 block font-medium py-2">Parenting</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Main Content -->
+            <div class="lg:col-span-2">
+                <!-- Featured Story -->
+                <article class="bg-white rounded-lg shadow-lg overflow-hidden mb-8 hover:shadow-xl transition-shadow">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" 
+                             alt="Featured Parenting Article" class="w-full h-64 object-cover">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-blue-600 text-white px-3 py-1 text-xs font-bold rounded-full">FEATURED</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h2 class="text-2xl font-bold text-gray-900 mb-3 leading-tight">
+                            <a href="/post/mendidik-anak-tanpa-gadget-mengembalikan-masa-kecil-yang-sesungguhnya" class="hover:text-red-600 transition-colors">
+                                Mendidik Anak Tanpa Gadget: Mengembalikan Masa Kecil yang Sesungguhnya
+                            </a>
+                        </h2>
+                        <p class="text-gray-600 mb-4">Pelajari cara mendidik anak tanpa ketergantungan gadget. Temukan alternatif kegiatan seru dan edukatif untuk mendukung perkembangan anak secara holistik.</p>
+                        <div class="flex items-center justify-between text-sm text-gray-500">
+                            <div class="flex items-center space-x-4">
+                                <span>Maulana Shalihin</span>
+                                <span>March 20, 2024</span>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <span>8 min read</span>
+                                <span>1.2K views</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Tag Articles -->
+                <div class="space-y-6">
+                    <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                        <div class="md:flex">
+                            <div class="md:w-1/3">
+                                <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
+                                     alt="Parenting Article" class="w-full h-48 md:h-full object-cover">
+                            </div>
+                            <div class="md:w-2/3 p-6">
+                                <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight">
+                                    <a href="/post/parenting-tips-modern-families" class="hover:text-red-600 transition-colors">
+                                        Parenting Tips for Modern Families
+                                    </a>
+                                </h3>
+                                <p class="text-gray-600 mb-4">Essential parenting strategies for raising children in today's digital world. Learn effective communication techniques and relationship building.</p>
+                                <div class="flex items-center justify-between text-sm text-gray-500">
+                                    <div class="flex items-center space-x-4">
+                                        <span>David Rodriguez</span>
+                                        <span>March 17, 2024</span>
+                                    </div>
+                                    <div class="flex items-center space-x-4">
+                                        <span>6 min read</span>
+                                        <span>934 views</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                        <div class="md:flex">
+                            <div class="md:w-1/3">
+                                <img src="https://images.unsplash.com/photo-1516627145497-ae4151c4e0ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
+                                     alt="Family Bonding" class="w-full h-48 md:h-full object-cover">
+                            </div>
+                            <div class="md:w-2/3 p-6">
+                                <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight">
+                                    <a href="/post/building-strong-family-bonds" class="hover:text-red-600 transition-colors">
+                                        Building Strong Family Bonds: A Parenting Guide
+                                    </a>
+                                </h3>
+                                <p class="text-gray-600 mb-4">Discover effective ways to strengthen family relationships and create lasting memories. Practical tips for busy parents to connect with their children.</p>
+                                <div class="flex items-center justify-between text-sm text-gray-500">
+                                    <div class="flex items-center space-x-4">
+                                        <span>Sarah Johnson</span>
+                                        <span>March 15, 2024</span>
+                                    </div>
+                                    <div class="flex items-center space-x-4">
+                                        <span>5 min read</span>
+                                        <span>756 views</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                        <div class="md:flex">
+                            <div class="md:w-1/3">
+                                <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
+                                     alt="Child Development" class="w-full h-48 md:h-full object-cover">
+                            </div>
+                            <div class="md:w-2/3 p-6">
+                                <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight">
+                                    <a href="/post/child-development-milestones" class="hover:text-red-600 transition-colors">
+                                        Understanding Child Development Milestones
+                                    </a>
+                                </h3>
+                                <p class="text-gray-600 mb-4">A comprehensive guide to understanding your child's developmental stages and how to support their growth at each phase.</p>
+                                <div class="flex items-center justify-between text-sm text-gray-500">
+                                    <div class="flex items-center space-x-4">
+                                        <span>Dr. Emily Chen</span>
+                                        <span>March 12, 2024</span>
+                                    </div>
+                                    <div class="flex items-center space-x-4">
+                                        <span>9 min read</span>
+                                        <span>1.1K views</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                        <div class="md:flex">
+                            <div class="md:w-1/3">
+                                <img src="https://images.unsplash.com/photo-1489710437720-ebb67ec84dd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" 
+                                     alt="Educational Activities" class="w-full h-48 md:h-full object-cover">
+                            </div>
+                            <div class="md:w-2/3 p-6">
+                                <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight">
+                                    <a href="/post/educational-activities-home" class="hover:text-red-600 transition-colors">
+                                        Fun Educational Activities to Do at Home
+                                    </a>
+                                </h3>
+                                <p class="text-gray-600 mb-4">Creative and engaging activities that promote learning while having fun. Perfect for parents looking to enrich their children's education at home.</p>
+                                <div class="flex items-center justify-between text-sm text-gray-500">
+                                    <div class="flex items-center space-x-4">
+                                        <span>Maria Garcia</span>
+                                        <span>March 10, 2024</span>
+                                    </div>
+                                    <div class="flex items-center space-x-4">
+                                        <span>7 min read</span>
+                                        <span>892 views</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Pagination -->
+                <div class="mt-8 flex justify-center">
+                    <nav class="flex items-center space-x-2">
+                        <button class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
+                            Previous
+                        </button>
+                        <button class="px-3 py-2 text-sm font-medium text-white bg-red-600 border border-red-600 rounded-md">
+                            1
+                        </button>
+                        <button class="px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
+                            2
+                        </button>
+                        <button class="px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
+                            Next
+                        </button>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="lg:col-span-1">
+                <!-- Related Tags -->
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Related Tags</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <a href="/tag/Anak" class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium hover:bg-blue-200 transition-colors">
+                            #Anak
+                        </a>
+                        <a href="/tag/Keluarga" class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium hover:bg-blue-200 transition-colors">
+                            #Keluarga
+                        </a>
+                        <a href="/tag/Ayah" class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium hover:bg-blue-200 transition-colors">
+                            #Ayah
+                        </a>
+                        <a href="/tag/Kasih-Sayang" class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium hover:bg-blue-200 transition-colors">
+                            #Kasih Sayang
+                        </a>
+                        <a href="/tag/Kebahagiaan" class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium hover:bg-blue-200 transition-colors">
+                            #Kebahagiaan
+                        </a>
+                        <a href="/tag/Waktu-Berkualitas" class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium hover:bg-blue-200 transition-colors">
+                            #Waktu Berkualitas
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Popular in Parenting -->
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Popular in Parenting</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-start space-x-3">
+                            <span class="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">1</span>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 leading-tight">
+                                    <a href="/post/mendidik-anak-tanpa-gadget-mengembalikan-masa-kecil-yang-sesungguhnya" class="hover:text-red-600">
+                                        Mendidik Anak Tanpa Gadget
+                                    </a>
+                                </h4>
+                                <p class="text-xs text-gray-500 mt-1">1.2K views</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">2</span>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 leading-tight">
+                                    <a href="/post/child-development-milestones" class="hover:text-red-600">
+                                        Child Development Milestones
+                                    </a>
+                                </h4>
+                                <p class="text-xs text-gray-500 mt-1">1.1K views</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <span class="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">3</span>
+                            <div>
+                                <h4 class="font-semibold text-gray-900 leading-tight">
+                                    <a href="/post/parenting-tips-modern-families" class="hover:text-red-600">
+                                        Parenting Tips for Modern Families
+                                    </a>
+                                </h4>
+                                <p class="text-xs text-gray-500 mt-1">934 views</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other Categories -->
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Other Categories</h3>
+                    <div class="space-y-3">
+                        <a href="/category/Technology" class="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                            <span class="font-medium text-gray-900">Technology</span>
+                            <span class="text-sm text-gray-500">15 articles</span>
+                        </a>
+                        <a href="/category/Business" class="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                            <span class="font-medium text-gray-900">Business</span>
+                            <span class="text-sm text-gray-500">8 articles</span>
+                        </a>
+                        <a href="/category/Design" class="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                            <span class="font-medium text-gray-900">Design</span>
+                            <span class="text-sm text-gray-500">5 articles</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="https://tapsite.ai/favicon-96x96.png" alt="NewsWire Central" class="h-10 w-10 rounded-lg">
+                        <span class="text-2xl font-bold text-red-500">NewsWire Central</span>
+                    </div>
+                    <p class="text-gray-300 mb-4">Breaking news and in-depth reporting from around the world</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="/breaking" class="text-gray-400 hover:text-white">Breaking</a></li>
+                        <li><a href="/world" class="text-gray-400 hover:text-white">World</a></li>
+                        <li><a href="/tech" class="text-gray-400 hover:text-white">Tech</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Email: news@newswire.com</li>
+                        <li>Phone: +1 (555) 123-4567</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 NewsWire Central. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,32 @@
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'news-blue': '#1E3A8A',
+          'news-red': '#DC2626',
+          'news-gray': '#F1F5F9'
+        },
+        fontFamily: {
+          'serif': ['Lora', 'Georgia', 'serif'],
+          'sans': ['Inter', 'Arial', 'sans-serif']
+        }
+      }
+    }
+  }
+</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:wght@400;600;700&display=swap');
+
+  .headline-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+  }
+  .gradient-text {
+    background: linear-gradient(90deg, #1E3A8A, #DC2626);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+</style> 

@@ -1,0 +1,28 @@
+<!-- Footer -->
+<footer class="bg-news-blue text-white py-10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid md:grid-cols-4 gap-8">
+      <div>
+        <div class="flex items-center space-x-2 mb-4">
+          {{@if(it.site.logo)}}<img src="{{it.site.logo}}" alt="{{it.site.name}}" class="h-8 w-8">{{/if}}
+          <span class="text-2xl font-bold">{{it.site.name}}</span>
+        </div>
+        <p class="text-news-gray mb-4">{{it.site.description}}</p>
+        <div class="flex space-x-4">
+          {{@each(it.social_links) => s}}
+          <a href="{{s.url}}" class="w-8 h-8 bg-news-red rounded-full flex items-center justify-center hover:bg-red-700 transition-colors">{{s.emoji}}</a>
+          {{/each}}
+        </div>
+      </div>
+      {{@each(it.footer_columns) => col}}
+      <div>
+        <h3 class="font-semibold mb-4">{{col.title}}</h3>
+        <ul class="space-y-2 text-news-gray">
+          {{@each(col.links) => l}}<li><a href="{{l.url}}" class="hover:text-white transition-colors">{{l.label}}</a></li>{{/each}}
+        </ul>
+      </div>
+      {{/each}}
+    </div>
+    <div class="border-t border-blue-800 mt-8 pt-6 text-center text-news-gray text-sm">&copy; {{it.current_year}} {{it.site.name}}. All rights reserved.</div>
+  </div>
+</footer> 

@@ -1,0 +1,28 @@
+<!-- Top Headlines Section -->
+<section class="py-10 bg-news-gray">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="border-b-2 border-news-red pb-2 mb-6 flex items-center justify-between">
+      <h2 class="text-2xl font-bold text-gray-900 uppercase tracking-wide">Top Headlines</h2>
+      <a href="/posts" class="text-news-blue font-medium hover:underline">View All</a>
+    </div>
+
+    <!-- Loading -->
+    <div id="headlines-loading" class="text-center py-12"><div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-news-blue"></div></div>
+    <div id="headlines-error" class="text-center py-12 hidden text-red-600 font-medium">Failed to load headlines.</div>
+
+    <!-- Grid -->
+    <div id="headlines-grid" class="grid lg:grid-cols-2 gap-6 hidden"></div>
+  </div>
+</section>
+<script>
+(function(){
+  const API='/api/blog/posts?limit=5';
+  const loading=document.getElementById('headlines-loading');
+  const error=document.getElementById('headlines-error');
+  const grid=document.getElementById('headlines-grid');
+  const truncate=(t,l=140)=>t.length<=l?t:t.slice(0,l)+'…';
+  const card=p=>`<article class=\"headline-card bg-white rounded-lg overflow-hidden shadow hover:shadow-lg transition-shadow\"><a href=\"/post/${p.slug}\"><img src=\"${p.featured_image||'/placeholder.webp'}\" alt=\"${p.title}\" class=\"w-full h-48 object-cover\"></a><div class=\"p-4 space-y-2\"><div class=\"flex items-center text-xs text-gray-500 space-x-2\"><span class=\"font-medium text-news-blue\">${p.category}</span><span>•</span><span>${new Date(p.published_at).toLocaleDateString()}</span></div><h3 class=\"text-xl font-bold leading-tight hover:text-news-red transition-colors\"><a href=\"/post/${p.slug}\">${p.title}</a></h3><p class=\"text-gray-600 line-clamp-2\">${truncate(p.excerpt||p.content||'')}</p></div></article>`;
+  async function init(){loading.classList.remove('hidden');try{const r=await fetch(API);if(!r.ok)throw Error();const {data}=await r.json();grid.innerHTML=data.map(card).join('');loading.classList.add('hidden');grid.classList.remove('hidden');}catch(e){loading.classList.add('hidden');error.classList.remove('hidden');}}
+  init();
+})();
+</script> 

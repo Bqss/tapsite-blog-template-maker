@@ -1,0 +1,36 @@
+<!-- Post Content Section -->
+<!-- Breadcrumb -->
+<nav class="bg-news-gray border-b border-news-blue">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-3 text-sm flex items-center space-x-2">
+    <a href="/" class="text-gray-500 hover:text-news-blue transition-colors">Home</a>
+    <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    <a href="/category/{{it.post.category|slug}}" class="text-gray-500 hover:text-news-blue transition-colors">{{it.post.category}}</a>
+    <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+    <span class="text-news-blue font-medium line-clamp-1">{{it.post.title}}</span>
+  </div>
+</nav>
+<header class="bg-white py-10">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+    <span class="uppercase text-xs font-bold text-news-red tracking-wider">{{it.post.category}}</span>
+    <h1 class="font-serif text-4xl lg:text-5xl font-bold text-gray-900">{{it.post.title}}</h1>
+    {{@if(it.post.excerpt)}}<p class="text-lg text-gray-600 max-w-2xl mx-auto">{{it.post.excerpt}}</p>{{/if}}
+    <div class="flex flex-wrap justify-center gap-4 text-sm text-gray-500">
+      <div class="flex items-center space-x-2">
+        {{@if(it.author.avatar)}}<img src="{{it.author.avatar}}" class="w-8 h-8 rounded-full object-cover" alt="{{it.author.name}}">{{/if}}
+        <span>{{it.author.name}}</span>
+      </div>
+      <span>{{it.post.published_at}}</span>
+      <span>•</span>
+      <span>{{it.post.read_time}} min read</span>
+      <span>•</span>
+      <span>{{it.post.view_count}} views</span>
+    </div>
+  </div>
+</header>
+{{@if(it.post.featured_image)}}
+<section class="bg-white"><div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"><img src="{{it.post.featured_image}}" alt="{{it.post.title}}" class="w-full h-80 object-cover rounded-lg shadow"/></div></section>
+{{/if}}
+<article class="bg-white py-12"><div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 ProseMirror">{{* it.post.content}}</div></article>
+{{@if(it.post.tags && it.post.tags.length)}}
+<section class="bg-news-gray py-6"><div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap gap-2">{{@each(it.post.tags)=>t}}<a href="/tag/{{t|slug}}" class="bg-news-blue text-white px-3 py-1 rounded-full text-sm hover:bg-news-red transition-colors">{{t}}</a>{{/each}}</div></section>
+{{/if}} 

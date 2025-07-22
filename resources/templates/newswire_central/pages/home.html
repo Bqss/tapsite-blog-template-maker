@@ -1,0 +1,546 @@
+<style>
+    @keyframes scroll {
+        0% { transform: translateX(100%); }
+        100% { transform: translateX(-100%); }
+    }
+    .ticker-scroll {
+        animation: scroll 60s linear infinite;
+    }
+    .ticker-scroll:hover {
+        animation-play-state: paused;
+    }
+    .news-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    @media (max-width: 768px) {
+        .news-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+    <!-- Breaking News Ticker (Recent Posts) -->
+    <div class="bg-red-600 text-white py-2 overflow-hidden">
+        <div class="flex items-center">
+            <div class="bg-red-800 px-4 py-1 text-sm font-bold uppercase tracking-wider">
+                Breaking News
+            </div>
+            <div class="flex-1 overflow-hidden ml-4">
+                <div class="ticker-scroll whitespace-nowrap">
+                    <span class="inline-block mr-8">
+                        <span class="font-medium">Major Economic Summit Reaches Historic Agreement</span>
+                        <span class="text-red-200 ml-2">• 3:45 PM EST</span>
+                    </span>
+                    <span class="inline-block mr-8">
+                        <span class="font-medium">Tech Giant Announces Revolutionary AI Breakthrough</span>
+                        <span class="text-red-200 ml-2">• 2:30 PM EST</span>
+                    </span>
+                    <span class="inline-block mr-8">
+                        <span class="font-medium">International Space Mission Achieves New Milestone</span>
+                        <span class="text-red-200 ml-2">• 1:15 PM EST</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center space-x-4">
+                    <img src="https://tapsite.ai/favicon-96x96.png" alt="NewsWire Central" class="h-8 w-8">
+                    <div>
+                        <h1 class="text-xl font-bold text-red-600">NewsWire Central</h1>
+                        <p class="text-xs text-gray-500">Breaking News & In-Depth Reporting</p>
+                    </div>
+                </div>
+                
+                <!-- Navigation Menu -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="/" class="text-gray-900 hover:text-red-600 font-medium transition-colors">Home</a>
+                    <a href="/category/Technology" class="text-gray-700 hover:text-red-600 transition-colors">Technology</a>
+                    <a href="/category/Business" class="text-gray-700 hover:text-red-600 transition-colors">Business</a>
+                    <a href="/category/Design" class="text-gray-700 hover:text-red-600 transition-colors">Design</a>
+                    <a href="/category/Parenting" class="text-gray-700 hover:text-red-600 transition-colors">Parenting</a>
+                </nav>
+
+                <!-- Search & Mobile Menu -->
+                <div class="flex items-center space-x-4">
+                    <div class="hidden md:flex items-center">
+                        <input type="text" placeholder="Search news..." class="px-3 py-1 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-red-500">
+                        <button class="ml-2 p-1 text-gray-500 hover:text-red-600">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <button class="md:hidden p-2 text-gray-500 hover:text-red-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+            <!-- Main Content Area -->
+            <div class="lg:col-span-3">
+                <!-- Top Headlines Section -->
+                <section class="mb-8">
+                    <div class="border-b-2 border-red-600 pb-2 mb-6">
+                        <h2 class="text-2xl font-bold text-gray-900 uppercase tracking-wide">Top Headlines</h2>
+                    </div>
+                    
+                    <!-- Featured Main Story -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                        <article class="lg:col-span-1">
+                            <div class="relative mb-4">
+                                <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Main News Story" class="w-full h-64 object-cover rounded-lg">
+                                <div class="absolute top-3 left-3">
+                                    <span class="bg-red-600 text-white px-2 py-1 text-xs font-bold uppercase rounded">Breaking</span>
+                                </div>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex items-center text-sm text-gray-500 space-x-2">
+                                    <span class="font-medium text-red-600">BUSINESS</span>
+                                    <span>•</span>
+                                    <span>March 21, 2024 - 4:30 PM EST</span>
+                                </div>
+                                <h1 class="text-3xl font-bold text-gray-900 leading-tight hover:text-red-600 transition-colors">
+                                    <a href="/post/global-economic-summit-agreement">Strategi Bisnis Digital untuk UMKM Indonesia di Era Modern</a>
+                                </h1>
+                                <p class="text-gray-600 text-lg leading-relaxed">Pelajari strategi terbaru untuk mengembangkan bisnis UMKM melalui platform digital, termasuk tips pemasaran online dan pengelolaan keuangan yang efektif.</p>
+                                <div class="flex items-center justify-between text-sm text-gray-500 pt-2 border-t border-gray-200">
+                                    <div class="flex items-center space-x-2">
+                                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Reporter" class="w-6 h-6 rounded-full">
+                                        <span class="font-medium">Sarah Johnson</span>
+                                        <span>•</span>
+                                        <span>International Correspondent</span>
+                                    </div>
+                                    <div class="flex items-center space-x-4">
+                                        <span class="flex items-center space-x-1">
+                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                                                <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+                                            </svg>
+                                            <span>5.2k</span>
+                                        </span>
+                                        <span>12 min read</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        
+                        <!-- Secondary Headlines -->
+                        <div class="space-y-4">
+                            <article class="border-b border-gray-200 pb-4">
+                                <div class="flex space-x-4">
+                                    <img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="Tech News" class="w-24 h-16 object-cover rounded flex-shrink-0">
+                                    <div class="flex-1 min-w-0">
+                                        <div class="flex items-center text-xs text-gray-500 space-x-2 mb-1">
+                                            <span class="font-medium text-blue-600">TECHNOLOGY</span>
+                                            <span>•</span>
+                                            <span>2 hours ago</span>
+                                        </div>
+                                        <h3 class="text-lg font-bold text-gray-900 mb-2 leading-tight hover:text-red-600 transition-colors">
+                                            <a href="/post/ai-breakthrough-medical-research">Perkembangan AI dalam Transformasi Digital Indonesia</a>
+                                        </h3>
+                                        <p class="text-sm text-gray-600 line-clamp-2">Teknologi AI semakin berkembang pesat dan memberikan dampak signifikan bagi digitalisasi Indonesia...</p>
+                                    </div>
+                                </div>
+                            </article>
+                            
+                            <article class="border-b border-gray-200 pb-4">
+                                <div class="flex space-x-4">
+                                    <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="Business News" class="w-24 h-16 object-cover rounded flex-shrink-0">
+                                    <div class="flex-1 min-w-0">
+                                        <div class="flex items-center text-xs text-gray-500 space-x-2 mb-1">
+                                            <span class="font-medium text-green-600">BUSINESS</span>
+                                            <span>•</span>
+                                            <span>3 hours ago</span>
+                                        </div>
+                                        <h3 class="text-lg font-bold text-gray-900 mb-2 leading-tight hover:text-red-600 transition-colors">
+                                            <a href="/post/stock-market-reaches-record-high">Strategi Investasi untuk Ekonomi Digital Indonesia</a>
+                                        </h3>
+                                        <p class="text-sm text-gray-600 line-clamp-2">Peluang investasi di sektor ekonomi digital Indonesia semakin menjanjikan dengan pertumbuhan UMKM...</p>
+                                    </div>
+                                </div>
+                            </article>
+                            
+                            <article class="border-b border-gray-200 pb-4">
+                                <div class="flex space-x-4">
+                                    <img src="https://images.unsplash.com/photo-1574781330855-d95e436ab8d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="Sports News" class="w-24 h-16 object-cover rounded flex-shrink-0">
+                                    <div class="flex-1 min-w-0">
+                                        <div class="flex items-center text-xs text-gray-500 space-x-2 mb-1">
+                                            <span class="font-medium text-orange-600">PARENTING</span>
+                                            <span>•</span>
+                                            <span>4 hours ago</span>
+                                        </div>
+                                        <h3 class="text-lg font-bold text-gray-900 mb-2 leading-tight hover:text-red-600 transition-colors">
+                                            <a href="/post/championship-final-preview">Membangun Kebahagiaan Keluarga di Era Digital</a>
+                                        </h3>
+                                        <p class="text-sm text-gray-600 line-clamp-2">Tips praktis untuk menciptakan waktu berkualitas bersama anak dan membangun hubungan yang harmonis...</p>
+                                    </div>
+                                </div>
+                            </article>
+                            
+                            <article class="pb-4">
+                                <div class="flex space-x-4">
+                                    <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="Health News" class="w-24 h-16 object-cover rounded flex-shrink-0">
+                                    <div class="flex-1 min-w-0">
+                                        <div class="flex items-center text-xs text-gray-500 space-x-2 mb-1">
+                                            <span class="font-medium text-purple-600">DESIGN</span>
+                                            <span>•</span>
+                                            <span>5 hours ago</span>
+                                        </div>
+                                        <h3 class="text-lg font-bold text-gray-900 mb-2 leading-tight hover:text-red-600 transition-colors">
+                                            <a href="/post/new-medical-treatment-breakthrough">Tren Desain UI/UX untuk Aplikasi Mobile Indonesia</a>
+                                        </h3>
+                                        <p class="text-sm text-gray-600 line-clamp-2">Eksplorasi tren desain terbaru yang cocok untuk aplikasi mobile di Indonesia dengan fokus pada user experience...</p>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Technology Section -->
+                <section class="mb-8">
+                    <div class="border-b-2 border-blue-600 pb-2 mb-6">
+                        <h2 class="text-xl font-bold text-gray-900 uppercase tracking-wide">Technology</h2>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <article class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+                            <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="International News" class="w-full h-48 object-cover">
+                            <div class="p-4">
+                                <div class="flex items-center text-xs text-gray-500 space-x-2 mb-2">
+                                    <span class="font-medium text-blue-600">TECHNOLOGY</span>
+                                    <span>•</span>
+                                    <span>JAKARTA</span>
+                                    <span>•</span>
+                                    <span>6 hours ago</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-red-600 transition-colors">
+                                    <a href="/post/european-union-new-policies">Inovasi Teknologi AI untuk Transformasi Digital UMKM</a>
+                                </h3>
+                                <p class="text-gray-600 mb-3 line-clamp-3">Perkembangan teknologi AI memberikan peluang besar bagi UMKM Indonesia untuk meningkatkan efisiensi dan daya saing di era digital...</p>
+                                <div class="flex items-center justify-between text-sm text-gray-500">
+                                    <div class="flex items-center space-x-2">
+                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Reporter" class="w-5 h-5 rounded-full">
+                                        <span>Michael Thompson</span>
+                                    </div>
+                                    <span>7 min read</span>
+                                </div>
+                            </div>
+                        </article>
+                        
+                        <article class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+                            <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Asia News" class="w-full h-48 object-cover">
+                            <div class="p-4">
+                                <div class="flex items-center text-xs text-gray-500 space-x-2 mb-2">
+                                    <span class="font-medium text-blue-600">TECHNOLOGY</span>
+                                    <span>•</span>
+                                    <span>BANDUNG</span>
+                                    <span>•</span>
+                                    <span>8 hours ago</span>
+                                </div>
+                                <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-red-600 transition-colors">
+                                    <a href="/post/asia-pacific-trade-agreement">Digitalisasi Proses Bisnis untuk Meningkatkan Produktivitas</a>
+                                </h3>
+                                <p class="text-gray-600 mb-3 line-clamp-3">Implementasi teknologi digital dalam proses bisnis dapat meningkatkan produktivitas hingga 40% dan mengurangi biaya operasional...</p>
+                                <div class="flex items-center justify-between text-sm text-gray-500">
+                                    <div class="flex items-center space-x-2">
+                                        <img src="https://images.unsplash.com/photo-1494790108755-2616c2e20d8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="Reporter" class="w-5 h-5 rounded-full">
+                                        <span>Lisa Chen</span>
+                                    </div>
+                                    <span>9 min read</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+                
+                <!-- Latest Articles Feed -->
+                <section class="mb-8">
+                    <div class="border-b-2 border-gray-600 pb-2 mb-6">
+                        <h2 class="text-xl font-bold text-gray-900 uppercase tracking-wide">Latest Articles</h2>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <article class="flex space-x-4 p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
+                            <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="News" class="w-20 h-16 object-cover rounded flex-shrink-0">
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center text-xs text-gray-500 space-x-2 mb-1">
+                                    <span class="font-medium text-red-600">BUSINESS</span>
+                                    <span>•</span>
+                                    <span>SURABAYA</span>
+                                    <span>•</span>
+                                    <span>1 hour ago</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-gray-900 mb-2 leading-tight hover:text-red-600 transition-colors">
+                                    <a href="/post/government-announces-new-policy">Strategi Pengembangan UMKM di Era Ekonomi Digital</a>
+                                </h3>
+                                <p class="text-sm text-gray-600 line-clamp-2">Panduan lengkap untuk mengembangkan usaha kecil dan menengah dengan memanfaatkan teknologi digital dan platform online...</p>
+                            </div>
+                        </article>
+                        
+                        <article class="flex space-x-4 p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
+                            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="Health News" class="w-20 h-16 object-cover rounded flex-shrink-0">
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center text-xs text-gray-500 space-x-2 mb-1">
+                                    <span class="font-medium text-purple-600">HEALTH</span>
+                                    <span>•</span>
+                                    <span>GENEVA</span>
+                                    <span>•</span>
+                                    <span>2 hours ago</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-gray-900 mb-2 leading-tight hover:text-red-600 transition-colors">
+                                    <a href="/post/who-health-guidelines">WHO Issues New Global Health Guidelines</a>
+                                </h3>
+                                <p class="text-sm text-gray-600 line-clamp-2">The World Health Organization has released updated guidelines for pandemic preparedness and response...</p>
+                            </div>
+                        </article>
+                        
+                        <article class="flex space-x-4 p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
+                            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="Science News" class="w-20 h-16 object-cover rounded flex-shrink-0">
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center text-xs text-gray-500 space-x-2 mb-1">
+                                    <span class="font-medium text-indigo-600">SCIENCE</span>
+                                    <span>•</span>
+                                    <span>CAPE CANAVERAL</span>
+                                    <span>•</span>
+                                    <span>3 hours ago</span>
+                                </div>
+                                <h3 class="text-lg font-bold text-gray-900 mb-2 leading-tight hover:text-red-600 transition-colors">
+                                    <a href="/post/space-mission-success">Space Mission Successfully Lands on Mars</a>
+                                </h3>
+                                <p class="text-sm text-gray-600 line-clamp-2">The latest Mars exploration mission has successfully landed and begun transmitting data back to Earth...</p>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="lg:col-span-1">
+                <!-- Live Updates -->
+                <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-3 h-3 bg-red-500 rounded-full animate-pulse mr-2"></div>
+                        <h3 class="text-lg font-bold text-gray-900">Live Updates</h3>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="text-sm">
+                            <div class="flex items-center text-xs text-gray-500 mb-1">
+                                <span class="font-medium">4:45 PM</span>
+                                <span class="mx-1">•</span>
+                                <span>BREAKING</span>
+                            </div>
+                            <p class="text-gray-900 font-medium">Market closes at record high after positive economic data</p>
+                        </div>
+                        <div class="text-sm">
+                            <div class="flex items-center text-xs text-gray-500 mb-1">
+                                <span class="font-medium">4:30 PM</span>
+                                <span class="mx-1">•</span>
+                                <span>UPDATE</span>
+                            </div>
+                            <p class="text-gray-900 font-medium">Emergency services respond to major incident downtown</p>
+                        </div>
+                        <div class="text-sm">
+                            <div class="flex items-center text-xs text-gray-500 mb-1">
+                                <span class="font-medium">4:15 PM</span>
+                                <span class="mx-1">•</span>
+                                <span>SPORTS</span>
+                            </div>
+                            <p class="text-gray-900 font-medium">Championship game postponed due to weather conditions</p>
+                        </div>
+                        <div class="text-sm">
+                            <div class="flex items-center text-xs text-gray-500 mb-1">
+                                <span class="font-medium">4:00 PM</span>
+                                <span class="mx-1">•</span>
+                                <span>TECH</span>
+                            </div>
+                            <p class="text-gray-900 font-medium">Major tech company announces new product launch</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Weather Widget -->
+                <div class="bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-lg p-4 mb-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="text-lg font-bold">Weather</h3>
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0 2 2 0 011.523-1.943A5.977 5.977 0 0116 10c0 .34-.028.675-.083 1H15a2 2 0 00-2 2v2.197A5.973 5.973 0 0110 16v-2a2 2 0 00-2-2 2 2 0 01-2-2 2 2 0 00-1.668-1.973z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold mb-1">72°F</div>
+                        <div class="text-sm opacity-90">Partly Cloudy</div>
+                        <div class="text-xs opacity-75 mt-1">New York, NY</div>
+                    </div>
+                    <div class="flex justify-between mt-4 text-sm">
+                        <div class="text-center">
+                            <div class="font-medium">H: 78°</div>
+                            <div class="opacity-75">High</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="font-medium">L: 65°</div>
+                            <div class="opacity-75">Low</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="font-medium">40%</div>
+                            <div class="opacity-75">Rain</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Most Read -->
+                <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
+                    <h3 class="text-lg font-bold text-gray-900 mb-4">Most Read</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-start space-x-3">
+                            <div class="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded flex-shrink-0">1</div>
+                            <div>
+                                <a href="/post/breaking-news-story" class="text-sm font-medium text-gray-900 hover:text-red-600 transition-colors leading-tight">
+                                    Strategi Bisnis Digital untuk UMKM Indonesia
+                                </a>
+                                <div class="text-xs text-gray-500 mt-1">15.2k views</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="bg-gray-600 text-white text-xs font-bold px-2 py-1 rounded flex-shrink-0">2</div>
+                            <div>
+                                <a href="/post/tech-breakthrough" class="text-sm font-medium text-gray-900 hover:text-red-600 transition-colors leading-tight">
+                                    Perkembangan AI dalam Teknologi Indonesia
+                                </a>
+                                <div class="text-xs text-gray-500 mt-1">12.8k views</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="bg-gray-600 text-white text-xs font-bold px-2 py-1 rounded flex-shrink-0">3</div>
+                            <div>
+                                <a href="/post/sports-championship" class="text-sm font-medium text-gray-900 hover:text-red-600 transition-colors leading-tight">
+                                    Tips Parenting untuk Keluarga Modern
+                                </a>
+                                <div class="text-xs text-gray-500 mt-1">9.5k views</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="bg-gray-600 text-white text-xs font-bold px-2 py-1 rounded flex-shrink-0">4</div>
+                            <div>
+                                <a href="/post/market-update" class="text-sm font-medium text-gray-900 hover:text-red-600 transition-colors leading-tight">
+                                    Stock Market Hits Record High
+                                </a>
+                                <div class="text-xs text-gray-500 mt-1">8.9k views</div>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="bg-gray-600 text-white text-xs font-bold px-2 py-1 rounded flex-shrink-0">5</div>
+                            <div>
+                                <a href="/post/health-guidelines" class="text-sm font-medium text-gray-900 hover:text-red-600 transition-colors leading-tight">
+                                    WHO Issues New Health Guidelines
+                                </a>
+                                <div class="text-xs text-gray-500 mt-1">7.3k views</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Newsletter Signup -->
+                <div class="bg-red-600 text-white rounded-lg p-4 mb-6">
+                    <h3 class="text-lg font-bold mb-2">Breaking News Alerts</h3>
+                    <p class="text-sm opacity-90 mb-4">Get the latest breaking news delivered to your inbox</p>
+                    <form class="space-y-3">
+                        <input type="email" placeholder="Enter your email" class="w-full px-3 py-2 text-gray-900 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-red-300">
+                        <button type="submit" class="w-full bg-red-800 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-md text-sm transition-colors">
+                            Subscribe Now
+                        </button>
+                    </form>
+                </div>
+                
+                <!-- Social Media -->
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h3 class="text-lg font-bold text-gray-900 mb-4">Follow Us</h3>
+                    <div class="flex space-x-3">
+                        <a href="#" class="bg-blue-600 text-white p-2 rounded-full hover:bg-blue-700 transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="bg-blue-800 text-white p-2 rounded-full hover:bg-blue-900 transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="bg-pink-600 text-white p-2 rounded-full hover:bg-pink-700 transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.749.097.118.112.222.082.343-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001 12.017.001z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="https://tapsite.ai/favicon-96x96.png" alt="NewsWire Central" class="h-8 w-8">
+                        <span class="text-xl font-bold text-red-500">NewsWire Central</span>
+                    </div>
+                    <p class="text-gray-300 mb-4">Your trusted source for breaking news and in-depth reporting from around the world. Delivering accurate, timely, and comprehensive news coverage 24/7.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">Categories</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/category/Technology" class="text-gray-400 hover:text-white transition-colors">Technology</a></li>
+                        <li><a href="/category/Business" class="text-gray-400 hover:text-white transition-colors">Business</a></li>
+                        <li><a href="/category/Design" class="text-gray-400 hover:text-white transition-colors">Design</a></li>
+                        <li><a href="/category/Parenting" class="text-gray-400 hover:text-white transition-colors">Parenting</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">About</h3>
+                    <ul class="space-y-2">
+                        <li><a href="/about" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="/contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="/careers" class="text-gray-400 hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="/privacy" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="/terms" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 NewsWire Central. All rights reserved. | Breaking news and in-depth reporting from around the world.</p>
+            </div>
+        </div>
+    </footer>
+
+ 
