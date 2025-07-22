@@ -1,23 +1,28 @@
 {
-  "seo": {
-    "title": "{{tag}} - MomBlogger | Parenting & Family Tag",
-    "description": "Discover articles tagged with {{tag}}. Real motherhood stories and practical parenting tips for busy families.",
-    "keywords": "{{tag}}, parenting, family life, motherhood, parenting tips",
-    "canonical": "/tag/{{tag}}",
-    "og_title": "{{tag}} - MomBlogger",
-    "og_description": "Discover articles tagged with {{tag}}. Real motherhood stories and practical parenting tips.",
-    "og_image": "https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=1200&h=630&fit=crop",
-    "og_type": "website",
-    "twitter_card": "summary_large_image",
-    "twitter_title": "{{tag}} - MomBlogger",
-    "twitter_description": "Discover articles tagged with {{tag}}. Real motherhood stories and practical parenting tips.",
-    "twitter_image": "https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=1200&h=630&fit=crop",
-    "schema": {
-      "@context": "https://schema.org",
-      "@type": "CollectionPage",
-      "name": "{{tag}} - MomBlogger",
-      "description": "Articles tagged with {{tag}}",
-      "url": "{{site.url}}/tag/{{tag}}"
+  "title": "MomBlogger - Embracing the Beautiful Chaos of Motherhood",
+  "description": "Real stories, practical tips, and heartfelt moments from the journey of motherhood",
+  "sections": [
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": ["site", "navigation"]
+    },
+    {
+      "title": "tag_result",
+      "id": "tag_result",
+      "type": "template",
+      "resetable": true,
+      "data": []
+    },
+
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": ["site", "navigation"]
     }
-  }
-} 
+  ]
+}

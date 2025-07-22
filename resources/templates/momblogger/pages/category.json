@@ -1,29 +1,28 @@
 {
-  "seo": {
-    "title": "{{category}} - MomBlogger | Family & Parenting Category",
-    "description": "Explore {{category}} articles and family life content. Real stories and practical parenting tips for every stage of motherhood.",
-    "keywords": "{{category}}, parenting, family life, motherhood, parenting tips",
-    "canonical": "/category/{{category}}",
-    "og_title": "{{category}} - MomBlogger",
-    "og_description": "Explore {{category}} articles and family life content.",
-    "og_image": "https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=1200&h=630&fit=crop",
-    "og_type": "website",
-    "twitter_card": "summary_large_image",
-    "twitter_title": "{{category}} - MomBlogger",
-    "twitter_description": "Explore {{category}} articles and family life content.",
-    "twitter_image": "https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=1200&h=630&fit=crop",
-    "schema": {
-      "@context": "https://schema.org",
-      "@type": "CollectionPage",
-      "name": "{{category}} - MomBlogger",
-      "description": "{{category}} articles and family life content",
-      "url": "{{site.url}}/category/{{category}}"
-    }
-  },
+  "title": "MomBlogger - Embracing the Beautiful Chaos of Motherhood",
+  "description": "Real stories, practical tips, and heartfelt moments from the journey of motherhood",
   "sections": [
-    {"title":"styles","id":"styles","type":"template","resetable":true},
-    {"title":"navigation","id":"navigation","type":"template","resetable":true,"data":["site","navigation","subscribe_button","search_placeholder"]},
-    {"title":"category_posts","id":"category_posts","type":"template","resetable":true,"data":["category","posts"]},
-    {"title":"footer","id":"footer","type":"template","resetable":true,"data":["site","navigation","social_links","footer_columns","current_year"]}
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": ["site", "navigation"]
+    },
+    {
+      "title": "category_result",
+      "id": "category_result",
+      "type": "template",
+      "resetable": true,
+      "data": []
+    },
+
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": ["site", "navigation"]
+    }
   ]
-} 
+}

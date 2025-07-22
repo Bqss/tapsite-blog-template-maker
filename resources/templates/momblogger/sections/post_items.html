@@ -1,0 +1,288 @@
+<!-- Filters -->
+<section class="bg-white py-6 border-b border-pink-100 sticky top-16 z-40">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
+      <div class="flex flex-wrap gap-2">
+        <button class="bg-pink-500 text-white px-4 py-2 rounded-full text-sm font-medium">All</button>
+        <button
+          class="bg-pink-50 text-pink-600 px-4 py-2 rounded-full text-sm font-medium hover:bg-pink-100 transition-colors">Technology</button>
+        <button
+          class="bg-pink-50 text-pink-600 px-4 py-2 rounded-full text-sm font-medium hover:bg-pink-100 transition-colors">Business</button>
+        <button
+          class="bg-pink-50 text-pink-600 px-4 py-2 rounded-full text-sm font-medium hover:bg-pink-100 transition-colors">Design</button>
+        <button
+          class="bg-pink-50 text-pink-600 px-4 py-2 rounded-full text-sm font-medium hover:bg-pink-100 transition-colors">Parenting</button>
+      </div>
+
+      <div class="flex items-center space-x-4">
+        <div class="relative">
+          <input type="text" placeholder="Search articles..."
+            class="pl-10 pr-4 py-2 border border-pink-200 rounded-full bg-white focus:outline-none focus:ring-2 focus:ring-pink-500 text-sm w-64">
+          <svg class="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" fill="none"
+            stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </div>
+
+        <select
+          class="bg-white border border-pink-200 rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-pink-500">
+          <option>Latest</option>
+          <option>Most Popular</option>
+          <option>Most Read</option>
+          <option>Trending</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Articles Grid -->
+<section class="py-16 bg-pink-25">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- Article 1 -->
+      <article
+        class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover:-translate-y-1">
+        <div class="aspect-video bg-gradient-to-br from-pink-200 to-orange-200 relative">
+          <div class="absolute top-4 left-4 bg-pink-500 text-white px-3 py-1 rounded-full text-xs font-medium">
+            Parenting
+          </div>
+          <div
+            class="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm text-pink-600 px-3 py-1 rounded-full text-xs font-medium">
+            👶 Baby Tips
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-3 font-serif">Mendidik Anak Tanpa Gadget: Mengembalikan Masa
+            Kecil yang Sesungguhnya</h3>
+          <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+            Pelajari cara mendidik anak tanpa ketergantungan gadget. Temukan alternatif kegiatan seru dan edukatif untuk
+            mendukung perkembangan anak secara holistik.
+          </p>
+          <div class="flex items-center justify-between text-sm">
+            <div class="flex items-center space-x-2">
+              <div
+                class="w-8 h-8 bg-gradient-to-br from-pink-400 to-orange-400 rounded-full flex items-center justify-center">
+                <span class="text-white text-xs">👩</span>
+              </div>
+              <span class="text-gray-700">Maulana Shalihin</span>
+            </div>
+            <div class="flex items-center space-x-3 text-gray-500">
+              <span>8 min read</span>
+              <span>•</span>
+              <span>👁️ 2.1K</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Article 2 -->
+      <article
+        class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover:-translate-y-1">
+        <div class="aspect-video bg-gradient-to-br from-purple-200 to-pink-200 relative">
+          <div class="absolute top-4 left-4 bg-purple-500 text-white px-3 py-1 rounded-full text-xs font-medium">
+            Technology
+          </div>
+          <div
+            class="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm text-purple-600 px-3 py-1 rounded-full text-xs font-medium">
+            💻 Tech Tips
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-3 font-serif">Teknologi AI untuk Mendukung Perkembangan Anak di
+            Era Digital</h3>
+          <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+            Bagaimana teknologi AI dapat membantu orangtua dalam mendidik anak dengan cara yang positif dan produktif di
+            era digital ini.
+          </p>
+          <div class="flex items-center justify-between text-sm">
+            <div class="flex items-center space-x-2">
+              <div
+                class="w-8 h-8 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full flex items-center justify-center">
+                <span class="text-white text-xs">👩</span>
+              </div>
+              <span class="text-gray-700">Sarah Johnson</span>
+            </div>
+            <div class="flex items-center space-x-3 text-gray-500">
+              <span>6 min read</span>
+              <span>•</span>
+              <span>👁️ 1.8K</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Article 3 -->
+      <article
+        class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover:-translate-y-1">
+        <div class="aspect-video bg-gradient-to-br from-blue-200 to-purple-200 relative">
+          <div class="absolute top-4 left-4 bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-medium">
+            Business
+          </div>
+          <div
+            class="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm text-blue-600 px-3 py-1 rounded-full text-xs font-medium">
+            💼 Mom Business
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-3 font-serif">Membangun Bisnis UMKM Sambil Mengasuh Anak: Tips
+            untuk Working Mom</h3>
+          <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+            Strategi praktis untuk ibu yang ingin membangun bisnis UMKM sambil tetap memberikan perhatian penuh pada
+            anak-anak.
+          </p>
+          <div class="flex items-center justify-between text-sm">
+            <div class="flex items-center space-x-2">
+              <div
+                class="w-8 h-8 bg-gradient-to-br from-blue-400 to-purple-400 rounded-full flex items-center justify-center">
+                <span class="text-white text-xs">👩</span>
+              </div>
+              <span class="text-gray-700">Lisa Chen</span>
+            </div>
+            <div class="flex items-center space-x-3 text-gray-500">
+              <span>10 min read</span>
+              <span>•</span>
+              <span>👁️ 3.2K</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Article 4 -->
+      <article
+        class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover:-translate-y-1">
+        <div class="aspect-video bg-gradient-to-br from-green-200 to-blue-200 relative">
+          <div class="absolute top-4 left-4 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-medium">
+            Design
+          </div>
+          <div
+            class="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm text-green-600 px-3 py-1 rounded-full text-xs font-medium">
+            🎨 Creative
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-3 font-serif">Menciptakan Ruang Bermain Anak yang Kreatif dan
+            Fungsional</h3>
+          <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+            Ide desain interior untuk menciptakan ruang bermain anak yang merangsang kreativitas sekaligus aman dan
+            fungsional.
+          </p>
+          <div class="flex items-center justify-between text-sm">
+            <div class="flex items-center space-x-2">
+              <div
+                class="w-8 h-8 bg-gradient-to-br from-green-400 to-blue-400 rounded-full flex items-center justify-center">
+                <span class="text-white text-xs">👩</span>
+              </div>
+              <span class="text-gray-700">Maria Santos</span>
+            </div>
+            <div class="flex items-center space-x-3 text-gray-500">
+              <span>7 min read</span>
+              <span>•</span>
+              <span>👁️ 2.5K</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Article 5 -->
+      <article
+        class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover:-translate-y-1">
+        <div class="aspect-video bg-gradient-to-br from-orange-200 to-pink-200 relative">
+          <div class="absolute top-4 left-4 bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-medium">
+            Parenting
+          </div>
+          <div
+            class="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm text-orange-600 px-3 py-1 rounded-full text-xs font-medium">
+            ❤️ Family Time
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-3 font-serif">Membangun Waktu Berkualitas dengan Anak di Tengah
+            Kesibukan</h3>
+          <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+            Cara menciptakan momen berharga bersama anak meski memiliki jadwal yang padat. Tips praktis untuk working
+            parents.
+          </p>
+          <div class="flex items-center justify-between text-sm">
+            <div class="flex items-center space-x-2">
+              <div
+                class="w-8 h-8 bg-gradient-to-br from-orange-400 to-pink-400 rounded-full flex items-center justify-center">
+                <span class="text-white text-xs">👩</span>
+              </div>
+              <span class="text-gray-700">Anna Wijaya</span>
+            </div>
+            <div class="flex items-center space-x-3 text-gray-500">
+              <span>5 min read</span>
+              <span>•</span>
+              <span>👁️ 4.1K</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Article 6 -->
+      <article
+        class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover:-translate-y-1">
+        <div class="aspect-video bg-gradient-to-br from-pink-200 to-purple-200 relative">
+          <div class="absolute top-4 left-4 bg-pink-500 text-white px-3 py-1 rounded-full text-xs font-medium">
+            Parenting
+          </div>
+          <div
+            class="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm text-pink-600 px-3 py-1 rounded-full text-xs font-medium">
+            🌟 Self Care
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-3 font-serif">Self-Care untuk Ibu: Menjaga Kesehatan Mental dan
+            Fisik</h3>
+          <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+            Pentingnya self-care bagi ibu dan tips praktis untuk menjaga kesehatan mental dan fisik di tengah peran
+            sebagai ibu.
+          </p>
+          <div class="flex items-center justify-between text-sm">
+            <div class="flex items-center space-x-2">
+              <div
+                class="w-8 h-8 bg-gradient-to-br from-pink-400 to-purple-400 rounded-full flex items-center justify-center">
+                <span class="text-white text-xs">👩</span>
+              </div>
+              <span class="text-gray-700">Dr. Sari Putri</span>
+            </div>
+            <div class="flex items-center space-x-3 text-gray-500">
+              <span>9 min read</span>
+              <span>•</span>
+              <span>👁️ 3.8K</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- Pagination -->
+<section class="py-8 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-center">
+      <nav class="flex items-center space-x-2">
+        <button class="px-3 py-2 text-gray-400 hover:text-pink-600 transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button class="px-4 py-2 bg-pink-500 text-white rounded-full font-medium">1</button>
+        <button class="px-4 py-2 text-gray-600 hover:text-pink-600 transition-colors">2</button>
+        <button class="px-4 py-2 text-gray-600 hover:text-pink-600 transition-colors">3</button>
+        <span class="px-2 text-gray-400">...</span>
+        <button class="px-4 py-2 text-gray-600 hover:text-pink-600 transition-colors">29</button>
+        <button class="px-3 py-2 text-gray-600 hover:text-pink-600 transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </div>
+</section>
