@@ -1,0 +1,23 @@
+{
+  "seo": {
+    "title": "Search Results - MomBlogger | Find Parenting Content",
+    "description": "Search through our motherhood and family life articles. Find practical parenting tips, real stories, and family activities.",
+    "keywords": "search parenting content, find mom articles, family blog search, parenting tips search",
+    "canonical": "/search",
+    "og_title": "Search Results - MomBlogger",
+    "og_description": "Search through our motherhood and family life articles.",
+    "og_image": "https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=1200&h=630&fit=crop",
+    "og_type": "website",
+    "twitter_card": "summary_large_image",
+    "twitter_title": "Search Results - MomBlogger",
+    "twitter_description": "Search through our motherhood and family life articles.",
+    "twitter_image": "https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=1200&h=630&fit=crop",
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "SearchResultsPage",
+      "name": "Search Results - MomBlogger",
+      "description": "Search results for parenting and family content",
+      "url": "{{site.url}}/search"
+    }
+  }
+} 

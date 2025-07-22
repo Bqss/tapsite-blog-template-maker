@@ -1,0 +1,188 @@
+{
+  "site": {
+    "name": "MomBlogger",
+    "tagline": "Embracing the Beautiful Chaos of Motherhood",
+    "description": "Real stories, practical tips, and heartfelt moments from the journey of motherhood",
+    "logo": "/images/momblogger-logo.png"
+  },
+  "posts": [
+    {
+      "title": "10 Easy Weeknight Dinners That Kids Actually Love",
+      "excerpt": "Discover family-friendly recipes that are quick to make and guaranteed to please even the pickiest eaters.",
+      "content": "As a busy mom, finding dinner ideas that satisfy the whole family can feel like an impossible task...",
+      "author": "Sarah Johnson",
+      "date": "2024-01-15",
+      "category": "Recipes",
+      "tags": ["Family Meals", "Quick Recipes", "Kid-Friendly"],
+      "image": "/images/family-dinner.jpg",
+      "readTime": "7 min read"
+    },
+    {
+      "title": "Creating a Morning Routine That Actually Works for Busy Moms",
+      "excerpt": "Transform your chaotic mornings into peaceful, productive starts to your day with these realistic tips.",
+      "content": "Let's be honest - those Pinterest-perfect morning routines with meditation and journaling before 6 AM...",
+      "author": "Sarah Johnson",
+      "date": "2024-01-12",
+      "category": "Mom Life",
+      "tags": ["Morning Routine", "Self-Care", "Productivity"],
+      "image": "/images/morning-routine.jpg",
+      "readTime": "5 min read"
+    },
+    {
+      "title": "DIY Sensory Bins: Fun Learning Activities for Toddlers",
+      "excerpt": "Keep your little ones engaged and learning with these simple, mess-contained sensory play ideas.",
+      "content": "Sensory play is crucial for toddler development, but it doesn't have to mean chaos in your living room...",
+      "author": "Sarah Johnson",
+      "date": "2024-01-10",
+      "category": "Activities",
+      "tags": ["Toddler Activities", "DIY", "Learning"],
+      "image": "/images/sensory-bins.jpg",
+      "readTime": "8 min read"
+    }
+  ],
+  "categories": [
+    {
+      "name": "Mom Life",
+      "description": "Real talk about motherhood",
+      "icon": "💝",
+      "color": "#EC4899",
+      "count": 52
+    },
+    {
+      "name": "Recipes",
+      "description": "Family-friendly meal ideas",
+      "icon": "🍽️",
+      "color": "#F59E0B",
+      "count": 38
+    },
+    {
+      "name": "Activities",
+      "description": "Fun ideas for kids",
+      "icon": "🎨",
+      "color": "#8B5CF6",
+      "count": 45
+    },
+    {
+      "name": "Self-Care",
+      "description": "Taking care of yourself",
+      "icon": "🌸",
+      "color": "#10B981",
+      "count": 32
+    },
+    {
+      "name": "Organization",
+      "description": "Home and life organization",
+      "icon": "📋",
+      "color": "#06B6D4",
+      "count": 28
+    },
+    {
+      "name": "Reviews",
+      "description": "Product reviews for families",
+      "icon": "⭐",
+      "color": "#EF4444",
+      "count": 35
+    }
+  ],
+  "familyStages": [
+    {
+      "name": "Pregnancy",
+      "description": "Expecting mama content",
+      "image": "/images/pregnancy.jpg",
+      "posts": 24
+    },
+    {
+      "name": "Baby (0-12m)",
+      "description": "New baby survival guide",
+      "image": "/images/baby.jpg",
+      "posts": 45
+    },
+    {
+      "name": "Toddler (1-3y)",
+      "description": "Toddler tips and activities",
+      "image": "/images/toddler.jpg",
+      "posts": 67
+    },
+    {
+      "name": "School Age (4+)",
+      "description": "Big kid adventures",
+      "image": "/images/school-age.jpg",
+      "posts": 38
+    }
+  ],
+  "featuredRecipes": [
+    {
+      "name": "One-Pan Chicken & Veggies",
+      "difficulty": "Easy",
+      "time": "30 mins",
+      "rating": 4.8,
+      "image": "/images/chicken-veggies.jpg"
+    },
+    {
+      "name": "Hidden Veggie Mac & Cheese",
+      "difficulty": "Easy",
+      "time": "25 mins",
+      "rating": 4.9,
+      "image": "/images/mac-cheese.jpg"
+    },
+    {
+      "name": "Freezer-Friendly Breakfast Burritos",
+      "difficulty": "Medium",
+      "time": "45 mins",
+      "rating": 4.7,
+      "image": "/images/breakfast-burritos.jpg"
+    }
+  ],
+  "momTips": [
+    {
+      "tip": "Keep a 'bored jar' filled with activity ideas for those 'I'm bored' moments",
+      "category": "Activities"
+    },
+    {
+      "tip": "Prep snacks on Sunday for the entire week - future you will thank you!",
+      "category": "Organization"
+    },
+    {
+      "tip": "Take photos of your kids' artwork before storing - create a digital album",
+      "category": "Organization"
+    },
+    {
+      "tip": "Have a designated 'landing zone' for backpacks, shoes, and school papers",
+      "category": "Organization"
+    }
+  ],
+  "aboutMom": {
+    "name": "Sarah Johnson",
+    "title": "Mom of 3, Coffee Enthusiast, Chaos Coordinator",
+    "bio": "Hi there! I'm Sarah, a work-from-home mom to three amazing kids (ages 2, 5, and 8). I started this blog to share the real, unfiltered moments of motherhood - the beautiful, the messy, and everything in between.",
+    "location": "Portland, Oregon",
+    "kids": ["Emma (8)", "Jack (5)", "Lily (2)"],
+    "avatar": "/images/sarah-avatar.jpg"
+  },
+  "socialProof": {
+    "newsletter": "12,500+ subscribers",
+    "instagram": "25K followers",
+    "pinterest": "45K monthly views"
+  },
+  "navigation": [
+    {"name":"Home","url":"/"},
+    {"name":"Mom Life","url":"/category/mom-life"},
+    {"name":"Recipes","url":"/category/recipes"},
+    {"name":"Activities","url":"/category/activities"},
+    {"name":"About","url":"/about"}
+  ],
+  "subscribe_button":"Subscribe",
+  "search_placeholder":"Search mom tips...",
+  "hero":{
+    "title_part1":"Embracing the Beautiful",
+    "title_highlight":"Chaos",
+    "title_part2":"of Motherhood",
+    "subtitle":"Real stories, practical tips, and heartfelt moments from the journey of motherhood. Join me as we navigate this beautiful adventure together.",
+    "cta_primary":{"label":"Read Latest Posts","url":"/posts"},
+    "cta_secondary":{"label":"About Sarah","url":"/about"},
+    "stats":["📧 12,500+ subscribers","📱 25K Instagram followers"]
+  },
+  "social_links":[{"label":"Instagram","url":"https://instagram.com","emoji":"📸"},{"label":"Pinterest","url":"https://pinterest.com","emoji":"📌"},{"label":"Facebook","url":"https://facebook.com","emoji":"📘"}],
+  "footer_columns":[{"title":"Popular Posts","links":[{"label":"Morning Routines","url":"/tag/morning-routine"},{"label":"Easy Recipes","url":"/tag/easy-recipes"},{"label":"Toddler Activities","url":"/tag/toddler-activities"},{"label":"Mom Self-Care","url":"/tag/mom-self-care"}]},{"title":"Categories","links":[{"label":"Mom Life","url":"/category/mom-life"},{"label":"Family Recipes","url":"/category/recipes"},{"label":"Toddler Activities","url":"/category/activities"},{"label":"Self-Care","url":"/category/self-care"}]}],
+  "current_year":2024
+} 
