@@ -1,0 +1,36 @@
+<!-- Footer -->
+<footer class="bg-health-dark text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Brand & Description -->
+      <div class="lg:col-span-2">
+        <div class="flex items-center space-x-3 mb-6">
+          <div class="w-10 h-10 bg-health-green rounded-lg flex items-center justify-center">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+          </div>
+          <span class="text-2xl font-bold font-display">{{it.site.name}}</span>
+        </div>
+        <p class="text-green-100 mb-6 max-w-md">{{it.site.description}}</p>
+        <div class="flex space-x-4">
+          {{@each(it.social_links)=>s}}
+          <a href="{{s.url}}" class="bg-white/10 p-3 rounded-full hover:bg-health-green transition-colors" target="_blank" rel="noopener">{{s.icon}}</a>
+          {{/each}}
+        </div>
+      </div>
+      <!-- Quick Links -->
+      <div>
+        <h3 class="text-lg font-semibold mb-6">Quick Links</h3>
+        <ul class="space-y-3">
+          {{@each(it.navigation)=>link}}<li><a href="{{link.url}}" class="text-green-100 hover:text-white transition-colors">{{link.name}}</a></li>{{/each}}
+        </ul>
+      </div>
+      <!-- Newsletter -->
+      <div>
+        <h3 class="text-lg font-semibold mb-6">Newsletter</h3>
+        <p class="text-green-100 text-sm mb-4">Stay updated with our latest health insights.</p>
+        <form class="flex"><input type="email" placeholder="Email" class="flex-1 px-4 py-2 rounded-l-lg text-health-dark" required><button type="submit" class="bg-health-green px-4 py-2 rounded-r-lg hover:bg-health-emerald transition-colors">Subscribe</button></form>
+      </div>
+    </div>
+  </div>
+  <div class="bg-black/10"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-sm text-green-100">© {{new Date().getFullYear()}} {{it.site.name}}. All rights reserved.</div></div>
+</footer> 

@@ -1,0 +1,81 @@
+<!-- Post Content Section -->
+<article class="py-12 bg-white">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Category & Views -->
+    <div class="flex items-center space-x-4 mb-6">
+      <span class="bg-health-green text-white px-3 py-1 rounded-full text-sm font-medium">{{it.post.category}}</span>
+      <div class="flex items-center space-x-2 text-sm text-gray-500">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+        </svg>
+        <span>{{it.post.view_count}}</span>
+      </div>
+    </div>
+
+    <!-- Title -->
+    <h1 class="font-display text-3xl lg:text-4xl font-bold text-health-dark mb-6 leading-tight">{{it.post.title}}</h1>
+
+    <!-- Author & Meta -->
+    <div class="flex items-center justify-between flex-wrap gap-4 mb-8">
+      <div class="flex items-center space-x-4">
+        <img src="{{it.author.avatar}}" alt="{{it.author.name}}" class="w-12 h-12 rounded-full object-cover">
+        <div>
+          <div class="font-medium text-health-dark">{{it.author.name}}</div>
+          <div class="text-sm text-gray-500">{{it.author.role}}</div>
+        </div>
+      </div>
+      <div class="flex items-center space-x-6 text-sm text-gray-500">
+        <span>{{it.post.published_at}}</span>
+        <span>•</span>
+        <span>{{it.post.read_time}} min read</span>
+      </div>
+    </div>
+
+    <!-- Disclaimer -->
+    {{@if(it.post.disclaimer)}}
+    <div class="medical-disclaimer p-4 rounded-lg mb-8">
+      <p class="text-sm text-yellow-800"><strong>Medical Disclaimer:</strong> {{it.post.disclaimer}}</p>
+    </div>
+    {{/if}}
+
+    <!-- Featured Image -->
+    {{@if(it.post.featured_image)}}
+    <div class="mb-12"><img src="{{it.post.featured_image}}" alt="{{it.post.title}}"
+        class="w-full h-64 lg:h-96 object-cover rounded-2xl shadow-lg"></div>{{/if}}
+
+    <!-- Content -->
+    <div class="ProseMirror focus:outline-none max-w-full space-y-4 leading-relaxed">{{* it.post.content}}</div>
+
+    <footer class="mt-12 pt-8 border-t border-gray-200">
+      {{@if(it.post.tags)}}
+      <div class="flex flex-wrap gap-2 mb-6">
+        <span class="text-sm text-gray-600 mr-2">Tags:</span>
+        {{@each(it.post.tags)=>tag}}
+
+        <a href="/tag/{{tag}}"
+          class="bg-health-light text-health-dark px-3 py-1 rounded-full text-sm hover:bg-health-mint transition-colors">#{{tag}}</a>
+        {{/each}}
+      </div>
+
+      {{/if}}
+      <div class="bg-health-light p-6 rounded-xl">
+        <div class="flex items-center space-x-4">
+          <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=64&h=64&fit=crop&crop=face"
+            alt="Dr. Sarah Mitchell" class="w-16 h-16 rounded-full">
+          <div>
+            <h4 class="font-semibold text-health-dark">Dr. Sarah Mitchell</h4>
+            <p class="text-sm text-gray-600 mb-2">Sleep Medicine Specialist, MD</p>
+            <p class="text-sm text-gray-700">
+              Dr. Mitchell specializes in sleep medicine with over 15 years of clinical experience in healthcare
+              technology integration and patient care optimization.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Tags -->
+
+  </div>
+</article>

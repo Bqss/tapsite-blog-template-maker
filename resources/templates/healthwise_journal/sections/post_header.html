@@ -1,0 +1,97 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700;900&display=swap');
+
+  .article-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.1), 0 10px 10px -5px rgba(16, 185, 129, 0.04);
+  }
+
+  .medical-disclaimer {
+    background: linear-gradient(135deg, #FEF3C7 0%, #FEF7CD 100%);
+    border-left: 4px solid #F59E0B;
+  }
+
+  .article-content h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #065F46;
+    font-family: 'Merriweather', serif;
+  }
+
+  .article-content h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: #065F46;
+    font-family: 'Merriweather', serif;
+  }
+
+  .article-content p {
+    margin-bottom: 1.25rem;
+    line-height: 1.75;
+    color: #374151;
+  }
+
+  .article-content ul,
+  .article-content ol {
+    margin-bottom: 1.25rem;
+    padding-left: 1.5rem;
+  }
+
+  .article-content li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+
+  .article-content blockquote {
+    border-left: 4px solid #10B981;
+    padding-left: 1.5rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: #065F46;
+    background: #F0FDF4;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+  }
+</style>
+<!-- Medical Disclaimer -->
+<section class="py-4 bg-yellow-50 border-b border-yellow-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="medical-disclaimer p-4 rounded-lg">
+      <div class="flex items-start space-x-3">
+        <div class="flex-shrink-0">
+          <svg class="w-5 h-5 text-yellow-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
+          </svg>
+        </div>
+        <div>
+          <p class="text-sm text-yellow-800">
+            <strong>Medical Disclaimer:</strong> Content is for informational purposes only and should not replace
+            professional medical advice.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Breadcrumb -->
+<section class="py-4 bg-white border-b border-gray-200">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav class="flex items-center space-x-2 text-sm">
+      <a href="/home" class="text-gray-500 hover:text-health-green transition-colors">Home</a>
+      <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+      <a href="/category/Technology" class="text-gray-500 hover:text-health-green transition-colors">Technology</a>
+      <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+      <span class="text-gray-900">AI in Healthcare</span>
+    </nav>
+  </div>
+</section>

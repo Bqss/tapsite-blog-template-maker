@@ -1,0 +1,307 @@
+<!-- Medical Disclaimer -->
+<section class="py-4 bg-yellow-50 border-b border-yellow-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="medical-disclaimer p-4 rounded-lg">
+      <div class="flex items-start space-x-3">
+        <div class="flex-shrink-0">
+          <svg class="w-5 h-5 text-yellow-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z" />
+          </svg>
+        </div>
+        <div>
+          <p class="text-sm text-yellow-800">
+            <strong>Medical Disclaimer:</strong> Content is for informational purposes only and should not replace
+            professional medical advice.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Search Header -->
+<section class="bg-gradient-to-r from-health-green to-health-emerald py-16 text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h1 class="font-display text-4xl lg:text-5xl font-bold mb-4">Search Health Articles</h1>
+      <p class="text-xl text-green-100 max-w-2xl mx-auto mb-8">
+        Find evidence-based health information from our expert medical content library
+      </p>
+
+      <!-- Main Search Bar -->
+      <div class="max-w-2xl mx-auto">
+        <div class="relative">
+          <input type="text" placeholder="Search for health topics, symptoms, treatments..."
+            class="w-full px-6 py-4 pl-12 pr-16 text-gray-900 rounded-2xl focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50 text-lg">
+          <svg class="w-6 h-6 text-gray-400 absolute left-4 top-5" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <button
+            class="absolute right-2 top-2 bg-health-green text-white px-6 py-2 rounded-xl hover:bg-health-emerald transition-colors">
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Search Results -->
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Search Stats -->
+    <div class="mb-8">
+      <h2 class="text-2xl font-bold text-health-dark mb-2">Search Results</h2>
+      <p class="text-gray-600">Found 8 articles matching your search criteria</p>
+    </div>
+
+    <!-- Filters -->
+    <div class="flex flex-wrap gap-4 mb-8 pb-6 border-b border-gray-200">
+      <div class="flex items-center space-x-2">
+        <span class="text-sm font-medium text-gray-700">Filter by:</span>
+      </div>
+      <button class="bg-health-green text-white px-4 py-2 rounded-full text-sm font-medium">All Results</button>
+      <button
+        class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-health-light transition-colors">Technology</button>
+      <button
+        class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-health-light transition-colors">Business</button>
+      <button
+        class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-health-light transition-colors">Design</button>
+      <button
+        class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-health-light transition-colors">Parenting</button>
+    </div>
+
+    <!-- Search Results Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Result 1 -->
+      <article
+        class="article-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=250&fit=crop" alt="AI Healthcare"
+            class="w-full h-48 object-cover">
+          <div class="absolute top-4 left-4">
+            <span class="bg-health-green text-white px-3 py-1 rounded-full text-sm font-medium">Technology</span>
+          </div>
+          <div class="absolute bottom-4 right-4 bg-white bg-opacity-90 rounded-full px-3 py-1">
+            <div class="flex items-center space-x-1 text-sm text-gray-600">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              </svg>
+              <span>2.5K</span>
+            </div>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center space-x-4 mb-3">
+            <div class="flex items-center space-x-2">
+              <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=32&h=32&fit=crop&crop=face"
+                alt="Dr. Sarah" class="w-8 h-8 rounded-full">
+              <span class="text-sm text-gray-600">Dr. Sarah Mitchell</span>
+            </div>
+            <span class="text-sm text-gray-500">•</span>
+            <span class="text-sm text-gray-500">8 min read</span>
+          </div>
+          <h3 class="font-display text-xl font-bold text-health-dark mb-3 leading-tight">
+            AI in Healthcare: Transforming Patient Care
+          </h3>
+          <p class="text-gray-600 mb-4 leading-relaxed">
+            Discover how artificial intelligence is revolutionizing healthcare delivery, from diagnosis to treatment
+            planning.
+          </p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <span class="text-sm text-gray-500">Dec 15, 2024</span>
+            </div>
+            <a href="/post/ai-healthcare-patient-care"
+              class="text-health-green hover:text-health-emerald font-medium text-sm">Read More →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Result 2 -->
+      <article
+        class="article-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&h=250&fit=crop" alt="Telemedicine"
+            class="w-full h-48 object-cover">
+          <div class="absolute top-4 left-4">
+            <span class="bg-health-green text-white px-3 py-1 rounded-full text-sm font-medium">Technology</span>
+          </div>
+          <div class="absolute bottom-4 right-4 bg-white bg-opacity-90 rounded-full px-3 py-1">
+            <div class="flex items-center space-x-1 text-sm text-gray-600">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              </svg>
+              <span>5.7K</span>
+            </div>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center space-x-4 mb-3">
+            <div class="flex items-center space-x-2">
+              <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=32&h=32&fit=crop&crop=face"
+                alt="Dr. Maria" class="w-8 h-8 rounded-full">
+              <span class="text-sm text-gray-600">Dr. Maria Rodriguez</span>
+            </div>
+            <span class="text-sm text-gray-500">•</span>
+            <span class="text-sm text-gray-500">9 min read</span>
+          </div>
+          <h3 class="font-display text-xl font-bold text-health-dark mb-3 leading-tight">
+            Telemedicine Revolution: Remote Healthcare
+          </h3>
+          <p class="text-gray-600 mb-4 leading-relaxed">
+            Explore how telemedicine is transforming healthcare delivery and improving access to medical care.
+          </p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <span class="text-sm text-gray-500">Dec 11, 2024</span>
+            </div>
+            <a href="/post/telemedicine-remote-healthcare"
+              class="text-health-green hover:text-health-emerald font-medium text-sm">Read More →</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Result 3 -->
+      <article
+        class="article-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=250&fit=crop"
+            alt="Healthcare Apps" class="w-full h-48 object-cover">
+          <div class="absolute top-4 left-4">
+            <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">Design</span>
+          </div>
+          <div class="absolute bottom-4 right-4 bg-white bg-opacity-90 rounded-full px-3 py-1">
+            <div class="flex items-center space-x-1 text-sm text-gray-600">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              </svg>
+              <span>1.8K</span>
+            </div>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center space-x-4 mb-3">
+            <div class="flex items-center space-x-2">
+              <img src="https://images.unsplash.com/photo-1594824604989-b57a8b5ce969?w=32&h=32&fit=crop&crop=face"
+                alt="Dr. Jennifer" class="w-8 h-8 rounded-full">
+              <span class="text-sm text-gray-600">Dr. Jennifer Thompson</span>
+            </div>
+            <span class="text-sm text-gray-500">•</span>
+            <span class="text-sm text-gray-500">10 min read</span>
+          </div>
+          <h3 class="font-display text-xl font-bold text-health-dark mb-3 leading-tight">
+            Designing User-Friendly Healthcare Apps
+          </h3>
+          <p class="text-gray-600 mb-4 leading-relaxed">
+            Explore the principles of UX design that make healthcare applications effective and accessible.
+          </p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <span class="text-sm text-gray-500">Dec 13, 2024</span>
+            </div>
+            <a href="/post/healthcare-app-design"
+              class="text-health-green hover:text-health-emerald font-medium text-sm">Read More →</a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- No Results State (Hidden by default) -->
+    <div class="hidden text-center py-16">
+      <div class="max-w-md mx-auto">
+        <svg class="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+        <h3 class="text-xl font-semibold text-gray-900 mb-2">No results found</h3>
+        <p class="text-gray-600 mb-6">Try adjusting your search terms or browse our categories below.</p>
+        <div class="flex flex-wrap gap-2 justify-center">
+          <a href="/category/Technology"
+            class="bg-health-light text-health-dark px-4 py-2 rounded-full text-sm hover:bg-health-mint transition-colors">Technology</a>
+          <a href="/category/Business"
+            class="bg-health-light text-health-dark px-4 py-2 rounded-full text-sm hover:bg-health-mint transition-colors">Business</a>
+          <a href="/category/Design"
+            class="bg-health-light text-health-dark px-4 py-2 rounded-full text-sm hover:bg-health-mint transition-colors">Design</a>
+          <a href="/category/Parenting"
+            class="bg-health-light text-health-dark px-4 py-2 rounded-full text-sm hover:bg-health-mint transition-colors">Parenting</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="mt-16 flex justify-center">
+      <nav class="flex items-center space-x-2">
+        <button
+          class="px-4 py-2 text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+          Previous
+        </button>
+        <button class="px-4 py-2 text-white bg-health-green border border-health-green rounded-lg">1</button>
+        <button
+          class="px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">2</button>
+        <button
+          class="px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+          Next
+        </button>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- Search Suggestions -->
+<section class="py-16 bg-health-light">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="font-display text-3xl font-bold text-health-dark mb-8 text-center">Popular Search Topics</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <a href="/search/AI" class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center">
+        <span class="text-2xl mb-2 block">🤖</span>
+        <span class="font-medium text-health-dark">AI</span>
+      </a>
+      <a href="/search/Teknologi"
+        class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center">
+        <span class="text-2xl mb-2 block">💻</span>
+        <span class="font-medium text-health-dark">Teknologi</span>
+      </a>
+      <a href="/search/Bisnis" class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center">
+        <span class="text-2xl mb-2 block">💼</span>
+        <span class="font-medium text-health-dark">Bisnis</span>
+      </a>
+      <a href="/search/Parenting"
+        class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center">
+        <span class="text-2xl mb-2 block">👨‍👩‍👧‍👦</span>
+        <span class="font-medium text-health-dark">Parenting</span>
+      </a>
+      <a href="/search/Indonesia"
+        class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center">
+        <span class="text-2xl mb-2 block">🇮🇩</span>
+        <span class="font-medium text-health-dark">Indonesia</span>
+      </a>
+      <a href="/search/Keluarga"
+        class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center">
+        <span class="text-2xl mb-2 block">❤️</span>
+        <span class="font-medium text-health-dark">Keluarga</span>
+      </a>
+      <a href="/search/UMKM" class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center">
+        <span class="text-2xl mb-2 block">🏪</span>
+        <span class="font-medium text-health-dark">UMKM</span>
+      </a>
+      <a href="/search/Digitalisasi"
+        class="bg-white p-4 rounded-xl shadow-sm hover:shadow-md transition-shadow text-center">
+        <span class="text-2xl mb-2 block">📱</span>
+        <span class="font-medium text-health-dark">Digitalisasi</span>
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,61 @@
+{
+  "title": "HealthWise Journal - Your Guide to Wellness & Healthy Living",
+  "description": "Evidence-based health insights, expert medical advice, and practical wellness tips",
+  "sections": [
+    {
+      "title": "styles",
+      "id": "styles",
+      "type": "template",
+      "resetable": true
+    },
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": ["site.name", "site.logo", "navigation", "subscribe_button"]
+    },
+    {
+      "title": "hero",
+      "id": "hero",
+      "type": "template",
+      "resetable": true,
+      "data": ["hero"]
+    },
+    {
+      "title": "featured articles",
+      "id": "featured_articles",
+      "type": "template",
+      "resetable": true,
+      "data": ["featured"]
+    },
+    {
+      "title": "health topics",
+      "id": "health_topics",
+      "type": "template",
+      "resetable": true,
+      "data": []
+    },
+    {
+      "title": "daily tips",
+      "id": "daily_tips",
+      "type": "template",
+      "resetable": true,
+      "data": []
+    },
+    {
+      "title": "newsletter",
+      "id": "newsletter",
+      "type": "template",
+      "resetable": true,
+      "data": []
+    },
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": ["site.name", "site.description", "navigation", "social_links"]
+    }
+  ]
+}

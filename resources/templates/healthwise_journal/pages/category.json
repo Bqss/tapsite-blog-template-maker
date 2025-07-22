@@ -1,0 +1,38 @@
+{
+  "title": "Technology in Healthcare - HealthWise Journal",
+  "description": "Explore how technology is transforming healthcare delivery, patient care, and medical innovation. Expert insights on AI, telemedicine, digital health, and healthcare technology trends.",
+  "sections": [
+    {
+      "title": "styles",
+      "id": "styles",
+      "type": "template",
+      "resetable": true
+    },
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": ["site.name", "navigation", "subscribe_button"]
+    },
+    {
+      "title": "category posts",
+      "id": "category_posts",
+      "type": "template",
+      "resetable": true
+    },
+    {
+      "title": "subscribe",
+      "id": "subscribe",
+      "type": "template",
+      "resetable": true
+    },
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": ["site.name", "site.description", "navigation", "social_links"]
+    }
+  ]
+}

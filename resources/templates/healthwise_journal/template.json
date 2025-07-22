@@ -1,0 +1,9 @@
+{
+  "title" : "HealthWise Journal",
+  "description" : "Health & Wellness blog with medical-friendly layouts and expert content",
+  "template_id" : "healthwise_journal",
+  "creator_name" : "Maulana Shalihin",
+  "creator_website" : "https://tapsite.ai",
+  "version" : "1.0.0",
+  "thumbnail" : "/templates/healthwise_journal/thumbnail.webp"
+}

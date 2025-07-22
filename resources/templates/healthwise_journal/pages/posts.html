@@ -1,0 +1,494 @@
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'health-green': '#10B981',
+                        'health-emerald': '#059669',
+                        'health-mint': '#34D399',
+                        'health-light': '#F0FDF4',
+                        'health-dark': '#065F46',
+                        'health-gray': '#374151'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'display': ['Merriweather', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@300;400;700;900&display=swap');
+        
+        .article-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.1), 0 10px 10px -5px rgba(16, 185, 129, 0.04);
+        }
+        
+        .medical-disclaimer {
+            background: linear-gradient(135deg, #FEF3C7 0%, #FEF7CD 100%);
+            border-left: 4px solid #F59E0B;
+        }
+    </style>
+
+    <div class="bg-health-light min-h-screen font-sans text-health-dark">
+        <!-- Navigation -->
+        <nav class="bg-white shadow-sm border-b border-health-mint/20 sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-health-green rounded-lg flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                            </svg>
+                        </div>
+                        <span class="font-display text-xl font-bold text-health-dark">HealthWise Journal</span>
+                    </div>
+                    
+                    <!-- Desktop Navigation -->
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="/home" class="text-gray-600 hover:text-health-green transition-colors font-medium">Home</a>
+                        <a href="/posts" class="text-health-green font-medium border-b-2 border-health-green pb-1">All Articles</a>
+                        <a href="/category/Technology" class="text-gray-600 hover:text-health-green transition-colors font-medium">Technology</a>
+                        <a href="/category/Business" class="text-gray-600 hover:text-health-green transition-colors font-medium">Business</a>
+                        <a href="/category/Design" class="text-gray-600 hover:text-health-green transition-colors font-medium">Design</a>
+                        <a href="/category/Parenting" class="text-gray-600 hover:text-health-green transition-colors font-medium">Parenting</a>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4">
+                        <button class="text-gray-600 hover:text-health-green transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                        </button>
+                        <button class="bg-health-green text-white px-4 py-2 rounded-lg font-medium hover:bg-health-emerald transition-colors">
+                            Subscribe
+                        </button>
+                        <button class="md:hidden text-gray-600 hover:text-health-green transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Medical Disclaimer -->
+        <section class="py-4 bg-yellow-50 border-b border-yellow-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="medical-disclaimer p-4 rounded-lg">
+                    <div class="flex items-start space-x-3">
+                        <div class="flex-shrink-0">
+                            <svg class="w-5 h-5 text-yellow-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="text-sm text-yellow-800">
+                                <strong>Medical Disclaimer:</strong> Content is for informational purposes only and should not replace professional medical advice.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page Header -->
+        <section class="bg-gradient-to-r from-health-green to-health-emerald py-16 text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <h1 class="font-display text-4xl lg:text-5xl font-bold mb-4">Health & Wellness Articles</h1>
+                    <p class="text-xl text-green-100 max-w-2xl mx-auto">
+                        Evidence-based health insights from medical experts and wellness professionals
+                    </p>
+                    <div class="mt-8 flex items-center justify-center space-x-6 text-green-100">
+                        <div class="flex items-center space-x-2">
+                            <span class="text-2xl">📚</span>
+                            <span>500+ Articles</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span class="text-2xl">🩺</span>
+                            <span>Expert Reviewed</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span class="text-2xl">🔬</span>
+                            <span>Evidence-Based</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filters & Search -->
+        <section class="py-8 bg-white border-b border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row gap-6 items-center justify-between">
+                    <div class="flex flex-wrap gap-3">
+                        <button class="bg-health-green text-white px-4 py-2 rounded-full font-medium">All Topics</button>
+                        <button class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-medium hover:bg-health-light transition-colors">Technology</button>
+                        <button class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-medium hover:bg-health-light transition-colors">Business</button>
+                        <button class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-medium hover:bg-health-light transition-colors">Design</button>
+                        <button class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full font-medium hover:bg-health-light transition-colors">Parenting</button>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="relative">
+                            <input type="text" placeholder="Search articles..." class="w-64 pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-health-green focus:border-transparent">
+                            <svg class="w-5 h-5 text-gray-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                        </div>
+                        <select class="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-health-green">
+                            <option>Latest</option>
+                            <option>Most Popular</option>
+                            <option>Most Viewed</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Articles Grid -->
+        <section class="py-16 bg-health-light">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Article 1 -->
+                    <article class="article-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=250&fit=crop" alt="Mental Health" class="w-full h-48 object-cover">
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-health-green text-white px-3 py-1 rounded-full text-sm font-medium">Technology</span>
+                            </div>
+                            <div class="absolute bottom-4 right-4 bg-white bg-opacity-90 rounded-full px-3 py-1">
+                                <div class="flex items-center space-x-1 text-sm text-gray-600">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                    </svg>
+                                    <span>2.5K</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center space-x-4 mb-3">
+                                <div class="flex items-center space-x-2">
+                                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=32&h=32&fit=crop&crop=face" alt="Dr. Sarah" class="w-8 h-8 rounded-full">
+                                    <span class="text-sm text-gray-600">Dr. Sarah Mitchell</span>
+                                </div>
+                                <span class="text-sm text-gray-500">•</span>
+                                <span class="text-sm text-gray-500">8 min read</span>
+                            </div>
+                            <h3 class="font-display text-xl font-bold text-health-dark mb-3 leading-tight">
+                                AI in Healthcare: Transforming Patient Care Through Technology
+                            </h3>
+                            <p class="text-gray-600 mb-4 leading-relaxed">
+                                Discover how artificial intelligence is revolutionizing healthcare delivery, from diagnosis to treatment planning and patient monitoring.
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-sm text-gray-500">Dec 15, 2024</span>
+                                </div>
+                                <a href="/post/ai-healthcare-patient-care" class="text-health-green hover:text-health-emerald font-medium text-sm">Read More →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 2 -->
+                    <article class="article-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&h=250&fit=crop" alt="Nutrition" class="w-full h-48 object-cover">
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium">Business</span>
+                            </div>
+                            <div class="absolute bottom-4 right-4 bg-white bg-opacity-90 rounded-full px-3 py-1">
+                                <div class="flex items-center space-x-1 text-sm text-gray-600">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                    </svg>
+                                    <span>3.2K</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center space-x-4 mb-3">
+                                <div class="flex items-center space-x-2">
+                                    <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=32&h=32&fit=crop&crop=face" alt="Dr. Maria" class="w-8 h-8 rounded-full">
+                                    <span class="text-sm text-gray-600">Dr. Maria Rodriguez</span>
+                                </div>
+                                <span class="text-sm text-gray-500">•</span>
+                                <span class="text-sm text-gray-500">12 min read</span>
+                            </div>
+                            <h3 class="font-display text-xl font-bold text-health-dark mb-3 leading-tight">
+                                Building a Sustainable Healthcare Business Model
+                            </h3>
+                            <p class="text-gray-600 mb-4 leading-relaxed">
+                                Learn how healthcare entrepreneurs are creating sustainable business models that prioritize patient outcomes while maintaining profitability.
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-sm text-gray-500">Dec 14, 2024</span>
+                                </div>
+                                <a href="/post/sustainable-healthcare-business" class="text-health-green hover:text-health-emerald font-medium text-sm">Read More →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 3 -->
+                    <article class="article-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=250&fit=crop" alt="Fitness" class="w-full h-48 object-cover">
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">Design</span>
+                            </div>
+                            <div class="absolute bottom-4 right-4 bg-white bg-opacity-90 rounded-full px-3 py-1">
+                                <div class="flex items-center space-x-1 text-sm text-gray-600">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                    </svg>
+                                    <span>1.8K</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center space-x-4 mb-3">
+                                <div class="flex items-center space-x-2">
+                                    <img src="https://images.unsplash.com/photo-1594824604989-b57a8b5ce969?w=32&h=32&fit=crop&crop=face" alt="Dr. Jennifer" class="w-8 h-8 rounded-full">
+                                    <span class="text-sm text-gray-600">Dr. Jennifer Thompson</span>
+                                </div>
+                                <span class="text-sm text-gray-500">•</span>
+                                <span class="text-sm text-gray-500">10 min read</span>
+                            </div>
+                            <h3 class="font-display text-xl font-bold text-health-dark mb-3 leading-tight">
+                                Designing User-Friendly Healthcare Apps
+                            </h3>
+                            <p class="text-gray-600 mb-4 leading-relaxed">
+                                Explore the principles of UX design that make healthcare applications accessible, intuitive, and effective for patients and providers.
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-sm text-gray-500">Dec 13, 2024</span>
+                                </div>
+                                <a href="/post/healthcare-app-design" class="text-health-green hover:text-health-emerald font-medium text-sm">Read More →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 4 -->
+                    <article class="article-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=250&fit=crop" alt="Parenting" class="w-full h-48 object-cover">
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-pink-600 text-white px-3 py-1 rounded-full text-sm font-medium">Parenting</span>
+                            </div>
+                            <div class="absolute bottom-4 right-4 bg-white bg-opacity-90 rounded-full px-3 py-1">
+                                <div class="flex items-center space-x-1 text-sm text-gray-600">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                    </svg>
+                                    <span>4.1K</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center space-x-4 mb-3">
+                                <div class="flex items-center space-x-2">
+                                    <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=32&h=32&fit=crop&crop=face" alt="Dr. Sarah" class="w-8 h-8 rounded-full">
+                                    <span class="text-sm text-gray-600">Dr. Sarah Mitchell</span>
+                                </div>
+                                <span class="text-sm text-gray-500">•</span>
+                                <span class="text-sm text-gray-500">6 min read</span>
+                            </div>
+                            <h3 class="font-display text-xl font-bold text-health-dark mb-3 leading-tight">
+                                Mindful Parenting: Raising Emotionally Healthy Children
+                            </h3>
+                            <p class="text-gray-600 mb-4 leading-relaxed">
+                                Discover evidence-based strategies for nurturing your child's emotional intelligence and building strong parent-child relationships.
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-sm text-gray-500">Dec 12, 2024</span>
+                                </div>
+                                <a href="/post/mindful-parenting-emotional-health" class="text-health-green hover:text-health-emerald font-medium text-sm">Read More →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 5 -->
+                    <article class="article-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&h=250&fit=crop" alt="Technology" class="w-full h-48 object-cover">
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-health-green text-white px-3 py-1 rounded-full text-sm font-medium">Technology</span>
+                            </div>
+                            <div class="absolute bottom-4 right-4 bg-white bg-opacity-90 rounded-full px-3 py-1">
+                                <div class="flex items-center space-x-1 text-sm text-gray-600">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                    </svg>
+                                    <span>5.7K</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center space-x-4 mb-3">
+                                <div class="flex items-center space-x-2">
+                                    <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=32&h=32&fit=crop&crop=face" alt="Dr. Maria" class="w-8 h-8 rounded-full">
+                                    <span class="text-sm text-gray-600">Dr. Maria Rodriguez</span>
+                                </div>
+                                <span class="text-sm text-gray-500">•</span>
+                                <span class="text-sm text-gray-500">9 min read</span>
+                            </div>
+                            <h3 class="font-display text-xl font-bold text-health-dark mb-3 leading-tight">
+                                Telemedicine Revolution: The Future of Remote Healthcare
+                            </h3>
+                            <p class="text-gray-600 mb-4 leading-relaxed">
+                                Explore how telemedicine is transforming healthcare delivery and improving access to medical care for patients worldwide.
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-sm text-gray-500">Dec 11, 2024</span>
+                                </div>
+                                <a href="/post/telemedicine-remote-healthcare" class="text-health-green hover:text-health-emerald font-medium text-sm">Read More →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 6 -->
+                    <article class="article-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=400&h=250&fit=crop" alt="Business" class="w-full h-48 object-cover">
+                            <div class="absolute top-4 left-4">
+                                <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium">Business</span>
+                            </div>
+                            <div class="absolute bottom-4 right-4 bg-white bg-opacity-90 rounded-full px-3 py-1">
+                                <div class="flex items-center space-x-1 text-sm text-gray-600">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                    </svg>
+                                    <span>2.9K</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center space-x-4 mb-3">
+                                <div class="flex items-center space-x-2">
+                                    <img src="https://images.unsplash.com/photo-1594824604989-b57a8b5ce969?w=32&h=32&fit=crop&crop=face" alt="Dr. Jennifer" class="w-8 h-8 rounded-full">
+                                    <span class="text-sm text-gray-600">Dr. Jennifer Thompson</span>
+                                </div>
+                                <span class="text-sm text-gray-500">•</span>
+                                <span class="text-sm text-gray-500">11 min read</span>
+                            </div>
+                            <h3 class="font-display text-xl font-bold text-health-dark mb-3 leading-tight">
+                                Healthcare Startups: Innovation in Digital Health
+                            </h3>
+                            <p class="text-gray-600 mb-4 leading-relaxed">
+                                Discover the latest trends in healthcare entrepreneurship and how digital health startups are revolutionizing patient care.
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-2">
+                                    <span class="text-sm text-gray-500">Dec 10, 2024</span>
+                                </div>
+                                <a href="/post/healthcare-startups-digital-health" class="text-health-green hover:text-health-emerald font-medium text-sm">Read More →</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Pagination -->
+                <div class="mt-16 flex justify-center">
+                    <nav class="flex items-center space-x-2">
+                        <button class="px-4 py-2 text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+                            Previous
+                        </button>
+                        <button class="px-4 py-2 text-white bg-health-green border border-health-green rounded-lg">1</button>
+                        <button class="px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">2</button>
+                        <button class="px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">3</button>
+                        <button class="px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+                            Next
+                        </button>
+                    </nav>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter -->
+        <section class="py-16 bg-gradient-to-r from-health-green to-health-emerald text-white">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="font-display text-3xl font-bold mb-4">Stay Updated with Health Insights</h2>
+                <p class="text-xl text-green-100 mb-8">Get evidence-based health tips and expert advice delivered to your inbox</p>
+                <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                    <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-white">
+                    <button class="bg-white text-health-green px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                        Subscribe
+                    </button>
+                </div>
+                <p class="text-sm text-green-200 mt-4">No spam, unsubscribe anytime</p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-health-dark text-white py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div class="col-span-1 md:col-span-2">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="w-10 h-10 bg-health-green rounded-lg flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                </svg>
+                            </div>
+                            <span class="font-display text-xl font-bold">HealthWise Journal</span>
+                        </div>
+                        <p class="text-gray-300 mb-6 leading-relaxed">
+                            Evidence-based health insights and expert medical advice to help you live your healthiest life. All content is medically reviewed by qualified healthcare professionals.
+                        </p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-4">Health Topics</h4>
+                        <ul class="space-y-2">
+                            <li><a href="/category/Technology" class="text-gray-300 hover:text-white transition-colors">Technology</a></li>
+                            <li><a href="/category/Business" class="text-gray-300 hover:text-white transition-colors">Business</a></li>
+                            <li><a href="/category/Design" class="text-gray-300 hover:text-white transition-colors">Design</a></li>
+                            <li><a href="/category/Parenting" class="text-gray-300 hover:text-white transition-colors">Parenting</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-4">Quick Links</h4>
+                        <ul class="space-y-2">
+                            <li><a href="/posts" class="text-gray-300 hover:text-white transition-colors">All Articles</a></li>
+                            <li><a href="/search" class="text-gray-300 hover:text-white transition-colors">Search</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">About Us</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+                    <p>&copy; 2024 HealthWise Journal. All rights reserved. Medical content reviewed by qualified healthcare professionals.</p>
+                </div>
+            </div>
+        </footer>
+    </div> 
