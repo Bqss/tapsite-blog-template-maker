@@ -1,0 +1,61 @@
+<!-- Featured Posts -->
+<section class="py-12 sm:py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12 sm:mb-16">
+            <h2 class="section-title text-3xl sm:text-4xl font-bold text-gray-900 mb-4">{{it.featured.title}}</h2>
+            <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
+                {{it.featured.description}}
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+            <!-- Main Featured Post -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-xl">
+                <div class="relative h-64">
+                    <img src="{{it.featured.main.image}}" 
+                         alt="{{it.featured.main.title}}" 
+                         class="w-full h-full object-cover">
+                    <div class="absolute top-4 left-4">
+                        <span class="bg-emerald-600 text-white px-3 py-1 rounded-full text-sm font-semibold">{{it.featured.main.badge}}</span>
+                    </div>
+                </div>
+                <div class="p-8">
+                    <div class="flex items-center space-x-4 mb-4">
+                        <span class="text-sm text-gray-500">{{it.featured.main.date}}</span>
+                        <span class="text-sm text-gray-500">•</span>
+                        <span class="text-sm text-gray-500">{{it.featured.main.read_time}} min read</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">{{it.featured.main.title}}</h3>
+                    <p class="text-gray-600 mb-6">{{it.featured.main.excerpt}}</p>
+                    <a href="{{it.featured.main.url}}" class="inline-flex items-center text-emerald-600 hover:text-emerald-800 font-semibold">
+                        {{it.featured.main.cta_text}}
+                        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Secondary Featured Posts -->
+            <div class="space-y-6">
+                {{@each(it.featured.secondary)=>post}}
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-start space-x-4">
+                        <img src="{{post.image}}" 
+                             alt="{{post.title}}" 
+                             class="w-20 h-20 object-cover rounded-lg flex-shrink-0">
+                        <div>
+                            <h4 class="text-lg font-bold text-gray-900 mb-2">{{post.title}}</h4>
+                            <p class="text-gray-600 text-sm mb-3">{{post.excerpt}}</p>
+                            <div class="flex items-center space-x-4 text-xs text-gray-500">
+                                <span>{{post.date}}</span>
+                                <span>{{post.read_time}} min read</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</section> 

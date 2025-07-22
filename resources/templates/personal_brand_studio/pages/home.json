@@ -1,0 +1,98 @@
+{
+  "title": "Personal Brand Studio - Building Brands That Inspire & Connect",
+  "description": "Professional brand strategist and creative director helping businesses create authentic connections through compelling visual storytelling and strategic design",
+  "sections": [
+    {
+      "title": "styles",
+      "id": "styles",
+      "type": "template",
+      "resetable": true
+    },
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "site.name",
+        "site.logo",
+        "navigation"
+      ]
+    },
+    {
+      "title": "hero",
+      "id": "hero",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "hero"
+      ]
+    },
+    {
+      "title": "about",
+      "id": "about",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "about"
+      ]
+    },
+    {
+      "title": "featured posts",
+      "id": "featured_posts",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "featured"
+      ]
+    },
+    {
+      "title": "services",
+      "id": "services",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "services"
+      ]
+    },
+    {
+      "title": "portfolio",
+      "id": "portfolio",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "portfolio"
+      ]
+    },
+    {
+      "title": "testimonials",
+      "id": "testimonials",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "testimonials"
+      ]
+    },
+    {
+      "title": "contact",
+      "id": "contact",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "contact"
+      ]
+    },
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "site.name",
+        "site.description",
+        "navigation",
+        "social_links"
+      ]
+    }
+  ]
+} 

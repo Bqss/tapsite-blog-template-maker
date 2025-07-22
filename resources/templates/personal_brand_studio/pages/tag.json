@@ -1,0 +1,65 @@
+{
+  "sections": [
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "blog_title",
+        "blog_logo",
+        "navigation"
+      ]
+    },
+    {
+      "title": "tag_header",
+      "id": "tag_header",
+      "type": "html",
+      "resetable": true,
+      "data": [
+        "tag",
+        "author"
+      ]
+    },
+    {
+      "title": "expertise_context",
+      "id": "expertise_context",
+      "type": "html",
+      "resetable": true,
+      "data": [
+        "author.expertise",
+        "tag"
+      ]
+    },
+    {
+      "title": "tag_posts_grid",
+      "id": "tag_posts_grid",
+      "type": "html",
+      "resetable": true,
+      "data": [
+        "posts",
+        "tag"
+      ]
+    },
+    {
+      "title": "related_expertise",
+      "id": "related_expertise",
+      "type": "html",
+      "resetable": true,
+      "data": [
+        "related_tags",
+        "author.expertise"
+      ]
+    },
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "html",
+      "resetable": true,
+      "data": [
+        "author",
+        "social_media"
+      ]
+    }
+  ]
+} 

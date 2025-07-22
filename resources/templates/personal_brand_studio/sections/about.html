@@ -1,0 +1,31 @@
+<!-- About Author Section -->
+<section class="py-12 sm:py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+            <div class="mobile-padding">
+                <h2 class="section-title text-3xl sm:text-4xl font-bold text-gray-900 mb-6">{{it.about.title}}</h2>
+                {{@each(it.about.paragraphs)=>paragraph}}
+                <p class="text-base sm:text-lg text-gray-600 mb-6 leading-relaxed">
+                    {{paragraph}}
+                </p>
+                {{/each}}
+                <div class="flex items-center space-x-6">
+                    {{@each(it.about.social_links)=>link}}
+                    <a href="{{link.url}}" class="text-emerald-600 hover:text-emerald-800 transition-colors">
+                        {{* link.icon}}
+                    </a>
+                    {{/each}}
+                </div>
+            </div>
+            <div class="relative mt-8 lg:mt-0">
+                <img src="{{it.about.image.url}}" 
+                     alt="{{it.about.image.alt}}" 
+                     class="w-full h-64 sm:h-96 object-cover rounded-2xl shadow-2xl">
+                <div class="absolute -bottom-4 -right-4 sm:-bottom-8 sm:-right-8 bg-emerald-600 text-white p-4 sm:p-6 rounded-2xl shadow-xl">
+                    <div class="text-xl sm:text-2xl font-bold">{{it.about.experience.years}}</div>
+                    <div class="text-emerald-100 text-sm sm:text-base">{{it.about.experience.label}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> 
