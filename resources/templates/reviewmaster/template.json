@@ -1,0 +1,9 @@
+{
+  "title" : "ReviewMaster",
+  "description" : "Product Reviews blog with rating systems and comparison layouts",
+  "template_id" : "reviewmaster",
+  "creator_name" : "Maulana Shalihin",
+  "creator_website" : "https://tapsite.ai",
+  "version" : "1.0.0",
+  "thumbnail" : "/templates/reviewmaster/thumbnail.webp"
+}

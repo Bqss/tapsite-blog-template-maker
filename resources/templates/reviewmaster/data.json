@@ -1,0 +1,219 @@
+{
+  "site": {
+    "name": "ReviewMaster",
+    "tagline": "Honest Reviews, Smart Choices",
+    "description": "In-depth product reviews, comparisons, and buying guides to help you make informed decisions",
+    "logo": "/images/reviewmaster-logo.png"
+  },
+  "posts": [
+    {
+      "id": "0197befd-a58b-8001-a4af-76163759407a",
+      "title": "iPhone 15 Pro vs Samsung Galaxy S24 Ultra: Ultimate Comparison",
+      "slug": "iphone-15-pro-vs-samsung-galaxy-s24-ultra-ultimate-comparison",
+      "excerpt": "We put these flagship smartphones head-to-head in our most comprehensive comparison yet.",
+      "content": "After weeks of testing both devices in real-world conditions, we're ready to declare a winner...",
+      "category": "Smartphones",
+      "author": "Tech Review Team",
+      "read_time": 12,
+      "featured_image": "/images/phone-comparison.jpg",
+      "tags": "iPhone,Samsung,Flagship,Comparison",
+      "views": 2450,
+      "published_at": 1705276800000,
+      "created_at": 1705276800000,
+      "updated_at": 1705276800000
+    },
+    {
+      "id": "0197befd-a58b-8002-a4af-76163759407b",
+      "title": "Best Wireless Earbuds Under $100 (2024 Edition)",
+      "slug": "best-wireless-earbuds-under-100-2024-edition",
+      "excerpt": "Our top picks for budget-friendly wireless earbuds that don't compromise on sound quality.",
+      "content": "Finding great wireless earbuds on a budget can be challenging, but these options prove...",
+      "category": "Audio",
+      "author": "Audio Expert",
+      "read_time": 8,
+      "featured_image": "/images/wireless-earbuds.jpg",
+      "tags": "Earbuds,Budget,Audio,Wireless",
+      "views": 1890,
+      "published_at": 1705017600000,
+      "created_at": 1705017600000,
+      "updated_at": 1705017600000
+    },
+    {
+      "id": "0197befd-a58b-8003-a4af-76163759407c",
+      "title": "MacBook Air M3 Review: The Perfect Laptop for Most People",
+      "slug": "macbook-air-m3-review-the-perfect-laptop-for-most-people",
+      "excerpt": "Apple's latest MacBook Air strikes the perfect balance between performance, portability, and price.",
+      "content": "The new MacBook Air with M3 chip represents everything we love about Apple's approach...",
+      "category": "Laptops",
+      "author": "Laptop Specialist",
+      "read_time": 10,
+      "featured_image": "/images/macbook-air-m3.jpg",
+      "tags": "MacBook,Apple,M3,Laptop",
+      "views": 3200,
+      "published_at": 1704844800000,
+      "created_at": 1704844800000,
+      "updated_at": 1704844800000
+    },
+    {
+      "id": "0197befd-a58b-8004-a4af-76163759407d",
+      "title": "Sony WH-1000XM5 Review: Still the King of Noise Cancellation",
+      "slug": "sony-wh-1000xm5-review-still-the-king-of-noise-cancellation",
+      "excerpt": "Sony's flagship headphones continue to dominate the premium audio market with exceptional noise cancellation.",
+      "content": "The Sony WH-1000XM5 represents the pinnacle of noise-canceling headphone technology...",
+      "category": "Audio",
+      "author": "Audio Expert",
+      "read_time": 9,
+      "featured_image": "/images/sony-headphones.jpg",
+      "tags": "Sony,Headphones,Noise Cancellation,Premium",
+      "views": 2100,
+      "published_at": 1704758400000,
+      "created_at": 1704758400000,
+      "updated_at": 1704758400000
+    },
+    {
+      "id": "0197befd-a58b-8005-a4af-76163759407e",
+      "title": "Gaming Laptop Showdown: ROG vs Alienware vs MSI",
+      "slug": "gaming-laptop-showdown-rog-vs-alienware-vs-msi",
+      "excerpt": "We test three flagship gaming laptops to determine which offers the best performance for serious gamers.",
+      "content": "Gaming laptops have evolved significantly, and these three represent the current state of the art...",
+      "category": "Gaming",
+      "author": "Gaming Specialist",
+      "read_time": 15,
+      "featured_image": "/images/gaming-laptops.jpg",
+      "tags": "Gaming,Laptop,ROG,Alienware,MSI",
+      "views": 1750,
+      "published_at": 1704672000000,
+      "created_at": 1704672000000,
+      "updated_at": 1704672000000
+    },
+    {
+      "id": "0197befd-a58b-8006-a4af-76163759407f",
+      "title": "Smart Home Security Systems: Complete Buyer's Guide 2024",
+      "slug": "smart-home-security-systems-complete-buyers-guide-2024",
+      "excerpt": "Everything you need to know about choosing the right smart security system for your home.",
+      "content": "Home security has gone digital, and choosing the right system can be overwhelming...",
+      "category": "Smart Home",
+      "author": "Smart Home Expert",
+      "read_time": 11,
+      "featured_image": "/images/smart-security.jpg",
+      "tags": "Smart Home,Security,Home Automation,Guide",
+      "views": 1320,
+      "published_at": 1704585600000,
+      "created_at": 1704585600000,
+      "updated_at": 1704585600000
+    }
+  ],
+  "categories": [
+    {
+      "name": "Smartphones",
+      "description": "Latest phone reviews and comparisons",
+      "icon": "📱",
+      "color": "#1E40AF",
+      "count": 45
+    },
+    {
+      "name": "Laptops",
+      "description": "Comprehensive laptop reviews",
+      "icon": "💻",
+      "color": "#059669",
+      "count": 38
+    },
+    {
+      "name": "Audio",
+      "description": "Headphones, speakers, and audio gear",
+      "icon": "🎧",
+      "color": "#F59E0B",
+      "count": 32
+    },
+    {
+      "name": "Gaming",
+      "description": "Gaming hardware and accessories",
+      "icon": "🎮",
+      "color": "#8B5CF6",
+      "count": 28
+    },
+    {
+      "name": "Smart Home",
+      "description": "Connected home devices",
+      "icon": "🏠",
+      "color": "#EC4899",
+      "count": 24
+    },
+    {
+      "name": "Cameras",
+      "description": "Camera and photography gear",
+      "icon": "📷",
+      "color": "#DC2626",
+      "count": 22
+    }
+  ],
+  "featuredProducts": [
+    {
+      "name": "iPhone 15 Pro",
+      "category": "Smartphones",
+      "rating": 4.7,
+      "price": "$999",
+      "image": "/images/iphone-15-pro.jpg",
+      "pros": ["Excellent camera", "Premium build", "Fast performance"],
+      "cons": ["Expensive", "No USB-C to Lightning adapter"]
+    },
+    {
+      "name": "Sony WH-1000XM5",
+      "category": "Audio",
+      "rating": 4.8,
+      "price": "$399",
+      "image": "/images/sony-headphones.jpg",
+      "pros": ["Best-in-class ANC", "Excellent sound", "Comfortable"],
+      "cons": ["Not foldable", "Touch controls can be finicky"]
+    },
+    {
+      "name": "MacBook Air M3",
+      "category": "Laptops",
+      "rating": 4.6,
+      "price": "$1,099",
+      "image": "/images/macbook-air.jpg",
+      "pros": ["Great performance", "Long battery life", "Lightweight"],
+      "cons": ["Limited ports", "Only 8GB base RAM"]
+    }
+  ],
+  "reviewCriteria": [
+    {
+      "name": "Design & Build",
+      "weight": "20%",
+      "description": "Materials, construction quality, and aesthetics"
+    },
+    {
+      "name": "Performance",
+      "weight": "30%",
+      "description": "Speed, responsiveness, and real-world usage"
+    },
+    {
+      "name": "Features",
+      "weight": "25%",
+      "description": "Functionality and unique capabilities"
+    },
+    {
+      "name": "Value",
+      "weight": "25%",
+      "description": "Price-to-performance ratio and competition"
+    }
+  ],
+  "testingProcess": [
+    {
+      "step": "Unboxing & First Impressions",
+      "description": "Initial setup and out-of-box experience"
+    },
+    {
+      "step": "Real-World Testing",
+      "description": "Extended use in typical scenarios"
+    },
+    {
+      "step": "Benchmark Testing",
+      "description": "Objective performance measurements"
+    },
+    {
+      "step": "Comparison Analysis",
+      "description": "Head-to-head with competitors"
+    }
+  ]
+} 

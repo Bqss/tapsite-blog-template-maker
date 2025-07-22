@@ -1,0 +1,44 @@
+{
+  "title": "{{category.name}} Reviews - ReviewMaster",
+  "description": "{{category.description}} - Browse expert {{category.name}} reviews and buying guides. In-depth analysis and comparisons to help you make informed decisions.",
+  "keywords": "{{category.name}}, {{category.name}} reviews, product reviews, buying guides, tech reviews, product comparisons",
+  "author": "ReviewMaster Team",
+  "canonical": "/category/{{category.name}}",
+  "og": {
+    "title": "{{category.name}} Product Reviews & Buying Guides",
+    "description": "{{category.description}} - Expert {{category.name}} reviews and comparisons from our professional review team.",
+    "image": "/images/category-{{category.name | lower}}-og.jpg",
+    "url": "/category/{{category.name}}",
+    "type": "website"
+  },
+  "twitter": {
+    "card": "summary_large_image",
+    "title": "{{category.name}} Product Reviews & Buying Guides",
+    "description": "{{category.description}} - Expert reviews and comparisons.",
+    "image": "/images/category-{{category.name | lower}}-twitter.jpg"
+  },
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "{{category.name}} Reviews - ReviewMaster",
+    "description": "{{category.description}} - Expert {{category.name}} reviews and buying guides",
+    "url": "/category/{{category.name}}",
+    "publisher": {
+      "@type": "Organization",
+      "name": "ReviewMaster",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "/images/reviewmaster-logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "/category/{{category.name}}"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "{{category.name}}",
+      "description": "{{category.description}}"
+    }
+  }
+} 

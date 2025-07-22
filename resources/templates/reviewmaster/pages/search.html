@@ -1,0 +1,419 @@
+<!-- Navigation -->
+<nav class="bg-white/95 backdrop-blur-sm shadow-lg sticky top-0 z-50 border-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg">
+            <span class="text-white text-xl font-bold">R</span>
+          </div>
+          <div>
+            <h1 class="text-xl font-bold text-gray-900">ReviewMaster</h1>
+            <p class="text-xs text-gray-500 font-medium">Honest Reviews, Smart Choices</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="hidden md:flex items-center space-x-6">
+        <a href="/" class="text-gray-700 hover:text-blue-600 transition-colors font-medium flex items-center space-x-1">
+          <span>🏠</span><span>Home</span>
+        </a>
+        <a href="/posts" class="text-gray-700 hover:text-blue-600 transition-colors font-medium flex items-center space-x-1">
+          <span>📝</span><span>All Reviews</span>
+        </a>
+        <a href="/category/Smartphones" class="text-gray-700 hover:text-blue-600 transition-colors font-medium flex items-center space-x-1">
+          <span>📱</span><span>Smartphones</span>
+        </a>
+        <a href="/category/Laptops" class="text-gray-700 hover:text-blue-600 transition-colors font-medium flex items-center space-x-1">
+          <span>💻</span><span>Laptops</span>
+        </a>
+        <a href="/category/Audio" class="text-gray-700 hover:text-blue-600 transition-colors font-medium flex items-center space-x-1">
+          <span>🎧</span><span>Audio</span>
+        </a>
+      </div>
+      
+      <div class="flex items-center space-x-4">
+        <button class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-6 py-2 rounded-lg font-semibold transition-all transform hover:scale-105 shadow-lg">
+          Submit Review
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Search Header -->
+<section class="bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 py-16">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <div class="inline-flex items-center bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 mb-6 shadow-lg">
+        <span class="text-2xl mr-3">🔍</span>
+        <span class="text-blue-600 font-semibold">Search Product Reviews</span>
+      </div>
+      <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+        Find the Perfect <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Product Review</span>
+      </h1>
+      <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+        Search through our comprehensive database of expert product reviews, comparisons, and buying guides.
+      </p>
+      
+      <!-- Search Form -->
+      <div class="max-w-2xl mx-auto">
+        <form class="relative">
+          <div class="flex items-center bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg overflow-hidden">
+            <input 
+              type="text" 
+              placeholder="Search for iPhone, MacBook, headphones, or any product..." 
+              class="flex-1 px-6 py-4 text-gray-700 bg-transparent focus:outline-none"
+              value="iPhone 15 Pro"
+            >
+            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 font-semibold transition-colors">
+              Search
+            </button>
+          </div>
+        </form>
+        
+        <!-- Popular Searches -->
+        <div class="mt-6 flex flex-wrap gap-2 justify-center">
+          <span class="text-sm text-gray-600">Popular searches:</span>
+          <a href="/search/iPhone 15 Pro" class="text-sm bg-white/70 text-blue-600 px-3 py-1 rounded-full hover:bg-white transition-colors">
+            iPhone 15 Pro
+          </a>
+          <a href="/search/MacBook Air M3" class="text-sm bg-white/70 text-blue-600 px-3 py-1 rounded-full hover:bg-white transition-colors">
+            MacBook Air M3
+          </a>
+          <a href="/search/Sony headphones" class="text-sm bg-white/70 text-blue-600 px-3 py-1 rounded-full hover:bg-white transition-colors">
+            Sony headphones
+          </a>
+          <a href="/search/gaming laptop" class="text-sm bg-white/70 text-blue-600 px-3 py-1 rounded-full hover:bg-white transition-colors">
+            gaming laptop
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Search Results -->
+<section class="py-16 bg-gray-50">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-2">Search Results</h2>
+      <p class="text-gray-600">Found 8 reviews for "<strong>iPhone 15 Pro</strong>"</p>
+    </div>
+    
+    <div class="space-y-6">
+      <!-- Search Result 1 -->
+      <article class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 cursor-pointer group">
+        <div class="flex items-start space-x-4">
+          <img src="/images/phone-comparison.jpg" alt="iPhone 15 Pro vs Samsung Galaxy S24 Ultra" class="w-24 h-24 rounded-xl object-cover group-hover:scale-105 transition-transform duration-300">
+          <div class="flex-1">
+            <div class="flex items-center space-x-2 mb-2">
+              <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-lg text-xs font-semibold">Smartphones</span>
+              <div class="flex items-center space-x-1">
+                <span class="text-yellow-500 text-sm">⭐</span>
+                <span class="text-sm font-bold text-gray-900">4.7</span>
+              </div>
+              <span class="text-gray-500 text-sm">12 min read</span>
+              <span class="text-gray-500 text-sm">👁️ 2.4K views</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+              iPhone 15 Pro vs Samsung Galaxy S24 Ultra: Ultimate Comparison
+            </h3>
+            <p class="text-gray-600 mb-3">
+              We put these flagship smartphones head-to-head in our most comprehensive comparison yet. After weeks of testing both devices in real-world conditions...
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-2">
+                <img src="/images/tech-reviewer.jpg" alt="Tech Review Team" class="w-6 h-6 rounded-full">
+                <span class="text-sm text-gray-700">Tech Review Team</span>
+              </div>
+              <span class="text-sm text-gray-500">January 15, 2024</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Search Result 2 -->
+      <article class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 cursor-pointer group">
+        <div class="flex items-start space-x-4">
+          <img src="/images/iphone-15-pro.jpg" alt="iPhone 15 Pro Review" class="w-24 h-24 rounded-xl object-cover group-hover:scale-105 transition-transform duration-300">
+          <div class="flex-1">
+            <div class="flex items-center space-x-2 mb-2">
+              <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-lg text-xs font-semibold">Smartphones</span>
+              <div class="flex items-center space-x-1">
+                <span class="text-yellow-500 text-sm">⭐</span>
+                <span class="text-sm font-bold text-gray-900">4.7</span>
+              </div>
+              <span class="text-gray-500 text-sm">10 min read</span>
+              <span class="text-gray-500 text-sm">👁️ 3.1K views</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+              iPhone 15 Pro Review: Apple's Best Yet
+            </h3>
+            <p class="text-gray-600 mb-3">
+              The iPhone 15 Pro brings significant improvements with its titanium design and A17 Pro chip. We test everything from performance to camera quality...
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-2">
+                <img src="/images/tech-reviewer.jpg" alt="Tech Review Team" class="w-6 h-6 rounded-full">
+                <span class="text-sm text-gray-700">Tech Review Team</span>
+              </div>
+              <span class="text-sm text-gray-500">January 12, 2024</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Search Result 3 -->
+      <article class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 cursor-pointer group">
+        <div class="flex items-start space-x-4">
+          <img src="/images/iphone-cases.jpg" alt="Best iPhone 15 Pro Cases" class="w-24 h-24 rounded-xl object-cover group-hover:scale-105 transition-transform duration-300">
+          <div class="flex-1">
+            <div class="flex items-center space-x-2 mb-2">
+              <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-lg text-xs font-semibold">Accessories</span>
+              <div class="flex items-center space-x-1">
+                <span class="text-yellow-500 text-sm">⭐</span>
+                <span class="text-sm font-bold text-gray-900">4.4</span>
+              </div>
+              <span class="text-gray-500 text-sm">7 min read</span>
+              <span class="text-gray-500 text-sm">👁️ 1.8K views</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+              Best iPhone 15 Pro Cases: Protection Meets Style
+            </h3>
+            <p class="text-gray-600 mb-3">
+              Protect your investment with our top picks for iPhone 15 Pro cases. We test durability, style, and functionality across different price ranges...
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-2">
+                <img src="/images/accessories-expert.jpg" alt="Accessories Expert" class="w-6 h-6 rounded-full">
+                <span class="text-sm text-gray-700">Accessories Expert</span>
+              </div>
+              <span class="text-sm text-gray-500">January 8, 2024</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Search Result 4 -->
+      <article class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 cursor-pointer group">
+        <div class="flex items-start space-x-4">
+          <img src="/images/iphone-camera-test.jpg" alt="iPhone 15 Pro Camera Test" class="w-24 h-24 rounded-xl object-cover group-hover:scale-105 transition-transform duration-300">
+          <div class="flex-1">
+            <div class="flex items-center space-x-2 mb-2">
+              <span class="bg-green-100 text-green-800 px-2 py-1 rounded-lg text-xs font-semibold">Camera</span>
+              <div class="flex items-center space-x-1">
+                <span class="text-yellow-500 text-sm">⭐</span>
+                <span class="text-sm font-bold text-gray-900">4.6</span>
+              </div>
+              <span class="text-gray-500 text-sm">15 min read</span>
+              <span class="text-gray-500 text-sm">👁️ 2.7K views</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+              iPhone 15 Pro Camera Test: Professional Photography Capabilities
+            </h3>
+            <p class="text-gray-600 mb-3">
+              We put the iPhone 15 Pro camera through extensive testing in various conditions. From low-light performance to action shots, here's everything...
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-2">
+                <img src="/images/camera-expert.jpg" alt="Camera Expert" class="w-6 h-6 rounded-full">
+                <span class="text-sm text-gray-700">Camera Expert</span>
+              </div>
+              <span class="text-sm text-gray-500">January 5, 2024</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Search Result 5 -->
+      <article class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 cursor-pointer group">
+        <div class="flex items-start space-x-4">
+          <img src="/images/iphone-battery-test.jpg" alt="iPhone 15 Pro Battery Life Test" class="w-24 h-24 rounded-xl object-cover group-hover:scale-105 transition-transform duration-300">
+          <div class="flex-1">
+            <div class="flex items-center space-x-2 mb-2">
+              <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-lg text-xs font-semibold">Battery</span>
+              <div class="flex items-center space-x-1">
+                <span class="text-yellow-500 text-sm">⭐</span>
+                <span class="text-sm font-bold text-gray-900">4.3</span>
+              </div>
+              <span class="text-gray-500 text-sm">8 min read</span>
+              <span class="text-gray-500 text-sm">👁️ 1.9K views</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+              iPhone 15 Pro Battery Life Test: All-Day Performance Analysis
+            </h3>
+            <p class="text-gray-600 mb-3">
+              How long does the iPhone 15 Pro really last? We conduct extensive battery tests including screen-on time, standby performance, and charging speeds...
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-2">
+                <img src="/images/battery-expert.jpg" alt="Battery Expert" class="w-6 h-6 rounded-full">
+                <span class="text-sm text-gray-700">Battery Expert</span>
+              </div>
+              <span class="text-sm text-gray-500">January 3, 2024</span>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Pagination -->
+    <div class="mt-12 flex justify-center">
+      <nav class="flex items-center space-x-2">
+        <button class="px-4 py-2 text-gray-500 bg-white rounded-lg border hover:bg-gray-50 transition-colors">
+          Previous
+        </button>
+        <button class="px-4 py-2 bg-blue-600 text-white rounded-lg font-semibold">
+          1
+        </button>
+        <button class="px-4 py-2 text-gray-700 bg-white rounded-lg border hover:bg-gray-50 transition-colors">
+          2
+        </button>
+        <button class="px-4 py-2 text-gray-700 bg-white rounded-lg border hover:bg-gray-50 transition-colors">
+          Next
+        </button>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- Search Tips -->
+<section class="py-16 bg-white">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">Search Tips</h2>
+      <p class="text-xl text-gray-600">Get better results with these search tips</p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="bg-blue-50 rounded-2xl p-6">
+        <div class="flex items-start space-x-4">
+          <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white text-xl">
+            💡
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2">Use Specific Product Names</h3>
+            <p class="text-gray-600">
+              Try specific model names like "iPhone 15 Pro" or "MacBook Air M3" for more targeted results.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="bg-green-50 rounded-2xl p-6">
+        <div class="flex items-start space-x-4">
+          <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white text-xl">
+            🔍
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2">Browse by Category</h3>
+            <p class="text-gray-600">
+              Use our category filters to narrow down results by Smartphones, Laptops, Audio, or other product types.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="bg-purple-50 rounded-2xl p-6">
+        <div class="flex items-start space-x-4">
+          <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white text-xl">
+            🏷️
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2">Try Different Keywords</h3>
+            <p class="text-gray-600">
+              If you don't find what you're looking for, try synonyms like "wireless earbuds" instead of "AirPods".
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="bg-orange-50 rounded-2xl p-6">
+        <div class="flex items-start space-x-4">
+          <div class="w-12 h-12 bg-orange-600 rounded-full flex items-center justify-center text-white text-xl">
+            📊
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2">Check Related Reviews</h3>
+            <p class="text-gray-600">
+              Each review includes related product suggestions to help you find alternative options and comparisons.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid md:grid-cols-4 gap-8">
+      <div class="space-y-4">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+            <span class="text-white text-xl font-bold">R</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold">ReviewMaster</h3>
+            <p class="text-blue-400 text-sm">Honest Reviews, Smart Choices</p>
+          </div>
+        </div>
+        <p class="text-gray-400">
+          In-depth product reviews, comparisons, and buying guides to help you make informed decisions.
+        </p>
+      </div>
+      
+      <div>
+        <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+        <ul class="space-y-2">
+          <li><a href="/" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+          <li><a href="/posts" class="text-gray-400 hover:text-white transition-colors">All Reviews</a></li>
+          <li><a href="/category/Smartphones" class="text-gray-400 hover:text-white transition-colors">Smartphones</a></li>
+          <li><a href="/category/Laptops" class="text-gray-400 hover:text-white transition-colors">Laptops</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4 class="text-lg font-semibold mb-4">Categories</h4>
+        <ul class="space-y-2">
+          <li><a href="/category/Audio" class="text-gray-400 hover:text-white transition-colors">Audio</a></li>
+          <li><a href="/category/Gaming" class="text-gray-400 hover:text-white transition-colors">Gaming</a></li>
+          <li><a href="/category/Smart Home" class="text-gray-400 hover:text-white transition-colors">Smart Home</a></li>
+          <li><a href="/category/Cameras" class="text-gray-400 hover:text-white transition-colors">Cameras</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4 class="text-lg font-semibold mb-4">Connect</h4>
+        <div class="flex space-x-4">
+          <a href="#" class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
+            <span class="text-white">📘</span>
+          </a>
+          <a href="#" class="w-10 h-10 bg-red-600 rounded-lg flex items-center justify-center hover:bg-red-700 transition-colors">
+            <span class="text-white">📺</span>
+          </a>
+          <a href="#" class="w-10 h-10 bg-blue-400 rounded-lg flex items-center justify-center hover:bg-blue-500 transition-colors">
+            <span class="text-white">🐦</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+      <p class="text-gray-400">© 2024 ReviewMaster. All rights reserved. Making tech decisions easier.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .text-transparent {
+    color: transparent;
+  }
+  
+  .bg-clip-text {
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+</style> 

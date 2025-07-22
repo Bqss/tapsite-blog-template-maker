@@ -1,0 +1,58 @@
+<!-- Navigation -->
+<nav class="bg-gray-900/95 backdrop-blur-sm shadow-2xl sticky top-0 z-50 border-b border-blue-500/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg pulse-glow">
+                        {{@if(it.site.logo)}}
+                        <img src="{{it.site.logo}}" alt="{{it.site.name}}" class="w-6 h-6">
+                        {{#else}}
+                        <span class="text-white text-xl font-bold mono-font glitch-effect">{{it.site.logo_text}}</span>
+                        {{/if}}
+                    </div>
+                    <div class="absolute -top-1 -right-1 w-4 h-4 bg-green-400 rounded-full animate-pulse"></div>
+                </div>
+                <div class="tech-font">
+                    <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">{{it.site.name}}</h1>
+                    <p class="text-xs text-gray-400 font-medium mono-font">{{it.site.tagline}}</p>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center space-x-6">
+                {{@each(it.navigation)=>item}}
+                <a href="{{item.url}}" 
+                   class="text-gray-300 hover:text-blue-400 transition-colors font-medium tech-font flex items-center space-x-2">
+                    <span class="text-{{item.icon_color}}-400">{{item.icon}}</span>
+                    <span>{{item.name}}</span>
+                </a>
+                {{/each}}
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                {{@if(it.search)}}
+                <div class="hidden md:block">
+                    <div class="relative">
+                        <input type="text" 
+                               placeholder="{{it.search.placeholder}}" 
+                               class="bg-gray-800 text-white px-4 py-2 rounded-full border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 tech-font text-sm">
+                        <div class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+                            <span class="text-xs mono-font">{{it.search.shortcut}}</span>
+                        </div>
+                    </div>
+                </div>
+                {{/if}}
+                {{@if(it.cta_button)}}
+                <button class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-6 py-2 rounded-full font-semibold tech-font transition-all transform hover:scale-105 shadow-lg">
+                    {{it.cta_button.text}} {{it.cta_button.icon}}
+                </button>
+                {{/if}}
+                <button class="md:hidden p-2 text-gray-400 hover:text-blue-400">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</nav> 

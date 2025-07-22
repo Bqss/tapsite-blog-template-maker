@@ -1,0 +1,39 @@
+{
+  "title": "All Product Reviews - ReviewMaster",
+  "description": "Browse our comprehensive collection of expert product reviews, comparisons, and buying guides for smartphones, laptops, audio gear, gaming equipment, and more.",
+  "keywords": "product reviews, tech reviews, smartphone reviews, laptop reviews, audio reviews, gaming reviews, buying guides, product comparisons",
+  "author": "ReviewMaster Team",
+  "canonical": "/posts",
+  "og": {
+    "title": "Expert Product Reviews & Buying Guides",
+    "description": "Discover in-depth product reviews and comparisons from our expert team. Make informed decisions with honest reviews and comprehensive buying guides.",
+    "image": "/images/reviews-og.jpg",
+    "url": "/posts",
+    "type": "website"
+  },
+  "twitter": {
+    "card": "summary_large_image",
+    "title": "Expert Product Reviews & Buying Guides",
+    "description": "Discover in-depth product reviews and comparisons from our expert team.",
+    "image": "/images/reviews-twitter.jpg"
+  },
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "ReviewMaster Product Reviews",
+    "description": "Expert product reviews and buying guides for informed purchasing decisions",
+    "url": "/posts",
+    "publisher": {
+      "@type": "Organization",
+      "name": "ReviewMaster",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "/images/reviewmaster-logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "/posts"
+    }
+  }
+} 

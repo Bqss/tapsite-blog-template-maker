@@ -1,0 +1,44 @@
+{
+  "title": "Search Product Reviews - ReviewMaster",
+  "description": "Search through our comprehensive database of expert product reviews, comparisons, and buying guides. Find the perfect review for your next purchase.",
+  "keywords": "product review search, tech review search, smartphone reviews, laptop reviews, audio reviews, buying guide search",
+  "author": "ReviewMaster Team",
+  "canonical": "/search",
+  "og": {
+    "title": "Search Product Reviews & Buying Guides",
+    "description": "Find expert product reviews and buying guides tailored to your needs. Search through comprehensive reviews from our professional team.",
+    "image": "/images/search-og.jpg",
+    "url": "/search",
+    "type": "website"
+  },
+  "twitter": {
+    "card": "summary_large_image",
+    "title": "Search Product Reviews & Buying Guides",
+    "description": "Find expert product reviews and buying guides tailored to your needs.",
+    "image": "/images/search-twitter.jpg"
+  },
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "SearchResultsPage",
+    "name": "Product Review Search - ReviewMaster",
+    "description": "Search results for product reviews, buying guides, and tech comparisons",
+    "url": "/search",
+    "publisher": {
+      "@type": "Organization",
+      "name": "ReviewMaster",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "/images/reviewmaster-logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "/search"
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+} 

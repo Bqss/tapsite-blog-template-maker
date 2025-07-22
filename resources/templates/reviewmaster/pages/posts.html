@@ -1,0 +1,399 @@
+<!-- Navigation -->
+<nav class="bg-white/95 backdrop-blur-sm shadow-lg sticky top-0 z-50 border-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg">
+            <span class="text-white text-xl font-bold">R</span>
+          </div>
+          <div>
+            <h1 class="text-xl font-bold text-gray-900">ReviewMaster</h1>
+            <p class="text-xs text-gray-500 font-medium">Honest Reviews, Smart Choices</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="hidden md:flex items-center space-x-6">
+        <a href="/" class="text-gray-700 hover:text-blue-600 transition-colors font-medium flex items-center space-x-1">
+          <span>🏠</span><span>Home</span>
+        </a>
+        <a href="/posts" class="text-blue-600 font-medium flex items-center space-x-1">
+          <span>📝</span><span>All Reviews</span>
+        </a>
+        <a href="/category/Smartphones" class="text-gray-700 hover:text-blue-600 transition-colors font-medium flex items-center space-x-1">
+          <span>📱</span><span>Smartphones</span>
+        </a>
+        <a href="/category/Laptops" class="text-gray-700 hover:text-blue-600 transition-colors font-medium flex items-center space-x-1">
+          <span>💻</span><span>Laptops</span>
+        </a>
+        <a href="/category/Audio" class="text-gray-700 hover:text-blue-600 transition-colors font-medium flex items-center space-x-1">
+          <span>🎧</span><span>Audio</span>
+        </a>
+      </div>
+      
+      <div class="flex items-center space-x-4">
+        <button class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-6 py-2 rounded-lg font-semibold transition-all transform hover:scale-105 shadow-lg">
+          Submit Review
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Page Header -->
+<section class="bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <div class="inline-flex items-center bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 mb-6 shadow-lg">
+        <span class="text-blue-600 font-semibold">📝 All Product Reviews</span>
+      </div>
+      <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+        Comprehensive Product <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Reviews</span>
+      </h1>
+      <p class="text-xl text-gray-600 mb-8 leading-relaxed max-w-3xl mx-auto">
+        In-depth reviews, comparisons, and buying guides to help you make informed decisions about your next tech purchase.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Filter Categories -->
+<section class="py-8 bg-white border-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-wrap gap-3 justify-center">
+      <a href="/posts" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold transition-all transform hover:scale-105 shadow-lg">
+        All Reviews
+      </a>
+      <a href="/category/Smartphones" class="bg-white text-blue-600 border-2 border-blue-500 hover:bg-blue-50 px-6 py-3 rounded-lg font-semibold transition-all">
+        📱 Smartphones
+      </a>
+      <a href="/category/Laptops" class="bg-white text-green-600 border-2 border-green-500 hover:bg-green-50 px-6 py-3 rounded-lg font-semibold transition-all">
+        💻 Laptops
+      </a>
+      <a href="/category/Audio" class="bg-white text-yellow-600 border-2 border-yellow-500 hover:bg-yellow-50 px-6 py-3 rounded-lg font-semibold transition-all">
+        🎧 Audio
+      </a>
+      <a href="/category/Gaming" class="bg-white text-purple-600 border-2 border-purple-500 hover:bg-purple-50 px-6 py-3 rounded-lg font-semibold transition-all">
+        🎮 Gaming
+      </a>
+      <a href="/category/Smart Home" class="bg-white text-pink-600 border-2 border-pink-500 hover:bg-pink-50 px-6 py-3 rounded-lg font-semibold transition-all">
+        🏠 Smart Home
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews Grid -->
+<section class="py-16 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Review Card 1 -->
+      <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 cursor-pointer group">
+        <div class="relative">
+          <img src="/images/phone-comparison.jpg" alt="iPhone 15 Pro vs Samsung Galaxy S24 Ultra" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-lg text-sm font-semibold">
+            Smartphones
+          </div>
+          <div class="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-1 flex items-center space-x-1">
+            <span class="text-yellow-500">⭐</span>
+            <span class="text-sm font-bold text-gray-900">4.7</span>
+          </div>
+          <div class="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-1 text-sm font-semibold text-gray-700">
+            12 min read
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+            iPhone 15 Pro vs Samsung Galaxy S24 Ultra: Ultimate Comparison
+          </h3>
+          <p class="text-gray-600 mb-4">
+            We put these flagship smartphones head-to-head in our most comprehensive comparison yet.
+          </p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <img src="/images/tech-reviewer.jpg" alt="Tech Review Team" class="w-8 h-8 rounded-full">
+              <span class="text-sm font-medium text-gray-700">Tech Review Team</span>
+            </div>
+            <div class="flex items-center space-x-1 text-orange-500">
+              <span class="text-sm">👁️</span>
+              <span class="text-sm font-medium">2.4K</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Review Card 2 -->
+      <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 cursor-pointer group">
+        <div class="relative">
+          <img src="/images/wireless-earbuds.jpg" alt="Best Wireless Earbuds Under $100" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-4 left-4 bg-yellow-600 text-white px-3 py-1 rounded-lg text-sm font-semibold">
+            Audio
+          </div>
+          <div class="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-1 flex items-center space-x-1">
+            <span class="text-yellow-500">⭐</span>
+            <span class="text-sm font-bold text-gray-900">4.5</span>
+          </div>
+          <div class="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-1 text-sm font-semibold text-gray-700">
+            8 min read
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+            Best Wireless Earbuds Under $100 (2024 Edition)
+          </h3>
+          <p class="text-gray-600 mb-4">
+            Our top picks for budget-friendly wireless earbuds that don't compromise on sound quality.
+          </p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <img src="/images/audio-expert.jpg" alt="Audio Expert" class="w-8 h-8 rounded-full">
+              <span class="text-sm font-medium text-gray-700">Audio Expert</span>
+            </div>
+            <div class="flex items-center space-x-1 text-orange-500">
+              <span class="text-sm">👁️</span>
+              <span class="text-sm font-medium">1.8K</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Review Card 3 -->
+      <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 cursor-pointer group">
+        <div class="relative">
+          <img src="/images/macbook-air-m3.jpg" alt="MacBook Air M3 Review" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-lg text-sm font-semibold">
+            Laptops
+          </div>
+          <div class="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-1 flex items-center space-x-1">
+            <span class="text-yellow-500">⭐</span>
+            <span class="text-sm font-bold text-gray-900">4.6</span>
+          </div>
+          <div class="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-1 text-sm font-semibold text-gray-700">
+            10 min read
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+            MacBook Air M3 Review: The Perfect Laptop for Most People
+          </h3>
+          <p class="text-gray-600 mb-4">
+            Apple's latest MacBook Air strikes the perfect balance between performance, portability, and price.
+          </p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <img src="/images/laptop-specialist.jpg" alt="Laptop Specialist" class="w-8 h-8 rounded-full">
+              <span class="text-sm font-medium text-gray-700">Laptop Specialist</span>
+            </div>
+            <div class="flex items-center space-x-1 text-orange-500">
+              <span class="text-sm">👁️</span>
+              <span class="text-sm font-medium">3.2K</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Review Card 4 -->
+      <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 cursor-pointer group">
+        <div class="relative">
+          <img src="/images/sony-headphones.jpg" alt="Sony WH-1000XM5 Review" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-4 left-4 bg-yellow-600 text-white px-3 py-1 rounded-lg text-sm font-semibold">
+            Audio
+          </div>
+          <div class="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-1 flex items-center space-x-1">
+            <span class="text-yellow-500">⭐</span>
+            <span class="text-sm font-bold text-gray-900">4.8</span>
+          </div>
+          <div class="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-1 text-sm font-semibold text-gray-700">
+            9 min read
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+            Sony WH-1000XM5 Review: Still the King of Noise Cancellation
+          </h3>
+          <p class="text-gray-600 mb-4">
+            Sony's flagship headphones continue to dominate the premium audio market with exceptional noise cancellation.
+          </p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <img src="/images/audio-expert.jpg" alt="Audio Expert" class="w-8 h-8 rounded-full">
+              <span class="text-sm font-medium text-gray-700">Audio Expert</span>
+            </div>
+            <div class="flex items-center space-x-1 text-orange-500">
+              <span class="text-sm">👁️</span>
+              <span class="text-sm font-medium">2.1K</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Review Card 5 -->
+      <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 cursor-pointer group">
+        <div class="relative">
+          <img src="/images/gaming-laptops.jpg" alt="Gaming Laptop Showdown" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-4 left-4 bg-purple-600 text-white px-3 py-1 rounded-lg text-sm font-semibold">
+            Gaming
+          </div>
+          <div class="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-1 flex items-center space-x-1">
+            <span class="text-yellow-500">⭐</span>
+            <span class="text-sm font-bold text-gray-900">4.4</span>
+          </div>
+          <div class="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-1 text-sm font-semibold text-gray-700">
+            15 min read
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+            Gaming Laptop Showdown: ROG vs Alienware vs MSI
+          </h3>
+          <p class="text-gray-600 mb-4">
+            We test three flagship gaming laptops to determine which offers the best performance for serious gamers.
+          </p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <img src="/images/gaming-specialist.jpg" alt="Gaming Specialist" class="w-8 h-8 rounded-full">
+              <span class="text-sm font-medium text-gray-700">Gaming Specialist</span>
+            </div>
+            <div class="flex items-center space-x-1 text-orange-500">
+              <span class="text-sm">👁️</span>
+              <span class="text-sm font-medium">1.7K</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Review Card 6 -->
+      <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 cursor-pointer group">
+        <div class="relative">
+          <img src="/images/smart-security.jpg" alt="Smart Home Security Systems" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-4 left-4 bg-pink-600 text-white px-3 py-1 rounded-lg text-sm font-semibold">
+            Smart Home
+          </div>
+          <div class="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-1 flex items-center space-x-1">
+            <span class="text-yellow-500">⭐</span>
+            <span class="text-sm font-bold text-gray-900">4.3</span>
+          </div>
+          <div class="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-1 text-sm font-semibold text-gray-700">
+            11 min read
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+            Smart Home Security Systems: Complete Buyer's Guide 2024
+          </h3>
+          <p class="text-gray-600 mb-4">
+            Everything you need to know about choosing the right smart security system for your home.
+          </p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <img src="/images/smart-home-expert.jpg" alt="Smart Home Expert" class="w-8 h-8 rounded-full">
+              <span class="text-sm font-medium text-gray-700">Smart Home Expert</span>
+            </div>
+            <div class="flex items-center space-x-1 text-orange-500">
+              <span class="text-sm">👁️</span>
+              <span class="text-sm font-medium">1.3K</span>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Pagination -->
+    <div class="mt-12 flex justify-center">
+      <nav class="flex items-center space-x-2">
+        <button class="px-4 py-2 text-gray-500 bg-white rounded-lg border hover:bg-gray-50 transition-colors">
+          Previous
+        </button>
+        <button class="px-4 py-2 bg-blue-600 text-white rounded-lg font-semibold">
+          1
+        </button>
+        <button class="px-4 py-2 text-gray-700 bg-white rounded-lg border hover:bg-gray-50 transition-colors">
+          2
+        </button>
+        <button class="px-4 py-2 text-gray-700 bg-white rounded-lg border hover:bg-gray-50 transition-colors">
+          3
+        </button>
+        <button class="px-4 py-2 text-gray-700 bg-white rounded-lg border hover:bg-gray-50 transition-colors">
+          Next
+        </button>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid md:grid-cols-4 gap-8">
+      <div class="space-y-4">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+            <span class="text-white text-xl font-bold">R</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold">ReviewMaster</h3>
+            <p class="text-blue-400 text-sm">Honest Reviews, Smart Choices</p>
+          </div>
+        </div>
+        <p class="text-gray-400">
+          In-depth product reviews, comparisons, and buying guides to help you make informed decisions.
+        </p>
+      </div>
+      
+      <div>
+        <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+        <ul class="space-y-2">
+          <li><a href="/" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+          <li><a href="/posts" class="text-gray-400 hover:text-white transition-colors">All Reviews</a></li>
+          <li><a href="/category/Smartphones" class="text-gray-400 hover:text-white transition-colors">Smartphones</a></li>
+          <li><a href="/category/Laptops" class="text-gray-400 hover:text-white transition-colors">Laptops</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4 class="text-lg font-semibold mb-4">Categories</h4>
+        <ul class="space-y-2">
+          <li><a href="/category/Audio" class="text-gray-400 hover:text-white transition-colors">Audio</a></li>
+          <li><a href="/category/Gaming" class="text-gray-400 hover:text-white transition-colors">Gaming</a></li>
+          <li><a href="/category/Smart Home" class="text-gray-400 hover:text-white transition-colors">Smart Home</a></li>
+          <li><a href="/category/Cameras" class="text-gray-400 hover:text-white transition-colors">Cameras</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4 class="text-lg font-semibold mb-4">Connect</h4>
+        <div class="flex space-x-4">
+          <a href="#" class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
+            <span class="text-white">📘</span>
+          </a>
+          <a href="#" class="w-10 h-10 bg-red-600 rounded-lg flex items-center justify-center hover:bg-red-700 transition-colors">
+            <span class="text-white">📺</span>
+          </a>
+          <a href="#" class="w-10 h-10 bg-blue-400 rounded-lg flex items-center justify-center hover:bg-blue-500 transition-colors">
+            <span class="text-white">🐦</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+      <p class="text-gray-400">© 2024 ReviewMaster. All rights reserved. Making tech decisions easier.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .bg-gradient-to-br {
+    background: linear-gradient(to bottom right, var(--tw-gradient-stops));
+  }
+  
+  .text-transparent {
+    color: transparent;
+  }
+  
+  .bg-clip-text {
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+</style> 

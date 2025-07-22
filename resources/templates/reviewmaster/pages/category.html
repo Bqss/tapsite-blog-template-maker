@@ -1,0 +1,440 @@
+<!-- Navigation -->
+<nav class="bg-white/95 backdrop-blur-sm shadow-lg sticky top-0 z-50 border-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center shadow-lg">
+            <span class="text-white text-xl font-bold">R</span>
+          </div>
+          <div>
+            <h1 class="text-xl font-bold text-gray-900">ReviewMaster</h1>
+            <p class="text-xs text-gray-500 font-medium">Honest Reviews, Smart Choices</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="hidden md:flex items-center space-x-6">
+        <a href="/" class="text-gray-700 hover:text-blue-600 transition-colors font-medium flex items-center space-x-1">
+          <span>🏠</span><span>Home</span>
+        </a>
+        <a href="/posts" class="text-gray-700 hover:text-blue-600 transition-colors font-medium flex items-center space-x-1">
+          <span>📝</span><span>All Reviews</span>
+        </a>
+        <a href="/category/Smartphones" class="text-blue-600 font-medium flex items-center space-x-1">
+          <span>📱</span><span>Smartphones</span>
+        </a>
+        <a href="/category/Laptops" class="text-gray-700 hover:text-blue-600 transition-colors font-medium flex items-center space-x-1">
+          <span>💻</span><span>Laptops</span>
+        </a>
+        <a href="/category/Audio" class="text-gray-700 hover:text-blue-600 transition-colors font-medium flex items-center space-x-1">
+          <span>🎧</span><span>Audio</span>
+        </a>
+      </div>
+      
+      <div class="flex items-center space-x-4">
+        <button class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-6 py-2 rounded-lg font-semibold transition-all transform hover:scale-105 shadow-lg">
+          Submit Review
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Breadcrumb -->
+<div class="bg-gray-50 py-4 border-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav class="flex items-center space-x-2 text-sm">
+      <a href="/" class="text-blue-600 hover:text-blue-700">Home</a>
+      <span class="text-gray-400">/</span>
+      <span class="text-gray-600">Smartphones</span>
+    </nav>
+  </div>
+</div>
+
+<!-- Category Header -->
+<section class="bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <div class="inline-flex items-center bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 mb-6 shadow-lg">
+        <span class="text-4xl mr-3">📱</span>
+        <span class="text-blue-600 font-semibold text-lg">Smartphones Category</span>
+      </div>
+      <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+        Smartphone <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Reviews</span>
+      </h1>
+      <p class="text-xl text-gray-600 mb-8 leading-relaxed max-w-3xl mx-auto">
+        Latest phone reviews and comparisons to help you choose the perfect smartphone for your needs and budget.
+      </p>
+      <div class="flex items-center justify-center space-x-8 text-sm text-gray-600">
+        <div class="flex items-center space-x-2">
+          <span class="text-blue-600 font-semibold">📊</span>
+          <span>45 Reviews</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <span class="text-blue-600 font-semibold">⭐</span>
+          <span>Expert Tested</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <span class="text-blue-600 font-semibold">🔄</span>
+          <span>Updated Weekly</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Filter Subcategories -->
+<section class="py-8 bg-white border-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-wrap gap-3 justify-center">
+      <a href="/category/Smartphones" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold transition-all transform hover:scale-105 shadow-lg">
+        All Smartphones
+      </a>
+      <a href="/tag/iPhone" class="bg-white text-blue-600 border-2 border-blue-500 hover:bg-blue-50 px-6 py-3 rounded-lg font-semibold transition-all">
+        iPhone
+      </a>
+      <a href="/tag/Samsung" class="bg-white text-purple-600 border-2 border-purple-500 hover:bg-purple-50 px-6 py-3 rounded-lg font-semibold transition-all">
+        Samsung
+      </a>
+      <a href="/tag/Flagship" class="bg-white text-green-600 border-2 border-green-500 hover:bg-green-50 px-6 py-3 rounded-lg font-semibold transition-all">
+        Flagship
+      </a>
+      <a href="/tag/Budget" class="bg-white text-orange-600 border-2 border-orange-500 hover:bg-orange-50 px-6 py-3 rounded-lg font-semibold transition-all">
+        Budget
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews Grid -->
+<section class="py-16 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Featured Review -->
+      <div class="lg:col-span-2">
+        <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 cursor-pointer group">
+          <div class="relative">
+            <img src="/images/phone-comparison.jpg" alt="iPhone 15 Pro vs Samsung Galaxy S24 Ultra" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-lg text-sm font-semibold">
+              Featured
+            </div>
+            <div class="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-1 flex items-center space-x-1">
+              <span class="text-yellow-500">⭐</span>
+              <span class="text-sm font-bold text-gray-900">4.7</span>
+            </div>
+            <div class="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-1 text-sm font-semibold text-gray-700">
+              12 min read
+            </div>
+          </div>
+          <div class="p-8">
+            <h3 class="text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors">
+              iPhone 15 Pro vs Samsung Galaxy S24 Ultra: Ultimate Comparison
+            </h3>
+            <p class="text-gray-600 mb-6 text-lg">
+              We put these flagship smartphones head-to-head in our most comprehensive comparison yet. After weeks of testing, we're ready to declare a winner.
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-3">
+                <img src="/images/tech-reviewer.jpg" alt="Tech Review Team" class="w-10 h-10 rounded-full">
+                <div>
+                  <p class="font-semibold text-gray-900">Tech Review Team</p>
+                  <p class="text-sm text-gray-500">Senior Reviewers</p>
+                </div>
+              </div>
+              <div class="flex items-center space-x-4 text-sm text-gray-500">
+                <span>👁️ 2.4K views</span>
+                <span>💬 18 comments</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Side Reviews -->
+      <div class="space-y-6">
+        <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 cursor-pointer group">
+          <div class="relative">
+            <img src="/images/iphone-15-pro.jpg" alt="iPhone 15 Pro Review" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute top-3 left-3 bg-blue-600 text-white px-2 py-1 rounded-lg text-xs font-semibold">
+              iPhone
+            </div>
+            <div class="absolute top-3 right-3 bg-white/95 backdrop-blur-sm rounded-lg px-2 py-1 flex items-center space-x-1">
+              <span class="text-yellow-500 text-sm">⭐</span>
+              <span class="text-xs font-bold text-gray-900">4.7</span>
+            </div>
+          </div>
+          <div class="p-4">
+            <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+              iPhone 15 Pro Review: Apple's Best Yet
+            </h3>
+            <p class="text-gray-600 text-sm mb-3">
+              The iPhone 15 Pro brings significant improvements with its titanium design and A17 Pro chip.
+            </p>
+            <div class="flex items-center justify-between text-xs text-gray-500">
+              <span>Tech Review Team</span>
+              <span>10 min read</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 cursor-pointer group">
+          <div class="relative">
+            <img src="/images/galaxy-s24-ultra.jpg" alt="Galaxy S24 Ultra Review" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute top-3 left-3 bg-purple-600 text-white px-2 py-1 rounded-lg text-xs font-semibold">
+              Samsung
+            </div>
+            <div class="absolute top-3 right-3 bg-white/95 backdrop-blur-sm rounded-lg px-2 py-1 flex items-center space-x-1">
+              <span class="text-yellow-500 text-sm">⭐</span>
+              <span class="text-xs font-bold text-gray-900">4.5</span>
+            </div>
+          </div>
+          <div class="p-4">
+            <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+              Galaxy S24 Ultra: S Pen Powerhouse
+            </h3>
+            <p class="text-gray-600 text-sm mb-3">
+              Samsung's latest flagship combines powerful performance with unique S Pen functionality.
+            </p>
+            <div class="flex items-center justify-between text-xs text-gray-500">
+              <span>Mobile Expert</span>
+              <span>11 min read</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- More Reviews -->
+      <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 cursor-pointer group">
+        <div class="relative">
+          <img src="/images/pixel-8-pro.jpg" alt="Google Pixel 8 Pro Review" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-lg text-sm font-semibold">
+            Google
+          </div>
+          <div class="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-1 flex items-center space-x-1">
+            <span class="text-yellow-500">⭐</span>
+            <span class="text-sm font-bold text-gray-900">4.4</span>
+          </div>
+          <div class="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-1 text-sm font-semibold text-gray-700">
+            9 min read
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+            Google Pixel 8 Pro: AI Photography King
+          </h3>
+          <p class="text-gray-600 mb-4">
+            Google's latest flagship showcases the power of computational photography and AI integration.
+          </p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <img src="/images/camera-expert.jpg" alt="Camera Expert" class="w-8 h-8 rounded-full">
+              <span class="text-sm font-medium text-gray-700">Camera Expert</span>
+            </div>
+            <div class="flex items-center space-x-1 text-orange-500">
+              <span class="text-sm">👁️</span>
+              <span class="text-sm font-medium">1.8K</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 cursor-pointer group">
+        <div class="relative">
+          <img src="/images/oneplus-12.jpg" alt="OnePlus 12 Review" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 rounded-lg text-sm font-semibold">
+            OnePlus
+          </div>
+          <div class="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-1 flex items-center space-x-1">
+            <span class="text-yellow-500">⭐</span>
+            <span class="text-sm font-bold text-gray-900">4.3</span>
+          </div>
+          <div class="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-1 text-sm font-semibold text-gray-700">
+            8 min read
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+            OnePlus 12: Speed Demon Returns
+          </h3>
+          <p class="text-gray-600 mb-4">
+            OnePlus returns to form with blazing fast performance and competitive pricing in the flagship segment.
+          </p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <img src="/images/performance-expert.jpg" alt="Performance Expert" class="w-8 h-8 rounded-full">
+              <span class="text-sm font-medium text-gray-700">Performance Expert</span>
+            </div>
+            <div class="flex items-center space-x-1 text-orange-500">
+              <span class="text-sm">👁️</span>
+              <span class="text-sm font-medium">1.5K</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 cursor-pointer group">
+        <div class="relative">
+          <img src="/images/budget-phones.jpg" alt="Best Budget Smartphones 2024" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-4 left-4 bg-orange-600 text-white px-3 py-1 rounded-lg text-sm font-semibold">
+            Budget
+          </div>
+          <div class="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-1 flex items-center space-x-1">
+            <span class="text-yellow-500">⭐</span>
+            <span class="text-sm font-bold text-gray-900">4.2</span>
+          </div>
+          <div class="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-1 text-sm font-semibold text-gray-700">
+            15 min read
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+            Best Budget Smartphones 2024: Value Champions
+          </h3>
+          <p class="text-gray-600 mb-4">
+            Our top picks for budget-friendly smartphones that deliver excellent value without compromising on essentials.
+          </p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <img src="/images/value-expert.jpg" alt="Value Expert" class="w-8 h-8 rounded-full">
+              <span class="text-sm font-medium text-gray-700">Value Expert</span>
+            </div>
+            <div class="flex items-center space-x-1 text-orange-500">
+              <span class="text-sm">👁️</span>
+              <span class="text-sm font-medium">2.2K</span>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Pagination -->
+    <div class="mt-12 flex justify-center">
+      <nav class="flex items-center space-x-2">
+        <button class="px-4 py-2 text-gray-500 bg-white rounded-lg border hover:bg-gray-50 transition-colors">
+          Previous
+        </button>
+        <button class="px-4 py-2 bg-blue-600 text-white rounded-lg font-semibold">
+          1
+        </button>
+        <button class="px-4 py-2 text-gray-700 bg-white rounded-lg border hover:bg-gray-50 transition-colors">
+          2
+        </button>
+        <button class="px-4 py-2 text-gray-700 bg-white rounded-lg border hover:bg-gray-50 transition-colors">
+          3
+        </button>
+        <button class="px-4 py-2 text-gray-700 bg-white rounded-lg border hover:bg-gray-50 transition-colors">
+          Next
+        </button>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- Buying Guide Section -->
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">Smartphone Buying Guide</h2>
+      <p class="text-xl text-gray-600">Key factors to consider when choosing your next smartphone</p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="text-center p-6 bg-blue-50 rounded-2xl">
+        <div class="text-4xl mb-4">💰</div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">Budget</h3>
+        <p class="text-gray-600 text-sm">Determine your price range and find the best value within your budget.</p>
+      </div>
+      
+      <div class="text-center p-6 bg-green-50 rounded-2xl">
+        <div class="text-4xl mb-4">📱</div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">Screen Size</h3>
+        <p class="text-gray-600 text-sm">Choose between compact phones or larger displays for media consumption.</p>
+      </div>
+      
+      <div class="text-center p-6 bg-purple-50 rounded-2xl">
+        <div class="text-4xl mb-4">📸</div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">Camera Quality</h3>
+        <p class="text-gray-600 text-sm">Consider your photography needs and compare camera specifications.</p>
+      </div>
+      
+      <div class="text-center p-6 bg-orange-50 rounded-2xl">
+        <div class="text-4xl mb-4">🔋</div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">Battery Life</h3>
+        <p class="text-gray-600 text-sm">Evaluate battery capacity and charging speed for your usage patterns.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid md:grid-cols-4 gap-8">
+      <div class="space-y-4">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+            <span class="text-white text-xl font-bold">R</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold">ReviewMaster</h3>
+            <p class="text-blue-400 text-sm">Honest Reviews, Smart Choices</p>
+          </div>
+        </div>
+        <p class="text-gray-400">
+          In-depth product reviews, comparisons, and buying guides to help you make informed decisions.
+        </p>
+      </div>
+      
+      <div>
+        <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+        <ul class="space-y-2">
+          <li><a href="/" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+          <li><a href="/posts" class="text-gray-400 hover:text-white transition-colors">All Reviews</a></li>
+          <li><a href="/category/Smartphones" class="text-gray-400 hover:text-white transition-colors">Smartphones</a></li>
+          <li><a href="/category/Laptops" class="text-gray-400 hover:text-white transition-colors">Laptops</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4 class="text-lg font-semibold mb-4">Categories</h4>
+        <ul class="space-y-2">
+          <li><a href="/category/Audio" class="text-gray-400 hover:text-white transition-colors">Audio</a></li>
+          <li><a href="/category/Gaming" class="text-gray-400 hover:text-white transition-colors">Gaming</a></li>
+          <li><a href="/category/Smart Home" class="text-gray-400 hover:text-white transition-colors">Smart Home</a></li>
+          <li><a href="/category/Cameras" class="text-gray-400 hover:text-white transition-colors">Cameras</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4 class="text-lg font-semibold mb-4">Connect</h4>
+        <div class="flex space-x-4">
+          <a href="#" class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
+            <span class="text-white">📘</span>
+          </a>
+          <a href="#" class="w-10 h-10 bg-red-600 rounded-lg flex items-center justify-center hover:bg-red-700 transition-colors">
+            <span class="text-white">📺</span>
+          </a>
+          <a href="#" class="w-10 h-10 bg-blue-400 rounded-lg flex items-center justify-center hover:bg-blue-500 transition-colors">
+            <span class="text-white">🐦</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+      <p class="text-gray-400">© 2024 ReviewMaster. All rights reserved. Making tech decisions easier.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .text-transparent {
+    color: transparent;
+  }
+  
+  .bg-clip-text {
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+</style> 

@@ -1,0 +1,750 @@
+<style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+.tech-font {
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.mono-font {
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.circuit-pattern {
+    background-image: 
+        radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(147, 51, 234, 0.1) 0%, transparent 50%),
+        linear-gradient(45deg, transparent 24%, rgba(59, 130, 246, 0.05) 25%, rgba(59, 130, 246, 0.05) 26%, transparent 27%, transparent 74%, rgba(147, 51, 234, 0.05) 75%, rgba(147, 51, 234, 0.05) 76%, transparent 77%);
+    background-size: 60px 60px, 60px 60px, 30px 30px;
+}
+
+.glitch-effect {
+    position: relative;
+    animation: glitch 2s infinite;
+}
+
+@keyframes glitch {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); }
+}
+
+.hologram-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.hologram-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: rotate(45deg);
+    animation: hologram-shine 3s infinite;
+}
+
+@keyframes hologram-shine {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+.rating-glow {
+    position: relative;
+}
+
+.rating-glow::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    border-radius: inherit;
+    filter: blur(8px);
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.tech-gradient {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.neon-border {
+    position: relative;
+    border: 2px solid transparent;
+    background: linear-gradient(45deg, #3b82f6, #8b5cf6) border-box;
+    background-clip: border-box;
+}
+
+.neon-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: xor;
+}
+
+.pulse-glow {
+    animation: pulse-glow 2s infinite;
+}
+
+@keyframes pulse-glow {
+    0%, 100% { 
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+    }
+    50% { 
+        box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
+    }
+}
+
+.tech-hero-bg {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #475569 75%, #64748b 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.tech-hero-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%233b82f6' fill-opacity='0.1'%3E%3Cpath d='M10 10h10v10H10zM30 30h10v10H30zM50 50h10v10H50zM70 70h10v10H70zM90 10h10v10H90zM70 30h10v10H70zM50 70h10v10H50zM30 90h10v10H30z'/%3E%3C/g%3E%3C/svg%3E") repeat;
+    opacity: 0.5;
+}
+
+.floating-tech {
+    animation: float-tech 4s ease-in-out infinite;
+}
+
+@keyframes float-tech {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(2deg); }
+}
+
+.review-score {
+    background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.review-score::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: rotate(45deg);
+    animation: score-shine 2s infinite;
+}
+
+@keyframes score-shine {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+.comparison-card {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.comparison-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.2), transparent);
+    animation: scan 3s infinite;
+}
+
+@keyframes scan {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.tech-icon {
+    transition: all 0.3s ease;
+}
+
+.tech-icon:hover {
+    transform: scale(1.1) rotate(5deg);
+    filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.5));
+}
+</style>
+
+<!-- Navigation -->
+<nav class="bg-gray-900/95 backdrop-blur-sm shadow-2xl sticky top-0 z-50 border-b border-blue-500/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg pulse-glow">
+                        <span class="text-white text-xl font-bold mono-font glitch-effect">RM</span>
+                    </div>
+                    <div class="absolute -top-1 -right-1 w-4 h-4 bg-green-400 rounded-full animate-pulse"></div>
+                </div>
+                <div class="tech-font">
+                    <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">ReviewMaster</h1>
+                    <p class="text-xs text-gray-400 font-medium mono-font">Tech Reviews • Decoded</p>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#" class="text-gray-300 hover:text-blue-400 transition-colors font-medium tech-font flex items-center space-x-2">
+                    <span class="text-blue-400">📱</span><span>Latest Reviews</span>
+                </a>
+                <a href="#" class="text-gray-300 hover:text-blue-400 transition-colors font-medium tech-font flex items-center space-x-2">
+                    <span class="text-purple-400">⚡</span><span>Tech News</span>
+                </a>
+                <a href="#" class="text-gray-300 hover:text-blue-400 transition-colors font-medium tech-font flex items-center space-x-2">
+                    <span class="text-green-400">🎯</span><span>Buying Guides</span>
+                </a>
+                <a href="#" class="text-gray-300 hover:text-blue-400 transition-colors font-medium tech-font flex items-center space-x-2">
+                    <span class="text-orange-400">🏆</span><span>Best Of 2024</span>
+                </a>
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                <div class="hidden md:block">
+                    <div class="relative">
+                        <input type="text" placeholder="Search reviews..." class="bg-gray-800 text-white px-4 py-2 rounded-full border border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 tech-font text-sm">
+                        <div class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+                            <span class="text-xs mono-font">⌘K</span>
+                        </div>
+                    </div>
+                </div>
+                <button class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-6 py-2 rounded-full font-semibold tech-font transition-all transform hover:scale-105 shadow-lg">
+                    Subscribe 🚀
+                </button>
+                <button class="md:hidden p-2 text-gray-400 hover:text-blue-400">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="tech-hero-bg py-20 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <div class="text-center lg:text-left">
+                <div class="inline-flex items-center bg-blue-500/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6 border border-blue-500/30">
+                    <span class="text-blue-400 font-semibold tech-font">🔥 Latest Tech Reviews</span>
+                </div>
+                <h1 class="text-4xl lg:text-6xl font-bold text-white mb-6 tech-font leading-tight">
+                    Decode the 
+                    <span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent relative">
+                        Future
+                        <div class="absolute -bottom-2 left-0 w-full h-3 bg-blue-500 opacity-30 rounded-full"></div>
+                    </span>
+                    <br>of Technology
+                </h1>
+                <p class="text-xl text-gray-300 mb-8 leading-relaxed tech-font">
+                    Unbiased reviews, in-depth analysis, and expert insights on the latest tech products. 
+                    Make informed decisions with data-driven reviews! 🚀
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
+                    <button class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-4 rounded-full font-bold tech-font transition-all transform hover:scale-105 shadow-xl flex items-center justify-center space-x-2">
+                        <span>📊 Browse Reviews</span>
+                    </button>
+                    <button class="bg-white/10 backdrop-blur-sm text-white border-2 border-blue-500/50 hover:bg-blue-500/20 px-8 py-4 rounded-full font-bold tech-font transition-all flex items-center justify-center space-x-2">
+                        <span>🎯 Compare Products</span>
+                    </button>
+                </div>
+                
+                <!-- Tech Categories Quick Access -->
+                <div class="flex flex-wrap gap-3 justify-center lg:justify-start">
+                    <div class="hologram-card rounded-full px-4 py-2 flex items-center space-x-2 tech-icon cursor-pointer">
+                        <span class="text-2xl">📱</span>
+                        <span class="text-sm font-semibold text-white tech-font">Smartphones</span>
+                    </div>
+                    <div class="hologram-card rounded-full px-4 py-2 flex items-center space-x-2 tech-icon cursor-pointer">
+                        <span class="text-2xl">💻</span>
+                        <span class="text-sm font-semibold text-white tech-font">Laptops</span>
+                    </div>
+                    <div class="hologram-card rounded-full px-4 py-2 flex items-center space-x-2 tech-icon cursor-pointer">
+                        <span class="text-2xl">🎧</span>
+                        <span class="text-sm font-semibold text-white tech-font">Audio</span>
+                    </div>
+                    <div class="hologram-card rounded-full px-4 py-2 flex items-center space-x-2 tech-icon cursor-pointer">
+                        <span class="text-2xl">🎮</span>
+                        <span class="text-sm font-semibold text-white tech-font">Gaming</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Interactive Tech Showcase -->
+            <div class="relative">
+                <div class="relative w-full h-96 hologram-card rounded-3xl overflow-hidden shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                         alt="Latest tech products" 
+                         class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    
+                    <!-- Floating Review Scores -->
+                    <div class="absolute top-4 right-4 review-score">
+                        <span class="text-lg font-bold mono-font relative z-10">9.2</span>
+                    </div>
+                    
+                    <div class="absolute bottom-4 left-4 review-score" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                        <span class="text-lg font-bold mono-font relative z-10">8.7</span>
+                    </div>
+                    
+                    <!-- Tech Specs Display -->
+                    <div class="absolute top-1/2 left-4 transform -translate-y-1/2 space-y-2">
+                        <div class="hologram-card px-3 py-2 rounded-lg">
+                            <div class="text-xs text-gray-300 mono-font">CPU</div>
+                            <div class="text-sm font-bold text-white tech-font">A17 Pro</div>
+                        </div>
+                        <div class="hologram-card px-3 py-2 rounded-lg">
+                            <div class="text-xs text-gray-300 mono-font">RAM</div>
+                            <div class="text-sm font-bold text-white tech-font">8GB</div>
+                        </div>
+                        <div class="hologram-card px-3 py-2 rounded-lg">
+                            <div class="text-xs text-gray-300 mono-font">SCORE</div>
+                            <div class="text-sm font-bold text-green-400 tech-font">9.2/10</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Floating Tech Elements -->
+                <div class="absolute -top-4 -left-4 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center shadow-lg floating-tech">
+                    <span class="text-sm text-white">⚡</span>
+                </div>
+                <div class="absolute -bottom-4 -right-4 w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center shadow-lg floating-tech" style="animation-delay: 1s;">
+                    <span class="text-sm text-white">🚀</span>
+                </div>
+                <div class="absolute top-10 -right-8 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center shadow-lg floating-tech" style="animation-delay: 2s;">
+                    <span class="text-xs text-white">✨</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Product Comparison Section -->
+<section class="py-16 bg-gray-900 circuit-pattern">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-white mb-4 tech-font">Head-to-Head Comparisons</h2>
+            <p class="text-xl text-gray-400 tech-font">See how the latest tech stacks up against the competition</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- Comparison Card 1 -->
+            <div class="comparison-card rounded-2xl p-6 hover:shadow-2xl transition-all transform hover:-translate-y-2">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-xl font-bold text-white tech-font">iPhone 15 Pro vs Galaxy S24 Ultra</h3>
+                    <div class="bg-red-500/20 text-red-400 px-3 py-1 rounded-full text-sm font-semibold mono-font">
+                        LIVE BATTLE
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                    <div class="text-center">
+                        <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" 
+                             alt="iPhone 15 Pro" 
+                             class="w-20 h-20 mx-auto rounded-xl object-cover border-2 border-blue-500/50">
+                        <div class="mt-3">
+                            <div class="text-white font-bold tech-font">iPhone 15 Pro</div>
+                            <div class="text-blue-400 text-sm mono-font">Score: 9.2/10</div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" 
+                             alt="Galaxy S24 Ultra" 
+                             class="w-20 h-20 mx-auto rounded-xl object-cover border-2 border-purple-500/50">
+                        <div class="mt-3">
+                            <div class="text-white font-bold tech-font">Galaxy S24 Ultra</div>
+                            <div class="text-purple-400 text-sm mono-font">Score: 8.9/10</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-400 text-sm tech-font">Camera Quality</span>
+                        <div class="flex space-x-2">
+                            <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                            <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-400 text-sm tech-font">Performance</span>
+                        <div class="flex space-x-2">
+                            <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                            <div class="w-2 h-2 bg-gray-600 rounded-full"></div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-400 text-sm tech-font">Battery Life</span>
+                        <div class="flex space-x-2">
+                            <div class="w-2 h-2 bg-gray-600 rounded-full"></div>
+                            <div class="w-2 h-2 bg-purple-500 rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="w-full mt-6 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white py-3 rounded-full font-bold tech-font transition-all">
+                    View Full Comparison
+                </button>
+            </div>
+            
+            <!-- Comparison Card 2 -->
+            <div class="comparison-card rounded-2xl p-6 hover:shadow-2xl transition-all transform hover:-translate-y-2">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="text-xl font-bold text-white tech-font">MacBook Air M3 vs ThinkPad X1</h3>
+                    <div class="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-sm font-semibold mono-font">
+                        UPDATED
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                    <div class="text-center">
+                        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" 
+                             alt="MacBook Air M3" 
+                             class="w-20 h-20 mx-auto rounded-xl object-cover border-2 border-green-500/50">
+                        <div class="mt-3">
+                            <div class="text-white font-bold tech-font">MacBook Air M3</div>
+                            <div class="text-green-400 text-sm mono-font">Score: 8.8/10</div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" 
+                             alt="ThinkPad X1" 
+                             class="w-20 h-20 mx-auto rounded-xl object-cover border-2 border-orange-500/50">
+                        <div class="mt-3">
+                            <div class="text-white font-bold tech-font">ThinkPad X1</div>
+                            <div class="text-orange-400 text-sm mono-font">Score: 8.5/10</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-400 text-sm tech-font">Build Quality</span>
+                        <div class="flex space-x-2">
+                            <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                            <div class="w-2 h-2 bg-orange-500 rounded-full"></div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-400 text-sm tech-font">Portability</span>
+                        <div class="flex space-x-2">
+                            <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                            <div class="w-2 h-2 bg-gray-600 rounded-full"></div>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-400 text-sm tech-font">Keyboard</span>
+                        <div class="flex space-x-2">
+                            <div class="w-2 h-2 bg-gray-600 rounded-full"></div>
+                            <div class="w-2 h-2 bg-orange-500 rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="w-full mt-6 bg-gradient-to-r from-green-500 to-orange-600 hover:from-green-600 hover:to-orange-700 text-white py-3 rounded-full font-bold tech-font transition-all">
+                    View Full Comparison
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Latest Reviews -->
+<section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-gray-900 mb-4 tech-font">Latest Tech Reviews</h2>
+            <p class="text-xl text-gray-600 tech-font">Fresh insights on the newest tech products</p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Review Card 1 -->
+            <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2 neon-border">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                         alt="iPhone 15 Pro vs Samsung Galaxy S24 Ultra: Ultimate Comparison" 
+                         class="w-full h-48 object-cover">
+                    <div class="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-bold mono-font">
+                        SMARTPHONES
+                    </div>
+                    <div class="absolute bottom-4 right-4 bg-green-600 text-white px-3 py-1 rounded-full text-xs font-bold mono-font">
+                        2.4K VIEWS
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3 tech-font">iPhone 15 Pro vs Samsung Galaxy S24 Ultra: Ultimate Comparison</h3>
+                    <p class="text-gray-600 mb-4 tech-font">We put these flagship smartphones head-to-head in our most comprehensive comparison yet.</p>
+                    <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+                        <div class="flex items-center space-x-2">
+                            <span class="tech-font">Tech Review Team</span>
+                            <span class="mono-font">•</span>
+                            <span class="mono-font">12 min read</span>
+                        </div>
+                        <span class="text-blue-600 font-semibold mono-font">2,450 views</span>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="flex items-center space-x-1">
+                            <span class="text-yellow-400 text-lg">★</span>
+                            <span class="text-yellow-400 text-lg">★</span>
+                            <span class="text-yellow-400 text-lg">★</span>
+                            <span class="text-yellow-400 text-lg">★</span>
+                            <span class="text-yellow-400 text-lg">★</span>
+                        </div>
+                        <span class="text-sm text-gray-500 mono-font">Smartphones</span>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- Review Card 2 -->
+            <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2 neon-border">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                         alt="Best Wireless Earbuds Under $100 (2024 Edition)" 
+                         class="w-full h-48 object-cover">
+                    <div class="absolute top-4 left-4 bg-purple-600 text-white px-3 py-1 rounded-full text-xs font-bold mono-font">
+                        AUDIO
+                    </div>
+                    <div class="absolute bottom-4 right-4 bg-green-600 text-white px-3 py-1 rounded-full text-xs font-bold mono-font">
+                        1.9K VIEWS
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3 tech-font">Best Wireless Earbuds Under $100 (2024 Edition)</h3>
+                    <p class="text-gray-600 mb-4 tech-font">Our top picks for budget-friendly wireless earbuds that don't compromise on sound quality.</p>
+                    <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+                        <div class="flex items-center space-x-2">
+                            <span class="tech-font">Audio Expert</span>
+                            <span class="mono-font">•</span>
+                            <span class="mono-font">8 min read</span>
+                        </div>
+                        <span class="text-purple-600 font-semibold mono-font">1,890 views</span>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="flex items-center space-x-1">
+                            <span class="text-yellow-400 text-lg">★</span>
+                            <span class="text-yellow-400 text-lg">★</span>
+                            <span class="text-yellow-400 text-lg">★</span>
+                            <span class="text-yellow-400 text-lg">★</span>
+                            <span class="text-yellow-400 text-lg">★</span>
+                        </div>
+                        <span class="text-sm text-gray-500 mono-font">Audio</span>
+                    </div>
+                </div>
+            </article>
+            
+            <!-- Review Card 3 -->
+            <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2 neon-border">
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                         alt="MacBook Air M3 Review: The Perfect Laptop for Most People" 
+                         class="w-full h-48 object-cover">
+                    <div class="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-full text-xs font-bold mono-font">
+                        LAPTOPS
+                    </div>
+                    <div class="absolute bottom-4 right-4 bg-green-600 text-white px-3 py-1 rounded-full text-xs font-bold mono-font">
+                        3.2K VIEWS
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-gray-900 mb-3 tech-font">MacBook Air M3 Review: The Perfect Laptop for Most People</h3>
+                    <p class="text-gray-600 mb-4 tech-font">Apple's latest MacBook Air strikes the perfect balance between performance, portability, and price.</p>
+                    <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+                        <div class="flex items-center space-x-2">
+                            <span class="tech-font">Laptop Specialist</span>
+                            <span class="mono-font">•</span>
+                            <span class="mono-font">10 min read</span>
+                        </div>
+                        <span class="text-green-600 font-semibold mono-font">3,200 views</span>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="flex items-center space-x-1">
+                            <span class="text-yellow-400 text-lg">★</span>
+                            <span class="text-yellow-400 text-lg">★</span>
+                            <span class="text-yellow-400 text-lg">★</span>
+                            <span class="text-yellow-400 text-lg">★</span>
+                            <span class="text-yellow-400 text-lg">★</span>
+                        </div>
+                        <span class="text-sm text-gray-500 mono-font">Laptops</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+        
+        <div class="text-center mt-12">
+            <button class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-4 rounded-full font-bold tech-font transition-all transform hover:scale-105 shadow-lg">
+                View All Reviews 📊
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Tech Categories -->
+<section class="py-16 bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-white mb-4 tech-font">Browse by Category</h2>
+            <p class="text-xl text-gray-400 tech-font">Explore reviews by your favorite tech categories</p>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="hologram-card rounded-2xl p-8 text-center hover:shadow-2xl transition-all transform hover:-translate-y-2 cursor-pointer group">
+                <div class="text-5xl mb-4 group-hover:scale-110 transition-transform tech-icon">📱</div>
+                <h3 class="font-bold text-white mb-2 tech-font">Smartphones</h3>
+                <p class="text-blue-400 font-semibold mono-font">45 reviews</p>
+                <div class="mt-3 text-xs text-gray-400 tech-font">Latest flagships</div>
+            </div>
+            
+            <div class="hologram-card rounded-2xl p-8 text-center hover:shadow-2xl transition-all transform hover:-translate-y-2 cursor-pointer group">
+                <div class="text-5xl mb-4 group-hover:scale-110 transition-transform tech-icon">💻</div>
+                <h3 class="font-bold text-white mb-2 tech-font">Laptops</h3>
+                <p class="text-purple-400 font-semibold mono-font">38 reviews</p>
+                <div class="mt-3 text-xs text-gray-400 tech-font">Work & gaming</div>
+            </div>
+            
+            <div class="hologram-card rounded-2xl p-8 text-center hover:shadow-2xl transition-all transform hover:-translate-y-2 cursor-pointer group">
+                <div class="text-5xl mb-4 group-hover:scale-110 transition-transform tech-icon">🎧</div>
+                <h3 class="font-bold text-white mb-2 tech-font">Audio</h3>
+                <p class="text-green-400 font-semibold mono-font">32 reviews</p>
+                <div class="mt-3 text-xs text-gray-400 tech-font">Headphones & speakers</div>
+            </div>
+            
+            <div class="hologram-card rounded-2xl p-8 text-center hover:shadow-2xl transition-all transform hover:-translate-y-2 cursor-pointer group">
+                <div class="text-5xl mb-4 group-hover:scale-110 transition-transform tech-icon">🎮</div>
+                <h3 class="font-bold text-white mb-2 tech-font">Gaming</h3>
+                <p class="text-orange-400 font-semibold mono-font">28 reviews</p>
+                <div class="mt-3 text-xs text-gray-400 tech-font">Consoles & accessories</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Newsletter Section -->
+<section class="py-16 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 tech-font">Stay Ahead of the Curve</h2>
+        <p class="text-xl text-blue-100 mb-8 tech-font">Get the latest tech reviews, buying guides, and exclusive insights delivered to your inbox.</p>
+        <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto mb-6">
+            <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 rounded-full focus:outline-none focus:ring-2 focus:ring-white bg-white/20 backdrop-blur-sm text-white placeholder-gray-300 border border-white/30 tech-font">
+            <button class="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3 rounded-full font-bold tech-font transition-all transform hover:scale-105">
+                Subscribe 🚀
+            </button>
+        </div>
+        <div class="flex flex-wrap justify-center gap-4 text-sm text-blue-200">
+            <div class="flex items-center space-x-2">
+                <span class="text-green-400">✓</span>
+                <span class="tech-font">Weekly reviews</span>
+            </div>
+            <div class="flex items-center space-x-2">
+                <span class="text-green-400">✓</span>
+                <span class="tech-font">Exclusive deals</span>
+            </div>
+            <div class="flex items-center space-x-2">
+                <span class="text-green-400">✓</span>
+                <span class="tech-font">Early access</span>
+            </div>
+        </div>
+        <p class="text-blue-200 text-sm mt-4 mono-font">Join 50,000+ tech enthusiasts. Unsubscribe anytime.</p>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8">
+            <div>
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
+                        <span class="text-white text-xl font-bold mono-font">RM</span>
+                    </div>
+                    <div class="tech-font">
+                        <div class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">ReviewMaster</div>
+                        <div class="text-xs text-gray-400">Tech Reviews • Decoded</div>
+                    </div>
+                </div>
+                <p class="text-gray-400 mb-4 tech-font">Unbiased tech reviews and expert insights to help you make smarter buying decisions in the digital age.</p>
+                <div class="flex space-x-4">
+                    <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors cursor-pointer">
+                        <span class="text-white">📘</span>
+                    </div>
+                    <div class="w-10 h-10 bg-gray-600 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors cursor-pointer">
+                        <span class="text-white">🐦</span>
+                    </div>
+                    <div class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 transition-colors cursor-pointer">
+                        <span class="text-white">📺</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div>
+                <h3 class="text-white font-bold mb-4 tech-font">Review Categories</h3>
+                <ul class="space-y-2 text-gray-400 tech-font">
+                    <li><a href="#" class="hover:text-blue-400 transition-colors">📱 Smartphones & Tablets</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition-colors">💻 Laptops & Computers</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition-colors">🎧 Audio & Headphones</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition-colors">🎮 Gaming Gear</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3 class="text-white font-bold mb-4 tech-font">Resources</h3>
+                <ul class="space-y-2 text-gray-400 tech-font">
+                    <li><a href="#" class="hover:text-blue-400 transition-colors">🎯 Buying Guides</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition-colors">⚡ Tech News</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition-colors">🏆 Best Of Lists</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition-colors">🔍 Product Comparisons</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h3 class="text-white font-bold mb-4 tech-font">Company</h3>
+                <ul class="space-y-2 text-gray-400 tech-font">
+                    <li><a href="#" class="hover:text-blue-400 transition-colors">📖 About ReviewMaster</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition-colors">🔬 Review Process</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition-colors">📞 Contact Us</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition-colors">💼 Partnerships</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+            <p class="text-gray-400 tech-font">&copy; 2024 ReviewMaster. All rights reserved. | Independent tech reviews you can trust.</p>
+        </div>
+    </div>
+</footer> 
