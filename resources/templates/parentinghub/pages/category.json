@@ -1,24 +1,33 @@
 {
-  "title": "{{category}} Articles - ParentingHub",
-  "description": "Explore our collection of {{category}} articles with expert advice and practical tips for parents. Find guidance for every stage of your parenting journey.",
-  "keywords": "{{category}}, parenting, child development, family, parenting tips, expert advice",
-  "og_title": "{{category}} Articles - ParentingHub",
-  "og_description": "Expert {{category}} advice and guidance for parents. Practical tips and insights for every stage of your family journey.",
-  "og_image": "/templates/parentinghub/thumbnail.webp",
-  "og_url": "/category/{{category}}",
-  "twitter_card": "summary_large_image",
-  "twitter_title": "{{category}} Articles - ParentingHub",
-  "twitter_description": "Expert {{category}} advice and parenting guidance for modern families.",
-  "twitter_image": "/templates/parentinghub/thumbnail.webp",
-  "canonical_url": "/category/{{category}}",
-  "robots": "index, follow",
-  "author": "Maulana Shalihin",
-  "language": "id-ID",
-  "schema_type": "CollectionPage",
-  "schema_name": "{{category}} Articles Collection",
-  "schema_description": "Kumpulan artikel {{category}} dan panduan parenting dari para ahli",
-  "schema_url": "/category/{{category}}",
-  "last_modified": "2024-03-20T10:00:00+07:00",
-  "article_section": "{{category}}",
-  "content_type": "category_listing"
-} 
+  "title": "ParentingHub - Expert Parenting Advice & Community",
+  "description": "Find expert parenting advice, child development insights, and family-friendly activities to support your parenting journey",
+  "sections": [
+    {
+      "title": "styles",
+      "id": "styles",
+      "type": "template",
+      "resetable": true
+    },
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": ["site.name", "site.logo", "navigation", "cta_button"]
+    },
+    {
+      "title": "category result",
+      "id": "category_result",
+      "type": "template",
+      "resetable": true,
+      "data": []
+    },
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": ["site.name", "site.description", "navigation", "social_links"]
+    }
+  ]
+}

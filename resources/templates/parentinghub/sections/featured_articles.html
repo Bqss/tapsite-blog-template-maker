@@ -1,61 +1,157 @@
 <!-- Featured Parenting Articles -->
 <section class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <h2 class="font-display text-3xl lg:text-4xl font-bold text-family-dark mb-4">{{it.featured.title}}</h2>
-            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-                {{it.featured.description}}
-            </p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {{@each(it.featured.articles)=>article}}
-            <article class="family-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
-                <div class="relative">
-                    <img src="{{article.image}}" 
-                         alt="{{article.title}}" 
-                         class="w-full h-48 object-cover">
-                    <div class="absolute top-4 left-4">
-                        <span class="bg-{{article.category.color}} text-white px-3 py-1 rounded-full text-sm font-medium">{{article.category.name}}</span>
-                    </div>
-                    <div class="absolute top-4 right-4">
-                        <span class="bg-white text-family-dark px-3 py-1 rounded-full text-sm font-medium">{{article.age_group}}</span>
-                    </div>
-                    <div class="absolute bottom-4 left-4 right-4">
-                        <div class="flex items-center space-x-2 text-white text-sm">
-                            {{@each(article.badges)=>badge}}
-                            <span class="bg-black bg-opacity-50 px-2 py-1 rounded-full">{{badge.icon}} {{badge.text}}</span>
-                            {{/each}}
-                        </div>
-                    </div>
-                </div>
-                <div class="p-6">
-                    <div class="flex items-center space-x-2 mb-3">
-                        <img src="{{article.author.avatar}}" 
-                             alt="{{article.author.name}}" 
-                             class="w-8 h-8 rounded-full">
-                        <span class="text-gray-600 text-sm">{{article.author.name}}</span>
-                        <span class="text-gray-400 text-sm">•</span>
-                        <span class="text-gray-500 text-sm">{{article.author.title}}</span>
-                    </div>
-                    <h3 class="font-display text-xl font-semibold text-family-dark mb-3 line-clamp-2">
-                        {{article.title}}
-                    </h3>
-                    <p class="text-gray-600 text-sm mb-4 line-clamp-3">
-                        {{article.excerpt}}
-                    </p>
-                    
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center space-x-2">
-                            <span class="text-xs text-gray-500">{{article.age_range}}</span>
-                        </div>
-                        <a href="{{article.url}}" class="text-family-green font-medium hover:text-family-emerald transition-colors">
-                            {{article.cta_text}} →
-                        </a>
-                    </div>
-                </div>
-            </article>
-            {{/each}}
-        </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="font-display text-3xl lg:text-4xl font-bold text-family-dark mb-4">Expert Parenting Guidance</h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Evidence-based advice and practical tips from parenting experts and experienced parents
+      </p>
     </div>
-</section> 
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Article 1 -->
+      <article
+        class="family-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=400&h=250&fit=crop"
+            alt="Toddler Sleep Training" class="w-full h-48 object-cover">
+          <div class="absolute top-4 left-4">
+            <span class="bg-family-green text-white px-3 py-1 rounded-full text-sm font-medium">Sleep & Rest</span>
+          </div>
+          <div class="absolute top-4 right-4">
+            <span class="bg-white text-family-dark px-3 py-1 rounded-full text-sm font-medium">Toddlers</span>
+          </div>
+          <div class="absolute bottom-4 left-4 right-4">
+            <div class="flex items-center space-x-2 text-white text-sm">
+              <span class="bg-black bg-opacity-50 px-2 py-1 rounded-full">⭐ High Safety</span>
+              <span class="bg-black bg-opacity-50 px-2 py-1 rounded-full">📖 12 min read</span>
+            </div>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center space-x-2 mb-3">
+            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=40&h=40&fit=crop&crop=face"
+              alt="Dr. Sarah Parent" class="w-8 h-8 rounded-full">
+            <span class="text-gray-600 text-sm">Dr. Sarah Parent</span>
+            <span class="text-gray-400 text-sm">•</span>
+            <span class="text-gray-500 text-sm">Sleep Specialist</span>
+          </div>
+          <h3 class="font-display text-xl font-semibold text-family-dark mb-3 line-clamp-2">
+            Complete Guide to Toddler Sleep Training: Gentle Methods
+          </h3>
+          <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+            Evidence-based sleep training techniques for toddlers with gentle, family-friendly approaches that respect
+            your child's needs.
+          </p>
+
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <span class="text-xs text-gray-500">Ages 1-3</span>
+            </div>
+            <button class="text-family-green font-medium hover:text-family-emerald transition-colors">
+              Read Guide →
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Article 2 -->
+      <article
+        class="family-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=250&fit=crop"
+            alt="Positive Discipline" class="w-full h-48 object-cover">
+          <div class="absolute top-4 left-4">
+            <span class="bg-purple-500 text-white px-3 py-1 rounded-full text-sm font-medium">Behavior</span>
+          </div>
+          <div class="absolute top-4 right-4">
+            <span class="bg-white text-family-dark px-3 py-1 rounded-full text-sm font-medium">Preschoolers</span>
+          </div>
+          <div class="absolute bottom-4 left-4 right-4">
+            <div class="flex items-center space-x-2 text-white text-sm">
+              <span class="bg-black bg-opacity-50 px-2 py-1 rounded-full">⭐ High Safety</span>
+              <span class="bg-black bg-opacity-50 px-2 py-1 rounded-full">📖 15 min read</span>
+            </div>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center space-x-2 mb-3">
+            <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=40&h=40&fit=crop&crop=face"
+              alt="Maria Montessori" class="w-8 h-8 rounded-full">
+            <span class="text-gray-600 text-sm">Maria Montessori</span>
+            <span class="text-gray-400 text-sm">•</span>
+            <span class="text-gray-500 text-sm">Child Development</span>
+          </div>
+          <h3 class="font-display text-xl font-semibold text-family-dark mb-3 line-clamp-2">
+            Positive Discipline Strategies for Preschoolers
+          </h3>
+          <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+            Learn effective positive discipline techniques that teach self-control and empathy without punishment.
+          </p>
+
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <span class="text-xs text-gray-500">Ages 3-5</span>
+            </div>
+            <button class="text-family-green font-medium hover:text-family-emerald transition-colors">
+              Read Guide →
+            </button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Article 3 -->
+      <article
+        class="family-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=400&h=250&fit=crop"
+            alt="Baby Milestones" class="w-full h-48 object-cover">
+          <div class="absolute top-4 left-4">
+            <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">Development</span>
+          </div>
+          <div class="absolute top-4 right-4">
+            <span class="bg-white text-family-dark px-3 py-1 rounded-full text-sm font-medium">Infants</span>
+          </div>
+          <div class="absolute bottom-4 left-4 right-4">
+            <div class="flex items-center space-x-2 text-white text-sm">
+              <span class="bg-black bg-opacity-50 px-2 py-1 rounded-full">⭐ High Safety</span>
+              <span class="bg-black bg-opacity-50 px-2 py-1 rounded-full">📖 18 min read</span>
+            </div>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center space-x-2 mb-3">
+            <img src="https://images.unsplash.com/photo-1594824604989-b57a8b5ce969?w=40&h=40&fit=crop&crop=face"
+              alt="Dr. Emma Pediatric" class="w-8 h-8 rounded-full">
+            <span class="text-gray-600 text-sm">Dr. Emma Pediatric</span>
+            <span class="text-gray-400 text-sm">•</span>
+            <span class="text-gray-500 text-sm">Pediatrician</span>
+          </div>
+          <h3 class="font-display text-xl font-semibold text-family-dark mb-3 line-clamp-2">
+            Baby's First Year Milestones: What to Expect
+          </h3>
+          <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+            Comprehensive guide to infant development milestones including physical, cognitive, and social-emotional
+            growth.
+          </p>
+
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <span class="text-xs text-gray-500">Ages 0-12 months</span>
+            </div>
+            <button class="text-family-green font-medium hover:text-family-emerald transition-colors">
+              Read Guide →
+            </button>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="text-center mt-12">
+      <button
+        class="bg-family-green text-white px-8 py-3 rounded-lg font-semibold hover:bg-family-emerald transition-colors">
+        View All Parenting Guides
+      </button>
+    </div>
+  </div>
+</section>
