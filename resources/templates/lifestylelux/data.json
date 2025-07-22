@@ -1,0 +1,207 @@
+{
+  "site": {
+    "name": "LifestyleLux",
+    "tagline": "Curating Luxury Living",
+    "description": "Discover the finest in luxury lifestyle, fashion, and exclusive experiences",
+    "logo": "https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=200&h=80&fit=crop"
+  },
+  "posts": [
+    {
+      "id": 1,
+      "title": "The Art of Luxury Living: Timeless Elegance in Modern Homes",
+      "slug": "art-luxury-living-timeless-elegance",
+      "excerpt": "Explore how contemporary luxury interiors blend classic sophistication with modern innovation, creating spaces that epitomize refined living.",
+      "content": "Luxury living is not merely about expensive items; it's about creating an environment that reflects refined taste, quality craftsmanship, and timeless elegance...",
+      "category": "Interior Design",
+      "author": "Isabella Rossi",
+      "read_time": 8,
+      "featured_image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop",
+      "tags": ["luxury", "interior design", "elegance", "modern homes"],
+      "published_at": "2024-12-15T10:00:00Z",
+      "views": 2847
+    },
+    {
+      "id": 2,
+      "title": "Haute Couture Spring Collection: Fashion's New Renaissance",
+      "slug": "haute-couture-spring-fashion-renaissance",
+      "excerpt": "This season's haute couture collections showcase a return to artisanal craftsmanship and sustainable luxury in fashion.",
+      "content": "The latest haute couture presentations have unveiled a fascinating narrative of renewal and innovation...",
+      "category": "Fashion",
+      "author": "Victoria Sterling",
+      "read_time": 6,
+      "featured_image": "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=800&h=600&fit=crop",
+      "tags": ["haute couture", "fashion", "luxury", "sustainability"],
+      "published_at": "2024-12-14T14:30:00Z",
+      "views": 1923
+    },
+    {
+      "id": 3,
+      "title": "Michelin-Starred Experiences: A Culinary Journey Through Excellence",
+      "slug": "michelin-starred-culinary-journey-excellence",
+      "excerpt": "Discover the world's most exclusive dining experiences where culinary artistry meets unparalleled service and ambiance.",
+      "content": "Fine dining has evolved into an art form that transcends mere sustenance...",
+      "category": "Dining",
+      "author": "Chef Alexandre Dubois",
+      "read_time": 10,
+      "featured_image": "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=800&h=600&fit=crop",
+      "tags": ["fine dining", "michelin", "culinary", "luxury"],
+      "published_at": "2024-12-13T18:00:00Z",
+      "views": 3156
+    },
+    {
+      "id": 4,
+      "title": "Wellness Retreats: Luxury Sanctuaries for Mind, Body & Soul",
+      "slug": "luxury-wellness-retreats-sanctuaries",
+      "excerpt": "Escape to the world's most exclusive wellness destinations where luxury meets holistic healing and personal transformation.",
+      "content": "In our fast-paced world, luxury wellness retreats offer more than just relaxation...",
+      "category": "Wellness",
+      "author": "Dr. Seraphina Wilde",
+      "read_time": 7,
+      "featured_image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop",
+      "tags": ["wellness", "luxury", "retreat", "mindfulness"],
+      "published_at": "2024-12-12T09:15:00Z",
+      "views": 1674
+    },
+    {
+      "id": 5,
+      "title": "Timepiece Mastery: The Art of Luxury Watchmaking",
+      "slug": "luxury-watchmaking-timepiece-mastery",
+      "excerpt": "Delve into the intricate world of haute horlogerie where centuries-old traditions meet cutting-edge innovation.",
+      "content": "Swiss watchmaking represents the pinnacle of precision engineering and artistic expression...",
+      "category": "Accessories",
+      "author": "Marcus Zimmermann",
+      "read_time": 9,
+      "featured_image": "https://images.unsplash.com/photo-1523170335258-f5c54a6b4a2b?w=800&h=600&fit=crop",
+      "tags": ["watches", "luxury", "craftsmanship", "heritage"],
+      "published_at": "2024-12-11T16:45:00Z",
+      "views": 2234
+    },
+    {
+      "id": 6,
+      "title": "Private Jet Lifestyle: The Ultimate in Luxury Travel",
+      "slug": "private-jet-luxury-travel-lifestyle",
+      "excerpt": "Experience the epitome of luxury travel with exclusive access to private aviation and bespoke journey experiences.",
+      "content": "Private aviation represents more than transportation; it's a lifestyle choice that prioritizes time, comfort, and exclusivity...",
+      "category": "Travel",
+      "author": "Captain James Morrison",
+      "read_time": 8,
+      "featured_image": "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&h=600&fit=crop",
+      "tags": ["private jet", "luxury travel", "aviation", "exclusive"],
+      "published_at": "2024-12-10T12:20:00Z",
+      "views": 2891
+    }
+  ],
+  "categories": [
+    {
+      "name": "Interior Design",
+      "slug": "interior-design",
+      "description": "Luxury home design and sophisticated living spaces",
+      "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop",
+      "post_count": 12
+    },
+    {
+      "name": "Fashion",
+      "slug": "fashion",
+      "description": "Haute couture, luxury brands, and style inspiration",
+      "image": "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400&h=300&fit=crop",
+      "post_count": 18
+    },
+    {
+      "name": "Dining",
+      "slug": "dining",
+      "description": "Fine dining experiences and culinary excellence",
+      "image": "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400&h=300&fit=crop",
+      "post_count": 8
+    },
+    {
+      "name": "Wellness",
+      "slug": "wellness",
+      "description": "Luxury wellness and holistic lifestyle experiences",
+      "image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop",
+      "post_count": 15
+    },
+    {
+      "name": "Travel",
+      "slug": "travel",
+      "description": "Exclusive destinations and luxury travel experiences",
+      "image": "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&h=300&fit=crop",
+      "post_count": 22
+    },
+    {
+      "name": "Accessories",
+      "slug": "accessories",
+      "description": "Luxury accessories, jewelry, and timepieces",
+      "image": "https://images.unsplash.com/photo-1523170335258-f5c54a6b4a2b?w=400&h=300&fit=crop",
+      "post_count": 9
+    }
+  ],
+  "tags": [
+    "luxury", "elegance", "premium", "exclusive", "sophisticated", 
+    "haute couture", "craftsmanship", "artisanal", "bespoke", "curated",
+    "wellness", "mindfulness", "fine dining", "travel", "fashion",
+    "interior design", "watches", "jewelry", "art", "culture"
+  ],
+  "featured": {
+    "hero_image": "https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=1920&h=1080&fit=crop",
+    "hero_title": "Curating the Finest in Luxury Living",
+    "hero_subtitle": "Discover exclusive experiences, timeless elegance, and sophisticated lifestyle inspirations"
+  },
+  "navigation": [
+    { "name": "Latest", "url": "/" },
+    { "name": "Fashion", "url": "/category/fashion" },
+    { "name": "Travel", "url": "/category/travel" },
+    { "name": "Dining", "url": "/category/dining" },
+    { "name": "Wellness", "url": "/category/wellness" }
+  ],
+  "search_placeholder": "Search luxury...",
+  "subscribe_button": "Subscribe",
+  "hero": {
+    "badge_text": "✨ CURATED LUXURY LIFESTYLE",
+    "title_primary": "Luxury",
+    "title_secondary": "Redefined",
+    "subtitle": "Discover the pinnacle of sophisticated living through our curated collection of luxury fashion, exclusive travel destinations, fine dining, and premium lifestyle trends that define modern elegance.",
+    "cta_primary": { "label": "Explore Luxury Collection", "url": "/posts" },
+    "cta_secondary": { "label": "View Exclusives", "url": "/exclusive" },
+    "stats": [
+      { "number": "500+", "label": "Luxury Brands" },
+      { "number": "50+", "label": "Countries" },
+      { "number": "1M+", "label": "Elite Readers" },
+      { "number": "24/7", "label": "Luxury Access" }
+    ]
+  },
+  "social_links": [
+    { "label": "Instagram", "url": "https://instagram.com", "emoji": "📸" },
+    { "label": "Twitter", "url": "https://twitter.com", "emoji": "🐦" },
+    { "label": "Facebook", "url": "https://facebook.com", "emoji": "📘" }
+  ],
+  "footer_columns": [
+    {
+      "title": "Luxury Content",
+      "links": [
+        { "label": "High Fashion", "url": "/tag/high-fashion" },
+        { "label": "Luxury Travel", "url": "/tag/luxury-travel" },
+        { "label": "Fine Dining", "url": "/tag/fine-dining" },
+        { "label": "Exclusive Reviews", "url": "/tag/exclusive-reviews" }
+      ]
+    },
+    {
+      "title": "Luxury Collections",
+      "links": [
+        { "label": "Luxury Watches", "url": "/tag/luxury-watches" },
+        { "label": "Designer Fashion", "url": "/tag/designer-fashion" },
+        { "label": "Luxury Cars", "url": "/tag/luxury-cars" },
+        { "label": "Premium Homes", "url": "/tag/premium-homes" }
+      ]
+    },
+    {
+      "title": "Exclusive Access",
+      "links": [
+        { "label": "VIP Events", "url": "/vip-events" },
+        { "label": "Private Sales", "url": "/private-sales" },
+        { "label": "Elite Membership", "url": "/membership" },
+        { "label": "Concierge Service", "url": "/concierge" }
+      ]
+    }
+  ],
+  "current_year": 2024
+} 

@@ -1,0 +1,65 @@
+{
+  "seo": {
+    "title": "Search Results - LifestyleLux | Find Luxury Content",
+    "description": "Search through our luxury lifestyle articles, fashion trends, and exclusive experiences. Find premium content that matches your interests.",
+    "keywords": "search luxury content, find lifestyle articles, luxury blog search, premium content search",
+    "canonical": "/search",
+    "og_title": "Search Results - LifestyleLux",
+    "og_description": "Search through our luxury lifestyle articles and premium content.",
+    "og_image": "https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=1200&h=630&fit=crop",
+    "og_type": "website",
+    "twitter_card": "summary_large_image",
+    "twitter_title": "Search Results - LifestyleLux",
+    "twitter_description": "Search through our luxury lifestyle articles and premium content.",
+    "twitter_image": "https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=1200&h=630&fit=crop",
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "SearchResultsPage",
+      "name": "Search Results - LifestyleLux",
+      "description": "Search results for luxury lifestyle content",
+      "url": "{{site.url}}/search"
+    }
+  },
+  "sections": [
+    {
+      "title": "styles",
+      "id": "styles",
+      "type": "template",
+      "resetable": true
+    },
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": ["site", "navigation", "subscribe_button", "search_placeholder"]
+    },
+    {
+      "title": "search_result",
+      "id": "search_result",
+      "type": "html",
+      "resetable": true,
+      "data": []
+    },
+    {
+      "title": "popular_search",
+      "id": "popular_search",
+      "type": "template",
+      "resetable": true,
+      "data": []
+    },
+    {
+      "title": "footer_light",
+      "id": "footer_light",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "site",
+        "navigation",
+        "social_links",
+        "footer_columns",
+        "current_year"
+      ]
+    }
+  ]
+}

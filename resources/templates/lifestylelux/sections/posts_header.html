@@ -1,0 +1,54 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+  .pinterest-grid {
+    column-count: 3;
+    column-gap: 1.5rem;
+    column-fill: balance;
+  }
+
+  @media (max-width: 1024px) {
+    .pinterest-grid {
+      column-count: 2;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .pinterest-grid {
+      column-count: 1;
+    }
+  }
+
+  .pinterest-item {
+    break-inside: avoid;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .luxury-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .elegant-border {
+    border: 1px solid rgba(212, 175, 55, 0.3);
+  }
+
+  .gold-gradient {
+    background: linear-gradient(135deg, #D4AF37, #FFD700);
+  }
+
+  .image-overlay {
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
+  }
+</style><!-- Page Header -->
+<section class="bg-white py-16 border-b elegant-border">
+  <div class="max-w-7xl mx-auto px-4 lg:px-8 text-center">
+    <h1 class="font-serif text-4xl lg:text-6xl font-light text-luxury-dark mb-4">All Luxury Stories</h1>
+    <p class="text-xl text-gray-600 mb-6 max-w-2xl mx-auto">
+      Discover our complete collection of curated luxury lifestyle content, from fashion to fine dining
+    </p>
+    <div class="w-24 h-px bg-luxury-gold mx-auto"></div>
+    <p class="text-sm text-gray-500 mt-4">84 articles and counting</p>
+  </div>
+</section>

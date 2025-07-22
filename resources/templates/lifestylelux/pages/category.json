@@ -1,0 +1,52 @@
+{
+  "seo": {
+    "title": "{{category}} - LifestyleLux | Luxury Lifestyle Category",
+    "description": "Explore {{category}} articles and luxury lifestyle content. Premium insights and exclusive experiences.",
+    "keywords": "{{category}}, luxury lifestyle, premium content, sophisticated living",
+    "canonical": "/category/{{category}}",
+    "og_title": "{{category}} - LifestyleLux",
+    "og_description": "Explore {{category}} articles and luxury lifestyle content.",
+    "og_image": "https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=1200&h=630&fit=crop",
+    "og_type": "website",
+    "twitter_card": "summary_large_image",
+    "twitter_title": "{{category}} - LifestyleLux",
+    "twitter_description": "Explore {{category}} articles and luxury lifestyle content.",
+    "twitter_image": "https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=1200&h=630&fit=crop",
+    "schema": {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "{{category}} - LifestyleLux",
+      "description": "{{category}} articles and luxury lifestyle content",
+      "url": "{{site.url}}/category/{{category}}"
+    }
+  },
+  "sections": [
+    {
+      "title": "styles",
+      "id": "styles",
+      "type": "template",
+      "resetable": true
+    },
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": ["site", "navigation", "subscribe_button", "search_placeholder"]
+    },
+    {
+      "title": "category_posts",
+      "id": "category_posts",
+      "type": "template",
+      "resetable": true,
+      "data": ["category", "posts"]
+    },
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": ["site", "navigation", "social_links", "footer_columns", "current_year"]
+    }
+  ]
+} 

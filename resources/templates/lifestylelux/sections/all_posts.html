@@ -1,0 +1,117 @@
+<section class="py-20 bg-luxury-cream">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl lg:text-5xl font-bold font-serif luxury-text-gradient mb-4">All Luxury Posts</h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">Discover our latest luxury articles, insights, and exclusive stories.</p>
+    </div>
+
+    <!-- Loading -->
+    <div id="posts-loading" class="text-center py-12">
+      <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-luxury-gold"></div>
+      <p class="mt-4 text-gray-600">Loading posts...</p>
+    </div>
+
+    <!-- Error -->
+    <div id="posts-error" class="text-center py-12 hidden">
+      <p class="text-red-600 mb-4 font-medium">Failed to load posts. Please try again later.</p>
+      <button id="retry-btn" class="bg-luxury-gold text-white px-6 py-2 rounded-full hover:bg-luxury-accent transition-all">Try Again</button>
+    </div>
+
+    <!-- Posts Grid -->
+    <div id="posts-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 hidden"></div>
+
+    <!-- Empty -->
+    <div id="posts-empty" class="text-center py-12 hidden text-gray-500">No luxury posts found.</div>
+
+    <!-- Pagination -->
+    <div id="pagination" class="mt-12 flex justify-center hidden space-x-2"></div>
+  </div>
+</section>
+
+<script>
+(function() {
+  const API = '/api/blog/posts';
+  const POSTS_PER_PAGE = 6;
+  let currentPage = 1;
+  let totalPages = 1;
+  let cached = [];
+
+  const loadingEl = document.getElementById('posts-loading');
+  const errorEl = document.getElementById('posts-error');
+  const gridEl = document.getElementById('posts-grid');
+  const emptyEl = document.getElementById('posts-empty');
+  const paginationEl = document.getElementById('pagination');
+  const retryBtn = document.getElementById('retry-btn');
+
+  function state(show) {
+    loadingEl.classList.toggle('hidden', show !== 'loading');
+    errorEl.classList.toggle('hidden', show !== 'error');
+    gridEl.classList.toggle('hidden', show !== 'grid');
+    emptyEl.classList.toggle('hidden', show !== 'empty');
+    paginationEl.classList.toggle('hidden', show !== 'grid');
+  }
+
+  function truncate(str, len=140) {
+    return str.length <= len ? str : str.slice(0, len) + '…';
+  }
+
+  function card(post) {
+    const img = post.featured_image || 'https://placehold.co/600x400?text=Luxury';
+    const url = `/post/${post.slug}`;
+    return `<article class="bg-white rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all transform hover:-translate-y-2 luxury-hover">
+      <a href="${url}" class="block">
+        <img src="${img}" alt="${post.title}" class="w-full h-56 object-cover">
+      </a>
+      <div class="p-8">
+        <h3 class="text-2xl font-bold font-serif text-luxury-dark mb-4 line-clamp-2">
+          <a href="${url}" class="hover:text-luxury-gold transition-colors">${post.title}</a>
+        </h3>
+        <p class="text-gray-600 mb-6 leading-relaxed line-clamp-3">${truncate(post.excerpt || post.content || '')}</p>
+        <div class="flex items-center justify-between text-sm text-gray-500">
+          <span>${post.author || 'Anonymous'}</span>
+          ${post.read_time ? `<span>${post.read_time} min read</span>` : ''}
+        </div>
+      </div>
+    </article>`;
+  }
+
+  async function fetchPosts(page=1) {
+    state('loading');
+    try {
+      const res = await fetch(`${API}?page=${page}&limit=${POSTS_PER_PAGE}`);
+      if (!res.ok) throw new Error('Failed');
+      const data = await res.json();
+      cached = data.data;
+      totalPages = data.total_pages || 1;
+      render();
+    } catch (e) {
+      state('error');
+    }
+  }
+
+  function render() {
+    if (!cached.length) {
+      state('empty');
+      return;
+    }
+    gridEl.innerHTML = cached.map(card).join('');
+    renderPagination();
+    state('grid');
+  }
+
+  function renderPagination() {
+    paginationEl.innerHTML = '';
+    if (totalPages <= 1) return;
+    for(let i=1;i<=totalPages;i++) {
+      const btn = document.createElement('button');
+      btn.textContent = i;
+      btn.className = `px-4 py-2 rounded-full ${i===currentPage? 'bg-luxury-gold text-white':'bg-white text-gray-700 border border-gray-300'} hover:bg-luxury-gold hover:text-white transition-all`;
+      btn.onclick = ()=>{currentPage=i;fetchPosts(i)};
+      paginationEl.appendChild(btn);
+    }
+  }
+
+  retryBtn && (retryBtn.onclick = ()=>fetchPosts(currentPage));
+  fetchPosts(currentPage);
+})();
+</script> 

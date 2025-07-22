@@ -1,0 +1,9 @@
+{
+  "title" : "LifestyleLux",
+  "description" : "Luxury lifestyle blog with curated content and trend showcase",
+  "template_id" : "lifestylelux",
+  "creator_name" : "Maulana Shalihin",
+  "creator_website" : "https://tapsite.ai",
+  "version" : "1.0.0",
+  "thumbnail" : "/templates/lifestylelux/thumbnail.webp"
+}

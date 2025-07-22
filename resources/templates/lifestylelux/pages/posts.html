@@ -1,0 +1,604 @@
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'luxury-gold': '#D4AF37',
+                        'luxury-cream': '#F5F5DC',
+                        'luxury-accent': '#FFD700',
+                        'luxury-dark': '#2C2C2C',
+                        'luxury-light': '#FAFAFA'
+                    },
+                    fontFamily: {
+                        'serif': ['Playfair Display', 'Georgia', 'serif'],
+                        'sans': ['Montserrat', 'Arial', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+        
+        .pinterest-grid {
+            column-count: 3;
+            column-gap: 1.5rem;
+            column-fill: balance;
+        }
+        
+        @media (max-width: 1024px) {
+            .pinterest-grid { column-count: 2; }
+        }
+        
+        @media (max-width: 640px) {
+            .pinterest-grid { column-count: 1; }
+        }
+        
+        .pinterest-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .luxury-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .elegant-border {
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .gold-gradient {
+            background: linear-gradient(135deg, #D4AF37, #FFD700);
+        }
+        
+        .image-overlay {
+            background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.7));
+        }
+    </style>
+
+    <div class="bg-luxury-light min-h-screen font-sans text-luxury-dark">
+        <!-- Navigation -->
+        <nav class="bg-white shadow-sm border-b elegant-border sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 gold-gradient rounded-full flex items-center justify-center">
+                            <span class="text-white font-bold text-sm">L</span>
+                        </div>
+                        <span class="font-serif text-xl font-semibold text-luxury-dark">LifestyleLux</span>
+                    </div>
+                    
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="#" class="text-luxury-dark hover:text-luxury-gold transition-colors font-medium">Home</a>
+                        <a href="#" class="text-luxury-dark hover:text-luxury-gold transition-colors font-medium">Fashion</a>
+                        <a href="#" class="text-luxury-dark hover:text-luxury-gold transition-colors font-medium">Interior</a>
+                        <a href="#" class="text-luxury-dark hover:text-luxury-gold transition-colors font-medium">Dining</a>
+                        <a href="#" class="text-luxury-dark hover:text-luxury-gold transition-colors font-medium">Travel</a>
+                        <a href="#" class="text-luxury-dark hover:text-luxury-gold transition-colors font-medium">Wellness</a>
+                        <a href="#" class="text-luxury-gold font-medium border-b-2 border-luxury-gold pb-1">All Posts</a>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4">
+                        <button class="text-luxury-dark hover:text-luxury-gold transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                        </button>
+                        <button class="md:hidden text-luxury-dark hover:text-luxury-gold transition-colors" id="mobile-menu-btn">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Page Header -->
+        <section class="bg-white py-16 border-b elegant-border">
+            <div class="max-w-7xl mx-auto px-4 lg:px-8 text-center">
+                <h1 class="font-serif text-4xl lg:text-6xl font-light text-luxury-dark mb-4">All Luxury Stories</h1>
+                <p class="text-xl text-gray-600 mb-6 max-w-2xl mx-auto">
+                    Discover our complete collection of curated luxury lifestyle content, from fashion to fine dining
+                </p>
+                <div class="w-24 h-px bg-luxury-gold mx-auto"></div>
+                <p class="text-sm text-gray-500 mt-4">84 articles and counting</p>
+            </div>
+        </section>
+
+        <!-- Filters & Search -->
+        <section class="bg-white py-6 border-b elegant-border sticky top-16 z-40">
+            <div class="max-w-7xl mx-auto px-4 lg:px-8">
+                <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
+                    <!-- Category Filters -->
+                    <div class="flex flex-wrap gap-2">
+                        <button class="bg-luxury-gold text-white px-4 py-2 rounded-full text-sm font-medium">All</button>
+                        <button class="bg-white text-luxury-dark px-4 py-2 rounded-full text-sm font-medium elegant-border hover:bg-luxury-gold hover:text-white transition-all">Fashion</button>
+                        <button class="bg-white text-luxury-dark px-4 py-2 rounded-full text-sm font-medium elegant-border hover:bg-luxury-gold hover:text-white transition-all">Interior</button>
+                        <button class="bg-white text-luxury-dark px-4 py-2 rounded-full text-sm font-medium elegant-border hover:bg-luxury-gold hover:text-white transition-all">Dining</button>
+                        <button class="bg-white text-luxury-dark px-4 py-2 rounded-full text-sm font-medium elegant-border hover:bg-luxury-gold hover:text-white transition-all">Travel</button>
+                        <button class="bg-white text-luxury-dark px-4 py-2 rounded-full text-sm font-medium elegant-border hover:bg-luxury-gold hover:text-white transition-all">Wellness</button>
+                        <button class="bg-white text-luxury-dark px-4 py-2 rounded-full text-sm font-medium elegant-border hover:bg-luxury-gold hover:text-white transition-all">Accessories</button>
+                    </div>
+                    
+                    <!-- Search & Sort -->
+                    <div class="flex items-center space-x-4">
+                        <div class="relative">
+                            <input type="text" 
+                                   placeholder="Search articles..." 
+                                   class="pl-10 pr-4 py-2 elegant-border rounded-full bg-white focus:outline-none focus:ring-2 focus:ring-luxury-gold text-sm w-64">
+                            <svg class="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                        </div>
+                        
+                        <select class="bg-white elegant-border rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-luxury-gold">
+                            <option>Latest</option>
+                            <option>Most Popular</option>
+                            <option>Most Read</option>
+                            <option>Trending</option>
+                            <option>Oldest</option>
+                        </select>
+                        
+                        <div class="flex items-center space-x-2">
+                            <button id="grid-view" class="p-2 text-luxury-gold border border-luxury-gold rounded">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M3 3h7v7H3V3zm11 0h7v7h-7V3zM3 14h7v7H3v-7zm11 0h7v7h-7v-7z"/>
+                                </svg>
+                            </button>
+                            <button id="list-view" class="p-2 text-gray-400 hover:text-luxury-gold transition-colors">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pinterest Grid -->
+        <section class="py-16 px-4 lg:px-8 max-w-7xl mx-auto">
+            <div class="pinterest-grid" id="articles-grid">
+                <!-- Article 1 -->
+                <article class="pinterest-item luxury-hover bg-white rounded-lg elegant-border overflow-hidden group cursor-pointer">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop" 
+                             alt="Luxury Interior" 
+                             class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 image-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="absolute bottom-4 left-4 text-white">
+                                <span class="bg-luxury-gold px-2 py-1 rounded text-xs font-medium">Interior Design</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-lg font-medium text-luxury-dark mb-3 group-hover:text-luxury-gold transition-colors line-clamp-2">
+                            The Art of Luxury Living: Timeless Elegance in Modern Homes
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                            Explore how contemporary luxury interiors blend classic sophistication with modern innovation, creating spaces that epitomize refined living.
+                        </p>
+                        <div class="flex items-center justify-between text-xs text-gray-500">
+                            <span>Isabella Rossi</span>
+                            <span>8 min read</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="pinterest-item luxury-hover bg-white rounded-lg elegant-border overflow-hidden group cursor-pointer">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400&h=400&fit=crop" 
+                             alt="Fashion" 
+                             class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 image-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="absolute bottom-4 left-4 text-white">
+                                <span class="bg-luxury-gold px-2 py-1 rounded text-xs font-medium">Fashion</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-lg font-medium text-luxury-dark mb-3 group-hover:text-luxury-gold transition-colors line-clamp-2">
+                            Haute Couture Spring Collection: Fashion's New Renaissance
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                            This season's haute couture collections showcase a return to artisanal craftsmanship and sustainable luxury in fashion.
+                        </p>
+                        <div class="flex items-center justify-between text-xs text-gray-500">
+                            <span>Victoria Sterling</span>
+                            <span>6 min read</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="pinterest-item luxury-hover bg-white rounded-lg elegant-border overflow-hidden group cursor-pointer">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400&h=250&fit=crop" 
+                             alt="Fine Dining" 
+                             class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 image-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="absolute bottom-4 left-4 text-white">
+                                <span class="bg-luxury-gold px-2 py-1 rounded text-xs font-medium">Dining</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-lg font-medium text-luxury-dark mb-3 group-hover:text-luxury-gold transition-colors line-clamp-2">
+                            Michelin-Starred Experiences: A Culinary Journey Through Excellence
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                            Discover the world's most exclusive dining experiences where culinary artistry meets unparalleled service and ambiance.
+                        </p>
+                        <div class="flex items-center justify-between text-xs text-gray-500">
+                            <span>Chef Alexandre Dubois</span>
+                            <span>10 min read</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 4 -->
+                <article class="pinterest-item luxury-hover bg-white rounded-lg elegant-border overflow-hidden group cursor-pointer">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=350&fit=crop" 
+                             alt="Wellness" 
+                             class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 image-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="absolute bottom-4 left-4 text-white">
+                                <span class="bg-luxury-gold px-2 py-1 rounded text-xs font-medium">Wellness</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-lg font-medium text-luxury-dark mb-3 group-hover:text-luxury-gold transition-colors line-clamp-2">
+                            Wellness Retreats: Luxury Sanctuaries for Mind, Body & Soul
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                            Escape to the world's most exclusive wellness destinations where luxury meets holistic healing and personal transformation.
+                        </p>
+                        <div class="flex items-center justify-between text-xs text-gray-500">
+                            <span>Dr. Seraphina Wilde</span>
+                            <span>7 min read</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 5 -->
+                <article class="pinterest-item luxury-hover bg-white rounded-lg elegant-border overflow-hidden group cursor-pointer">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1523170335258-f5c54a6b4a2b?w=400&h=300&fit=crop" 
+                             alt="Timepieces" 
+                             class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 image-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="absolute bottom-4 left-4 text-white">
+                                <span class="bg-luxury-gold px-2 py-1 rounded text-xs font-medium">Accessories</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-lg font-medium text-luxury-dark mb-3 group-hover:text-luxury-gold transition-colors line-clamp-2">
+                            Timepiece Mastery: The Art of Luxury Watchmaking
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                            Delve into the intricate world of haute horlogerie where centuries-old traditions meet cutting-edge innovation.
+                        </p>
+                        <div class="flex items-center justify-between text-xs text-gray-500">
+                            <span>Marcus Zimmermann</span>
+                            <span>9 min read</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 6 -->
+                <article class="pinterest-item luxury-hover bg-white rounded-lg elegant-border overflow-hidden group cursor-pointer">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&h=280&fit=crop" 
+                             alt="Private Aviation" 
+                             class="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 image-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="absolute bottom-4 left-4 text-white">
+                                <span class="bg-luxury-gold px-2 py-1 rounded text-xs font-medium">Travel</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-lg font-medium text-luxury-dark mb-3 group-hover:text-luxury-gold transition-colors line-clamp-2">
+                            Private Jet Lifestyle: The Ultimate in Luxury Travel
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                            Experience the epitome of luxury travel with exclusive access to private aviation and bespoke journey experiences.
+                        </p>
+                        <div class="flex items-center justify-between text-xs text-gray-500">
+                            <span>Captain James Morrison</span>
+                            <span>8 min read</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 7 -->
+                <article class="pinterest-item luxury-hover bg-white rounded-lg elegant-border overflow-hidden group cursor-pointer">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=400&h=320&fit=crop" 
+                             alt="Sustainable Fashion" 
+                             class="w-full h-52 object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 image-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="absolute bottom-4 left-4 text-white">
+                                <span class="bg-green-600 px-2 py-1 rounded text-xs font-medium">Sustainable</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-lg font-medium text-luxury-dark mb-3 group-hover:text-luxury-gold transition-colors line-clamp-2">
+                            The Rise of Sustainable Luxury: Eco-Conscious Fashion That Doesn't Compromise
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                            Luxury fashion houses are embracing sustainability without sacrificing craftsmanship or elegance.
+                        </p>
+                        <div class="flex items-center justify-between text-xs text-gray-500">
+                            <span>Emma Thompson</span>
+                            <span>5 min read</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 8 -->
+                <article class="pinterest-item luxury-hover bg-white rounded-lg elegant-border overflow-hidden group cursor-pointer">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=350&fit=crop" 
+                             alt="Luxury Handbags" 
+                             class="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 image-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="absolute bottom-4 left-4 text-white">
+                                <span class="bg-luxury-gold px-2 py-1 rounded text-xs font-medium">Accessories</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-lg font-medium text-luxury-dark mb-3 group-hover:text-luxury-gold transition-colors line-clamp-2">
+                            Handbag Investment Guide: The Art of Collecting Luxury Accessories
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                            From Hermès Birkin to Chanel 2.55, explore the world of luxury handbags as both fashion statements and investment pieces.
+                        </p>
+                        <div class="flex items-center justify-between text-xs text-gray-500">
+                            <span>Sophia Laurent</span>
+                            <span>7 min read</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 9 -->
+                <article class="pinterest-item luxury-hover bg-white rounded-lg elegant-border overflow-hidden group cursor-pointer">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1506629905607-d60b2d1e8887?w=400&h=250&fit=crop" 
+                             alt="Fashion Week" 
+                             class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 image-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="absolute bottom-4 left-4 text-white">
+                                <span class="bg-red-600 px-2 py-1 rounded text-xs font-medium">Runway</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-lg font-medium text-luxury-dark mb-3 group-hover:text-luxury-gold transition-colors line-clamp-2">
+                            Paris Fashion Week Highlights: The Shows That Defined This Season
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                            From Saint Laurent's rock-chic elegance to Valentino's romantic femininity, discover the standout moments.
+                        </p>
+                        <div class="flex items-center justify-between text-xs text-gray-500">
+                            <span>Antoine Dubois</span>
+                            <span>8 min read</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 10 -->
+                <article class="pinterest-item luxury-hover bg-white rounded-lg elegant-border overflow-hidden group cursor-pointer">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&h=380&fit=crop" 
+                             alt="Fine Jewelry" 
+                             class="w-full h-60 object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 image-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="absolute bottom-4 left-4 text-white">
+                                <span class="bg-yellow-600 px-2 py-1 rounded text-xs font-medium">Jewelry</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-lg font-medium text-luxury-dark mb-3 group-hover:text-luxury-gold transition-colors line-clamp-2">
+                            Precious Statements: The Return of Bold Jewelry in High Fashion
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                            From Cartier's architectural designs to Bulgari's colorful gemstones, explore how jewelry is making a powerful fashion statement.
+                        </p>
+                        <div class="flex items-center justify-between text-xs text-gray-500">
+                            <span>Margot Rousseau</span>
+                            <span>9 min read</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 11 -->
+                <article class="pinterest-item luxury-hover bg-white rounded-lg elegant-border overflow-hidden group cursor-pointer">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400&h=300&fit=crop" 
+                             alt="Vintage Fashion" 
+                             class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 image-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="absolute bottom-4 left-4 text-white">
+                                <span class="bg-indigo-600 px-2 py-1 rounded text-xs font-medium">Heritage</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-lg font-medium text-luxury-dark mb-3 group-hover:text-luxury-gold transition-colors line-clamp-2">
+                            Timeless Icons: How Vintage Luxury Pieces Influence Contemporary Fashion
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                            Explore the enduring influence of vintage luxury pieces and how fashion houses honor their heritage while innovating.
+                        </p>
+                        <div class="flex items-center justify-between text-xs text-gray-500">
+                            <span>Catherine Moreau</span>
+                            <span>10 min read</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Article 12 -->
+                <article class="pinterest-item luxury-hover bg-white rounded-lg elegant-border overflow-hidden group cursor-pointer">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=400&h=280&fit=crop" 
+                             alt="Personal Styling" 
+                             class="w-full h-44 object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 image-overlay opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="absolute bottom-4 left-4 text-white">
+                                <span class="bg-blue-600 px-2 py-1 rounded text-xs font-medium">Styling</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-serif text-lg font-medium text-luxury-dark mb-3 group-hover:text-luxury-gold transition-colors line-clamp-2">
+                            Building a Capsule Wardrobe: Luxury Essentials for the Modern Woman
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                            Discover how to curate a sophisticated wardrobe with timeless pieces that transcend seasons and trends.
+                        </p>
+                        <div class="flex items-center justify-between text-xs text-gray-500">
+                            <span>Isabella Chen</span>
+                            <span>6 min read</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Load More -->
+            <div class="text-center mt-12">
+                <button class="bg-luxury-gold text-white px-8 py-3 rounded-full font-medium hover:bg-opacity-90 transition-all duration-300 hover:shadow-lg">
+                    Load More Stories
+                </button>
+            </div>
+        </section>
+
+        <!-- Newsletter -->
+        <section class="bg-luxury-dark py-16">
+            <div class="max-w-4xl mx-auto text-center px-4">
+                <h2 class="font-serif text-3xl lg:text-4xl font-light text-white mb-4">Never Miss a Story</h2>
+                <p class="text-gray-300 mb-8 text-lg">
+                    Subscribe to our exclusive newsletter for the latest in luxury lifestyle and curated experiences
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                    <input type="email" 
+                           placeholder="Enter your email" 
+                           class="flex-1 px-4 py-3 rounded-full bg-white text-luxury-dark focus:outline-none focus:ring-2 focus:ring-luxury-gold">
+                    <button class="bg-luxury-gold text-white px-6 py-3 rounded-full font-medium hover:bg-opacity-90 transition-all duration-300">
+                        Subscribe
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-white border-t elegant-border py-12">
+            <div class="max-w-7xl mx-auto px-4 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div class="col-span-1 md:col-span-2">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="w-8 h-8 gold-gradient rounded-full flex items-center justify-center">
+                                <span class="text-white font-bold text-sm">L</span>
+                            </div>
+                            <span class="font-serif text-xl font-semibold text-luxury-dark">LifestyleLux</span>
+                        </div>
+                        <p class="text-gray-600 mb-4 max-w-md">
+                            Curating the finest in luxury lifestyle, fashion, and exclusive experiences for the discerning connoisseur.
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-serif text-lg font-medium text-luxury-dark mb-4">Categories</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-600 hover:text-luxury-gold transition-colors">Fashion</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-luxury-gold transition-colors">Interior Design</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-luxury-gold transition-colors">Dining</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-luxury-gold transition-colors">Travel</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-serif text-lg font-medium text-luxury-dark mb-4">About</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-600 hover:text-luxury-gold transition-colors">Our Story</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-luxury-gold transition-colors">Editorial Team</a></li>
+                            <li><a href="#" class="text-gray-600 hover:text-luxury-gold transition-colors">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="border-t elegant-border mt-8 pt-8 text-center">
+                    <p class="text-gray-600">&copy; 2024 LifestyleLux. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('hidden');
+            }
+        });
+
+        // Filter buttons
+        document.querySelectorAll('button[class*="px-4 py-2 rounded-full"]').forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                document.querySelectorAll('button[class*="px-4 py-2 rounded-full"]').forEach(btn => {
+                    btn.classList.remove('bg-luxury-gold', 'text-white');
+                    btn.classList.add('bg-white', 'text-luxury-dark', 'elegant-border');
+                });
+                
+                // Add active class to clicked button
+                this.classList.remove('bg-white', 'text-luxury-dark', 'elegant-border');
+                this.classList.add('bg-luxury-gold', 'text-white');
+            });
+        });
+
+        // View toggle
+        document.getElementById('grid-view').addEventListener('click', function() {
+            document.getElementById('articles-grid').className = 'pinterest-grid';
+            this.classList.add('text-luxury-gold', 'border-luxury-gold');
+            this.classList.remove('text-gray-400');
+            document.getElementById('list-view').classList.add('text-gray-400');
+            document.getElementById('list-view').classList.remove('text-luxury-gold', 'border-luxury-gold');
+        });
+
+        document.getElementById('list-view').addEventListener('click', function() {
+            document.getElementById('articles-grid').className = 'space-y-6';
+            this.classList.add('text-luxury-gold', 'border-luxury-gold');
+            this.classList.remove('text-gray-400');
+            document.getElementById('grid-view').classList.add('text-gray-400');
+            document.getElementById('grid-view').classList.remove('text-luxury-gold', 'border-luxury-gold');
+        });
+
+        // Search functionality
+        document.querySelector('input[placeholder="Search articles..."]').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const articles = document.querySelectorAll('.pinterest-item');
+            
+            articles.forEach(article => {
+                const title = article.querySelector('h3').textContent.toLowerCase();
+                const excerpt = article.querySelector('p').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || excerpt.includes(searchTerm)) {
+                    article.style.display = 'block';
+                } else {
+                    article.style.display = 'none';
+                }
+            });
+        });
+    </script> 

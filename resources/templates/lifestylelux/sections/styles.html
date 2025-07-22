@@ -1,0 +1,79 @@
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'luxury-gold': '#D4AF37',
+                    'luxury-cream': '#F8F6F0',
+                    'luxury-accent': '#FFD700',
+                    'luxury-dark': '#1A1A1A',
+                    'luxury-light': '#FEFCF8',
+                    'luxury-bronze': '#CD7F32',
+                    'luxury-champagne': '#F7E7CE'
+                },
+                fontFamily: {
+                    'serif': ['Playfair Display', 'Georgia', 'serif'],
+                    'sans': ['Montserrat', 'Arial', 'sans-serif']
+                },
+                animation: {
+                    'fade-in': 'fadeIn 0.6s ease-in-out',
+                    'slide-up': 'slideUp 0.8s ease-out',
+                    'luxury-glow': 'luxuryGlow 2s ease-in-out infinite alternate',
+                    'float': 'float 3s ease-in-out infinite'
+                }
+            }
+        }
+    }
+</script>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+    
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes slideUp {
+        from { opacity: 0; transform: translateY(40px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes luxuryGlow {
+        from { box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
+        to { box-shadow: 0 0 30px rgba(212, 175, 55, 0.6); }
+    }
+    
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-10px); }
+    }
+
+    /* Utility classes extracted from original template */
+    .luxury-card {
+        background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(212, 175, 55, 0.2);
+    }
+    
+    .luxury-hover:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 25px 50px rgba(212, 175, 55, 0.2);
+    }
+    
+    .luxury-gradient {
+        background: linear-gradient(135deg, #D4AF37, #FFD700, #F7E7CE);
+    }
+    
+    .luxury-text-gradient {
+        background: linear-gradient(135deg, #D4AF37, #FFD700);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    
+    .luxury-border {
+        border: 2px solid transparent;
+        background: linear-gradient(white, white) padding-box, linear-gradient(135deg, #D4AF37, #FFD700) border-box;
+    }
+</style> 
