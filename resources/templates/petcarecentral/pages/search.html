@@ -1,0 +1,443 @@
+<!-- Navigation -->
+<nav class="bg-white/95 backdrop-blur-sm shadow-lg sticky top-0 z-50 border-b-2 border-green-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <div class="flex items-center space-x-4">
+        <div class="relative">
+          <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center shadow-lg">
+            <span class="text-white text-2xl floating-paw">🐾</span>
+          </div>
+          <div class="absolute -top-1 -right-1 w-4 h-4 bg-orange-400 rounded-full flex items-center justify-center">
+            <span class="text-white text-xs">❤️</span>
+          </div>
+        </div>
+        <div class="pet-font">
+          <h1 class="text-2xl font-bold text-green-600">PetCare Central</h1>
+          <p class="text-xs text-green-500 font-medium">Where Pet Stories Come to Life</p>
+        </div>
+      </div>
+      
+      <div class="hidden md:flex items-center space-x-6">
+        <a href="/" class="text-gray-700 hover:text-green-600 transition-colors font-medium pet-font flex items-center space-x-1">
+          <span>🏠</span><span>Home</span>
+        </a>
+        <a href="/posts" class="text-gray-700 hover:text-green-600 transition-colors font-medium pet-font flex items-center space-x-1">
+          <span>📚</span><span>All Articles</span>
+        </a>
+        <a href="/category/Training" class="text-gray-700 hover:text-green-600 transition-colors font-medium pet-font flex items-center space-x-1">
+          <span>🎓</span><span>Training</span>
+        </a>
+        <a href="/category/Health" class="text-gray-700 hover:text-green-600 transition-colors font-medium pet-font flex items-center space-x-1">
+          <span>🏥</span><span>Health</span>
+        </a>
+        <a href="/category/Nutrition" class="text-gray-700 hover:text-green-600 transition-colors font-medium pet-font flex items-center space-x-1">
+          <span>🥘</span><span>Nutrition</span>
+        </a>
+      </div>
+      
+      <div class="flex items-center space-x-4">
+        <button class="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-6 py-2 rounded-full font-semibold pet-font transition-all transform hover:scale-105 shadow-lg">
+          Get Expert Help
+        </button>
+        <button class="md:hidden p-2 text-gray-500 hover:text-green-600">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Search Header -->
+<section class="pet-hero-bg py-16 relative overflow-hidden">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center">
+      <div class="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 mb-6 bounce-in">
+        <span class="text-2xl mr-3">🔍</span>
+        <span class="text-green-600 font-semibold pet-font">Search Pet Care Articles</span>
+      </div>
+      <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 pet-font leading-tight">
+        Find the Perfect <span class="text-green-600 relative">Pet Care Guide<div class="absolute -bottom-2 left-0 w-full h-3 bg-yellow-300 opacity-30 rounded-full"></div></span>
+      </h1>
+      <p class="text-xl text-gray-700 mb-8 leading-relaxed pet-font">
+        Search through our comprehensive collection of expert pet care articles, training guides, and health tips.
+      </p>
+      
+      <!-- Search Form -->
+      <div class="max-w-2xl mx-auto">
+        <form class="relative">
+          <div class="flex items-center bg-white/90 backdrop-blur-sm rounded-full shadow-lg overflow-hidden">
+            <input 
+              type="text" 
+              placeholder="Search for training tips, health advice, nutrition guides..." 
+              class="flex-1 px-6 py-4 text-gray-700 bg-transparent focus:outline-none pet-font"
+              value="puppy training"
+            >
+            <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-8 py-4 font-semibold pet-font transition-colors">
+              Search
+            </button>
+          </div>
+        </form>
+        
+        <!-- Popular Searches -->
+        <div class="mt-6 flex flex-wrap gap-2 justify-center">
+          <span class="text-sm text-gray-600 pet-font">Popular searches:</span>
+          <a href="/search/puppy training" class="text-sm bg-white/70 text-green-600 px-3 py-1 rounded-full hover:bg-white transition-colors pet-font">
+            puppy training
+          </a>
+          <a href="/search/cat health" class="text-sm bg-white/70 text-green-600 px-3 py-1 rounded-full hover:bg-white transition-colors pet-font">
+            cat health
+          </a>
+          <a href="/search/dog nutrition" class="text-sm bg-white/70 text-green-600 px-3 py-1 rounded-full hover:bg-white transition-colors pet-font">
+            dog nutrition
+          </a>
+          <a href="/search/pet grooming" class="text-sm bg-white/70 text-green-600 px-3 py-1 rounded-full hover:bg-white transition-colors pet-font">
+            pet grooming
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Search Results -->
+<section class="py-16 bg-gray-50 paw-pattern">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-2 pet-font">Search Results</h2>
+      <p class="text-gray-600 pet-font">Found 12 articles for "<strong>puppy training</strong>"</p>
+    </div>
+    
+    <div class="space-y-6">
+      <!-- Search Result 1 -->
+      <article class="pet-card rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 cursor-pointer group">
+        <div class="flex items-start space-x-4">
+          <img src="/images/puppy-training.jpg" alt="Essential Training Tips for New Puppy Owners" class="w-24 h-24 rounded-xl object-cover group-hover:scale-105 transition-transform duration-300">
+          <div class="flex-1">
+            <div class="flex items-center space-x-2 mb-2">
+              <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-semibold pet-font">Training</span>
+              <span class="text-gray-500 text-sm pet-font">8 min read</span>
+              <span class="text-gray-500 text-sm pet-font">👁️ 1.2K views</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2 pet-font group-hover:text-green-600 transition-colors">
+              Essential Training Tips for New Puppy Owners
+            </h3>
+            <p class="text-gray-600 mb-3 pet-font">
+              Start your puppy's training journey with these fundamental techniques that build a strong foundation for lifelong learning. From house training to basic commands...
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-2">
+                <img src="/images/dr-sarah.jpg" alt="Dr. Sarah Mitchell" class="w-6 h-6 rounded-full">
+                <span class="text-sm text-gray-700 pet-font">Dr. Sarah Mitchell</span>
+              </div>
+              <span class="text-sm text-gray-500 pet-font">January 15, 2024</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Search Result 2 -->
+      <article class="pet-card rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 cursor-pointer group">
+        <div class="flex items-start space-x-4">
+          <img src="/images/puppy-socialization.jpg" alt="Puppy Socialization Guide" class="w-24 h-24 rounded-xl object-cover group-hover:scale-105 transition-transform duration-300">
+          <div class="flex-1">
+            <div class="flex items-center space-x-2 mb-2">
+              <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-semibold pet-font">Training</span>
+              <span class="text-gray-500 text-sm pet-font">11 min read</span>
+              <span class="text-gray-500 text-sm pet-font">👁️ 2.1K views</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2 pet-font group-hover:text-green-600 transition-colors">
+              Puppy Socialization Guide: Building Confidence
+            </h3>
+            <p class="text-gray-600 mb-3 pet-font">
+              Essential socialization techniques to help your puppy become a well-adjusted and confident adult dog. Learn about critical periods and safe exposure methods...
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-2">
+                <img src="/images/dr-michael.jpg" alt="Dr. Michael Chen" class="w-6 h-6 rounded-full">
+                <span class="text-sm text-gray-700 pet-font">Dr. Michael Chen</span>
+              </div>
+              <span class="text-sm text-gray-500 pet-font">January 10, 2024</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Search Result 3 -->
+      <article class="pet-card rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 cursor-pointer group">
+        <div class="flex items-start space-x-4">
+          <img src="/images/crate-training.jpg" alt="Crate Training Benefits and Methods" class="w-24 h-24 rounded-xl object-cover group-hover:scale-105 transition-transform duration-300">
+          <div class="flex-1">
+            <div class="flex items-center space-x-2 mb-2">
+              <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-semibold pet-font">Training</span>
+              <span class="text-gray-500 text-sm pet-font">5 min read</span>
+              <span class="text-gray-500 text-sm pet-font">👁️ 890 views</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2 pet-font group-hover:text-green-600 transition-colors">
+              Crate Training Benefits and Methods
+            </h3>
+            <p class="text-gray-600 mb-3 pet-font">
+              Learn how to make crate training a positive experience for your pet while ensuring their safety and comfort. Step-by-step guide for success...
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-2">
+                <img src="/images/dr-sarah.jpg" alt="Dr. Sarah Mitchell" class="w-6 h-6 rounded-full">
+                <span class="text-sm text-gray-700 pet-font">Dr. Sarah Mitchell</span>
+              </div>
+              <span class="text-sm text-gray-500 pet-font">January 8, 2024</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Search Result 4 -->
+      <article class="pet-card rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 cursor-pointer group">
+        <div class="flex items-start space-x-4">
+          <img src="/images/positive-reinforcement.jpg" alt="Positive Reinforcement Training" class="w-24 h-24 rounded-xl object-cover group-hover:scale-105 transition-transform duration-300">
+          <div class="flex-1">
+            <div class="flex items-center space-x-2 mb-2">
+              <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-semibold pet-font">Training</span>
+              <span class="text-gray-500 text-sm pet-font">9 min read</span>
+              <span class="text-gray-500 text-sm pet-font">👁️ 1.5K views</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2 pet-font group-hover:text-green-600 transition-colors">
+              Positive Reinforcement Training Techniques
+            </h3>
+            <p class="text-gray-600 mb-3 pet-font">
+              Discover the power of positive reinforcement and how to implement reward-based training methods effectively. Learn timing, consistency, and motivation...
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-2">
+                <img src="/images/lisa.jpg" alt="Lisa Rodriguez" class="w-6 h-6 rounded-full">
+                <span class="text-sm text-gray-700 pet-font">Lisa Rodriguez</span>
+              </div>
+              <span class="text-sm text-gray-500 pet-font">January 5, 2024</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Search Result 5 -->
+      <article class="pet-card rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 cursor-pointer group">
+        <div class="flex items-start space-x-4">
+          <img src="/images/leash-training.jpg" alt="Leash Training Made Simple" class="w-24 h-24 rounded-xl object-cover group-hover:scale-105 transition-transform duration-300">
+          <div class="flex-1">
+            <div class="flex items-center space-x-2 mb-2">
+              <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-semibold pet-font">Training</span>
+              <span class="text-gray-500 text-sm pet-font">6 min read</span>
+              <span class="text-gray-500 text-sm pet-font">👁️ 1.1K views</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-900 mb-2 pet-font group-hover:text-green-600 transition-colors">
+              Leash Training Made Simple
+            </h3>
+            <p class="text-gray-600 mb-3 pet-font">
+              Step-by-step guide to teaching your dog proper leash etiquette and enjoyable walks. From choosing the right equipment to troubleshooting common issues...
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-2">
+                <img src="/images/lisa.jpg" alt="Lisa Rodriguez" class="w-6 h-6 rounded-full">
+                <span class="text-sm text-gray-700 pet-font">Lisa Rodriguez</span>
+              </div>
+              <span class="text-sm text-gray-500 pet-font">January 3, 2024</span>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Pagination -->
+    <div class="mt-12 flex justify-center">
+      <nav class="flex items-center space-x-2">
+        <button class="px-4 py-2 text-gray-500 bg-white rounded-lg border hover:bg-gray-50 transition-colors pet-font">
+          Previous
+        </button>
+        <button class="px-4 py-2 bg-green-600 text-white rounded-lg font-semibold pet-font">
+          1
+        </button>
+        <button class="px-4 py-2 text-gray-700 bg-white rounded-lg border hover:bg-gray-50 transition-colors pet-font">
+          2
+        </button>
+        <button class="px-4 py-2 text-gray-700 bg-white rounded-lg border hover:bg-gray-50 transition-colors pet-font">
+          3
+        </button>
+        <button class="px-4 py-2 text-gray-700 bg-white rounded-lg border hover:bg-gray-50 transition-colors pet-font">
+          Next
+        </button>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- Search Tips -->
+<section class="py-16 bg-white">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4 pet-font">Search Tips</h2>
+      <p class="text-xl text-gray-600 pet-font">Get better results with these search tips</p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="bg-green-50 rounded-2xl p-6">
+        <div class="flex items-start space-x-4">
+          <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white text-xl">
+            💡
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2 pet-font">Use Specific Keywords</h3>
+            <p class="text-gray-600 pet-font">
+              Try specific terms like "puppy house training" or "senior dog nutrition" for more targeted results.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="bg-blue-50 rounded-2xl p-6">
+        <div class="flex items-start space-x-4">
+          <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white text-xl">
+            🔍
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2 pet-font">Browse by Category</h3>
+            <p class="text-gray-600 pet-font">
+              Use our category filters to narrow down results by Training, Health, Nutrition, or Grooming.
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="bg-yellow-50 rounded-2xl p-6">
+        <div class="flex items-start space-x-4">
+          <div class="w-12 h-12 bg-yellow-600 rounded-full flex items-center justify-center text-white text-xl">
+            🏷️
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2 pet-font">Try Different Terms</h3>
+            <p class="text-gray-600 pet-font">
+              If you don't find what you're looking for, try synonyms like "dog behavior" instead of "dog training".
+            </p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="bg-purple-50 rounded-2xl p-6">
+        <div class="flex items-start space-x-4">
+          <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white text-xl">
+            📝
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2 pet-font">Check Related Articles</h3>
+            <p class="text-gray-600 pet-font">
+              Each article includes related content suggestions to help you find more relevant information.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid md:grid-cols-4 gap-8">
+      <div class="space-y-4">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center">
+            <span class="text-white text-xl">🐾</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold pet-font">PetCare Central</h3>
+            <p class="text-green-400 text-sm pet-font">Where Pet Stories Come to Life</p>
+          </div>
+        </div>
+        <p class="text-gray-400 pet-font">
+          Your trusted companion for expert pet care advice, training tips, and health guidance.
+        </p>
+      </div>
+      
+      <div>
+        <h4 class="text-lg font-semibold mb-4 pet-font">Quick Links</h4>
+        <ul class="space-y-2">
+          <li><a href="/" class="text-gray-400 hover:text-white transition-colors pet-font">Home</a></li>
+          <li><a href="/posts" class="text-gray-400 hover:text-white transition-colors pet-font">All Articles</a></li>
+          <li><a href="/category/Training" class="text-gray-400 hover:text-white transition-colors pet-font">Training</a></li>
+          <li><a href="/category/Health" class="text-gray-400 hover:text-white transition-colors pet-font">Health</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4 class="text-lg font-semibold mb-4 pet-font">Categories</h4>
+        <ul class="space-y-2">
+          <li><a href="/category/Nutrition" class="text-gray-400 hover:text-white transition-colors pet-font">Nutrition</a></li>
+          <li><a href="/category/Grooming" class="text-gray-400 hover:text-white transition-colors pet-font">Grooming</a></li>
+          <li><a href="/category/Lifestyle" class="text-gray-400 hover:text-white transition-colors pet-font">Lifestyle</a></li>
+          <li><a href="/category/Breeds" class="text-gray-400 hover:text-white transition-colors pet-font">Breeds</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4 class="text-lg font-semibold mb-4 pet-font">Connect</h4>
+        <div class="flex space-x-4">
+          <a href="#" class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors">
+            <span class="text-white">📘</span>
+          </a>
+          <a href="#" class="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center hover:bg-pink-700 transition-colors">
+            <span class="text-white">📷</span>
+          </a>
+          <a href="#" class="w-10 h-10 bg-blue-400 rounded-full flex items-center justify-center hover:bg-blue-500 transition-colors">
+            <span class="text-white">🐦</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+      <p class="text-gray-400 pet-font">© 2024 PetCare Central. All rights reserved. Made with ❤️ for pet lovers.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Nunito:wght@300;400;600;700;800&display=swap');
+  
+  .pet-font {
+    font-family: 'Nunito', sans-serif;
+  }
+  
+  .pet-hero-bg {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #f0fdf4 100%);
+  }
+  
+  .paw-pattern {
+    background-image: radial-gradient(circle at 20% 20%, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
+                      radial-gradient(circle at 80% 80%, rgba(251, 146, 60, 0.1) 0%, transparent 50%),
+                      radial-gradient(circle at 40% 60%, rgba(168, 85, 247, 0.1) 0%, transparent 50%);
+  }
+  
+  .pet-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  
+  .bounce-in {
+    animation: bounceIn 0.8s ease-out;
+  }
+  
+  .floating-paw {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes bounceIn {
+    0% { transform: scale(0.3); opacity: 0; }
+    50% { transform: scale(1.05); }
+    70% { transform: scale(0.9); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+</style> 

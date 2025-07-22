@@ -1,0 +1,44 @@
+{
+  "title": "{{category.name}} Articles - PetCare Central",
+  "description": "{{category.description}} - Browse expert {{category.name}} articles and guides for pet owners. Professional advice from certified veterinarians and animal behaviorists.",
+  "keywords": "{{category.name}}, pet care, animal health, veterinary advice, pet wellness, pet behavior",
+  "author": "PetCare Central Team",
+  "canonical": "/category/{{category.name}}",
+  "og": {
+    "title": "{{category.name}} Pet Care Articles & Guides",
+    "description": "{{category.description}} - Expert {{category.name}} advice from certified veterinarians and animal behaviorists.",
+    "image": "/images/category-{{category.name | lower}}-og.jpg",
+    "url": "/category/{{category.name}}",
+    "type": "website"
+  },
+  "twitter": {
+    "card": "summary_large_image",
+    "title": "{{category.name}} Pet Care Articles & Guides",
+    "description": "{{category.description}} - Expert advice from certified veterinarians.",
+    "image": "/images/category-{{category.name | lower}}-twitter.jpg"
+  },
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "{{category.name}} Articles - PetCare Central",
+    "description": "{{category.description}} - Expert {{category.name}} articles and guides for pet owners",
+    "url": "/category/{{category.name}}",
+    "publisher": {
+      "@type": "Organization",
+      "name": "PetCare Central",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "/images/petcare-logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "/category/{{category.name}}"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "{{category.name}}",
+      "description": "{{category.description}}"
+    }
+  }
+} 

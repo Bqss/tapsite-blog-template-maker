@@ -1,0 +1,9 @@
+{
+  "title" : "PetCareCentral",
+  "description" : "Pet Care & Training blog with animal imagery and natural colors",
+  "template_id" : "petcarecentral",
+  "creator_name" : "Maulana Shalihin",
+  "creator_website" : "https://tapsite.ai",
+  "version" : "1.0.0",
+  "thumbnail" : "/templates/petcarecentral/thumbnail.webp"
+}

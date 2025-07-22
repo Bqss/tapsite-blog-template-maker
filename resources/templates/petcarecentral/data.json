@@ -1,0 +1,224 @@
+{
+  "site": {
+    "name": "PetCare Central",
+    "tagline": "Your Trusted Pet Care Companion",
+    "description": "Expert advice, training tips, and health guidance for your beloved pets",
+    "logo": "/images/petcare-logo.png"
+  },
+  "posts": [
+    {
+      "id": "0197befd-a58b-7001-a4af-76163759406a",
+      "title": "Essential Training Tips for New Puppy Owners",
+      "slug": "essential-training-tips-for-new-puppy-owners",
+      "excerpt": "Start your puppy's training journey with these fundamental techniques that build a strong foundation for lifelong learning.",
+      "content": "Bringing home a new puppy is exciting, but proper training from day one is crucial...",
+      "category": "Training",
+      "author": "Dr. Sarah Mitchell",
+      "read_time": 8,
+      "featured_image": "/images/puppy-training.jpg",
+      "tags": "Puppy Training,Dog Behavior,Pet Education",
+      "views": 1250,
+      "published_at": 1705276800000,
+      "created_at": 1705276800000,
+      "updated_at": 1705276800000
+    },
+    {
+      "id": "0197befd-a58b-7002-a4af-76163759406b",
+      "title": "Signs Your Cat May Need Veterinary Attention",
+      "slug": "signs-your-cat-may-need-veterinary-attention",
+      "excerpt": "Learn to recognize the subtle signs that indicate your feline friend might need professional medical care.",
+      "content": "Cats are masters at hiding illness, making it challenging for pet owners to know when...",
+      "category": "Health",
+      "author": "Dr. Michael Chen",
+      "read_time": 6,
+      "featured_image": "/images/cat-health.jpg",
+      "tags": "Cat Health,Veterinary Care,Pet Wellness",
+      "views": 980,
+      "published_at": 1705017600000,
+      "created_at": 1705017600000,
+      "updated_at": 1705017600000
+    },
+    {
+      "id": "0197befd-a58b-7003-a4af-76163759406c",
+      "title": "Creating a Pet-Friendly Garden: Safe Plants and Design Tips",
+      "slug": "creating-a-pet-friendly-garden-safe-plants-and-design-tips",
+      "excerpt": "Transform your outdoor space into a safe haven for your pets with these garden design and plant selection tips.",
+      "content": "A well-designed garden can be a wonderful playground for pets, but safety should always...",
+      "category": "Lifestyle",
+      "author": "Lisa Rodriguez",
+      "read_time": 10,
+      "featured_image": "/images/pet-garden.jpg",
+      "tags": "Pet Safety,Gardening,Outdoor Living",
+      "views": 750,
+      "published_at": 1704844800000,
+      "created_at": 1704844800000,
+      "updated_at": 1704844800000
+    },
+    {
+      "id": "0197befd-a58b-7004-a4af-76163759406d",
+      "title": "Understanding Your Dog's Body Language",
+      "slug": "understanding-your-dogs-body-language",
+      "excerpt": "Decode your dog's signals and improve communication with your canine companion through body language awareness.",
+      "content": "Dogs communicate primarily through body language, and understanding these signals is crucial...",
+      "category": "Training",
+      "author": "Dr. Sarah Mitchell",
+      "read_time": 7,
+      "featured_image": "/images/dog-body-language.jpg",
+      "tags": "Dog Behavior,Communication,Pet Training",
+      "views": 1100,
+      "published_at": 1704758400000,
+      "created_at": 1704758400000,
+      "updated_at": 1704758400000
+    },
+    {
+      "id": "0197befd-a58b-7005-a4af-76163759406e",
+      "title": "The Ultimate Guide to Pet Nutrition",
+      "slug": "the-ultimate-guide-to-pet-nutrition",
+      "excerpt": "Everything you need to know about feeding your pets properly for optimal health and longevity.",
+      "content": "Proper nutrition is the foundation of good health for our beloved pets...",
+      "category": "Nutrition",
+      "author": "Lisa Rodriguez",
+      "read_time": 12,
+      "featured_image": "/images/pet-nutrition.jpg",
+      "tags": "Pet Nutrition,Health,Diet Planning",
+      "views": 1450,
+      "published_at": 1704672000000,
+      "created_at": 1704672000000,
+      "updated_at": 1704672000000
+    },
+    {
+      "id": "0197befd-a58b-7006-a4af-76163759406f",
+      "title": "Emergency First Aid for Pets: What Every Owner Should Know",
+      "slug": "emergency-first-aid-for-pets-what-every-owner-should-know",
+      "excerpt": "Learn essential first aid techniques that could save your pet's life in emergency situations.",
+      "content": "Emergencies can happen at any time, and knowing basic first aid for pets can make the difference...",
+      "category": "Health",
+      "author": "Dr. Michael Chen",
+      "read_time": 9,
+      "featured_image": "/images/pet-first-aid.jpg",
+      "tags": "Emergency Care,Pet Safety,First Aid",
+      "views": 890,
+      "published_at": 1704585600000,
+      "created_at": 1704585600000,
+      "updated_at": 1704585600000
+    }
+  ],
+  "categories": [
+    {
+      "name": "Training",
+      "description": "Expert training tips and techniques",
+      "icon": "🎓",
+      "color": "#059669",
+      "count": 45
+    },
+    {
+      "name": "Health",
+      "description": "Veterinary advice and wellness tips",
+      "icon": "🏥",
+      "color": "#DC2626",
+      "count": 38
+    },
+    {
+      "name": "Nutrition",
+      "description": "Feeding guides and dietary advice",
+      "icon": "🥘",
+      "color": "#F59E0B",
+      "count": 32
+    },
+    {
+      "name": "Grooming",
+      "description": "Grooming tips and techniques",
+      "icon": "✂️",
+      "color": "#8B5CF6",
+      "count": 28
+    },
+    {
+      "name": "Lifestyle",
+      "description": "Pet lifestyle and enrichment",
+      "icon": "🏠",
+      "color": "#06B6D4",
+      "count": 35
+    },
+    {
+      "name": "Breeds",
+      "description": "Breed-specific information",
+      "icon": "🐕",
+      "color": "#EC4899",
+      "count": 42
+    }
+  ],
+  "petTypes": [
+    {
+      "name": "Dogs",
+      "description": "Canine care and training",
+      "image": "/images/dogs.jpg",
+      "articles": 156
+    },
+    {
+      "name": "Cats",
+      "description": "Feline health and behavior",
+      "image": "/images/cats.jpg",
+      "articles": 124
+    },
+    {
+      "name": "Birds",
+      "description": "Avian care and enrichment",
+      "image": "/images/birds.jpg",
+      "articles": 78
+    },
+    {
+      "name": "Small Pets",
+      "description": "Rabbits, hamsters, and more",
+      "image": "/images/small-pets.jpg",
+      "articles": 65
+    }
+  ],
+  "experts": [
+    {
+      "name": "Dr. Sarah Mitchell",
+      "title": "Veterinary Behaviorist",
+      "specialization": "Animal Behavior & Training",
+      "experience": "15 years",
+      "avatar": "/images/dr-sarah.jpg",
+      "bio": "Specializes in pet behavior modification and training techniques."
+    },
+    {
+      "name": "Dr. Michael Chen",
+      "title": "Small Animal Veterinarian",
+      "specialization": "Internal Medicine",
+      "experience": "12 years",
+      "avatar": "/images/dr-michael.jpg",
+      "bio": "Expert in preventive care and diagnostic medicine for companion animals."
+    },
+    {
+      "name": "Lisa Rodriguez",
+      "title": "Certified Pet Nutritionist",
+      "specialization": "Pet Nutrition & Wellness",
+      "experience": "10 years",
+      "avatar": "/images/lisa.jpg",
+      "bio": "Focuses on optimal nutrition and dietary planning for pets of all ages."
+    }
+  ],
+  "services": [
+    {
+      "name": "Virtual Consultations",
+      "description": "Online pet care consultations with certified veterinarians",
+      "icon": "💻"
+    },
+    {
+      "name": "Training Programs",
+      "description": "Structured training courses for pets of all ages",
+      "icon": "🎯"
+    },
+    {
+      "name": "Nutrition Planning",
+      "description": "Customized diet plans for optimal pet health",
+      "icon": "📋"
+    },
+    {
+      "name": "Emergency Care Guide",
+      "description": "Step-by-step emergency care instructions",
+      "icon": "🚨"
+    }
+  ]
+} 

@@ -1,0 +1,44 @@
+{
+  "title": "Search Pet Care Articles - PetCare Central",
+  "description": "Search through our comprehensive collection of expert pet care articles, training guides, health tips, and nutrition advice. Find the perfect guide for your pet's needs.",
+  "keywords": "pet care search, dog training search, cat health search, pet nutrition search, animal care guides, veterinary advice search",
+  "author": "PetCare Central Team",
+  "canonical": "/search",
+  "og": {
+    "title": "Search Pet Care Articles & Training Guides",
+    "description": "Find expert pet care advice tailored to your needs. Search through comprehensive guides from certified veterinarians and animal behaviorists.",
+    "image": "/images/petcare-search-og.jpg",
+    "url": "/search",
+    "type": "website"
+  },
+  "twitter": {
+    "card": "summary_large_image",
+    "title": "Search Pet Care Articles & Training Guides",
+    "description": "Find expert pet care advice tailored to your needs. Search through comprehensive guides from certified veterinarians.",
+    "image": "/images/petcare-search-twitter.jpg"
+  },
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "SearchResultsPage",
+    "name": "Pet Care Article Search - PetCare Central",
+    "description": "Search results for pet care articles, training guides, and health advice",
+    "url": "/search",
+    "publisher": {
+      "@type": "Organization",
+      "name": "PetCare Central",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "/images/petcare-logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "/search"
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+} 

@@ -1,0 +1,48 @@
+<!-- Navigation -->
+<nav class="bg-white/95 backdrop-blur-sm shadow-lg sticky top-0 z-50 border-b-2 border-green-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center shadow-lg">
+                        {{@if(it.site.logo)}}
+                        <img src="{{it.site.logo}}" alt="{{it.site.name}}" class="w-6 h-6">
+                        {{#else}}
+                        <span class="text-white text-2xl floating-paw">🐾</span>
+                        {{/if}}
+                    </div>
+                    <div class="absolute -top-1 -right-1 w-4 h-4 bg-orange-400 rounded-full flex items-center justify-center">
+                        <span class="text-white text-xs">❤️</span>
+                    </div>
+                </div>
+                <div class="pet-font">
+                    <h1 class="text-2xl font-bold text-green-600">{{it.site.name}}</h1>
+                    <p class="text-xs text-green-500 font-medium">{{it.site.tagline}}</p>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center space-x-6">
+                {{@each(it.navigation)=>item}}
+                <a href="{{item.url}}" 
+                   class="text-gray-700 hover:text-green-600 transition-colors font-medium pet-font flex items-center space-x-1">
+                    <span>{{item.icon}}</span>
+                    <span>{{item.name}}</span>
+                </a>
+                {{/each}}
+            </div>
+            
+            <div class="flex items-center space-x-4">
+                {{@if(it.cta_button)}}
+                <button class="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-6 py-2 rounded-full font-semibold pet-font transition-all transform hover:scale-105 shadow-lg">
+                    {{it.cta_button.text}} {{it.cta_button.icon}}
+                </button>
+                {{/if}}
+                <button class="md:hidden p-2 text-gray-500 hover:text-green-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</nav> 
