@@ -63,27 +63,8 @@
     <!-- Filters & Search -->
     <div class="bg-gray-900/50 rounded-xl p-6 border border-gray-800 mb-12">
       <div class="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
-        <div class="flex flex-wrap gap-2">
-          <button
-            class="bg-cyan-500/20 text-cyan-400 px-4 py-2 rounded-lg border border-cyan-500/30 hover:bg-cyan-500/30 transition-colors font-gaming">
-            All Posts
-          </button>
-          <button
-            class="bg-gray-800 text-gray-300 px-4 py-2 rounded-lg border border-gray-700 hover:border-cyan-500/30 transition-colors font-gaming">
-            Reviews
-          </button>
-          <button
-            class="bg-gray-800 text-gray-300 px-4 py-2 rounded-lg border border-gray-700 hover:border-cyan-500/30 transition-colors font-gaming">
-            Esports
-          </button>
-          <button
-            class="bg-gray-800 text-gray-300 px-4 py-2 rounded-lg border border-gray-700 hover:border-cyan-500/30 transition-colors font-gaming">
-            News
-          </button>
-          <button
-            class="bg-gray-800 text-gray-300 px-4 py-2 rounded-lg border border-gray-700 hover:border-cyan-500/30 transition-colors font-gaming">
-            Indie
-          </button>
+        <div id="category-filters" class="flex flex-wrap gap-2">
+          <!-- Dynamic category filters will be loaded here -->
         </div>
         <div class="flex items-center space-x-4">
           <select
@@ -101,354 +82,410 @@
       </div>
     </div>
 
-    <!-- Articles Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-      <!-- Article 1 -->
-      <article
-        class="bg-gray-900/50 rounded-xl border border-cyan-500/20 overflow-hidden hover:border-cyan-500/40 transition-all duration-300 group">
-        <div class="relative overflow-hidden">
-          <div class="w-full h-48 bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center">
-            <span class="text-6xl">🎮</span>
-          </div>
-          <div
-            class="absolute top-4 left-4 bg-gradient-to-r from-cyan-500/80 to-purple-500/80 backdrop-blur-sm rounded-lg px-3 py-1">
-            <span class="text-white text-xs font-semibold">Game Reviews</span>
-          </div>
-          <div
-            class="absolute top-4 right-4 bg-black/70 backdrop-blur-sm rounded-lg px-3 py-1 flex items-center space-x-1">
-            <span class="text-cyan-400 text-sm">👁️</span>
-            <span class="text-white text-sm font-bold">8.5K</span>
-          </div>
-        </div>
-        <div class="p-6 space-y-4">
-          <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors line-clamp-2 font-gaming">
-            Review Baldur's Gate 3: RPG Masterpiece yang Mengubah Standar Industri
-          </h3>
-          <p class="text-gray-400 text-sm line-clamp-3 font-gaming-body">
-            Analisis mendalam tentang game RPG yang telah mengubah standar industri gaming dengan storytelling yang luar
-            biasa dan gameplay yang inovatif.
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-gray-800 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-700">#RPG</span>
-            <span class="bg-gray-800 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-700">#Review</span>
-            <span class="bg-gray-800 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-700">#BG3</span>
-          </div>
-          <div class="flex items-center justify-between pt-4 border-t border-gray-800">
-            <div class="flex items-center space-x-3">
-              <div
-                class="w-8 h-8 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full flex items-center justify-center">
-                <span class="text-white text-xs font-bold">GV</span>
-              </div>
-              <div class="space-y-1">
-                <div class="text-white text-sm font-semibold">GamingVerse</div>
-                <div class="text-gray-400 text-xs">15 Nov 2024</div>
-              </div>
-            </div>
-            <div class="flex items-center space-x-3">
-              <div class="flex items-center space-x-1 text-gray-400">
-                <span class="text-xs">👁️</span>
-                <span class="text-xs">8.5K</span>
-              </div>
-              <div class="flex items-center space-x-1 text-gray-400">
-                <span class="text-xs">⏱️</span>
-                <span class="text-xs">15 min</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Article 2 -->
-      <article
-        class="bg-gray-900/50 rounded-xl border border-purple-500/20 overflow-hidden hover:border-purple-500/40 transition-all duration-300 group">
-        <div class="relative overflow-hidden">
-          <div class="w-full h-48 bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center">
-            <span class="text-6xl">🏆</span>
-          </div>
-          <div
-            class="absolute top-4 left-4 bg-gradient-to-r from-purple-500/80 to-pink-500/80 backdrop-blur-sm rounded-lg px-3 py-1">
-            <span class="text-white text-xs font-semibold">Esports</span>
-          </div>
-          <div
-            class="absolute top-4 right-4 bg-black/70 backdrop-blur-sm rounded-lg px-3 py-1 flex items-center space-x-1">
-            <span class="text-red-400 text-sm">🔥</span>
-            <span class="text-white text-sm font-bold">HOT</span>
-          </div>
-        </div>
-        <div class="p-6 space-y-4">
-          <h3
-            class="text-xl font-bold text-white group-hover:text-purple-400 transition-colors line-clamp-2 font-gaming">
-            Analisis Turnamen Worlds 2024: Strategi Tim Terbaik Dunia
-          </h3>
-          <p class="text-gray-400 text-sm line-clamp-3 font-gaming-body">
-            Pembahasan mendalam tentang strategi dan meta yang digunakan tim-tim terbaik dunia dalam turnamen League of
-            Legends Worlds 2024.
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-gray-800 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-700">#Esports</span>
-            <span class="bg-gray-800 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-700">#LoL</span>
-            <span class="bg-gray-800 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-700">#Worlds</span>
-          </div>
-          <div class="flex items-center justify-between pt-4 border-t border-gray-800">
-            <div class="flex items-center space-x-3">
-              <div
-                class="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
-                <span class="text-white text-xs font-bold">ES</span>
-              </div>
-              <div class="space-y-1">
-                <div class="text-white text-sm font-semibold">Esports Analyst</div>
-                <div class="text-gray-400 text-xs">14 Nov 2024</div>
-              </div>
-            </div>
-            <div class="flex items-center space-x-3">
-              <div class="flex items-center space-x-1 text-gray-400">
-                <span class="text-xs">👁️</span>
-                <span class="text-xs">12.3K</span>
-              </div>
-              <div class="flex items-center space-x-1 text-gray-400">
-                <span class="text-xs">⏱️</span>
-                <span class="text-xs">12 min</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Article 3 -->
-      <article
-        class="bg-gray-900/50 rounded-xl border border-green-500/20 overflow-hidden hover:border-green-500/40 transition-all duration-300 group">
-        <div class="relative overflow-hidden">
-          <div
-            class="w-full h-48 bg-gradient-to-br from-green-500/20 to-emerald-500/20 flex items-center justify-center">
-            <span class="text-6xl">🎲</span>
-          </div>
-          <div
-            class="absolute top-4 left-4 bg-gradient-to-r from-green-500/80 to-emerald-500/80 backdrop-blur-sm rounded-lg px-3 py-1">
-            <span class="text-white text-xs font-semibold">Indie Games</span>
-          </div>
-          <div
-            class="absolute top-4 right-4 bg-black/70 backdrop-blur-sm rounded-lg px-3 py-1 flex items-center space-x-1">
-            <span class="text-green-400 text-sm">🆕</span>
-            <span class="text-white text-sm font-bold">NEW</span>
-          </div>
-        </div>
-        <div class="p-6 space-y-4">
-          <h3
-            class="text-xl font-bold text-white group-hover:text-green-400 transition-colors line-clamp-2 font-gaming">
-            Hidden Gems: 10 Indie Games yang Wajib Dimainkan 2024
-          </h3>
-          <p class="text-gray-400 text-sm line-clamp-3 font-gaming-body">
-            Temukan koleksi game indie terbaik yang mungkin terlewat dari radar Anda. Dari puzzle yang menantang hingga
-            RPG yang mengharukan.
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-gray-800 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-700">#Indie</span>
-            <span class="bg-gray-800 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-700">#Hidden</span>
-            <span class="bg-gray-800 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-700">#Gems</span>
-          </div>
-          <div class="flex items-center justify-between pt-4 border-t border-gray-800">
-            <div class="flex items-center space-x-3">
-              <div
-                class="w-8 h-8 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center">
-                <span class="text-white text-xs font-bold">IG</span>
-              </div>
-              <div class="space-y-1">
-                <div class="text-white text-sm font-semibold">Indie Gamer</div>
-                <div class="text-gray-400 text-xs">13 Nov 2024</div>
-              </div>
-            </div>
-            <div class="flex items-center space-x-3">
-              <div class="flex items-center space-x-1 text-gray-400">
-                <span class="text-xs">👁️</span>
-                <span class="text-xs">5.2K</span>
-              </div>
-              <div class="flex items-center space-x-1 text-gray-400">
-                <span class="text-xs">⏱️</span>
-                <span class="text-xs">8 min</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Article 4 -->
-      <article
-        class="bg-gray-900/50 rounded-xl border border-red-500/20 overflow-hidden hover:border-red-500/40 transition-all duration-300 group">
-        <div class="relative overflow-hidden">
-          <div class="w-full h-48 bg-gradient-to-br from-red-500/20 to-pink-500/20 flex items-center justify-center">
-            <span class="text-6xl">📢</span>
-          </div>
-          <div
-            class="absolute top-4 left-4 bg-gradient-to-r from-red-500/80 to-pink-500/80 backdrop-blur-sm rounded-lg px-3 py-1">
-            <span class="text-white text-xs font-semibold">Gaming News</span>
-          </div>
-          <div
-            class="absolute top-4 right-4 bg-black/70 backdrop-blur-sm rounded-lg px-3 py-1 flex items-center space-x-1">
-            <span class="text-yellow-400 text-sm">⚡</span>
-            <span class="text-white text-sm font-bold">BREAKING</span>
-          </div>
-        </div>
-        <div class="p-6 space-y-4">
-          <h3 class="text-xl font-bold text-white group-hover:text-red-400 transition-colors line-clamp-2 font-gaming">
-            Sony Mengumumkan PlayStation 6: Revolusi Gaming Generasi Baru
-          </h3>
-          <p class="text-gray-400 text-sm line-clamp-3 font-gaming-body">
-            Pengumuman resmi PlayStation 6 dengan teknologi ray tracing next-gen dan support untuk 8K gaming yang akan
-            mengubah industri gaming.
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <span
-              class="bg-gray-800 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-700">#PlayStation</span>
-            <span class="bg-gray-800 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-700">#Sony</span>
-            <span class="bg-gray-800 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-700">#Console</span>
-          </div>
-          <div class="flex items-center justify-between pt-4 border-t border-gray-800">
-            <div class="flex items-center space-x-3">
-              <div
-                class="w-8 h-8 bg-gradient-to-r from-red-500 to-pink-500 rounded-full flex items-center justify-center">
-                <span class="text-white text-xs font-bold">GN</span>
-              </div>
-              <div class="space-y-1">
-                <div class="text-white text-sm font-semibold">Gaming News</div>
-                <div class="text-gray-400 text-xs">12 Nov 2024</div>
-              </div>
-            </div>
-            <div class="flex items-center space-x-3">
-              <div class="flex items-center space-x-1 text-gray-400">
-                <span class="text-xs">👁️</span>
-                <span class="text-xs">25.7K</span>
-              </div>
-              <div class="flex items-center space-x-1 text-gray-400">
-                <span class="text-xs">⏱️</span>
-                <span class="text-xs">6 min</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Article 5 -->
-      <article
-        class="bg-gray-900/50 rounded-xl border border-blue-500/20 overflow-hidden hover:border-blue-500/40 transition-all duration-300 group">
-        <div class="relative overflow-hidden">
-          <div class="w-full h-48 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center">
-            <span class="text-6xl">🎮</span>
-          </div>
-          <div
-            class="absolute top-4 left-4 bg-gradient-to-r from-blue-500/80 to-cyan-500/80 backdrop-blur-sm rounded-lg px-3 py-1">
-            <span class="text-white text-xs font-semibold">Game Reviews</span>
-          </div>
-          <div
-            class="absolute top-4 right-4 bg-black/70 backdrop-blur-sm rounded-lg px-3 py-1 flex items-center space-x-1">
-            <span class="text-cyan-400 text-sm">👁️</span>
-            <span class="text-white text-sm font-bold">8.8K</span>
-          </div>
-        </div>
-        <div class="p-6 space-y-4">
-          <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors line-clamp-2 font-gaming">
-            Spider-Man 2 PS5: Web-Slinging Perfection dengan Dual Protagonists
-          </h3>
-          <p class="text-gray-400 text-sm line-clamp-3 font-gaming-body">
-            Review lengkap Marvel's Spider-Man 2 yang menghadirkan pengalaman dual protagonists dengan enhanced combat
-            dan storytelling yang gripping.
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <span
-              class="bg-gray-800 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-700">#SpiderMan</span>
-            <span class="bg-gray-800 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-700">#PS5</span>
-            <span class="bg-gray-800 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-700">#Action</span>
-          </div>
-          <div class="flex items-center justify-between pt-4 border-t border-gray-800">
-            <div class="flex items-center space-x-3">
-              <div
-                class="w-8 h-8 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center">
-                <span class="text-white text-xs font-bold">GR</span>
-              </div>
-              <div class="space-y-1">
-                <div class="text-white text-sm font-semibold">Game Reviewer</div>
-                <div class="text-gray-400 text-xs">11 Nov 2024</div>
-              </div>
-            </div>
-            <div class="flex items-center space-x-3">
-              <div class="flex items-center space-x-1 text-gray-400">
-                <span class="text-xs">👁️</span>
-                <span class="text-xs">9.4K</span>
-              </div>
-              <div class="flex items-center space-x-1 text-gray-400">
-                <span class="text-xs">⏱️</span>
-                <span class="text-xs">12 min</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Article 6 -->
-      <article
-        class="bg-gray-900/50 rounded-xl border border-yellow-500/20 overflow-hidden hover:border-yellow-500/40 transition-all duration-300 group">
-        <div class="relative overflow-hidden">
-          <div
-            class="w-full h-48 bg-gradient-to-br from-yellow-500/20 to-orange-500/20 flex items-center justify-center">
-            <span class="text-6xl">👥</span>
-          </div>
-          <div
-            class="absolute top-4 left-4 bg-gradient-to-r from-yellow-500/80 to-orange-500/80 backdrop-blur-sm rounded-lg px-3 py-1">
-            <span class="text-white text-xs font-semibold">Community</span>
-          </div>
-          <div
-            class="absolute top-4 right-4 bg-black/70 backdrop-blur-sm rounded-lg px-3 py-1 flex items-center space-x-1">
-            <span class="text-green-400 text-sm">💬</span>
-            <span class="text-white text-sm font-bold">DISCUSS</span>
-          </div>
-        </div>
-        <div class="p-6 space-y-4">
-          <h3
-            class="text-xl font-bold text-white group-hover:text-yellow-400 transition-colors line-clamp-2 font-gaming">
-            Gaming Setup Guide 2024: Build PC Gaming Impian dengan Budget Terbatas
-          </h3>
-          <p class="text-gray-400 text-sm line-clamp-3 font-gaming-body">
-            Panduan lengkap membangun PC gaming dengan performa optimal tanpa menguras kantong. Tips dan trik dari
-            komunitas gaming Indonesia.
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-gray-800 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-700">#PCGaming</span>
-            <span
-              class="bg-gray-800 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-700">#BuildGuide</span>
-            <span class="bg-gray-800 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-700">#Budget</span>
-          </div>
-          <div class="flex items-center justify-between pt-4 border-t border-gray-800">
-            <div class="flex items-center space-x-3">
-              <div
-                class="w-8 h-8 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full flex items-center justify-center">
-                <span class="text-white text-xs font-bold">PC</span>
-              </div>
-              <div class="space-y-1">
-                <div class="text-white text-sm font-semibold">PC Master</div>
-                <div class="text-gray-400 text-xs">10 Nov 2024</div>
-              </div>
-            </div>
-            <div class="flex items-center space-x-3">
-              <div class="flex items-center space-x-1 text-gray-400">
-                <span class="text-xs">👁️</span>
-                <span class="text-xs">7.8K</span>
-              </div>
-              <div class="flex items-center space-x-1 text-gray-400">
-                <span class="text-xs">⏱️</span>
-                <span class="text-xs">18 min</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
+    <!-- Loading State -->
+    <div id="posts-loading" class="py-12 text-center">
+      <div class="inline-block animate-spin rounded-full h-12 w-12 border-4 border-cyan-500 border-t-transparent"></div>
+      <p class="text-gray-400 mt-4 font-gaming-body">Loading gaming content...</p>
     </div>
 
-    <!-- Load More Button -->
-    <div class="text-center">
-      <button
-        class="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white px-8 py-4 rounded-lg font-semibold transition-all font-gaming">
-        <span>🎮</span>
-        <span class="ml-2">Load More Articles</span>
-      </button>
+    <!-- Error State -->
+    <div id="posts-error" class="py-12 text-center hidden">
+      <div class="bg-red-900/50 rounded-xl p-6 max-w-md mx-auto border border-red-500/20">
+        <span class="text-6xl mb-4 block">⚠️</span>
+        <p class="text-red-400 mb-4 font-gaming">Failed to load gaming posts</p>
+        <button onclick="loadPosts()" class="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white px-6 py-2 rounded-lg font-semibold transition-all font-gaming">
+          Try Again
+        </button>
+      </div>
     </div>
+
+    <!-- Content Container -->
+    <div id="posts-content" class="hidden">
+      <!-- Articles Grid -->
+       <div id="posts-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          <!-- Dynamic posts will be loaded here -->
+        </div>
+
+        <!-- Pagination -->
+        <div id="pagination" class="flex justify-center mb-12"></div>
+      </div>
+    </div>
+
+    <!-- Load More Button (fallback for no JS) -->
+    <noscript>
+      <div class="text-center">
+        <button
+          class="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white px-8 py-4 rounded-lg font-semibold transition-all font-gaming">
+          <span>🎮</span>
+          <span class="ml-2">Load More Articles</span>
+        </button>
+      </div>
+    </noscript>
   </div>
 </main>
+
+<script>
+let currentPage = 1;
+let currentCategory = null;
+let currentSort = 'latest';
+
+// Gaming category mapping for styling
+const gamingCategoryMapping = {
+  'Game Reviews': {
+    border: 'border-cyan-500/20 hover:border-cyan-500/40',
+    gradient: 'from-cyan-500/20 to-purple-500/20',
+    badgeGradient: 'from-cyan-500/80 to-purple-500/80',
+    hoverColor: 'group-hover:text-cyan-400',
+    emoji: '🎮'
+  },
+  'Esports': {
+    border: 'border-purple-500/20 hover:border-purple-500/40',
+    gradient: 'from-purple-500/20 to-pink-500/20',
+    badgeGradient: 'from-purple-500/80 to-pink-500/80',
+    hoverColor: 'group-hover:text-purple-400',
+    emoji: '🏆'
+  },
+  'Gaming News': {
+    border: 'border-red-500/20 hover:border-red-500/40',
+    gradient: 'from-red-500/20 to-pink-500/20',
+    badgeGradient: 'from-red-500/80 to-pink-500/80',
+    hoverColor: 'group-hover:text-red-400',
+    emoji: '📢'
+  },
+  'Indie Games': {
+    border: 'border-green-500/20 hover:border-green-500/40',
+    gradient: 'from-green-500/20 to-emerald-500/20',
+    badgeGradient: 'from-green-500/80 to-emerald-500/80',
+    hoverColor: 'group-hover:text-green-400',
+    emoji: '🎲'
+  },
+  'Community': {
+    border: 'border-yellow-500/20 hover:border-yellow-500/40',
+    gradient: 'from-yellow-500/20 to-orange-500/20',
+    badgeGradient: 'from-yellow-500/80 to-orange-500/80',
+    hoverColor: 'group-hover:text-yellow-400',
+    emoji: '👥'
+  },
+  'Reviews': {
+    border: 'border-blue-500/20 hover:border-blue-500/40',
+    gradient: 'from-blue-500/20 to-cyan-500/20',
+    badgeGradient: 'from-blue-500/80 to-cyan-500/80',
+    hoverColor: 'group-hover:text-blue-400',
+    emoji: '🎮'
+  },
+  'default': {
+    border: 'border-cyan-500/20 hover:border-cyan-500/40',
+    gradient: 'from-cyan-500/20 to-purple-500/20',
+    badgeGradient: 'from-cyan-500/80 to-purple-500/80',
+    hoverColor: 'group-hover:text-cyan-400',
+    emoji: '🎮'
+  }
+};
+
+// Format date function
+function formatDate(timestamp) {
+  const date = new Date(timestamp);
+  const now = new Date();
+  const diffTime = Math.abs(now - date);
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  
+  if (diffDays === 1) return 'yesterday';
+  if (diffDays < 7) return `${diffDays} days ago`;
+  if (diffDays < 30) return `${Math.floor(diffDays / 7)} weeks ago`;
+  return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+}
+
+// Get fallback image
+function getFallbackImage() {
+  return 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDQwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjMTExODI3Ii8+Cjx0ZXh0IHg9IjIwMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iNDgiIGZpbGw9IiM2Mzc0OGYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj7wn46uPC90ZXh0Pgo8L3N2Zz4=';
+}
+
+// Create post HTML
+function createPostHTML(post) {
+  const imageUrl = post.featured_image || getFallbackImage();
+  const postUrl = `/post/${post.slug}`;
+  const category = post.category || 'Gaming';
+  const categoryStyle = gamingCategoryMapping[category] || gamingCategoryMapping['default'];
+  
+  // Generate tags HTML
+  const tagsArray = post.tags ? post.tags.split(',').map(tag => tag.trim()) : [];
+  const tagsHTML = tagsArray.slice(0, 3).map(tag => 
+    `<span class="bg-gray-800 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-700">#${tag}</span>`
+  ).join('');
+  
+  return `
+    <article class="bg-gray-900/50 rounded-xl border ${categoryStyle.border} overflow-hidden transition-all duration-300 group">
+      <div class="relative overflow-hidden">
+        <div class="w-full h-48 bg-gradient-to-br ${categoryStyle.gradient} flex items-center justify-center" style="background-image: url('${imageUrl}'); background-size: cover; background-position: center;">
+          ${!post.featured_image ? `<span class="text-6xl">${categoryStyle.emoji}</span>` : ''}
+        </div>
+        <div class="absolute top-4 left-4 bg-gradient-to-r ${categoryStyle.badgeGradient} backdrop-blur-sm rounded-lg px-3 py-1">
+          <span class="text-white text-xs font-semibold">${category}</span>
+        </div>
+        <div class="absolute top-4 right-4 bg-black/70 backdrop-blur-sm rounded-lg px-3 py-1 flex items-center space-x-1">
+          <span class="text-cyan-400 text-sm">👁️</span>
+          <span class="text-white text-sm font-bold">${post.views || '0'}</span>
+        </div>
+      </div>
+      <div class="p-6 space-y-4">
+        <h3 class="text-xl font-bold text-white ${categoryStyle.hoverColor} transition-colors line-clamp-2 font-gaming">
+          <a href="${postUrl}">${post.title}</a>
+        </h3>
+        <p class="text-gray-400 text-sm line-clamp-3 font-gaming-body">
+          ${post.excerpt || ''}
+        </p>
+        <div class="flex flex-wrap gap-2">
+          ${tagsHTML}
+        </div>
+        <div class="flex items-center justify-between pt-4 border-t border-gray-800">
+          <div class="flex items-center space-x-3">
+            <div class="w-8 h-8 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full flex items-center justify-center">
+              <span class="text-white text-xs font-bold">${(post.author || 'GV').substring(0, 2).toUpperCase()}</span>
+            </div>
+            <div class="space-y-1">
+              <div class="text-white text-sm font-semibold">${post.author || 'GamingVerse'}</div>
+              <div class="text-gray-400 text-xs">${formatDate(post.published_at || post.created_at)}</div>
+            </div>
+          </div>
+          <div class="flex items-center space-x-3">
+            <div class="flex items-center space-x-1 text-gray-400">
+              <span class="text-xs">👁️</span>
+              <span class="text-xs">${post.views || '0'}</span>
+            </div>
+            <div class="flex items-center space-x-1 text-gray-400">
+              <span class="text-xs">⏱️</span>
+              <span class="text-xs">${post.read_time || '5'} min</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+// Load posts function
+async function loadPosts(page = 1, category = null, sort = 'latest') {
+  const postsLoading = document.getElementById('posts-loading');
+  const postsError = document.getElementById('posts-error');
+  const postsContent = document.getElementById('posts-content');
+  
+  try {
+    postsLoading.classList.remove('hidden');
+    postsError.classList.add('hidden');
+    postsContent.classList.add('hidden');
+    
+    // Build API URL
+    let apiUrl = `/api/blog/posts?page=${page}&limit=9`;
+    if (category && category !== 'All Posts') {
+      apiUrl = `/api/blog/posts/category/${encodeURIComponent(category)}?page=${page}&limit=9`;
+    }
+    if (sort && sort !== 'latest') {
+      apiUrl += `&sort=${sort}`;
+    }
+    
+    const response = await fetch(apiUrl);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
+    const data = await response.json();
+    const posts = data.posts || data.data || [];
+    
+    // Render posts
+    renderPosts(posts);
+    
+    // Handle pagination
+    const paginationInfo = data.pagination || {
+      current_page: data.current_page || page,
+      total_pages: data.total_pages || 1
+    };
+    renderPagination(paginationInfo);
+    
+    // Update current state
+    currentPage = page;
+    currentCategory = category;
+    currentSort = sort;
+    
+    postsLoading.classList.add('hidden');
+    postsContent.classList.remove('hidden');
+    
+  } catch (error) {
+    console.error('Failed to load posts:', error);
+    postsLoading.classList.add('hidden');
+    postsError.classList.remove('hidden');
+  }
+}
+
+// Render posts
+function renderPosts(posts) {
+  const grid = document.getElementById('posts-grid');
+  grid.innerHTML = '';
+  
+  if (posts.length === 0) {
+    grid.innerHTML = `
+      <div class="col-span-full text-center py-12">
+        <span class="text-6xl mb-4 block">🎮</span>
+        <p class="text-gray-400 font-gaming">No gaming posts found</p>
+      </div>
+    `;
+    return;
+  }
+  
+  posts.forEach(post => {
+    const article = document.createElement('div');
+    article.innerHTML = createPostHTML(post);
+    grid.appendChild(article.firstElementChild);
+  });
+}
+
+// Render pagination
+function renderPagination(pagination) {
+  const container = document.getElementById('pagination');
+  container.innerHTML = '';
+  
+  if (!pagination || pagination.total_pages <= 1) return;
+  
+  const nav = document.createElement('nav');
+  nav.className = 'flex items-center space-x-2';
+  
+  // Previous button
+  if (pagination.current_page > 1) {
+    const prevButton = document.createElement('a');
+    prevButton.href = '#';
+    prevButton.className = 'px-4 py-2 bg-cyan-500/20 text-cyan-400 rounded-lg border border-cyan-500/30 hover:bg-cyan-500/30 transition-colors font-gaming';
+    prevButton.textContent = '← Previous';
+    prevButton.onclick = (e) => {
+      e.preventDefault();
+      loadPosts(pagination.current_page - 1, currentCategory, currentSort);
+    };
+    nav.appendChild(prevButton);
+  }
+  
+  // Page numbers (show max 5 pages)
+  const startPage = Math.max(1, pagination.current_page - 2);
+  const endPage = Math.min(pagination.total_pages, startPage + 4);
+  
+  for (let i = startPage; i <= endPage; i++) {
+    const pageLink = document.createElement(i === pagination.current_page ? 'span' : 'a');
+    pageLink.className = i === pagination.current_page
+      ? 'px-4 py-2 bg-gradient-to-r from-cyan-500 to-purple-500 text-white rounded-lg font-gaming'
+      : 'px-4 py-2 bg-gray-800 text-gray-300 rounded-lg border border-gray-700 hover:border-cyan-500/30 transition-colors font-gaming';
+    pageLink.textContent = i;
+    if (i !== pagination.current_page) {
+      pageLink.href = '#';
+      pageLink.onclick = (e) => {
+        e.preventDefault();
+        loadPosts(i, currentCategory, currentSort);
+      };
+    }
+    nav.appendChild(pageLink);
+  }
+  
+  // Next button
+  if (pagination.current_page < pagination.total_pages) {
+    const nextButton = document.createElement('a');
+    nextButton.href = '#';
+    nextButton.className = 'px-4 py-2 bg-cyan-500/20 text-cyan-400 rounded-lg border border-cyan-500/30 hover:bg-cyan-500/30 transition-colors font-gaming';
+    nextButton.textContent = 'Next →';
+    nextButton.onclick = (e) => {
+      e.preventDefault();
+      loadPosts(pagination.current_page + 1, currentCategory, currentSort);
+    };
+    nav.appendChild(nextButton);
+  }
+  
+  container.appendChild(nav);
+}
+
+// Load categories from API
+async function loadCategories() {
+  try {
+    const response = await fetch('/api/blog/categories');
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
+    const data = await response.json();
+    const categories =  data || data.data || [];
+    
+    renderCategoryFilters(categories);
+  } catch (error) {
+    console.error('Failed to load categories:', error);
+    // Fallback to default categories
+    renderCategoryFilters([
+      { name: 'Reviews', slug: 'reviews' },
+      { name: 'Esports', slug: 'esports' },
+      { name: 'Gaming News', slug: 'gaming-news' },
+      { name: 'Indie Games', slug: 'indie-games' }
+    ]);
+  }
+}
+
+// Render category filters
+function renderCategoryFilters(categories) {
+  const container = document.getElementById('category-filters');
+  container.innerHTML = '';
+  
+  // Add "All Posts" button
+  const allButton = document.createElement('button');
+  allButton.className = 'bg-cyan-500/20 text-cyan-400 px-4 py-2 rounded-lg border border-cyan-500/30 hover:bg-cyan-500/30 transition-colors font-gaming';
+  allButton.textContent = 'All Posts';
+  allButton.setAttribute('data-category', 'All Posts');
+  container.appendChild(allButton);
+  
+  // Add category buttons
+  categories.forEach(category => {
+    const button = document.createElement('button');
+    button.className = 'bg-gray-800 text-gray-300 px-4 py-2 rounded-lg border border-gray-700 hover:border-cyan-500/30 transition-colors font-gaming';
+    button.textContent = category.name;
+    button.setAttribute('data-category', category.name);
+    container.appendChild(button);
+  });
+  
+  // Initialize category filter handlers
+  handleCategoryFilter();
+}
+
+// Handle category filter clicks
+function handleCategoryFilter() {
+  const filterButtons = document.querySelectorAll('[data-category]');
+  filterButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+      e.preventDefault();
+      const category = button.getAttribute('data-category');
+      
+      // Update button states
+      filterButtons.forEach(btn => {
+        btn.className = btn.className.replace('bg-cyan-500/20 text-cyan-400', 'bg-gray-800 text-gray-300');
+      });
+      button.className = button.className.replace('bg-gray-800 text-gray-300', 'bg-cyan-500/20 text-cyan-400');
+      
+      // Load posts for category
+      loadPosts(1, category, currentSort);
+    });
+  });
+}
+
+// Handle sort change
+function handleSortChange() {
+  const sortSelect = document.querySelector('select');
+  if (sortSelect) {
+    sortSelect.addEventListener('change', (e) => {
+      const sortValue = e.target.value.toLowerCase().replace(' ', '_');
+      loadPosts(1, currentCategory, sortValue);
+    });
+  }
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', async () => {
+  // Load categories first
+  await loadCategories();
+  
+  // Initialize event handlers
+  handleSortChange();
+  
+  // Load initial posts
+  loadPosts();
+});
+</script>

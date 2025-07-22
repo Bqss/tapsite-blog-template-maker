@@ -16,8 +16,31 @@
       </p>
     </div>
 
+    <!-- Loading State -->
+    <div id="categories-loading" class="text-center py-16">
+      <div class="bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-6">
+        <svg class="animate-spin h-8 w-8 text-purple-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+      </div>
+      <h3 class="text-2xl font-bold text-white mb-4 font-gaming">Loading Gaming Categories...</h3>
+      <p class="text-gray-400 font-gaming-body">Please wait while we fetch the latest gaming content.</p>
+    </div>
+
+    <!-- Error State -->
+    <div id="categories-error" class="text-center py-16 hidden">
+      <div class="text-red-500 mb-4">
+        <svg class="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.5 0L4.268 18.5c-.77.833.192 2.5 1.732 2.5z" />
+        </svg>
+      </div>
+      <h3 class="text-2xl font-bold text-white mb-4 font-gaming">Failed to Load Categories</h3>
+      <p class="text-gray-400 font-gaming-body">Unable to fetch gaming categories. Please try again later.</p>
+    </div>
+
     <!-- Categories Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div id="categories-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 hidden">
       <!-- Game Reviews -->
       <div class="group bg-gradient-to-br from-cyan-500/10 to-cyan-600/10 rounded-xl border border-cyan-500/20 p-8 hover:border-cyan-500/40 transition-all duration-300 hover:bg-cyan-500/20">
         <div class="text-center space-y-4">
@@ -109,4 +132,107 @@
       </div>
     </div>
   </div>
+
+  <script>
+  // Gaming category mapping with colors and icons
+  const gamingCategoryMapping = {
+    'game-reviews': { color: 'cyan', icon: '🎯', name: 'Game Reviews', description: 'Review mendalam game terbaru dengan analisis objektif dan gameplay yang komprehensif' },
+    'esports': { color: 'purple', icon: '🏆', name: 'Esports', description: 'Berita dan analisis turnamen esports terkini dari berbagai game kompetitif' },
+    'gaming-news': { color: 'pink', icon: '📢', name: 'Gaming News', description: 'Berita terkini industri gaming, update game, dan pengumuman developer' },
+    'indie-games': { color: 'green', icon: '🎲', name: 'Indie Games', description: 'Temukan hidden gems dan game indie terbaik dengan review khusus' },
+    'community': { color: 'yellow', icon: '👥', name: 'Community', description: 'Diskusi komunitas, tips gaming, dan sharing pengalaman bermain' },
+    'streaming': { color: 'red', icon: '📺', name: 'Streaming', description: 'Tips streaming, review equipment, dan panduan menjadi content creator' }
+  };
+
+  // Function to create category HTML
+  function createCategoryHTML(category) {
+    const mapping = gamingCategoryMapping[category.slug] || gamingCategoryMapping['community'];
+    const postCount = category.posts || 0;
+    
+    return `
+      <div class="group bg-gradient-to-br from-${mapping.color}-500/10 to-${mapping.color}-600/10 rounded-xl border border-${mapping.color}-500/20 p-8 hover:border-${mapping.color}-500/40 transition-all duration-300 hover:bg-${mapping.color}-500/20">
+        <div class="text-center space-y-4">
+          <div class="w-16 h-16 bg-gradient-to-r from-${mapping.color}-500 to-${mapping.color}-600 rounded-full flex items-center justify-center mx-auto group-hover:scale-110 transition-transform">
+            <span class="text-white text-3xl">${mapping.icon}</span>
+          </div>
+          <h3 class="text-2xl font-bold text-white group-hover:text-${mapping.color}-400 transition-colors font-gaming">${category.name}</h3>
+          <p class="text-gray-400 font-gaming-body">${mapping.description}</p>
+          <div class="text-${mapping.color}-400 text-sm font-mono">${postCount}+ ${postCount === 1 ? 'Article' : 'Articles'}</div>
+          <a href="/category/${category.slug}" class="inline-block bg-${mapping.color}-500/20 hover:bg-${mapping.color}-500 text-${mapping.color}-400 hover:text-white px-6 py-2 rounded-lg transition-all font-gaming">
+            Explore ${category.name}
+          </a>
+        </div>
+      </div>
+    `;
+  }
+
+  // Function to load gaming categories
+  async function loadGamingCategories() {
+    const loadingEl = document.getElementById('categories-loading');
+    const errorEl = document.getElementById('categories-error');
+    const gridEl = document.getElementById('categories-grid');
+
+    try {
+      // Show loading state
+      loadingEl.classList.remove('hidden');
+      errorEl.classList.add('hidden');
+      gridEl.classList.add('hidden');
+
+      // Fetch categories from API
+      const response = await fetch('/api/blog/categories');
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const categories = await response.json();
+
+      // Hide loading state
+      loadingEl.classList.add('hidden');
+
+      if (categories && categories.length > 0) {
+        // Filter gaming-related categories or use all if none match
+        const gamingCategories = categories.filter(cat => 
+          Object.keys(gamingCategoryMapping).includes(cat.slug)
+        );
+        
+        const categoriesToShow = gamingCategories.length > 0 ? gamingCategories : categories.slice(0, 6);
+        
+        // Generate HTML for categories
+        const categoriesHTML = categoriesToShow.map(category => createCategoryHTML(category)).join('');
+        
+        // Insert categories into grid
+        gridEl.innerHTML = categoriesHTML;
+        gridEl.classList.remove('hidden');
+      } else {
+        // Show empty state with fallback static categories
+        gridEl.innerHTML = `
+          <div class="col-span-full text-center py-12">
+            <div class="text-purple-400 mb-4">
+              <svg class="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-4 font-gaming">No Categories Available</h3>
+            <p class="text-gray-400 font-gaming-body">Gaming categories will appear here once content is added.</p>
+          </div>
+        `;
+        gridEl.classList.remove('hidden');
+      }
+
+    } catch (error) {
+      console.error('Error loading gaming categories:', error);
+      
+      // Hide loading state and show error
+      loadingEl.classList.add('hidden');
+      errorEl.classList.remove('hidden');
+      gridEl.classList.add('hidden');
+    }
+  }
+
+  // Load categories when page loads
+  document.addEventListener('DOMContentLoaded', () => {
+    loadGamingCategories();
+  });
+  </script>
 </section>

@@ -41,7 +41,7 @@
         <div class="w-16 h-16 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-xl flex items-center justify-center">
           <span class="text-white text-4xl">🏷️</span>
         </div>
-        <h1
+        <h1 id="tag-title"
           class="text-4xl md:text-5xl font-bold text-transparent bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text font-gaming">
           Gaming Tag: RPG
         </h1>
@@ -51,7 +51,7 @@
       <div class="flex items-center justify-center space-x-8 text-sm">
         <div class="flex items-center space-x-2 text-gray-400">
           <span class="text-cyan-400">🎯</span>
-          <span>25 posts</span>
+          <span id="posts-count">0 posts</span>
         </div>
         <div class="flex items-center space-x-2 text-gray-400">
           <span class="text-purple-400">🎮</span>
@@ -166,7 +166,7 @@
         <h2 class="text-2xl font-bold text-white font-gaming">Tagged Gaming Posts</h2>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div id="tag-results-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Article 1 -->
         <div class="transform hover:scale-105 transition-transform duration-300">
           <article
@@ -377,3 +377,71 @@
     </div>
   </div>
 </section>
+<script>
+(function () {
+  function getTagFromURL() {
+    const parts = window.location.pathname.split('/');
+    const idx = parts.indexOf('tag');
+    return idx !== -1 && parts[idx + 1] ? decodeURIComponent(parts[idx + 1]) : null;
+  }
+
+  function createArticleHTML(article, tag) {
+    const defaultImage = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23374151'/%3E%3Ctext x='200' y='100' text-anchor='middle' dy='0.3em' font-family='Arial, sans-serif' font-size='16' fill='%23ffffff'%3E🎮%3C/text%3E%3C/svg%3E";
+
+    return `
+      <div class="transform hover:scale-105 transition-transform duration-300">
+        <article class="bg-gray-800/50 rounded-xl border border-gray-700/50 overflow-hidden hover:border-cyan-500/40 transition-all duration-300 group">
+          <div class="relative">
+            <img src="${article.featured_image || defaultImage}" alt="${article.title}" class="w-full h-48 object-cover">
+            <div class="absolute top-2 left-2 bg-gradient-to-r from-cyan-500 to-purple-500 backdrop-blur-sm rounded-lg px-2 py-1">
+              <span class="text-white text-xs font-semibold">${article.category}</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors mb-3 font-gaming">
+              <a href="/post/${article.slug}">${article.title}</a>
+            </h3>
+            ${article.excerpt ? `<p class=\"text-gray-400 text-sm mb-4 line-clamp-3 font-gaming-body\">${article.excerpt}</p>` : ''}
+            <div class="flex items-center justify-between text-sm text-gray-500">
+              <span>${article.published_at ? new Date(article.published_at).toLocaleDateString() : ''}</span>
+              ${(() => {const v = article.view_count ?? article.views; return v ? `<span>${v} views</span>` : ''})()}
+            </div>
+          </div>
+        </article>
+      </div>
+    `;
+  }
+
+  async function init() {
+    const tag = getTagFromURL();
+    const titleEl = document.getElementById('tag-title');
+    if (titleEl) titleEl.textContent = `Gaming Tag: ${tag}`;
+
+    const grid = document.getElementById('tag-results-grid');
+    if (!grid) return;
+    grid.innerHTML = '<p class="col-span-full text-gray-400 text-center">Loading...</p>';
+    try {
+      const res = await fetch(`/api/blog/posts/tag/${encodeURIComponent(tag)}`);
+      if (!res.ok) throw new Error('Network response was not ok');
+      const data = await res.json();
+      if (!Array.isArray(data) || data.length === 0) {
+        grid.innerHTML = '<p class="col-span-full text-gray-400 text-center">No articles found.</p>';
+        return;
+      }
+      grid.innerHTML = data.map(post => createArticleHTML(post, tag)).join('');
+
+      const postsCountEl = document.getElementById('posts-count');
+      if (postsCountEl) postsCountEl.textContent = `${data.length} posts`;
+    } catch (err) {
+      console.error(err);
+      grid.innerHTML = '<p class="col-span-full text-red-500 text-center">Error loading articles.</p>';
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>

@@ -16,157 +16,30 @@
       </p>
     </div>
 
+    <!-- Loading State -->
+    <div id="featured-loading" class="text-center py-12">
+      <div class="inline-flex items-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-purple-600 hover:bg-purple-500 transition ease-in-out duration-150 cursor-not-allowed">
+        <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        Loading featured articles...
+      </div>
+    </div>
+
+    <!-- Error State -->
+    <div id="featured-error" class="text-center py-12 hidden">
+      <div class="text-red-400 mb-4">
+        <svg class="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.5 0L4.268 18.5c-.77.833.192 2.5 1.732 2.5z" />
+        </svg>
+      </div>
+      <p class="text-gray-400">Failed to load featured articles. Please try again later.</p>
+    </div>
+
     <!-- Featured Articles Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Article 1 -->
-      <article class="bg-gray-800/50 rounded-xl border border-cyan-500/20 overflow-hidden hover:border-cyan-500/40 transition-all duration-300 group">
-        <div class="relative overflow-hidden">
-          <div class="w-full h-48 bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center">
-            <span class="text-6xl">🎮</span>
-          </div>
-          <div class="absolute top-4 left-4 bg-gradient-to-r from-cyan-500/80 to-purple-500/80 backdrop-blur-sm rounded-lg px-3 py-1">
-            <span class="text-white text-xs font-semibold">Game Reviews</span>
-          </div>
-          <div class="absolute top-4 right-4 bg-black/70 backdrop-blur-sm rounded-lg px-3 py-1 flex items-center space-x-1">
-                          <span class="text-cyan-400 text-sm">👁️</span>
-                          <span class="text-white text-sm font-bold">9.2K</span>
-          </div>
-        </div>
-        <div class="p-6 space-y-4">
-          <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors line-clamp-2 font-gaming">
-            Review Baldur's Gate 3: RPG Terbaik Tahun Ini
-          </h3>
-          <p class="text-gray-400 text-sm line-clamp-3 font-gaming-body">
-            Analisis mendalam tentang game RPG yang telah mengubah standar industri gaming dengan storytelling yang luar biasa dan gameplay yang inovatif.
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-600">#RPG</span>
-            <span class="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-600">#Review</span>
-            <span class="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-600">#PC</span>
-          </div>
-          <div class="flex items-center justify-between pt-4 border-t border-gray-700">
-            <div class="flex items-center space-x-3">
-              <div class="w-8 h-8 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full flex items-center justify-center">
-                <span class="text-white text-xs font-bold">GV</span>
-              </div>
-              <div class="space-y-1">
-                <div class="text-white text-sm font-semibold">GamingVerse</div>
-                <div class="text-gray-400 text-xs">15 Nov 2024</div>
-              </div>
-            </div>
-            <div class="flex items-center space-x-3">
-              <div class="flex items-center space-x-1 text-gray-400">
-                <span class="text-xs">👁️</span>
-                <span class="text-xs">2.5K</span>
-              </div>
-              <div class="flex items-center space-x-1 text-gray-400">
-                <span class="text-xs">⏱️</span>
-                <span class="text-xs">8 min</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Article 2 -->
-      <article class="bg-gray-800/50 rounded-xl border border-purple-500/20 overflow-hidden hover:border-purple-500/40 transition-all duration-300 group">
-        <div class="relative overflow-hidden">
-          <div class="w-full h-48 bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center">
-            <span class="text-6xl">🏆</span>
-          </div>
-          <div class="absolute top-4 left-4 bg-gradient-to-r from-purple-500/80 to-pink-500/80 backdrop-blur-sm rounded-lg px-3 py-1">
-            <span class="text-white text-xs font-semibold">Esports</span>
-          </div>
-          <div class="absolute top-4 right-4 bg-black/70 backdrop-blur-sm rounded-lg px-3 py-1 flex items-center space-x-1">
-            <span class="text-red-400 text-sm">🔥</span>
-            <span class="text-white text-sm font-bold">HOT</span>
-          </div>
-        </div>
-        <div class="p-6 space-y-4">
-          <h3 class="text-xl font-bold text-white group-hover:text-purple-400 transition-colors line-clamp-2 font-gaming">
-            Analisis Turnamen Worlds 2024: Strategi Tim Terbaik
-          </h3>
-          <p class="text-gray-400 text-sm line-clamp-3 font-gaming-body">
-            Pembahasan mendalam tentang strategi dan meta yang digunakan tim-tim terbaik dunia dalam turnamen League of Legends Worlds 2024.
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-600">#Esports</span>
-            <span class="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-600">#LoL</span>
-            <span class="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-600">#Worlds</span>
-          </div>
-          <div class="flex items-center justify-between pt-4 border-t border-gray-700">
-            <div class="flex items-center space-x-3">
-              <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
-                <span class="text-white text-xs font-bold">ES</span>
-              </div>
-              <div class="space-y-1">
-                <div class="text-white text-sm font-semibold">Esports Analyst</div>
-                <div class="text-gray-400 text-xs">14 Nov 2024</div>
-              </div>
-            </div>
-            <div class="flex items-center space-x-3">
-              <div class="flex items-center space-x-1 text-gray-400">
-                <span class="text-xs">👁️</span>
-                <span class="text-xs">4.2K</span>
-              </div>
-              <div class="flex items-center space-x-1 text-gray-400">
-                <span class="text-xs">⏱️</span>
-                <span class="text-xs">12 min</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Article 3 -->
-      <article class="bg-gray-800/50 rounded-xl border border-pink-500/20 overflow-hidden hover:border-pink-500/40 transition-all duration-300 group">
-        <div class="relative overflow-hidden">
-          <div class="w-full h-48 bg-gradient-to-br from-pink-500/20 to-red-500/20 flex items-center justify-center">
-            <span class="text-6xl">🎲</span>
-          </div>
-          <div class="absolute top-4 left-4 bg-gradient-to-r from-pink-500/80 to-red-500/80 backdrop-blur-sm rounded-lg px-3 py-1">
-            <span class="text-white text-xs font-semibold">Indie Games</span>
-          </div>
-          <div class="absolute top-4 right-4 bg-black/70 backdrop-blur-sm rounded-lg px-3 py-1 flex items-center space-x-1">
-            <span class="text-green-400 text-sm">🆕</span>
-            <span class="text-white text-sm font-bold">NEW</span>
-          </div>
-        </div>
-        <div class="p-6 space-y-4">
-          <h3 class="text-xl font-bold text-white group-hover:text-pink-400 transition-colors line-clamp-2 font-gaming">
-            Hidden Gems: 10 Indie Games yang Wajib Dimainkan
-          </h3>
-          <p class="text-gray-400 text-sm line-clamp-3 font-gaming-body">
-            Temukan koleksi game indie terbaik yang mungkin terlewat dari radar Anda. Dari puzzle yang menantang hingga RPG yang mengharukan.
-          </p>
-          <div class="flex flex-wrap gap-2">
-            <span class="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-600">#Indie</span>
-            <span class="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-600">#Hidden</span>
-            <span class="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-600">#Gems</span>
-          </div>
-          <div class="flex items-center justify-between pt-4 border-t border-gray-700">
-            <div class="flex items-center space-x-3">
-              <div class="w-8 h-8 bg-gradient-to-r from-pink-500 to-red-500 rounded-full flex items-center justify-center">
-                <span class="text-white text-xs font-bold">IG</span>
-              </div>
-              <div class="space-y-1">
-                <div class="text-white text-sm font-semibold">Indie Gamer</div>
-                <div class="text-gray-400 text-xs">13 Nov 2024</div>
-              </div>
-            </div>
-            <div class="flex items-center space-x-3">
-              <div class="flex items-center space-x-1 text-gray-400">
-                <span class="text-xs">👁️</span>
-                <span class="text-xs">1.8K</span>
-              </div>
-              <div class="flex items-center space-x-1 text-gray-400">
-                <span class="text-xs">⏱️</span>
-                <span class="text-xs">6 min</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
+    <div id="featured-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 hidden">
+      <!-- Articles will be dynamically inserted here -->
     </div>
 
     <!-- View More Button -->
@@ -176,5 +49,174 @@
         <span>VIEW ALL POSTS</span>
       </a>
     </div>
-  </div>
+
+        <script>
+        // Function to format date
+        function formatDate(timestamp) {
+            const date = new Date(timestamp);
+            return date.toLocaleDateString('id-ID', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+            });
+        }
+
+        // Function to get fallback image with gaming theme
+        function getFallbackImage() {
+            return "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23111827'/%3E%3Ctext x='200' y='100' text-anchor='middle' dy='0.3em' font-family='Arial, sans-serif' font-size='16' fill='%23a855f7'%3E🎮 Gaming Content%3C/text%3E%3C/svg%3E";
+        }
+
+        // Function to create featured article HTML with original gaming theme
+        function createFeaturedArticleHTML(article) {
+            const imageUrl = article.featured_image || getFallbackImage();
+            const postUrl = `/post/${article.slug}`;
+            
+            // Category border colors matching original design
+            const categoryBorders = {
+                'Game Reviews': 'border-cyan-500/20 hover:border-cyan-500/40',
+                'Esports': 'border-purple-500/20 hover:border-purple-500/40', 
+                'Gaming News': 'border-pink-500/20 hover:border-pink-500/40',
+                'Indie Games': 'border-pink-500/20 hover:border-pink-500/40',
+                'Reviews': 'border-cyan-500/20 hover:border-cyan-500/40',
+                'default': 'border-cyan-500/20 hover:border-cyan-500/40'
+            };
+            
+            // Category gradient colors for badges
+            const categoryGradients = {
+                'Game Reviews': 'from-cyan-500/80 to-purple-500/80',
+                'Esports': 'from-purple-500/80 to-pink-500/80',
+                'Gaming News': 'from-pink-500/80 to-red-500/80', 
+                'Indie Games': 'from-pink-500/80 to-red-500/80',
+                'Reviews': 'from-cyan-500/80 to-purple-500/80',
+                'default': 'from-cyan-500/80 to-purple-500/80'
+            };
+            
+            // Category hover colors
+            const categoryHovers = {
+                'Game Reviews': 'group-hover:text-cyan-400',
+                'Esports': 'group-hover:text-purple-400',
+                'Gaming News': 'group-hover:text-pink-400',
+                'Indie Games': 'group-hover:text-pink-400', 
+                'Reviews': 'group-hover:text-cyan-400',
+                'default': 'group-hover:text-cyan-400'
+            };
+            
+            const borderClass = categoryBorders[article.category] || categoryBorders['default'];
+            const gradientClass = categoryGradients[article.category] || categoryGradients['default'];
+            const hoverClass = categoryHovers[article.category] || categoryHovers['default'];
+            
+            // Generate tags HTML
+            const tagsArray = article.tags ? article.tags.split(',').map(tag => tag.trim()) : [];
+            const tagsHTML = tagsArray.slice(0, 3).map(tag => 
+                `<span class="bg-gray-700 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-600">#${tag}</span>`
+            ).join('');
+            
+            return `
+                <article class="bg-gray-800/50 rounded-xl border ${borderClass} overflow-hidden transition-all duration-300 group">
+                    <div class="relative overflow-hidden">
+                        <div class="w-full h-48 bg-gradient-to-br from-cyan-500/20 to-purple-500/20 flex items-center justify-center" style="background-image: url('${imageUrl}'); background-size: cover; background-position: center;">
+                            ${!article.featured_image ? '<span class="text-6xl">🎮</span>' : ''}
+                        </div>
+                        <div class="absolute top-4 left-4 bg-gradient-to-r ${gradientClass} backdrop-blur-sm rounded-lg px-3 py-1">
+                            <span class="text-white text-xs font-semibold">${article.category || 'Gaming'}</span>
+                        </div>
+                        <div class="absolute top-4 right-4 bg-black/70 backdrop-blur-sm rounded-lg px-3 py-1 flex items-center space-x-1">
+                            <span class="text-cyan-400 text-sm">👁️</span>
+                            <span class="text-white text-sm font-bold">${article.views || '0'}</span>
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <h3 class="text-xl font-bold text-white ${hoverClass} transition-colors line-clamp-2 font-gaming">
+                            ${article.title}
+                        </h3>
+                        <p class="text-gray-400 text-sm line-clamp-3 font-gaming-body">
+                            ${article.excerpt || ''}
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            ${tagsHTML}
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-gray-700">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-8 h-8 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full flex items-center justify-center">
+                                    <span class="text-white text-xs font-bold">${(article.author || 'GV').substring(0, 2).toUpperCase()}</span>
+                                </div>
+                                <div class="space-y-1">
+                                    <div class="text-white text-sm font-semibold">${article.author || 'GamingVerse'}</div>
+                                    <div class="text-gray-400 text-xs">${formatDate(article.published_at || article.created_at)}</div>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="flex items-center space-x-1 text-gray-400">
+                                    <span class="text-xs">👁️</span>
+                                    <span class="text-xs">${article.views || '0'}</span>
+                                </div>
+                                <div class="flex items-center space-x-1 text-gray-400">
+                                    <span class="text-xs">⏱️</span>
+                                    <span class="text-xs">${article.read_time || '5'} min</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            `;
+        }
+
+        // Function to load featured articles
+        async function loadFeaturedArticles() {
+            const loadingEl = document.getElementById('featured-loading');
+            const errorEl = document.getElementById('featured-error');
+            const gridEl = document.getElementById('featured-grid');
+
+            try {
+                // Show loading state
+                loadingEl.classList.remove('hidden');
+                errorEl.classList.add('hidden');
+                gridEl.classList.add('hidden');
+
+                // Fetch featured articles from API
+                const response = await fetch('/api/blog/posts/recent?limit=3');
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const articles = await response.json();
+
+                // Hide loading state
+                loadingEl.classList.add('hidden');
+
+                if (articles && articles.length > 0) {
+                    // Generate HTML for all articles
+                    const articlesHTML = articles.map(article => createFeaturedArticleHTML(article)).join('');
+                    
+                    // Insert articles into grid
+                    gridEl.innerHTML = articlesHTML;
+                    gridEl.classList.remove('hidden');
+                } else {
+                    // Show empty state with gaming theme
+                    gridEl.innerHTML = `
+                        <div class="col-span-full text-center py-12">
+                            <div class="text-6xl mb-4">🎮</div>
+                            <p class="text-gray-400">No featured articles found. Check back soon for gaming content!</p>
+                        </div>
+                    `;
+                    gridEl.classList.remove('hidden');
+                }
+
+            } catch (error) {
+                console.error('Error loading featured articles:', error);
+                
+                // Hide loading state and show error
+                loadingEl.classList.add('hidden');
+                errorEl.classList.remove('hidden');
+                gridEl.classList.add('hidden');
+            }
+        }
+
+        // Load featured articles when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            loadFeaturedArticles();
+        });
+        </script>
+    </div>
 </section>

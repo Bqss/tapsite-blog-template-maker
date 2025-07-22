@@ -1,22 +1,27 @@
 {
-  "title": "HealthWise Journal - Your Guide to Wellness & Healthy Living",
-  "description": "Evidence-based health insights, expert medical advice, and practical wellness tips",
+  "title": "GamingVerse - Your Ultimate Gaming Universe",
+  "description": "Dive into the world of gaming with reviews, guides, news, and community discussions. From indie gems to AAA blockbusters, we cover it all.",
   "sections": [
     {
       "title": "styles",
       "id": "styles",
       "type": "template",
-      "resetable": true
+      "resetable": true,
+      "data": []
     },
     {
       "title": "navigation",
       "id": "navigation",
       "type": "template",
       "resetable": true,
-      "data": ["site.name", "site.logo", "navigation", "subscribe_button"]
+      "data": [
+        "blog_title",
+        "blog_logo",
+        "navigation"
+      ]
     },
     {
-      "title": "post_content",
+      "title": "post content",
       "id": "post_content",
       "type": "template",
       "resetable": true,
@@ -30,7 +35,7 @@
       "id": "footer",
       "type": "template",
       "resetable": true,
-      "data": ["site.name", "site.description", "navigation", "social_links"]
+      "data": []
     }
   ]
 }

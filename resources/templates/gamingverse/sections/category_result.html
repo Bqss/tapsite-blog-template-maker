@@ -141,7 +141,7 @@
     </div>
 
     <!-- Reviews Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+    <div id="category-results-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
       <!-- Review 1 -->
       <article
         class="bg-gray-900/50 rounded-xl border border-cyan-500/20 overflow-hidden hover:border-cyan-500/40 transition-all duration-300 group">
@@ -495,3 +495,66 @@
     </div>
   </div>
 </main>
+<script>
+(function () {
+  function getCategoryFromURL() {
+    const parts = window.location.pathname.split('/');
+    const idx = parts.indexOf('category');
+    return idx !== -1 && parts[idx + 1] ? decodeURIComponent(parts[idx + 1]) : null;
+  }
+
+  function createArticleHTML(article) {
+    const defaultImage = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23374151'/%3E%3Ctext x='200' y='100' text-anchor='middle' dy='0.3em' font-family='Arial, sans-serif' font-size='16' fill='%23ffffff'%3E🎮%3C/text%3E%3C/svg%3E";
+
+    return `
+      <div class="transform hover:scale-105 transition-transform duration-300">
+        <article class="bg-gray-900/50 rounded-xl border border-cyan-500/20 overflow-hidden hover:border-cyan-500/40 transition-all duration-300 group">
+          <div class="relative overflow-hidden">
+            <img src="${article.featured_image || defaultImage}" alt="${article.title}" class="w-full h-48 object-cover">
+            <div class="absolute top-4 left-4 bg-gradient-to-r from-purple-500/80 to-pink-500/80 backdrop-blur-sm rounded-lg px-3 py-1">
+              <span class="text-white text-xs font-semibold">${article.category?.name || article.category || 'Gaming'}</span>
+            </div>
+            ${article.views ? `<div class=\"absolute top-4 right-4 bg-black/70 backdrop-blur-sm rounded-lg px-3 py-1 flex items-center space-x-1\"><span class=\"text-cyan-400 text-sm\">👁️</span><span class=\"text-white text-sm font-bold\">${article.views}</span></div>` : ''}
+          </div>
+          <div class="p-6 space-y-4">
+            <h3 class="text-xl font-bold text-white group-hover:text-purple-400 transition-colors line-clamp-2 font-gaming">
+              <a href="/post/${article.slug}">${article.title}</a>
+            </h3>
+            ${article.excerpt ? `<p class=\"text-gray-400 text-sm line-clamp-3 font-gaming-body\">${article.excerpt}</p>` : ''}
+            <div class="flex items-center justify-between pt-4 border-t border-gray-800">
+              ${article.author ? `<div class=\"flex items-center space-x-3\"><div class=\"w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center\">${article.author.avatar ? `<img src=\"${article.author.avatar}\" alt=\"${article.author.name}\" class=\"w-full h-full rounded-full object-cover\">` : `<span class=\"text-white text-xs font-bold\">${(article.author.name || article.author).charAt(0)}</span>`}</div><div class=\"space-y-1\"><div class=\"text-white text-sm font-semibold\">${article.author.name || article.author}</div><div class=\"text-gray-400 text-xs\">${article.published_at || article.published_date}</div></div></div>` : ''}
+              ${article.read_time ? `<div class=\"flex items-center space-x-3\"><div class=\"flex items-center space-x-1 text-gray-400\"><span class=\"text-xs\">⏱️</span><span class=\"text-xs\">${article.read_time} min</span></div></div>` : ''}
+            </div>
+          </div>
+        </article>
+      </div>
+    `;
+  }
+
+  async function init() {
+    const category = getCategoryFromURL();
+    const grid = document.getElementById('category-results-grid');
+    if (!grid) return;
+    grid.innerHTML = '<p class="col-span-full text-gray-400 text-center">Loading...</p>';
+    try {
+      const res = await fetch(`/api/blog/posts/category/${encodeURIComponent(category)}`);
+      if (!res.ok) throw new Error('Network response was not ok');
+      const data = await res.json();
+      if (!Array.isArray(data) || data.length === 0) {
+        grid.innerHTML = '<p class="col-span-full text-gray-400 text-center">No articles found.</p>';
+        return;
+      }
+      grid.innerHTML = data.map(createArticleHTML).join('');
+    } catch (err) {
+      console.error(err);
+      grid.innerHTML = '<p class="col-span-full text-red-500 text-center">Error loading articles.</p>';
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>

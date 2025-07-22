@@ -65,9 +65,10 @@
     <div class="flex items-center space-x-2 text-sm">
       <a href="/blog" class="text-gray-400 hover:text-cyan-400 transition-colors">Home</a>
       <span class="text-gray-600">›</span>
-      <a href="/blog/category/game-reviews" class="text-gray-400 hover:text-cyan-400 transition-colors">Game Reviews</a>
+      <a href="/blog/category/{{it.post.category.slug}}"
+        class="text-gray-400 hover:text-cyan-400 transition-colors">{{it.post.category.name}}</a>
       <span class="text-gray-600">›</span>
-      <span class="text-white">Review Lengkap: Baldur's Gate 3</span>
+      <span class="text-white">{{it.post.title}}</span>
     </div>
   </div>
 </nav>
@@ -81,27 +82,26 @@
         <!-- Article Meta -->
         <div class="flex items-center space-x-4">
           <span
-            class="bg-gradient-to-r from-cyan-500 to-purple-500 text-white px-3 py-1 rounded-lg text-sm font-medium">Game
-            Reviews</span>
-          <span class="text-gray-400 text-sm">15 November 2024</span>
+            class="bg-gradient-to-r from-cyan-500 to-purple-500 text-white px-3 py-1 rounded-lg text-sm font-medium">{{it.post.category}}</span>
+          <span class="text-gray-400 text-sm">{{it.post.published_at}}</span>
           <span class="text-gray-400 text-sm">•</span>
-          <span class="text-gray-400 text-sm">8,542 views</span>
+          <span class="text-gray-400 text-sm">{{it.post.view_count}} views</span>
         </div>
 
         <!-- Main Title -->
         <h1 class="text-3xl md:text-4xl font-bold text-white mb-4 font-gaming leading-tight">
-          Review Lengkap: Baldur's Gate 3 - Masterpiece RPG yang Mengubah Standar Industri
+          {{it.post.title}}
         </h1>
 
         <!-- Author Info -->
         <div class="flex items-center space-x-3">
           <div
             class="w-10 h-10 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full flex items-center justify-center">
-            <span class="text-white text-sm font-bold">GV</span>
+            <span class="text-white text-sm font-bold">{{it.author.name.charAt(0)}}</span>
           </div>
           <div>
-            <div class="text-white font-medium">GamingVerse Review Team</div>
-            <div class="text-gray-400 text-sm">Gaming Analyst</div>
+            <div class="text-white font-medium">{{it.author.name}}</div>
+            <div class="text-gray-400 text-sm">{{it.author.bio}}</div>
           </div>
         </div>
       </div>
@@ -113,135 +113,27 @@
         <!-- Introduction -->
         <div class="mb-8">
           <p class="text-lg text-gray-300 leading-relaxed font-gaming-body">
-            Baldur's Gate 3 telah menjadi fenomena gaming yang tak terbantahkan. Setelah menghabiskan lebih dari 100 jam
-            menjelajahi dunia Faerûn, kami siap memberikan review mendalam tentang mengapa game ini layak disebut
-            sebagai masterpiece RPG modern yang mengubah standar industri gaming.
+            {{it.post.excerpt}}
           </p>
         </div>
 
-        <!-- Overview Section -->
-        <section class="mb-8">
-          <h2 class="text-2xl font-bold text-white mb-4 font-gaming">
-            Overview Game
-          </h2>
-
-          <p class="text-gray-300 mb-4 font-gaming-body leading-relaxed">
-            Baldur's Gate 3 adalah game RPG turn-based yang dikembangkan oleh Larian Studios. Berdasarkan sistem D&D 5th
-            Edition, game ini menawarkan pengalaman storytelling yang mendalam dengan kebebasan pilihan yang hampir tak
-            terbatas.
-          </p>
-
-          <p class="text-gray-300 mb-4 font-gaming-body leading-relaxed">
-            Sebagai sekuel dari seri Baldur's Gate yang legendaris, game ini berhasil mempertahankan esensi klasik
-            sambil menghadirkan inovasi modern yang memukau. Dari sistem combat yang strategis hingga narasi yang
-            kompleks, setiap aspek game ini dirancang dengan detail yang luar biasa.
-          </p>
-        </section>
-
-        <!-- Gameplay Section -->
-        <section class="mb-8">
-          <h2 class="text-2xl font-bold text-white mb-4 font-gaming">
-            Gameplay dan Mekanik
-          </h2>
-
-          <h3 class="text-xl font-semibold text-white mb-3">Sistem Combat yang Strategis</h3>
-          <p class="text-gray-300 mb-4 font-gaming-body leading-relaxed">
-            Combat system dalam Baldur's Gate 3 menggunakan turn-based mechanics yang diadaptasi dari D&D 5th Edition.
-            Setiap keputusan dalam pertempuran memiliki konsekuensi yang signifikan, memaksa pemain untuk berpikir
-            strategis dan memanfaatkan environment secara kreatif.
-          </p>
-
-          <h3 class="text-xl font-semibold text-white mb-3">Character Creation dan Customization</h3>
-          <p class="text-gray-300 mb-4 font-gaming-body leading-relaxed">
-            Sistem character creation yang mendalam memungkinkan pemain untuk menciptakan karakter yang benar-benar
-            unik. Dengan berbagai race, class, dan background yang tersedia, setiap playthrough dapat memberikan
-            pengalaman yang berbeda.
-          </p>
-
-          <h3 class="text-xl font-semibold text-white mb-3">Dialogue dan Choice System</h3>
-          <p class="text-gray-300 mb-4 font-gaming-body leading-relaxed">
-            Sistem dialogue yang kompleks dengan berbagai pilihan yang mempengaruhi alur cerita. Setiap keputusan,
-            sekecil apapun, dapat membawa konsekuensi yang mengubah jalannya permainan secara dramatis.
-          </p>
-        </section>
-
-        <!-- Story Section -->
-        <section class="mb-8">
-          <h2 class="text-2xl font-bold text-white mb-4 font-gaming">
-            Cerita dan Narasi
-          </h2>
-
-          <p class="text-gray-300 mb-4 font-gaming-body leading-relaxed">
-            Baldur's Gate 3 menghadirkan narasi yang kompleks dan mendalam, dengan plot utama yang melibatkan Mind
-            Flayer tadpoles dan ancaman yang mengancam seluruh Faerûn. Setiap companion memiliki backstory yang kaya dan
-            personal quest yang menarik.
-          </p>
-
-          <p class="text-gray-300 mb-4 font-gaming-body leading-relaxed">
-            Kualitas writing dalam game ini luar biasa, dengan dialogue yang natural dan character development yang
-            organic. Setiap NPC terasa hidup dan memiliki motivasi yang jelas, menciptakan dunia yang benar-benar
-            immersive.
-          </p>
-        </section>
-
-        <!-- Technical Aspects -->
-        <section class="mb-8">
-          <h2 class="text-2xl font-bold text-white mb-4 font-gaming">
-            Aspek Teknis
-          </h2>
-
-          <h3 class="text-xl font-semibold text-white mb-3">Visual dan Audio</h3>
-          <p class="text-gray-300 mb-4 font-gaming-body leading-relaxed">
-            Secara visual, Baldur's Gate 3 memukau dengan art direction yang konsisten dan detail environment yang luar
-            biasa. Karakter modeling dan animasi facial sangat impressive, terutama dalam cutscenes yang cinematic.
-          </p>
-
-          <h3 class="text-xl font-semibold text-white mb-3">Performance dan Optimasi</h3>
-          <p class="text-gray-300 mb-4 font-gaming-body leading-relaxed">
-            Game ini berjalan dengan stabil di berbagai platform, meskipun membutuhkan spesifikasi hardware yang cukup
-            tinggi untuk pengalaman optimal. Loading times yang reasonable dan bug yang minimal menambah kualitas
-            pengalaman bermain.
-          </p>
-        </section>
-
-        <!-- Conclusion -->
-        <section class="mb-6">
-          <h2 class="text-2xl font-bold text-white mb-4 font-gaming">
-            Kesimpulan
-          </h2>
-
-          <p class="text-gray-300 mb-4 font-gaming-body leading-relaxed">
-            Baldur's Gate 3 adalah masterpiece yang berhasil mengangkat standar RPG modern ke level yang baru. Dengan
-            kombinasi storytelling yang luar biasa, gameplay yang mendalam, dan technical excellence, game ini layak
-            mendapat tempat di hati setiap penggemar RPG.
-          </p>
-
-          <p class="text-gray-300 mb-4 font-gaming-body leading-relaxed">
-            Larian Studios telah menciptakan pengalaman gaming yang tidak hanya menghibur, tetapi juga menginspirasi
-            developer lain untuk menciptakan game dengan kualitas yang sama. Baldur's Gate 3 bukan hanya game, tetapi
-            sebuah karya seni yang akan dikenang untuk waktu yang lama.
-          </p>
-        </section>
+        <!-- Main Content -->
+        <div class="mb-6 text-white ProseMirror focus:outline-none max-w-full space-y-4 leading-relaxed">
+          {{*it.post.content}}
+        </div>
 
         <!-- Tags -->
-        <div class="border-t border-gray-800 pt-6">
-          <h3 class="text-lg font-semibold text-white mb-3">Tags:</h3>
-          <div class="flex flex-wrap gap-2">
-            <span
-              class="bg-cyan-500/20 text-cyan-400 px-3 py-1 rounded-full text-sm border border-cyan-500/30 hover:bg-cyan-500/30 transition-colors cursor-pointer">RPG</span>
-            <span
-              class="bg-purple-500/20 text-purple-400 px-3 py-1 rounded-full text-sm border border-purple-500/30 hover:bg-purple-500/30 transition-colors cursor-pointer">Game
-              Review</span>
-            <span
-              class="bg-pink-500/20 text-pink-400 px-3 py-1 rounded-full text-sm border border-pink-500/30 hover:bg-pink-500/30 transition-colors cursor-pointer">Baldur's
-              Gate</span>
-            <span
-              class="bg-green-500/20 text-green-400 px-3 py-1 rounded-full text-sm border border-green-500/30 hover:bg-green-500/30 transition-colors cursor-pointer">Larian
-              Studios</span>
-            <span
-              class="bg-yellow-500/20 text-yellow-400 px-3 py-1 rounded-full text-sm border border-yellow-500/30 hover:bg-yellow-500/30 transition-colors cursor-pointer">D&D</span>
+        {{@if(it.post.tags)}}
+          <div class="border-t border-gray-800 pt-6">
+            <h3 class="text-lg font-semibold text-white mb-3">Tags:</h3>
+            <div class="flex flex-wrap gap-2">
+              {{@each(it.post.tags)=>tag}}
+              <span
+                class="bg-cyan-500/20 text-cyan-400 px-3 py-1 rounded-full text-sm border border-cyan-500/30 hover:bg-cyan-500/30 transition-colors cursor-pointer"> #{{tag}}</span>
+              {{/each}}
+            </div>
           </div>
-        </div>
+        {{/if}}
       </div>
     </article>
   </div>

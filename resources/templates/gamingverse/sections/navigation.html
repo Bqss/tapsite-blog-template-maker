@@ -1,34 +1,213 @@
-<!-- Navigation -->
+<!-- Navigation with Dynamic Data -->
 <nav class="bg-black border-b border-gray-800 sticky top-0 z-50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
+      <!-- Logo and Brand -->
       <div class="flex items-center space-x-3">
         <div class="w-10 h-10 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-lg flex items-center justify-center">
           <span class="text-white text-xl">🎮</span>
         </div>
-        <a href="/blog" class="text-2xl font-bold text-transparent bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text font-gaming">
+        <a href="/blog" class="text-2xl font-bold text-transparent bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text font-gaming" id="nav-brand">
           GamingVerse
         </a>
       </div>
       
-      <div class="hidden md:flex space-x-6">
-        <a href="/blog" class="text-cyan-400 font-medium">Home</a>
-        <a href="/blog/posts" class="text-gray-300 hover:text-cyan-400 transition-colors">Posts</a>
-        <a href="/blog/category/game-reviews" class="text-gray-300 hover:text-cyan-400 transition-colors">Reviews</a>
-        <a href="/blog/category/gaming-news" class="text-gray-300 hover:text-cyan-400 transition-colors">News</a>
-        <a href="/blog/search" class="text-gray-300 hover:text-cyan-400 transition-colors">Search</a>
+      <!-- Desktop Navigation Menu -->
+      <div class="hidden md:flex space-x-6" id="desktop-nav">
+        <!-- Dynamic navigation items will be loaded here -->
+        <div class="flex space-x-6" id="nav-loading">
+          <div class="w-12 h-4 bg-gray-700 rounded animate-pulse"></div>
+          <div class="w-16 h-4 bg-gray-700 rounded animate-pulse"></div>
+          <div class="w-14 h-4 bg-gray-700 rounded animate-pulse"></div>
+        </div>
       </div>
       
+      <!-- Right Side Actions -->
       <div class="flex items-center space-x-4">
-        <button class="text-gray-300 hover:text-cyan-400 transition-colors">
+        <!-- Post Count Badge -->
+        <div class="hidden lg:flex items-center space-x-2 text-xs text-gray-400">
+          <span id="post-count-badge">Loading...</span>
+        </div>
+        
+        <!-- Search Button -->
+        <button class="text-gray-300 hover:text-cyan-400 transition-colors" onclick="toggleSearch()">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
           </svg>
         </button>
-        <button class="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white px-4 py-2 rounded-lg transition-colors text-sm">
+        
+        <!-- Subscribe Button -->
+        <button class="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white px-4 py-2 rounded-lg transition-colors text-sm" onclick="toggleNewsletter()">
           Subscribe
         </button>
+        
+        <!-- Mobile Menu Toggle -->
+        <button class="md:hidden text-gray-300 hover:text-cyan-400 transition-colors" onclick="toggleMobileMenu()">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Mobile Navigation Menu -->
+    <div class="md:hidden hidden" id="mobile-nav">
+      <div class="px-2 pt-2 pb-3 space-y-1 bg-gray-900 border-t border-gray-800">
+        <!-- Dynamic mobile navigation items will be loaded here -->
+        <div id="mobile-nav-loading">
+          <div class="w-full h-8 bg-gray-700 rounded mb-2 animate-pulse"></div>
+          <div class="w-full h-8 bg-gray-700 rounded mb-2 animate-pulse"></div>
+          <div class="w-full h-8 bg-gray-700 rounded animate-pulse"></div>
+        </div>
       </div>
     </div>
   </div>
 </nav>
+
+<!-- Dynamic Navigation Script -->
+<script>
+// Navigation data and state
+let navigationData = {
+  site: { name: 'GamingVerse', logo: '/assets/logo.png' },
+  navigation: [],
+  categories: [],
+  postStats: { total: 0, recent: 0 }
+};
+
+// Load navigation data from multiple sources
+async function loadNavigationData() {
+  try {
+    // Load static navigation data
+    const staticData = {
+      site: { name: 'GamingVerse', logo: '/assets/logo.png' },
+      navigation: [
+        { title: 'Home', url: '/blog', icon: 'home', active: true },
+        { title: 'Posts', url: '/blog/posts', icon: 'newspaper' },
+        { title: 'Reviews', url: '/blog/category/reviews', icon: 'star' },
+        { title: 'Guides', url: '/blog/category/guides', icon: 'book' },
+        { title: 'News', url: '/blog/category/news', icon: 'newspaper' },
+        { title: 'Search', url: '/blog/search', icon: 'search' }
+      ]
+    };
+    
+    // Try to load dynamic data from APIs
+    const [categoriesResponse, postsResponse] = await Promise.allSettled([
+      fetch('/api/blog/categories').catch(() => null),
+      fetch('/api/blog/posts?limit=1').catch(() => null)
+    ]);
+    
+    // Process categories data
+    if (categoriesResponse.status === 'fulfilled' && categoriesResponse.value?.ok) {
+      const categories = await categoriesResponse.value.json();
+      navigationData.categories = categories.data || categories || [];
+    }
+    
+    // Process posts stats
+    if (postsResponse.status === 'fulfilled' && postsResponse.value?.ok) {
+      const postsData = await postsResponse.value.json();
+      navigationData.postStats = {
+        total: postsData.total || postsData.pagination?.total || 0,
+        recent: postsData.data?.length || 0
+      };
+    }
+    
+    // Merge static and dynamic data
+    navigationData = { ...navigationData, ...staticData };
+    
+    // Update navigation UI
+    updateNavigationUI();
+    updatePostCountBadge();
+    
+  } catch (error) {
+    console.warn('Failed to load navigation data:', error);
+    // Fallback to static data
+    navigationData = {
+      site: { name: 'GamingVerse', logo: '/assets/logo.png' },
+      navigation: [
+        { title: 'Home', url: '/blog', icon: 'home', active: true },
+        { title: 'Posts', url: '/blog/posts', icon: 'newspaper' },
+        { title: 'Reviews', url: '/blog/category/reviews', icon: 'star' },
+        { title: 'Guides', url: '/blog/category/guides', icon: 'book' },
+        { title: 'News', url: '/blog/category/news', icon: 'newspaper' },
+        { title: 'Search', url: '/blog/search', icon: 'search' }
+      ],
+      categories: [],
+      postStats: { total: 0, recent: 0 }
+    };
+    updateNavigationUI();
+  }
+}
+
+// Update navigation UI with loaded data
+function updateNavigationUI() {
+  const desktopNav = document.getElementById('desktop-nav');
+  const mobileNav = document.getElementById('mobile-nav');
+  const navBrand = document.getElementById('nav-brand');
+  
+  // Update brand name
+  if (navBrand && navigationData.site?.name) {
+    navBrand.textContent = navigationData.site.name;
+  }
+  
+  // Build desktop navigation
+  const desktopNavHTML = navigationData.navigation.map(item => {
+    const activeClass = item.active ? 'text-cyan-400 font-medium' : 'text-gray-300 hover:text-cyan-400 transition-colors';
+    return `<a href="${item.url}" class="${activeClass}">${item.title}</a>`;
+  }).join('');
+  
+  // Build mobile navigation
+  const mobileNavHTML = navigationData.navigation.map(item => {
+    const activeClass = item.active ? 'text-cyan-400 bg-gray-800' : 'text-gray-300 hover:text-cyan-400 hover:bg-gray-800';
+    return `<a href="${item.url}" class="${activeClass} block px-3 py-2 rounded-md text-base font-medium transition-colors">${item.title}</a>`;
+  }).join('');
+  
+  // Update desktop navigation
+  if (desktopNav) {
+    desktopNav.innerHTML = `<div class="flex space-x-6">${desktopNavHTML}</div>`;
+  }
+  
+  // Update mobile navigation
+  const mobileNavContent = document.querySelector('#mobile-nav .space-y-1');
+  if (mobileNavContent) {
+    mobileNavContent.innerHTML = mobileNavHTML;
+  }
+}
+
+// Update post count badge
+function updatePostCountBadge() {
+  const badge = document.getElementById('post-count-badge');
+  if (badge && navigationData.postStats) {
+    const { total } = navigationData.postStats;
+    if (total > 0) {
+      badge.innerHTML = `<span class="text-cyan-400">${total}</span> posts`;
+    } else {
+      badge.textContent = 'Posts';
+    }
+  }
+}
+
+// Toggle mobile menu
+function toggleMobileMenu() {
+  const mobileNav = document.getElementById('mobile-nav');
+  if (mobileNav) {
+    mobileNav.classList.toggle('hidden');
+  }
+}
+
+// Toggle search (placeholder function)
+function toggleSearch() {
+  // Redirect to search page or open search modal
+  window.location.href = '/blog/search';
+}
+
+// Toggle newsletter (placeholder function)
+function toggleNewsletter() {
+  // Open newsletter modal or redirect to subscription page
+  alert('Newsletter subscription coming soon!');
+}
+
+// Initialize navigation on page load
+document.addEventListener('DOMContentLoaded', function() {
+  loadNavigationData();
+});
+</script>
