@@ -1,0 +1,325 @@
+{
+    "blog_logo": "https://tapsite.ai/favicon-96x96.png",
+    "blog_title": "TechStack Hub",
+    "blog_description": "Exploring the latest in technology, programming, and developer tools",
+    "navigation": [
+        {
+            "name": "Home",
+            "url": "/",
+            "icon": "terminal"
+        },
+        {
+            "name": "Tutorials",
+            "url": "/tutorials",
+            "icon": "book-open"
+        },
+        {
+            "name": "Reviews",
+            "url": "/reviews",
+            "icon": "star"
+        },
+        {
+            "name": "Tools",
+            "url": "/tools",
+            "icon": "wrench"
+        },
+        {
+            "name": "Open Source",
+            "url": "/open-source",
+            "icon": "github"
+        },
+        {
+            "name": "DevLog",
+            "url": "/devlog",
+            "icon": "code"
+        }
+    ],
+    "tech_stack": [
+        {
+            "name": "JavaScript",
+            "icon": "javascript",
+            "color": "#f7df1e",
+            "usage": 95,
+            "articles": 47
+        },
+        {
+            "name": "TypeScript",
+            "icon": "typescript",
+            "color": "#3178c6",
+            "usage": 88,
+            "articles": 34
+        },
+        {
+            "name": "React",
+            "icon": "react",
+            "color": "#61dafb",
+            "usage": 82,
+            "articles": 29
+        },
+        {
+            "name": "Node.js",
+            "icon": "nodejs",
+            "color": "#339933",
+            "usage": 78,
+            "articles": 25
+        },
+        {
+            "name": "Python",
+            "icon": "python",
+            "color": "#3776ab",
+            "usage": 72,
+            "articles": 22
+        },
+        {
+            "name": "Docker",
+            "icon": "docker",
+            "color": "#2496ed",
+            "usage": 65,
+            "articles": 18
+        },
+        {
+            "name": "AWS",
+            "icon": "aws",
+            "color": "#ff9900",
+            "usage": 58,
+            "articles": 15
+        },
+        {
+            "name": "PostgreSQL",
+            "icon": "postgresql",
+            "color": "#336791",
+            "usage": 52,
+            "articles": 12
+        }
+    ],
+    "featured_tools": [
+        {
+            "name": "VS Code",
+            "description": "The ultimate code editor for modern development",
+            "category": "Editor",
+            "rating": 4.9,
+            "link": "https://code.visualstudio.com/",
+            "icon": "vscode"
+        },
+        {
+            "name": "Git",
+            "description": "Distributed version control system",
+            "category": "Version Control",
+            "rating": 4.8,
+            "link": "https://git-scm.com/",
+            "icon": "git"
+        },
+        {
+            "name": "Postman",
+            "description": "API development and testing platform",
+            "category": "API Testing",
+            "rating": 4.7,
+            "link": "https://www.postman.com/",
+            "icon": "postman"
+        },
+        {
+            "name": "Figma",
+            "description": "Collaborative design and prototyping tool",
+            "category": "Design",
+            "rating": 4.6,
+            "link": "https://www.figma.com/",
+            "icon": "figma"
+        }
+    ],
+    "author": {
+        "name": "Alex Chen",
+        "role": "Senior Full-Stack Developer",
+        "bio": "Passionate developer with 8+ years of experience in web technologies, cloud architecture, and open-source contributions. Specialized in JavaScript ecosystem and modern web development practices.",
+        "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80",
+        "skills": [
+            "JavaScript/TypeScript",
+            "React/Next.js",
+            "Node.js/Express",
+            "Python/Django",
+            "AWS/Docker",
+            "PostgreSQL/MongoDB",
+            "GraphQL/REST APIs",
+            "DevOps/CI/CD"
+        ],
+        "experience": {
+            "years": 8,
+            "companies": ["Google", "Meta", "Startup Inc."],
+            "projects": 127,
+            "contributions": 1420
+        },
+        "social": {
+            "github": "https://github.com/alexchen",
+            "twitter": "https://twitter.com/alexchen_dev",
+            "linkedin": "https://linkedin.com/in/alexchen-dev",
+            "website": "https://alexchen.dev",
+            "email": "alex@techstackhub.com"
+        }
+    },
+    "post": {
+        "title": "Building Scalable APIs with Node.js and TypeScript: A Complete Guide",
+        "excerpt": "Learn how to build robust, type-safe APIs using Node.js and TypeScript. This comprehensive guide covers project setup, middleware implementation, error handling, and deployment strategies.",
+        "content": "<h1>Building Scalable APIs with Node.js and TypeScript: A Complete Guide</h1><p>In the rapidly evolving world of web development, creating scalable and maintainable APIs is crucial for any successful application. This comprehensive guide will walk you through building robust APIs using Node.js and TypeScript.</p><h2>Why TypeScript for Node.js APIs?</h2><p>TypeScript brings several advantages to Node.js development:</p><ul><li><strong>Type Safety:</strong> Catch errors at compile time rather than runtime</li><li><strong>Better IDE Support:</strong> Enhanced autocomplete and refactoring capabilities</li><li><strong>Improved Documentation:</strong> Types serve as living documentation</li><li><strong>Easier Refactoring:</strong> Confident code changes with type checking</li></ul><h2>Project Setup</h2><p>Let's start by setting up our project structure:</p><pre><code class=\"language-bash\">mkdir scalable-api\ncd scalable-api\nnpm init -y\n\n# Install dependencies\nnpm install express cors helmet morgan dotenv\nnpm install -D typescript @types/node @types/express @types/cors ts-node nodemon\n\n# Initialize TypeScript configuration\nnpx tsc --init</code></pre><h3>Project Structure</h3><pre><code class=\"language-text\">scalable-api/\n├── src/\n│   ├── controllers/\n│   ├── middleware/\n│   ├── models/\n│   ├── routes/\n│   ├── services/\n│   ├── types/\n│   ├── utils/\n│   └── app.ts\n├── dist/\n├── tests/\n├── .env\n├── .gitignore\n├── package.json\n└── tsconfig.json</code></pre><h2>Core Implementation</h2><h3>1. Setting Up Express with TypeScript</h3><pre><code class=\"language-typescript\">// src/app.ts\nimport express, { Application, Request, Response, NextFunction } from 'express';\nimport cors from 'cors';\nimport helmet from 'helmet';\nimport morgan from 'morgan';\nimport dotenv from 'dotenv';\n\ndotenv.config();\n\nconst app: Application = express();\nconst PORT = process.env.PORT || 3000;\n\n// Middleware\napp.use(helmet());\napp.use(cors());\napp.use(morgan('combined'));\napp.use(express.json({ limit: '10mb' }));\napp.use(express.urlencoded({ extended: true }));\n\n// Routes\napp.get('/health', (req: Request, res: Response) => {\n  res.status(200).json({ status: 'OK', timestamp: new Date().toISOString() });\n});\n\n// Error handling middleware\napp.use((err: Error, req: Request, res: Response, next: NextFunction) => {\n  console.error(err.stack);\n  res.status(500).json({ error: 'Something went wrong!' });\n});\n\napp.listen(PORT, () => {\n  console.log(`Server running on port ${PORT}`);\n});\n\nexport default app;</code></pre><h3>2. Type Definitions</h3><pre><code class=\"language-typescript\">// src/types/index.ts\nexport interface User {\n  id: string;\n  email: string;\n  name: string;\n  createdAt: Date;\n  updatedAt: Date;\n}\n\nexport interface ApiResponse<T> {\n  success: boolean;\n  data?: T;\n  error?: string;\n  message?: string;\n}\n\nexport interface PaginationOptions {\n  page: number;\n  limit: number;\n  sortBy?: string;\n  sortOrder?: 'asc' | 'desc';\n}</code></pre><h3>3. Controller Implementation</h3><pre><code class=\"language-typescript\">// src/controllers/userController.ts\nimport { Request, Response } from 'express';\nimport { User, ApiResponse } from '../types';\nimport { userService } from '../services/userService';\n\nexport class UserController {\n  async getUsers(req: Request, res: Response): Promise<void> {\n    try {\n      const users = await userService.getAllUsers();\n      const response: ApiResponse<User[]> = {\n        success: true,\n        data: users,\n        message: 'Users retrieved successfully'\n      };\n      res.json(response);\n    } catch (error) {\n      const response: ApiResponse<null> = {\n        success: false,\n        error: 'Failed to retrieve users'\n      };\n      res.status(500).json(response);\n    }\n  }\n\n  async createUser(req: Request, res: Response): Promise<void> {\n    try {\n      const userData = req.body;\n      const newUser = await userService.createUser(userData);\n      const response: ApiResponse<User> = {\n        success: true,\n        data: newUser,\n        message: 'User created successfully'\n      };\n      res.status(201).json(response);\n    } catch (error) {\n      const response: ApiResponse<null> = {\n        success: false,\n        error: 'Failed to create user'\n      };\n      res.status(400).json(response);\n    }\n  }\n}</code></pre><h2>Advanced Features</h2><h3>Middleware for Validation</h3><pre><code class=\"language-typescript\">// src/middleware/validation.ts\nimport { Request, Response, NextFunction } from 'express';\nimport { body, validationResult } from 'express-validator';\n\nexport const validateUser = [\n  body('email').isEmail().normalizeEmail(),\n  body('name').isLength({ min: 2, max: 50 }).trim(),\n  body('password').isLength({ min: 6 }),\n  (req: Request, res: Response, next: NextFunction) => {\n    const errors = validationResult(req);\n    if (!errors.isEmpty()) {\n      return res.status(400).json({\n        success: false,\n        error: 'Validation failed',\n        details: errors.array()\n      });\n    }\n    next();\n  }\n];</code></pre><h2>Best Practices</h2><ol><li><strong>Use Environment Variables:</strong> Store sensitive configuration in environment variables</li><li><strong>Implement Proper Error Handling:</strong> Use consistent error response formats</li><li><strong>Add Request Validation:</strong> Validate all incoming data</li><li><strong>Use Middleware:</strong> Implement reusable middleware for common functionality</li><li><strong>Structure Your Code:</strong> Follow a consistent project structure</li><li><strong>Add Logging:</strong> Implement comprehensive logging for debugging and monitoring</li></ol><h2>Testing Your API</h2><pre><code class=\"language-typescript\">// tests/user.test.ts\nimport request from 'supertest';\nimport app from '../src/app';\n\ndescribe('User API', () => {\n  it('should get all users', async () => {\n    const response = await request(app)\n      .get('/api/users')\n      .expect(200);\n    \n    expect(response.body.success).toBe(true);\n    expect(Array.isArray(response.body.data)).toBe(true);\n  });\n\n  it('should create a new user', async () => {\n    const userData = {\n      email: 'test@example.com',\n      name: 'Test User',\n      password: 'password123'\n    };\n\n    const response = await request(app)\n      .post('/api/users')\n      .send(userData)\n      .expect(201);\n\n    expect(response.body.success).toBe(true);\n    expect(response.body.data.email).toBe(userData.email);\n  });\n});</code></pre><h2>Deployment Considerations</h2><p>When deploying your TypeScript API:</p><ul><li><strong>Build Process:</strong> Compile TypeScript to JavaScript for production</li><li><strong>Environment Configuration:</strong> Use different configs for development, staging, and production</li><li><strong>Health Checks:</strong> Implement health check endpoints for monitoring</li><li><strong>Security:</strong> Use HTTPS, implement rate limiting, and secure headers</li><li><strong>Monitoring:</strong> Add application monitoring and error tracking</li></ul><h2>Conclusion</h2><p>Building scalable APIs with Node.js and TypeScript provides a solid foundation for modern web applications. The type safety, better tooling, and improved developer experience make it an excellent choice for API development.</p><p>Remember to follow best practices, implement proper error handling, and maintain good code organization. With these foundations, you'll be well-equipped to build robust, maintainable APIs that can scale with your application's needs.</p><p><em>Happy coding! 🚀</em></p>",
+        "category": "Tutorials",
+        "featured_image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
+        "published_at": "March 18, 2024, 10:00 AM",
+        "updated_at": "March 18, 2024, 10:30 AM",
+        "read_time": 12,
+        "view_count": 2847,
+        "likes": 156,
+        "comments": 23,
+        "tags": [
+            "nodejs",
+            "typescript",
+            "api-development",
+            "backend",
+            "express",
+            "web-development",
+            "tutorial"
+        ],
+        "difficulty": "intermediate",
+        "code_examples": 8,
+        "github_repo": "https://github.com/alexchen/scalable-api-tutorial"
+    },
+    "featured_posts": [
+        {
+            "title": "React 18 Concurrent Features: A Deep Dive",
+            "excerpt": "Explore the new concurrent features in React 18 and how they can improve your app's performance and user experience.",
+            "category": "Tutorials",
+            "difficulty": "advanced",
+            "image": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+            "published_at": "March 15, 2024",
+            "read_time": 15,
+            "likes": 234,
+            "author": "Alex Chen",
+            "tags": ["react", "javascript", "performance"]
+        },
+        {
+            "title": "Docker Best Practices for Node.js Applications",
+            "excerpt": "Learn how to containerize your Node.js applications efficiently with Docker best practices and optimization techniques.",
+            "category": "DevOps",
+            "difficulty": "intermediate",
+            "image": "https://images.unsplash.com/photo-1605745341112-85968b19335a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+            "published_at": "March 12, 2024",
+            "read_time": 10,
+            "likes": 189,
+            "author": "Alex Chen",
+            "tags": ["docker", "nodejs", "devops"]
+        },
+        {
+            "title": "GraphQL vs REST: When to Use Which?",
+            "excerpt": "A comprehensive comparison of GraphQL and REST APIs, including use cases, pros and cons, and practical examples.",
+            "category": "Reviews",
+            "difficulty": "beginner",
+            "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+            "published_at": "March 10, 2024",
+            "read_time": 8,
+            "likes": 167,
+            "author": "Alex Chen",
+            "tags": ["graphql", "rest", "api-design"]
+        }
+    ],
+    "programming_languages": [
+        {
+            "name": "JavaScript",
+            "percentage": 32.5,
+            "color": "#f7df1e",
+            "posts": 47
+        },
+        {
+            "name": "TypeScript",
+            "percentage": 28.3,
+            "color": "#3178c6",
+            "posts": 34
+        },
+        {
+            "name": "Python",
+            "percentage": 18.2,
+            "color": "#3776ab",
+            "posts": 22
+        },
+        {
+            "name": "Go",
+            "percentage": 12.4,
+            "color": "#00add8",
+            "posts": 15
+        },
+        {
+            "name": "Rust",
+            "percentage": 8.6,
+            "color": "#000000",
+            "posts": 10
+        }
+    ],
+    "recent_commits": [
+        {
+            "repo": "techstack-hub/api-examples",
+            "message": "Add TypeScript API tutorial examples",
+            "author": "Alex Chen",
+            "time": "2 hours ago",
+            "hash": "a1b2c3d"
+        },
+        {
+            "repo": "techstack-hub/react-hooks",
+            "message": "Update React 18 concurrent features demo",
+            "author": "Alex Chen",
+            "time": "5 hours ago",
+            "hash": "e4f5g6h"
+        },
+        {
+            "repo": "techstack-hub/docker-templates",
+            "message": "Add Node.js Docker optimization examples",
+            "author": "Alex Chen",
+            "time": "1 day ago",
+            "hash": "i7j8k9l"
+        }
+    ],
+    "terminal_commands": [
+        {
+            "command": "npm install -g typescript",
+            "description": "Install TypeScript globally"
+        },
+        {
+            "command": "docker build -t myapp .",
+            "description": "Build Docker image"
+        },
+        {
+            "command": "git commit -m \"feat: add new feature\"",
+            "description": "Commit with conventional format"
+        },
+        {
+            "command": "npm run test -- --coverage",
+            "description": "Run tests with coverage"
+        }
+    ],
+    "code_stats": {
+        "total_lines": 127458,
+        "total_commits": 1420,
+        "repositories": 47,
+        "languages": 8,
+        "contributions_this_year": 892
+    },
+    "color_scheme": {
+        "primary": "#00ff41",
+        "secondary": "#00d4aa",
+        "accent": "#ff6b35",
+        "terminal_bg": "#0d1117",
+        "terminal_text": "#00ff41",
+        "code_bg": "#161b22",
+        "code_text": "#e6edf3",
+        "warning": "#ffa500",
+        "error": "#ff4757",
+        "success": "#00ff41",
+        "info": "#00d4aa",
+        "background": "#0d1117",
+        "surface": "#161b22",
+        "text": "#e6edf3",
+        "text_secondary": "#7d8590"
+    },
+    "social_media": {
+        "github": "https://github.com/techstackhub",
+        "twitter": "https://twitter.com/techstackhub",
+        "discord": "https://discord.gg/techstackhub",
+        "youtube": "https://youtube.com/techstackhub",
+        "dev_to": "https://dev.to/techstackhub"
+    }
+} 

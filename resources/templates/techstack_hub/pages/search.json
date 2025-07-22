@@ -1,0 +1,85 @@
+{
+  "sections": [
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "blog_title",
+        "blog_logo",
+        "navigation"
+      ]
+    },
+    {
+      "title": "search_header",
+      "id": "search_header",
+      "type": "html",
+      "resetable": true,
+      "data": [
+        "blog_title",
+        "author"
+      ]
+    },
+    {
+      "title": "terminal_search",
+      "id": "terminal_search",
+      "type": "html",
+      "resetable": true,
+      "data": [
+        "terminal_commands"
+      ]
+    },
+    {
+      "title": "tech_stack_filters",
+      "id": "tech_stack_filters",
+      "type": "html",
+      "resetable": true,
+      "data": [
+        "tech_stack",
+        "programming_languages"
+      ]
+    },
+    {
+      "title": "autocomplete_suggestions",
+      "id": "autocomplete_suggestions",
+      "type": "html",
+      "resetable": true,
+      "data": [
+        "tech_stack",
+        "featured_tools"
+      ]
+    },
+    {
+      "title": "search_results",
+      "id": "search_results",
+      "type": "html",
+      "resetable": true,
+      "data": [
+        "search_results",
+        "featured_posts"
+      ]
+    },
+    {
+      "title": "code_search_tips",
+      "id": "code_search_tips",
+      "type": "html",
+      "resetable": true,
+      "data": [
+        "terminal_commands",
+        "programming_languages"
+      ]
+    },
+    {
+      "title": "dark_footer",
+      "id": "dark_footer",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "author",
+        "social_media",
+        "color_scheme"
+      ]
+    }
+  ]
+} 

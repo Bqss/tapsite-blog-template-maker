@@ -1,0 +1,101 @@
+{
+  "title": "TechStackHub - Modern Development Tutorials & Code Snippets",
+  "description": "Your ultimate destination for modern development tutorials, tech trends, and code snippets. From frontend frameworks to backend architectures.",
+  "sections": [
+    {
+      "title": "styles",
+      "id": "styles",
+      "type": "template",
+      "resetable": true
+    },
+    {
+      "title": "header",
+      "id": "header",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "site.name",
+        "site.logo",
+        "site.domain",
+        "navigation",
+        "search_enabled",
+        "search"
+      ]
+    },
+    {
+      "title": "hero",
+      "id": "hero",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "hero"
+      ]
+    },
+    {
+      "title": "featured tutorials",
+      "id": "featured_tutorials",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "featured"
+      ]
+    },
+    {
+      "title": "tech categories",
+      "id": "tech_categories",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "categories"
+      ]
+    },
+    {
+      "title": "latest tutorials",
+      "id": "latest_tutorials",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "latest"
+      ]
+    },
+    {
+      "title": "code snippets",
+      "id": "code_snippets",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "snippets"
+      ]
+    },
+    {
+      "title": "tech trends",
+      "id": "tech_trends",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "trends"
+      ]
+    },
+    {
+      "title": "newsletter",
+      "id": "newsletter",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "newsletter"
+      ]
+    },
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "site.name",
+        "site.description",
+        "navigation",
+        "social_links"
+      ]
+    }
+  ]
+} 

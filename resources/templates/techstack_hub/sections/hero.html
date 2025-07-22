@@ -1,0 +1,43 @@
+<!-- Hero Section with Code Snippet -->
+<section class="py-12 bg-gradient-to-br from-gray-900 to-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <!-- Hero Content -->
+            <div>
+                <div class="text-terminal-green text-sm mb-4">$ cat {{it.hero.command}}</div>
+                <h1 class="text-4xl lg:text-6xl font-bold mb-6">
+                    <span class="text-white">{{it.hero.title_first}}</span>
+                    <span class="text-terminal-blue">{{it.hero.title_second}}</span>
+                    <br>
+                    <span class="text-terminal-green">{{it.hero.title_third}}</span>
+                </h1>
+                <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+                    {{it.hero.description}}
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    {{@each(it.hero.buttons)=>button}}
+                    <a href="{{button.url}}" 
+                       class="{{button.primary ? 'bg-terminal-green text-black hover:bg-green-400' : 'border border-terminal-blue text-terminal-blue hover:bg-terminal-blue hover:text-black'}} px-6 py-3 rounded font-semibold transition-colors">
+                        {{button.text}}
+                    </a>
+                    {{/each}}
+                </div>
+            </div>
+
+            <!-- Code Snippet -->
+            <div class="code-block rounded-lg p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                        <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                        <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                    </div>
+                    <span class="text-gray-400 text-sm">{{it.hero.code.filename}}</span>
+                </div>
+                <div class="syntax-highlight text-sm">
+                    <pre><code>{{* it.hero.code.content}}</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> 

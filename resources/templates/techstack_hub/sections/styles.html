@@ -1,0 +1,105 @@
+<script>
+    tailwind.config = {
+        darkMode: 'class',
+        theme: {
+            extend: {
+                colors: {
+                    'terminal-green': '#00ff00',
+                    'terminal-blue': '#0099ff',
+                    'terminal-yellow': '#ffff00',
+                    'terminal-red': '#ff0000',
+                    'code-bg': '#1e1e1e',
+                    'code-border': '#333333',
+                    'github-dark': '#0d1117',
+                    'github-border': '#30363d'
+                },
+                fontFamily: {
+                    'mono': ['JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', 'monospace']
+                }
+            }
+        }
+    }
+</script>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+    
+    .terminal-cursor::after {
+        content: '|';
+        animation: blink 1s infinite;
+        color: #00ff00;
+    }
+    
+    @keyframes blink {
+        0%, 50% { opacity: 1; }
+        51%, 100% { opacity: 0; }
+    }
+    
+    .code-block {
+        background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
+        border: 1px solid #333;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+    
+    .tech-card {
+        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+        border: 1px solid #404040;
+        transition: all 0.3s ease;
+    }
+    
+    .tech-card:hover {
+        border-color: #00ff00;
+        box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+        transform: translateY(-2px);
+    }
+    
+    .syntax-highlight .keyword { color: #569cd6; }
+    .syntax-highlight .string { color: #ce9178; }
+    .syntax-highlight .comment { color: #6a9955; }
+    .syntax-highlight .function { color: #dcdcaa; }
+    .syntax-highlight .number { color: #b5cea8; }
+
+    .line-clamp-2 {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .line-clamp-3 {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .terminal-window {
+        background: #1e1e1e;
+        border: 1px solid #333;
+        border-radius: 6px;
+        overflow: hidden;
+    }
+
+    .terminal-header {
+        background: #333;
+        padding: 8px;
+        display: flex;
+        align-items: center;
+    }
+
+    .terminal-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-right: 6px;
+    }
+
+    .terminal-content {
+        padding: 16px;
+        font-family: 'JetBrains Mono', monospace;
+    }
+
+    .command-line::before {
+        content: '$ ';
+        color: #00ff00;
+    }
+</style> 

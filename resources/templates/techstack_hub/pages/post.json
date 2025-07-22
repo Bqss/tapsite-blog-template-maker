@@ -1,0 +1,95 @@
+{
+  "sections": [
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "blog_title",
+        "blog_logo",
+        "navigation"
+      ]
+    },
+    {
+      "title": "post_header",
+      "id": "post_header",
+      "type": "html",
+      "resetable": true,
+      "data": [
+        "post",
+        "author"
+      ]
+    },
+    {
+      "title": "table_of_contents",
+      "id": "table_of_contents",
+      "type": "html",
+      "resetable": true,
+      "data": [
+        "post"
+      ]
+    },
+    {
+      "title": "documentation_content",
+      "id": "documentation_content",
+      "type": "html",
+      "resetable": true,
+      "data": [
+        "post"
+      ]
+    },
+    {
+      "title": "code_blocks",
+      "id": "code_blocks",
+      "type": "html",
+      "resetable": true,
+      "data": [
+        "post",
+        "programming_languages"
+      ]
+    },
+    {
+      "title": "github_integration",
+      "id": "github_integration",
+      "type": "html",
+      "resetable": true,
+      "data": [
+        "post.github_repo",
+        "recent_commits"
+      ]
+    },
+    {
+      "title": "tech_sidebar",
+      "id": "tech_sidebar",
+      "type": "html",
+      "resetable": true,
+      "data": [
+        "author",
+        "tech_stack",
+        "featured_tools"
+      ]
+    },
+    {
+      "title": "related_tutorials",
+      "id": "related_tutorials",
+      "type": "html",
+      "resetable": true,
+      "data": [
+        "featured_posts",
+        "post.tags"
+      ]
+    },
+    {
+      "title": "dark_footer",
+      "id": "dark_footer",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "author",
+        "social_media",
+        "color_scheme"
+      ]
+    }
+  ]
+} 

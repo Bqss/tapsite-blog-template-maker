@@ -1,0 +1,76 @@
+{
+  "sections": [
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "blog_title",
+        "blog_logo",
+        "navigation"
+      ]
+    },
+    {
+      "title": "category_header",
+      "id": "category_header",
+      "type": "html",
+      "resetable": true,
+      "data": [
+        "category",
+        "programming_languages"
+      ]
+    },
+    {
+      "title": "tech_tabs",
+      "id": "tech_tabs",
+      "type": "html",
+      "resetable": true,
+      "data": [
+        "tech_stack",
+        "category"
+      ]
+    },
+    {
+      "title": "syntax_previews",
+      "id": "syntax_previews",
+      "type": "html",
+      "resetable": true,
+      "data": [
+        "posts",
+        "programming_languages"
+      ]
+    },
+    {
+      "title": "code_stats_sidebar",
+      "id": "code_stats_sidebar",
+      "type": "html",
+      "resetable": true,
+      "data": [
+        "code_stats",
+        "programming_languages"
+      ]
+    },
+    {
+      "title": "github_repos",
+      "id": "github_repos",
+      "type": "html",
+      "resetable": true,
+      "data": [
+        "recent_commits",
+        "author"
+      ]
+    },
+    {
+      "title": "dark_footer",
+      "id": "dark_footer",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "author",
+        "social_media",
+        "color_scheme"
+      ]
+    }
+  ]
+} 

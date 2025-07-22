@@ -1,0 +1,58 @@
+<!-- Featured Tutorials -->
+<section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between mb-12">
+            <div>
+                <h2 class="text-3xl font-bold text-white mb-2">{{it.featured.title}}</h2>
+                <p class="text-gray-400">$ ls -la {{it.featured.command}}</p>
+            </div>
+            <a href="{{it.featured.view_all.url}}" class="text-terminal-green hover:text-green-400 font-medium flex items-center">
+                {{it.featured.view_all.text}}
+                <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                </svg>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {{@each(it.featured.tutorials)=>tutorial}}
+            <article class="tech-card rounded-lg p-6 group">
+                <div class="flex items-center justify-between mb-4">
+                    <span class="bg-{{tutorial.category.color}}-600 {{tutorial.category.dark_text ? 'text-black' : 'text-white'}} px-3 py-1 rounded text-sm font-medium">
+                        {{tutorial.category.name}}
+                    </span>
+                    <div class="flex items-center space-x-2 text-gray-400 text-sm">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                            <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>{{tutorial.views}}</span>
+                    </div>
+                </div>
+                <h3 class="text-xl font-bold text-white mb-3 group-hover:text-terminal-green transition-colors">
+                    <a href="{{tutorial.url}}">{{tutorial.title}}</a>
+                </h3>
+                <p class="text-gray-400 mb-4 text-sm">{{tutorial.excerpt}}</p>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        {{@if(tutorial.author.avatar)}}
+                        <img src="{{tutorial.author.avatar}}" 
+                             alt="{{tutorial.author.name}}" 
+                             class="w-8 h-8 rounded-full">
+                        {{#else}}
+                        <div class="w-8 h-8 bg-{{tutorial.author.color}}-600 rounded-full flex items-center justify-center">
+                            <span class="text-white text-sm font-bold">{{tutorial.author.initial}}</span>
+                        </div>
+                        {{/if}}
+                        <div>
+                            <div class="text-white text-sm font-medium">{{tutorial.author.name}}</div>
+                            <div class="text-gray-500 text-xs">{{tutorial.date}}</div>
+                        </div>
+                    </div>
+                    <span class="text-gray-500 text-sm">{{tutorial.read_time}} min read</span>
+                </div>
+            </article>
+            {{/each}}
+        </div>
+    </div>
+</section> 
