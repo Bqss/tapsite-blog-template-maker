@@ -1,0 +1,275 @@
+{
+  "site": {
+    "name": "SportsArena",
+    "tagline": "Your Ultimate Sports Commentary Hub",
+    "description": "Comprehensive sports coverage featuring match analysis, team statistics, player insights, and breaking sports news",
+    "logo": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=200&h=80&fit=crop"
+  },
+  "articles": [
+    {
+      "id": 1,
+      "title": "Champions League Final Analysis: Manchester City vs Inter Milan",
+      "slug": "champions-league-final-analysis-manchester-city-inter-milan",
+      "excerpt": "Comprehensive tactical analysis of the Champions League final including key moments, player performances, and strategic decisions.",
+      "content": "The Champions League final delivered drama and tactical brilliance as Manchester City faced Inter Milan. This detailed analysis breaks down the key tactical decisions, individual performances, and crucial moments that decided the match.",
+      "category": "Football",
+      "sport": "Football",
+      "match_type": "Final",
+      "teams": ["Manchester City", "Inter Milan"],
+      "author": "James Tactical",
+      "read_time": 12,
+      "match_date": "2024-06-10",
+      "venue": "Wembley Stadium",
+      "attendance": 90000,
+      "final_score": "1-0",
+      "featured_image": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=800&h=600&fit=crop",
+      "gallery": [
+        "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1552318965-6e6be7484ada?w=600&h=400&fit=crop"
+      ],
+      "tags": ["Champions League", "Final", "Tactical Analysis", "Manchester City", "Inter Milan"],
+      "match_stats": {
+        "possession": {"man_city": 68, "inter_milan": 32},
+        "shots": {"man_city": 15, "inter_milan": 8},
+        "shots_on_target": {"man_city": 6, "inter_milan": 3}
+      },
+      "key_players": ["Erling Haaland", "Kevin De Bruyne", "Lautaro Martinez"],
+      "published_at": "2024-12-15T10:00:00Z"
+    },
+    {
+      "id": 2,
+      "title": "NBA Finals Game 7: Lakers vs Celtics Epic Showdown",
+      "slug": "nba-finals-game-7-lakers-celtics-epic-showdown",
+      "excerpt": "Historic Game 7 analysis featuring clutch performances, coaching decisions, and the plays that determined the championship.",
+      "content": "Game 7 of the NBA Finals lived up to its billing as Lakers and Celtics battled for supremacy. This analysis covers the pivotal moments, standout performances, and strategic adjustments that shaped the outcome.",
+      "category": "Basketball",
+      "sport": "Basketball",
+      "match_type": "Finals Game 7",
+      "teams": ["Los Angeles Lakers", "Boston Celtics"],
+      "author": "Sarah Hoops",
+      "read_time": 10,
+      "match_date": "2024-06-18",
+      "venue": "TD Garden",
+      "attendance": 19580,
+      "final_score": "108-102",
+      "featured_image": "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&h=600&fit=crop",
+      "gallery": [
+        "https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1552318965-6e6be7484ada?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&h=400&fit=crop"
+      ],
+      "tags": ["NBA Finals", "Game 7", "Lakers", "Celtics", "Championship"],
+      "match_stats": {
+        "field_goal_percentage": {"lakers": 47.8, "celtics": 44.2},
+        "three_pointers": {"lakers": 12, "celtics": 9},
+        "rebounds": {"lakers": 45, "celtics": 42}
+      },
+      "key_players": ["LeBron James", "Anthony Davis", "Jayson Tatum"],
+      "published_at": "2024-12-14T14:30:00Z"
+    },
+    {
+      "id": 3,
+      "title": "Premier League Title Race: Arsenal's Resurgence Under Arteta",
+      "slug": "premier-league-title-race-arsenal-resurgence-arteta",
+      "excerpt": "Analyzing Arsenal's transformation under Mikel Arteta and their genuine title challenge in the Premier League this season.",
+      "content": "Arsenal's return to title contention has been one of the season's biggest stories. This analysis examines the tactical evolution, key signings, and cultural changes that have transformed the Gunners.",
+      "category": "Football",
+      "sport": "Football",
+      "match_type": "Season Analysis",
+      "teams": ["Arsenal"],
+      "author": "Mike Premier",
+      "read_time": 15,
+      "season": "2023-24",
+      "league": "Premier League",
+      "featured_image": "https://images.unsplash.com/photo-1552318965-6e6be7484ada?w=800&h=600&fit=crop",
+      "gallery": [
+        "https://images.unsplash.com/photo-1552318965-6e6be7484ada?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop"
+      ],
+      "tags": ["Premier League", "Arsenal", "Mikel Arteta", "Title Race", "Tactics"],
+      "season_stats": {
+        "points": 84,
+        "goals_scored": 88,
+        "goals_conceded": 43,
+        "clean_sheets": 16
+      },
+      "key_players": ["Bukayo Saka", "Martin Odegaard", "Gabriel Jesus"],
+      "published_at": "2024-12-13T09:15:00Z"
+    },
+    {
+      "id": 4,
+      "title": "Tennis Grand Slam Analysis: Djokovic's Historic Wimbledon Victory",
+      "slug": "tennis-grand-slam-analysis-djokovic-historic-wimbledon",
+      "excerpt": "Breaking down Novak Djokovic's masterful Wimbledon performance and what it means for tennis history.",
+      "content": "Novak Djokovic's latest Wimbledon triumph showcases his enduring excellence and tactical brilliance. This analysis covers his path to victory and the tactical adjustments that proved decisive.",
+      "category": "Tennis",
+      "sport": "Tennis",
+      "match_type": "Grand Slam Final",
+      "players": ["Novak Djokovic", "Carlos Alcaraz"],
+      "author": "Emma Tennis",
+      "read_time": 8,
+      "match_date": "2024-07-14",
+      "venue": "All England Club",
+      "tournament": "Wimbledon",
+      "final_score": "6-2, 6-3, 7-6",
+      "featured_image": "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=800&h=600&fit=crop",
+      "gallery": [
+        "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1594736797933-d0d8ba2c2e13?w=600&h=400&fit=crop"
+      ],
+      "tags": ["Tennis", "Wimbledon", "Djokovic", "Grand Slam", "Championship"],
+      "match_stats": {
+        "aces": {"djokovic": 12, "alcaraz": 8},
+        "winners": {"djokovic": 35, "alcaraz": 28},
+        "unforced_errors": {"djokovic": 18, "alcaraz": 25}
+      },
+      "key_moments": ["Break in first set", "Crucial tie-break", "Championship point"],
+      "published_at": "2024-12-12T16:45:00Z"
+    },
+    {
+      "id": 5,
+      "title": "Formula 1 Season Review: Verstappen's Dominant Championship Run",
+      "slug": "formula-1-season-review-verstappen-dominant-championship",
+      "excerpt": "Comprehensive review of Max Verstappen's record-breaking Formula 1 season and Red Bull's engineering excellence.",
+      "content": "Max Verstappen's dominant 2024 season redefined Formula 1 excellence. This comprehensive review analyzes the technical innovations, strategic decisions, and driving brilliance that led to historic success.",
+      "category": "Formula 1",
+      "sport": "Formula 1",
+      "match_type": "Season Review",
+      "teams": ["Red Bull Racing"],
+      "author": "Carlos F1",
+      "read_time": 18,
+      "season": "2024",
+      "championship": "Formula 1 World Championship",
+      "featured_image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop",
+      "gallery": [
+        "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1594736797933-d0d8ba2c2e13?w=600&h=400&fit=crop",
+        "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=600&h=400&fit=crop"
+      ],
+      "tags": ["Formula 1", "Max Verstappen", "Red Bull", "Championship", "Season Review"],
+      "season_stats": {
+        "wins": 19,
+        "podiums": 21,
+        "pole_positions": 15,
+        "fastest_laps": 12,
+        "points": 575
+      },
+      "key_drivers": ["Max Verstappen", "Sergio Perez", "Lewis Hamilton"],
+      "published_at": "2024-12-11T11:20:00Z"
+    }
+  ],
+  "sports": [
+    {
+      "name": "Football",
+      "description": "Soccer coverage including Premier League, Champions League, and international tournaments",
+      "icon": "⚽",
+      "article_count": 45,
+      "color": "#10B981",
+      "leagues": ["Premier League", "Champions League", "La Liga", "Serie A", "Bundesliga"]
+    },
+    {
+      "name": "Basketball",
+      "description": "NBA, college basketball, and international basketball coverage",
+      "icon": "🏀",
+      "article_count": 32,
+      "color": "#F59E0B",
+      "leagues": ["NBA", "NCAA", "EuroLeague", "FIBA"]
+    },
+    {
+      "name": "Tennis",
+      "description": "Grand Slam tournaments, ATP, and WTA tour coverage",
+      "icon": "🎾",
+      "article_count": 28,
+      "color": "#8B5CF6",
+      "tournaments": ["Wimbledon", "US Open", "French Open", "Australian Open"]
+    },
+    {
+      "name": "Formula 1",
+      "description": "F1 race analysis, technical insights, and championship coverage",
+      "icon": "🏎️",
+      "article_count": 22,
+      "color": "#EF4444",
+      "circuits": ["Monaco", "Silverstone", "Monza", "Spa-Francorchamps"]
+    },
+    {
+      "name": "American Football",
+      "description": "NFL coverage including regular season, playoffs, and Super Bowl",
+      "icon": "🏈",
+      "article_count": 25,
+      "color": "#3B82F6",
+      "leagues": ["NFL", "NCAA Football"]
+    },
+    {
+      "name": "Baseball",
+      "description": "MLB coverage including regular season, playoffs, and World Series",
+      "icon": "⚾",
+      "article_count": 18,
+      "color": "#059669",
+      "leagues": ["MLB", "NCAA Baseball"]
+    }
+  ],
+  "sports_writers": [
+    {
+      "name": "James Tactical",
+      "title": "Football Analyst",
+      "expertise": "Tactical Analysis, Premier League, Champions League",
+      "bio": "Former professional player turned analyst with deep tactical knowledge and 15+ years in sports journalism",
+      "articles": 85,
+      "sports_covered": ["Football"],
+      "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
+    },
+    {
+      "name": "Sarah Hoops",
+      "title": "Basketball Expert",
+      "expertise": "NBA Analysis, Player Performance, Draft Analysis",
+      "bio": "Basketball insider with extensive NBA contacts and analytical expertise covering all aspects of the game",
+      "articles": 72,
+      "sports_covered": ["Basketball"],
+      "avatar": "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face"
+    },
+    {
+      "name": "Carlos F1",
+      "title": "Motorsport Specialist",
+      "expertise": "Formula 1, Technical Analysis, Race Strategy",
+      "bio": "Former F1 engineer turned journalist providing technical insights and strategic analysis",
+      "articles": 58,
+      "sports_covered": ["Formula 1", "Motorsport"],
+      "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
+    }
+  ],
+  "live_scores": [
+    {
+      "match": "Arsenal vs Manchester United",
+      "sport": "Football",
+      "league": "Premier League",
+      "status": "Live",
+      "time": "67'",
+      "score": "2-1",
+      "home_team": "Arsenal",
+      "away_team": "Manchester United"
+    },
+    {
+      "match": "Lakers vs Warriors",
+      "sport": "Basketball",
+      "league": "NBA",
+      "status": "Q3",
+      "time": "8:24",
+      "score": "89-85",
+      "home_team": "Lakers",
+      "away_team": "Warriors"
+    },
+    {
+      "match": "Chiefs vs Bills",
+      "sport": "American Football",
+      "league": "NFL",
+      "status": "Q2",
+      "time": "3:45",
+      "score": "14-10",
+      "home_team": "Chiefs",
+      "away_team": "Bills"
+    }
+  ]
+} 

@@ -1,0 +1,14 @@
+<!-- Live Scores Ticker -->
+<div class="bg-sports-red text-white py-2 overflow-hidden">
+    <div class="score-ticker whitespace-nowrap">
+        <span class="inline-flex items-center space-x-8 text-sm font-medium">
+            {{@if(it.live_scores.has_live)}}
+            <span class="live-indicator">🔴 LIVE</span>
+            {{/if}}
+            {{@each(it.live_scores.matches)=>match}}
+            <span>{{match.home_team}} {{match.home_score}}-{{match.away_score}} {{match.away_team}} {{@if(match.time)}}({{match.time}}){{/if}}</span>
+            {{@if(!@last)}}<span>•</span>{{/if}}
+            {{/each}}
+        </span>
+    </div>
+</div> 

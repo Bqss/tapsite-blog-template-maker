@@ -1,0 +1,59 @@
+{
+  "title": "{{post.title}} - SportsArena",
+  "description": "{{post.excerpt}}",
+  "keywords": "{{post.tags}}, sports analysis, match report, {{post.sport}}, sports commentary",
+  "author": "{{post.author}}",
+  "canonical": "/post/{{post.slug}}",
+  "og": {
+    "title": "{{post.title}}",
+    "description": "{{post.excerpt}}",
+    "image": "{{post.featured_image}}",
+    "url": "/post/{{post.slug}}",
+    "type": "article",
+    "article": {
+      "author": "{{post.author}}",
+      "published_time": "{{post.published_at}}",
+      "modified_time": "{{post.updated_at}}",
+      "section": "{{post.category}}",
+      "tag": "{{post.tags}}"
+    }
+  },
+  "twitter": {
+    "card": "summary_large_image",
+    "title": "{{post.title}}",
+    "description": "{{post.excerpt}}",
+    "image": "{{post.featured_image}}"
+  },
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{post.title}}",
+    "description": "{{post.excerpt}}",
+    "image": "{{post.featured_image}}",
+    "url": "/post/{{post.slug}}",
+    "datePublished": "{{post.published_at}}",
+    "dateModified": "{{post.updated_at}}",
+    "author": {
+      "@type": "Person",
+      "name": "{{post.author}}"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "SportsArena",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "/images/sportsarena-logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "/post/{{post.slug}}"
+    },
+    "articleBody": "{{post.content}}",
+    "about": {
+      "@type": "Thing",
+      "name": "{{post.sport}}",
+      "description": "Sports analysis and commentary"
+    }
+  }
+} 

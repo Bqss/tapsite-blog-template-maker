@@ -1,0 +1,62 @@
+<!-- Hero Section -->
+<section class="hero-gradient py-20 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <div class="inline-flex items-center bg-white bg-opacity-20 rounded-full px-4 py-2 mb-6">
+                    <span class="text-sm font-medium">{{it.hero.badge}}</span>
+                </div>
+                <h1 class="font-display text-4xl lg:text-6xl font-bold mb-6 leading-tight">
+                    {{it.hero.title_line1}}<br/>
+                    <span class="bg-gradient-to-r from-sports-orange to-yellow-300 bg-clip-text text-transparent">{{it.hero.title_line2}}</span>
+                </h1>
+                <p class="text-xl text-red-100 mb-8 leading-relaxed">
+                    {{it.hero.description}}
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    {{@each(it.hero.buttons)=>button}}
+                    <button class="{{button.primary ? 'bg-white text-sports-red hover:bg-gray-100' : 'border-2 border-white text-white hover:bg-white hover:text-sports-red'}} px-8 py-4 rounded-xl font-semibold transition-colors">
+                        {{button.text}}
+                    </button>
+                    {{/each}}
+                </div>
+                
+                <!-- Sports Stats -->
+                <div class="grid grid-cols-3 gap-8 mt-12">
+                    {{@each(it.hero.stats)=>stat}}
+                    <div class="text-center">
+                        <div class="font-display text-3xl font-bold">{{stat.value}}</div>
+                        <div class="text-red-200 text-sm">{{stat.label}}</div>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+            
+            <div class="relative">
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="space-y-4">
+                        {{@each(it.hero.images.left)=>image}}
+                        <img src="{{image.url}}" 
+                             alt="{{image.alt}}" 
+                             class="w-full {{image.tall ? 'h-40' : 'h-32'}} object-cover rounded-2xl shadow-xl transform {{image.rotate}} hover:rotate-0 transition-transform">
+                        {{/each}}
+                    </div>
+                    <div class="space-y-4 mt-8">
+                        {{@each(it.hero.images.right)=>image}}
+                        <img src="{{image.url}}" 
+                             alt="{{image.alt}}" 
+                             class="w-full {{image.tall ? 'h-40' : 'h-32'}} object-cover rounded-2xl shadow-xl transform {{image.rotate}} hover:rotate-0 transition-transform">
+                        {{/each}}
+                    </div>
+                </div>
+                
+                <!-- Floating Sports Icons -->
+                {{@each(it.hero.floating_icons)=>icon}}
+                <div class="absolute {{icon.position}} bg-white p-3 rounded-full shadow-lg {{icon.animation}}">
+                    <span class="text-2xl">{{icon.emoji}}</span>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</section> 

@@ -1,0 +1,9 @@
+{
+  "title" : "SportsArena",
+  "description" : "Sports blog with match analysis and sports content discovery",
+  "template_id" : "sportsarena",
+  "creator_name" : "Maulana Shalihin",
+  "creator_website" : "https://tapsite.ai",
+  "version" : "1.0.0",
+  "thumbnail" : "/templates/sportsarena/thumbnail.webp"
+}

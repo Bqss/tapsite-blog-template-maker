@@ -1,0 +1,513 @@
+<!-- Navigation -->
+<nav class="bg-white/95 backdrop-blur-sm shadow-lg sticky top-0 z-50 border-b-2 border-green-500">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-blue-600 rounded-full flex items-center justify-center shadow-lg">
+            <span class="text-white text-xl font-bold">⚽</span>
+          </div>
+          <div>
+            <h1 class="text-xl font-bold text-gray-900">SportsArena</h1>
+            <p class="text-xs text-gray-500 font-medium">Your Ultimate Sports Commentary Hub</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="hidden md:flex items-center space-x-6">
+        <a href="/" class="text-gray-700 hover:text-green-600 transition-colors font-medium flex items-center space-x-1">
+          <span>🏠</span><span>Home</span>
+        </a>
+        <a href="/posts" class="text-gray-700 hover:text-green-600 transition-colors font-medium flex items-center space-x-1">
+          <span>📰</span><span>All Sports</span>
+        </a>
+        <a href="/category/Football" class="text-green-600 font-medium flex items-center space-x-1">
+          <span>⚽</span><span>Football</span>
+        </a>
+        <a href="/category/Basketball" class="text-gray-700 hover:text-green-600 transition-colors font-medium flex items-center space-x-1">
+          <span>🏀</span><span>Basketball</span>
+        </a>
+        <a href="/category/Tennis" class="text-gray-700 hover:text-green-600 transition-colors font-medium flex items-center space-x-1">
+          <span>🎾</span><span>Tennis</span>
+        </a>
+      </div>
+      
+      <div class="flex items-center space-x-4">
+        <div class="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold animate-pulse">
+          🔴 LIVE
+        </div>
+        <button class="bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition-all transform hover:scale-105 shadow-lg">
+          Live Scores
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Breadcrumb -->
+<div class="bg-gray-50 py-4 border-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav class="flex items-center space-x-2 text-sm">
+      <a href="/" class="text-green-600 hover:text-green-700">Home</a>
+      <span class="text-gray-400">/</span>
+      <span class="text-gray-600">Football</span>
+    </nav>
+  </div>
+</div>
+
+<!-- Category Header -->
+<section class="bg-gradient-to-br from-green-50 via-blue-50 to-purple-50 py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <div class="inline-flex items-center bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 mb-6 shadow-lg">
+        <span class="text-4xl mr-3">⚽</span>
+        <span class="text-green-600 font-semibold text-lg">Football Category</span>
+      </div>
+      <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+        Football <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600">Analysis</span>
+      </h1>
+      <p class="text-xl text-gray-600 mb-8 leading-relaxed max-w-3xl mx-auto">
+        Soccer coverage including Premier League, Champions League, and international tournaments with expert tactical analysis and match insights.
+      </p>
+      <div class="flex items-center justify-center space-x-8 text-sm text-gray-600">
+        <div class="flex items-center space-x-2">
+          <span class="text-green-600 font-semibold">📊</span>
+          <span>45 Articles</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <span class="text-green-600 font-semibold">⚽</span>
+          <span>Expert Analysis</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <span class="text-green-600 font-semibold">🔄</span>
+          <span>Daily Updates</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Live Scores Banner -->
+<section class="py-4 bg-gray-900 text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center space-x-8 overflow-x-auto">
+      <div class="flex items-center space-x-2 min-w-max">
+        <span class="bg-red-500 px-2 py-1 rounded text-xs font-bold">LIVE</span>
+        <span class="font-semibold">Arsenal vs Man United</span>
+        <span class="text-green-400 font-bold">2-1</span>
+        <span class="text-gray-400">67'</span>
+      </div>
+      <div class="flex items-center space-x-2 min-w-max">
+        <span class="bg-green-500 px-2 py-1 rounded text-xs font-bold">FT</span>
+        <span class="font-semibold">Barcelona vs Real Madrid</span>
+        <span class="text-green-400 font-bold">3-2</span>
+        <span class="text-gray-400">El Clasico</span>
+      </div>
+      <div class="flex items-center space-x-2 min-w-max">
+        <span class="bg-blue-500 px-2 py-1 rounded text-xs font-bold">HT</span>
+        <span class="font-semibold">PSG vs Monaco</span>
+        <span class="text-green-400 font-bold">1-0</span>
+        <span class="text-gray-400">45'</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Filter Leagues -->
+<section class="py-8 bg-white border-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-wrap gap-3 justify-center">
+      <a href="/category/Football" class="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold transition-all transform hover:scale-105 shadow-lg">
+        All Football
+      </a>
+      <a href="/tag/Premier League" class="bg-white text-green-600 border-2 border-green-500 hover:bg-green-50 px-6 py-3 rounded-lg font-semibold transition-all">
+        Premier League
+      </a>
+      <a href="/tag/Champions League" class="bg-white text-blue-600 border-2 border-blue-500 hover:bg-blue-50 px-6 py-3 rounded-lg font-semibold transition-all">
+        Champions League
+      </a>
+      <a href="/tag/La Liga" class="bg-white text-red-600 border-2 border-red-500 hover:bg-red-50 px-6 py-3 rounded-lg font-semibold transition-all">
+        La Liga
+      </a>
+      <a href="/tag/Serie A" class="bg-white text-purple-600 border-2 border-purple-500 hover:bg-purple-50 px-6 py-3 rounded-lg font-semibold transition-all">
+        Serie A
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Articles Grid -->
+<section class="py-16 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Featured Article -->
+      <div class="lg:col-span-2">
+        <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 cursor-pointer group">
+          <div class="relative">
+            <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=600&h=300&fit=crop" alt="Champions League Final" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-lg text-sm font-semibold">
+              Featured
+            </div>
+            <div class="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-1 text-sm font-semibold text-gray-700">
+              12 min read
+            </div>
+            <div class="absolute bottom-4 left-4 bg-red-500 text-white px-2 py-1 rounded text-xs font-bold">
+              FINAL
+            </div>
+          </div>
+          <div class="p-8">
+            <div class="flex items-center space-x-2 mb-4">
+              <span class="bg-green-100 text-green-800 px-2 py-1 rounded-lg text-xs font-semibold">Champions League</span>
+              <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded-lg text-xs font-semibold">Final</span>
+              <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-lg text-xs font-semibold">Tactical Analysis</span>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-4 group-hover:text-green-600 transition-colors">
+              Champions League Final Analysis: Manchester City vs Inter Milan
+            </h3>
+            <p class="text-gray-600 mb-6 text-lg">
+              Comprehensive tactical analysis of the Champions League final including key moments, player performances, and strategic decisions that decided the match.
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-3">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" alt="James Tactical" class="w-10 h-10 rounded-full">
+                <div>
+                  <p class="font-semibold text-gray-900">James Tactical</p>
+                  <p class="text-sm text-gray-500">Football Analyst</p>
+                </div>
+              </div>
+              <div class="flex items-center space-x-4 text-sm text-gray-500">
+                <span>👁️ 8.5K views</span>
+                <span>💬 24 comments</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Side Articles -->
+      <div class="space-y-6">
+        <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 cursor-pointer group">
+          <div class="relative">
+            <img src="https://images.unsplash.com/photo-1552318965-6e6be7484ada?w=400&h=200&fit=crop" alt="Arsenal Analysis" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute top-3 left-3 bg-green-600 text-white px-2 py-1 rounded-lg text-xs font-semibold">
+              Premier League
+            </div>
+          </div>
+          <div class="p-4">
+            <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-green-600 transition-colors">
+              Arsenal's Title Challenge Under Arteta
+            </h3>
+            <p class="text-gray-600 text-sm mb-3">
+              Analyzing Arsenal's transformation and their genuine title challenge this season.
+            </p>
+            <div class="flex items-center justify-between text-xs text-gray-500">
+              <span>Mike Premier</span>
+              <span>15 min read</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 cursor-pointer group">
+          <div class="relative">
+            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=400&h=200&fit=crop" alt="Barcelona Analysis" class="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute top-3 left-3 bg-red-600 text-white px-2 py-1 rounded-lg text-xs font-semibold">
+              La Liga
+            </div>
+          </div>
+          <div class="p-4">
+            <h3 class="text-lg font-bold text-gray-900 mb-2 group-hover:text-green-600 transition-colors">
+              Barcelona's Xavi Revolution
+            </h3>
+            <p class="text-gray-600 text-sm mb-3">
+              How Xavi has rebuilt Barcelona's identity and playing philosophy.
+            </p>
+            <div class="flex items-center justify-between text-xs text-gray-500">
+              <span>Carlos La Liga</span>
+              <span>11 min read</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- More Articles -->
+      <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 cursor-pointer group">
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?w=600&h=300&fit=crop" alt="World Cup Analysis" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-4 left-4 bg-yellow-600 text-white px-3 py-1 rounded-lg text-sm font-semibold">
+            World Cup
+          </div>
+          <div class="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-1 text-sm font-semibold text-gray-700">
+            20 min read
+          </div>
+          <div class="absolute bottom-4 left-4 bg-blue-500 text-white px-2 py-1 rounded text-xs font-bold">
+            ANALYSIS
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center space-x-2 mb-3">
+            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-lg text-xs font-semibold">World Cup</span>
+            <span class="bg-green-100 text-green-800 px-2 py-1 rounded-lg text-xs font-semibold">Tactical</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-green-600 transition-colors">
+            World Cup Tactical Trends: The Evolution of Modern Football
+          </h3>
+          <p class="text-gray-600 mb-4">
+            Comprehensive analysis of tactical innovations and trends from the latest World Cup tournament.
+          </p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face" alt="International Expert" class="w-8 h-8 rounded-full">
+              <span class="text-sm font-medium text-gray-700">International Expert</span>
+            </div>
+            <div class="flex items-center space-x-1 text-orange-500">
+              <span class="text-sm">👁️</span>
+              <span class="text-sm font-medium">12.8K</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 cursor-pointer group">
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=300&fit=crop" alt="Premier League Stats" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-lg text-sm font-semibold">
+            Premier League
+          </div>
+          <div class="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-1 text-sm font-semibold text-gray-700">
+            8 min read
+          </div>
+          <div class="absolute bottom-4 left-4 bg-purple-500 text-white px-2 py-1 rounded text-xs font-bold">
+            STATS
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center space-x-2 mb-3">
+            <span class="bg-green-100 text-green-800 px-2 py-1 rounded-lg text-xs font-semibold">Premier League</span>
+            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-lg text-xs font-semibold">Statistics</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-green-600 transition-colors">
+            Premier League Mid-Season Statistics Review
+          </h3>
+          <p class="text-gray-600 mb-4">
+            Breaking down the key statistics and performance metrics from the first half of the Premier League season.
+          </p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face" alt="Stats Expert" class="w-8 h-8 rounded-full">
+              <span class="text-sm font-medium text-gray-700">Stats Expert</span>
+            </div>
+            <div class="flex items-center space-x-1 text-orange-500">
+              <span class="text-sm">👁️</span>
+              <span class="text-sm font-medium">9.4K</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 cursor-pointer group">
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1594736797933-d0d8ba2c2e13?w=600&h=300&fit=crop" alt="Transfer Window" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+          <div class="absolute top-4 left-4 bg-orange-600 text-white px-3 py-1 rounded-lg text-sm font-semibold">
+            Transfers
+          </div>
+          <div class="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-1 text-sm font-semibold text-gray-700">
+            14 min read
+          </div>
+          <div class="absolute bottom-4 left-4 bg-green-500 text-white px-2 py-1 rounded text-xs font-bold">
+            MARKET
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center space-x-2 mb-3">
+            <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded-lg text-xs font-semibold">Transfer Window</span>
+            <span class="bg-green-100 text-green-800 px-2 py-1 rounded-lg text-xs font-semibold">Market Analysis</span>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-green-600 transition-colors">
+            January Transfer Window: Key Moves and Market Trends
+          </h3>
+          <p class="text-gray-600 mb-4">
+            Analyzing the biggest transfers and market movements in the January transfer window across Europe.
+          </p>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+              <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face" alt="Transfer Expert" class="w-8 h-8 rounded-full">
+              <span class="text-sm font-medium text-gray-700">Transfer Expert</span>
+            </div>
+            <div class="flex items-center space-x-1 text-orange-500">
+              <span class="text-sm">👁️</span>
+              <span class="text-sm font-medium">7.2K</span>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Pagination -->
+    <div class="mt-12 flex justify-center">
+      <nav class="flex items-center space-x-2">
+        <button class="px-4 py-2 text-gray-500 bg-white rounded-lg border hover:bg-gray-50 transition-colors">
+          Previous
+        </button>
+        <button class="px-4 py-2 bg-green-600 text-white rounded-lg font-semibold">
+          1
+        </button>
+        <button class="px-4 py-2 text-gray-700 bg-white rounded-lg border hover:bg-gray-50 transition-colors">
+          2
+        </button>
+        <button class="px-4 py-2 text-gray-700 bg-white rounded-lg border hover:bg-gray-50 transition-colors">
+          3
+        </button>
+        <button class="px-4 py-2 text-gray-700 bg-white rounded-lg border hover:bg-gray-50 transition-colors">
+          Next
+        </button>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<!-- Football Leagues Section -->
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">Top Football Leagues</h2>
+      <p class="text-xl text-gray-600">Coverage across the world's premier football competitions</p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+      <div class="text-center p-6 bg-green-50 rounded-2xl">
+        <div class="text-4xl mb-4">🏴󠁧󠁢󠁥󠁮󠁧󠁿</div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">Premier League</h3>
+        <p class="text-gray-600 text-sm mb-3">20 teams • England</p>
+        <div class="text-sm text-gray-600">
+          <p>• 15 articles</p>
+          <p>• Weekly coverage</p>
+        </div>
+      </div>
+      
+      <div class="text-center p-6 bg-red-50 rounded-2xl">
+        <div class="text-4xl mb-4">🇪🇸</div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">La Liga</h3>
+        <p class="text-gray-600 text-sm mb-3">20 teams • Spain</p>
+        <div class="text-sm text-gray-600">
+          <p>• 12 articles</p>
+          <p>• El Clasico coverage</p>
+        </div>
+      </div>
+      
+      <div class="text-center p-6 bg-blue-50 rounded-2xl">
+        <div class="text-4xl mb-4">🇮🇹</div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">Serie A</h3>
+        <p class="text-gray-600 text-sm mb-3">20 teams • Italy</p>
+        <div class="text-sm text-gray-600">
+          <p>• 10 articles</p>
+          <p>• Tactical analysis</p>
+        </div>
+      </div>
+      
+      <div class="text-center p-6 bg-yellow-50 rounded-2xl">
+        <div class="text-4xl mb-4">🇩🇪</div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">Bundesliga</h3>
+        <p class="text-gray-600 text-sm mb-3">18 teams • Germany</p>
+        <div class="text-sm text-gray-600">
+          <p>• 8 articles</p>
+          <p>• Bayern focus</p>
+        </div>
+      </div>
+      
+      <div class="text-center p-6 bg-purple-50 rounded-2xl">
+        <div class="text-4xl mb-4">🏆</div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">Champions League</h3>
+        <p class="text-gray-600 text-sm mb-3">32 teams • Europe</p>
+        <div class="text-sm text-gray-600">
+          <p>• 18 articles</p>
+          <p>• Match analysis</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid md:grid-cols-4 gap-8">
+      <div class="space-y-4">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 bg-gradient-to-br from-green-500 to-blue-600 rounded-full flex items-center justify-center">
+            <span class="text-white text-xl font-bold">⚽</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold">SportsArena</h3>
+            <p class="text-green-400 text-sm">Your Ultimate Sports Commentary Hub</p>
+          </div>
+        </div>
+        <p class="text-gray-400">
+          Comprehensive sports coverage featuring match analysis, team statistics, player insights, and breaking sports news.
+        </p>
+      </div>
+      
+      <div>
+        <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+        <ul class="space-y-2">
+          <li><a href="/" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+          <li><a href="/posts" class="text-gray-400 hover:text-white transition-colors">All Sports</a></li>
+          <li><a href="/category/Football" class="text-gray-400 hover:text-white transition-colors">Football</a></li>
+          <li><a href="/category/Basketball" class="text-gray-400 hover:text-white transition-colors">Basketball</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4 class="text-lg font-semibold mb-4">Sports</h4>
+        <ul class="space-y-2">
+          <li><a href="/category/Tennis" class="text-gray-400 hover:text-white transition-colors">Tennis</a></li>
+          <li><a href="/category/Formula 1" class="text-gray-400 hover:text-white transition-colors">Formula 1</a></li>
+          <li><a href="/category/American Football" class="text-gray-400 hover:text-white transition-colors">NFL</a></li>
+          <li><a href="/category/Baseball" class="text-gray-400 hover:text-white transition-colors">Baseball</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h4 class="text-lg font-semibold mb-4">Connect</h4>
+        <div class="flex space-x-4">
+          <a href="#" class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
+            <span class="text-white">📘</span>
+          </a>
+          <a href="#" class="w-10 h-10 bg-red-600 rounded-lg flex items-center justify-center hover:bg-red-700 transition-colors">
+            <span class="text-white">📺</span>
+          </a>
+          <a href="#" class="w-10 h-10 bg-blue-400 rounded-lg flex items-center justify-center hover:bg-blue-500 transition-colors">
+            <span class="text-white">🐦</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+      <p class="text-gray-400">© 2024 SportsArena. All rights reserved. Your ultimate sports commentary hub.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .text-transparent {
+    color: transparent;
+  }
+  
+  .bg-clip-text {
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: .5;
+    }
+  }
+  
+  .animate-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+</style> 

@@ -1,0 +1,44 @@
+{
+  "title": "{{tag.name}} Coverage - SportsArena",
+  "description": "Browse all sports analysis tagged with {{tag.name}}. Expert commentary and match reports specifically related to {{tag.name}} from our professional sports team.",
+  "keywords": "{{tag.name}}, {{tag.name}} analysis, {{tag.name}} news, sports coverage, match reports, sports commentary",
+  "author": "SportsArena Team",
+  "canonical": "/tag/{{tag.name}}",
+  "og": {
+    "title": "{{tag.name}} Sports Coverage & Analysis",
+    "description": "Discover expert sports analysis tagged with {{tag.name}}. Professional commentary and match reports from our experienced team.",
+    "image": "/images/tag-{{tag.name | lower}}-og.jpg",
+    "url": "/tag/{{tag.name}}",
+    "type": "website"
+  },
+  "twitter": {
+    "card": "summary_large_image",
+    "title": "{{tag.name}} Sports Coverage & Analysis",
+    "description": "Discover expert sports analysis tagged with {{tag.name}}. Professional commentary and reports.",
+    "image": "/images/tag-{{tag.name | lower}}-twitter.jpg"
+  },
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "{{tag.name}} Coverage - SportsArena",
+    "description": "Expert sports analysis and commentary tagged with {{tag.name}}",
+    "url": "/tag/{{tag.name}}",
+    "publisher": {
+      "@type": "Organization",
+      "name": "SportsArena",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "/images/sportsarena-logo.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "/tag/{{tag.name}}"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "{{tag.name}}",
+      "description": "Sports analysis and commentary related to {{tag.name}}"
+    }
+  }
+} 
