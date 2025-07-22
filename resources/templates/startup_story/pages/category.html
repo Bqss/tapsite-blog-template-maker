@@ -1,0 +1,406 @@
+<!-- Navigation -->
+<nav class="bg-white shadow-lg border-b-2 border-blue-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <div class="flex items-center">
+                <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=200&h=80&fit=crop" alt="StartupStory" class="h-8 w-auto">
+                <span class="ml-3 text-xl font-bold text-gray-900">StartupStory</span>
+            </div>
+            <div class="hidden md:block">
+                <div class="ml-10 flex items-baseline space-x-4">
+                    <a href="/" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+                    <a href="/posts" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Stories</a>
+                    <a href="/category/E-commerce" class="bg-blue-600 text-white px-3 py-2 rounded-md text-sm font-medium">E-commerce</a>
+                    <a href="/category/Fintech" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Fintech</a>
+                    <a href="/category/SaaS" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">SaaS</a>
+                    <a href="/search" class="text-gray-600 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">Search</a>
+                </div>
+            </div>
+            <div class="md:hidden">
+                <button class="text-gray-600 hover:text-blue-600 focus:outline-none">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Breadcrumb -->
+<div class="bg-gray-50 py-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav class="flex items-center space-x-2 text-sm text-gray-600">
+            <a href="/" class="hover:text-blue-600 transition-colors">Home</a>
+            <span>/</span>
+            <a href="/posts" class="hover:text-blue-600 transition-colors">Stories</a>
+            <span>/</span>
+            <span class="text-gray-900">E-commerce</span>
+        </nav>
+    </div>
+</div>
+
+<!-- Category Header -->
+<header class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <div class="flex justify-center items-center gap-3 mb-6">
+            <div class="bg-white/20 backdrop-blur-sm p-3 rounded-full">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01"></path>
+                </svg>
+            </div>
+            <h1 class="text-4xl font-bold">E-commerce Success Stories</h1>
+        </div>
+        <p class="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">Discover how entrepreneurs built billion-dollar online retail empires and revolutionized the way we shop</p>
+        <div class="flex justify-center gap-8 text-center">
+            <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+                <div class="text-2xl font-bold">24</div>
+                <div class="text-sm text-blue-100">Success Stories</div>
+            </div>
+            <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+                <div class="text-2xl font-bold">$2.5B</div>
+                <div class="text-sm text-blue-100">Avg Valuation</div>
+            </div>
+            <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+                <div class="text-2xl font-bold">78%</div>
+                <div class="text-sm text-blue-100">Success Rate</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Subcategory Filters -->
+<div class="bg-gray-50 py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-wrap gap-3 justify-center">
+            <button class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium">All E-commerce</button>
+            <button class="bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors">Marketplace</button>
+            <button class="bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors">D2C Brands</button>
+            <button class="bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors">B2B E-commerce</button>
+            <button class="bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors">Platform</button>
+            <button class="bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors">Fashion</button>
+            <button class="bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors">Food & Grocery</button>
+        </div>
+    </div>
+</div>
+
+<!-- Main Content -->
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Featured E-commerce Story -->
+    <div class="mb-12">
+        <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 border border-blue-200">
+            <div class="flex items-center gap-3 mb-4">
+                <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">Featured</span>
+                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">IPO</span>
+                <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">Platform</span>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">From Zero to $10M ARR: The Shopify Success Story</h2>
+                    <p class="text-gray-600 mb-6">How three friends built one of the world's largest e-commerce platforms from a small idea to revolutionize online retail and empower millions of merchants worldwide.</p>
+                    <div class="flex items-center gap-4 mb-6">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face" alt="Sarah Mitchell" class="w-10 h-10 rounded-full">
+                        <div>
+                            <div class="font-semibold text-gray-900">Sarah Mitchell</div>
+                            <div class="text-sm text-gray-600">E-commerce Expert • 12 min read</div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-3 gap-4 text-sm">
+                        <div class="bg-white p-3 rounded-lg text-center">
+                            <div class="font-semibold text-gray-900">Valuation</div>
+                            <div class="text-blue-600">$100B+</div>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg text-center">
+                            <div class="font-semibold text-gray-900">Merchants</div>
+                            <div class="text-blue-600">1M+</div>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg text-center">
+                            <div class="font-semibold text-gray-900">Founded</div>
+                            <div class="text-blue-600">2006</div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop" alt="Shopify Success Story" class="w-full h-64 object-cover rounded-xl">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- E-commerce Stories Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Story 1 -->
+        <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop" alt="Amazon Story" class="w-full h-48 object-cover">
+                <div class="absolute top-4 left-4">
+                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Marketplace</span>
+                </div>
+                <div class="absolute top-4 right-4">
+                    <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-medium">IPO</span>
+                </div>
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Amazon's Everything Store: From Books to $1.7T Empire</h3>
+                <p class="text-gray-600 mb-4">How Jeff Bezos started selling books from his garage and built the world's largest e-commerce marketplace that redefined retail forever.</p>
+                <div class="flex items-center gap-3 mb-4">
+                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face" alt="Sarah Mitchell" class="w-8 h-8 rounded-full">
+                    <div>
+                        <div class="font-semibold text-gray-900 text-sm">Sarah Mitchell</div>
+                        <div class="text-xs text-gray-600">E-commerce Expert</div>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div class="text-sm text-gray-600">18 min read</div>
+                    <div class="text-sm font-semibold text-blue-600">$1.7T valuation</div>
+                </div>
+            </div>
+        </article>
+
+        <!-- Story 2 -->
+        <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop" alt="Instacart Story" class="w-full h-48 object-cover">
+                <div class="absolute top-4 left-4">
+                    <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">Grocery</span>
+                </div>
+                <div class="absolute top-4 right-4">
+                    <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs font-medium">Private</span>
+                </div>
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Instacart's Grocery Revolution: $39B On-Demand Delivery</h3>
+                <p class="text-gray-600 mb-4">How a simple idea to deliver groceries on-demand became essential infrastructure and transformed the $800B grocery industry.</p>
+                <div class="flex items-center gap-3 mb-4">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" alt="Michael Chen" class="w-8 h-8 rounded-full">
+                    <div>
+                        <div class="font-semibold text-gray-900 text-sm">Michael Chen</div>
+                        <div class="text-xs text-gray-600">Business Analyst</div>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div class="text-sm text-gray-600">14 min read</div>
+                    <div class="text-sm font-semibold text-blue-600">$39B valuation</div>
+                </div>
+            </div>
+        </article>
+
+        <!-- Story 3 -->
+        <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=800&h=600&fit=crop" alt="Warby Parker Story" class="w-full h-48 object-cover">
+                <div class="absolute top-4 left-4">
+                    <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm font-medium">D2C</span>
+                </div>
+                <div class="absolute top-4 right-4">
+                    <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-medium">IPO</span>
+                </div>
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Warby Parker's Eyewear Disruption: $6B Direct-to-Consumer</h3>
+                <p class="text-gray-600 mb-4">How four friends disrupted the $100B eyewear industry with affordable, stylish glasses sold directly to consumers online.</p>
+                <div class="flex items-center gap-3 mb-4">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" alt="Emma Rodriguez" class="w-8 h-8 rounded-full">
+                    <div>
+                        <div class="font-semibold text-gray-900 text-sm">Emma Rodriguez</div>
+                        <div class="text-xs text-gray-600">D2C Specialist</div>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div class="text-sm text-gray-600">11 min read</div>
+                    <div class="text-sm font-semibold text-blue-600">$6B valuation</div>
+                </div>
+            </div>
+        </article>
+
+        <!-- Story 4 -->
+        <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=800&h=600&fit=crop" alt="Etsy Story" class="w-full h-48 object-cover">
+                <div class="absolute top-4 left-4">
+                    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Marketplace</span>
+                </div>
+                <div class="absolute top-4 right-4">
+                    <span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-medium">IPO</span>
+                </div>
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Etsy's Handmade Marketplace: $13B Creative Economy</h3>
+                <p class="text-gray-600 mb-4">How a small team created a global marketplace for handmade and vintage items, empowering millions of creative entrepreneurs.</p>
+                <div class="flex items-center gap-3 mb-4">
+                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face" alt="Sarah Mitchell" class="w-8 h-8 rounded-full">
+                    <div>
+                        <div class="font-semibold text-gray-900 text-sm">Sarah Mitchell</div>
+                        <div class="text-xs text-gray-600">E-commerce Expert</div>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div class="text-sm text-gray-600">9 min read</div>
+                    <div class="text-sm font-semibold text-blue-600">$13B valuation</div>
+                </div>
+            </div>
+        </article>
+
+        <!-- Story 5 -->
+        <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop" alt="Casper Story" class="w-full h-48 object-cover">
+                <div class="absolute top-4 left-4">
+                    <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm font-medium">D2C</span>
+                </div>
+                <div class="absolute top-4 right-4">
+                    <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded-full text-xs font-medium">Acquired</span>
+                </div>
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Casper's Sleep Revolution: $1.1B Mattress-in-a-Box</h3>
+                <p class="text-gray-600 mb-4">How a simple idea to sell mattresses online disrupted the $15B sleep industry and created the bed-in-a-box category.</p>
+                <div class="flex items-center gap-3 mb-4">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face" alt="Michael Chen" class="w-8 h-8 rounded-full">
+                    <div>
+                        <div class="font-semibold text-gray-900 text-sm">Michael Chen</div>
+                        <div class="text-xs text-gray-600">Business Analyst</div>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div class="text-sm text-gray-600">12 min read</div>
+                    <div class="text-sm font-semibold text-blue-600">$1.1B valuation</div>
+                </div>
+            </div>
+        </article>
+
+        <!-- Story 6 -->
+        <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=800&h=600&fit=crop" alt="Gymshark Story" class="w-full h-48 object-cover">
+                <div class="absolute top-4 left-4">
+                    <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm font-medium">Fashion</span>
+                </div>
+                <div class="absolute top-4 right-4">
+                    <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded-full text-xs font-medium">Private</span>
+                </div>
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Gymshark's Fitness Empire: $1.3B Athleisure Brand</h3>
+                <p class="text-gray-600 mb-4">How two university students built a global fitness apparel brand from their parents' garage using social media and influencer marketing.</p>
+                <div class="flex items-center gap-3 mb-4">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face" alt="Emma Rodriguez" class="w-8 h-8 rounded-full">
+                    <div>
+                        <div class="font-semibold text-gray-900 text-sm">Emma Rodriguez</div>
+                        <div class="text-xs text-gray-600">Fashion Tech Expert</div>
+                    </div>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div class="text-sm text-gray-600">10 min read</div>
+                    <div class="text-sm font-semibold text-blue-600">$1.3B valuation</div>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <!-- E-commerce Insights Section -->
+    <div class="mt-16 bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 border border-blue-200">
+        <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">E-commerce Industry Insights</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Key Success Factors</h3>
+                <ul class="space-y-3 text-gray-700">
+                    <li class="flex items-start gap-2">
+                        <span class="text-blue-600 mt-1">•</span>
+                        <span><strong>Customer Experience:</strong> Seamless shopping experience from discovery to delivery</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-blue-600 mt-1">•</span>
+                        <span><strong>Data-Driven Decisions:</strong> Using analytics to optimize conversion and retention</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-blue-600 mt-1">•</span>
+                        <span><strong>Supply Chain Innovation:</strong> Efficient logistics and fulfillment operations</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-blue-600 mt-1">•</span>
+                        <span><strong>Brand Building:</strong> Creating strong brand identity and customer loyalty</span>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Market Trends</h3>
+                <ul class="space-y-3 text-gray-700">
+                    <li class="flex items-start gap-2">
+                        <span class="text-purple-600 mt-1">•</span>
+                        <span><strong>Mobile Commerce:</strong> 70% of e-commerce traffic now comes from mobile devices</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-purple-600 mt-1">•</span>
+                        <span><strong>Social Commerce:</strong> Integration of shopping with social media platforms</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-purple-600 mt-1">•</span>
+                        <span><strong>Sustainability:</strong> Growing demand for eco-friendly products and practices</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <span class="text-purple-600 mt-1">•</span>
+                        <span><strong>Personalization:</strong> AI-driven product recommendations and customization</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="flex justify-center mt-12">
+        <nav class="flex items-center gap-2">
+            <button class="px-4 py-2 text-gray-600 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">Previous</button>
+            <button class="px-4 py-2 text-white bg-blue-600 border border-blue-600 rounded-lg">1</button>
+            <button class="px-4 py-2 text-gray-600 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">2</button>
+            <button class="px-4 py-2 text-gray-600 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">3</button>
+            <button class="px-4 py-2 text-gray-600 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">4</button>
+            <button class="px-4 py-2 text-gray-600 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">Next</button>
+        </nav>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-12 mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-4 gap-8">
+            <div>
+                <div class="flex items-center mb-4">
+                    <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=200&h=80&fit=crop" alt="StartupStory" class="h-8 w-auto">
+                    <span class="ml-3 text-xl font-bold">StartupStory</span>
+                </div>
+                <p class="text-gray-400">Where entrepreneurs share their journey from zero to unicorn status.</p>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4">Categories</h4>
+                <ul class="space-y-2 text-gray-400">
+                    <li><a href="/category/E-commerce" class="hover:text-white transition-colors">E-commerce</a></li>
+                    <li><a href="/category/Fintech" class="hover:text-white transition-colors">Fintech</a></li>
+                    <li><a href="/category/SaaS" class="hover:text-white transition-colors">SaaS</a></li>
+                    <li><a href="/category/Travel-Tech" class="hover:text-white transition-colors">Travel Tech</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4">Funding Stages</h4>
+                <ul class="space-y-2 text-gray-400">
+                    <li><a href="/tag/Pre-Seed" class="hover:text-white transition-colors">Pre-Seed</a></li>
+                    <li><a href="/tag/Seed" class="hover:text-white transition-colors">Seed</a></li>
+                    <li><a href="/tag/Series-A" class="hover:text-white transition-colors">Series A</a></li>
+                    <li><a href="/tag/IPO" class="hover:text-white transition-colors">IPO</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4">Connect</h4>
+                <ul class="space-y-2 text-gray-400">
+                    <li><a href="/search" class="hover:text-white transition-colors">Search Stories</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Submit Story</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Newsletter</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+            <p>&copy; 2024 StartupStory. All rights reserved.</p>
+        </div>
+    </div>
+</footer> 

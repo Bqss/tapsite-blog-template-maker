@@ -1,0 +1,98 @@
+<!-- Featured Success Stories -->
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="font-display text-3xl lg:text-4xl font-bold text-startup-gray mb-4">{{it.featured.title}}</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                {{it.featured.description}}
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Main Featured Story -->
+            <div class="lg:col-span-2">
+                <article class="story-card bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-500 border border-gray-100">
+                    <div class="relative">
+                        <img src="{{it.featured.main.image}}" 
+                             alt="{{it.featured.main.title}}" 
+                             class="w-full h-64 object-cover">
+                        <div class="absolute top-4 left-4">
+                            <span class="bg-startup-green text-white px-3 py-1 rounded-full text-sm font-medium">{{it.featured.main.badge}}</span>
+                        </div>
+                        <div class="absolute top-4 right-4">
+                            <span class="bg-white text-startup-gray px-3 py-1 rounded-full text-sm font-medium">{{it.featured.main.valuation}}</span>
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 right-4 text-white">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <span class="bg-{{it.featured.main.category.color}} px-2 py-1 rounded text-xs">{{it.featured.main.category.name}}</span>
+                                <span class="text-sm">{{it.featured.main.read_time}} min read</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <h3 class="font-display text-2xl font-bold text-startup-gray mb-3">
+                            {{it.featured.main.title}}
+                        </h3>
+                        <p class="text-gray-600 mb-6 text-lg leading-relaxed">
+                            {{it.featured.main.excerpt}}
+                        </p>
+                        
+                        <!-- Metrics Grid -->
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                            {{@each(it.featured.main.metrics)=>metric}}
+                            <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                <div class="font-bold text-startup-{{metric.color}}">{{metric.value}}</div>
+                                <div class="text-xs text-gray-600">{{metric.label}}</div>
+                            </div>
+                            {{/each}}
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <img src="{{it.featured.main.author.avatar}}" 
+                                     alt="{{it.featured.main.author.name}}" 
+                                     class="w-10 h-10 rounded-full">
+                                <div>
+                                    <div class="font-medium text-startup-gray">{{it.featured.main.author.name}}</div>
+                                    <div class="text-sm text-gray-500">{{it.featured.main.author.title}}</div>
+                                </div>
+                            </div>
+                            <a href="{{it.featured.main.url}}" class="bg-gradient-startup text-white px-6 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity">
+                                {{it.featured.main.cta_text}}
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Secondary Stories -->
+            <div class="space-y-8">
+                {{@each(it.featured.secondary)=>story}}
+                <article class="story-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-500 border border-gray-100">
+                    <div class="relative">
+                        <img src="{{story.image}}" 
+                             alt="{{story.title}}" 
+                             class="w-full h-40 object-cover">
+                        <div class="absolute top-3 left-3">
+                            <span class="bg-startup-{{story.badge.color}} text-white px-2 py-1 rounded-full text-xs">{{story.badge.text}}</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-display text-lg font-bold text-startup-gray mb-2">
+                            {{story.title}}
+                        </h3>
+                        <p class="text-gray-600 text-sm mb-4">
+                            {{story.excerpt}}
+                        </p>
+                        <div class="flex items-center justify-between text-sm">
+                            <span class="text-gray-500">{{story.read_time}} min read</span>
+                            <span class="text-startup-{{story.valuation.color}} font-medium">{{story.valuation.text}}</span>
+                        </div>
+                    </div>
+                </article>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</section> 

@@ -1,0 +1,55 @@
+{
+  "title": "{{post.title}} | StartupStory",
+  "description": "{{post.excerpt}}",
+  "keywords": ["{{post.category}}", "startup success", "business story", "entrepreneurship", "{{post.author}}", "{{post.funding_stage}}", "{{post.valuation}}"],
+  "canonical_url": "/posts/{{post.slug}}",
+  "og_type": "article",
+  "og_title": "{{post.title}} | StartupStory",
+  "og_description": "{{post.excerpt}}",
+  "og_image": "{{post.featured_image}}",
+  "twitter_card": "summary_large_image",
+  "twitter_title": "{{post.title}}",
+  "twitter_description": "{{post.excerpt}}",
+  "twitter_image": "{{post.featured_image}}",
+  "structured_data": {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{post.title}}",
+    "description": "{{post.excerpt}}",
+    "image": "{{post.featured_image}}",
+    "author": {
+      "@type": "Person",
+      "name": "{{post.author}}"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "StartupStory",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=200&h=80&fit=crop"
+      }
+    },
+    "datePublished": "{{post.published_at}}",
+    "dateModified": "{{post.published_at}}",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://startupstory.com/posts/{{post.slug}}"
+    },
+    "articleSection": "{{post.category}}",
+    "keywords": "{{post.tags}}",
+    "wordCount": "{{post.read_time * 200}}",
+    "about": {
+      "@type": "Organization",
+      "name": "{{post.title}}",
+      "description": "{{post.excerpt}}",
+      "foundingDate": "{{post.founded_year}}",
+      "location": "{{post.location}}",
+      "numberOfEmployees": "{{post.employees}}",
+      "funding": {
+        "@type": "MonetaryAmount",
+        "currency": "USD",
+        "value": "{{post.valuation}}"
+      }
+    }
+  }
+} 

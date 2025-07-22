@@ -1,0 +1,206 @@
+{
+  "site": {
+    "name": "StartupStory",
+    "tagline": "Where Entrepreneurs Share Their Journey",
+    "description": "Discover inspiring success stories, business insights, and lessons learned from successful entrepreneurs and startups",
+    "logo": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=200&h=80&fit=crop"
+  },
+  "posts": [
+    {
+      "id": 1,
+      "title": "From Zero to $10M ARR: The Shopify Success Story",
+      "slug": "shopify-zero-to-10m-arr-success-story",
+      "excerpt": "How three friends built one of the world's largest e-commerce platforms from a small idea to revolutionize online retail.",
+      "content": "In 2006, three friends - Tobias Lütke, Daniel Weinand, and Scott Lake - wanted to sell snowboards online but couldn't find suitable e-commerce software. Instead of giving up, they decided to build their own. This decision would eventually lead to the creation of Shopify, now valued at over $100 billion.",
+      "category": "E-commerce",
+      "author": "Sarah Mitchell",
+      "read_time": 12,
+      "funding_stage": "IPO",
+      "valuation": "$100B+",
+      "employees": "10,000+",
+      "founded_year": 2006,
+      "location": "Ottawa, Canada",
+      "featured_image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
+      "tags": ["E-commerce", "SaaS", "IPO", "Canadian Startup", "Platform"],
+      "metrics": {
+        "revenue": "$10M ARR",
+        "growth_rate": "100% YoY",
+        "market_size": "$24B",
+        "customer_count": "1M+"
+      },
+      "published_at": "2024-12-15T10:00:00Z"
+    },
+    {
+      "id": 2,
+      "title": "Airbnb's Pivot Strategy: How They Survived the 2008 Crisis",
+      "slug": "airbnb-pivot-strategy-2008-crisis-survival",
+      "excerpt": "The untold story of how Airbnb's founders used creative marketing and persistence to build a billion-dollar company during economic uncertainty.",
+      "content": "When Brian Chesky and Joe Gebbia couldn't afford rent in 2007, they decided to rent out air mattresses in their apartment during a design conference. This simple idea would eventually become Airbnb, but not without facing numerous challenges including the 2008 financial crisis.",
+      "category": "Travel Tech",
+      "author": "Michael Chen",
+      "read_time": 15,
+      "funding_stage": "IPO",
+      "valuation": "$75B",
+      "employees": "6,000+",
+      "founded_year": 2008,
+      "location": "San Francisco, USA",
+      "featured_image": "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&h=600&fit=crop",
+      "tags": ["Travel", "Marketplace", "IPO", "Sharing Economy", "Pivot"],
+      "metrics": {
+        "revenue": "$8.4B",
+        "growth_rate": "78% YoY",
+        "market_size": "$87B",
+        "customer_count": "4M hosts"
+      },
+      "published_at": "2024-12-14T14:30:00Z"
+    },
+    {
+      "id": 3,
+      "title": "Stripe's Developer-First Approach to Fintech Disruption",
+      "slug": "stripe-developer-first-fintech-disruption",
+      "excerpt": "How the Collison brothers built Stripe by focusing on developer experience and simplifying online payments for businesses worldwide.",
+      "content": "Patrick and John Collison were frustrated with the complexity of accepting online payments. In 2010, they founded Stripe with a mission to increase the GDP of the internet by making it easier for businesses to accept payments online.",
+      "category": "Fintech",
+      "author": "Emma Rodriguez",
+      "read_time": 10,
+      "funding_stage": "Private",
+      "valuation": "$95B",
+      "employees": "4,000+",
+      "founded_year": 2010,
+      "location": "San Francisco, USA",
+      "featured_image": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=600&fit=crop",
+      "tags": ["Fintech", "Payments", "Developer Tools", "B2B", "API"],
+      "metrics": {
+        "revenue": "$12B processed",
+        "growth_rate": "70% YoY",
+        "market_size": "$190B",
+        "customer_count": "100K+ businesses"
+      },
+      "published_at": "2024-12-13T09:15:00Z"
+    }
+  ],
+  "categories": [
+    {
+      "name": "E-commerce",
+      "description": "Online retail and marketplace success stories",
+      "icon": "shopping-cart",
+      "story_count": 24,
+      "color": "#3B82F6",
+      "avg_valuation": "$2.5B"
+    },
+    {
+      "name": "Fintech",
+      "description": "Financial technology and payment innovations",
+      "icon": "credit-card",
+      "story_count": 18,
+      "color": "#10B981",
+      "avg_valuation": "$3.2B"
+    },
+    {
+      "name": "SaaS",
+      "description": "Software as a Service business models",
+      "icon": "cloud",
+      "story_count": 32,
+      "color": "#8B5CF6",
+      "avg_valuation": "$1.8B"
+    },
+    {
+      "name": "Travel Tech",
+      "description": "Travel and hospitality technology platforms",
+      "icon": "airplane",
+      "story_count": 15,
+      "color": "#F59E0B",
+      "avg_valuation": "$4.1B"
+    },
+    {
+      "name": "HealthTech",
+      "description": "Healthcare technology and digital health",
+      "icon": "heart",
+      "story_count": 21,
+      "color": "#EF4444",
+      "avg_valuation": "$2.9B"
+    },
+    {
+      "name": "EdTech",
+      "description": "Educational technology and learning platforms",
+      "icon": "book",
+      "story_count": 19,
+      "color": "#6366F1",
+      "avg_valuation": "$1.5B"
+    }
+  ],
+  "funding_stages": [
+    {
+      "name": "Pre-Seed",
+      "range": "$50K - $500K",
+      "count": 45,
+      "description": "Early stage funding for MVP development"
+    },
+    {
+      "name": "Seed",
+      "range": "$500K - $2M",
+      "count": 38,
+      "description": "Initial funding for product-market fit"
+    },
+    {
+      "name": "Series A",
+      "range": "$2M - $15M",
+      "count": 29,
+      "description": "Scaling and growth funding"
+    },
+    {
+      "name": "Series B+",
+      "range": "$15M+",
+      "count": 22,
+      "description": "Expansion and market leadership"
+    },
+    {
+      "name": "IPO",
+      "range": "Public",
+      "count": 12,
+      "description": "Public companies and unicorns"
+    }
+  ],
+  "success_metrics": [
+    {
+      "metric": "Total Valuation",
+      "value": "$2.4T",
+      "description": "Combined value of featured startups"
+    },
+    {
+      "metric": "Jobs Created",
+      "value": "500K+",
+      "description": "Employment opportunities generated"
+    },
+    {
+      "metric": "Countries",
+      "value": "50+",
+      "description": "Global startup stories covered"
+    },
+    {
+      "metric": "Success Rate",
+      "value": "78%",
+      "description": "Startups achieving next funding round"
+    }
+  ],
+  "entrepreneurs": [
+    {
+      "name": "Sarah Mitchell",
+      "title": "Startup Journalist",
+      "expertise": "E-commerce, SaaS, Growth Strategies",
+      "experience": "10 years",
+      "stories_covered": 150,
+      "avatar": "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face",
+      "bio": "Former tech executive turned startup journalist, specializing in e-commerce and SaaS success stories."
+    },
+    {
+      "name": "Michael Chen",
+      "title": "Business Analyst",
+      "expertise": "Travel Tech, Marketplaces, International Expansion",
+      "experience": "8 years",
+      "stories_covered": 120,
+      "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
+      "bio": "Investment analyst with deep expertise in travel technology and marketplace business models."
+    }
+  ]
+} 

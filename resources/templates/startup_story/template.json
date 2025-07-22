@@ -1,0 +1,10 @@
+
+{
+  "title" : "StartupStory",
+  "description" : "Startup blog with business insights and success story showcase",
+  "template_id" : "startup_story",
+  "creator_name" : "Maulana Shalihin",
+  "creator_website" : "https://tapsite.ai",
+  "version" : "1.0.0",
+  "thumbnail" : "/templates/startup_story/thumbnail.webp"
+}

@@ -1,0 +1,428 @@
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'startup-purple': '#6366F1',
+                        'startup-violet': '#8B5CF6',
+                        'startup-green': '#10B981',
+                        'startup-blue': '#3B82F6',
+                        'startup-gray': '#1E293B'
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'display': ['Poppins', 'system-ui', 'sans-serif']
+                    },
+                    backgroundImage: {
+                        'gradient-startup': 'linear-gradient(135deg, #667EEA 0%, #764BA2 100%)',
+                        'gradient-success': 'linear-gradient(135deg, #10B981 0%, #059669 100%)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+        .story-card:hover { transform: translateY(-8px) scale(1.02); }
+        .metric-card:hover { transform: translateY(-4px); }
+        .pitch-section { background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%); }
+    </style>
+
+    <div class="bg-gray-50 min-h-screen font-sans text-startup-gray">
+        <!-- Navigation -->
+        <nav class="bg-white shadow-lg border-b border-gray-100 sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 bg-gradient-startup rounded-xl flex items-center justify-center">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                            </svg>
+                        </div>
+                        <span class="font-display text-xl font-bold bg-gradient-startup bg-clip-text text-transparent">StartupStory</span>
+                    </div>
+                    
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a href="#" class="text-startup-purple font-medium border-b-2 border-startup-purple pb-1">Stories</a>
+                        <a href="#" class="text-gray-600 hover:text-startup-purple transition-colors font-medium">Categories</a>
+                        <a href="#" class="text-gray-600 hover:text-startup-purple transition-colors font-medium">Insights</a>
+                        <a href="#" class="text-gray-600 hover:text-startup-purple transition-colors font-medium">Resources</a>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4">
+                        <button class="text-gray-600 hover:text-startup-purple transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                            </svg>
+                        </button>
+                        <button class="bg-gradient-startup text-white px-4 py-2 rounded-lg font-medium hover:opacity-90 transition-opacity">
+                            Submit Story
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section - Pitch Deck Style -->
+        <section class="bg-gradient-startup py-20 text-white overflow-hidden relative">
+            <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div class="inline-flex items-center bg-white bg-opacity-20 rounded-full px-4 py-2 mb-6">
+                            <span class="text-sm font-medium">🚀 Featured: 500+ Success Stories</span>
+                        </div>
+                        <h1 class="font-display text-4xl lg:text-6xl font-bold mb-6 leading-tight">
+                            Where Entrepreneurs<br/>
+                            <span class="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">Share Their Journey</span>
+                        </h1>
+                        <p class="text-xl text-purple-100 mb-8 leading-relaxed">
+                            Discover inspiring success stories, business insights, and lessons learned from successful entrepreneurs and startups around the world.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <button class="bg-white text-startup-purple px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-colors">
+                                Explore Stories
+                            </button>
+                            <button class="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-startup-purple transition-colors">
+                                Share Your Story
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="relative">
+                        <!-- Floating Metrics Cards -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-6 transform rotate-3 hover:rotate-0 transition-transform">
+                                <div class="text-3xl font-bold text-yellow-400">$2.4T</div>
+                                <div class="text-purple-200">Total Valuation</div>
+                            </div>
+                            <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-6 transform -rotate-3 hover:rotate-0 transition-transform mt-8">
+                                <div class="text-3xl font-bold text-green-400">500K+</div>
+                                <div class="text-purple-200">Jobs Created</div>
+                            </div>
+                            <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-6 transform rotate-2 hover:rotate-0 transition-transform -mt-4">
+                                <div class="text-3xl font-bold text-blue-400">50+</div>
+                                <div class="text-purple-200">Countries</div>
+                            </div>
+                            <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-2xl p-6 transform -rotate-2 hover:rotate-0 transition-transform">
+                                <div class="text-3xl font-bold text-orange-400">78%</div>
+                                <div class="text-purple-200">Success Rate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Success Stories -->
+        <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="font-display text-3xl lg:text-4xl font-bold text-startup-gray mb-4">Featured Success Stories</h2>
+                    <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                        Learn from entrepreneurs who turned their ideas into billion-dollar companies
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Story 1 - Large Featured -->
+                    <div class="lg:col-span-2">
+                        <article class="story-card bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-500 border border-gray-100">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=400&fit=crop" 
+                                     alt="Shopify Success Story" 
+                                     class="w-full h-64 object-cover">
+                                <div class="absolute top-4 left-4">
+                                    <span class="bg-startup-green text-white px-3 py-1 rounded-full text-sm font-medium">IPO Success</span>
+                                </div>
+                                <div class="absolute top-4 right-4">
+                                    <span class="bg-white text-startup-gray px-3 py-1 rounded-full text-sm font-medium">$100B+ Valuation</span>
+                                </div>
+                                <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                                <div class="absolute bottom-4 left-4 right-4 text-white">
+                                    <div class="flex items-center space-x-2 mb-2">
+                                        <span class="bg-blue-500 px-2 py-1 rounded text-xs">E-commerce</span>
+                                        <span class="text-sm">12 min read</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-8">
+                                <h3 class="font-display text-2xl font-bold text-startup-gray mb-3">
+                                    From Zero to $10M ARR: The Shopify Success Story
+                                </h3>
+                                <p class="text-gray-600 mb-6 text-lg leading-relaxed">
+                                    How three friends built one of the world's largest e-commerce platforms from a small idea to revolutionize online retail.
+                                </p>
+                                
+                                <!-- Metrics Grid -->
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                                    <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                        <div class="font-bold text-startup-purple">2006</div>
+                                        <div class="text-xs text-gray-600">Founded</div>
+                                    </div>
+                                    <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                        <div class="font-bold text-startup-green">$10M</div>
+                                        <div class="text-xs text-gray-600">ARR</div>
+                                    </div>
+                                    <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                        <div class="font-bold text-startup-violet">1M+</div>
+                                        <div class="text-xs text-gray-600">Customers</div>
+                                    </div>
+                                    <div class="text-center p-3 bg-gray-50 rounded-lg">
+                                        <div class="font-bold text-startup-blue">10K+</div>
+                                        <div class="text-xs text-gray-600">Employees</div>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-3">
+                                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=40&h=40&fit=crop&crop=face" 
+                                             alt="Author" 
+                                             class="w-10 h-10 rounded-full">
+                                        <div>
+                                            <div class="font-medium text-startup-gray">Sarah Mitchell</div>
+                                            <div class="text-sm text-gray-500">Startup Journalist</div>
+                                        </div>
+                                    </div>
+                                    <button class="bg-gradient-startup text-white px-6 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity">
+                                        Read Story
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Story 2 & 3 - Smaller Cards -->
+                    <div class="space-y-8">
+                        <article class="story-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-500 border border-gray-100">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=200&fit=crop" 
+                                     alt="Airbnb Story" 
+                                     class="w-full h-40 object-cover">
+                                <div class="absolute top-3 left-3">
+                                    <span class="bg-startup-green text-white px-2 py-1 rounded-full text-xs">IPO</span>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="font-display text-lg font-bold text-startup-gray mb-2">
+                                    Airbnb's Pivot Strategy
+                                </h3>
+                                <p class="text-gray-600 text-sm mb-4">
+                                    How they survived the 2008 crisis and built a billion-dollar company.
+                                </p>
+                                <div class="flex items-center justify-between text-sm">
+                                    <span class="text-gray-500">15 min read</span>
+                                    <span class="text-startup-green font-medium">$75B valuation</span>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="story-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-500 border border-gray-100">
+                            <div class="relative">
+                                <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=200&fit=crop" 
+                                     alt="Stripe Story" 
+                                     class="w-full h-40 object-cover">
+                                <div class="absolute top-3 left-3">
+                                    <span class="bg-startup-violet text-white px-2 py-1 rounded-full text-xs">Private</span>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="font-display text-lg font-bold text-startup-gray mb-2">
+                                    Stripe's Developer-First Approach
+                                </h3>
+                                <p class="text-gray-600 text-sm mb-4">
+                                    How the Collison brothers built a fintech empire by focusing on developers.
+                                </p>
+                                <div class="flex items-center justify-between text-sm">
+                                    <span class="text-gray-500">10 min read</span>
+                                    <span class="text-startup-violet font-medium">$95B valuation</span>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section class="py-16 pitch-section">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="font-display text-3xl lg:text-4xl font-bold text-startup-gray mb-4">Explore by Industry</h2>
+                    <p class="text-xl text-gray-600">
+                        Discover success stories across different industries and business models
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="metric-card bg-white rounded-2xl p-8 shadow-lg transition-all duration-300 border border-gray-100 hover:shadow-xl">
+                        <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8 text-startup-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-display text-xl font-bold text-startup-gray mb-2">E-commerce</h3>
+                        <p class="text-gray-600 mb-4">Online retail and marketplace success stories</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-startup-blue font-semibold">24 stories</span>
+                            <span class="text-gray-500 text-sm">Avg $2.5B valuation</span>
+                        </div>
+                    </div>
+
+                    <div class="metric-card bg-white rounded-2xl p-8 shadow-lg transition-all duration-300 border border-gray-100 hover:shadow-xl">
+                        <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8 text-startup-green" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-display text-xl font-bold text-startup-gray mb-2">Fintech</h3>
+                        <p class="text-gray-600 mb-4">Financial technology and payment innovations</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-startup-green font-semibold">18 stories</span>
+                            <span class="text-gray-500 text-sm">Avg $3.2B valuation</span>
+                        </div>
+                    </div>
+
+                    <div class="metric-card bg-white rounded-2xl p-8 shadow-lg transition-all duration-300 border border-gray-100 hover:shadow-xl">
+                        <div class="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8 text-startup-violet" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"/>
+                            </svg>
+                        </div>
+                        <h3 class="font-display text-xl font-bold text-startup-gray mb-2">SaaS</h3>
+                        <p class="text-gray-600 mb-4">Software as a Service business models</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-startup-violet font-semibold">32 stories</span>
+                            <span class="text-gray-500 text-sm">Avg $1.8B valuation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Funding Stages -->
+        <section class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="font-display text-3xl lg:text-4xl font-bold text-startup-gray mb-4">Success at Every Stage</h2>
+                    <p class="text-xl text-gray-600">
+                        From pre-seed to IPO, discover stories from every funding stage
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+                    <div class="text-center p-6 bg-gray-50 rounded-2xl hover:bg-gray-100 transition-colors">
+                        <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-white font-bold">PS</span>
+                        </div>
+                        <h3 class="font-semibold text-startup-gray mb-2">Pre-Seed</h3>
+                        <p class="text-sm text-gray-600 mb-2">$50K - $500K</p>
+                        <p class="text-startup-purple font-medium">45 stories</p>
+                    </div>
+
+                    <div class="text-center p-6 bg-yellow-50 rounded-2xl hover:bg-yellow-100 transition-colors">
+                        <div class="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-white font-bold">S</span>
+                        </div>
+                        <h3 class="font-semibold text-startup-gray mb-2">Seed</h3>
+                        <p class="text-sm text-gray-600 mb-2">$500K - $2M</p>
+                        <p class="text-yellow-600 font-medium">38 stories</p>
+                    </div>
+
+                    <div class="text-center p-6 bg-blue-50 rounded-2xl hover:bg-blue-100 transition-colors">
+                        <div class="w-12 h-12 bg-startup-blue rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-white font-bold">A</span>
+                        </div>
+                        <h3 class="font-semibold text-startup-gray mb-2">Series A</h3>
+                        <p class="text-sm text-gray-600 mb-2">$2M - $15M</p>
+                        <p class="text-startup-blue font-medium">29 stories</p>
+                    </div>
+
+                    <div class="text-center p-6 bg-purple-50 rounded-2xl hover:bg-purple-100 transition-colors">
+                        <div class="w-12 h-12 bg-startup-violet rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-white font-bold">B+</span>
+                        </div>
+                        <h3 class="font-semibold text-startup-gray mb-2">Series B+</h3>
+                        <p class="text-sm text-gray-600 mb-2">$15M+</p>
+                        <p class="text-startup-violet font-medium">22 stories</p>
+                    </div>
+
+                    <div class="text-center p-6 bg-green-50 rounded-2xl hover:bg-green-100 transition-colors">
+                        <div class="w-12 h-12 bg-startup-green rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="text-white font-bold">IPO</span>
+                        </div>
+                        <h3 class="font-semibold text-startup-gray mb-2">IPO</h3>
+                        <p class="text-sm text-gray-600 mb-2">Public</p>
+                        <p class="text-startup-green font-medium">12 stories</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter CTA -->
+        <section class="py-16 bg-gradient-startup">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="font-display text-3xl lg:text-4xl font-bold text-white mb-4">
+                    Stay Inspired
+                </h2>
+                <p class="text-xl text-purple-100 mb-8">
+                    Get weekly insights and success stories delivered to your inbox
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                    <input type="email" 
+                           placeholder="Enter your email" 
+                           class="flex-1 px-6 py-4 rounded-xl border-0 focus:ring-4 focus:ring-white focus:ring-opacity-30 text-startup-gray">
+                    <button class="bg-white text-startup-purple px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-colors">
+                        Subscribe
+                    </button>
+                </div>
+                <p class="text-purple-200 text-sm mt-4">Join 50,000+ entrepreneurs getting weekly insights</p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-startup-gray py-12 text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                    <div class="col-span-1 md:col-span-2">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="w-10 h-10 bg-gradient-startup rounded-xl flex items-center justify-center">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                                </svg>
+                            </div>
+                            <span class="font-display text-xl font-bold">StartupStory</span>
+                        </div>
+                        <p class="text-gray-300 mb-4 max-w-md">
+                            Inspiring entrepreneurs worldwide with authentic success stories, business insights, and lessons from the startup journey.
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-display text-lg font-semibold mb-4">Stories</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">E-commerce</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Fintech</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">SaaS</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Travel Tech</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-display text-lg font-semibold mb-4">Resources</h3>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Submit Story</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Insights</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">Newsletter</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition-colors">About</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="border-t border-gray-700 mt-8 pt-8 text-center">
+                    <p class="text-gray-400">&copy; 2024 StartupStory. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div> 

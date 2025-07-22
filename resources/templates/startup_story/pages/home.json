@@ -1,0 +1,100 @@
+{
+  "title": "StartupStory - Where Entrepreneurs Share Their Journey",
+  "description": "Discover inspiring success stories, business insights, and lessons learned from successful entrepreneurs and startups around the world",
+  "sections": [
+    {
+      "title": "styles",
+      "id": "styles",
+      "type": "template",
+      "resetable": true
+    },
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "site.name",
+        "site.logo",
+        "navigation",
+        "search_enabled",
+        "cta_button"
+      ]
+    },
+    {
+      "title": "hero",
+      "id": "hero",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "hero"
+      ]
+    },
+    {
+      "title": "featured stories",
+      "id": "featured_stories",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "featured"
+      ]
+    },
+    {
+      "title": "startup categories",
+      "id": "startup_categories",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "categories"
+      ]
+    },
+    {
+      "title": "success metrics",
+      "id": "success_metrics",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "metrics"
+      ]
+    },
+    {
+      "title": "founder insights",
+      "id": "founder_insights",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "insights"
+      ]
+    },
+    {
+      "title": "resources",
+      "id": "resources",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "resources"
+      ]
+    },
+    {
+      "title": "newsletter",
+      "id": "newsletter",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "newsletter"
+      ]
+    },
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "site.name",
+        "site.description",
+        "navigation",
+        "social_links"
+      ]
+    }
+  ]
+} 
