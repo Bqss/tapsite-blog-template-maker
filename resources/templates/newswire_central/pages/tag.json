@@ -12,63 +12,11 @@
       ]
     },
     {
-      "title": "breaking_news_ticker",
-      "id": "breaking_news_ticker",
-      "type": "template",
-      "resetable": true,
-      "data": [
-        "breaking_news"
-      ]
-    },
-    {
-      "title": "tag_header",
-      "id": "tag_header",
+      "title": "tag_result",
+      "id": "tag_result",
       "type": "html",
       "resetable": true,
-      "data": [
-        "tag",
-        "trending_topics"
-      ]
-    },
-    {
-      "title": "tag_trending_highlight",
-      "id": "tag_trending_highlight",
-      "type": "html",
-      "resetable": true,
-      "data": [
-        "trending_topics",
-        "tag"
-      ]
-    },
-    {
-      "title": "tag_stories_grid",
-      "id": "tag_stories_grid",
-      "type": "html",
-      "resetable": true,
-      "data": [
-        "posts",
-        "tag"
-      ]
-    },
-    {
-      "title": "related_tags",
-      "id": "related_tags",
-      "type": "html",
-      "resetable": true,
-      "data": [
-        "trending_topics",
-        "news_categories"
-      ]
-    },
-    {
-      "title": "tag_news_sidebar",
-      "id": "tag_news_sidebar",
-      "type": "html",
-      "resetable": true,
-      "data": [
-        "featured_stories",
-        "weather_widget"
-      ]
+      "data": []
     },
     {
       "title": "footer",

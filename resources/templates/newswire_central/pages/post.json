@@ -1,8 +1,31 @@
 {
   "sections": [
-    {"title":"styles","id":"styles","type":"template","resetable":true},
-    {"title":"navigation","id":"navigation","type":"template","resetable":true,"data":["site","navigation","subscribe_button","search_placeholder"]},
-    {"title":"post_content","id":"post_content","type":"template","resetable":true,"data":["post","author"]},
-    {"title":"footer","id":"footer","type":"template","resetable":true,"data":["site","navigation","social_links","footer_columns","current_year"]}
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": ["site", "navigation", "subscribe_button", "search_placeholder"]
+    },
+    {
+      "title": "post_content",
+      "id": "post_content",
+      "type": "template",
+      "resetable": true,
+      "data": ["post", "author"]
+    },
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "site",
+        "navigation",
+        "social_links",
+        "footer_columns",
+        "current_year"
+      ]
+    }
   ]
-} 
+}

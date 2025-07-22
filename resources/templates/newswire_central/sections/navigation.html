@@ -1,45 +1,41 @@
-<!-- Navigation -->
-<nav class="bg-white shadow border-b border-news-gray sticky top-0 z-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between items-center h-16">
-      <!-- Logo / Brand -->
-      <a href="/news" class="flex items-center space-x-2">
-        {{@if(it.site.logo)}}
-        <img src="{{it.site.logo}}" alt="{{it.site.name}}" class="h-8 w-8 object-cover rounded">
-        {{/if}}
-        <span class="text-2xl font-bold gradient-text font-serif">{{it.site.name}}</span>
-      </a>
+    <!-- Navigation -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center space-x-4">
+                    <img src="https://tapsite.ai/favicon-96x96.png" alt="NewsWire Central" class="h-8 w-8">
+                    <div>
+                        <h1 class="text-xl font-bold text-red-600">NewsWire Central</h1>
+                        <p class="text-xs text-gray-500">Breaking News & In-Depth Reporting</p>
+                    </div>
+                </div>
+                
+                <!-- Navigation Menu -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="/" class="text-gray-900 hover:text-red-600 font-medium transition-colors">Home</a>
+                    <a href="/category/Technology" class="text-gray-700 hover:text-red-600 transition-colors">Technology</a>
+                    <a href="/category/Business" class="text-gray-700 hover:text-red-600 transition-colors">Business</a>
+                    <a href="/category/Design" class="text-gray-700 hover:text-red-600 transition-colors">Design</a>
+                    <a href="/category/Parenting" class="text-gray-700 hover:text-red-600 transition-colors">Parenting</a>
+                </nav>
 
-      <!-- Desktop Navigation -->
-      <div class="hidden md:flex items-center space-x-6">
-        {{@each(it.navigation) => item}}
-        <a href="{{item.url}}" class="text-gray-700 hover:text-news-blue transition-colors font-medium">{{item.name}}</a>
-        {{/each}}
-      </div>
-
-      <!-- Actions -->
-      <div class="flex items-center space-x-4">
-        <div class="relative hidden sm:block">
-          <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-          <input type="text" placeholder="{{it.search_placeholder}}" class="pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-news-blue focus:border-transparent transition-all w-64" />
+                <!-- Search & Mobile Menu -->
+                <div class="flex items-center space-x-4">
+                    <div class="hidden md:flex items-center">
+                        <input type="text" placeholder="Search news..." class="px-3 py-1 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-red-500">
+                        <button class="ml-2 p-1 text-gray-500 hover:text-red-600">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <button class="md:hidden p-2 text-gray-500 hover:text-red-600">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
         </div>
-        <button class="bg-news-red hover:bg-red-700 text-white px-4 py-2 rounded-full font-semibold transition-colors">{{it.subscribe_button}}</button>
-        <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-600 hover:text-news-blue transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="4" y1="6" x2="20" y2="6" /><line x1="4" y1="12" x2="20" y2="12" /><line x1="4" y1="18" x2="20" y2="18" /></svg></button>
-      </div>
-    </div>
-    <!-- Mobile Nav -->
-    <div id="mobile-menu" class="md:hidden border-t border-news-gray py-4 space-y-4 hidden">
-      {{@each(it.navigation) => item}}
-      <a href="{{item.url}}" class="block text-gray-700 hover:text-news-blue font-medium py-2">{{item.name}}</a>
-      {{/each}}
-      <div class="px-2"><input type="text" placeholder="{{it.search_placeholder}}" class="w-full bg-gray-50 border border-gray-300 text-gray-700 placeholder-gray-500 px-4 py-2 rounded-full text-sm focus:outline-none focus:ring-2 focus:ring-news-blue"></div>
-    </div>
-  </div>
-</nav>
-<script>
-  document.addEventListener('DOMContentLoaded',()=>{
-    const btn=document.getElementById('mobile-menu-btn');
-    const menu=document.getElementById('mobile-menu');
-    if(btn && menu){btn.addEventListener('click',()=>menu.classList.toggle('hidden'));}
-  });
-</script> 
+    </header>

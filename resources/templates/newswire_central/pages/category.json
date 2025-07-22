@@ -5,70 +5,21 @@
       "id": "navigation",
       "type": "template",
       "resetable": true,
-      "data": [
-        "blog_title",
-        "blog_logo",
-        "navigation"
-      ]
+      "data": ["blog_title", "blog_logo", "navigation"]
     },
     {
-      "title": "breaking_news_ticker",
-      "id": "breaking_news_ticker",
-      "type": "template",
-      "resetable": true,
-      "data": [
-        "breaking_news"
-      ]
-    },
-    {
-      "title": "category_header",
-      "id": "category_header",
+      "title": "category_result",
+      "id": "category_result",
       "type": "html",
       "resetable": true,
-      "data": [
-        "category",
-        "news_categories"
-      ]
-    },
-    {
-      "title": "headline_hierarchy",
-      "id": "headline_hierarchy",
-      "type": "html",
-      "resetable": true,
-      "data": [
-        "posts",
-        "category"
-      ]
-    },
-    {
-      "title": "news_columns",
-      "id": "news_columns",
-      "type": "html",
-      "resetable": true,
-      "data": [
-        "posts",
-        "featured_stories"
-      ]
-    },
-    {
-      "title": "category_trending",
-      "id": "category_trending",
-      "type": "html",
-      "resetable": true,
-      "data": [
-        "trending_topics",
-        "category"
-      ]
+      "data": []
     },
     {
       "title": "footer",
       "id": "footer",
       "type": "html",
       "resetable": true,
-      "data": [
-        "social_media",
-        "author"
-      ]
+      "data": ["social_media", "author"]
     }
   ]
-} 
+}
