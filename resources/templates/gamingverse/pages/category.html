@@ -1,0 +1,607 @@
+<!-- Custom Gaming Styles -->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+  
+  :root {
+    --gaming-cyan: #00ffff;
+    --gaming-purple: #8b5cf6;
+    --gaming-pink: #ec4899;
+    --gaming-green: #10b981;
+    --gaming-yellow: #f59e0b;
+    --gaming-red: #ef4444;
+    --gaming-black: #000000;
+    --gaming-gray-900: #111827;
+    --gaming-gray-800: #1f2937;
+    --gaming-gray-700: #374151;
+    --gaming-gray-600: #4b5563;
+    --gaming-gray-400: #9ca3af;
+    --gaming-gray-300: #d1d5db;
+  }
+  
+  .font-gaming { font-family: 'Orbitron', monospace; }
+  .font-gaming-body { font-family: 'Rajdhani', sans-serif; }
+  .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .line-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+</style>
+
+<!-- Navigation -->
+<nav class="bg-black border-b border-cyan-500/30 sticky top-0 z-50 backdrop-blur-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <div class="flex items-center space-x-8">
+        <div class="flex items-center space-x-2">
+          <div class="w-10 h-10 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-lg flex items-center justify-center">
+            <span class="text-white text-2xl">🎮</span>
+          </div>
+          <div class="text-2xl font-bold text-transparent bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text font-gaming">
+            GamingVerse
+          </div>
+        </div>
+        <div class="hidden md:flex space-x-6">
+          <a href="/posts" class="text-gray-300 hover:text-cyan-400 transition-colors flex items-center space-x-1">
+            <span>📰</span> <span>All Posts</span>
+          </a>
+          <a href="/category/game-reviews" class="text-cyan-400 border-b-2 border-cyan-400 flex items-center space-x-1 pb-1">
+            <span>🎯</span> <span>Reviews</span>
+          </a>
+          <a href="/category/esports" class="text-gray-300 hover:text-cyan-400 transition-colors flex items-center space-x-1">
+            <span>🏆</span> <span>Esports</span>
+          </a>
+          <a href="/category/gaming-news" class="text-gray-300 hover:text-cyan-400 transition-colors flex items-center space-x-1">
+            <span>📢</span> <span>Gaming News</span>
+          </a>
+          <a href="/category/indie-games" class="text-gray-300 hover:text-cyan-400 transition-colors flex items-center space-x-1">
+            <span>🎲</span> <span>Indie Games</span>
+          </a>
+          <a href="/category/community" class="text-gray-300 hover:text-cyan-400 transition-colors flex items-center space-x-1">
+            <span>👥</span> <span>Community</span>
+          </a>
+        </div>
+      </div>
+      <div class="flex items-center space-x-4">
+        <div class="relative">
+          <input type="text" placeholder="Search games..." 
+                 class="bg-gray-800 text-gray-300 placeholder-gray-500 px-4 py-2 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-cyan-400 w-48 border border-gray-700">
+          <div class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">🔍</div>
+        </div>
+        <button class="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white px-4 py-2 rounded-lg transition-colors">
+          Join Guild
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Breadcrumb -->
+<nav class="bg-gray-900 border-b border-gray-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+    <div class="flex items-center space-x-2 text-sm">
+      <a href="/" class="text-gray-400 hover:text-cyan-400 transition-colors">Home</a>
+      <span class="text-gray-600">›</span>
+      <a href="/posts" class="text-gray-400 hover:text-cyan-400 transition-colors">All Posts</a>
+      <span class="text-gray-600">›</span>
+      <span class="text-white">Game Reviews</span>
+    </div>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<main class="bg-black min-h-screen">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <!-- Category Header -->
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center space-x-2 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-full px-6 py-2 mb-6">
+        <div class="w-2 h-2 bg-cyan-500 rounded-full animate-pulse"></div>
+        <span class="text-cyan-400 text-sm font-mono">GAME REVIEWS</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 font-gaming">
+        <span class="text-cyan-400">🎯</span>
+        <span class="text-transparent bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text"> Game</span>
+        <span class="text-white"> Reviews</span>
+      </h1>
+      <p class="text-gray-400 text-lg max-w-2xl mx-auto font-gaming-body">
+        Review mendalam dan objektif dari game-game terbaru dan terpopuler. Temukan game impian Anda dengan analisis yang komprehensif.
+      </p>
+      
+      <!-- Category Stats -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 max-w-2xl mx-auto">
+        <div class="bg-gray-900/50 rounded-xl p-4 border border-cyan-500/20">
+          <div class="text-2xl font-bold text-cyan-400 font-gaming">150+</div>
+          <div class="text-sm text-gray-400 font-gaming-body">Total Reviews</div>
+        </div>
+        <div class="bg-gray-900/50 rounded-xl p-4 border border-purple-500/20">
+          <div class="text-2xl font-bold text-purple-400 font-gaming">9.2</div>
+          <div class="text-sm text-gray-400 font-gaming-body">Average Views</div>
+        </div>
+        <div class="bg-gray-900/50 rounded-xl p-4 border border-pink-500/20">
+          <div class="text-2xl font-bold text-pink-400 font-gaming">50K+</div>
+          <div class="text-sm text-gray-400 font-gaming-body">Total Views</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filter & Sort -->
+    <div class="bg-gray-900/50 rounded-xl p-6 border border-gray-800 mb-12">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
+        <div class="flex flex-wrap gap-2">
+          <button class="bg-cyan-500/20 text-cyan-400 px-4 py-2 rounded-lg border border-cyan-500/30 hover:bg-cyan-500/30 transition-colors font-gaming">
+            All Reviews
+          </button>
+          <button class="bg-gray-800 text-gray-300 px-4 py-2 rounded-lg border border-gray-700 hover:border-cyan-500/30 transition-colors font-gaming">
+            RPG
+          </button>
+          <button class="bg-gray-800 text-gray-300 px-4 py-2 rounded-lg border border-gray-700 hover:border-cyan-500/30 transition-colors font-gaming">
+            Action
+          </button>
+          <button class="bg-gray-800 text-gray-300 px-4 py-2 rounded-lg border border-gray-700 hover:border-cyan-500/30 transition-colors font-gaming">
+            Indie
+          </button>
+          <button class="bg-gray-800 text-gray-300 px-4 py-2 rounded-lg border border-gray-700 hover:border-cyan-500/30 transition-colors font-gaming">
+            Strategy
+          </button>
+        </div>
+        <div class="flex items-center space-x-4">
+          <select class="bg-gray-800 text-gray-300 px-4 py-2 rounded-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-cyan-400 font-gaming-body">
+            <option>Highest Rated</option>
+            <option>Latest Reviews</option>
+            <option>Most Popular</option>
+            <option>Most Viewed</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Featured Review -->
+    <div class="bg-gradient-to-r from-cyan-500/10 to-purple-500/10 rounded-2xl p-8 border border-cyan-500/20 mb-12">
+      <div class="grid lg:grid-cols-2 gap-8 items-center">
+        <div>
+          <div class="flex items-center space-x-4 mb-4">
+            <div class="bg-gradient-to-r from-cyan-500/80 to-purple-500/80 backdrop-blur-sm rounded-lg px-4 py-2">
+              <span class="text-white text-sm font-semibold">FEATURED REVIEW</span>
+            </div>
+            <div class="bg-black/70 backdrop-blur-sm rounded-lg px-4 py-2 flex items-center space-x-2">
+              <span class="text-cyan-400 text-lg">👁️</span>
+              <span class="text-white text-lg font-bold">8.5K</span>
+            </div>
+          </div>
+          <h2 class="text-3xl font-bold text-white mb-4 font-gaming">
+            Baldur's Gate 3: Masterpiece RPG yang Mengubah Standar Industri
+          </h2>
+          <p class="text-gray-300 mb-6 font-gaming-body">
+            Analisis mendalam tentang game RPG yang telah mengubah standar industri gaming dengan storytelling yang luar biasa, character development yang mendalam, dan gameplay yang inovatif.
+          </p>
+          <div class="flex items-center space-x-6 mb-6">
+            <div class="flex items-center space-x-2">
+              <div class="w-10 h-10 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full flex items-center justify-center">
+                <span class="text-white font-bold">GV</span>
+              </div>
+              <div>
+                <div class="text-white font-semibold">GamingVerse</div>
+                <div class="text-gray-400 text-sm">15 Nov 2024</div>
+              </div>
+            </div>
+            <div class="flex items-center space-x-4 text-gray-400">
+              <span>15 min read</span>
+              <span>8.5K views</span>
+            </div>
+          </div>
+          <a href="/posts/baldurs-gate-3-review" class="inline-flex items-center bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white px-6 py-3 rounded-lg font-semibold transition-all font-gaming">
+            <span>🎮</span>
+            <span class="ml-2">Read Full Review</span>
+          </a>
+        </div>
+        <div class="relative">
+          <div class="aspect-video bg-gradient-to-br from-cyan-500/20 to-purple-500/20 rounded-2xl backdrop-blur-sm border border-cyan-500/30 flex items-center justify-center">
+            <div class="text-center">
+              <div class="text-6xl mb-4">🎲</div>
+              <div class="text-cyan-400 font-bold font-gaming">RPG MASTERY</div>
+              <div class="text-gray-400 font-gaming-body">Epic Adventure Awaits</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reviews Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+      <!-- Review 1 -->
+      <article class="bg-gray-900/50 rounded-xl border border-cyan-500/20 overflow-hidden hover:border-cyan-500/40 transition-all duration-300 group">
+        <div class="relative overflow-hidden">
+          <div class="w-full h-48 bg-gradient-to-br from-purple-500/20 to-pink-500/20 flex items-center justify-center">
+            <span class="text-6xl">🕷️</span>
+          </div>
+          <div class="absolute top-4 left-4 bg-gradient-to-r from-purple-500/80 to-pink-500/80 backdrop-blur-sm rounded-lg px-3 py-1">
+            <span class="text-white text-xs font-semibold">Action Adventure</span>
+          </div>
+          <div class="absolute top-4 right-4 bg-black/70 backdrop-blur-sm rounded-lg px-3 py-1 flex items-center space-x-1">
+            <span class="text-cyan-400 text-sm">👁️</span>
+            <span class="text-white text-sm font-bold">8.8K</span>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <h3 class="text-xl font-bold text-white group-hover:text-purple-400 transition-colors line-clamp-2 font-gaming">
+            Spider-Man 2 PS5: Web-Slinging Perfection
+          </h3>
+          <p class="text-gray-400 text-sm line-clamp-3 font-gaming-body">
+            Marvel's Spider-Man 2 menghadirkan pengalaman dual protagonists dengan enhanced combat dan storytelling yang gripping di New York City.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-gray-800 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-700">#SpiderMan</span>
+            <span class="bg-gray-800 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-700">#PS5</span>
+            <span class="bg-gray-800 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-700">#Action</span>
+          </div>
+          <div class="flex items-center justify-between pt-4 border-t border-gray-800">
+            <div class="flex items-center space-x-3">
+              <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+                <span class="text-white text-xs font-bold">GR</span>
+              </div>
+              <div class="space-y-1">
+                <div class="text-white text-sm font-semibold">Game Reviewer</div>
+                <div class="text-gray-400 text-xs">14 Nov 2024</div>
+              </div>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div class="flex items-center space-x-1 text-gray-400">
+                <span class="text-xs">👁️</span>
+                <span class="text-xs">9.4K</span>
+              </div>
+              <div class="flex items-center space-x-1 text-gray-400">
+                <span class="text-xs">⏱️</span>
+                <span class="text-xs">12 min</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Review 2 -->
+      <article class="bg-gray-900/50 rounded-xl border border-green-500/20 overflow-hidden hover:border-green-500/40 transition-all duration-300 group">
+        <div class="relative overflow-hidden">
+          <div class="w-full h-48 bg-gradient-to-br from-green-500/20 to-emerald-500/20 flex items-center justify-center">
+            <span class="text-6xl">🍄</span>
+          </div>
+          <div class="absolute top-4 left-4 bg-gradient-to-r from-green-500/80 to-emerald-500/80 backdrop-blur-sm rounded-lg px-3 py-1">
+            <span class="text-white text-xs font-semibold">Platformer</span>
+          </div>
+          <div class="absolute top-4 right-4 bg-black/70 backdrop-blur-sm rounded-lg px-3 py-1 flex items-center space-x-1">
+            <span class="text-cyan-400 text-sm">👁️</span>
+            <span class="text-white text-sm font-bold">9.2K</span>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <h3 class="text-xl font-bold text-white group-hover:text-green-400 transition-colors line-clamp-2 font-gaming">
+            Super Mario Bros. Wonder: Inovasi Segar untuk Franchise Klasik
+          </h3>
+          <p class="text-gray-400 text-sm line-clamp-3 font-gaming-body">
+            Nintendo berhasil menghadirkan inovasi segar dengan Wonder Effects yang mengubah gameplay secara dinamis dalam petualangan Mario terbaru.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-gray-800 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-700">#Mario</span>
+            <span class="bg-gray-800 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-700">#Nintendo</span>
+            <span class="bg-gray-800 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-700">#Platformer</span>
+          </div>
+          <div class="flex items-center justify-between pt-4 border-t border-gray-800">
+            <div class="flex items-center space-x-3">
+              <div class="w-8 h-8 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center">
+                <span class="text-white text-xs font-bold">NR</span>
+              </div>
+              <div class="space-y-1">
+                <div class="text-white text-sm font-semibold">Nintendo Reviewer</div>
+                <div class="text-gray-400 text-xs">13 Nov 2024</div>
+              </div>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div class="flex items-center space-x-1 text-gray-400">
+                <span class="text-xs">👁️</span>
+                <span class="text-xs">11.2K</span>
+              </div>
+              <div class="flex items-center space-x-1 text-gray-400">
+                <span class="text-xs">⏱️</span>
+                <span class="text-xs">10 min</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Review 3 -->
+      <article class="bg-gray-900/50 rounded-xl border border-red-500/20 overflow-hidden hover:border-red-500/40 transition-all duration-300 group">
+        <div class="relative overflow-hidden">
+          <div class="w-full h-48 bg-gradient-to-br from-red-500/20 to-pink-500/20 flex items-center justify-center">
+            <span class="text-6xl">🔥</span>
+          </div>
+          <div class="absolute top-4 left-4 bg-gradient-to-r from-red-500/80 to-pink-500/80 backdrop-blur-sm rounded-lg px-3 py-1">
+            <span class="text-white text-xs font-semibold">Action RPG</span>
+          </div>
+          <div class="absolute top-4 right-4 bg-black/70 backdrop-blur-sm rounded-lg px-3 py-1 flex items-center space-x-1">
+            <span class="text-cyan-400 text-sm">👁️</span>
+            <span class="text-white text-sm font-bold">8.6K</span>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <h3 class="text-xl font-bold text-white group-hover:text-red-400 transition-colors line-clamp-2 font-gaming">
+            Diablo IV: Kembalinya Raja Action RPG
+          </h3>
+          <p class="text-gray-400 text-sm line-clamp-3 font-gaming-body">
+            Blizzard Entertainment berhasil mengembalikan kejayaan franchise Diablo dengan gameplay yang addictive dan world building yang dark fantasy.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-gray-800 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-700">#Diablo</span>
+            <span class="bg-gray-800 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-700">#ARPG</span>
+            <span class="bg-gray-800 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-700">#Blizzard</span>
+          </div>
+          <div class="flex items-center justify-between pt-4 border-t border-gray-800">
+            <div class="flex items-center space-x-3">
+              <div class="w-8 h-8 bg-gradient-to-r from-red-500 to-pink-500 rounded-full flex items-center justify-center">
+                <span class="text-white text-xs font-bold">DR</span>
+              </div>
+              <div class="space-y-1">
+                <div class="text-white text-sm font-semibold">Diablo Reviewer</div>
+                <div class="text-gray-400 text-xs">12 Nov 2024</div>
+              </div>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div class="flex items-center space-x-1 text-gray-400">
+                <span class="text-xs">👁️</span>
+                <span class="text-xs">7.8K</span>
+              </div>
+              <div class="flex items-center space-x-1 text-gray-400">
+                <span class="text-xs">⏱️</span>
+                <span class="text-xs">14 min</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Review 4 -->
+      <article class="bg-gray-900/50 rounded-xl border border-blue-500/20 overflow-hidden hover:border-blue-500/40 transition-all duration-300 group">
+        <div class="relative overflow-hidden">
+          <div class="w-full h-48 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center">
+            <span class="text-6xl">🌟</span>
+          </div>
+          <div class="absolute top-4 left-4 bg-gradient-to-r from-blue-500/80 to-cyan-500/80 backdrop-blur-sm rounded-lg px-3 py-1">
+            <span class="text-white text-xs font-semibold">Adventure</span>
+          </div>
+          <div class="absolute top-4 right-4 bg-black/70 backdrop-blur-sm rounded-lg px-3 py-1 flex items-center space-x-1">
+            <span class="text-cyan-400 text-sm">👁️</span>
+            <span class="text-white text-sm font-bold">9.0K</span>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors line-clamp-2 font-gaming">
+            The Legend of Zelda: Tears of the Kingdom Review
+          </h3>
+          <p class="text-gray-400 text-sm line-clamp-3 font-gaming-body">
+            Sekuel yang memukau dari Breath of the Wild dengan sistem crafting yang revolusioner dan world exploration yang tak terbatas.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-gray-800 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-700">#Zelda</span>
+            <span class="bg-gray-800 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-700">#Nintendo</span>
+            <span class="bg-gray-800 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-700">#Adventure</span>
+          </div>
+          <div class="flex items-center justify-between pt-4 border-t border-gray-800">
+            <div class="flex items-center space-x-3">
+              <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center">
+                <span class="text-white text-xs font-bold">ZR</span>
+              </div>
+              <div class="space-y-1">
+                <div class="text-white text-sm font-semibold">Zelda Reviewer</div>
+                <div class="text-gray-400 text-xs">11 Nov 2024</div>
+              </div>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div class="flex items-center space-x-1 text-gray-400">
+                <span class="text-xs">👁️</span>
+                <span class="text-xs">15.6K</span>
+              </div>
+              <div class="flex items-center space-x-1 text-gray-400">
+                <span class="text-xs">⏱️</span>
+                <span class="text-xs">16 min</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Review 5 -->
+      <article class="bg-gray-900/50 rounded-xl border border-yellow-500/20 overflow-hidden hover:border-yellow-500/40 transition-all duration-300 group">
+        <div class="relative overflow-hidden">
+          <div class="w-full h-48 bg-gradient-to-br from-yellow-500/20 to-orange-500/20 flex items-center justify-center">
+            <span class="text-6xl">🎲</span>
+          </div>
+          <div class="absolute top-4 left-4 bg-gradient-to-r from-yellow-500/80 to-orange-500/80 backdrop-blur-sm rounded-lg px-3 py-1">
+            <span class="text-white text-xs font-semibold">Indie Puzzle</span>
+          </div>
+          <div class="absolute top-4 right-4 bg-black/70 backdrop-blur-sm rounded-lg px-3 py-1 flex items-center space-x-1">
+            <span class="text-cyan-400 text-sm">👁️</span>
+            <span class="text-white text-sm font-bold">8.4K</span>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <h3 class="text-xl font-bold text-white group-hover:text-yellow-400 transition-colors line-clamp-2 font-gaming">
+            Pizza Tower: Indie Platformer yang Gila dan Brilliant
+          </h3>
+          <p class="text-gray-400 text-sm line-clamp-3 font-gaming-body">
+            Game indie yang memadukan nostalgia 2D platformer dengan kreativitas modern dan soundtrack yang absolutely incredible.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-gray-800 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-700">#Indie</span>
+            <span class="bg-gray-800 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-700">#Platformer</span>
+            <span class="bg-gray-800 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-700">#Puzzle</span>
+          </div>
+          <div class="flex items-center justify-between pt-4 border-t border-gray-800">
+            <div class="flex items-center space-x-3">
+              <div class="w-8 h-8 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-full flex items-center justify-center">
+                <span class="text-white text-xs font-bold">IG</span>
+              </div>
+              <div class="space-y-1">
+                <div class="text-white text-sm font-semibold">Indie Gamer</div>
+                <div class="text-gray-400 text-xs">10 Nov 2024</div>
+              </div>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div class="flex items-center space-x-1 text-gray-400">
+                <span class="text-xs">👁️</span>
+                <span class="text-xs">4.3K</span>
+              </div>
+              <div class="flex items-center space-x-1 text-gray-400">
+                <span class="text-xs">⏱️</span>
+                <span class="text-xs">8 min</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Review 6 -->
+      <article class="bg-gray-900/50 rounded-xl border border-purple-500/20 overflow-hidden hover:border-purple-500/40 transition-all duration-300 group">
+        <div class="relative overflow-hidden">
+          <div class="w-full h-48 bg-gradient-to-br from-purple-500/20 to-indigo-500/20 flex items-center justify-center">
+            <span class="text-6xl">🚀</span>
+          </div>
+          <div class="absolute top-4 left-4 bg-gradient-to-r from-purple-500/80 to-indigo-500/80 backdrop-blur-sm rounded-lg px-3 py-1">
+            <span class="text-white text-xs font-semibold">Space Exploration</span>
+          </div>
+          <div class="absolute top-4 right-4 bg-black/70 backdrop-blur-sm rounded-lg px-3 py-1 flex items-center space-x-1">
+            <span class="text-cyan-400 text-sm">👁️</span>
+            <span class="text-white text-sm font-bold">7.8K</span>
+          </div>
+        </div>
+        <div class="p-6 space-y-4">
+          <h3 class="text-xl font-bold text-white group-hover:text-purple-400 transition-colors line-clamp-2 font-gaming">
+            Starfield: Ambisi Besar Bethesda di Luar Angkasa
+          </h3>
+          <p class="text-gray-400 text-sm line-clamp-3 font-gaming-body">
+            Game space exploration yang ambisius dari Bethesda dengan scope yang massive namun masih memiliki beberapa kekurangan dalam execution.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="bg-gray-800 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-700">#Starfield</span>
+            <span class="bg-gray-800 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-700">#Bethesda</span>
+            <span class="bg-gray-800 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-700">#Space</span>
+          </div>
+          <div class="flex items-center justify-between pt-4 border-t border-gray-800">
+            <div class="flex items-center space-x-3">
+              <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full flex items-center justify-center">
+                <span class="text-white text-xs font-bold">SR</span>
+              </div>
+              <div class="space-y-1">
+                <div class="text-white text-sm font-semibold">Space Reviewer</div>
+                <div class="text-gray-400 text-xs">9 Nov 2024</div>
+              </div>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div class="flex items-center space-x-1 text-gray-400">
+                <span class="text-xs">👁️</span>
+                <span class="text-xs">6.7K</span>
+              </div>
+              <div class="flex items-center space-x-1 text-gray-400">
+                <span class="text-xs">⏱️</span>
+                <span class="text-xs">13 min</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Load More Button -->
+    <div class="text-center">
+      <button class="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white px-8 py-4 rounded-lg font-semibold transition-all font-gaming">
+        <span>🎯</span>
+        <span class="ml-2">Load More Reviews</span>
+      </button>
+    </div>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-black border-t border-cyan-500/30 mt-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <!-- Brand Section -->
+      <div class="space-y-4">
+        <div class="flex items-center space-x-2">
+          <div class="w-10 h-10 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-lg flex items-center justify-center">
+            <span class="text-white text-2xl">🎮</span>
+          </div>
+          <div class="text-2xl font-bold text-transparent bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text font-gaming">
+            GamingVerse
+          </div>
+        </div>
+        <p class="text-gray-400 text-sm font-gaming-body">
+          Your ultimate destination for gaming reviews, esports coverage, and community discussions. Level up your gaming experience with us!
+        </p>
+      </div>
+
+      <!-- Gaming Categories -->
+      <div class="space-y-4">
+        <h3 class="text-lg font-semibold text-white border-b border-cyan-500/30 pb-2 font-gaming">Gaming Categories</h3>
+        <div class="space-y-2">
+          <a href="/category/game-reviews" class="block text-cyan-400 text-sm flex items-center space-x-2">
+            <span>🎯</span> <span>Game Reviews</span>
+          </a>
+          <a href="/category/esports" class="block text-gray-400 hover:text-cyan-400 transition-colors text-sm flex items-center space-x-2">
+            <span>🏆</span> <span>Esports</span>
+          </a>
+          <a href="/category/gaming-news" class="block text-gray-400 hover:text-cyan-400 transition-colors text-sm flex items-center space-x-2">
+            <span>📢</span> <span>Gaming News</span>
+          </a>
+          <a href="/category/indie-games" class="block text-gray-400 hover:text-cyan-400 transition-colors text-sm flex items-center space-x-2">
+            <span>🎲</span> <span>Indie Games</span>
+          </a>
+          <a href="/category/community" class="block text-gray-400 hover:text-cyan-400 transition-colors text-sm flex items-center space-x-2">
+            <span>👥</span> <span>Community</span>
+          </a>
+          <a href="/category/streaming" class="block text-gray-400 hover:text-cyan-400 transition-colors text-sm flex items-center space-x-2">
+            <span>📺</span> <span>Streaming</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="space-y-4">
+        <h3 class="text-lg font-semibold text-white border-b border-purple-500/30 pb-2 font-gaming">Quick Links</h3>
+        <div class="space-y-2">
+          <a href="/posts" class="block text-gray-400 hover:text-purple-400 transition-colors text-sm">All Posts</a>
+          <a href="/search" class="block text-gray-400 hover:text-purple-400 transition-colors text-sm">Search</a>
+          <a href="/tag/trending" class="block text-gray-400 hover:text-purple-400 transition-colors text-sm">Trending</a>
+          <a href="/tag/popular" class="block text-gray-400 hover:text-purple-400 transition-colors text-sm">Popular</a>
+          <a href="/tag/new-releases" class="block text-gray-400 hover:text-purple-400 transition-colors text-sm">New Releases</a>
+          <a href="/tag/guides" class="block text-gray-400 hover:text-purple-400 transition-colors text-sm">Gaming Guides</a>
+        </div>
+      </div>
+
+      <!-- Gaming Stats -->
+      <div class="space-y-4">
+        <h3 class="text-lg font-semibold text-white border-b border-pink-500/30 pb-2 font-gaming">Gaming Stats</h3>
+        <div class="space-y-3">
+          <div class="bg-gray-900/50 rounded-lg p-3 border border-cyan-500/20">
+            <div class="text-2xl font-bold text-cyan-400 font-gaming">15K+</div>
+            <div class="text-xs text-gray-400 font-gaming-body">Active Gamers</div>
+          </div>
+          <div class="bg-gray-900/50 rounded-lg p-3 border border-purple-500/20">
+            <div class="text-2xl font-bold text-purple-400 font-gaming">500+</div>
+            <div class="text-xs text-gray-400 font-gaming-body">Game Reviews</div>
+          </div>
+          <div class="bg-gray-900/50 rounded-lg p-3 border border-pink-500/20">
+            <div class="text-2xl font-bold text-pink-400 font-gaming">24/7</div>
+            <div class="text-xs text-gray-400 font-gaming-body">Community</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+      <div class="text-gray-400 text-sm font-gaming-body">
+        © 2024 GamingVerse. All rights reserved. Built for gamers, by gamers.
+      </div>
+      <div class="flex space-x-6 mt-4 md:mt-0">
+        <a href="#" class="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Privacy Policy</a>
+        <a href="#" class="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Terms of Service</a>
+        <a href="#" class="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer> 

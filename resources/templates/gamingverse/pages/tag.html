@@ -1,0 +1,384 @@
+<!-- Custom Gaming Styles -->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+  
+  :root {
+    --gaming-cyan: #00ffff;
+    --gaming-purple: #8b5cf6;
+    --gaming-pink: #ec4899;
+    --gaming-green: #10b981;
+    --gaming-yellow: #f59e0b;
+    --gaming-red: #ef4444;
+    --gaming-black: #000000;
+    --gaming-gray-900: #111827;
+    --gaming-gray-800: #1f2937;
+    --gaming-gray-700: #374151;
+    --gaming-gray-600: #4b5563;
+    --gaming-gray-400: #9ca3af;
+    --gaming-gray-300: #d1d5db;
+  }
+  
+  .font-gaming { font-family: 'Poppins', sans-serif; }
+  .font-gaming-body { font-family: 'Inter', sans-serif; }
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>
+
+<!-- Navigation -->
+<nav class="bg-black border-b border-gray-800 sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-lg flex items-center justify-center">
+          <span class="text-white text-xl">🎮</span>
+        </div>
+        <a href="/blog" class="text-2xl font-bold text-transparent bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text font-gaming">
+          GamingVerse
+        </a>
+      </div>
+      
+      <div class="hidden md:flex space-x-6">
+        <a href="/blog" class="text-gray-300 hover:text-cyan-400 transition-colors">Home</a>
+        <a href="/blog/posts" class="text-gray-300 hover:text-cyan-400 transition-colors">Posts</a>
+        <a href="/blog/category/game-reviews" class="text-gray-300 hover:text-cyan-400 transition-colors">Reviews</a>
+        <a href="/blog/category/gaming-news" class="text-gray-300 hover:text-cyan-400 transition-colors">News</a>
+        <a href="/blog/search" class="text-gray-300 hover:text-cyan-400 transition-colors">Search</a>
+      </div>
+      
+      <div class="flex items-center space-x-4">
+        <button class="text-gray-300 hover:text-cyan-400 transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+        </button>
+        <button class="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white px-4 py-2 rounded-lg transition-colors text-sm">
+          Subscribe
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Gaming Tag Hero -->
+<section class="bg-gradient-to-br from-black via-gray-900 to-black py-12 border-b border-gray-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center space-y-6">
+      <div class="flex justify-center items-center space-x-4">
+        <div class="w-16 h-16 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-xl flex items-center justify-center">
+          <span class="text-white text-4xl">🏷️</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold text-transparent bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text font-gaming">
+          Gaming Tag: RPG
+        </h1>
+      </div>
+      
+      <!-- Tag Stats -->
+      <div class="flex items-center justify-center space-x-8 text-sm">
+        <div class="flex items-center space-x-2 text-gray-400">
+          <span class="text-cyan-400">🎯</span>
+          <span>25 posts</span>
+        </div>
+        <div class="flex items-center space-x-2 text-gray-400">
+          <span class="text-purple-400">🎮</span>
+          <span>Latest gaming content</span>
+        </div>
+      </div>
+      
+      <!-- Tag Description -->
+      <p class="text-gray-400 text-lg max-w-2xl mx-auto font-gaming-body">
+        Discover gaming content tagged with RPG. From reviews to news, find everything related to role-playing games.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Gaming Tag Navigation -->
+<section class="bg-gray-900/30 py-6 border-b border-gray-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-wrap items-center justify-between gap-4">
+      <!-- Tag Actions -->
+      <div class="flex items-center space-x-4">
+        <button class="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white px-6 py-2 rounded-lg transition-colors flex items-center space-x-2">
+          <span>📌</span>
+          <span>Follow Tag</span>
+        </button>
+        <button class="bg-gray-800 hover:bg-gray-700 text-gray-300 px-6 py-2 rounded-lg transition-colors flex items-center space-x-2">
+          <span>🔗</span>
+          <span>Share</span>
+        </button>
+      </div>
+      
+      <!-- Sort Options -->
+      <div class="flex items-center space-x-3">
+        <span class="text-gray-400 text-sm">Sort by:</span>
+        <select class="bg-gray-800 text-gray-300 px-4 py-2 rounded-lg text-sm border border-gray-700 focus:outline-none focus:border-cyan-500">
+          <option>Newest</option>
+          <option>Most Popular</option>
+          <option>Most Viewed</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Gaming Tag Content -->
+<section class="py-16 bg-gradient-to-b from-gray-900/50 to-black">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Featured Post -->
+    <div class="mb-16">
+      <div class="flex items-center space-x-2 mb-6">
+        <span class="text-2xl">👁️</span>
+        <h2 class="text-2xl font-bold text-white font-gaming">Featured Gaming Content</h2>
+      </div>
+      <div class="bg-gradient-to-r from-cyan-500/10 to-purple-500/10 rounded-xl border border-cyan-500/30 overflow-hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 p-8">
+          <div class="space-y-6">
+            <div class="flex items-center space-x-3">
+              <span class="bg-gradient-to-r from-cyan-500 to-purple-500 text-white px-3 py-1 rounded-lg text-sm font-semibold">
+                Game Reviews
+              </span>
+              <div class="flex items-center space-x-1 text-gray-400">
+                <span class="text-cyan-400">👁️</span>
+                <span class="text-sm">Featured</span>
+              </div>
+            </div>
+            <h3 class="text-3xl font-bold text-white leading-tight font-gaming">
+              <a href="/blog/post/baldurs-gate-3-review" class="hover:text-cyan-400 transition-colors">
+                Review Lengkap: Baldur's Gate 3 - Masterpiece RPG yang Mengubah Standar Industri
+              </a>
+            </h3>
+            <p class="text-gray-400 text-lg font-gaming-body">
+              Baldur's Gate 3 telah menjadi fenomena gaming yang tak terbantahkan. Setelah menghabiskan lebih dari 100 jam menjelajahi dunia Faerûn, kami siap memberikan review mendalam tentang mengapa game ini layak disebut sebagai masterpiece RPG modern.
+            </p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full flex items-center justify-center">
+                  <span class="text-white text-sm font-bold">GV</span>
+                </div>
+                <div class="space-y-1">
+                  <div class="text-white font-semibold">GamingVerse Review Team</div>
+                  <div class="text-gray-400 text-sm">15 Nov 2024</div>
+                </div>
+              </div>
+              <a href="/blog/post/baldurs-gate-3-review" class="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white px-6 py-3 rounded-lg transition-colors">
+                Read More
+              </a>
+            </div>
+          </div>
+          <div class="relative">
+            <div class="w-full h-64 lg:h-full bg-gradient-to-br from-cyan-500/20 to-purple-500/20 rounded-xl flex items-center justify-center">
+              <span class="text-8xl">🎮</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- All Posts Grid -->
+    <div class="space-y-8">
+      <div class="flex items-center space-x-2">
+        <span class="text-2xl">🎯</span>
+        <h2 class="text-2xl font-bold text-white font-gaming">Tagged Gaming Posts</h2>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Article 1 -->
+        <div class="transform hover:scale-105 transition-transform duration-300">
+          <article class="bg-gray-800/50 rounded-xl border border-gray-700/50 overflow-hidden hover:border-cyan-500/40 transition-all duration-300 group">
+            <div class="relative">
+              <div class="w-full h-48 bg-gradient-to-br from-gray-700/30 to-gray-600/30 flex items-center justify-center">
+                <span class="text-6xl">🎮</span>
+              </div>
+              <div class="absolute top-2 left-2 bg-gradient-to-r from-cyan-500 to-purple-500 backdrop-blur-sm rounded-lg px-2 py-1">
+                <span class="text-white text-xs font-semibold">RPG</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors mb-3 font-gaming">
+                <a href="/blog/post/best-rpg-2024">10 RPG Terbaik 2024: Dari Indie Gems hingga AAA Blockbusters</a>
+              </h3>
+              <p class="text-gray-400 text-sm mb-4 line-clamp-3 font-gaming-body">
+                Daftar lengkap RPG terbaik tahun 2024 yang wajib dimainkan oleh setiap RPG enthusiast. Dari game indie yang mengejutkan hingga blockbuster AAA yang memukau.
+              </p>
+              <div class="flex items-center justify-between text-sm text-gray-500">
+                <span>12 Nov 2024</span>
+                <span>4,230 views</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Article 2 -->
+        <div class="transform hover:scale-105 transition-transform duration-300">
+          <article class="bg-gray-800/50 rounded-xl border border-gray-700/50 overflow-hidden hover:border-purple-500/40 transition-all duration-300 group">
+            <div class="relative">
+              <div class="w-full h-48 bg-gradient-to-br from-gray-700/30 to-gray-600/30 flex items-center justify-center">
+                <span class="text-6xl">🏰</span>
+              </div>
+              <div class="absolute top-2 left-2 bg-gradient-to-r from-cyan-500 to-purple-500 backdrop-blur-sm rounded-lg px-2 py-1">
+                <span class="text-white text-xs font-semibold">RPG</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-white group-hover:text-purple-400 transition-colors mb-3 font-gaming">
+                <a href="/blog/post/baldurs-gate-3-character-build">Panduan Lengkap Character Build Baldur's Gate 3</a>
+              </h3>
+              <p class="text-gray-400 text-sm mb-4 line-clamp-3 font-gaming-body">
+                Guide komprehensif untuk membuat character build yang optimal di Baldur's Gate 3. Dari pemilihan race hingga strategi multiclassing yang efektif.
+              </p>
+              <div class="flex items-center justify-between text-sm text-gray-500">
+                <span>10 Nov 2024</span>
+                <span>6,890 views</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Article 3 -->
+        <div class="transform hover:scale-105 transition-transform duration-300">
+          <article class="bg-gray-800/50 rounded-xl border border-gray-700/50 overflow-hidden hover:border-cyan-500/40 transition-all duration-300 group">
+            <div class="relative">
+              <div class="w-full h-48 bg-gradient-to-br from-gray-700/30 to-gray-600/30 flex items-center justify-center">
+                <span class="text-6xl">⚔️</span>
+              </div>
+              <div class="absolute top-2 left-2 bg-gradient-to-r from-cyan-500 to-purple-500 backdrop-blur-sm rounded-lg px-2 py-1">
+                <span class="text-white text-xs font-semibold">RPG</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors mb-3 font-gaming">
+                <a href="/blog/post/rpg-evolution-history">Evolusi Genre RPG: Dari Tabletop hingga Digital</a>
+              </h3>
+              <p class="text-gray-400 text-sm mb-4 line-clamp-3 font-gaming-body">
+                Perjalanan panjang genre RPG dari permainan meja hingga menjadi salah satu genre paling populer di dunia gaming digital modern.
+              </p>
+              <div class="flex items-center justify-between text-sm text-gray-500">
+                <span>8 Nov 2024</span>
+                <span>3,450 views</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Article 4 -->
+        <div class="transform hover:scale-105 transition-transform duration-300">
+          <article class="bg-gray-800/50 rounded-xl border border-gray-700/50 overflow-hidden hover:border-purple-500/40 transition-all duration-300 group">
+            <div class="relative">
+              <div class="w-full h-48 bg-gradient-to-br from-gray-700/30 to-gray-600/30 flex items-center justify-center">
+                <span class="text-6xl">🧙‍♂️</span>
+              </div>
+              <div class="absolute top-2 left-2 bg-gradient-to-r from-cyan-500 to-purple-500 backdrop-blur-sm rounded-lg px-2 py-1">
+                <span class="text-white text-xs font-semibold">RPG</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-white group-hover:text-purple-400 transition-colors mb-3 font-gaming">
+                <a href="/blog/post/indie-rpg-hidden-gems">Indie RPG Hidden Gems yang Wajib Dimainkan</a>
+              </h3>
+              <p class="text-gray-400 text-sm mb-4 line-clamp-3 font-gaming-body">
+                Eksplorasi dunia RPG indie yang penuh dengan permata tersembunyi. Game-game berkualitas tinggi dengan budget terbatas namun kreativitas tak terbatas.
+              </p>
+              <div class="flex items-center justify-between text-sm text-gray-500">
+                <span>5 Nov 2024</span>
+                <span>2,890 views</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Article 5 -->
+        <div class="transform hover:scale-105 transition-transform duration-300">
+          <article class="bg-gray-800/50 rounded-xl border border-gray-700/50 overflow-hidden hover:border-cyan-500/40 transition-all duration-300 group">
+            <div class="relative">
+              <div class="w-full h-48 bg-gradient-to-br from-gray-700/30 to-gray-600/30 flex items-center justify-center">
+                <span class="text-6xl">📊</span>
+              </div>
+              <div class="absolute top-2 left-2 bg-gradient-to-r from-cyan-500 to-purple-500 backdrop-blur-sm rounded-lg px-2 py-1">
+                <span class="text-white text-xs font-semibold">RPG</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors mb-3 font-gaming">
+                <a href="/blog/post/rpg-mechanics-analysis">Analisis Mendalam: Mekanik RPG yang Membuat Ketagihan</a>
+              </h3>
+              <p class="text-gray-400 text-sm mb-4 line-clamp-3 font-gaming-body">
+                Pembahasan detail tentang elemen-elemen gameplay RPG yang membuat pemain terus kembali bermain. Dari progression system hingga narrative choice.
+              </p>
+              <div class="flex items-center justify-between text-sm text-gray-500">
+                <span>2 Nov 2024</span>
+                <span>5,670 views</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Article 6 -->
+        <div class="transform hover:scale-105 transition-transform duration-300">
+          <article class="bg-gray-800/50 rounded-xl border border-gray-700/50 overflow-hidden hover:border-purple-500/40 transition-all duration-300 group">
+            <div class="relative">
+              <div class="w-full h-48 bg-gradient-to-br from-gray-700/30 to-gray-600/30 flex items-center justify-center">
+                <span class="text-6xl">🎯</span>
+              </div>
+              <div class="absolute top-2 left-2 bg-gradient-to-r from-cyan-500 to-purple-500 backdrop-blur-sm rounded-lg px-2 py-1">
+                <span class="text-white text-xs font-semibold">RPG</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-xl font-bold text-white group-hover:text-purple-400 transition-colors mb-3 font-gaming">
+                <a href="/blog/post/rpg-beginner-guide">Panduan Pemula: Memulai Petualangan RPG Pertama Anda</a>
+              </h3>
+              <p class="text-gray-400 text-sm mb-4 line-clamp-3 font-gaming-body">
+                Tips dan trik untuk pemain baru yang ingin memulai perjalanan mereka di dunia RPG. Dari pemilihan game hingga strategi dasar bermain.
+              </p>
+              <div class="flex items-center justify-between text-sm text-gray-500">
+                <span>30 Oct 2024</span>
+                <span>7,230 views</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <!-- Load More Button -->
+    <div class="mt-12 text-center">
+      <button class="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white px-8 py-3 rounded-lg transition-colors font-gaming">
+        Load More Posts
+      </button>
+    </div>
+
+    <!-- Related Tags -->
+    <div class="mt-16">
+      <h3 class="text-2xl font-bold text-white mb-6 font-gaming">Related Tags</h3>
+      <div class="flex flex-wrap gap-3">
+        <a href="/blog/tag/action-rpg" class="bg-gray-800/50 text-cyan-400 px-4 py-2 rounded-full text-sm border border-gray-700/50 hover:bg-cyan-500/20 hover:border-cyan-500/40 transition-colors">#action-rpg</a>
+        <a href="/blog/tag/jrpg" class="bg-gray-800/50 text-purple-400 px-4 py-2 rounded-full text-sm border border-gray-700/50 hover:bg-purple-500/20 hover:border-purple-500/40 transition-colors">#jrpg</a>
+        <a href="/blog/tag/western-rpg" class="bg-gray-800/50 text-cyan-400 px-4 py-2 rounded-full text-sm border border-gray-700/50 hover:bg-cyan-500/20 hover:border-cyan-500/40 transition-colors">#western-rpg</a>
+        <a href="/blog/tag/indie-rpg" class="bg-gray-800/50 text-purple-400 px-4 py-2 rounded-full text-sm border border-gray-700/50 hover:bg-purple-500/20 hover:border-purple-500/40 transition-colors">#indie-rpg</a>
+        <a href="/blog/tag/turn-based" class="bg-gray-800/50 text-cyan-400 px-4 py-2 rounded-full text-sm border border-gray-700/50 hover:bg-cyan-500/20 hover:border-cyan-500/40 transition-colors">#turn-based</a>
+        <a href="/blog/tag/real-time" class="bg-gray-800/50 text-purple-400 px-4 py-2 rounded-full text-sm border border-gray-700/50 hover:bg-purple-500/20 hover:border-purple-500/40 transition-colors">#real-time</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-black border-t border-gray-800 py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <div class="flex items-center justify-center space-x-3 mb-6">
+        <div class="w-10 h-10 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-lg flex items-center justify-center">
+          <span class="text-white text-xl">🎮</span>
+        </div>
+        <span class="text-2xl font-bold text-transparent bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text font-gaming">GamingVerse</span>
+      </div>
+      <p class="text-gray-400 text-sm">
+        © 2024 GamingVerse. All rights reserved. Level up your gaming experience.
+      </p>
+    </div>
+  </div>
+</footer> 

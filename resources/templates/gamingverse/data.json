@@ -1,0 +1,262 @@
+{
+  "blog_logo": "/assets/logo.png",
+  "blog_title": "GamingVerse",
+  "blog_tagline": "Your Ultimate Gaming Universe",
+  "blog_description": "Dive into the world of gaming with reviews, guides, news, and community discussions. From indie gems to AAA blockbusters, we cover it all.",
+  "site": {
+    "name": "GamingVerse",
+    "logo": "/assets/logo.png",
+    "tagline": "Your Ultimate Gaming Universe",
+    "description": "Dive into the world of gaming with reviews, guides, news, and community discussions. From indie gems to AAA blockbusters, we cover it all.",
+    "url": "https://gamingverse.com",
+    "email": "contact@gamingverse.com",
+    "phone": "+1 (555) 123-4567"
+  },
+  "navigation": [
+    {
+      "title": "Home",
+      "url": "/",
+      "icon": "home"
+    },
+    {
+      "title": "Reviews",
+      "url": "/category/reviews",
+      "icon": "star"
+    },
+    {
+      "title": "Guides",
+      "url": "/category/guides",
+      "icon": "book"
+    },
+    {
+      "title": "News",
+      "url": "/category/news",
+      "icon": "newspaper"
+    },
+    {
+      "title": "Esports",
+      "url": "/category/esports",
+      "icon": "trophy"
+    },
+    {
+      "title": "Community",
+      "url": "/category/community",
+      "icon": "users"
+    }
+  ],
+  "gaming_categories": [
+    {
+      "id": "action",
+      "name": "Action",
+      "description": "Fast-paced games with combat and challenges",
+      "icon": "zap",
+      "color": "#ff6b6b",
+      "featured": true
+    },
+    {
+      "id": "rpg",
+      "name": "RPG",
+      "description": "Role-playing games with character development",
+      "icon": "sword",
+      "color": "#4ecdc4",
+      "featured": true
+    },
+    {
+      "id": "strategy",
+      "name": "Strategy",
+      "description": "Tactical and strategic gameplay",
+      "icon": "chess",
+      "color": "#45b7d1",
+      "featured": true
+    },
+    {
+      "id": "fps",
+      "name": "FPS",
+      "description": "First-person shooter games",
+      "icon": "target",
+      "color": "#f39c12",
+      "featured": true
+    },
+    {
+      "id": "indie",
+      "name": "Indie",
+      "description": "Independent games with unique concepts",
+      "icon": "heart",
+      "color": "#e74c3c",
+      "featured": false
+    },
+    {
+      "id": "simulation",
+      "name": "Simulation",
+      "description": "Life and world simulation games",
+      "icon": "globe",
+      "color": "#9b59b6",
+      "featured": false
+    }
+  ],
+  "social_links": [
+    {
+      "platform": "Twitter",
+      "url": "https://twitter.com/gamingverse",
+      "icon": "twitter"
+    },
+    {
+      "platform": "Discord",
+      "url": "https://discord.gg/gamingverse",
+      "icon": "discord"
+    },
+    {
+      "platform": "YouTube",
+      "url": "https://youtube.com/gamingverse",
+      "icon": "youtube"
+    },
+    {
+      "platform": "Twitch",
+      "url": "https://twitch.tv/gamingverse",
+      "icon": "twitch"
+    }
+  ],
+  "hero": {
+    "badge": "Welcome to GamingVerse",
+    "title": "Your Ultimate Gaming Universe",
+    "description": "Discover the latest game reviews, in-depth guides, breaking news, and join our passionate gaming community. From indie gems to AAA blockbusters, we cover it all.",
+    "cta_primary": {
+      "text": "Explore Games",
+      "url": "/posts"
+    },
+    "cta_secondary": {
+      "text": "Join Community",
+      "url": "/category/community"
+    },
+    "background_image": "/assets/hero-gaming-bg.jpg",
+    "featured_stats": [
+      {
+        "label": "Games Reviewed",
+        "value": "500+"
+      },
+      {
+        "label": "Active Gamers",
+        "value": "10K+"
+      },
+      {
+        "label": "Gaming Guides",
+        "value": "200+"
+      }
+    ]
+  },
+  "newsletter": {
+    "badge": "Stay Updated",
+    "title": "Never Miss a Gaming Update",
+    "description": "Get the latest game reviews, guides, and news delivered straight to your inbox. Join thousands of gamers who trust us for their gaming content.",
+    "form": {
+      "email_placeholder": "Enter your email address",
+      "button_text": "Subscribe Now"
+    },
+    "benefits": [
+      "Weekly game reviews and ratings",
+      "Exclusive gaming guides and tips",
+      "Early access to gaming news",
+      "Community events and tournaments"
+    ]
+  },
+  "post": {
+    "title": "The Ultimate Guide to Building Your First Gaming PC in 2024",
+    "slug": "ultimate-guide-building-gaming-pc-2024",
+    "excerpt": "Ready to join the PC Master Race? This comprehensive guide covers everything you need to know about building your first gaming PC, from choosing components to assembly tips.",
+    "content": "Building your first gaming PC can seem daunting, but with the right guidance, it's an incredibly rewarding experience. In this comprehensive guide, we'll walk you through every step of the process, from selecting the perfect components to putting it all together. Whether you're looking to play the latest AAA titles at 4K resolution or dive into competitive esports, we've got you covered with expert advice and insider tips.",
+    "featured_image": "/assets/gaming-pc-build.jpg",
+    "category": "Guides",
+    "tags": ["PC Building", "Hardware", "Gaming Setup", "Beginner Guide"],
+    "published_at": "2024-01-15",
+    "reading_time": "12 min read",
+    "views": 15420,
+    "likes": 892,
+    "comments": 156,
+    "author_id": "alex-chen",
+    "meta": {
+      "seo_title": "Ultimate Gaming PC Build Guide 2024 | GamingVerse",
+      "seo_description": "Learn how to build your first gaming PC with our comprehensive 2024 guide. Expert tips, component recommendations, and step-by-step instructions.",
+      "keywords": ["gaming pc build", "pc building guide", "gaming computer", "pc components 2024"]
+    }
+  },
+  "author": {
+    "id": "alex-chen",
+    "name": "Alex Chen",
+    "bio": "Gaming enthusiast and tech reviewer with over 8 years of experience in the gaming industry. Passionate about helping gamers find their perfect setup and discover amazing games.",
+    "avatar": "/assets/author-avatar.jpg",
+    "role": "Senior Gaming Editor",
+    "location": "San Francisco, CA",
+    "gaming_stats": {
+      "favorite_genre": "RPG",
+      "current_game": "Baldur's Gate 3",
+      "gaming_platform": "PC & Console",
+      "years_gaming": 15
+    },
+    "social_links": [
+      {
+        "platform": "Twitter",
+        "url": "https://twitter.com/alexchen_gaming",
+        "icon": "twitter"
+      },
+      {
+        "platform": "YouTube",
+        "url": "https://youtube.com/alexchengaming",
+        "icon": "youtube"
+      },
+      {
+        "platform": "Twitch",
+        "url": "https://twitch.tv/alexchengaming",
+        "icon": "twitch"
+      }
+    ],
+    "achievements": [
+      "500+ Game Reviews Published",
+      "Gaming Industry Expert",
+      "Tech Conference Speaker"
+    ]
+  },
+  "footer": {
+    "brand": {
+      "name": "GamingVerse",
+      "tagline": "Your Ultimate Gaming Universe",
+      "description": "Discover the latest in gaming with our comprehensive reviews, guides, and community discussions."
+    },
+    "quick_links": [
+      {
+        "title": "About Us",
+        "url": "/about"
+      },
+      {
+        "title": "Contact",
+        "url": "/contact"
+      },
+      {
+        "title": "Privacy Policy",
+        "url": "/privacy"
+      },
+      {
+        "title": "Terms of Service",
+        "url": "/terms"
+      }
+    ],
+    "gaming_stats": [
+      {
+        "label": "Games Reviewed",
+        "value": "500+"
+      },
+      {
+        "label": "Community Members",
+        "value": "10K+"
+      },
+      {
+        "label": "Gaming Guides",
+        "value": "200+"
+      },
+      {
+        "label": "Years Experience",
+        "value": "8+"
+      }
+    ],
+    "copyright": "© 2024 GamingVerse. All rights reserved."
+  }
+}
