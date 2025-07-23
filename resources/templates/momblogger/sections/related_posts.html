@@ -4,45 +4,21 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center font-serif">Artikel Terkait</h2>
     
-    <div class="grid md:grid-cols-3 gap-8">
-      <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-        <div class="aspect-video bg-gradient-to-br from-purple-200 to-pink-200"></div>
-        <div class="p-6">
-          <span class="bg-purple-100 text-purple-800 text-sm px-3 py-1 rounded-full">Parenting</span>
-          <h3 class="text-xl font-bold text-gray-900 mt-3 mb-2 font-serif">Membangun Waktu Berkualitas dengan Anak</h3>
-          <p class="text-gray-600 text-sm mb-4">Cara menciptakan momen berharga bersama anak meski memiliki jadwal yang padat.</p>
-          <div class="flex items-center justify-between text-sm text-gray-500">
-            <span>Anna Wijaya</span>
-            <span>5 min read</span>
-          </div>
-        </div>
-      </article>
-      
-      <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-        <div class="aspect-video bg-gradient-to-br from-green-200 to-blue-200"></div>
-        <div class="p-6">
-          <span class="bg-green-100 text-green-800 text-sm px-3 py-1 rounded-full">Design</span>
-          <h3 class="text-xl font-bold text-gray-900 mt-3 mb-2 font-serif">Menciptakan Ruang Bermain Anak yang Kreatif</h3>
-          <p class="text-gray-600 text-sm mb-4">Ide desain interior untuk ruang bermain yang merangsang kreativitas anak.</p>
-          <div class="flex items-center justify-between text-sm text-gray-500">
-            <span>Maria Santos</span>
-            <span>7 min read</span>
-          </div>
-        </div>
-      </article>
-      
-      <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-        <div class="aspect-video bg-gradient-to-br from-orange-200 to-pink-200"></div>
-        <div class="p-6">
-          <span class="bg-orange-100 text-orange-800 text-sm px-3 py-1 rounded-full">Technology</span>
-          <h3 class="text-xl font-bold text-gray-900 mt-3 mb-2 font-serif">Teknologi AI untuk Mendukung Perkembangan Anak</h3>
-          <p class="text-gray-600 text-sm mb-4">Bagaimana teknologi AI dapat membantu orangtua dalam mendidik anak.</p>
-          <div class="flex items-center justify-between text-sm text-gray-500">
-            <span>Sarah Johnson</span>
-            <span>6 min read</span>
-          </div>
-        </div>
-      </article>
-    </div>
+    <div id="related-grid" class="grid md:grid-cols-3 gap-8 text-center text-gray-500">Loading...</div>
   </div>
 </section>
+
+<script>
+(function(){
+  const grid=document.getElementById('related-grid');
+  if(!grid) return;
+
+  const slug=decodeURIComponent(window.location.pathname.split('/').pop());
+
+  function initials(n=''){return n.split(' ').map(s=>s[0]).join('').toUpperCase().slice(0,2);}
+
+  function cardHTML(a){const cat=a.category||'Blog';const img=a.featured_image||'';const read=a.read_time||5;return `<article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow"><div class="aspect-video bg-gradient-to-br from-pink-200 to-purple-200 relative">${img?`<img src="${img}" alt="${a.title}" class="absolute inset-0 w-full h-full object-cover">`:''}<div class="absolute top-4 left-4 bg-pink-500 text-white px-3 py-1 rounded-full text-xs font-medium">${cat}</div></div><div class="p-6"><h3 class="text-xl font-bold text-gray-900 mt-3 mb-2 font-serif line-clamp-2"><a href="/post/${a.slug}" class="hover:text-pink-600">${a.title}</a></h3><p class="text-gray-600 text-sm mb-4 line-clamp-3">${a.excerpt||''}</p><div class="flex items-center justify-between text-sm text-gray-500"><span>${a.author||''}</span><span>${read} min read</span></div></div></article>`;}
+
+  fetch(`/api/blog/posts/related/${encodeURIComponent(slug)}?limit=3`).then(r=>r.json()).then(list=>{const posts=Array.isArray(list)?list:(list.posts||[]);if(!posts.length){grid.textContent='No related posts.';return;}grid.innerHTML='';posts.forEach(p=>grid.insertAdjacentHTML('beforeend',cardHTML(p)));}).catch(e=>{console.error(e);grid.textContent='Failed to load.';});
+})();
+</script>

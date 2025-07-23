@@ -6,12 +6,10 @@
         class="w-24 h-24 bg-gradient-to-br from-pink-400 to-orange-400 rounded-full flex items-center justify-center mx-auto mb-6">
         <span class="text-4xl">👶</span>
       </div>
-      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 font-serif">Parenting Category</h1>
-      <p class="text-xl text-gray-600 mb-6 max-w-2xl mx-auto">
-        Practical tips, heartfelt stories, and expert advice for every stage of your parenting journey
-      </p>
+      <h1 id="cat-title" class="text-4xl md:text-5xl font-bold text-gray-900 mb-4 font-serif">Category</h1>
+      <p id="cat-desc" class="text-xl text-gray-600 mb-6 max-w-2xl mx-auto"></p>
       <div class="w-24 h-1 bg-pink-500 mx-auto rounded-full mb-4"></div>
-      <p class="text-sm text-gray-500">52 articles in this category</p>
+      <p id="cat-count" class="text-sm text-gray-500">0 articles in this category</p>
     </div>
   </div>
 </section>
@@ -19,224 +17,8 @@
 <!-- Category Articles -->
 <section class="py-16 bg-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-      <!-- Article 1 -->
-      <article
-        class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 border border-pink-100">
-        <div class="aspect-video bg-gradient-to-br from-pink-200 to-orange-200 relative">
-          <div class="absolute top-4 left-4 bg-pink-500 text-white px-3 py-1 rounded-full text-xs font-medium">
-            Parenting
-          </div>
-          <div
-            class="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm text-pink-600 px-3 py-1 rounded-full text-xs font-medium">
-            👶 Baby Tips
-          </div>
-        </div>
-        <div class="p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-3 font-serif">Mendidik Anak Tanpa Gadget: Mengembalikan Masa
-            Kecil yang Sesungguhnya</h3>
-          <p class="text-gray-600 mb-4 text-sm leading-relaxed">
-            Pelajari cara mendidik anak tanpa ketergantungan gadget. Temukan alternatif kegiatan seru dan edukatif untuk
-            mendukung perkembangan anak secara holistik.
-          </p>
-          <div class="flex items-center justify-between text-sm">
-            <div class="flex items-center space-x-2">
-              <div
-                class="w-8 h-8 bg-gradient-to-br from-pink-400 to-orange-400 rounded-full flex items-center justify-center">
-                <span class="text-white text-xs">👩</span>
-              </div>
-              <span class="text-gray-700">Maulana Shalihin</span>
-            </div>
-            <div class="flex items-center space-x-3 text-gray-500">
-              <span>8 min read</span>
-              <span>•</span>
-              <span>👁️ 2.1K</span>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Article 2 -->
-      <article
-        class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 border border-pink-100">
-        <div class="aspect-video bg-gradient-to-br from-orange-200 to-pink-200 relative">
-          <div class="absolute top-4 left-4 bg-orange-500 text-white px-3 py-1 rounded-full text-xs font-medium">
-            Parenting
-          </div>
-          <div
-            class="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm text-orange-600 px-3 py-1 rounded-full text-xs font-medium">
-            ❤️ Family Time
-          </div>
-        </div>
-        <div class="p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-3 font-serif">Membangun Waktu Berkualitas dengan Anak di Tengah
-            Kesibukan</h3>
-          <p class="text-gray-600 mb-4 text-sm leading-relaxed">
-            Cara menciptakan momen berharga bersama anak meski memiliki jadwal yang padat. Tips praktis untuk working
-            parents.
-          </p>
-          <div class="flex items-center justify-between text-sm">
-            <div class="flex items-center space-x-2">
-              <div
-                class="w-8 h-8 bg-gradient-to-br from-orange-400 to-pink-400 rounded-full flex items-center justify-center">
-                <span class="text-white text-xs">👩</span>
-              </div>
-              <span class="text-gray-700">Anna Wijaya</span>
-            </div>
-            <div class="flex items-center space-x-3 text-gray-500">
-              <span>5 min read</span>
-              <span>•</span>
-              <span>👁️ 4.1K</span>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Article 3 -->
-      <article
-        class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 border border-pink-100">
-        <div class="aspect-video bg-gradient-to-br from-purple-200 to-pink-200 relative">
-          <div class="absolute top-4 left-4 bg-purple-500 text-white px-3 py-1 rounded-full text-xs font-medium">
-            Parenting
-          </div>
-          <div
-            class="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm text-purple-600 px-3 py-1 rounded-full text-xs font-medium">
-            🌟 Self Care
-          </div>
-        </div>
-        <div class="p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-3 font-serif">Self-Care untuk Ibu: Menjaga Kesehatan Mental dan
-            Fisik</h3>
-          <p class="text-gray-600 mb-4 text-sm leading-relaxed">
-            Pentingnya self-care bagi ibu dan tips praktis untuk menjaga kesehatan mental dan fisik di tengah peran
-            sebagai ibu.
-          </p>
-          <div class="flex items-center justify-between text-sm">
-            <div class="flex items-center space-x-2">
-              <div
-                class="w-8 h-8 bg-gradient-to-br from-purple-400 to-pink-400 rounded-full flex items-center justify-center">
-                <span class="text-white text-xs">👩</span>
-              </div>
-              <span class="text-gray-700">Dr. Sari Putri</span>
-            </div>
-            <div class="flex items-center space-x-3 text-gray-500">
-              <span>9 min read</span>
-              <span>•</span>
-              <span>👁️ 3.8K</span>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Article 4 -->
-      <article
-        class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 border border-pink-100">
-        <div class="aspect-video bg-gradient-to-br from-blue-200 to-purple-200 relative">
-          <div class="absolute top-4 left-4 bg-blue-500 text-white px-3 py-1 rounded-full text-xs font-medium">
-            Parenting
-          </div>
-          <div
-            class="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm text-blue-600 px-3 py-1 rounded-full text-xs font-medium">
-            🎓 Education
-          </div>
-        </div>
-        <div class="p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-3 font-serif">Mendampingi Anak Belajar di Era Digital dengan
-            Bijak</h3>
-          <p class="text-gray-600 mb-4 text-sm leading-relaxed">
-            Strategi mendampingi anak belajar di era digital, memanfaatkan teknologi sebagai alat bantu pembelajaran
-            yang efektif.
-          </p>
-          <div class="flex items-center justify-between text-sm">
-            <div class="flex items-center space-x-2">
-              <div
-                class="w-8 h-8 bg-gradient-to-br from-blue-400 to-purple-400 rounded-full flex items-center justify-center">
-                <span class="text-white text-xs">👩</span>
-              </div>
-              <span class="text-gray-700">Rina Susanti</span>
-            </div>
-            <div class="flex items-center space-x-3 text-gray-500">
-              <span>7 min read</span>
-              <span>•</span>
-              <span>👁️ 2.9K</span>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Article 5 -->
-      <article
-        class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 border border-pink-100">
-        <div class="aspect-video bg-gradient-to-br from-green-200 to-blue-200 relative">
-          <div class="absolute top-4 left-4 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-medium">
-            Parenting
-          </div>
-          <div
-            class="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm text-green-600 px-3 py-1 rounded-full text-xs font-medium">
-            🌱 Growth
-          </div>
-        </div>
-        <div class="p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-3 font-serif">Mengembangkan Karakter Anak Melalui Kegiatan
-            Sehari-hari</h3>
-          <p class="text-gray-600 mb-4 text-sm leading-relaxed">
-            Cara mengintegrasikan pendidikan karakter dalam aktivitas sehari-hari anak untuk membentuk kepribadian yang
-            baik.
-          </p>
-          <div class="flex items-center justify-between text-sm">
-            <div class="flex items-center space-x-2">
-              <div
-                class="w-8 h-8 bg-gradient-to-br from-green-400 to-blue-400 rounded-full flex items-center justify-center">
-                <span class="text-white text-xs">👩</span>
-              </div>
-              <span class="text-gray-700">Maya Indira</span>
-            </div>
-            <div class="flex items-center space-x-3 text-gray-500">
-              <span>6 min read</span>
-              <span>•</span>
-              <span>👁️ 3.2K</span>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <!-- Article 6 -->
-      <article
-        class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 border border-pink-100">
-        <div class="aspect-video bg-gradient-to-br from-yellow-200 to-orange-200 relative">
-          <div class="absolute top-4 left-4 bg-yellow-500 text-white px-3 py-1 rounded-full text-xs font-medium">
-            Parenting
-          </div>
-          <div
-            class="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm text-yellow-600 px-3 py-1 rounded-full text-xs font-medium">
-            🍎 Nutrition
-          </div>
-        </div>
-        <div class="p-6">
-          <h3 class="text-xl font-bold text-gray-900 mb-3 font-serif">Nutrisi Seimbang untuk Tumbuh Kembang Anak Optimal
-          </h3>
-          <p class="text-gray-600 mb-4 text-sm leading-relaxed">
-            Panduan lengkap nutrisi anak dari bayi hingga remaja, termasuk tips mengatasi anak yang susah makan.
-          </p>
-          <div class="flex items-center justify-between text-sm">
-            <div class="flex items-center space-x-2">
-              <div
-                class="w-8 h-8 bg-gradient-to-br from-yellow-400 to-orange-400 rounded-full flex items-center justify-center">
-                <span class="text-white text-xs">👩</span>
-              </div>
-              <span class="text-gray-700">Dr. Lina Hartono</span>
-            </div>
-            <div class="flex items-center space-x-3 text-gray-500">
-              <span>10 min read</span>
-              <span>•</span>
-              <span>👁️ 5.1K</span>
-            </div>
-          </div>
-        </div>
-      </article>
-
-    </div>
+    <div id="cat-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+    <div class="text-center mt-12"><button id="cat-load" class="bg-pink-500 text-white px-8 py-3 rounded-full font-medium hover:bg-pink-600 transition-all hidden">Load More</button></div>
   </div>
 </section>
 
@@ -264,3 +46,43 @@
     </div>
   </div>
 </section>
+
+<script>
+(function(){
+  const titleEl=document.getElementById('cat-title');
+  const descEl=document.getElementById('cat-desc');
+  const countEl=document.getElementById('cat-count');
+  const grid=document.getElementById('cat-grid');
+  const loadBtn=document.getElementById('cat-load');
+  if(!grid) return;
+
+  let page=1; const limit=9;
+  const slug=decodeURIComponent(window.location.pathname.split('/').pop());
+
+  function initials(n=''){return n.split(' ').map(s=>s[0]).join('').toUpperCase().slice(0,2);}
+
+  function cardHTML(a){
+    const img=a.featured_image||'';
+    const read=a.read_time||5;
+    const views=a.view_count||a.views||'';
+    return `<article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all hover:-translate-y-1 border border-pink-100">
+      ${img?`<img src="${img}" alt="${a.title}" class="aspect-video w-full object-cover">`:`<div class="aspect-video bg-gradient-to-br from-pink-200 to-purple-200"></div>`}
+      <div class="p-6"><h3 class="text-xl font-bold text-gray-900 mb-3 font-serif"><a href="/post/${a.slug}" class="hover:text-pink-600">${a.title}</a></h3><p class="text-gray-600 mb-4 text-sm leading-relaxed line-clamp-3">${a.excerpt||''}</p><div class="flex items-center justify-between text-sm"><div class="flex items-center space-x-2"><div class="w-8 h-8 bg-pink-200 rounded-full flex items-center justify-center">${initials(a.author||'M')}</div><span class="text-gray-700">${a.author||''}</span></div><div class="flex items-center space-x-3 text-gray-500"><span>${read} min read</span>${views?`<span>•</span><span>👁️ ${views}</span>`:''}</div></div></div></article>`;
+  }
+
+  function fetchPosts(){loadBtn&& (loadBtn.disabled=true);
+    fetch(`/api/blog/posts/category/${encodeURIComponent(slug)}?page=${page}&limit=${limit}`)
+      .then(r=>r.json()).then(res=>{const posts=Array.isArray(res)?res:(res.posts||[]);if(page===1){grid.innerHTML='';if(countEl) countEl.textContent=`${posts.length} articles in this category`;}
+        posts.forEach(p=>grid.insertAdjacentHTML('beforeend',cardHTML(p)));
+        if(posts.length<limit){loadBtn.style.display='none';}else{loadBtn.style.display='inline-block';}
+        page++; loadBtn&&(loadBtn.disabled=false);
+      }).catch(e=>{console.error(e);loadBtn&&(loadBtn.disabled=false);});}
+
+  // fetch category info
+  fetch(`/api/blog/categories/${encodeURIComponent(slug)}`)
+    .then(r=>r.json()).then(info=>{titleEl.textContent=info?.name||slug;descEl.textContent=info?.description||'';}).catch(()=>{});
+
+  loadBtn&&loadBtn.addEventListener('click',fetchPosts);
+  fetchPosts();
+})();
+</script>
