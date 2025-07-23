@@ -13,88 +13,43 @@
       "id": "navigation",
       "type": "template",
       "resetable": true,
-      "data": [
-        "site.name",
-        "site.logo",
-        "navigation",
-        "search_enabled",
-        "cta_button"
-      ]
+      "data": ["site.name", "site.logo", "navigation"]
     },
     {
       "title": "hero",
       "id": "hero",
       "type": "template",
       "resetable": true,
-      "data": [
-        "hero"
-      ]
+      "data": []
     },
     {
-      "title": "featured stories",
-      "id": "featured_stories",
+      "title": "featured content",
+      "id": "featured_content",
       "type": "template",
       "resetable": true,
-      "data": [
-        "featured"
-      ]
+      "data": []
     },
     {
-      "title": "destinations",
-      "id": "destinations",
+      "title": "categories",
+      "id": "categories",
       "type": "template",
       "resetable": true,
-      "data": [
-        "destinations"
-      ]
+      "data": []
     },
-    {
-      "title": "travel guides",
-      "id": "travel_guides",
-      "type": "template",
-      "resetable": true,
-      "data": [
-        "guides"
-      ]
-    },
-    {
-      "title": "photo gallery",
-      "id": "photo_gallery",
-      "type": "template",
-      "resetable": true,
-      "data": [
-        "gallery"
-      ]
-    },
-    {
-      "title": "travel tips",
-      "id": "travel_tips",
-      "type": "template",
-      "resetable": true,
-      "data": [
-        "tips"
-      ]
-    },
+
     {
       "title": "newsletter",
       "id": "newsletter",
       "type": "template",
       "resetable": true,
-      "data": [
-        "newsletter"
-      ]
+      "data": []
     },
     {
       "title": "footer",
       "id": "footer",
       "type": "template",
       "resetable": true,
-      "data": [
-        "site.name",
-        "site.description",
-        "navigation",
-        "social_links"
-      ]
+      "data": ["site.name", "site.description", "navigation", "social_links"]
     }
   ]
-} 
+}

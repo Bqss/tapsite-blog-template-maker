@@ -1,0 +1,62 @@
+<!-- Trending Travel Stories -->
+<section class="py-16 bg-travel-light">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="font-display text-3xl lg:text-4xl font-bold text-travel-dark mb-4">Trending This Week</h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">The most popular adventures fellow travelers are reading now</p>
+    </div>
+
+    <!-- Loading / Error / Grid -->
+    <div id="trend-loading" class="flex justify-center py-12">
+      <div class="inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-travel-blue"></div>
+    </div>
+    <div id="trend-error" class="text-center py-12 hidden">
+      <p class="text-red-500">Failed to load trending stories.</p>
+    </div>
+    <div id="trend-empty" class="text-center py-12 hidden">
+      <p class="text-gray-500">No trending stories found.</p>
+    </div>
+
+    <div id="trend-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 hidden"></div>
+
+  </div>
+</section>
+
+<script>
+(function(){
+  const LIMIT = 6;
+  const loadEl = document.getElementById('trend-loading');
+  const errEl = document.getElementById('trend-error');
+  const emptyEl = document.getElementById('trend-empty');
+  const gridEl = document.getElementById('trend-grid');
+
+  const fallbackImg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23f3f4f6'/%3E%3Ctext x='200' y='100' text-anchor='middle' dy='0.3em' font-family='Arial' font-size='16' fill='%23666'%3ENo Image%3C/text%3E%3C/svg%3E";
+
+  function card(p){
+    const img = p.featured_image || fallbackImg;
+    return `<article class='travel-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100'>\n      <div class='relative'>\n        <img src='${img}' alt='${p.title}' class='w-full h-48 object-cover'>\n        ${p.view_count ? `<div class='absolute top-4 right-4'><span class='bg-white/80 backdrop-blur px-3 py-1 rounded-full text-sm font-medium text-gray-700'>👁️ ${p.view_count}</span></div>` : ''}\n      </div>\n      <div class='p-6'>\n        <h3 class='font-display text-xl font-semibold text-travel-dark mb-3 line-clamp-2'>${p.title}</h3>\n        <p class='text-gray-600 text-sm mb-4 line-clamp-3'>${p.excerpt || ''}</p>\n        <div class='flex items-center justify-between'>\n          <div class='flex items-center space-x-2'>\n            <img src='${p.author_avatar || "/images/default-avatar.png"}' class='w-8 h-8 rounded-full' alt='${p.author}'>\n            <span class='text-gray-600 text-sm'>${p.author || ''}</span>\n          </div>\n          <a href='/post/${p.slug}' class='text-travel-blue font-medium hover:text-travel-navy transition-colors'>Read →</a>\n        </div>\n      </div>\n    </article>`;
+  }
+
+  async function load(){
+    try{
+      const res = await fetch(`/api/blog/posts/trending?limit=${LIMIT}`);
+      if(!res.ok) throw new Error();
+      const data = await res.json();
+      const posts = data || [];
+      if(!posts.length){
+        emptyEl.classList.remove('hidden');
+        return;
+      }
+      gridEl.innerHTML = posts.map(card).join('');
+      gridEl.classList.remove('hidden');
+    }catch(e){
+      console.error(e);
+      errEl.classList.remove('hidden');
+    }finally{
+      loadEl.classList.add('hidden');
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', load);
+})();
+</script>

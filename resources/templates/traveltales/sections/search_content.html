@@ -1,0 +1,126 @@
+<!-- Search Hero Section -->
+<section class="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-500 text-white py-16">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h1 class="text-4xl md:text-5xl font-bold mb-4">Find Your Next Adventure</h1>
+    <p class="text-xl opacity-90 mb-8">Search through hundreds of travel guides, destination tips, and adventure stories
+    </p>
+
+    <!-- Main Search Form -->
+    <div class="bg-white rounded-xl p-6 shadow-lg">
+      <form id="search-form" class="space-y-4" action="/search" method="GET">
+        <div class="flex flex-col md:flex-row gap-4">
+          <div class="flex-1">
+            <input id="search-input" name="q" type="text"
+              placeholder="Search destinations, activities, or travel tips..."
+              class="w-full px-4 py-3 rounded-lg border border-gray-300 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          </div>
+          <button type="submit"
+            class="bg-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors">
+            🔍 Search
+          </button>
+        </div>
+
+        <!-- Advanced Search Filters -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-gray-900">
+          <select
+            class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <option>All Destinations</option>
+            <option>Southeast Asia</option>
+            <option>Europe</option>
+            <option>Africa</option>
+            <option>Americas</option>
+            <option>Nordic Countries</option>
+          </select>
+          <select
+            class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <option>All Travel Types</option>
+            <option>Adventure Travel</option>
+            <option>Cultural Tourism</option>
+            <option>Luxury Travel</option>
+            <option>Budget Travel</option>
+            <option>Solo Travel</option>
+          </select>
+          <select
+            class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <option>Any Budget</option>
+            <option>Under $50/day</option>
+            <option>$50-100/day</option>
+            <option>$100-200/day</option>
+            <option>$200+/day</option>
+          </select>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Search Results -->
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <!-- Search Summary -->
+  <div class="mb-8">
+    <h2 id="search-title" class="text-2xl font-bold text-gray-900 mb-2"></h2>
+    <p id="search-count" class="text-gray-600"></p>
+  </div>
+
+  <div id="search-loading" class="flex justify-center py-12">
+    <div class="inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-blue-600"></div>
+  </div>
+  <div id="search-error" class="text-center py-12 hidden"><p class="text-red-500">Failed to load results.</p></div>
+  <div id="search-empty" class="text-center py-12 hidden"><p class="text-gray-500">No results found.</p></div>
+  <div id="search-grid-wrapper" class="grid grid-cols-1 lg:grid-cols-3 gap-8 hidden">
+    <div id="search-results" class="lg:col-span-2 space-y-6"></div>
+    <div id="search-sidebar" class="hidden lg:block"></div>
+  </div>
+</main>
+
+<script>
+(function(){
+  const LIMIT=50;
+  const params=new URLSearchParams(window.location.search);
+  let query=params.get('q')||decodeURIComponent(window.location.pathname.split('/').pop());
+  if(!query||query==='search'){query='';}
+
+  const input=document.getElementById('search-input');
+  if(input) input.value=query;
+
+  const titleEl=document.getElementById('search-title');
+  const countEl=document.getElementById('search-count');
+  const loadEl=document.getElementById('search-loading');
+  const errEl=document.getElementById('search-error');
+  const emptyEl=document.getElementById('search-empty');
+  const gridWrapper=document.getElementById('search-grid-wrapper');
+  const resultsEl=document.getElementById('search-results');
+
+  const fallbackImg="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23f3f4f6'/%3E%3Ctext x='200' y='100' text-anchor='middle' dy='0.3em' font-family='Arial' font-size='16' fill='%23666'%3ENo Image%3C/text%3E%3C/svg%3E";
+
+  function resultCard(p){
+    const img=p.featured_image||fallbackImg;
+    return `<article class='bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow'>\n      <div class='md:flex'>\n        <div class='md:w-1/3'>\n          <img src='${img}' alt='${p.title}' class='w-full h-48 md:h-full object-cover'>\n        </div>\n        <div class='md:w-2/3 p-6'>\n          <div class='flex items-center space-x-2 mb-3'>\n            ${p.category?`<span class='bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium'>${p.category}</span>`:''}\n            ${p.location?`<span class='bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full text-sm font-medium'>${p.location}</span>`:''}\n          </div>\n          <h3 class='text-xl font-bold text-gray-900 mb-2 line-clamp-2'>${p.title}</h3>\n          <p class='text-gray-600 mb-4 line-clamp-3'>${p.excerpt||''}</p>\n          <div class='flex items-center justify-between text-sm text-gray-500 mb-3'>\n            <span>${p.author||''} • ${p.read_time||5} min read</span>\n          </div>\n          <a href='/post/${p.slug}' class='inline-flex items-center text-blue-600 hover:text-blue-700 font-medium'>Read Full Guide <svg class='w-4 h-4 ml-1' fill='none' stroke='currentColor' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 5l7 7-7 7'></path></svg></a>\n        </div>\n      </div>\n    </article>`;
+  }
+
+  async function search(){
+    if(!query){emptyEl.classList.remove('hidden');loadEl.classList.add('hidden');return;}
+    titleEl.textContent=`Search Results for "${query}"`;
+    loadEl.classList.remove('hidden');
+    errEl.classList.add('hidden');
+    emptyEl.classList.add('hidden');
+    try{
+      const res=await fetch(`/api/blog/posts/search/${encodeURIComponent(query)}?limit=${LIMIT}`);
+      if(!res.ok) throw new Error();
+      const data=await res.json();
+      const posts=data||[];
+      countEl.textContent=`Found ${posts.length} article${posts.length!==1?'s':''} matching your search`;
+      if(!posts.length){emptyEl.classList.remove('hidden');return;}
+      resultsEl.innerHTML=posts.map(resultCard).join('');
+      gridWrapper.classList.remove('hidden');
+    }catch(e){console.error(e);errEl.classList.remove('hidden');}
+    finally{loadEl.classList.add('hidden');}
+  }
+
+  // form submission
+  const form=document.getElementById('search-form');
+  if(form){form.addEventListener('submit',e=>{e.preventDefault();const q=input.value.trim();if(q){window.location.href=`/search/${encodeURIComponent(q)}`;}});}  
+
+  document.addEventListener('DOMContentLoaded',search);
+})();
+</script>

@@ -1,63 +1,77 @@
-<!-- Hero Section -->
-<section class="hero-gradient py-20 text-white overflow-hidden relative">
-    <div class="absolute inset-0 bg-black bg-opacity-20"></div>
-    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-                <div class="inline-flex items-center bg-white bg-opacity-20 rounded-full px-4 py-2 mb-6">
-                    <span class="text-sm font-medium">{{it.hero.badge}}</span>
-                </div>
-                <h1 class="font-display text-4xl lg:text-6xl font-bold mb-6 leading-tight">
-                    {{it.hero.title_line1}}<br/>
-                    <span class="bg-gradient-to-r from-travel-orange to-yellow-300 bg-clip-text text-transparent">{{it.hero.title_line2}}</span>
-                </h1>
-                <p class="text-xl text-blue-100 mb-8 leading-relaxed">
-                    {{it.hero.description}}
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    {{@each(it.hero.buttons)=>button}}
-                    <button class="{{button.primary ? 'bg-white text-travel-blue hover:bg-gray-100' : 'border-2 border-white text-white hover:bg-white hover:text-travel-blue'}} px-8 py-4 rounded-xl font-semibold transition-colors">
-                        {{button.text}}
-                    </button>
-                    {{/each}}
-                </div>
-                
-                <!-- Travel Stats -->
-                <div class="grid grid-cols-3 gap-8 mt-12">
-                    {{@each(it.hero.stats)=>stat}}
-                    <div class="text-center">
-                        <div class="font-display text-3xl font-bold">{{stat.value}}</div>
-                        <div class="text-blue-200 text-sm">{{stat.label}}</div>
-                    </div>
-                    {{/each}}
-                </div>
-            </div>
-            
-            <div class="relative">
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="space-y-4">
-                        {{@each(it.hero.gallery.left)=>image}}
-                        <img src="{{image.url}}" 
-                             alt="{{image.alt}}" 
-                             class="w-full {{image.tall ? 'h-40' : 'h-32'}} object-cover rounded-2xl shadow-xl transform {{image.rotate}} hover:rotate-0 transition-transform gallery-item">
-                        {{/each}}
-                    </div>
-                    <div class="space-y-4 mt-8">
-                        {{@each(it.hero.gallery.right)=>image}}
-                        <img src="{{image.url}}" 
-                             alt="{{image.alt}}" 
-                             class="w-full {{image.tall ? 'h-40' : 'h-32'}} object-cover rounded-2xl shadow-xl transform {{image.rotate}} hover:rotate-0 transition-transform gallery-item">
-                        {{/each}}
-                    </div>
-                </div>
-                
-                <!-- Floating Travel Icons -->
-                {{@each(it.hero.floating_icons)=>icon}}
-                <div class="absolute {{icon.position}} bg-white p-3 rounded-full shadow-lg {{icon.animation}}">
-                    <span class="text-2xl">{{icon.emoji}}</span>
-                </div>
-                {{/each}}
-            </div>
-        </div>
-    </div>
-</section> 
+
+        <!-- Hero Section -->
+        <section class="hero-gradient py-20 text-white overflow-hidden relative">
+          <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+          <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                  <div>
+                      <div class="inline-flex items-center bg-white bg-opacity-20 rounded-full px-4 py-2 mb-6">
+                          <span class="text-sm font-medium">✈️ Discover Amazing Destinations</span>
+                      </div>
+                      <h1 class="font-display text-4xl lg:text-6xl font-bold mb-6 leading-tight">
+                          Explore the World<br/>
+                          <span class="bg-gradient-to-r from-travel-orange to-yellow-300 bg-clip-text text-transparent">One Story at a Time</span>
+                      </h1>
+                      <p class="text-xl text-blue-100 mb-8 leading-relaxed">
+                          Join us on incredible journeys around the globe. Discover hidden gems, cultural treasures, and unforgettable adventures through our detailed travel guides and inspiring stories.
+                      </p>
+                      <div class="flex flex-col sm:flex-row gap-4">
+                          <button class="bg-white text-travel-blue px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-colors">
+                              Explore Destinations
+                          </button>
+                          <button class="border-2 border-white text-white px-8 py-4 rounded-xl font-semibold hover:bg-white hover:text-travel-blue transition-colors">
+                              View Travel Stories
+                          </button>
+                      </div>
+                      
+                      <!-- Travel Stats -->
+                      <div class="grid grid-cols-3 gap-8 mt-12">
+                          <div class="text-center">
+                              <div class="font-display text-3xl font-bold">150+</div>
+                              <div class="text-blue-200 text-sm">Countries Explored</div>
+                          </div>
+                          <div class="text-center">
+                              <div class="font-display text-3xl font-bold">500+</div>
+                              <div class="text-blue-200 text-sm">Travel Guides</div>
+                          </div>
+                          <div class="text-center">
+                              <div class="font-display text-3xl font-bold">1M+</div>
+                              <div class="text-blue-200 text-sm">Travelers Inspired</div>
+                          </div>
+                      </div>
+                  </div>
+                  
+                  <div class="relative">
+                      <div class="grid grid-cols-2 gap-4">
+                          <div class="space-y-4">
+                              <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=300&h=300&fit=crop" 
+                                   alt="Southeast Asia Adventure" 
+                                   class="w-full h-40 object-cover rounded-2xl shadow-xl transform rotate-3 hover:rotate-0 transition-transform gallery-item">
+                              <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?w=300&h=200&fit=crop" 
+                                   alt="African Safari" 
+                                   class="w-full h-32 object-cover rounded-2xl shadow-xl transform -rotate-2 hover:rotate-0 transition-transform gallery-item">
+                          </div>
+                          <div class="space-y-4 mt-8">
+                              <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300&h=200&fit=crop" 
+                                   alt="Iceland Landscapes" 
+                                   class="w-full h-32 object-cover rounded-2xl shadow-xl transform -rotate-3 hover:rotate-0 transition-transform gallery-item">
+                              <img src="https://images.unsplash.com/photo-1528181304800-259b08848526?w=300&h=300&fit=crop" 
+                                   alt="Japanese Culture" 
+                                   class="w-full h-40 object-cover rounded-2xl shadow-xl transform rotate-2 hover:rotate-0 transition-transform gallery-item">
+                          </div>
+                      </div>
+                      
+                      <!-- Floating Travel Icons -->
+                      <div class="absolute -top-4 -right-4 bg-white p-3 rounded-full shadow-lg animate-bounce">
+                          <span class="text-2xl">📸</span>
+                      </div>
+                      <div class="absolute top-1/2 -left-6 bg-white p-3 rounded-full shadow-lg animate-pulse">
+                          <span class="text-2xl">🗺️</span>
+                      </div>
+                      <div class="absolute -bottom-4 right-1/3 bg-white p-3 rounded-full shadow-lg animate-bounce delay-300">
+                          <span class="text-2xl">🎒</span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>

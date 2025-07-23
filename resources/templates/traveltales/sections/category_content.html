@@ -1,0 +1,189 @@
+<!-- Breadcrumb -->
+<div class="bg-gray-50 py-4">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav class="flex items-center space-x-2 text-sm text-gray-600">
+      <a href="/home" class="hover:text-blue-600">Home</a>
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+      </svg>
+      <a href="/travel-types" class="hover:text-blue-600">Travel Types</a>
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+      </svg>
+      <span class="text-gray-900">Adventure Travel</span>
+    </nav>
+  </div>
+</div>
+
+<!-- Category Hero -->
+<section class="bg-gradient-to-r from-green-600 via-blue-600 to-purple-600 text-white py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <div class="text-6xl mb-4" id="cat-icon">🏷️</div>
+    <h1 class="text-4xl md:text-5xl font-bold mb-4" id="cat-title"></h1>
+    <p class="text-xl opacity-90 mb-6">Thrilling outdoor activities and extreme sports for adrenaline seekers</p>
+    <div class="flex justify-center space-x-8 text-sm">
+      <div><div class="text-2xl font-bold" id="stat-count">...</div><div class="opacity-80">Articles</div></div>
+      <div><div class="text-2xl font-bold" id="stat-views">...</div><div class="opacity-80">Views</div></div>
+      <div><div class="text-2xl font-bold" id="stat-rating">...</div><div class="opacity-80">Rating</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Adventure Types Filter -->
+<section class="bg-white py-8 border-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-wrap gap-4 justify-center" id="cat-tabs"></div>
+    <script>(function(){const cont=document.getElementById('cat-tabs');if(!cont) return;function cur(){const p=window.location.pathname.split('/');const i=p.indexOf('category');return i>-1?decodeURIComponent(p[i+1]):'';}async function load(){try{const res=await fetch('/api/blog/categories');if(!res.ok) throw new Error();const cats=await res.json();const c=cur();cont.innerHTML=cats.map(k=>`<a href='/category/${encodeURIComponent(k.name)}' class='px-6 py-2 rounded-full font-medium ${k.name===c?'bg-blue-600 text-white':'bg-gray-100 text-gray-700 hover:bg-gray-200'}'>${k.name}</a>`).join('');}catch(e){console.error(e);}}document.addEventListener('DOMContentLoaded',load);})();</script>
+  </div>
+</section>
+
+<!-- Featured Article -->
+<section class="py-12 bg-gray-50"><div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" id="cat-featured"></div></section>
+
+<!-- Adventure Articles Grid -->
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <div class="flex justify-between items-center mb-8">
+    <h2 class="text-3xl font-bold text-gray-900">Adventure Travel Stories</h2>
+    <select class="border border-gray-300 rounded-lg px-4 py-2 bg-white">
+      <option>Sort by Latest</option>
+      <option>Sort by Difficulty</option>
+      <option>Sort by Duration</option>
+      <option>Sort by Budget</option>
+    </select>
+  </div>
+
+  <div id="cat-loading" class="flex justify-center py-12"><div class='inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-blue-600'></div></div>
+  <div id="cat-error" class="text-center py-12 hidden"><p class='text-red-500'>Failed to load.</p></div>
+  <div id="cat-empty" class="text-center py-12 hidden"><p class='text-gray-500'>No stories.</p></div>
+  <div id="cat-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 hidden"></div>
+
+  <!-- Pagination -->
+  <div class="flex justify-center mt-12">
+    <nav id="cat-pagination" class="flex items-center space-x-2 hidden">
+      <button class="px-3 py-2 text-gray-500 hover:text-gray-700 disabled:opacity-50" disabled>
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+      </button>
+      <button class="px-4 py-2 bg-blue-600 text-white rounded-lg font-medium">1</button>
+      <button class="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg">2</button>
+      <button class="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg">3</button>
+      <span class="px-3 py-2 text-gray-500">...</span>
+      <button class="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg">6</button>
+      <button class="px-3 py-2 text-gray-700 hover:text-gray-900">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </button>
+    </nav>
+  </div>
+</main>
+
+<!-- Adventure Tips Section -->
+<section class="bg-gradient-to-r from-green-600 to-blue-600 text-white py-16">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 class="text-3xl font-bold mb-8">Essential Adventure Travel Tips</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6">
+        <div class="text-3xl mb-3">🎒</div>
+        <h3 class="text-xl font-bold mb-2">Pack Smart</h3>
+        <p class="opacity-90">Bring versatile, lightweight gear suitable for multiple activities and weather conditions.
+        </p>
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6">
+        <div class="text-3xl mb-3">🛡️</div>
+        <h3 class="text-xl font-bold mb-2">Stay Safe</h3>
+        <p class="opacity-90">Research local conditions, get proper insurance, and inform others of your travel plans.
+        </p>
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm rounded-lg p-6">
+        <div class="text-3xl mb-3">🌟</div>
+        <h3 class="text-xl font-bold mb-2">Respect Nature</h3>
+        <p class="opacity-90">Follow Leave No Trace principles and respect local environments and communities.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  const LIMIT = 9; let currentPage = 1, totalPages = 1;
+  const slug = decodeURIComponent(window.location.pathname.split('/').pop());
+  const gridEl = document.getElementById('cat-grid');
+  const pagEl = document.getElementById('cat-pagination');
+  if(!gridEl || !pagEl) return;
+
+  // Create helper elements for loading, error, and empty states
+  const loadEl = document.getElementById('cat-loading');
+  const errEl = document.getElementById('cat-error');
+  const emptyEl = document.getElementById('cat-empty');
+  const featured = document.getElementById('cat-featured');
+  const statCount = document.getElementById('stat-count');
+  const statViews = document.getElementById('stat-views');
+  const statRating = document.getElementById('stat-rating');
+  const titleEl = document.getElementById('cat-title');
+
+  const fallbackImg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23f3f4f6'/%3E%3Ctext x='200' y='100' text-anchor='middle' dy='0.3em' font-family='Arial' font-size='16' fill='%23666'%3ENo Image%3C/text%3E%3C/svg%3E";
+
+  function card(p) {
+    const img = p.featured_image || fallbackImg;
+    return `<article class='bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow'>\n      <div class='relative'>\n        <img src="${img}" alt="${p.title}" class='w-full h-48 object-cover'>\n        ${p.category ? `<div class='absolute top-4 left-4'><span class='bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium'>${p.category}</span></div>` : ''}\n        ${p.difficulty ? `<div class='absolute top-4 right-4'><span class='bg-orange-500 text-white px-2 py-1 rounded text-sm font-medium'>${p.difficulty}</span></div>` : ''}\n      </div>\n      <div class='p-6'>\n        <div class='flex items-center space-x-2 mb-3'>\n          ${p.location ? `<span class='text-sm text-gray-600'>${p.location}</span><span class='text-gray-400'>•</span>` : ''}\n          <span class='text-sm text-gray-600'>⏱️ ${p.read_time || 5} min read</span>\n        </div>\n        <h3 class='text-xl font-bold text-gray-900 mb-2'>${p.title}</h3>\n        <p class='text-gray-600 mb-4'>${p.excerpt || ''}</p>\n        <div class='flex items-center justify-between'>\n          <div class='flex items-center space-x-2'>\n            <img src='${p.author_avatar || "/images/default-avatar.png"}' class='w-8 h-8 rounded-full' alt='${p.author}'>\n            <span class='text-sm text-gray-700'>${p.author || ''}</span>\n          </div>\n          <a href='/post/${p.slug}' class='text-blue-600 hover:text-blue-700 font-medium'>Read More →</a>\n        </div>\n      </div>\n    </article>`;
+  }
+
+  function featuredMarkup(p){return `<h2 class='text-3xl font-bold text-gray-900 mb-8 text-center'>Featured ${p.category||''} Story</h2><div class='bg-white rounded-2xl shadow-lg overflow-hidden md:flex'><div class='md:w-1/2'><img src='${p.featured_image||'/placeholder.png'}' class='w-full h-64 md:h-full object-cover'></div><div class='md:w-1/2 p-8'><h3 class='text-2xl font-bold text-gray-900 mb-4'>${p.title}</h3><p class='text-gray-600 mb-6 line-clamp-4'>${p.excerpt||''}</p><a href='/post/${p.slug}' class='inline-flex items-center bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors'>Read Story →</a></div></div>`;}
+
+  function pagination() {
+    if (totalPages <= 1) { pagEl.classList.add('hidden'); return; }
+    let html = `<button ${currentPage === 1 ? 'disabled' : ''} data-page='prev' class='px-3 py-2 text-gray-500 hover:text-gray-700 disabled:opacity-50'>&laquo;</button>`;
+    for (let i = 1; i <= totalPages; i++) {
+      html += `<button data-page='${i}' class='px-4 py-2 ${i === currentPage ? 'bg-blue-600 text-white' : 'text-gray-700 hover:bg-gray-100'} rounded-lg'>${i}</button>`;
+    }
+    html += `<button ${currentPage === totalPages ? 'disabled' : ''} data-page='next' class='px-3 py-2 text-gray-500 hover:text-gray-700 disabled:opacity-50'>&raquo;</button>`;
+    pagEl.innerHTML = html;
+    pagEl.classList.remove('hidden');
+    pagEl.querySelectorAll('button').forEach(b => b.addEventListener('click', e => {
+      const v = e.currentTarget.dataset.page;
+      if (v === 'prev') load(currentPage - 1);
+      else if (v === 'next') load(currentPage + 1);
+      else load(parseInt(v));
+    }));
+  }
+
+  function getCategory(){const parts=window.location.pathname.split('/');const idx=parts.indexOf('category');return (idx>-1 && idx+1<parts.length)?decodeURIComponent(parts[idx+1]):'';}
+
+  async function load(page = 1) {
+    currentPage = page;
+    loadEl.classList.remove('hidden');
+    errEl.classList.add('hidden');
+    emptyEl.classList.add('hidden');
+    try {
+      const name = getCategory();
+      if (!name) {
+        throw new Error('No category');
+      }
+      const res = await fetch(`/api/blog/posts/category/${encodeURIComponent(name)}?limit=30`);
+      if (!res.ok) throw new Error();
+      let posts = await res.json();
+      if(statCount) statCount.textContent=posts.length;
+      if(statViews) statViews.textContent=posts.reduce((s,p)=>s+(p.view_count||0),0);
+      if(statRating) statRating.textContent=(posts.reduce((s,p)=>s+(p.rating||0),0)/(posts.length||1)).toFixed(1);
+
+      if(posts.length){featured.innerHTML=featuredMarkup(posts[0]);posts=posts.slice(1);}else{featured.innerHTML='';}
+      if(!posts.length){emptyEl.classList.remove('hidden');}else{gridEl.innerHTML=posts.map(card).join('');gridEl.classList.remove('hidden');}
+      totalPages = 1;
+      if (!posts.length) { emptyEl.classList.remove('hidden'); return; }
+      pagination();
+    } catch (e) {
+      console.error(e);
+      errEl.classList.remove('hidden');
+    } finally {
+      loadEl.classList.add('hidden');
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    gridEl.innerHTML = '';
+    load();
+  });
+})();
+</script>

@@ -1,0 +1,35 @@
+<!-- Travel Types -->
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="font-display text-3xl lg:text-4xl font-bold text-travel-dark mb-4">Travel Your Way</h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Find the perfect travel style that matches your interests and budget
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="travel-cat-grid">
+      <div id="travel-cat-loading" class="col-span-full flex justify-center py-12"><div class="inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-travel-primary"></div></div>
+      <div id="travel-cat-error" class="col-span-full text-center py-12 text-red-500 hidden">Failed to load categories.</div>
+    </div>
+    <script>
+    (function(){
+      const grid=document.getElementById('travel-cat-grid');
+      const loadEl=document.getElementById('travel-cat-loading');
+      const errEl=document.getElementById('travel-cat-error');
+      const colors=['orange','blue','purple','green','red'];
+      const icons=['🏔️','🎭','✨','🌊','🏖️'];
+      function card(c,i){const col=colors[i%colors.length];const icon=icons[i%icons.length];return `<div class='bg-gradient-to-br from-${col}-50 to-${col}-100 p-6 rounded-2xl border border-${col}-200 hover:shadow-lg transition-all duration-300'>
+  <div class='flex items-center space-x-4 mb-4'>
+    <div class='w-12 h-12 bg-${col}-500 rounded-full flex items-center justify-center'><span class='text-white text-xl'>${icon}</span></div>
+    <div><h3 class='font-semibold text-travel-dark'>${c.name}</h3><p class='text-${col}-600 text-sm'>${c.posts||0} guides</p></div>
+  </div>
+  <p class='text-gray-600 text-sm mb-4'>${c.description||''}</p>
+  <a href='/category/${encodeURIComponent(c.name)}' class='text-${col}-600 font-medium hover:text-${col}-700 transition-colors'>Explore ${c.name} →</a>
+</div>`;}
+      async function load(){try{const res=await fetch('/api/blog/categories');if(!res.ok) throw new Error();const cats=await res.json();loadEl.remove();grid.innerHTML=cats.length?cats.map(card).join(''):`<div class='col-span-full text-center py-12 text-gray-500'>No categories.</div>`;}catch(e){console.error(e);loadEl.classList.add('hidden');errEl.classList.remove('hidden');}}
+      document.addEventListener('DOMContentLoaded',load);
+    })();
+    </script>
+  </div>
+</section>

@@ -1,49 +1,44 @@
 <!-- Navigation -->
 <nav class="bg-white shadow-lg border-b border-blue-100 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-16">
-            <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 bg-travel-blue rounded-xl flex items-center justify-center">
-                    {{@if(it.site.logo)}}
-                    <img src="{{it.site.logo}}" alt="{{it.site.name}}" class="w-6 h-6">
-                    {{#else}}
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-                    </svg>
-                    {{/if}}
-                </div>
-                <span class="font-display text-xl font-bold text-travel-dark">{{it.site.name}}</span>
-            </div>
-            
-            <div class="hidden md:flex items-center space-x-8">
-                {{@each(it.navigation)=>item}}
-                <a href="{{item.url}}" 
-                   class="{{item.active ? 'text-travel-blue border-b-2 border-travel-blue pb-1' : 'text-gray-600 hover:text-travel-blue transition-colors'}} font-medium">
-                    {{item.name}}
-                </a>
-                {{/each}}
-            </div>
-            
-            <div class="flex items-center space-x-4">
-                {{@if(it.search_enabled)}}
-                <button class="text-gray-600 hover:text-travel-blue transition-colors">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                    </svg>
-                </button>
-                {{/if}}
-                {{@if(it.cta_button)}}
-                <button class="bg-travel-blue text-white px-4 py-2 rounded-lg font-medium hover:bg-travel-navy transition-colors">
-                    {{it.cta_button.text}}
-                </button>
-                {{/if}}
-                <button class="md:hidden text-gray-600 hover:text-travel-blue transition-colors">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                    </svg>
-                </button>
-            </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 bg-travel-blue rounded-xl flex items-center justify-center">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
         </div>
+        <span class="font-display text-xl font-bold text-travel-dark">TravelTales</span>
+      </div>
+
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="#" class="text-travel-blue font-medium border-b-2 border-travel-blue pb-1">Home</a>
+        <a href="#" class="text-gray-600 hover:text-travel-blue transition-colors font-medium">Destinations</a>
+        <a href="#" class="text-gray-600 hover:text-travel-blue transition-colors font-medium">Travel Guides</a>
+        <a href="#" class="text-gray-600 hover:text-travel-blue transition-colors font-medium">Photography</a>
+        <a href="#" class="text-gray-600 hover:text-travel-blue transition-colors font-medium">About</a>
+      </div>
+
+      <div class="flex items-center space-x-4">
+        <button class="text-gray-600 hover:text-travel-blue transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </button>
+        <button
+          class="bg-travel-blue text-white px-4 py-2 rounded-lg font-medium hover:bg-travel-navy transition-colors">
+          Plan Trip
+        </button>
+        <button class="md:hidden text-gray-600 hover:text-travel-blue transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
     </div>
-</nav> 
+  </div>
+</nav>
