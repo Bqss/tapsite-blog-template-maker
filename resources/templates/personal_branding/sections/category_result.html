@@ -1,0 +1,195 @@
+<main>
+  <!-- Category Header -->
+  <section class="py-16 bg-gradient-to-r from-blue-50 to-purple-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <div class="flex justify-center mb-6">
+          <div
+            class="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-folder w-8 h-8 text-white">
+              <path
+                d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z">
+              </path>
+            </svg>
+          </div>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold text-slate-900 mb-4">Web Development</h1>
+        <p class="text-xl text-slate-600 max-w-3xl mx-auto mb-8">Explore articles about modern web development, best
+          practices, frameworks, and the latest trends in the industry.</p>
+        <div class="flex flex-wrap justify-center gap-4 text-sm text-slate-500">
+          <span class="flex items-center space-x-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-file-text">
+              <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
+              <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+              <path d="M10 9H8"></path>
+              <path d="M16 13H8"></path>
+              <path d="M16 17H8"></path>
+            </svg>
+            <span data-cat-count>24 Articles</span>
+          </span>
+          <span class="flex items-center space-x-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-clock">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12,6 12,12 16,14"></polyline>
+            </svg>
+            <span>Last updated 2 days ago</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Articles Grid -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- States -->
+      <div id="cat-loading" class="py-12 text-center">
+        <div class="inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-blue-600"></div>
+        <p class="text-slate-500 mt-4">Loading posts...</p>
+      </div>
+      <div id="cat-error" class="py-12 text-center hidden"><p class="text-red-500">Failed to load posts.</p></div>
+      <div id="cat-empty" class="py-12 text-center hidden"><p class="text-slate-500">No posts in this category.</p></div>
+
+      <div id="cat-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 hidden"></div>
+
+      <!-- Pagination -->
+      <div id="cat-pagination" class="flex justify-center mt-12 hidden"></div>
+    </div>
+  </section>
+
+  <script>
+  (function(){
+    const LIMIT=9;let currentPage=1,totalPages=1;
+    const loadEl=document.getElementById('cat-loading');
+    const errEl=document.getElementById('cat-error');
+    const emptyEl=document.getElementById('cat-empty');
+    const gridEl=document.getElementById('cat-grid');
+    const pagEl=document.getElementById('cat-pagination');
+    const headerTitle=document.querySelector('h1');
+    const headerCount=document.querySelector('span[data-cat-count]');
+
+    const categorySlug=decodeURIComponent(window.location.pathname.split('/').pop()||'');
+    if(headerTitle)headerTitle.textContent=categorySlug.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
+
+    const fallbackImg="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23f3f4f6'/%3E%3Ctext x='200' y='100' text-anchor='middle' dy='0.3em' font-family='Arial' font-size='16' fill='%23666'%3ENo Image%3C/text%3E%3C/svg%3E";
+
+    function formatDate(ts){return new Date(ts).toLocaleDateString('id-ID',{month:'short',day:'numeric',year:'numeric'});}
+
+    function card(p){const img=p.featured_image||fallbackImg;return `<article class="bg-white rounded-2xl border border-slate-200 hover:shadow-lg transition-all duration-300 overflow-hidden group"><a href="/post/${p.slug}" class="relative block aspect-video"><img src="${img}" alt="${p.title}" class="absolute inset-0 w-full h-full object-cover" onerror="this.src='${fallbackImg}'"><div class="absolute inset-0 bg-black/20"></div><div class="absolute bottom-4 left-4"><span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">${p.category||categorySlug}</span></div></a><div class="p-6"><div class="flex items-center space-x-4 text-sm text-slate-500 mb-3"><span class="flex items-center space-x-1"><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-calendar'><path d='M8 2v4'></path><path d='M16 2v4'></path><rect width='18' height='18' x='3' y='4' rx='2'></rect><path d='M3 10h18'></path></svg><span>${formatDate(p.published_at||Date.now())}</span></span><span class="flex items-center space-x-1"><svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' class='lucide lucide-clock'><circle cx='12' cy='12' r='10'></circle><polyline points='12 6 12 12 16 14'></polyline></svg><span>${p.read_time||5} min read</span></span></div><h2 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors duration-200 line-clamp-2">${p.title}</h2><p class="text-slate-600 mb-4 line-clamp-3">${p.excerpt||''}</p><div class="flex items-center justify-between"><div class="flex items-center space-x-2"><div class="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center"><span class="text-white text-sm font-medium">${(p.author||'A')[0]}</span></div><span class="text-sm text-slate-600">${p.author||''}</span></div><a href="/post/${p.slug}" class="text-blue-600 hover:text-blue-700 font-medium text-sm transition-colors duration-200">Read More →</a></div></div></article>`;}
+
+    function renderPagination(){if(totalPages<=1){pagEl.classList.add('hidden');return;}let html=`<button ${currentPage===1?'disabled':''} data-page='prev' class='px-3 py-2 text-slate-500 hover:text-blue-600 disabled:opacity-40'>&laquo;</button>`;for(let i=1;i<=totalPages;i++){html+=`<button data-page='${i}' class='px-3 py-2 ${i===currentPage?'bg-blue-600 text-white':'text-slate-500 hover:text-blue-600'} rounded'>${i}</button>`;}html+=`<button ${currentPage===totalPages?'disabled':''} data-page='next' class='px-3 py-2 text-slate-500 hover:text-blue-600 disabled:opacity-40'>&raquo;</button>`;pagEl.innerHTML=html;pagEl.classList.remove('hidden');pagEl.querySelectorAll('button').forEach(b=>b.addEventListener('click',e=>{const v=e.currentTarget.dataset.page;if(v==='prev')loadPosts(currentPage-1);else if(v==='next')loadPosts(currentPage+1);else loadPosts(parseInt(v));}));}
+
+    async function loadPosts(page=1){currentPage=page;loadEl.classList.remove('hidden');errEl.classList.add('hidden');emptyEl.classList.add('hidden');gridEl.classList.add('hidden');try{const res=await fetch(`/api/blog/posts/category/${encodeURIComponent(categorySlug)}?limit=${LIMIT}&page=${page}`);if(!res.ok)throw new Error();const data=await res.json();const posts=data||[];totalPages=data.pagination?data.pagination.total_pages:1;if(headerCount)headerCount.textContent=`${data.pagination?.total||posts.length} Articles`;if(!posts.length){emptyEl.classList.remove('hidden');renderPagination();return;}gridEl.innerHTML=posts.map(card).join('');gridEl.classList.remove('hidden');renderPagination();}catch(e){console.error(e);errEl.classList.remove('hidden');}finally{loadEl.classList.add('hidden');}}
+
+    document.addEventListener('DOMContentLoaded',()=>loadPosts());
+  })();
+  </script>
+
+  <!-- Related Categories -->
+  <section class="py-16 bg-slate-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900 mb-4">Explore Other Categories</h2>
+        <p class="text-lg text-slate-600">Discover more topics and expand your knowledge</p>
+      </div>
+      <!-- States -->
+      <div id="cats-loading" class="flex justify-center py-8"><div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div></div>
+      <div id="cats-error" class="text-center py-8 hidden"><p class="text-red-500">Failed to load categories.</p></div>
+      <div id="cats-empty" class="text-center py-8 hidden"><p class="text-slate-500">No categories available.</p></div>
+      <div id="cats-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 hidden"></div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="py-20 bg-gradient-to-r from-blue-600 to-purple-600">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="flex justify-center mb-8">
+        <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-mail w-8 h-8 text-white">
+            <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+          </svg>
+        </div>
+      </div>
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Stay Updated</h2>
+      <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">Get the latest web development articles and insights
+        delivered straight to your inbox. Join thousands of developers who trust my content.</p>
+      <form class="max-w-md mx-auto">
+        <div class="flex flex-col sm:flex-row gap-4">
+          <input type="email" placeholder="Enter your email address"
+            class="flex-1 px-6 py-4 rounded-full text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-white/50"
+            required>
+          <button type="submit"
+            class="bg-white text-blue-600 px-8 py-4 rounded-full hover:bg-blue-50 transition-colors duration-200 font-medium flex items-center justify-center space-x-2">
+            <span>Subscribe</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-send w-4 h-4">
+              <path d="m22 2-7 20-4-9-9-4Z"></path>
+              <path d="M22 2 11 13"></path>
+            </svg>
+          </button>
+        </div>
+      </form>
+      <p class="text-sm text-blue-200 mt-4">Join 2,500+ developers. Unsubscribe anytime.</p>
+    </div>
+  </section>
+</main>
+
+<script>
+  (function () {
+    const grid = document.getElementById('cats-grid');
+    const load = document.getElementById('cats-loading');
+    const err = document.getElementById('cats-error');
+    const empty = document.getElementById('cats-empty');
+  
+    function card(c) {
+      return `
+        <a href="/category/${c.slug || c.name}" class="bg-white p-6 rounded-2xl hover:shadow-lg transition-all duration-300 group">
+          <div class="w-12 h-12 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-200">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder w-6 h-6 text-white">
+              <path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"></path>
+            </svg>
+          </div>
+          <h3 class="text-lg font-semibold text-slate-900 mb-2">${c.name}</h3>
+          <p class="text-slate-600 text-sm mb-3">${c.description || ''}</p>
+          <span class="text-sm text-slate-500">${c.total_posts || 0} articles</span>
+        </a>`;
+    }
+  
+    async function loadCats() {
+      try {
+        const res = await fetch('/api/blog/categories');
+        if (!res.ok) throw new Error();
+        
+        const cats = await res.json();
+        load.classList.add('hidden');
+  
+        if (!cats.length) {
+          empty.classList.remove('hidden');
+          return;
+        }
+  
+        grid.innerHTML = cats.map(card).join('');
+        grid.classList.remove('hidden');
+  
+      } catch (e) {
+        console.error(e);
+        load.classList.add('hidden');
+        err.classList.remove('hidden');
+      }
+    }
+  
+    document.addEventListener('DOMContentLoaded', loadCats);
+  })();
+  </script>
+  

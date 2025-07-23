@@ -1,33 +1,74 @@
 <section id="about" class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">{{it.about.title}}</h2>
-            <p class="text-xl text-slate-600 max-w-3xl mx-auto">{{it.about.subtitle}}</p>
-        </div>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div class="space-y-6">
-                {{@each(it.about.paragraphs)=>paragraph}}
-                <p class="text-lg text-slate-600 leading-relaxed">{{paragraph}}</p>
-                {{/each}}
-                {{@if(it.about.cta)}}
-                <div class="pt-4">
-                    <button class="text-blue-600 font-medium hover:text-blue-700 transition-colors duration-200">
-                        {{it.about.cta.text}} →
-                    </button>
-                </div>
-                {{/if}}
-            </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {{@each(it.about.features)=>feature}}
-                <div class="p-6 bg-slate-50 rounded-2xl hover:bg-blue-50 hover:shadow-lg transition-all duration-300 group">
-                    <div class="text-blue-600 mb-4 group-hover:scale-110 transition-transform duration-200">
-                        {{* feature.icon}}
-                    </div>
-                    <h3 class="font-semibold text-slate-900 mb-2">{{feature.title}}</h3>
-                    <p class="text-slate-600 text-sm">{{feature.description}}</p>
-                </div>
-                {{/each}}
-            </div>
-        </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">About Me</h2>
+      <p class="text-xl text-slate-600 max-w-3xl mx-auto">I'm a developer who believes that great
+        technology should be invisible, intuitive, and genuinely helpful to the people who use it.</p>
     </div>
-</section> 
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div class="space-y-6">
+        <p class="text-lg text-slate-600 leading-relaxed">With over 8 years of experience in full-stack
+          development, I've had the privilege of working with startups and Fortune 500 companies,
+          helping them bring their digital visions to life. My journey began with a simple HTML page
+          and has evolved into architecting complex systems that serve millions of users.</p>
+        <p class="text-lg text-slate-600 leading-relaxed">When I'm not coding, you'll find me writing
+          about technology trends, mentoring junior developers, or exploring the great outdoors with
+          my camera. I believe the best solutions come from understanding both the technical
+          challenges and the human stories behind them.</p>
+        <div class="pt-4"><button
+            class="text-blue-600 font-medium hover:text-blue-700 transition-colors duration-200">Read
+            my full story →</button></div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div class="p-6 bg-slate-50 rounded-2xl hover:bg-blue-50 hover:shadow-lg transition-all duration-300 group">
+          <div class="text-blue-600 mb-4 group-hover:scale-110 transition-transform duration-200"><svg
+              xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-code w-6 h-6">
+              <polyline points="16 18 22 12 16 6"></polyline>
+              <polyline points="8 6 2 12 8 18"></polyline>
+            </svg></div>
+          <h3 class="font-semibold text-slate-900 mb-2">Clean Code Advocate</h3>
+          <p class="text-slate-600 text-sm">Writing maintainable, scalable code that tells a story</p>
+        </div>
+        <div class="p-6 bg-slate-50 rounded-2xl hover:bg-blue-50 hover:shadow-lg transition-all duration-300 group">
+          <div class="text-blue-600 mb-4 group-hover:scale-110 transition-transform duration-200"><svg
+              xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-heart w-6 h-6">
+              <path
+                d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z">
+              </path>
+            </svg></div>
+          <h3 class="font-semibold text-slate-900 mb-2">User-Centered Design</h3>
+          <p class="text-slate-600 text-sm">Crafting experiences that users actually love to use</p>
+        </div>
+        <div class="p-6 bg-slate-50 rounded-2xl hover:bg-blue-50 hover:shadow-lg transition-all duration-300 group">
+          <div class="text-blue-600 mb-4 group-hover:scale-110 transition-transform duration-200"><svg
+              xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-coffee w-6 h-6">
+              <path d="M17 8h1a4 4 0 1 1 0 8h-1"></path>
+              <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"></path>
+              <line x1="6" x2="6" y1="2" y2="4"></line>
+              <line x1="10" x2="10" y1="2" y2="4"></line>
+              <line x1="14" x2="14" y1="2" y2="4"></line>
+            </svg></div>
+          <h3 class="font-semibold text-slate-900 mb-2">Continuous Learner</h3>
+          <p class="text-slate-600 text-sm">Always exploring new technologies and methodologies</p>
+        </div>
+        <div class="p-6 bg-slate-50 rounded-2xl hover:bg-blue-50 hover:shadow-lg transition-all duration-300 group">
+          <div class="text-blue-600 mb-4 group-hover:scale-110 transition-transform duration-200"><svg
+              xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-zap w-6 h-6">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </svg></div>
+          <h3 class="font-semibold text-slate-900 mb-2">Performance Focused</h3>
+          <p class="text-slate-600 text-sm">Optimizing for speed, accessibility, and user satisfaction
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
