@@ -1,39 +1,40 @@
 {
-  "title": "All Sports Coverage - SportsArena",
-  "description": "Browse our comprehensive collection of sports analysis, match reports, and expert commentary covering football, basketball, tennis, Formula 1, NFL, and more.",
-  "keywords": "sports coverage, football analysis, basketball news, tennis reports, Formula 1 coverage, NFL analysis, match reports, sports commentary",
-  "author": "SportsArena Team",
-  "canonical": "/posts",
-  "og": {
-    "title": "Expert Sports Analysis & Match Reports",
-    "description": "Discover in-depth sports analysis and match reports from our expert team. Comprehensive coverage of all major sports and competitions.",
-    "image": "/images/sports-coverage-og.jpg",
-    "url": "/posts",
-    "type": "website"
-  },
-  "twitter": {
-    "card": "summary_large_image",
-    "title": "Expert Sports Analysis & Match Reports",
-    "description": "Discover in-depth sports analysis and match reports from our expert team.",
-    "image": "/images/sports-coverage-twitter.jpg"
-  },
-  "schema": {
-    "@context": "https://schema.org",
-    "@type": "Blog",
-    "name": "SportsArena Sports Coverage",
-    "description": "Expert sports analysis and commentary for informed sports fans",
-    "url": "/posts",
-    "publisher": {
-      "@type": "Organization",
-      "name": "SportsArena",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "/images/sportsarena-logo.png"
-      }
+  "title": "SportsArena - Latest Sports News & Analysis",
+  "description": "Get the latest sports news, match analysis, and expert commentary from the world of professional sports",
+  "sections": [
+    {
+      "title": "styles",
+      "id": "styles",
+      "type": "template",
+      "resetable": true
     },
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "/posts"
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": ["site.name", "site.logo", "navigation"]
+    },
+    {
+      "title": "live scores",
+      "id": "live_scores",
+      "type": "template",
+      "resetable": true,
+      "data": []
+    },
+    {
+      "title": "posts_content",
+      "id": "posts_content",
+      "type": "template",
+      "resetable": true,
+      "data": []
+    },
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": ["site.name", "site.description", "navigation", "social_links"]
     }
-  }
-} 
+  ]
+}

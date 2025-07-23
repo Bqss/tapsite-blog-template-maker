@@ -1,64 +1,35 @@
 <!-- Featured Articles -->
 <section class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <h2 class="font-display text-3xl lg:text-4xl font-bold text-sports-dark mb-4">{{it.featured.title}}</h2>
-            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
-                {{it.featured.description}}
-            </p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {{@each(it.featured.articles)=>article}}
-            <article class="sports-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
-                <div class="relative">
-                    <img src="{{article.image}}" 
-                         alt="{{article.title}}" 
-                         class="w-full h-48 object-cover">
-                    <div class="absolute top-4 left-4">
-                        <span class="bg-{{article.category.color}}-500 text-white px-3 py-1 rounded-full text-sm font-medium">{{article.category.name}}</span>
-                    </div>
-                    {{@if(article.badge)}}
-                    <div class="absolute top-4 right-4">
-                        <span class="bg-white text-sports-dark px-3 py-1 rounded-full text-sm font-medium">{{article.badge}}</span>
-                    </div>
-                    {{/if}}
-                    {{@if(article.match_info)}}
-                    <div class="absolute bottom-4 left-4 right-4">
-                        <div class="flex items-center justify-between text-white text-sm">
-                            <span class="bg-black bg-opacity-50 px-2 py-1 rounded-full">{{article.match_info.teams}}</span>
-                            <span class="bg-black bg-opacity-50 px-2 py-1 rounded-full">{{article.match_info.score}}</span>
-                        </div>
-                    </div>
-                    {{/if}}
-                </div>
-                <div class="p-6">
-                    <div class="flex items-center space-x-2 mb-3">
-                        <img src="{{article.author.avatar}}" 
-                             alt="{{article.author.name}}" 
-                             class="w-8 h-8 rounded-full">
-                        <span class="text-gray-600 text-sm">{{article.author.name}}</span>
-                        <span class="text-gray-400 text-sm">•</span>
-                        <span class="text-gray-500 text-sm">{{article.read_time}} min read</span>
-                    </div>
-                    <h3 class="font-display text-xl font-semibold text-sports-dark mb-3 line-clamp-2">
-                        {{article.title}}
-                    </h3>
-                    <p class="text-gray-600 text-sm mb-4 line-clamp-3">
-                        {{article.excerpt}}
-                    </p>
-                    
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center space-x-2">
-                            <span class="text-xs text-gray-500">{{article.date}}</span>
-                        </div>
-                        <a href="{{article.url}}" class="text-sports-red font-medium hover:text-sports-dark-red transition-colors">
-                            {{article.cta_text}} →
-                        </a>
-                    </div>
-                </div>
-            </article>
-            {{/each}}
-        </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="font-display text-3xl lg:text-4xl font-bold text-sports-dark mb-4">Latest Sports Analysis</h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        In-depth analysis and expert commentary on the biggest games and sports stories
+      </p>
     </div>
-</section> 
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="featured-grid">
+      <div id="featured-loading" class="col-span-full flex justify-center py-12"><div class="inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-red-500"></div></div>
+      <div id="featured-error" class="col-span-full text-center py-12 text-red-500 hidden">Failed to load articles.</div>
+    </div>
+
+    <script>
+    (function(){
+      const grid=document.getElementById('featured-grid');
+      const loadEl=document.getElementById('featured-loading');
+      const errEl=document.getElementById('featured-error');
+      const fallbackImg="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23e5e7eb'/%3E%3Ctext x='200' y='100' text-anchor='middle' font-family='Arial' font-size='16' fill='%23666'%3ENo Image%3C/text%3E%3C/svg%3E";
+      function card(p){return `<article class='sports-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100'><a href='/post/${p.slug}' class='block relative'><img src='${p.featured_image||fallbackImg}' alt='${p.title}' class='w-full h-48 object-cover'><div class='absolute top-4 left-4'><span class='bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium'>${p.category||''}</span></div></a><div class='p-6'><div class='flex items-center space-x-2 mb-3'><img src='${p.author_avatar||'/images/default-avatar.png'}' class='w-8 h-8 rounded-full'><span class='text-gray-600 text-sm'>${p.author||''}</span><span class='text-gray-400 text-sm'>•</span><span class='text-gray-500 text-sm'>${p.read_time||5} min read</span></div><h3 class='font-display text-xl font-semibold text-sports-dark mb-3 line-clamp-2'>${p.title}</h3><p class='text-gray-600 text-sm mb-4 line-clamp-3'>${p.excerpt||''}</p><div class='flex items-center justify-between'><span class='text-xs text-gray-500'>${new Date(p.published_at).toLocaleDateString('id-ID',{month:'short',day:'numeric',year:'numeric'})}</span><span class='text-sports-red font-medium hover:text-sports-dark-red transition-colors'>Read Analysis →</span></div></div></article>`;}
+      async function load(){try{const res=await fetch('/api/blog/posts/recent?limit=6');if(!res.ok) throw new Error();const data=await res.json();const posts=data.posts||data||[];loadEl.remove();grid.innerHTML=posts.length?posts.map(card).join(''):`<div class='col-span-full text-center py-12 text-gray-500'>No articles.</div>`;}catch(e){console.error(e);loadEl.classList.add('hidden');errEl.classList.remove('hidden');}}
+      document.addEventListener('DOMContentLoaded',load);
+    })();
+    </script>
+
+    <div class="text-center mt-12">
+      <button
+        class="bg-sports-red text-white px-8 py-3 rounded-lg font-semibold hover:bg-sports-dark-red transition-colors">
+        View All Sports News
+      </button>
+    </div>
+  </div>
+</section>

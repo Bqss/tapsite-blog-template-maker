@@ -13,97 +13,57 @@
       "id": "navigation",
       "type": "template",
       "resetable": true,
-      "data": [
-        "site.name",
-        "site.logo",
-        "navigation",
-        "search_enabled",
-        "cta_button"
-      ]
+      "data": ["site.name", "site.logo", "navigation"]
     },
     {
       "title": "live scores",
       "id": "live_scores",
       "type": "template",
       "resetable": true,
-      "data": [
-        "live_scores"
-      ]
+      "data": []
     },
     {
       "title": "hero",
       "id": "hero",
       "type": "template",
       "resetable": true,
-      "data": [
-        "hero"
-      ]
+      "data": []
     },
     {
       "title": "featured articles",
       "id": "featured_articles",
       "type": "template",
       "resetable": true,
-      "data": [
-        "featured"
-      ]
+      "data": []
     },
+
     {
-      "title": "match highlights",
-      "id": "match_highlights",
+      "title": "categories",
+      "id": "categories",
       "type": "template",
       "resetable": true,
-      "data": [
-        "highlights"
-      ]
+      "data": []
     },
     {
-      "title": "team rankings",
-      "id": "team_rankings",
+      "title": "stats",
+      "id": "stats",
       "type": "template",
       "resetable": true,
-      "data": [
-        "rankings"
-      ]
-    },
-    {
-      "title": "upcoming matches",
-      "id": "upcoming_matches",
-      "type": "template",
-      "resetable": true,
-      "data": [
-        "upcoming"
-      ]
-    },
-    {
-      "title": "sports categories",
-      "id": "sports_categories",
-      "type": "template",
-      "resetable": true,
-      "data": [
-        "categories"
-      ]
+      "data": []
     },
     {
       "title": "newsletter",
       "id": "newsletter",
       "type": "template",
       "resetable": true,
-      "data": [
-        "newsletter"
-      ]
+      "data": []
     },
     {
       "title": "footer",
       "id": "footer",
       "type": "template",
       "resetable": true,
-      "data": [
-        "site.name",
-        "site.description",
-        "navigation",
-        "social_links"
-      ]
+      "data": ["site.name", "site.description", "navigation", "social_links"]
     }
   ]
-} 
+}

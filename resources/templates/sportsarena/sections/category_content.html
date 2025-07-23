@@ -1,0 +1,316 @@
+<!-- Breadcrumb -->
+<div class="bg-gray-50 py-4 border-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav class="flex items-center space-x-2 text-sm">
+      <a href="/" class="text-green-600 hover:text-green-700">Home</a>
+      <span class="text-gray-400">/</span>
+      <span class="text-gray-600">Football</span>
+    </nav>
+  </div>
+</div>
+
+<!-- Category Header dynamic IDs -->
+<section class="bg-gradient-to-br from-green-50 via-blue-50 to-purple-50 py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <div class="inline-flex items-center bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 mb-6 shadow-lg">
+        <span class="text-4xl mr-3" id="cat-icon">⚽</span>
+        <span class="text-green-600 font-semibold text-lg" id="cat-label">Category</span>
+      </div>
+      <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight" id="cat-title">
+        Sports <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600">Articles</span>
+      </h1>
+      <p class="text-xl text-gray-600 mb-8 leading-relaxed max-w-3xl mx-auto" id="cat-desc">
+        Latest analysis and coverage.
+      </p>
+      <div class="flex items-center justify-center space-x-8 text-sm text-gray-600" id="cat-stats"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Live Scores Banner -->
+<section class="py-4 bg-gray-900 text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center space-x-8 overflow-x-auto">
+      <div class="flex items-center space-x-2 min-w-max">
+        <span class="bg-red-500 px-2 py-1 rounded text-xs font-bold">LIVE</span>
+        <span class="font-semibold">Arsenal vs Man United</span>
+        <span class="text-green-400 font-bold">2-1</span>
+        <span class="text-gray-400">67'</span>
+      </div>
+      <div class="flex items-center space-x-2 min-w-max">
+        <span class="bg-green-500 px-2 py-1 rounded text-xs font-bold">FT</span>
+        <span class="font-semibold">Barcelona vs Real Madrid</span>
+        <span class="text-green-400 font-bold">3-2</span>
+        <span class="text-gray-400">El Clasico</span>
+      </div>
+      <div class="flex items-center space-x-2 min-w-max">
+        <span class="bg-blue-500 px-2 py-1 rounded text-xs font-bold">HT</span>
+        <span class="font-semibold">PSG vs Monaco</span>
+        <span class="text-green-400 font-bold">1-0</span>
+        <span class="text-gray-400">45'</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Filter Leagues -->
+<section class="py-8 bg-white border-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-wrap gap-3 justify-center">
+      <a href="/category/Football"
+        class="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold transition-all transform hover:scale-105 shadow-lg">
+        All Football
+      </a>
+      <a href="/tag/Premier League"
+        class="bg-white text-green-600 border-2 border-green-500 hover:bg-green-50 px-6 py-3 rounded-lg font-semibold transition-all">
+        Premier League
+      </a>
+      <a href="/tag/Champions League"
+        class="bg-white text-blue-600 border-2 border-blue-500 hover:bg-blue-50 px-6 py-3 rounded-lg font-semibold transition-all">
+        Champions League
+      </a>
+      <a href="/tag/La Liga"
+        class="bg-white text-red-600 border-2 border-red-500 hover:bg-red-50 px-6 py-3 rounded-lg font-semibold transition-all">
+        La Liga
+      </a>
+      <a href="/tag/Serie A"
+        class="bg-white text-purple-600 border-2 border-purple-500 hover:bg-purple-50 px-6 py-3 rounded-lg font-semibold transition-all">
+        Serie A
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews Grid dynamic -->
+<section class="py-16 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="cat-grid">
+      <div id="cat-loading" class="col-span-full flex justify-center py-12">
+        <div class="inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-green-500"></div>
+      </div>
+      <div id="cat-error" class="col-span-full text-center py-12 text-red-500 hidden">Failed to load articles.</div>
+    </div>
+    <div id="cat-pagination" class="mt-12 flex justify-center hidden"></div>
+  </div>
+</section>
+
+
+<!-- Football Leagues Section -->
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">Top Football Leagues</h2>
+      <p class="text-xl text-gray-600">Coverage across the world's premier football competitions</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
+      <div class="text-center p-6 bg-green-50 rounded-2xl">
+        <div class="text-4xl mb-4">🏴󠁧󠁢󠁥󠁮󠁧󠁿</div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">Premier League</h3>
+        <p class="text-gray-600 text-sm mb-3">20 teams • England</p>
+        <div class="text-sm text-gray-600">
+          <p>• 15 articles</p>
+          <p>• Weekly coverage</p>
+        </div>
+      </div>
+
+      <div class="text-center p-6 bg-red-50 rounded-2xl">
+        <div class="text-4xl mb-4">🇪🇸</div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">La Liga</h3>
+        <p class="text-gray-600 text-sm mb-3">20 teams • Spain</p>
+        <div class="text-sm text-gray-600">
+          <p>• 12 articles</p>
+          <p>• El Clasico coverage</p>
+        </div>
+      </div>
+
+      <div class="text-center p-6 bg-blue-50 rounded-2xl">
+        <div class="text-4xl mb-4">🇮🇹</div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">Serie A</h3>
+        <p class="text-gray-600 text-sm mb-3">20 teams • Italy</p>
+        <div class="text-sm text-gray-600">
+          <p>• 10 articles</p>
+          <p>• Tactical analysis</p>
+        </div>
+      </div>
+
+      <div class="text-center p-6 bg-yellow-50 rounded-2xl">
+        <div class="text-4xl mb-4">🇩🇪</div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">Bundesliga</h3>
+        <p class="text-gray-600 text-sm mb-3">18 teams • Germany</p>
+        <div class="text-sm text-gray-600">
+          <p>• 8 articles</p>
+          <p>• Bayern focus</p>
+        </div>
+      </div>
+
+      <div class="text-center p-6 bg-purple-50 rounded-2xl">
+        <div class="text-4xl mb-4">🏆</div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2">Champions League</h3>
+        <p class="text-gray-600 text-sm mb-3">32 teams • Europe</p>
+        <div class="text-sm text-gray-600">
+          <p>• 18 articles</p>
+          <p>• Match analysis</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  (function () {
+    const LIMIT = 9;
+    let currentPage = 1, totalPages = 1;
+
+    const slug = decodeURIComponent(window.location.pathname.split('/').pop());
+    const grid = document.getElementById('cat-grid');
+    const loadEl = document.getElementById('cat-loading');
+    const errEl = document.getElementById('cat-error');
+    const pagEl = document.getElementById('cat-pagination');
+
+    const catIcon = document.getElementById('cat-icon');
+    const catLabel = document.getElementById('cat-label');
+    const catTitle = document.getElementById('cat-title');
+    const catDesc = document.getElementById('cat-desc');
+    const catStats = document.getElementById('cat-stats');
+
+    const icons = {
+      'Football': '⚽',
+      'Basketball': '🏀',
+      'Tennis': '🎾',
+      'Formula 1': '🏎️',
+      'American Football': '🏈',
+      'Baseball': '⚾'
+    };
+
+    const fallbackImg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23e5e7eb'/%3E%3Ctext x='200' y='100' text-anchor='middle' font-family='Arial' font-size='16' fill='%23666'%3ENo Image%3C/text%3E%3C/svg%3E";
+
+    function card(p) {
+      return `
+        <article class='bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 cursor-pointer group'>
+          <a href='/post/${p.slug}' class='block relative'>
+            <img src='${p.featured_image || fallbackImg}' alt='${p.title}'
+                 class='w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300'
+                 onerror="this.src='${fallbackImg}'">
+            <div class='absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-lg text-sm font-semibold'>
+              ${p.category || ''}
+            </div>
+            <div class='absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-1 text-sm font-semibold text-gray-700'>
+              ${p.read_time || 5} min read
+            </div>
+          </a>
+          <div class='p-6'>
+            <h3 class='text-xl font-bold text-gray-900 mb-3 group-hover:text-green-600 transition-colors'>
+              ${p.title}
+            </h3>
+            <p class='text-gray-600 mb-4 line-clamp-2'>
+              ${p.excerpt || ''}
+            </p>
+            <div class='flex items-center justify-between'>
+              <div class='flex items-center space-x-2'>
+                <img src='${p.author_avatar || '/images/default-avatar.png'}' class='w-8 h-8 rounded-full'>
+                <span class='text-sm font-medium text-gray-700'>${p.author || ''}</span>
+              </div>
+              <div class='flex items-center space-x-1 text-orange-500'>
+                <span class='text-sm'>👁️</span>
+                <span class='text-sm font-medium'>${p.view_count || 0}</span>
+              </div>
+            </div>
+          </div>
+        </article>`;
+    }
+
+    function pagination() {
+      if (totalPages <= 1) {
+        pagEl.classList.add('hidden');
+        return;
+      }
+
+      let html = `
+        <button ${currentPage === 1 ? 'disabled' : ''} data-page='prev'
+                class='px-4 py-2 text-gray-500 bg-white rounded-lg border hover:bg-gray-50 transition-colors'>
+          Prev
+        </button>`;
+
+      for (let i = 1; i <= totalPages; i++) {
+        html += `
+          <button data-page='${i}' class='px-4 py-2 ${i === currentPage ? 'bg-green-600 text-white' : 'text-gray-700 bg-white'} 
+                  rounded-lg border hover:bg-gray-50 transition-colors'>
+            ${i}
+          </button>`;
+      }
+
+      html += `
+        <button ${currentPage === totalPages ? 'disabled' : ''} data-page='next'
+                class='px-4 py-2 text-gray-500 bg-white rounded-lg border hover:bg-gray-50 transition-colors'>
+          Next
+        </button>`;
+
+      pagEl.innerHTML = html;
+      pagEl.classList.remove('hidden');
+
+      pagEl.querySelectorAll('button').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const v = e.currentTarget.dataset.page;
+          if (v === 'prev') load(currentPage - 1);
+          else if (v === 'next') load(currentPage + 1);
+          else load(parseInt(v));
+        });
+      });
+    }
+
+    async function load(page = 1) {
+      currentPage = page;
+      loadEl.classList.remove('hidden');
+      errEl.classList.add('hidden');
+
+      try {
+        const res = await fetch(`/api/blog/posts/category/${encodeURIComponent(slug)}?limit=${LIMIT}&page=${page}`);
+        if (!res.ok) throw new Error();
+
+        const data = await res.json();
+        const posts = data || [];
+        totalPages = data.pagination ? data.pagination.total_pages : 1;
+
+        grid.innerHTML = posts.length
+          ? posts.map(card).join('')
+          : `<div class='col-span-full text-center py-12 text-gray-500'>No articles.</div>`;
+
+        pagination();
+
+        if (catStats) {
+          catStats.innerHTML = `
+            <div class='flex items-center space-x-2'>
+              <span class='text-green-600 font-semibold'>📊</span>
+              <span>${data.pagination?.total || posts.length} Articles</span>
+            </div>`;
+        }
+      } catch (e) {
+        console.error(e);
+        errEl.classList.remove('hidden');
+      } finally {
+        loadEl.classList.add('hidden');
+      }
+    }
+
+    async function loadCatInfo() {
+      try {
+        const res = await fetch(`/api/blog/categories/${encodeURIComponent(slug)}`);
+        if (!res.ok) return;
+
+        const cat = await res.json();
+        catIcon.textContent = icons[cat.name] || '🏅';
+        catLabel.textContent = `${cat.name} Category`;
+        catTitle.innerHTML = `${cat.name} <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600">Articles</span>`;
+        catDesc.textContent = cat.description || catDesc.textContent;
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadCatInfo();
+      load();
+    });
+  })();
+</script>

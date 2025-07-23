@@ -1,0 +1,29 @@
+<!-- Sports Categories -->
+<section class="py-16 bg-sports-light">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="font-display text-3xl lg:text-4xl font-bold text-sports-dark mb-4">Sports Coverage</h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Comprehensive coverage across all major sports and leagues
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="sports-cat-grid">
+      <div id="sports-cat-loading" class="col-span-full flex justify-center py-12"><div class="inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-green-500"></div></div>
+      <div id="sports-cat-error" class="col-span-full text-center py-12 text-red-500 hidden">Failed to load categories.</div>
+    </div>
+
+    <script>
+    (function(){
+      const grid=document.getElementById('sports-cat-grid');
+      const loadEl=document.getElementById('sports-cat-loading');
+      const errEl=document.getElementById('sports-cat-error');
+      const icons=['⚽','🏀','🎾','🏎️','🏈','⚾','🏐','🥊'];
+      const colors=['#10B981','#F59E0B','#8B5CF6','#EF4444','#3B82F6','#059669','#D946EF','#EA580C'];
+      function card(cat,i){const icon=icons[i%icons.length];const main=colors[i%colors.length];return `<div class='team-card text-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300' style='--team-color:${main}; --team-color-light:${main}99;'> <div class='flex items-center space-x-4 mb-4'><div class='w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center'><span class='text-2xl'>${icon}</span></div><div><h3 class='font-display text-xl font-bold'>${cat.name}</h3><p class='text-white/80 text-sm'>${cat.posts||0} articles</p></div></div><p class='text-white/80 mb-4'>${cat.description||''}</p><a href='/category/${encodeURIComponent(cat.name)}' class='text-white font-medium hover:text-white/90 transition-colors'>View Coverage →</a></div>`;}
+      async function load(){try{const res=await fetch('/api/blog/categories');if(!res.ok) throw new Error();const cats=await res.json();loadEl.remove();grid.innerHTML=cats.length?cats.map(card).join(''):`<div class='col-span-full text-center py-12 text-gray-500'>No categories.</div>`;}catch(e){console.error(e);loadEl.classList.add('hidden');errEl.classList.remove('hidden');}}
+      document.addEventListener('DOMContentLoaded',load);
+    })();
+    </script>
+  </div>
+</section>

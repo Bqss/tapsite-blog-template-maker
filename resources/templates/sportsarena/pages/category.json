@@ -1,44 +1,40 @@
 {
-  "title": "{{category.name}} Coverage - SportsArena",
-  "description": "{{category.description}} - Browse expert {{category.name}} analysis and match reports. In-depth coverage and commentary from our professional sports analysts.",
-  "keywords": "{{category.name}}, {{category.name}} analysis, {{category.name}} news, sports coverage, match reports, sports commentary",
-  "author": "SportsArena Team",
-  "canonical": "/category/{{category.name}}",
-  "og": {
-    "title": "{{category.name}} Sports Coverage & Analysis",
-    "description": "{{category.description}} - Expert {{category.name}} analysis and match reports from our professional sports team.",
-    "image": "/images/category-{{category.name | lower}}-og.jpg",
-    "url": "/category/{{category.name}}",
-    "type": "website"
-  },
-  "twitter": {
-    "card": "summary_large_image",
-    "title": "{{category.name}} Sports Coverage & Analysis",
-    "description": "{{category.description}} - Expert analysis and match reports.",
-    "image": "/images/category-{{category.name | lower}}-twitter.jpg"
-  },
-  "schema": {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "{{category.name}} Coverage - SportsArena",
-    "description": "{{category.description}} - Expert {{category.name}} analysis and commentary",
-    "url": "/category/{{category.name}}",
-    "publisher": {
-      "@type": "Organization",
-      "name": "SportsArena",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "/images/sportsarena-logo.png"
-      }
+  "title": "SportsArena - Latest Sports News & Analysis",
+  "description": "Get the latest sports news, match analysis, and expert commentary from the world of professional sports",
+  "sections": [
+    {
+      "title": "styles",
+      "id": "styles",
+      "type": "template",
+      "resetable": true
     },
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "/category/{{category.name}}"
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": ["site.name", "site.logo", "navigation"]
     },
-    "about": {
-      "@type": "Thing",
-      "name": "{{category.name}}",
-      "description": "{{category.description}}"
+    {
+      "title": "live scores",
+      "id": "live_scores",
+      "type": "template",
+      "resetable": true,
+      "data": []
+    },
+    {
+      "title": "category_content",
+      "id": "category_content",
+      "type": "template",
+      "resetable": true,
+      "data": []
+    },
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": ["site.name", "site.description", "navigation", "social_links"]
     }
-  }
-} 
+  ]
+}

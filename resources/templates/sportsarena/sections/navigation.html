@@ -1,48 +1,41 @@
 <!-- Navigation -->
 <nav class="bg-white shadow-lg border-b border-red-100 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-16">
-            <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 bg-sports-red rounded-xl flex items-center justify-center">
-                    {{@if(it.site.logo)}}
-                    <img src="{{it.site.logo}}" alt="{{it.site.name}}" class="w-6 h-6">
-                    {{#else}}
-                    <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                    </svg>
-                    {{/if}}
-                </div>
-                <span class="font-display text-xl font-bold text-sports-dark">{{it.site.name}}</span>
-            </div>
-            
-            <div class="hidden md:flex items-center space-x-8">
-                {{@each(it.navigation)=>item}}
-                <a href="{{item.url}}" 
-                   class="{{item.active ? 'text-sports-red border-b-2 border-sports-red pb-1' : 'text-gray-600 hover:text-sports-red transition-colors'}} font-medium">
-                    {{item.name}}
-                </a>
-                {{/each}}
-            </div>
-            
-            <div class="flex items-center space-x-4">
-                {{@if(it.search_enabled)}}
-                <button class="text-gray-600 hover:text-sports-red transition-colors">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                    </svg>
-                </button>
-                {{/if}}
-                {{@if(it.cta_button)}}
-                <button class="bg-sports-red text-white px-4 py-2 rounded-lg font-medium hover:bg-sports-dark-red transition-colors">
-                    {{it.cta_button.text}}
-                </button>
-                {{/if}}
-                <button class="md:hidden text-gray-600 hover:text-sports-red transition-colors">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                    </svg>
-                </button>
-            </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 bg-sports-red rounded-xl flex items-center justify-center">
+          <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
         </div>
+        <span class="font-display text-xl font-bold text-sports-dark">SportsArena</span>
+      </div>
+
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="#" class="text-sports-red font-medium border-b-2 border-sports-red pb-1">Home</a>
+        <a href="#" class="text-gray-600 hover:text-sports-red transition-colors font-medium">Football</a>
+        <a href="#" class="text-gray-600 hover:text-sports-red transition-colors font-medium">Basketball</a>
+        <a href="#" class="text-gray-600 hover:text-sports-red transition-colors font-medium">Tennis</a>
+        <a href="#" class="text-gray-600 hover:text-sports-red transition-colors font-medium">More Sports</a>
+      </div>
+
+      <div class="flex items-center space-x-4">
+        <button class="text-gray-600 hover:text-sports-red transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </button>
+        <button
+          class="bg-sports-red text-white px-4 py-2 rounded-lg font-medium hover:bg-sports-dark-red transition-colors">
+          Live Scores
+        </button>
+        <button class="md:hidden text-gray-600 hover:text-sports-red transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
     </div>
-</nav> 
+  </div>
+</nav>

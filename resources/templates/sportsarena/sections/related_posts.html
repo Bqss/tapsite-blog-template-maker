@@ -1,0 +1,43 @@
+<!-- Related Articles -->
+<section class="py-12 bg-white">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Related Analysis</h2>
+
+    <div id="related-grid" class="grid md:grid-cols-2 gap-6"></div>
+    <div id="related-loading" class="flex justify-center py-12">
+      <div class="inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-green-600"></div>
+    </div>
+    <div id="related-error" class="text-center py-12 text-red-500 hidden">Failed to load related analysis.</div>
+    <script>
+      (function(){
+        const slug=decodeURIComponent(window.location.pathname.split('/').pop());
+        const grid=document.getElementById('related-grid');
+        const loadEl=document.getElementById('related-loading');
+        const errEl=document.getElementById('related-error');
+        const card=p=>`<article class='bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 cursor-pointer group border'>
+  <a href='/post/${p.slug}' class='block'>
+    <div class='relative'>
+      ${p.featured_image?`<img src='${p.featured_image}' alt='${p.title}' class='w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300'>`:''}
+      <div class='absolute top-3 left-3 bg-green-600 text-white px-2 py-1 rounded-lg text-xs font-semibold'>${p.category||''}</div>
+    </div>
+    <div class='p-4'>
+      <h3 class='text-lg font-bold text-gray-900 mb-2 group-hover:text-green-600 transition-colors line-clamp-2'>${p.title}</h3>
+      <p class='text-gray-600 text-sm mb-3 line-clamp-2'>${p.excerpt||''}</p>
+      <div class='flex items-center justify-between text-xs text-gray-500'><span>${p.author||''}</span><span>${p.read_time||''} min read</span></div>
+    </div>
+  </a>
+</article>`;
+        async function load(){
+          try{
+            const res=await fetch(`/api/blog/posts/related/${encodeURIComponent(slug)}?limit=4`);
+            if(!res.ok) throw new Error();
+            const posts=await res.json();
+            grid.innerHTML=posts.length?posts.map(card).join(''):`<div class='col-span-full text-center py-12 text-gray-500'>No related analysis found.</div>`;
+          }catch(e){console.error(e);errEl.classList.remove('hidden');}
+          finally{loadEl.classList.add('hidden');}
+        }
+        document.addEventListener('DOMContentLoaded',load);
+      })();
+    </script>
+  </div>
+</section>
