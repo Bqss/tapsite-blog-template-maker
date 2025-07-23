@@ -1,0 +1,139 @@
+<!-- Page Header -->
+<section class="pet-hero-bg py-16 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center">
+      <div class="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6 bounce-in">
+        <span class="text-green-600 font-semibold pet-font">📚 All Pet Care Articles</span>
+      </div>
+      <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 pet-font leading-tight">
+        Expert Pet Care <span class="text-green-600 relative">Guides<div
+            class="absolute -bottom-2 left-0 w-full h-3 bg-yellow-300 opacity-30 rounded-full"></div></span>
+      </h1>
+      <p class="text-xl text-gray-700 mb-8 leading-relaxed pet-font max-w-3xl mx-auto">
+        Discover comprehensive guides, training tips, and health advice from certified veterinarians and pet care
+        experts.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Filter Categories -->
+<section class="py-8 bg-white border-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+q    <div id="posts-category-filter" class="flex flex-wrap gap-3 justify-center"></div>
+
+    <script>
+    (function(){
+      const container=document.getElementById('posts-category-filter');
+      function link(cat,active=false){return `<a href="/category/${encodeURIComponent(cat.name)}" class="${active?'bg-green-600 text-white':'bg-white text-green-600 border-2 border-green-500 hover:bg-green-50'} px-6 py-3 rounded-full font-semibold pet-font transition-all">${cat.emoji||'🐾'} ${cat.name}</a>`;}
+      async function load(){
+        try{
+          const res=await fetch('/api/blog/categories');
+          if(!res.ok) throw new Error();
+          const cats=await res.json();
+          container.innerHTML = `<a href="/posts" class="bg-green-600 text-white px-6 py-3 rounded-full font-semibold pet-font transition-all transform hover:scale-105 shadow-lg">All Articles</a>` +
+            cats.map(c=>link(c)).join('');
+        }catch(e){console.error(e);}  }
+      document.addEventListener('DOMContentLoaded',load);
+    })();
+    </script>
+  </div>
+</section>
+
+<!-- Articles Grid -->
+<section class="py-16 bg-gray-50 paw-pattern">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Dynamic Articles Grid -->
+    <div id="posts-loading" class="flex justify-center py-12"><div class="inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-green-600"></div></div>
+    <div id="posts-error" class="text-center py-12 hidden"><p class="text-red-500">Failed to load articles.</p></div>
+    <div id="posts-empty" class="text-center py-12 hidden"><p class="text-gray-500">No articles found.</p></div>
+
+    <div id="posts-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 hidden"></div>
+
+    <!-- Pagination -->
+    <div id="pagination-container" class="flex justify-center mt-12 hidden"></div>
+
+    <script>
+    (function(){
+      const LIMIT = 9;
+      let currentPage = 1,
+          totalPages = 1;
+
+      const loadEl = document.getElementById('posts-loading');
+      const errEl  = document.getElementById('posts-error');
+      const emptyEl= document.getElementById('posts-empty');
+      const gridEl = document.getElementById('posts-grid');
+      const pagEl  = document.getElementById('pagination-container');
+
+      const fallbackImg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23f3f4f6'/%3E%3Ctext x='200' y='100' text-anchor='middle' dy='0.3em' font-family='Arial' font-size='16' fill='%23666'%3ENo Image%3C/text%3E%3C/svg%3E";
+      const fmtDate = ts => new Date(ts).toLocaleDateString('id-ID',{month:'short',day:'numeric',year:'numeric'});
+
+      function card(p){
+        const img = p.featured_image || fallbackImg;
+        return `
+        <article class="pet-card rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 cursor-pointer group">
+          <a href="/post/${p.slug}" class="relative block">
+            <img src="${img}" alt="${p.title}" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.src='${fallbackImg}'">
+            <div class="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold">${p.category||''}</div>
+            <div class="absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-semibold text-gray-700">${p.read_time||5} min read</div>
+          </a>
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-green-600 transition-colors">${p.title}</h3>
+            <p class="text-gray-600 mb-4">${p.excerpt||''}</p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-2">
+                <img src="${p.author_avatar||'/images/default-avatar.png'}" alt="${p.author}" class="w-8 h-8 rounded-full">
+                <span class="text-sm font-medium text-gray-700">${p.author||''}</span>
+              </div>
+              <div class="flex items-center space-x-1 text-orange-500"><span class="text-sm">👁️</span><span class="text-sm font-medium">${p.view_count||0}</span></div>
+            </div>
+          </div>
+        </article>`;
+      }
+
+      function renderPagination(){
+        if(totalPages<=1){pagEl.classList.add('hidden');return;}
+        let html=`<button ${currentPage===1?'disabled':''} data-page='prev' class='px-3 py-2 text-gray-500 hover:text-green-600 disabled:opacity-40'>&laquo;</button>`;
+        for(let i=1;i<=totalPages;i++){
+          html+=`<button data-page='${i}' class='px-3 py-2 ${i===currentPage?'bg-green-600 text-white':'text-gray-500 hover:text-green-600'} rounded'>${i}</button>`;
+        }
+        html+=`<button ${currentPage===totalPages?'disabled':''} data-page='next' class='px-3 py-2 text-gray-500 hover:text-green-600 disabled:opacity-40'>&raquo;</button>`;
+        pagEl.innerHTML=html;
+        pagEl.classList.remove('hidden');
+        pagEl.querySelectorAll('button').forEach(btn=>btn.addEventListener('click',e=>{
+          const val=e.currentTarget.dataset.page;
+          if(val==='prev') loadPosts(currentPage-1);
+          else if(val==='next') loadPosts(currentPage+1);
+          else loadPosts(parseInt(val));
+        }));
+      }
+
+      async function loadPosts(page=1){
+        currentPage=page;
+        loadEl.classList.remove('hidden');
+        errEl.classList.add('hidden');
+        emptyEl.classList.add('hidden');
+        gridEl.classList.add('hidden');
+        try{
+          const res=await fetch(`/api/blog/posts?limit=${LIMIT}&page=${page}`);
+          if(!res.ok) throw new Error();
+          const data=await res.json();
+          const posts=data.posts||data.data||[];
+          totalPages = data.pagination? data.pagination.total_pages : 1;
+          if(!posts.length){emptyEl.classList.remove('hidden');renderPagination();return;}
+          gridEl.innerHTML=posts.map(card).join('');
+          gridEl.classList.remove('hidden');
+          renderPagination();
+        }catch(err){
+          console.error(err);
+          errEl.classList.remove('hidden');
+        }finally{
+          loadEl.classList.add('hidden');
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded',()=>loadPosts());
+    })();
+    </script>
+  </div>
+</section>

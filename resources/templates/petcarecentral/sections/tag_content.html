@@ -1,0 +1,305 @@
+<!-- Tag Header -->
+<section class="pet-hero-bg py-16 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center">
+      <div class="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 mb-6 bounce-in">
+        <span class="text-2xl mr-3">🏷️</span>
+        <span class="text-green-600 font-semibold pet-font">Tag</span>
+      </div>
+      <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 pet-font leading-tight">
+        <span class="text-green-600 relative">Puppy Training<div
+            class="absolute -bottom-2 left-0 w-full h-3 bg-yellow-300 opacity-30 rounded-full"></div></span> Articles
+      </h1>
+      <p class="text-xl text-gray-700 mb-8 leading-relaxed pet-font max-w-3xl mx-auto">
+        Discover comprehensive guides and expert tips specifically focused on puppy training. From basic commands to
+        advanced techniques.
+      </p>
+      <div class="flex items-center justify-center space-x-8 text-sm text-gray-600 pet-font">
+        <div class="flex items-center space-x-2">
+          <span class="text-green-600 font-semibold">📊</span>
+          <span id="tag-count">0 Articles</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <span class="text-green-600 font-semibold">👁️</span>
+          <span>15.2K Total Views</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <span class="text-green-600 font-semibold">⭐</span>
+          <span>Expert Verified</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Related Tags -->
+<section class="py-8 bg-white border-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-6">
+      <h2 class="text-lg font-semibold text-gray-900 pet-font">Related Tags</h2>
+    </div>
+    <div id="related-tags" class="flex flex-wrap gap-3 justify-center"></div>
+
+  </div>
+</section>
+
+<!-- Articles Grid -->
+<section class="py-16 bg-gray-50 paw-pattern">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Dynamic Articles Grid -->
+    <div id="tag-loading" class="flex justify-center py-12">
+      <div class="inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-green-600"></div>
+    </div>
+    <div id="tag-error" class="text-center py-12 hidden">
+      <p class="text-red-500">Failed to load articles.</p>
+    </div>
+    <div id="tag-empty" class="text-center py-12 hidden">
+      <p class="text-gray-500">No articles found.</p>
+    </div>
+    <div id="tag-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 hidden"></div>
+    <div id="tag-pagination" class="flex justify-center mt-12 hidden"></div>
+
+
+    <!-- Load More Button -->
+    <div class="mt-12 text-center">
+      <button
+        class="bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-full font-semibold pet-font transition-all transform hover:scale-105 shadow-lg">
+        Load More Articles
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Expert Tips Section -->
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4 pet-font">Puppy Training Quick Tips</h2>
+      <p class="text-xl text-gray-600 pet-font">Essential tips for successful puppy training</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="text-center p-6 bg-green-50 rounded-2xl">
+        <div class="text-4xl mb-4">🕐</div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2 pet-font">Start Early</h3>
+        <p class="text-gray-600 pet-font text-sm">Begin training as soon as your puppy arrives home, ideally between
+          8-16 weeks old.</p>
+      </div>
+
+      <div class="text-center p-6 bg-blue-50 rounded-2xl">
+        <div class="text-4xl mb-4">🎯</div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2 pet-font">Be Consistent</h3>
+        <p class="text-gray-600 pet-font text-sm">Use the same commands and rewards every time to avoid confusing your
+          puppy.</p>
+      </div>
+
+      <div class="text-center p-6 bg-yellow-50 rounded-2xl">
+        <div class="text-4xl mb-4">🏆</div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2 pet-font">Positive Rewards</h3>
+        <p class="text-gray-600 pet-font text-sm">Always reward good behavior immediately with treats, praise, or play.
+        </p>
+      </div>
+
+      <div class="text-center p-6 bg-purple-50 rounded-2xl">
+        <div class="text-4xl mb-4">⏰</div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2 pet-font">Short Sessions</h3>
+        <p class="text-gray-600 pet-font text-sm">Keep training sessions to 5-10 minutes for optimal attention and
+          learning.</p>
+      </div>
+
+      <div class="text-center p-6 bg-pink-50 rounded-2xl">
+        <div class="text-4xl mb-4">👥</div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2 pet-font">Socialize Early</h3>
+        <p class="text-gray-600 pet-font text-sm">Expose your puppy to different people, animals, and environments
+          safely.</p>
+      </div>
+
+      <div class="text-center p-6 bg-orange-50 rounded-2xl">
+        <div class="text-4xl mb-4">🧘</div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2 pet-font">Stay Patient</h3>
+        <p class="text-gray-600 pet-font text-sm">Every puppy learns at their own pace. Patience leads to lasting
+          success.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  (function () {
+    const container = document.getElementById('related-tags');
+    const slug = decodeURIComponent(window.location.pathname.split('/').pop());
+
+    function link(tag) {
+      return `
+        <a href="/tag/${encodeURIComponent(tag)}"
+           class="bg-white text-green-600 border-2 border-green-500 hover:bg-green-50 px-4 py-2 rounded-full font-semibold pet-font transition-all">
+          ${tag.replace(/-/g, ' ')}
+        </a>`;
+    }
+
+    async function load() {
+      try {
+        const res = await fetch(`/api/blog/tags/related/${encodeURIComponent(slug)}`);
+        const tags = res.ok ? await res.json() : [];
+
+        if (!tags.length) {
+          // Fallback to all tags
+          const r = await fetch('/api/blog/tags');
+          if (r.ok) {
+            const all = await r.json();
+            container.innerHTML = all.map(link).join('');
+          }
+          return;
+        }
+
+        container.innerHTML = tags.map(link).join('');
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', load);
+  })();
+</script>
+<script>
+  (function () {
+    const LIMIT = 9;
+    let currentPage = 1, totalPages = 1;
+
+    const slug = decodeURIComponent(window.location.pathname.split('/').pop());
+
+    const loadEl = document.getElementById('tag-loading');
+    const errEl = document.getElementById('tag-error');
+    const emptyEl = document.getElementById('tag-empty');
+    const gridEl = document.getElementById('tag-grid');
+    const pagEl = document.getElementById('tag-pagination');
+    const countEl = document.getElementById('tag-count');
+
+    const tagLabel = slug
+      .replace(/-/g, ' ')
+      .replace(/\b\w/g, c => c.toUpperCase());
+
+    const headerTag = document.querySelector('span.text-green-600.font-semibold.pet-font');
+    if (headerTag) headerTag.textContent = tagLabel;
+
+    const fallbackImg =
+      "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23f3f4f6'/%3E%3Ctext x='200' y='100' text-anchor='middle' dy='0.3em' font-family='Arial' font-size='16' fill='%23666'%3ENo Image%3C/text%3E%3C/svg%3E";
+
+    function card(p) {
+      const img = p.featured_image || fallbackImg;
+
+      return `
+        <article class='pet-card rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 cursor-pointer group'>
+          <a href='/post/${p.slug}' class='relative block'>
+            <img src='${img}' alt='${p.title}'
+                 class='w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300'
+                 onerror="this.src='${fallbackImg}'">
+            <div class='absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold'>
+              ${tagLabel}
+            </div>
+            <div class='absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-semibold text-gray-700'>
+              ${p.read_time || 5} min read
+            </div>
+          </a>
+          <div class='p-6'>
+            <h3 class='text-xl font-bold text-gray-900 mb-3 group-hover:text-green-600 transition-colors'>
+              ${p.title}
+            </h3>
+            <p class='text-gray-600 mb-4'>${p.excerpt || ''}</p>
+            <div class='flex items-center justify-between'>
+              <div class='flex items-center space-x-2'>
+                <img src='${p.author_avatar || "/images/default-avatar.png"}'
+                     alt='${p.author}'
+                     class='w-8 h-8 rounded-full'>
+                <span class='text-sm font-medium text-gray-700'>${p.author || ''}</span>
+              </div>
+              <div class='flex items-center space-x-1 text-orange-500'>
+                <span class='text-sm'>👁️</span>
+                <span class='text-sm font-medium'>${p.view_count || 0}</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function pagination() {
+      if (totalPages <= 1) {
+        pagEl.classList.add('hidden');
+        return;
+      }
+
+      let html = `
+        <button ${currentPage === 1 ? 'disabled' : ''} data-page='prev'
+                class='px-3 py-2 text-gray-500 hover:text-green-600 disabled:opacity-40'>
+          &laquo;
+        </button>
+      `;
+
+      for (let i = 1; i <= totalPages; i++) {
+        html += `
+          <button data-page='${i}'
+                  class='px-3 py-2 ${i === currentPage ? 'bg-green-600 text-white' : 'text-gray-500 hover:text-green-600'} rounded'>
+            ${i}
+          </button>
+        `;
+      }
+
+      html += `
+        <button ${currentPage === totalPages ? 'disabled' : ''} data-page='next'
+                class='px-3 py-2 text-gray-500 hover:text-green-600 disabled:opacity-40'>
+          &raquo;
+        </button>
+      `;
+
+      pagEl.innerHTML = html;
+      pagEl.classList.remove('hidden');
+
+      pagEl.querySelectorAll('button').forEach(btn =>
+        btn.addEventListener('click', e => {
+          const page = e.currentTarget.dataset.page;
+          if (page === 'prev') load(currentPage - 1);
+          else if (page === 'next') load(currentPage + 1);
+          else load(parseInt(page));
+        })
+      );
+    }
+
+    async function load(page = 1) {
+      currentPage = page;
+
+      loadEl.classList.remove('hidden');
+      errEl.classList.add('hidden');
+      emptyEl.classList.add('hidden');
+      gridEl.classList.add('hidden');
+
+      try {
+        const res = await fetch(`/api/blog/posts/tag/${encodeURIComponent(slug)}?limit=${LIMIT}&page=${page}`);
+        if (!res.ok) throw new Error();
+
+        const data = await res.json();
+        const posts = data || [];
+        totalPages = data.pagination ? data.pagination.total_pages : 1;
+
+        if (countEl)
+          countEl.textContent = `${data.pagination?.total || posts.length} Articles`;
+
+        if (!posts.length) {
+          emptyEl.classList.remove('hidden');
+          pagination();
+          return;
+        }
+
+        gridEl.innerHTML = posts.map(card).join('');
+        gridEl.classList.remove('hidden');
+        pagination();
+      } catch (e) {
+        console.error(e);
+        errEl.classList.remove('hidden');
+      } finally {
+        loadEl.classList.add('hidden');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => load());
+  })();
+</script>

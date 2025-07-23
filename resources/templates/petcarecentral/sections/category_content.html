@@ -1,0 +1,261 @@
+<!-- Category Header -->
+<section class="pet-hero-bg py-16 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center">
+      <div class="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 mb-6 bounce-in">
+        <span class="text-4xl mr-3">🎓</span>
+        <span class="text-green-600 font-semibold pet-font text-lg">Training Category</span>
+      </div>
+      <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 pet-font leading-tight">
+        Pet Training <span class="text-green-600 relative">Guides<div
+            class="absolute -bottom-2 left-0 w-full h-3 bg-yellow-300 opacity-30 rounded-full"></div></span>
+      </h1>
+      <p class="text-xl text-gray-700 mb-8 leading-relaxed pet-font max-w-3xl mx-auto">
+        Expert training tips and techniques to help you build a strong bond with your pet through positive reinforcement
+        and proven methods.
+      </p>
+      <div class="flex items-center justify-center space-x-8 text-sm text-gray-600 pet-font">
+        <div class="flex items-center space-x-2">
+          <span class="text-green-600 font-semibold">📊</span>
+          <span id="cat-count">0 Training Guides</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <span class="text-green-600 font-semibold">👥</span>
+          <span>Expert Trainers</span>
+        </div>
+        <div class="flex items-center space-x-2">
+          <span class="text-green-600 font-semibold">⭐</span>
+          <span>Proven Methods</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Filter Subcategories -->
+<section class="py-8 bg-white border-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div id="category-filter" class="flex flex-wrap gap-3 justify-center"></div>
+
+
+  </div>
+</section>
+
+<!-- Articles Grid -->
+<section class="py-16 bg-gray-50 paw-pattern">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Dynamic Articles Grid -->
+    <div id="cat-loading" class="flex justify-center py-12">
+      <div class="inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-green-600"></div>
+    </div>
+    <div id="cat-error" class="text-center py-12 hidden">
+      <p class="text-red-500">Failed to load articles.</p>
+    </div>
+    <div id="cat-empty" class="text-center py-12 hidden">
+      <p class="text-gray-500">No articles found.</p>
+    </div>
+    <div id="cat-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 hidden"></div>
+    <div id="cat-pagination" class="flex justify-center mt-12 hidden"></div>
+
+  </div>
+</section>
+
+<!-- Training Tips Section -->
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4 pet-font">Quick Training Tips</h2>
+      <p class="text-xl text-gray-600 pet-font">Essential tips every pet owner should know</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="text-center p-6 bg-green-50 rounded-2xl">
+        <div class="text-4xl mb-4">🎯</div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2 pet-font">Consistency is Key</h3>
+        <p class="text-gray-600 pet-font text-sm">Use the same commands and rewards every time for best results.</p>
+      </div>
+
+      <div class="text-center p-6 bg-blue-50 rounded-2xl">
+        <div class="text-4xl mb-4">⏰</div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2 pet-font">Short Sessions</h3>
+        <p class="text-gray-600 pet-font text-sm">Keep training sessions to 5-10 minutes for optimal attention.</p>
+      </div>
+
+      <div class="text-center p-6 bg-yellow-50 rounded-2xl">
+        <div class="text-4xl mb-4">🏆</div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2 pet-font">Positive Rewards</h3>
+        <p class="text-gray-600 pet-font text-sm">Always reward good behavior immediately for best reinforcement.</p>
+      </div>
+
+      <div class="text-center p-6 bg-purple-50 rounded-2xl">
+        <div class="text-4xl mb-4">🧘</div>
+        <h3 class="text-lg font-bold text-gray-900 mb-2 pet-font">Stay Patient</h3>
+        <p class="text-gray-600 pet-font text-sm">Every pet learns at their own pace. Patience leads to success.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  (function () {
+    const container = document.getElementById('category-filter');
+    const current = decodeURIComponent(window.location.pathname.split('/').pop());
+
+    function link(cat) {
+      const active = cat.name.toLowerCase() === current.toLowerCase();
+      return `
+        <a href="/category/${encodeURIComponent(cat.name)}"
+           class="${active
+          ? 'bg-green-600 text-white'
+          : 'bg-white text-green-600 border-2 border-green-500 hover:bg-green-50'}
+           px-6 py-3 rounded-full font-semibold pet-font transition-all">
+          ${cat.emoji || '🐾'} ${cat.name}
+        </a>`;
+    }
+
+    async function loadCategories() {
+      try {
+        const res = await fetch('/api/blog/categories');
+        if (!res.ok) throw new Error();
+        const cats = await res.json();
+        container.innerHTML = cats.map(link).join('');
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    const LIMIT = 9;
+    let currentPage = 1, totalPages = 1;
+    const slug = current;
+    const loadEl = document.getElementById('cat-loading');
+    const errEl = document.getElementById('cat-error');
+    const emptyEl = document.getElementById('cat-empty');
+    const gridEl = document.getElementById('cat-grid');
+    const pagEl = document.getElementById('cat-pagination');
+    const countEl = document.getElementById('cat-count');
+
+    const fallbackImg =
+      "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23f3f4f6'/%3E%3Ctext x='200' y='100' text-anchor='middle' dy='0.3em' font-family='Arial' font-size='16' fill='%23666'%3ENo Image%3C/text%3E%3C/svg%3E";
+
+    const fmtDate = ts =>
+      new Date(ts).toLocaleDateString('id-ID', {
+        month: 'short',
+        day: 'numeric',
+        year: 'numeric'
+      });
+
+    function card(p) {
+      const img = p.featured_image || fallbackImg;
+
+      return `
+        <article class='pet-card rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 cursor-pointer group'>
+          <a href="/post/${p.slug}" class='relative block'>
+            <img src="${img}" alt="${p.title}"
+                 class='w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300'
+                 onerror="this.src='${fallbackImg}'">
+            <div class='absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold'>
+              ${p.category || ''}
+            </div>
+            <div class='absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-semibold text-gray-700'>
+              ${p.read_time || 5} min read
+            </div>
+          </a>
+          <div class='p-6'>
+            <h3 class='text-xl font-bold text-gray-900 mb-3 group-hover:text-green-600 transition-colors'>
+              ${p.title}
+            </h3>
+            <p class='text-gray-600 mb-4'>${p.excerpt || ''}</p>
+            <div class='flex items-center justify-between'>
+              <div class='flex items-center space-x-2'>
+                <img src='${p.author_avatar || "/images/default-avatar.png"}' alt='${p.author}' class='w-8 h-8 rounded-full'>
+                <span class='text-sm font-medium text-gray-700'>${p.author || ''}</span>
+              </div>
+              <div class='flex items-center space-x-1 text-orange-500'>
+                <span class='text-sm'>👁️</span>
+                <span class='text-sm font-medium'>${p.view_count || 0}</span>
+              </div>
+            </div>
+          </div>
+        </article>`;
+    }
+
+    function pagination() {
+      if (totalPages <= 1) {
+        pagEl.classList.add('hidden');
+        return;
+      }
+
+      let html = `
+        <button ${currentPage === 1 ? 'disabled' : ''} data-page='prev'
+                class='px-3 py-2 text-gray-500 hover:text-green-600 disabled:opacity-40'>
+          &laquo;
+        </button>`;
+
+      for (let i = 1; i <= totalPages; i++) {
+        html += `
+          <button data-page='${i}'
+                  class='px-3 py-2 ${i === currentPage ? 'bg-green-600 text-white' : 'text-gray-500 hover:text-green-600'} rounded'>
+            ${i}
+          </button>`;
+      }
+
+      html += `
+        <button ${currentPage === totalPages ? 'disabled' : ''} data-page='next'
+                class='px-3 py-2 text-gray-500 hover:text-green-600 disabled:opacity-40'>
+          &raquo;
+        </button>`;
+
+      pagEl.innerHTML = html;
+      pagEl.classList.remove('hidden');
+
+      pagEl.querySelectorAll('button').forEach(btn =>
+        btn.addEventListener('click', e => {
+          const page = e.currentTarget.dataset.page;
+          if (page === 'prev') load(currentPage - 1);
+          else if (page === 'next') load(currentPage + 1);
+          else load(parseInt(page));
+        })
+      );
+    }
+
+    async function load(page = 1) {
+      currentPage = page;
+
+      loadEl.classList.remove('hidden');
+      errEl.classList.add('hidden');
+      emptyEl.classList.add('hidden');
+      gridEl.classList.add('hidden');
+
+      try {
+        const res = await fetch(`/api/blog/posts/category/${encodeURIComponent(slug)}?limit=${LIMIT}&page=${page}`);
+        if (!res.ok) throw new Error();
+
+        const data = await res.json();
+        const posts = data || [];
+        totalPages = data.pagination ? data.pagination.total_pages : 1;
+
+        if (countEl)
+          countEl.textContent = `${data.pagination?.total || posts.length} Training Guides`;
+
+        if (!posts.length) {
+          emptyEl.classList.remove('hidden');
+          pagination();
+          return;
+        }
+
+        gridEl.innerHTML = posts.map(card).join('');
+        gridEl.classList.remove('hidden');
+        pagination();
+      } catch (e) {
+        console.error(e);
+        errEl.classList.remove('hidden');
+      } finally {
+        loadEl.classList.add('hidden');
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadCategories();
+      load();
+    });
+  })();
+</script>

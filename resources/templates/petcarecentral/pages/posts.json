@@ -1,39 +1,35 @@
 {
-  "title": "All Pet Care Articles - PetCare Central",
-  "description": "Browse our comprehensive collection of expert pet care articles, training guides, health tips, and nutrition advice for dogs, cats, and other pets.",
-  "keywords": "pet care articles, dog training, cat health, pet nutrition, animal care, veterinary advice, pet wellness, pet behavior",
-  "author": "PetCare Central Team",
-  "canonical": "/posts",
-  "og": {
-    "title": "Expert Pet Care Articles & Training Guides",
-    "description": "Discover comprehensive pet care guides from certified veterinarians and animal behaviorists. Training tips, health advice, and nutrition guidance for all pets.",
-    "image": "/images/petcare-articles-og.jpg",
-    "url": "/posts",
-    "type": "website"
-  },
-  "twitter": {
-    "card": "summary_large_image",
-    "title": "Expert Pet Care Articles & Training Guides",
-    "description": "Discover comprehensive pet care guides from certified veterinarians and animal behaviorists.",
-    "image": "/images/petcare-articles-twitter.jpg"
-  },
-  "schema": {
-    "@context": "https://schema.org",
-    "@type": "Blog",
-    "name": "PetCare Central Articles",
-    "description": "Expert pet care articles and training guides for responsible pet owners",
-    "url": "/posts",
-    "publisher": {
-      "@type": "Organization",
-      "name": "PetCare Central",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "/images/petcare-logo.png"
-      }
+  "title": "PetCare Central - Where Pet Stories Come to Life",
+  "description": "Join our community of pet lovers sharing heartwarming stories, expert advice, and unforgettable moments with our furry friends",
+  "sections": [
+    {
+      "title": "styles",
+      "id": "styles",
+      "type": "template",
+      "resetable": true
     },
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "/posts"
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": ["site.name", "site.logo", "site.tagline", "navigation"]
+    },
+
+    {
+      "title": "posts_content",
+      "id": "posts_content",
+      "type": "template",
+      "resetable": true,
+      "data": []
+    },
+
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": ["site.name", "site.description", "navigation", "social_links"]
     }
-  }
-} 
+  ]
+}

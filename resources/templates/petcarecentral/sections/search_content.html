@@ -1,0 +1,288 @@
+<!-- Search Header -->
+<section class="pet-hero-bg py-16 relative overflow-hidden">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="text-center">
+      <div class="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-6 py-3 mb-6 bounce-in">
+        <span class="text-2xl mr-3">🔍</span>
+        <span class="text-green-600 font-semibold pet-font">Search Pet Care Articles</span>
+      </div>
+      <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 pet-font leading-tight">
+        Find the Perfect <span class="text-green-600 relative">Pet Care Guide<div
+            class="absolute -bottom-2 left-0 w-full h-3 bg-yellow-300 opacity-30 rounded-full"></div></span>
+      </h1>
+      <p class="text-xl text-gray-700 mb-8 leading-relaxed pet-font">
+        Search through our comprehensive collection of expert pet care articles, training guides, and health tips.
+      </p>
+
+      <!-- Search Form -->
+      <div class="max-w-2xl mx-auto">
+        <form class="relative">
+          <div class="flex items-center bg-white/90 backdrop-blur-sm rounded-full shadow-lg overflow-hidden">
+            <input type="text" placeholder="Search for training tips, health advice, nutrition guides..."
+              class="flex-1 px-6 py-4 text-gray-700 bg-transparent focus:outline-none pet-font" value="puppy training">
+            <button type="submit"
+              class="bg-green-600 hover:bg-green-700 text-white px-8 py-4 font-semibold pet-font transition-colors">
+              Search
+            </button>
+          </div>
+        </form>
+
+        <!-- Popular Searches -->
+        <div class="mt-6 flex flex-wrap gap-2 justify-center">
+          <span class="text-sm text-gray-600 pet-font">Popular searches:</span>
+          <a href="/search/puppy training"
+            class="text-sm bg-white/70 text-green-600 px-3 py-1 rounded-full hover:bg-white transition-colors pet-font">
+            puppy training
+          </a>
+          <a href="/search/cat health"
+            class="text-sm bg-white/70 text-green-600 px-3 py-1 rounded-full hover:bg-white transition-colors pet-font">
+            cat health
+          </a>
+          <a href="/search/dog nutrition"
+            class="text-sm bg-white/70 text-green-600 px-3 py-1 rounded-full hover:bg-white transition-colors pet-font">
+            dog nutrition
+          </a>
+          <a href="/search/pet grooming"
+            class="text-sm bg-white/70 text-green-600 px-3 py-1 rounded-full hover:bg-white transition-colors pet-font">
+            pet grooming
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Search Results -->
+<section class="py-16 bg-gray-50 paw-pattern">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Dynamic Search Results -->
+    <div id="search-header" class="mb-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-2 pet-font">Search Results</h2>
+      <p class="text-gray-600 pet-font">Found <span id="result-count" class="font-semibold text-green-600">0
+          articles</span> for "<strong id="result-query"></strong>"</p>
+    </div>
+
+    <!-- States -->
+    <div id="search-loading" class="flex justify-center py-12">
+      <div class="inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-green-600"></div>
+    </div>
+    <div id="search-error" class="text-center py-12 hidden">
+      <p class="text-red-500">Failed to load results.</p>
+    </div>
+    <div id="search-empty" class="text-center py-12 hidden">
+      <p class="text-gray-500">No results found.</p>
+    </div>
+
+    <div id="search-grid" class="space-y-6 hidden"></div>
+    <div id="search-pagination" class="flex justify-center mt-12 hidden"></div>
+  </div>
+</section>
+
+<!-- Search Tips -->
+<section class="py-16 bg-white">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4 pet-font">Search Tips</h2>
+      <p class="text-xl text-gray-600 pet-font">Get better results with these search tips</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="bg-green-50 rounded-2xl p-6">
+        <div class="flex items-start space-x-4">
+          <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white text-xl">
+            💡
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2 pet-font">Use Specific Keywords</h3>
+            <p class="text-gray-600 pet-font">
+              Try specific terms like "puppy house training" or "senior dog nutrition" for more targeted results.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-blue-50 rounded-2xl p-6">
+        <div class="flex items-start space-x-4">
+          <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white text-xl">
+            🔍
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2 pet-font">Browse by Category</h3>
+            <p class="text-gray-600 pet-font">
+              Use our category filters to narrow down results by Training, Health, Nutrition, or Grooming.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-yellow-50 rounded-2xl p-6">
+        <div class="flex items-start space-x-4">
+          <div class="w-12 h-12 bg-yellow-600 rounded-full flex items-center justify-center text-white text-xl">
+            🏷️
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2 pet-font">Try Different Terms</h3>
+            <p class="text-gray-600 pet-font">
+              If you don't find what you're looking for, try synonyms like "dog behavior" instead of "dog training".
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-purple-50 rounded-2xl p-6">
+        <div class="flex items-start space-x-4">
+          <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white text-xl">
+            📝
+          </div>
+          <div>
+            <h3 class="text-lg font-bold text-gray-900 mb-2 pet-font">Check Related Articles</h3>
+            <p class="text-gray-600 pet-font">
+              Each article includes related content suggestions to help you find more relevant information.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    const LIMIT = 6;
+    let currentPage = 1, totalPages = 1;
+
+    const params = new URLSearchParams(window.location.search);
+    let query = params.get('q');
+
+    // Fallback jika query tidak ditemukan di search params
+    if (!query) {
+      const segments = window.location.pathname.split('/');
+      query = decodeURIComponent(segments.pop() || '');
+    }
+
+    const loadEl = document.getElementById('search-loading');
+    const errEl = document.getElementById('search-error');
+    const emptyEl = document.getElementById('search-empty');
+    const gridEl = document.getElementById('search-grid');
+    const pagEl = document.getElementById('search-pagination');
+    const countEl = document.getElementById('result-count');
+    const queryEl = document.getElementById('result-query');
+    const inputEl = document.querySelector('input[type="text"]');
+
+    if (inputEl) inputEl.value = query;
+    if (queryEl) queryEl.textContent = query;
+
+    const fallbackImg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='100' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23f3f4f6'/%3E%3Ctext x='200' y='100' text-anchor='middle' fill='%23666' font-family='Arial' font-size='16'>No Image%3C/text%3E%3C/svg%3E";
+
+    function card(p) {
+      const img = p.featured_image || fallbackImg;
+
+      return `
+        <article class='pet-card rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1 cursor-pointer group'>
+          <div class='flex items-start space-x-4'>
+            <img src='${img}' alt='${p.title}' class='w-24 h-24 rounded-xl object-cover group-hover:scale-105 transition-transform duration-300' onerror="this.src='${fallbackImg}'">
+            <div class='flex-1'>
+              <div class='flex items-center space-x-2 mb-2'>
+                <span class='bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs font-semibold'>${p.category || ''}</span>
+                <span class='text-gray-500 text-sm'>${p.read_time || 5} min read</span>
+                <span class='text-gray-500 text-sm'>👁️ ${p.view_count || 0} views</span>
+              </div>
+              <h3 class='text-xl font-bold text-gray-900 mb-2 group-hover:text-green-600 transition-colors'>${p.title}</h3>
+              <p class='text-gray-600 mb-3 line-clamp-2'>${p.excerpt || ''}</p>
+              <div class='flex items-center justify-between'>
+                <div class='flex items-center space-x-2'>
+                  <img src='${p.author_avatar || "/images/default-avatar.png"}' alt='${p.author}' class='w-6 h-6 rounded-full'>
+                  <span class='text-sm text-gray-700'>${p.author || ''}</span>
+                </div>
+                <span class='text-sm text-gray-500'>${p.published_at || ''}</span>
+              </div>
+            </div>
+          </div>
+        </article>`;
+    }
+
+    function pagination() {
+      if (totalPages <= 1) {
+        pagEl.classList.add('hidden');
+        return;
+      }
+
+      let html = `<button ${currentPage === 1 ? 'disabled' : ''} data-page='prev' class='px-3 py-2 text-gray-500 hover:text-green-600 disabled:opacity-40'>&laquo;</button>`;
+
+      for (let i = 1; i <= totalPages; i++) {
+        html += `<button data-page='${i}' class='px-3 py-2 ${i === currentPage ? 'bg-green-600 text-white' : 'text-gray-500 hover:text-green-600'} rounded'>${i}</button>`;
+      }
+
+      html += `<button ${currentPage === totalPages ? 'disabled' : ''} data-page='next' class='px-3 py-2 text-gray-500 hover:text-green-600 disabled:opacity-40'>&raquo;</button>`;
+
+      pagEl.innerHTML = html;
+      pagEl.classList.remove('hidden');
+
+      pagEl.querySelectorAll('button').forEach(btn =>
+        btn.addEventListener('click', e => {
+          const page = e.currentTarget.dataset.page;
+          if (page === 'prev') load(currentPage - 1);
+          else if (page === 'next') load(currentPage + 1);
+          else load(parseInt(page));
+        })
+      );
+    }
+
+    async function load(page = 1) {
+      if (!query) {
+        loadEl.classList.add('hidden');
+        emptyEl.classList.remove('hidden');
+        return;
+      }
+
+      currentPage = page;
+
+      loadEl.classList.remove('hidden');
+      errEl.classList.add('hidden');
+      emptyEl.classList.add('hidden');
+      gridEl.classList.add('hidden');
+
+      try {
+        const res = await fetch(`/api/blog/posts/search/${encodeURIComponent(query)}?limit=${LIMIT}&page=${page}`);
+        if (!res.ok) throw new Error();
+
+        const data = await res.json();
+        const posts = data || [];
+        totalPages = data.pagination ? data.pagination.total_pages : 1;
+
+        countEl.textContent = `${data.pagination?.total || posts.length} articles`;
+
+        if (!posts.length) {
+          emptyEl.classList.remove('hidden');
+          pagination();
+          return;
+        }
+
+        gridEl.innerHTML = posts.map(card).join('');
+        gridEl.classList.remove('hidden');
+        pagination();
+      } catch (e) {
+        console.error(e);
+        errEl.classList.remove('hidden');
+      } finally {
+        loadEl.classList.add('hidden');
+      }
+    }
+
+    function handleSearch(e) {
+      e.preventDefault();
+      query = inputEl.value.trim();
+      queryEl.textContent = query;
+
+      const url = new URL(window.location.href);
+      url.searchParams.set('q', query);
+      history.replaceState(null, '', url.toString());
+
+      load(1);
+    }
+
+    document.querySelector('form').addEventListener('submit', handleSearch);
+    document.addEventListener('DOMContentLoaded', () => load());
+
+  })();
+</script>

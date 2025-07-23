@@ -13,79 +13,42 @@
       "id": "navigation",
       "type": "template",
       "resetable": true,
-      "data": [
-        "site.name",
-        "site.logo",
-        "site.tagline",
-        "navigation",
-        "cta_button"
-      ]
+      "data": ["site.name", "site.logo", "site.tagline", "navigation"]
     },
     {
       "title": "hero",
       "id": "hero",
       "type": "template",
       "resetable": true,
-      "data": [
-        "hero"
-      ]
+      "data": ["hero"]
+    },
+    {
+      "title": "categories",
+      "id": "categories",
+      "type": "template",
+      "resetable": true,
+      "data": []
     },
     {
       "title": "featured stories",
       "id": "featured_stories",
       "type": "template",
       "resetable": true,
-      "data": [
-        "featured"
-      ]
+      "data": ["featured"]
     },
     {
-      "title": "pet care tips",
-      "id": "pet_care_tips",
+      "title": "stats",
+      "id": "stats",
       "type": "template",
       "resetable": true,
-      "data": [
-        "tips"
-      ]
-    },
-    {
-      "title": "training guides",
-      "id": "training_guides",
-      "type": "template",
-      "resetable": true,
-      "data": [
-        "training"
-      ]
-    },
-    {
-      "title": "pet community",
-      "id": "pet_community",
-      "type": "template",
-      "resetable": true,
-      "data": [
-        "community"
-      ]
-    },
-    {
-      "title": "pet shop",
-      "id": "pet_shop",
-      "type": "template",
-      "resetable": true,
-      "data": [
-        "shop"
-      ]
+      "data": ["stats"]
     },
     {
       "title": "footer",
       "id": "footer",
       "type": "template",
       "resetable": true,
-      "data": [
-        "site.name",
-        "site.description",
-        "navigation",
-        "social_links"
-      ]
+      "data": ["site.name", "site.description", "navigation", "social_links"]
     }
   ]
-} 
+}

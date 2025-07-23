@@ -1,53 +1,81 @@
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
 
-.pet-font {
+  .pet-font {
     font-family: 'Fredoka', sans-serif;
-}
+  }
 
-.paw-pattern {
+  .paw-pattern {
     background-image: radial-gradient(circle at 20% 50%, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
-                      radial-gradient(circle at 80% 20%, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
-                      radial-gradient(circle at 40% 80%, rgba(34, 197, 94, 0.1) 0%, transparent 50%);
-}
+      radial-gradient(circle at 80% 20%, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 80%, rgba(34, 197, 94, 0.1) 0%, transparent 50%);
+  }
 
-.floating-paw {
+  .floating-paw {
     animation: float 3s ease-in-out infinite;
-}
+  }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-}
+  @keyframes float {
 
-.wiggle {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .wiggle {
     animation: wiggle 2s ease-in-out infinite;
-}
+  }
 
-@keyframes wiggle {
-    0%, 100% { transform: rotate(-3deg); }
-    50% { transform: rotate(3deg); }
-}
+  @keyframes wiggle {
 
-.bounce-in {
+    0%,
+    100% {
+      transform: rotate(-3deg);
+    }
+
+    50% {
+      transform: rotate(3deg);
+    }
+  }
+
+  .bounce-in {
     animation: bounceIn 0.6s ease-out;
-}
+  }
 
-@keyframes bounceIn {
-    0% { opacity: 0; transform: scale(0.3); }
-    50% { opacity: 1; transform: scale(1.05); }
-    70% { transform: scale(0.9); }
-    100% { opacity: 1; transform: scale(1); }
-}
+  @keyframes bounceIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.3);
+    }
 
-.pet-card {
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+
+    70% {
+      transform: scale(0.9);
+    }
+
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .pet-card {
     background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
     border: 2px solid transparent;
     background-clip: padding-box;
     position: relative;
-}
+  }
 
-.pet-card::before {
+  .pet-card::before {
     content: '';
     position: absolute;
     top: 0;
@@ -60,15 +88,15 @@
     mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask-composite: exclude;
     -webkit-mask-composite: xor;
-}
+  }
 
-.pet-hero-bg {
+  .pet-hero-bg {
     background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 25%, #86efac 50%, #4ade80 75%, #22c55e 100%);
     position: relative;
     overflow: hidden;
-}
+  }
 
-.pet-hero-bg::before {
+  .pet-hero-bg::before {
     content: '';
     position: absolute;
     top: 0;
@@ -77,26 +105,26 @@
     bottom: 0;
     background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2322c55e' fill-opacity='0.1'%3E%3Cpath d='M30 30c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20zm0 0c0-11.046 8.954-20 20-20s20 8.954 20 20-8.954 20-20 20-20-8.954-20-20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
     opacity: 0.3;
-}
+  }
 
-.pet-type-icon {
+  .pet-type-icon {
     transition: all 0.3s ease;
-}
+  }
 
-.pet-type-icon:hover {
+  .pet-type-icon:hover {
     transform: scale(1.2) rotate(5deg);
-}
+  }
 
-.story-bubble {
+  .story-bubble {
     position: relative;
     background: white;
     border-radius: 20px;
     padding: 1.5rem;
     margin: 1rem 0;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
+  }
 
-.story-bubble::before {
+  .story-bubble::before {
     content: '';
     position: absolute;
     bottom: -10px;
@@ -106,18 +134,18 @@
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
     border-top: 15px solid white;
-}
+  }
 
-.pet-stats {
+  .pet-stats {
     background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
     border-radius: 20px;
     padding: 2rem;
     color: white;
     position: relative;
     overflow: hidden;
-}
+  }
 
-.pet-stats::before {
+  .pet-stats::before {
     content: '🐾';
     position: absolute;
     top: -20px;
@@ -125,429 +153,471 @@
     font-size: 8rem;
     opacity: 0.1;
     transform: rotate(15deg);
-}
+  }
 </style>
 
 <!-- Navigation -->
 <nav class="bg-white/95 backdrop-blur-sm shadow-lg sticky top-0 z-50 border-b-2 border-green-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-16">
-            <div class="flex items-center space-x-4">
-                <div class="relative">
-                    <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center shadow-lg">
-                        <span class="text-white text-2xl floating-paw">🐾</span>
-                    </div>
-                    <div class="absolute -top-1 -right-1 w-4 h-4 bg-orange-400 rounded-full flex items-center justify-center">
-                        <span class="text-white text-xs">❤️</span>
-                    </div>
-                </div>
-                <div class="pet-font">
-                    <h1 class="text-2xl font-bold text-green-600">PetCare Central</h1>
-                    <p class="text-xs text-green-500 font-medium">Where Pet Stories Come to Life</p>
-                </div>
-            </div>
-            
-            <div class="hidden md:flex items-center space-x-6">
-                <a href="#" class="text-gray-700 hover:text-green-600 transition-colors font-medium pet-font flex items-center space-x-1">
-                    <span>🏠</span><span>Home</span>
-                </a>
-                <a href="#" class="text-gray-700 hover:text-green-600 transition-colors font-medium pet-font flex items-center space-x-1">
-                    <span>📖</span><span>Pet Stories</span>
-                </a>
-                <a href="#" class="text-gray-700 hover:text-green-600 transition-colors font-medium pet-font flex items-center space-x-1">
-                    <span>💊</span><span>Health Tips</span>
-                </a>
-                <a href="#" class="text-gray-700 hover:text-green-600 transition-colors font-medium pet-font flex items-center space-x-1">
-                    <span>🎓</span><span>Training</span>
-                </a>
-                <a href="#" class="text-gray-700 hover:text-green-600 transition-colors font-medium pet-font flex items-center space-x-1">
-                    <span>🛍️</span><span>Pet Shop</span>
-                </a>
-            </div>
-            
-            <div class="flex items-center space-x-4">
-                <button class="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-6 py-2 rounded-full font-semibold pet-font transition-all transform hover:scale-105 shadow-lg">
-                    Join Pet Family 🐕
-                </button>
-                <button class="md:hidden p-2 text-gray-500 hover:text-green-600">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-            </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <div class="flex items-center space-x-4">
+        <div class="relative">
+          <div
+            class="w-12 h-12 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center shadow-lg">
+            <span class="text-white text-2xl floating-paw">🐾</span>
+          </div>
+          <div class="absolute -top-1 -right-1 w-4 h-4 bg-orange-400 rounded-full flex items-center justify-center">
+            <span class="text-white text-xs">❤️</span>
+          </div>
         </div>
+        <div class="pet-font">
+          <h1 class="text-2xl font-bold text-green-600">PetCare Central</h1>
+          <p class="text-xs text-green-500 font-medium">Where Pet Stories Come to Life</p>
+        </div>
+      </div>
+
+      <div class="hidden md:flex items-center space-x-6">
+        <a href="#"
+          class="text-gray-700 hover:text-green-600 transition-colors font-medium pet-font flex items-center space-x-1">
+          <span>🏠</span><span>Home</span>
+        </a>
+        <a href="#"
+          class="text-gray-700 hover:text-green-600 transition-colors font-medium pet-font flex items-center space-x-1">
+          <span>📖</span><span>Pet Stories</span>
+        </a>
+        <a href="#"
+          class="text-gray-700 hover:text-green-600 transition-colors font-medium pet-font flex items-center space-x-1">
+          <span>💊</span><span>Health Tips</span>
+        </a>
+        <a href="#"
+          class="text-gray-700 hover:text-green-600 transition-colors font-medium pet-font flex items-center space-x-1">
+          <span>🎓</span><span>Training</span>
+        </a>
+        <a href="#"
+          class="text-gray-700 hover:text-green-600 transition-colors font-medium pet-font flex items-center space-x-1">
+          <span>🛍️</span><span>Pet Shop</span>
+        </a>
+      </div>
+
+      <div class="flex items-center space-x-4">
+        <button
+          class="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-6 py-2 rounded-full font-semibold pet-font transition-all transform hover:scale-105 shadow-lg">
+          Join Pet Family 🐕
+        </button>
+        <button class="md:hidden p-2 text-gray-500 hover:text-green-600">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
     </div>
+  </div>
 </nav>
 
 <!-- Hero Section -->
 <section class="pet-hero-bg py-20 relative overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
-            <div class="text-center lg:text-left">
-                <div class="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6 bounce-in">
-                    <span class="text-green-600 font-semibold pet-font">🎉 Welcome to Pet Paradise</span>
-                </div>
-                <h1 class="text-4xl lg:text-6xl font-bold text-gray-900 mb-6 pet-font leading-tight">
-                    Every Pet Has a 
-                    <span class="text-green-600 relative">
-                        Story
-                        <div class="absolute -bottom-2 left-0 w-full h-3 bg-yellow-300 opacity-30 rounded-full"></div>
-                    </span>
-                    <br>Worth Telling
-                </h1>
-                <p class="text-xl text-gray-700 mb-8 leading-relaxed pet-font">
-                    Join our community of pet lovers sharing heartwarming stories, expert advice, and unforgettable moments with our furry, feathered, and scaled friends! 🐾
-                </p>
-                
-                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
-                    <button class="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-8 py-4 rounded-full font-bold pet-font transition-all transform hover:scale-105 shadow-xl flex items-center justify-center space-x-2">
-                        <span>📚 Read Pet Stories</span>
-                    </button>
-                    <button class="bg-white/90 backdrop-blur-sm text-green-600 border-2 border-green-500 hover:bg-green-50 px-8 py-4 rounded-full font-bold pet-font transition-all flex items-center justify-center space-x-2">
-                        <span>✍️ Share Your Story</span>
-                    </button>
-                </div>
-                
-                <!-- Pet Types Quick Access -->
-                <div class="flex flex-wrap gap-3 justify-center lg:justify-start">
-                    <div class="bg-white/90 backdrop-blur-sm rounded-full px-4 py-2 flex items-center space-x-2 pet-type-icon cursor-pointer">
-                        <span class="text-2xl">🐕</span>
-                        <span class="text-sm font-semibold text-gray-700 pet-font">Dogs</span>
-                    </div>
-                    <div class="bg-white/90 backdrop-blur-sm rounded-full px-4 py-2 flex items-center space-x-2 pet-type-icon cursor-pointer">
-                        <span class="text-2xl">🐱</span>
-                        <span class="text-sm font-semibold text-gray-700 pet-font">Cats</span>
-                    </div>
-                    <div class="bg-white/90 backdrop-blur-sm rounded-full px-4 py-2 flex items-center space-x-2 pet-type-icon cursor-pointer">
-                        <span class="text-2xl">🐦</span>
-                        <span class="text-sm font-semibold text-gray-700 pet-font">Birds</span>
-                    </div>
-                    <div class="bg-white/90 backdrop-blur-sm rounded-full px-4 py-2 flex items-center space-x-2 pet-type-icon cursor-pointer">
-                        <span class="text-2xl">🐰</span>
-                        <span class="text-sm font-semibold text-gray-700 pet-font">Rabbits</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Interactive Pet Showcase -->
-            <div class="relative">
-                <div class="relative w-full h-96 bg-white/20 backdrop-blur-sm rounded-3xl overflow-hidden shadow-2xl">
-                    <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
-                         alt="Happy pets playing together" 
-                         class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-                    
-                    <!-- Floating Pet Stats -->
-                    <div class="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-lg">
-                        <div class="text-center">
-                            <div class="text-2xl font-bold text-green-600 pet-font">50K+</div>
-                            <div class="text-xs text-gray-600 pet-font">Happy Pet Stories</div>
-                        </div>
-                    </div>
-                    
-                    <div class="absolute bottom-4 left-4 bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-lg">
-                        <div class="text-center">
-                            <div class="text-2xl font-bold text-orange-600 pet-font">24/7</div>
-                            <div class="text-xs text-gray-600 pet-font">Expert Support</div>
-                        </div>
-                    </div>
-                    
-                    <!-- Pet Emotion Indicators -->
-                    <div class="absolute top-1/2 left-4 transform -translate-y-1/2 space-y-2">
-                        <div class="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center shadow-lg wiggle">
-                            <span class="text-xl">😊</span>
-                        </div>
-                        <div class="w-12 h-12 bg-pink-400 rounded-full flex items-center justify-center shadow-lg wiggle" style="animation-delay: 0.5s;">
-                            <span class="text-xl">🥰</span>
-                        </div>
-                        <div class="w-12 h-12 bg-purple-400 rounded-full flex items-center justify-center shadow-lg wiggle" style="animation-delay: 1s;">
-                            <span class="text-xl">😍</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Floating Elements -->
-                <div class="absolute -top-4 -left-4 w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center shadow-lg floating-paw">
-                    <span class="text-sm">🐾</span>
-                </div>
-                <div class="absolute -bottom-4 -right-4 w-8 h-8 bg-pink-400 rounded-full flex items-center justify-center shadow-lg floating-paw" style="animation-delay: 1s;">
-                    <span class="text-sm">❤️</span>
-                </div>
-                <div class="absolute top-10 -right-8 w-6 h-6 bg-blue-400 rounded-full flex items-center justify-center shadow-lg floating-paw" style="animation-delay: 2s;">
-                    <span class="text-xs">🦴</span>
-                </div>
-            </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="text-center lg:text-left">
+        <div class="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6 bounce-in">
+          <span class="text-green-600 font-semibold pet-font">🎉 Welcome to Pet Paradise</span>
         </div>
+        <h1 class="text-4xl lg:text-6xl font-bold text-gray-900 mb-6 pet-font leading-tight">
+          Every Pet Has a
+          <span class="text-green-600 relative">
+            Story
+            <div class="absolute -bottom-2 left-0 w-full h-3 bg-yellow-300 opacity-30 rounded-full"></div>
+          </span>
+          <br>Worth Telling
+        </h1>
+        <p class="text-xl text-gray-700 mb-8 leading-relaxed pet-font">
+          Join our community of pet lovers sharing heartwarming stories, expert advice, and unforgettable moments with
+          our furry, feathered, and scaled friends! 🐾
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
+          <button
+            class="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-8 py-4 rounded-full font-bold pet-font transition-all transform hover:scale-105 shadow-xl flex items-center justify-center space-x-2">
+            <span>📚 Read Pet Stories</span>
+          </button>
+          <button
+            class="bg-white/90 backdrop-blur-sm text-green-600 border-2 border-green-500 hover:bg-green-50 px-8 py-4 rounded-full font-bold pet-font transition-all flex items-center justify-center space-x-2">
+            <span>✍️ Share Your Story</span>
+          </button>
+        </div>
+
+        <!-- Pet Types Quick Access -->
+        <div class="flex flex-wrap gap-3 justify-center lg:justify-start">
+          <div
+            class="bg-white/90 backdrop-blur-sm rounded-full px-4 py-2 flex items-center space-x-2 pet-type-icon cursor-pointer">
+            <span class="text-2xl">🐕</span>
+            <span class="text-sm font-semibold text-gray-700 pet-font">Dogs</span>
+          </div>
+          <div
+            class="bg-white/90 backdrop-blur-sm rounded-full px-4 py-2 flex items-center space-x-2 pet-type-icon cursor-pointer">
+            <span class="text-2xl">🐱</span>
+            <span class="text-sm font-semibold text-gray-700 pet-font">Cats</span>
+          </div>
+          <div
+            class="bg-white/90 backdrop-blur-sm rounded-full px-4 py-2 flex items-center space-x-2 pet-type-icon cursor-pointer">
+            <span class="text-2xl">🐦</span>
+            <span class="text-sm font-semibold text-gray-700 pet-font">Birds</span>
+          </div>
+          <div
+            class="bg-white/90 backdrop-blur-sm rounded-full px-4 py-2 flex items-center space-x-2 pet-type-icon cursor-pointer">
+            <span class="text-2xl">🐰</span>
+            <span class="text-sm font-semibold text-gray-700 pet-font">Rabbits</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Pet Showcase -->
+      <div class="relative">
+        <div class="relative w-full h-96 bg-white/20 backdrop-blur-sm rounded-3xl overflow-hidden shadow-2xl">
+          <img
+            src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+            alt="Happy pets playing together" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+
+          <!-- Floating Pet Stats -->
+          <div class="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-lg">
+            <div class="text-center">
+              <div class="text-2xl font-bold text-green-600 pet-font">50K+</div>
+              <div class="text-xs text-gray-600 pet-font">Happy Pet Stories</div>
+            </div>
+          </div>
+
+          <div class="absolute bottom-4 left-4 bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-lg">
+            <div class="text-center">
+              <div class="text-2xl font-bold text-orange-600 pet-font">24/7</div>
+              <div class="text-xs text-gray-600 pet-font">Expert Support</div>
+            </div>
+          </div>
+
+          <!-- Pet Emotion Indicators -->
+          <div class="absolute top-1/2 left-4 transform -translate-y-1/2 space-y-2">
+            <div class="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center shadow-lg wiggle">
+              <span class="text-xl">😊</span>
+            </div>
+            <div class="w-12 h-12 bg-pink-400 rounded-full flex items-center justify-center shadow-lg wiggle"
+              style="animation-delay: 0.5s;">
+              <span class="text-xl">🥰</span>
+            </div>
+            <div class="w-12 h-12 bg-purple-400 rounded-full flex items-center justify-center shadow-lg wiggle"
+              style="animation-delay: 1s;">
+              <span class="text-xl">😍</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating Elements -->
+        <div
+          class="absolute -top-4 -left-4 w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center shadow-lg floating-paw">
+          <span class="text-sm">🐾</span>
+        </div>
+        <div
+          class="absolute -bottom-4 -right-4 w-8 h-8 bg-pink-400 rounded-full flex items-center justify-center shadow-lg floating-paw"
+          style="animation-delay: 1s;">
+          <span class="text-sm">❤️</span>
+        </div>
+        <div
+          class="absolute top-10 -right-8 w-6 h-6 bg-blue-400 rounded-full flex items-center justify-center shadow-lg floating-paw"
+          style="animation-delay: 2s;">
+          <span class="text-xs">🦴</span>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <!-- Pet Care Categories -->
 <section class="py-16 bg-gray-50 paw-pattern">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <h2 class="text-4xl font-bold text-gray-900 mb-4 pet-font">Explore Pet Care Topics</h2>
-            <p class="text-xl text-gray-600 pet-font">Everything your furry friend needs to live their best life</p>
-        </div>
-        
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-            <div class="pet-card rounded-2xl p-6 text-center hover:shadow-xl transition-all transform hover:-translate-y-2 cursor-pointer group">
-                <div class="text-4xl mb-4 group-hover:scale-110 transition-transform">🎓</div>
-                <h3 class="font-bold text-gray-900 mb-2 pet-font">Training</h3>
-                <p class="text-green-600 text-sm pet-font font-semibold">45 guides</p>
-                <div class="mt-3 text-xs text-gray-500 pet-font">Puppy to Pro</div>
-            </div>
-            
-            <div class="pet-card rounded-2xl p-6 text-center hover:shadow-xl transition-all transform hover:-translate-y-2 cursor-pointer group">
-                <div class="text-4xl mb-4 group-hover:scale-110 transition-transform">🏥</div>
-                <h3 class="font-bold text-gray-900 mb-2 pet-font">Health</h3>
-                <p class="text-red-600 text-sm pet-font font-semibold">38 articles</p>
-                <div class="mt-3 text-xs text-gray-500 pet-font">Wellness Tips</div>
-            </div>
-            
-            <div class="pet-card rounded-2xl p-6 text-center hover:shadow-xl transition-all transform hover:-translate-y-2 cursor-pointer group">
-                <div class="text-4xl mb-4 group-hover:scale-110 transition-transform">🥘</div>
-                <h3 class="font-bold text-gray-900 mb-2 pet-font">Nutrition</h3>
-                <p class="text-orange-600 text-sm pet-font font-semibold">32 recipes</p>
-                <div class="mt-3 text-xs text-gray-500 pet-font">Healthy Meals</div>
-            </div>
-            
-            <div class="pet-card rounded-2xl p-6 text-center hover:shadow-xl transition-all transform hover:-translate-y-2 cursor-pointer group">
-                <div class="text-4xl mb-4 group-hover:scale-110 transition-transform">✂️</div>
-                <h3 class="font-bold text-gray-900 mb-2 pet-font">Grooming</h3>
-                <p class="text-purple-600 text-sm pet-font font-semibold">28 tutorials</p>
-                <div class="mt-3 text-xs text-gray-500 pet-font">Look Great</div>
-            </div>
-            
-            <div class="pet-card rounded-2xl p-6 text-center hover:shadow-xl transition-all transform hover:-translate-y-2 cursor-pointer group">
-                <div class="text-4xl mb-4 group-hover:scale-110 transition-transform">🏠</div>
-                <h3 class="font-bold text-gray-900 mb-2 pet-font">Lifestyle</h3>
-                <p class="text-blue-600 text-sm pet-font font-semibold">35 ideas</p>
-                <div class="mt-3 text-xs text-gray-500 pet-font">Happy Home</div>
-            </div>
-            
-            <div class="pet-card rounded-2xl p-6 text-center hover:shadow-xl transition-all transform hover:-translate-y-2 cursor-pointer group">
-                <div class="text-4xl mb-4 group-hover:scale-110 transition-transform">🎮</div>
-                <h3 class="font-bold text-gray-900 mb-2 pet-font">Fun & Games</h3>
-                <p class="text-pink-600 text-sm pet-font font-semibold">42 activities</p>
-                <div class="mt-3 text-xs text-gray-500 pet-font">Play Time</div>
-            </div>
-        </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold text-gray-900 mb-4 pet-font">Explore Pet Care Topics</h2>
+      <p class="text-xl text-gray-600 pet-font">Everything your furry friend needs to live their best life</p>
     </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+      <div
+        class="pet-card rounded-2xl p-6 text-center hover:shadow-xl transition-all transform hover:-translate-y-2 cursor-pointer group">
+        <div class="text-4xl mb-4 group-hover:scale-110 transition-transform">🎓</div>
+        <h3 class="font-bold text-gray-900 mb-2 pet-font">Training</h3>
+        <p class="text-green-600 text-sm pet-font font-semibold">45 guides</p>
+        <div class="mt-3 text-xs text-gray-500 pet-font">Puppy to Pro</div>
+      </div>
+
+      <div
+        class="pet-card rounded-2xl p-6 text-center hover:shadow-xl transition-all transform hover:-translate-y-2 cursor-pointer group">
+        <div class="text-4xl mb-4 group-hover:scale-110 transition-transform">🏥</div>
+        <h3 class="font-bold text-gray-900 mb-2 pet-font">Health</h3>
+        <p class="text-red-600 text-sm pet-font font-semibold">38 articles</p>
+        <div class="mt-3 text-xs text-gray-500 pet-font">Wellness Tips</div>
+      </div>
+
+      <div
+        class="pet-card rounded-2xl p-6 text-center hover:shadow-xl transition-all transform hover:-translate-y-2 cursor-pointer group">
+        <div class="text-4xl mb-4 group-hover:scale-110 transition-transform">🥘</div>
+        <h3 class="font-bold text-gray-900 mb-2 pet-font">Nutrition</h3>
+        <p class="text-orange-600 text-sm pet-font font-semibold">32 recipes</p>
+        <div class="mt-3 text-xs text-gray-500 pet-font">Healthy Meals</div>
+      </div>
+
+      <div
+        class="pet-card rounded-2xl p-6 text-center hover:shadow-xl transition-all transform hover:-translate-y-2 cursor-pointer group">
+        <div class="text-4xl mb-4 group-hover:scale-110 transition-transform">✂️</div>
+        <h3 class="font-bold text-gray-900 mb-2 pet-font">Grooming</h3>
+        <p class="text-purple-600 text-sm pet-font font-semibold">28 tutorials</p>
+        <div class="mt-3 text-xs text-gray-500 pet-font">Look Great</div>
+      </div>
+
+      <div
+        class="pet-card rounded-2xl p-6 text-center hover:shadow-xl transition-all transform hover:-translate-y-2 cursor-pointer group">
+        <div class="text-4xl mb-4 group-hover:scale-110 transition-transform">🏠</div>
+        <h3 class="font-bold text-gray-900 mb-2 pet-font">Lifestyle</h3>
+        <p class="text-blue-600 text-sm pet-font font-semibold">35 ideas</p>
+        <div class="mt-3 text-xs text-gray-500 pet-font">Happy Home</div>
+      </div>
+
+      <div
+        class="pet-card rounded-2xl p-6 text-center hover:shadow-xl transition-all transform hover:-translate-y-2 cursor-pointer group">
+        <div class="text-4xl mb-4 group-hover:scale-110 transition-transform">🎮</div>
+        <h3 class="font-bold text-gray-900 mb-2 pet-font">Fun & Games</h3>
+        <p class="text-pink-600 text-sm pet-font font-semibold">42 activities</p>
+        <div class="mt-3 text-xs text-gray-500 pet-font">Play Time</div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- Featured Pet Stories -->
 <section class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <h2 class="text-4xl font-bold text-gray-900 mb-4 pet-font">Latest Pet Care Articles</h2>
-            <p class="text-xl text-gray-600 pet-font">Expert advice and heartwarming stories from our pet care community</p>
-        </div>
-        
-        <div class="grid lg:grid-cols-3 gap-8">
-            <!-- Article 1 -->
-            <article class="story-bubble group cursor-pointer hover:shadow-2xl transition-all transform hover:-translate-y-2">
-                <div class="relative mb-4">
-                    <img src="https://images.unsplash.com/photo-1534361960057-19889db9621e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
-                         alt="Essential Training Tips for New Puppy Owners" 
-                         class="w-full h-48 rounded-lg object-cover">
-                    <div class="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-full text-xs font-bold pet-font">
-                        TRAINING
-                    </div>
-                </div>
-                <div class="space-y-3">
-                    <h3 class="text-xl font-bold text-gray-900 pet-font">Essential Training Tips for New Puppy Owners</h3>
-                    <p class="text-gray-600 pet-font">Start your puppy's training journey with these fundamental techniques that build a strong foundation for lifelong learning.</p>
-                    <div class="flex items-center justify-between text-sm text-gray-500">
-                        <div class="flex items-center space-x-2">
-                            <span class="pet-font">Dr. Sarah Mitchell</span>
-                            <span class="text-green-500">•</span>
-                            <span class="pet-font">8 min read</span>
-                        </div>
-                        <span class="pet-font">1,250 views</span>
-                    </div>
-                </div>
-            </article>
-            
-            <!-- Article 2 -->
-            <article class="story-bubble group cursor-pointer hover:shadow-2xl transition-all transform hover:-translate-y-2">
-                <div class="relative mb-4">
-                    <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
-                         alt="Signs Your Cat May Need Veterinary Attention" 
-                         class="w-full h-48 rounded-lg object-cover">
-                    <div class="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 rounded-full text-xs font-bold pet-font">
-                        HEALTH
-                    </div>
-                </div>
-                <div class="space-y-3">
-                    <h3 class="text-xl font-bold text-gray-900 pet-font">Signs Your Cat May Need Veterinary Attention</h3>
-                    <p class="text-gray-600 pet-font">Learn to recognize the subtle signs that indicate your feline friend might need professional medical care.</p>
-                    <div class="flex items-center justify-between text-sm text-gray-500">
-                        <div class="flex items-center space-x-2">
-                            <span class="pet-font">Dr. Michael Chen</span>
-                            <span class="text-red-500">•</span>
-                            <span class="pet-font">6 min read</span>
-                        </div>
-                        <span class="pet-font">980 views</span>
-                    </div>
-                </div>
-            </article>
-            
-            <!-- Article 3 -->
-            <article class="story-bubble group cursor-pointer hover:shadow-2xl transition-all transform hover:-translate-y-2">
-                <div class="relative mb-4">
-                    <img src="https://images.unsplash.com/photo-1552728089-57bdde30beb3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80" 
-                         alt="Creating a Pet-Friendly Garden: Safe Plants and Design Tips" 
-                         class="w-full h-48 rounded-lg object-cover">
-                    <div class="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-bold pet-font">
-                        LIFESTYLE
-                    </div>
-                </div>
-                <div class="space-y-3">
-                    <h3 class="text-xl font-bold text-gray-900 pet-font">Creating a Pet-Friendly Garden: Safe Plants and Design Tips</h3>
-                    <p class="text-gray-600 pet-font">Transform your outdoor space into a safe haven for your pets with these garden design and plant selection tips.</p>
-                    <div class="flex items-center justify-between text-sm text-gray-500">
-                        <div class="flex items-center space-x-2">
-                            <span class="pet-font">Lisa Rodriguez</span>
-                            <span class="text-blue-500">•</span>
-                            <span class="pet-font">10 min read</span>
-                        </div>
-                        <span class="pet-font">750 views</span>
-                    </div>
-                </div>
-            </article>
-        </div>
-        
-        <div class="text-center mt-12">
-            <button class="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-8 py-4 rounded-full font-bold pet-font transition-all transform hover:scale-105 shadow-lg">
-                View All Articles 📚
-            </button>
-        </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold text-gray-900 mb-4 pet-font">Latest Pet Care Articles</h2>
+      <p class="text-xl text-gray-600 pet-font">Expert advice and heartwarming stories from our pet care community</p>
     </div>
+
+    <div class="grid lg:grid-cols-3 gap-8">
+      <!-- Article 1 -->
+      <article class="story-bubble group cursor-pointer hover:shadow-2xl transition-all transform hover:-translate-y-2">
+        <div class="relative mb-4">
+          <img
+            src="https://images.unsplash.com/photo-1534361960057-19889db9621e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+            alt="Essential Training Tips for New Puppy Owners" class="w-full h-48 rounded-lg object-cover">
+          <div class="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-full text-xs font-bold pet-font">
+            TRAINING
+          </div>
+        </div>
+        <div class="space-y-3">
+          <h3 class="text-xl font-bold text-gray-900 pet-font">Essential Training Tips for New Puppy Owners</h3>
+          <p class="text-gray-600 pet-font">Start your puppy's training journey with these fundamental techniques that
+            build a strong foundation for lifelong learning.</p>
+          <div class="flex items-center justify-between text-sm text-gray-500">
+            <div class="flex items-center space-x-2">
+              <span class="pet-font">Dr. Sarah Mitchell</span>
+              <span class="text-green-500">•</span>
+              <span class="pet-font">8 min read</span>
+            </div>
+            <span class="pet-font">1,250 views</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Article 2 -->
+      <article class="story-bubble group cursor-pointer hover:shadow-2xl transition-all transform hover:-translate-y-2">
+        <div class="relative mb-4">
+          <img
+            src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+            alt="Signs Your Cat May Need Veterinary Attention" class="w-full h-48 rounded-lg object-cover">
+          <div class="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 rounded-full text-xs font-bold pet-font">
+            HEALTH
+          </div>
+        </div>
+        <div class="space-y-3">
+          <h3 class="text-xl font-bold text-gray-900 pet-font">Signs Your Cat May Need Veterinary Attention</h3>
+          <p class="text-gray-600 pet-font">Learn to recognize the subtle signs that indicate your feline friend might
+            need professional medical care.</p>
+          <div class="flex items-center justify-between text-sm text-gray-500">
+            <div class="flex items-center space-x-2">
+              <span class="pet-font">Dr. Michael Chen</span>
+              <span class="text-red-500">•</span>
+              <span class="pet-font">6 min read</span>
+            </div>
+            <span class="pet-font">980 views</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Article 3 -->
+      <article class="story-bubble group cursor-pointer hover:shadow-2xl transition-all transform hover:-translate-y-2">
+        <div class="relative mb-4">
+          <img
+            src="https://images.unsplash.com/photo-1552728089-57bdde30beb3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
+            alt="Creating a Pet-Friendly Garden: Safe Plants and Design Tips"
+            class="w-full h-48 rounded-lg object-cover">
+          <div class="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-bold pet-font">
+            LIFESTYLE
+          </div>
+        </div>
+        <div class="space-y-3">
+          <h3 class="text-xl font-bold text-gray-900 pet-font">Creating a Pet-Friendly Garden: Safe Plants and Design
+            Tips</h3>
+          <p class="text-gray-600 pet-font">Transform your outdoor space into a safe haven for your pets with these
+            garden design and plant selection tips.</p>
+          <div class="flex items-center justify-between text-sm text-gray-500">
+            <div class="flex items-center space-x-2">
+              <span class="pet-font">Lisa Rodriguez</span>
+              <span class="text-blue-500">•</span>
+              <span class="pet-font">10 min read</span>
+            </div>
+            <span class="pet-font">750 views</span>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="text-center mt-12">
+      <button
+        class="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-8 py-4 rounded-full font-bold pet-font transition-all transform hover:scale-105 shadow-lg">
+        View All Articles 📚
+      </button>
+    </div>
+  </div>
 </section>
 
 <!-- Pet Care Stats & Community -->
 <section class="py-16 bg-gradient-to-br from-green-50 to-emerald-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
-            <div class="pet-stats">
-                <h2 class="text-3xl font-bold mb-6 pet-font">Our Pet-Loving Community</h2>
-                <div class="grid grid-cols-2 gap-6">
-                    <div class="text-center">
-                        <div class="text-4xl font-bold mb-2 pet-font">50K+</div>
-                        <div class="text-green-100 pet-font">Pet Stories Shared</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-4xl font-bold mb-2 pet-font">25K+</div>
-                        <div class="text-green-100 pet-font">Pet Parents</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-4xl font-bold mb-2 pet-font">100+</div>
-                        <div class="text-green-100 pet-font">Expert Veterinarians</div>
-                    </div>
-                    <div class="text-center">
-                        <div class="text-4xl font-bold mb-2 pet-font">24/7</div>
-                        <div class="text-green-100 pet-font">Support Available</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="space-y-6">
-                <h3 class="text-2xl font-bold text-gray-900 pet-font">Join Our Pet Family Today!</h3>
-                <p class="text-gray-600 pet-font">
-                    Connect with fellow pet lovers, share your stories, get expert advice, and discover amazing products for your furry friends.
-                </p>
-                
-                <div class="bg-white rounded-2xl p-6 shadow-lg">
-                    <h4 class="font-bold text-gray-900 mb-4 pet-font">Get Weekly Pet Care Tips</h4>
-                    <div class="flex flex-col sm:flex-row gap-3">
-                        <input type="email" placeholder="Enter your email" class="flex-1 px-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500 pet-font">
-                        <button class="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-6 py-3 rounded-full font-bold pet-font transition-all transform hover:scale-105">
-                            Subscribe 🐾
-                        </button>
-                    </div>
-                    <p class="text-xs text-gray-500 mt-3 pet-font">Join 25,000+ pet parents. Unsubscribe anytime.</p>
-                </div>
-                
-                <div class="flex flex-wrap gap-3">
-                    <div class="bg-white rounded-full px-4 py-2 flex items-center space-x-2 shadow-md">
-                        <span class="text-green-500">✓</span>
-                        <span class="text-sm pet-font">Weekly tips</span>
-                    </div>
-                    <div class="bg-white rounded-full px-4 py-2 flex items-center space-x-2 shadow-md">
-                        <span class="text-green-500">✓</span>
-                        <span class="text-sm pet-font">Expert advice</span>
-                    </div>
-                    <div class="bg-white rounded-full px-4 py-2 flex items-center space-x-2 shadow-md">
-                        <span class="text-green-500">✓</span>
-                        <span class="text-sm pet-font">Exclusive content</span>
-                    </div>
-                </div>
-            </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="pet-stats">
+        <h2 class="text-3xl font-bold mb-6 pet-font">Our Pet-Loving Community</h2>
+        <div class="grid grid-cols-2 gap-6">
+          <div class="text-center">
+            <div class="text-4xl font-bold mb-2 pet-font">50K+</div>
+            <div class="text-green-100 pet-font">Pet Stories Shared</div>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl font-bold mb-2 pet-font">25K+</div>
+            <div class="text-green-100 pet-font">Pet Parents</div>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl font-bold mb-2 pet-font">100+</div>
+            <div class="text-green-100 pet-font">Expert Veterinarians</div>
+          </div>
+          <div class="text-center">
+            <div class="text-4xl font-bold mb-2 pet-font">24/7</div>
+            <div class="text-green-100 pet-font">Support Available</div>
+          </div>
         </div>
+      </div>
+
+      <div class="space-y-6">
+        <h3 class="text-2xl font-bold text-gray-900 pet-font">Join Our Pet Family Today!</h3>
+        <p class="text-gray-600 pet-font">
+          Connect with fellow pet lovers, share your stories, get expert advice, and discover amazing products for your
+          furry friends.
+        </p>
+
+        <div class="bg-white rounded-2xl p-6 shadow-lg">
+          <h4 class="font-bold text-gray-900 mb-4 pet-font">Get Weekly Pet Care Tips</h4>
+          <div class="flex flex-col sm:flex-row gap-3">
+            <input type="email" placeholder="Enter your email"
+              class="flex-1 px-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-green-500 pet-font">
+            <button
+              class="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-6 py-3 rounded-full font-bold pet-font transition-all transform hover:scale-105">
+              Subscribe 🐾
+            </button>
+          </div>
+          <p class="text-xs text-gray-500 mt-3 pet-font">Join 25,000+ pet parents. Unsubscribe anytime.</p>
+        </div>
+
+        <div class="flex flex-wrap gap-3">
+          <div class="bg-white rounded-full px-4 py-2 flex items-center space-x-2 shadow-md">
+            <span class="text-green-500">✓</span>
+            <span class="text-sm pet-font">Weekly tips</span>
+          </div>
+          <div class="bg-white rounded-full px-4 py-2 flex items-center space-x-2 shadow-md">
+            <span class="text-green-500">✓</span>
+            <span class="text-sm pet-font">Expert advice</span>
+          </div>
+          <div class="bg-white rounded-full px-4 py-2 flex items-center space-x-2 shadow-md">
+            <span class="text-green-500">✓</span>
+            <span class="text-sm pet-font">Exclusive content</span>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <!-- Footer -->
 <footer class="bg-gray-900 text-white py-12">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid md:grid-cols-4 gap-8">
-            <div>
-                <div class="flex items-center space-x-3 mb-4">
-                    <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center">
-                        <span class="text-white text-2xl">🐾</span>
-                    </div>
-                    <div class="pet-font">
-                        <div class="text-2xl font-bold text-green-400">PetCare Central</div>
-                        <div class="text-xs text-gray-400">Where Pet Stories Come to Life</div>
-                    </div>
-                </div>
-                <p class="text-gray-400 mb-4 pet-font">Sharing love, stories, and expert care tips for pets and their humans around the world.</p>
-                <div class="flex space-x-4">
-                    <div class="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center hover:bg-green-700 transition-colors cursor-pointer">
-                        <span class="text-white">📘</span>
-                    </div>
-                    <div class="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center hover:bg-pink-700 transition-colors cursor-pointer">
-                        <span class="text-white">📷</span>
-                    </div>
-                    <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors cursor-pointer">
-                        <span class="text-white">🐦</span>
-                    </div>
-                </div>
-            </div>
-            
-            <div>
-                <h3 class="text-white font-bold mb-4 pet-font">Pet Care Topics</h3>
-                <ul class="space-y-2 text-gray-400 pet-font">
-                    <li><a href="#" class="hover:text-green-400 transition-colors">🎓 Training & Behavior</a></li>
-                    <li><a href="#" class="hover:text-green-400 transition-colors">🏥 Health & Wellness</a></li>
-                    <li><a href="#" class="hover:text-green-400 transition-colors">🥘 Nutrition & Diet</a></li>
-                    <li><a href="#" class="hover:text-green-400 transition-colors">✂️ Grooming Tips</a></li>
-                </ul>
-            </div>
-            
-            <div>
-                <h3 class="text-white font-bold mb-4 pet-font">Pet Types</h3>
-                <ul class="space-y-2 text-gray-400 pet-font">
-                    <li><a href="#" class="hover:text-green-400 transition-colors">🐕 Dog Stories & Care</a></li>
-                    <li><a href="#" class="hover:text-green-400 transition-colors">🐱 Cat Tales & Tips</a></li>
-                    <li><a href="#" class="hover:text-green-400 transition-colors">🐦 Bird Care Guide</a></li>
-                    <li><a href="#" class="hover:text-green-400 transition-colors">🐰 Small Pet Care</a></li>
-                </ul>
-            </div>
-            
-            <div>
-                <h3 class="text-white font-bold mb-4 pet-font">Community</h3>
-                <ul class="space-y-2 text-gray-400 pet-font">
-                    <li><a href="#" class="hover:text-green-400 transition-colors">📝 Share Your Story</a></li>
-                    <li><a href="#" class="hover:text-green-400 transition-colors">💌 Newsletter</a></li>
-                    <li><a href="#" class="hover:text-green-400 transition-colors">🏆 Pet Contests</a></li>
-                    <li><a href="#" class="hover:text-green-400 transition-colors">📞 Contact Us</a></li>
-                </ul>
-            </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid md:grid-cols-4 gap-8">
+      <div>
+        <div class="flex items-center space-x-3 mb-4">
+          <div
+            class="w-12 h-12 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center">
+            <span class="text-white text-2xl">🐾</span>
+          </div>
+          <div class="pet-font">
+            <div class="text-2xl font-bold text-green-400">PetCare Central</div>
+            <div class="text-xs text-gray-400">Where Pet Stories Come to Life</div>
+          </div>
         </div>
-        
-        <div class="border-t border-gray-800 mt-8 pt-8 text-center">
-            <p class="text-gray-400 pet-font">&copy; 2024 PetCare Central. All rights reserved. Made with ❤️ for pets and their families.</p>
+        <p class="text-gray-400 mb-4 pet-font">Sharing love, stories, and expert care tips for pets and their humans
+          around the world.</p>
+        <div class="flex space-x-4">
+          <div
+            class="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center hover:bg-green-700 transition-colors cursor-pointer">
+            <span class="text-white">📘</span>
+          </div>
+          <div
+            class="w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center hover:bg-pink-700 transition-colors cursor-pointer">
+            <span class="text-white">📷</span>
+          </div>
+          <div
+            class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors cursor-pointer">
+            <span class="text-white">🐦</span>
+          </div>
         </div>
+      </div>
+
+      <div>
+        <h3 class="text-white font-bold mb-4 pet-font">Pet Care Topics</h3>
+        <ul class="space-y-2 text-gray-400 pet-font">
+          <li><a href="#" class="hover:text-green-400 transition-colors">🎓 Training & Behavior</a></li>
+          <li><a href="#" class="hover:text-green-400 transition-colors">🏥 Health & Wellness</a></li>
+          <li><a href="#" class="hover:text-green-400 transition-colors">🥘 Nutrition & Diet</a></li>
+          <li><a href="#" class="hover:text-green-400 transition-colors">✂️ Grooming Tips</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-white font-bold mb-4 pet-font">Pet Types</h3>
+        <ul class="space-y-2 text-gray-400 pet-font">
+          <li><a href="#" class="hover:text-green-400 transition-colors">🐕 Dog Stories & Care</a></li>
+          <li><a href="#" class="hover:text-green-400 transition-colors">🐱 Cat Tales & Tips</a></li>
+          <li><a href="#" class="hover:text-green-400 transition-colors">🐦 Bird Care Guide</a></li>
+          <li><a href="#" class="hover:text-green-400 transition-colors">🐰 Small Pet Care</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-white font-bold mb-4 pet-font">Community</h3>
+        <ul class="space-y-2 text-gray-400 pet-font">
+          <li><a href="#" class="hover:text-green-400 transition-colors">📝 Share Your Story</a></li>
+          <li><a href="#" class="hover:text-green-400 transition-colors">💌 Newsletter</a></li>
+          <li><a href="#" class="hover:text-green-400 transition-colors">🏆 Pet Contests</a></li>
+          <li><a href="#" class="hover:text-green-400 transition-colors">📞 Contact Us</a></li>
+        </ul>
+      </div>
     </div>
-</footer> 
+
+    <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+      <p class="text-gray-400 pet-font">&copy; 2024 PetCare Central. All rights reserved. Made with ❤️ for pets and
+        their families.</p>
+    </div>
+  </div>
+</footer>

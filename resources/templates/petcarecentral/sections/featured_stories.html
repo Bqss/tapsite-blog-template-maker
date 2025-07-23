@@ -1,75 +1,70 @@
 <!-- Featured Pet Stories -->
-<section class="py-20 bg-white paw-pattern">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4 pet-font">{{it.featured.title}}</h2>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto pet-font">{{it.featured.description}}</p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {{@each(it.featured.stories)=>story}}
-            <article class="pet-card rounded-2xl overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
-                <div class="relative">
-                    <img src="{{story.image}}" 
-                         alt="{{story.title}}" 
-                         class="w-full h-48 object-cover">
-                    <div class="absolute top-4 left-4">
-                        <span class="bg-{{story.category.color}}-500 text-white px-3 py-1 rounded-full text-sm font-medium pet-font">
-                            {{story.category.name}}
-                        </span>
-                    </div>
-                    {{@if(story.badge)}}
-                    <div class="absolute top-4 right-4">
-                        <span class="bg-white text-{{story.badge.color}}-600 px-3 py-1 rounded-full text-sm font-medium pet-font">
-                            {{story.badge.text}}
-                        </span>
-                    </div>
-                    {{/if}}
-                </div>
-                
-                <div class="p-6 bg-white">
-                    <div class="flex items-center space-x-4 mb-4">
-                        <img src="{{story.author.avatar}}" 
-                             alt="{{story.author.name}}" 
-                             class="w-10 h-10 rounded-full">
-                        <div>
-                            <h4 class="text-sm font-medium text-gray-900 pet-font">{{story.author.name}}</h4>
-                            <p class="text-xs text-gray-500 pet-font">{{story.author.title}}</p>
-                        </div>
-                    </div>
-                    
-                    <h3 class="text-xl font-bold text-gray-900 mb-2 pet-font">{{story.title}}</h3>
-                    <p class="text-gray-600 mb-4 line-clamp-2">{{story.excerpt}}</p>
-                    
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center space-x-4 text-sm text-gray-500">
-                            <span class="flex items-center space-x-1">
-                                <span>{{story.pet_type.icon}}</span>
-                                <span class="pet-font">{{story.pet_type.name}}</span>
-                            </span>
-                            <span>•</span>
-                            <span class="pet-font">{{story.read_time}} min read</span>
-                        </div>
-                        <a href="{{story.url}}" class="text-green-600 hover:text-green-700 font-medium pet-font flex items-center space-x-1">
-                            <span>Read More</span>
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </article>
-            {{/each}}
-        </div>
-        
-        {{@if(it.featured.cta_button)}}
-        <div class="text-center mt-12">
-            <a href="{{it.featured.cta_button.url}}" 
-               class="inline-flex items-center space-x-2 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-8 py-4 rounded-full font-bold pet-font transition-all transform hover:scale-105 shadow-xl">
-                <span>{{it.featured.cta_button.text}}</span>
-                <span>{{it.featured.cta_button.icon}}</span>
-            </a>
-        </div>
-        {{/if}}
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold text-gray-900 mb-4 pet-font">Latest Pet Care Articles</h2>
+      <p class="text-xl text-gray-600 pet-font">Expert advice and heartwarming stories from our pet care community</p>
     </div>
-</section> 
+
+    <!-- Dynamic Articles -->
+    <div id="recent-loading" class="flex justify-center py-12"><div class="inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-green-600"></div></div>
+    <div id="recent-error" class="text-center py-12 hidden"><p class="text-red-500">Failed to load articles.</p></div>
+    <div id="recent-empty" class="text-center py-12 hidden"><p class="text-gray-500">No articles found.</p></div>
+
+    <div id="recent-grid" class="grid lg:grid-cols-3 gap-8 hidden"></div>
+
+    <div class="text-center mt-12">
+      <a href="/posts" class="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-8 py-4 rounded-full font-bold pet-font transition-all transform hover:scale-105 shadow-lg">
+        View All Articles 📚
+      </a>
+    </div>
+
+    <script>
+    (function(){
+      const loadEl=document.getElementById('recent-loading');
+      const errEl=document.getElementById('recent-error');
+      const emptyEl=document.getElementById('recent-empty');
+      const gridEl=document.getElementById('recent-grid');
+      const fallbackImg="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23f3f4f6'/%3E%3Ctext x='200' y='100' text-anchor='middle' dy='0.3em' font-family='Arial' font-size='16' fill='%23666'%3ENo Image%3C/text%3E%3C/svg%3E";
+
+      function card(p){
+        const img=p.featured_image||fallbackImg;
+        return `<article class="story-bubble group cursor-pointer hover:shadow-2xl transition-all transform hover:-translate-y-2">
+          <div class="relative mb-4">
+            <img src="${img}" alt="${p.title}" class="w-full h-48 rounded-lg object-cover" onerror="this.src='${fallbackImg}'">
+            <div class="absolute top-4 left-4 bg-green-600 text-white px-3 py-1 rounded-full text-xs font-bold pet-font">
+              ${p.category || ''}
+            </div>
+          </div>
+          <div class="space-y-3">
+            <h3 class="text-xl font-bold text-gray-900 pet-font">${p.title}</h3>
+            <p class="text-gray-600 pet-font">${p.excerpt||''}</p>
+            <div class="flex items-center justify-between text-sm text-gray-500">
+              <div class="flex items-center space-x-2">
+                <span class="pet-font">${p.author||''}</span>
+                <span class="text-green-500">•</span>
+                <span class="pet-font">${p.read_time||5} min read</span>
+              </div>
+              <span class="pet-font">${p.view_count||0} views</span>
+            </div>
+          </div>
+        </article>`;
+      }
+
+      async function load(){
+        try{
+          const res=await fetch('/api/blog/posts/recent?limit=3');
+          if(!res.ok) throw new Error();
+          const data=await res.json();
+          const posts=data.posts||data||[];
+          if(!posts.length){loadEl.classList.add('hidden');emptyEl.classList.remove('hidden');return;}
+          gridEl.innerHTML=posts.map(card).join('');
+          gridEl.classList.remove('hidden');
+        }catch(e){console.error(e);errEl.classList.remove('hidden');}
+        finally{loadEl.classList.add('hidden');}
+      }
+      document.addEventListener('DOMContentLoaded',load);
+    })();
+    </script>
+  </div>
+</section>

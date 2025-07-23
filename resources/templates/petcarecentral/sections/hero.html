@@ -1,61 +1,273 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&display=swap');
+
+  .pet-font {
+    font-family: 'Fredoka', sans-serif;
+  }
+
+  .paw-pattern {
+    background-image: radial-gradient(circle at 20% 50%, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(34, 197, 94, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 80%, rgba(34, 197, 94, 0.1) 0%, transparent 50%);
+  }
+
+  .floating-paw {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .wiggle {
+    animation: wiggle 2s ease-in-out infinite;
+  }
+
+  @keyframes wiggle {
+
+    0%,
+    100% {
+      transform: rotate(-3deg);
+    }
+
+    50% {
+      transform: rotate(3deg);
+    }
+  }
+
+  .bounce-in {
+    animation: bounceIn 0.6s ease-out;
+  }
+
+  @keyframes bounceIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+
+    70% {
+      transform: scale(0.9);
+    }
+
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .pet-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+  }
+
+  .pet-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(135deg, #22c55e, #16a34a, #15803d);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: xor;
+  }
+
+  .pet-hero-bg {
+    background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 25%, #86efac 50%, #4ade80 75%, #22c55e 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pet-hero-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2322c55e' fill-opacity='0.1'%3E%3Cpath d='M30 30c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20zm0 0c0-11.046 8.954-20 20-20s20 8.954 20 20-8.954 20-20 20-20-8.954-20-20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+    opacity: 0.3;
+  }
+
+  .pet-type-icon {
+    transition: all 0.3s ease;
+  }
+
+  .pet-type-icon:hover {
+    transform: scale(1.2) rotate(5deg);
+  }
+
+  .story-bubble {
+    position: relative;
+    background: white;
+    border-radius: 20px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .story-bubble::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 30px;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 15px solid white;
+  }
+
+  .pet-stats {
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    border-radius: 20px;
+    padding: 2rem;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pet-stats::before {
+    content: '🐾';
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    font-size: 8rem;
+    opacity: 0.1;
+    transform: rotate(15deg);
+  }
+</style>
+
 <!-- Hero Section -->
 <section class="pet-hero-bg py-20 relative overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
-            <div class="text-center lg:text-left">
-                <div class="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6 bounce-in">
-                    <span class="text-green-600 font-semibold pet-font">{{it.hero.badge}}</span>
-                </div>
-                <h1 class="text-4xl lg:text-6xl font-bold text-gray-900 mb-6 pet-font leading-tight">
-                    {{it.hero.title_line1}}
-                    <span class="text-green-600 relative">
-                        {{it.hero.highlighted_text}}
-                        <div class="absolute -bottom-2 left-0 w-full h-3 bg-yellow-300 opacity-30 rounded-full"></div>
-                    </span>
-                    <br>{{it.hero.title_line2}}
-                </h1>
-                <p class="text-xl text-gray-700 mb-8 leading-relaxed pet-font">
-                    {{it.hero.description}}
-                </p>
-                
-                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
-                    {{@each(it.hero.buttons)=>button}}
-                    <button class="{{button.primary ? 'bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white' : 'bg-white/90 backdrop-blur-sm text-green-600 border-2 border-green-500 hover:bg-green-50'}} px-8 py-4 rounded-full font-bold pet-font transition-all transform hover:scale-105 shadow-xl flex items-center justify-center space-x-2">
-                        <span>{{button.icon}} {{button.text}}</span>
-                    </button>
-                    {{/each}}
-                </div>
-                
-                <!-- Pet Types Quick Access -->
-                <div class="flex flex-wrap gap-3 justify-center lg:justify-start">
-                    {{@each(it.hero.pet_types)=>type}}
-                    <div class="bg-white/90 backdrop-blur-sm rounded-full px-4 py-2 flex items-center space-x-2 pet-type-icon cursor-pointer">
-                        <span class="text-2xl">{{type.icon}}</span>
-                        <span class="text-sm font-semibold text-gray-700 pet-font">{{type.name}}</span>
-                    </div>
-                    {{/each}}
-                </div>
-            </div>
-            
-            <!-- Interactive Pet Showcase -->
-            <div class="relative">
-                <div class="relative w-full h-96 bg-white/20 backdrop-blur-sm rounded-3xl overflow-hidden shadow-2xl">
-                    <img src="{{it.hero.showcase_image.url}}" 
-                         alt="{{it.hero.showcase_image.alt}}" 
-                         class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-                    
-                    <!-- Floating Pet Stats -->
-                    {{@each(it.hero.stats)=>stat}}
-                    <div class="absolute {{stat.position}} bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-lg">
-                        <div class="text-center">
-                            <div class="text-2xl font-bold text-{{stat.color}}-600 pet-font">{{stat.value}}</div>
-                            <div class="text-xs text-gray-600 pet-font">{{stat.label}}</div>
-                        </div>
-                    </div>
-                    {{/each}}
-                </div>
-            </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="text-center lg:text-left">
+        <div class="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6 bounce-in">
+          <span class="text-green-600 font-semibold pet-font">🎉 Welcome to Pet Paradise</span>
         </div>
+        <h1 class="text-4xl lg:text-6xl font-bold text-gray-900 mb-6 pet-font leading-tight">
+          Every Pet Has a
+          <span class="text-green-600 relative">
+            Story
+            <div class="absolute -bottom-2 left-0 w-full h-3 bg-yellow-300 opacity-30 rounded-full"></div>
+          </span>
+          <br>Worth Telling
+        </h1>
+        <p class="text-xl text-gray-700 mb-8 leading-relaxed pet-font">
+          Join our community of pet lovers sharing heartwarming stories, expert advice, and unforgettable moments with
+          our furry, feathered, and scaled friends! 🐾
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
+          <button
+            class="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-8 py-4 rounded-full font-bold pet-font transition-all transform hover:scale-105 shadow-xl flex items-center justify-center space-x-2">
+            <span>📚 Read Pet Stories</span>
+          </button>
+          <button
+            class="bg-white/90 backdrop-blur-sm text-green-600 border-2 border-green-500 hover:bg-green-50 px-8 py-4 rounded-full font-bold pet-font transition-all flex items-center justify-center space-x-2">
+            <span>✍️ Share Your Story</span>
+          </button>
+        </div>
+
+        <!-- Pet Types Quick Access -->
+        <div class="flex flex-wrap gap-3 justify-center lg:justify-start">
+          <div
+            class="bg-white/90 backdrop-blur-sm rounded-full px-4 py-2 flex items-center space-x-2 pet-type-icon cursor-pointer">
+            <span class="text-2xl">🐕</span>
+            <span class="text-sm font-semibold text-gray-700 pet-font">Dogs</span>
+          </div>
+          <div
+            class="bg-white/90 backdrop-blur-sm rounded-full px-4 py-2 flex items-center space-x-2 pet-type-icon cursor-pointer">
+            <span class="text-2xl">🐱</span>
+            <span class="text-sm font-semibold text-gray-700 pet-font">Cats</span>
+          </div>
+          <div
+            class="bg-white/90 backdrop-blur-sm rounded-full px-4 py-2 flex items-center space-x-2 pet-type-icon cursor-pointer">
+            <span class="text-2xl">🐦</span>
+            <span class="text-sm font-semibold text-gray-700 pet-font">Birds</span>
+          </div>
+          <div
+            class="bg-white/90 backdrop-blur-sm rounded-full px-4 py-2 flex items-center space-x-2 pet-type-icon cursor-pointer">
+            <span class="text-2xl">🐰</span>
+            <span class="text-sm font-semibold text-gray-700 pet-font">Rabbits</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Pet Showcase -->
+      <div class="relative">
+        <div class="relative w-full h-96 bg-white/20 backdrop-blur-sm rounded-3xl overflow-hidden shadow-2xl">
+          <img
+            src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+            alt="Happy pets playing together" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+
+          <!-- Floating Pet Stats -->
+          <div class="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-lg">
+            <div class="text-center">
+              <div class="text-2xl font-bold text-green-600 pet-font">50K+</div>
+              <div class="text-xs text-gray-600 pet-font">Happy Pet Stories</div>
+            </div>
+          </div>
+
+          <div class="absolute bottom-4 left-4 bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-lg">
+            <div class="text-center">
+              <div class="text-2xl font-bold text-orange-600 pet-font">24/7</div>
+              <div class="text-xs text-gray-600 pet-font">Expert Support</div>
+            </div>
+          </div>
+
+          <!-- Pet Emotion Indicators -->
+          <div class="absolute top-1/2 left-4 transform -translate-y-1/2 space-y-2">
+            <div class="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center shadow-lg wiggle">
+              <span class="text-xl">😊</span>
+            </div>
+            <div class="w-12 h-12 bg-pink-400 rounded-full flex items-center justify-center shadow-lg wiggle"
+              style="animation-delay: 0.5s;">
+              <span class="text-xl">🥰</span>
+            </div>
+            <div class="w-12 h-12 bg-purple-400 rounded-full flex items-center justify-center shadow-lg wiggle"
+              style="animation-delay: 1s;">
+              <span class="text-xl">😍</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating Elements -->
+        <div
+          class="absolute -top-4 -left-4 w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center shadow-lg floating-paw">
+          <span class="text-sm">🐾</span>
+        </div>
+        <div
+          class="absolute -bottom-4 -right-4 w-8 h-8 bg-pink-400 rounded-full flex items-center justify-center shadow-lg floating-paw"
+          style="animation-delay: 1s;">
+          <span class="text-sm">❤️</span>
+        </div>
+        <div
+          class="absolute top-10 -right-8 w-6 h-6 bg-blue-400 rounded-full flex items-center justify-center shadow-lg floating-paw"
+          style="animation-delay: 2s;">
+          <span class="text-xs">🦴</span>
+        </div>
+      </div>
     </div>
-</section> 
+  </div>
+</section>
