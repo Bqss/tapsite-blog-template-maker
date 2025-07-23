@@ -9,10 +9,11 @@
       "id": "navigation",
       "type": "template",
       "resetable": true,
-      "data": {
-        "site": "site",
-        "navigation": "navigation"
-      }
+      "data": [
+        "blog_title",
+        "blog_logo",
+        "navigation"
+      ]
     },
     {
       "title": "Posts Header",
@@ -51,11 +52,11 @@
       "id": "footer",
       "type": "template",
       "resetable": true,
-      "data": {
-        "site": "site",
-        "footer": "footer",
-        "newsletter": "newsletter"
-      }
+      "data": [
+        "blog_title",
+        "blog_logo",
+        "navigation"
+      ]
     }
   ],
   "meta": {

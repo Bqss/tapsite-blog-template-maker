@@ -8,14 +8,13 @@
     "creative inspiration",
     "design process"
   ],
-  "page_type": "home",
   "sections": [
     {
       "title": "Navigation",
       "id": "navigation",
       "type": "template",
       "resetable": true,
-      "data": ["navigation", "site"]
+      "data": ["navigation", "blog_title", "blog_logo"]
     },
     {
       "title": "Hero Section",
@@ -47,7 +46,7 @@
       "id": "footer",
       "type": "template",
       "resetable": true,
-      "data": ["navigation", "site"]
+      "data": ["navigation", "blog_title", "blog_logo"]
     }
   ],
   "meta": {

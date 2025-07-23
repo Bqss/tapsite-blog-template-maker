@@ -35,7 +35,7 @@
       "id": "footer",
       "type": "template",
       "resetable": true,
-      "data": []
+      "data": ["blog_title", "blog_logo", "navigation"]
     }
   ]
 }

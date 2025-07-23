@@ -5,7 +5,7 @@
       "id": "navigation",
       "type": "template",
       "resetable": true,
-      "data": ["navigation"]
+      "data": ["navigation", "blog_title", "blog_logo"]
     },
     {
       "title": "posts listing",
@@ -29,10 +29,7 @@
       "data": [
         "blog_title",
         "blog_logo",
-        "blog_tagline",
-        "blog_description",
-        "navigation",
-        "categories"
+        "navigation"
       ]
     }
   ]

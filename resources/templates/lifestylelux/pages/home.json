@@ -13,7 +13,7 @@
       "id": "navigation",
       "type": "template",
       "resetable": true,
-      "data": ["site", "navigation"]
+      "data": ["blog_title", "blog_logo", "navigation"]
     },
     {
       "title": "hero",
@@ -50,11 +50,9 @@
       "type": "template",
       "resetable": true,
       "data": [
-        "site",
-        "navigation",
-        "social_links",
-        "footer_columns",
-        "current_year"
+        "blog_title",
+        "blog_logo",
+        "navigation"
       ]
     }
   ]

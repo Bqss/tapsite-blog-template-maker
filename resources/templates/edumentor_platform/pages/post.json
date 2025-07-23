@@ -2,9 +2,32 @@
   "title": "{{post.title}} - EduMentor Platform",
   "description": "{{post.excerpt}}",
   "sections": [
-    { "title": "styles", "id": "styles", "type": "template", "resetable": true },
-    { "title": "navigation", "id": "navigation", "type": "template", "resetable": true, "data": ["site.name", "site.logo", "navigation"] },
-    { "title": "post content", "id": "post_content", "type": "template", "resetable": true, "data": ["author", "post", "related"] },
-    { "title": "footer", "id": "footer", "type": "template", "resetable": true, "data": ["site.name", "site.description", "navigation", "social_links"] }
+    {
+      "title": "styles",
+      "id": "styles",
+      "type": "template",
+      "resetable": true
+    },
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": ["blog_title", "blog_logo", "navigation"]
+    },
+    {
+      "title": "post content",
+      "id": "post_content",
+      "type": "template",
+      "resetable": true,
+      "data": ["author", "post", "related"]
+    },
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": ["blog_title", "blog_logo", "navigation"]
+    }
   ]
-} 
+}

@@ -13,7 +13,7 @@
       "id": "navigation",
       "type": "template",
       "resetable": true,
-      "data": ["site.name", "site.logo", "site.domain", "navigation"]
+      "data": ["site.name", "site.description", "navigation", "social_links"]
     },
     {
       "title": "category_content",

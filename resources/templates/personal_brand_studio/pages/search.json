@@ -13,14 +13,14 @@
       "id": "search_content",
       "type": "html",
       "resetable": true,
-      "data": ["author.social"]
+      "data": []
     },
     {
       "title": "footer",
       "id": "footer",
       "type": "html",
       "resetable": true,
-      "data": ["author", "social_media"]
+      "data": ["blog_title", "blog_logo", "navigation"]
     }
-  ]
+  ] 
 }

@@ -7,21 +7,21 @@
       "id": "navigation",
       "type": "template",
       "resetable": true,
-      "data": ["site", "navigation"]
+      "data": ["blog_title", "blog_logo", "navigation"]
     },
     {
       "title": "home_articles",
       "id": "home_articles",
       "type": "template",
       "resetable": true,
-      "data": ["site", "navigation"]
+      "data": []
     },
     {
       "title": "footer",
       "id": "footer",
       "type": "template",
       "resetable": true,
-      "data": ["site", "navigation"]
+      "data": ["blog_title", "blog_logo", "navigation"]
     }
   ]
 }

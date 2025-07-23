@@ -1,213 +1,81 @@
-<!-- Navigation with Dynamic Data -->
-<nav class="bg-black border-b border-gray-800 sticky top-0 z-50">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex justify-between items-center h-16">
-      <!-- Logo and Brand -->
-      <div class="flex items-center space-x-3">
-        <div class="w-10 h-10 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-lg flex items-center justify-center">
-          <span class="text-white text-xl">🎮</span>
+<nav class="bg-white/95 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <a href="/blog" class="flex items-center space-x-3">
+                {{@if(it.blog_logo)}}
+                <div class="flex-shrink-0">
+                    <img src="{{it.blog_logo}}" alt="{{it.blog_title }}" class="h-10 w-10 rounded-xl object-cover">
+                </div>
+                {{/if}}
+                {{@if(it.blog_title)}}
+                <span
+                    class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">{{it.blog_title}}</span>
+                {{/if}}
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                {{@each (it.navigation) => item}}
+                <a href="{{item.url}}"
+                    class="text-gray-700 hover:text-blue-600 font-medium transition-colors">{{item.name}}</a>
+                {{/each}}
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="relative hidden sm:block"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.3-4.3"></path>
+                    </svg><input type="text" placeholder="Search articles..."
+                        class="pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all w-64">
+                </div>
+                <!-- Hamburger Button -->
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors">
+                    <!-- Hamburger Icon -->
+                    <svg id="hamburger-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="h-6 w-6">
+                        <line x1="4" x2="20" y1="6" y2="6"></line>
+                        <line x1="4" x2="20" y1="12" y2="12"></line>
+                        <line x1="4" x2="20" y1="18" y2="18"></line>
+                    </svg>
+                    <!-- Close Icon (hidden by default) -->
+                    <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="h-6 w-6 hidden">
+                        <path d="M18 6 6 18"></path>
+                        <path d="m6 6 12 12"></path>
+                    </svg>
+                </button>
+            </div>
         </div>
-        <a href="/blog" class="text-2xl font-bold text-transparent bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text font-gaming" id="nav-brand">
-          GamingVerse
-        </a>
-      </div>
-      
-      <!-- Desktop Navigation Menu -->
-      <div class="hidden md:flex space-x-6" id="desktop-nav">
-        <!-- Dynamic navigation items will be loaded here -->
-        <div class="flex space-x-6" id="nav-loading">
-          <div class="w-12 h-4 bg-gray-700 rounded animate-pulse"></div>
-          <div class="w-16 h-4 bg-gray-700 rounded animate-pulse"></div>
-          <div class="w-14 h-4 bg-gray-700 rounded animate-pulse"></div>
+        <div id="mobile-menu" class="md:hidden border-t border-gray-200 py-4 space-y-4 hidden">
+            <div class="relative mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.3-4.3"></path>
+                </svg><input type="text" placeholder="Search articles..."
+                    class="pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all w-full">
+            </div>
+
+            {{@each (it.navigation) => item}}
+            <a href="{{item.url}}" class="block text-gray-700 hover:text-blue-600 font-medium py-2">{{item.name}}</a>
+            {{/each}}
         </div>
-      </div>
-      
-      <!-- Right Side Actions -->
-      <div class="flex items-center space-x-4">
-        <!-- Post Count Badge -->
-        <div class="hidden lg:flex items-center space-x-2 text-xs text-gray-400">
-          <span id="post-count-badge">Loading...</span>
-        </div>
-        
-        <!-- Search Button -->
-        <button class="text-gray-300 hover:text-cyan-400 transition-colors" onclick="toggleSearch()">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-          </svg>
-        </button>
-        
-        <!-- Subscribe Button -->
-        <button class="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white px-4 py-2 rounded-lg transition-colors text-sm" onclick="toggleNewsletter()">
-          Subscribe
-        </button>
-        
-        <!-- Mobile Menu Toggle -->
-        <button class="md:hidden text-gray-300 hover:text-cyan-400 transition-colors" onclick="toggleMobileMenu()">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
-        </button>
-      </div>
     </div>
-    
-    <!-- Mobile Navigation Menu -->
-    <div class="md:hidden hidden" id="mobile-nav">
-      <div class="px-2 pt-2 pb-3 space-y-1 bg-gray-900 border-t border-gray-800">
-        <!-- Dynamic mobile navigation items will be loaded here -->
-        <div id="mobile-nav-loading">
-          <div class="w-full h-8 bg-gray-700 rounded mb-2 animate-pulse"></div>
-          <div class="w-full h-8 bg-gray-700 rounded mb-2 animate-pulse"></div>
-          <div class="w-full h-8 bg-gray-700 rounded animate-pulse"></div>
-        </div>
-      </div>
-    </div>
-  </div>
 </nav>
-
-<!-- Dynamic Navigation Script -->
 <script>
-// Navigation data and state
-let navigationData = {
-  site: { name: 'GamingVerse', logo: '/assets/logo.png' },
-  navigation: [],
-  categories: [],
-  postStats: { total: 0, recent: 0 }
-};
+    document.addEventListener('DOMContentLoaded', function () {
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const hamburgerIcon = document.getElementById('hamburger-icon');
+        const closeIcon = document.getElementById('close-icon');
 
-// Load navigation data from multiple sources
-async function loadNavigationData() {
-  try {
-    // Load static navigation data
-    const staticData = {
-      site: { name: 'GamingVerse', logo: '/assets/logo.png' },
-      navigation: [
-        { title: 'Home', url: '/blog', icon: 'home', active: true },
-        { title: 'Posts', url: '/blog/posts', icon: 'newspaper' },
-        { title: 'Reviews', url: '/blog/category/reviews', icon: 'star' },
-        { title: 'Guides', url: '/blog/category/guides', icon: 'book' },
-        { title: 'News', url: '/blog/category/news', icon: 'newspaper' },
-        { title: 'Search', url: '/blog/search', icon: 'search' }
-      ]
-    };
-    
-    // Try to load dynamic data from APIs
-    const [categoriesResponse, postsResponse] = await Promise.allSettled([
-      fetch('/api/blog/categories').catch(() => null),
-      fetch('/api/blog/posts?limit=1').catch(() => null)
-    ]);
-    
-    // Process categories data
-    if (categoriesResponse.status === 'fulfilled' && categoriesResponse.value?.ok) {
-      const categories = await categoriesResponse.value.json();
-      navigationData.categories = categories.data || categories || [];
-    }
-    
-    // Process posts stats
-    if (postsResponse.status === 'fulfilled' && postsResponse.value?.ok) {
-      const postsData = await postsResponse.value.json();
-      navigationData.postStats = {
-        total: postsData.total || postsData.pagination?.total || 0,
-        recent: postsData.data?.length || 0
-      };
-    }
-    
-    // Merge static and dynamic data
-    navigationData = { ...navigationData, ...staticData };
-    
-    // Update navigation UI
-    updateNavigationUI();
-    updatePostCountBadge();
-    
-  } catch (error) {
-    console.warn('Failed to load navigation data:', error);
-    // Fallback to static data
-    navigationData = {
-      site: { name: 'GamingVerse', logo: '/assets/logo.png' },
-      navigation: [
-        { title: 'Home', url: '/blog', icon: 'home', active: true },
-        { title: 'Posts', url: '/blog/posts', icon: 'newspaper' },
-        { title: 'Reviews', url: '/blog/category/reviews', icon: 'star' },
-        { title: 'Guides', url: '/blog/category/guides', icon: 'book' },
-        { title: 'News', url: '/blog/category/news', icon: 'newspaper' },
-        { title: 'Search', url: '/blog/search', icon: 'search' }
-      ],
-      categories: [],
-      postStats: { total: 0, recent: 0 }
-    };
-    updateNavigationUI();
-  }
-}
-
-// Update navigation UI with loaded data
-function updateNavigationUI() {
-  const desktopNav = document.getElementById('desktop-nav');
-  const mobileNav = document.getElementById('mobile-nav');
-  const navBrand = document.getElementById('nav-brand');
-  
-  // Update brand name
-  if (navBrand && navigationData.site?.name) {
-    navBrand.textContent = navigationData.site.name;
-  }
-  
-  // Build desktop navigation
-  const desktopNavHTML = navigationData.navigation.map(item => {
-    const activeClass = item.active ? 'text-cyan-400 font-medium' : 'text-gray-300 hover:text-cyan-400 transition-colors';
-    return `<a href="${item.url}" class="${activeClass}">${item.title}</a>`;
-  }).join('');
-  
-  // Build mobile navigation
-  const mobileNavHTML = navigationData.navigation.map(item => {
-    const activeClass = item.active ? 'text-cyan-400 bg-gray-800' : 'text-gray-300 hover:text-cyan-400 hover:bg-gray-800';
-    return `<a href="${item.url}" class="${activeClass} block px-3 py-2 rounded-md text-base font-medium transition-colors">${item.title}</a>`;
-  }).join('');
-  
-  // Update desktop navigation
-  if (desktopNav) {
-    desktopNav.innerHTML = `<div class="flex space-x-6">${desktopNavHTML}</div>`;
-  }
-  
-  // Update mobile navigation
-  const mobileNavContent = document.querySelector('#mobile-nav .space-y-1');
-  if (mobileNavContent) {
-    mobileNavContent.innerHTML = mobileNavHTML;
-  }
-}
-
-// Update post count badge
-function updatePostCountBadge() {
-  const badge = document.getElementById('post-count-badge');
-  if (badge && navigationData.postStats) {
-    const { total } = navigationData.postStats;
-    if (total > 0) {
-      badge.innerHTML = `<span class="text-cyan-400">${total}</span> posts`;
-    } else {
-      badge.textContent = 'Posts';
-    }
-  }
-}
-
-// Toggle mobile menu
-function toggleMobileMenu() {
-  const mobileNav = document.getElementById('mobile-nav');
-  if (mobileNav) {
-    mobileNav.classList.toggle('hidden');
-  }
-}
-
-// Toggle search (placeholder function)
-function toggleSearch() {
-  // Redirect to search page or open search modal
-  window.location.href = '/blog/search';
-}
-
-// Toggle newsletter (placeholder function)
-function toggleNewsletter() {
-  // Open newsletter modal or redirect to subscription page
-  alert('Newsletter subscription coming soon!');
-}
-
-// Initialize navigation on page load
-document.addEventListener('DOMContentLoaded', function() {
-  loadNavigationData();
-});
+        mobileMenuButton.addEventListener('click', function () {
+            mobileMenu.classList.toggle('hidden');
+            hamburgerIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        });
+    });
 </script>

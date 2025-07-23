@@ -8,7 +8,8 @@
       "type": "template",
       "resetable": true,
       "data": [
-        "site",
+        "blog_title",
+        "blog_logo",
         "navigation"
       ]
     },
@@ -34,11 +35,9 @@
       "type": "template",
       "resetable": true,
       "data": [
-        "site",
-        "navigation",
-        "social_links",
-        "footer_columns",
-        "current_year"
+        "blog_title",
+        "blog_logo",
+        "navigation"
       ]
     }
   ]

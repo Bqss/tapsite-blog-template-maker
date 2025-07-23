@@ -28,8 +28,9 @@
       "type": "html",
       "resetable": true,
       "data": [
-        "author",
-        "social_media"
+        "blog_title",
+        "blog_logo",
+        "navigation"
       ]
     }
   ]

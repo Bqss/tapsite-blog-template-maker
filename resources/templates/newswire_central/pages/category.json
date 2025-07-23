@@ -19,7 +19,7 @@
       "id": "footer",
       "type": "html",
       "resetable": true,
-      "data": ["social_media", "author"]
+      "data": ["blog_title", "blog_logo", "navigation"]
     }
   ]
 }

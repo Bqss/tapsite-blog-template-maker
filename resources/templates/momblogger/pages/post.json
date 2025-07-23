@@ -7,7 +7,7 @@
       "id": "navigation",
       "type": "template",
       "resetable": true,
-      "data": ["site", "navigation", "subscribe_button", "search_placeholder"]
+      "data": ["blog_title", "blog_logo", "navigation"]
     },
     {
       "title": "post_content",
@@ -28,13 +28,7 @@
       "id": "footer",
       "type": "template",
       "resetable": true,
-      "data": [
-        "site",
-        "navigation",
-        "social_links",
-        "footer_columns",
-        "current_year"
-      ]
+      "data": ["blog_title", "blog_logo", "navigation"]
     }
   ]
 }

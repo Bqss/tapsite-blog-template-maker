@@ -1,43 +1,6 @@
 {
-  "seo": {
-    "title": "{{post.title}} - LifestyleLux",
-    "description": "{{post.excerpt}}",
-    "keywords": "{{post.tags}}, luxury lifestyle, premium content",
-    "canonical": "/post/{{post.slug}}",
-    "og_title": "{{post.title}}",
-    "og_description": "{{post.excerpt}}",
-    "og_image": "{{post.featured_image}}",
-    "og_type": "article",
-    "twitter_card": "summary_large_image",
-    "twitter_title": "{{post.title}}",
-    "twitter_description": "{{post.excerpt}}",
-    "twitter_image": "{{post.featured_image}}",
-    "schema": {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "{{post.title}}",
-      "description": "{{post.excerpt}}",
-      "image": "{{post.featured_image}}",
-      "author": {
-        "@type": "Person",
-        "name": "{{post.author}}"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "LifestyleLux",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "{{site.url}}/logo.png"
-        }
-      },
-      "datePublished": "{{post.published_at}}",
-      "dateModified": "{{post.updated_at}}",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": "{{site.url}}/post/{{post.slug}}"
-      }
-    }
-  },
+  "title": "LifestyleLux - Luxury Redefined",
+  "description": "Discover the pinnacle of sophisticated living through our curated collection of luxury lifestyle content",
   "sections": [
     {
       "title": "styles",
@@ -50,7 +13,7 @@
       "id": "navigation",
       "type": "template",
       "resetable": true,
-      "data": ["site", "navigation", "subscribe_button", "search_placeholder"]
+      "data": ["blog_title", "blog_logo", "navigation"]
     },
     {
       "title": "post_content",
@@ -64,7 +27,11 @@
       "id": "footer",
       "type": "template",
       "resetable": true,
-      "data": ["site", "navigation", "social_links", "footer_columns", "current_year"]
+      "data": [
+        "blog_title",
+        "blog_logo",
+        "navigation"
+      ]
     }
   ]
-} 
+}

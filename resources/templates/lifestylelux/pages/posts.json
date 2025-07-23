@@ -1,25 +1,6 @@
 {
-  "seo": {
-    "title": "All Posts - LifestyleLux | Luxury Lifestyle Articles",
-    "description": "Browse all luxury lifestyle articles, fashion trends, and exclusive experiences. Premium content for sophisticated living.",
-    "keywords": "luxury articles, lifestyle posts, fashion trends, premium content, sophisticated living",
-    "canonical": "/posts",
-    "og_title": "All Posts - LifestyleLux",
-    "og_description": "Browse all luxury lifestyle articles, fashion trends, and exclusive experiences.",
-    "og_image": "https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=1200&h=630&fit=crop",
-    "og_type": "website",
-    "twitter_card": "summary_large_image",
-    "twitter_title": "All Posts - LifestyleLux",
-    "twitter_description": "Browse all luxury lifestyle articles, fashion trends, and exclusive experiences.",
-    "twitter_image": "https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=1200&h=630&fit=crop",
-    "schema": {
-      "@context": "https://schema.org",
-      "@type": "CollectionPage",
-      "name": "All Posts - LifestyleLux",
-      "description": "Browse all luxury lifestyle articles and premium content",
-      "url": "{{site.url}}/posts"
-    }
-  },
+  "title": "LifestyleLux - Luxury Redefined",
+  "description": "Discover the pinnacle of sophisticated living through our curated collection of luxury lifestyle content",
   "sections": [
     {
       "title": "styles",
@@ -32,7 +13,7 @@
       "id": "navigation",
       "type": "template",
       "resetable": true,
-      "data": ["site", "navigation", "subscribe_button", "search_placeholder"]
+      "data": ["blog_title", "blog_logo", "navigation"]
     },
     {
       "title": "posts_header",
@@ -61,11 +42,9 @@
       "type": "template",
       "resetable": true,
       "data": [
-        "site",
-        "navigation",
-        "social_links",
-        "footer_columns",
-        "current_year"
+        "blog_title",
+        "blog_logo",
+        "navigation"
       ]
     }
   ]

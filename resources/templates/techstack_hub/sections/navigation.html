@@ -1,68 +1,81 @@
-<header class="bg-code-bg border-b border-code-border">
-  <div class="max-w-7xl mx-auto">
-    <!-- Terminal Title Bar -->
-    <div class="flex items-center justify-between px-4 py-2 bg-gray-800 border-b border-gray-700">
-      <div class="flex items-center space-x-2">
-        <div class="w-3 h-3 bg-red-500 rounded-full"></div>
-        <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
-        <div class="w-3 h-3 bg-green-500 rounded-full"></div>
-      </div>
-      <div class="text-gray-400 text-sm font-mono">techstack-hub.dev</div>
-      <div class="w-16"></div>
+<nav class="bg-white/95 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <a href="/blog" class="flex items-center space-x-3">
+                {{@if(it.blog_logo)}}
+                <div class="flex-shrink-0">
+                    <img src="{{it.blog_logo}}" alt="{{it.blog_title }}" class="h-10 w-10 rounded-xl object-cover">
+                </div>
+                {{/if}}
+                {{@if(it.blog_title)}}
+                <span
+                    class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">{{it.blog_title}}</span>
+                {{/if}}
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                {{@each (it.navigation) => item}}
+                <a href="{{item.url}}"
+                    class="text-gray-700 hover:text-blue-600 font-medium transition-colors">{{item.name}}</a>
+                {{/each}}
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="relative hidden sm:block"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.3-4.3"></path>
+                    </svg><input type="text" placeholder="Search articles..."
+                        class="pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all w-64">
+                </div>
+                <!-- Hamburger Button -->
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors">
+                    <!-- Hamburger Icon -->
+                    <svg id="hamburger-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="h-6 w-6">
+                        <line x1="4" x2="20" y1="6" y2="6"></line>
+                        <line x1="4" x2="20" y1="12" y2="12"></line>
+                        <line x1="4" x2="20" y1="18" y2="18"></line>
+                    </svg>
+                    <!-- Close Icon (hidden by default) -->
+                    <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="h-6 w-6 hidden">
+                        <path d="M18 6 6 18"></path>
+                        <path d="m6 6 12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="md:hidden border-t border-gray-200 py-4 space-y-4 hidden">
+            <div class="relative mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.3-4.3"></path>
+                </svg><input type="text" placeholder="Search articles..."
+                    class="pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all w-full">
+            </div>
+
+            {{@each (it.navigation) => item}}
+            <a href="{{item.url}}" class="block text-gray-700 hover:text-blue-600 font-medium py-2">{{item.name}}</a>
+            {{/each}}
+        </div>
     </div>
+</nav>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const hamburgerIcon = document.getElementById('hamburger-icon');
+        const closeIcon = document.getElementById('close-icon');
 
-    <!-- Navigation -->
-    <nav class="px-4 py-4">
-      <div class="flex items-center justify-between">
-        <!-- Logo -->
-        <div class="flex items-center space-x-3">
-          <img src="https://tapsite.ai/favicon-96x96.png" alt="TechStack Hub" class="h-8 w-8">
-          <span class="text-xl font-bold text-terminal-green">TechStack</span>
-          <span class="text-terminal-blue">Hub</span>
-          <span class="terminal-cursor"></span>
-        </div>
-
-        <!-- Desktop Navigation -->
-        <div class="hidden md:flex items-center space-x-6">
-          <a href="/" class="text-terminal-green hover:text-white transition-colors">~/home</a>
-          <a href="/posts" class="text-gray-300 hover:text-terminal-green transition-colors">./posts</a>
-          <a href="/category/JavaScript"
-            class="text-gray-300 hover:text-terminal-green transition-colors">./javascript</a>
-          <a href="/category/Python" class="text-gray-300 hover:text-terminal-green transition-colors">./python</a>
-          <a href="/category/React" class="text-gray-300 hover:text-terminal-green transition-colors">./react</a>
-          <a href="/category/DevOps" class="text-gray-300 hover:text-terminal-green transition-colors">./devops</a>
-        </div>
-
-        <!-- Search -->
-        <div class="flex items-center space-x-4">
-          <div class="relative hidden sm:block">
-            <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">$</span>
-            <input type="text" placeholder="grep -r 'search term'"
-              class="pl-8 pr-4 py-2 bg-gray-900 border border-gray-700 rounded focus:ring-2 focus:ring-terminal-green focus:border-transparent transition-all text-sm">
-          </div>
-          <button id="mobile-menu-button" class="md:hidden p-2 rounded hover:bg-gray-800">
-            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
-              </path>
-            </svg>
-          </button>
-        </div>
-      </div>
-
-      <!-- Mobile Menu -->
-      <div id="mobile-menu" class="md:hidden mt-4 space-y-2 hidden">
-        <div class="relative mb-4">
-          <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">$</span>
-          <input type="text" placeholder="grep -r 'search term'"
-            class="pl-8 pr-4 py-2 bg-gray-900 border border-gray-700 rounded focus:ring-2 focus:ring-terminal-green focus:border-transparent transition-all w-full text-sm">
-        </div>
-        <a href="/" class="block text-terminal-green hover:text-white py-2">~/home</a>
-        <a href="/posts" class="block text-gray-300 hover:text-terminal-green py-2">./posts</a>
-        <a href="/category/JavaScript" class="block text-gray-300 hover:text-terminal-green py-2">./javascript</a>
-        <a href="/category/Python" class="block text-gray-300 hover:text-terminal-green py-2">./python</a>
-        <a href="/category/React" class="block text-gray-300 hover:text-terminal-green py-2">./react</a>
-        <a href="/category/DevOps" class="block text-gray-300 hover:text-terminal-green py-2">./devops</a>
-      </div>
-    </nav>
-  </div>
-</header>
+        mobileMenuButton.addEventListener('click', function () {
+            mobileMenu.classList.toggle('hidden');
+            hamburgerIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        });
+    });
+</script>
