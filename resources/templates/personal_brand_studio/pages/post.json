@@ -11,54 +11,15 @@
         "navigation"
       ]
     },
+ 
     {
-      "title": "post_hero",
-      "id": "post_hero",
-      "type": "html",
+      "title": "post_detail",
+      "id": "post_detail",
+      "type": "template",
       "resetable": true,
       "data": [
         "post",
         "author"
-      ]
-    },
-    {
-      "title": "post_content",
-      "id": "post_content",
-      "type": "html",
-      "resetable": true,
-      "data": [
-        "post"
-      ]
-    },
-    {
-      "title": "author_expertise_sidebar",
-      "id": "author_expertise_sidebar",
-      "type": "html",
-      "resetable": true,
-      "data": [
-        "author",
-        "credentials",
-        "expertise"
-      ]
-    },
-    {
-      "title": "professional_cta",
-      "id": "professional_cta",
-      "type": "html",
-      "resetable": true,
-      "data": [
-        "author",
-        "contact_info"
-      ]
-    },
-    {
-      "title": "related_expertise",
-      "id": "related_expertise",
-      "type": "html",
-      "resetable": true,
-      "data": [
-        "related_posts",
-        "author.expertise"
       ]
     },
     {
@@ -72,4 +33,4 @@
       ]
     }
   ]
-} 
+}

@@ -5,61 +5,22 @@
       "id": "navigation",
       "type": "template",
       "resetable": true,
-      "data": [
-        "blog_title",
-        "blog_logo",
-        "navigation"
-      ]
+      "data": ["blog_title", "blog_logo", "navigation"]
     },
+
     {
-      "title": "search_header",
-      "id": "search_header",
+      "title": "search_content",
+      "id": "search_content",
       "type": "html",
       "resetable": true,
-      "data": [
-        "blog_title",
-        "author"
-      ]
-    },
-    {
-      "title": "professional_search_form",
-      "id": "professional_search_form",
-      "type": "html",
-      "resetable": true,
-      "data": [
-        "categories",
-        "author.expertise"
-      ]
-    },
-    {
-      "title": "search_results",
-      "id": "search_results",
-      "type": "html",
-      "resetable": true,
-      "data": [
-        "search_results",
-        "author"
-      ]
-    },
-    {
-      "title": "expertise_suggestions",
-      "id": "expertise_suggestions",
-      "type": "html",
-      "resetable": true,
-      "data": [
-        "author.expertise",
-        "featured_posts"
-      ]
+      "data": ["author.social"]
     },
     {
       "title": "footer",
       "id": "footer",
       "type": "html",
       "resetable": true,
-      "data": [
-        "author",
-        "social_media"
-      ]
+      "data": ["author", "social_media"]
     }
   ]
-} 
+}

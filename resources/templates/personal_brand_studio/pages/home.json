@@ -24,18 +24,14 @@
       "id": "hero",
       "type": "template",
       "resetable": true,
-      "data": [
-        "hero"
-      ]
+      "data": []
     },
     {
       "title": "about",
       "id": "about",
       "type": "template",
       "resetable": true,
-      "data": [
-        "about"
-      ]
+      "data": []
     },
     {
       "title": "featured posts",
@@ -47,39 +43,19 @@
       ]
     },
     {
-      "title": "services",
-      "id": "services",
+      "title": "recent posts",
+      "id": "recent_posts",
       "type": "template",
       "resetable": true,
-      "data": [
-        "services"
-      ]
+      "data": []
     },
     {
-      "title": "portfolio",
-      "id": "portfolio",
+      "title": "categories",
+      "id": "categories",
       "type": "template",
       "resetable": true,
       "data": [
-        "portfolio"
-      ]
-    },
-    {
-      "title": "testimonials",
-      "id": "testimonials",
-      "type": "template",
-      "resetable": true,
-      "data": [
-        "testimonials"
-      ]
-    },
-    {
-      "title": "contact",
-      "id": "contact",
-      "type": "template",
-      "resetable": true,
-      "data": [
-        "contact"
+        "navigation"
       ]
     },
     {
@@ -95,4 +71,4 @@
       ]
     }
   ]
-} 
+}

@@ -12,46 +12,11 @@
       ]
     },
     {
-      "title": "posts_header",
-      "id": "posts_header",
-      "type": "html",
+      "title": "posts_content",
+      "id": "posts_content",
+      "type": "template",
       "resetable": true,
-      "data": [
-        "blog_title",
-        "blog_description",
-        "author"
-      ]
-    },
-    {
-      "title": "expertise_filter",
-      "id": "expertise_filter",
-      "type": "html",
-      "resetable": true,
-      "data": [
-        "categories",
-        "author.expertise"
-      ]
-    },
-    {
-      "title": "posts_timeline",
-      "id": "posts_timeline",
-      "type": "html",
-      "resetable": true,
-      "data": [
-        "posts",
-        "author"
-      ]
-    },
-    {
-      "title": "professional_sidebar",
-      "id": "professional_sidebar",
-      "type": "html",
-      "resetable": true,
-      "data": [
-        "author",
-        "credentials",
-        "portfolio_items"
-      ]
+      "data": []
     },
     {
       "title": "footer",
@@ -64,4 +29,4 @@
       ]
     }
   ]
-} 
+}

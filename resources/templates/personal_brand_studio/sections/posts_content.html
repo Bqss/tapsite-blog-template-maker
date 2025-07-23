@@ -1,0 +1,237 @@
+<!-- Page Header -->
+<section class="pt-24 pb-16 bg-gradient-to-br from-emerald-600/10 to-teal-600/10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h1 class="text-5xl font-bold text-gray-900 mb-6">All Posts</h1>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">Explore my journey through brand strategy, creative
+        direction, and professional insights.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Author Introduction -->
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Welcome to My Blog</h2>
+        <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+          Here, I share my thoughts on brand strategy, creative direction, and the evolving landscape of design.
+          Each post is crafted from real-world experience and insights gained from working with diverse clients
+          across various industries.
+        </p>
+        <div class="flex items-center space-x-4">
+          <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=100"
+            alt="Alexandra Rivera" class="w-16 h-16 rounded-full">
+          <div>
+            <div class="font-semibold text-lg">Alexandra Rivera</div>
+            <div class="text-gray-600">Brand Strategist & Creative Director</div>
+          </div>
+        </div>
+      </div>
+      <div class="relative">
+        <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600"
+          alt="Creative Process" class="w-full h-80 object-cover rounded-2xl shadow-lg">
+        <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-2xl shadow-xl">
+          <div class="text-2xl font-bold text-emerald-600">45+</div>
+          <div class="text-sm text-gray-600">Articles Published</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Filter and Search -->
+<section class="py-8 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
+      <div id="category-filters" class="flex items-center space-x-4 flex-wrap">
+        <!-- dynamic category chips -->
+      </div>
+      <div class="flex items-center space-x-4">
+        <div class="relative">
+          <input type="text" placeholder="Search posts..."
+            class="pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-emerald-500 focus:border-transparent">
+          <svg class="absolute left-3 top-2.5 h-5 w-5 text-gray-400" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </div>
+        <select class="border border-gray-300 rounded-lg px-4 py-2 text-sm">
+          <option>Latest First</option>
+          <option>Oldest First</option>
+          <option>Most Popular</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Posts List -->
+<section id="timeline-section" class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- States -->
+    <div id="timeline-loading" class="py-16 text-center">
+      <div class="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-emerald-600"></div>
+      <p class="text-gray-400 mt-4">Loading posts...</p>
+    </div>
+    <div id="timeline-error" class="py-16 text-center hidden">
+      <p class="text-red-500">Failed to load posts.</p>
+    </div>
+    <div id="timeline-empty" class="py-16 text-center hidden">
+      <p class="text-gray-500">No posts found.</p>
+    </div>
+
+    <!-- Timeline Container -->
+    <div class="relative hidden" id="timeline-container">
+      <!-- Vertical Line -->
+      <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-emerald-600 to-teal-600 rounded-full"></div>
+      <!-- Items -->
+      <div id="timeline-items" class="space-y-16"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  const LIMIT=12; // fetch up to 12 posts so we have leftovers
+  const loadEl=document.getElementById('timeline-loading');
+  const errEl=document.getElementById('timeline-error');
+  const emptyEl=document.getElementById('timeline-empty');
+  const containerEl=document.getElementById('timeline-container');
+  const itemsEl=document.getElementById('timeline-items');
+
+  const fallbackImg='data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="200" viewBox="0 0 400 200"%3E%3Crect width="400" height="200" fill="%23f3f4f6"/%3E%3Ctext x="200" y="100" text-anchor="middle" dy="0.3em" font-family="Arial" font-size="16" fill="%23666"%3ENo Image%3C/text%3E%3C/svg%3E';
+
+  function timelineItem(p,idx){
+    const reverse=idx%2===1;
+    const sideImg=reverse?`<div class="w-1/2 pr-8"><img src="${p.featured_image||fallbackImg}" alt="${p.title}" class="w-full h-48 object-cover rounded-2xl shadow-lg"></div>`:'';
+    const sideCard=reverse?'' : `<div class="w-1/2 pr-8">${cardBody(p)}</div>`;
+    const otherSideCard=reverse?`<div class="w-1/2 pl-8">${cardBody(p)}</div>`:'';
+    const otherSideImg=reverse?`` : `<div class="w-1/2 pl-8"><img src="${p.featured_image||fallbackImg}" alt="${p.title}" class="w-full h-48 object-cover rounded-2xl shadow-lg"></div>`;
+    const dotColor=reverse?'bg-purple-600':'bg-emerald-600';
+    return `<div class="flex items-center timeline-item">${sideCard}${sideImg}<div class="w-12 h-12 ${dotColor} rounded-full flex items-center justify-center z-10"></div>${otherSideImg}${otherSideCard}</div>`;
+  }
+  function cardBody(p){return `<div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100"><div class="flex items-center space-x-4 mb-4"><span class="bg-emerald-600 text-white px-3 py-1 rounded-full text-sm font-semibold">${p.category||''}</span><span class="text-sm text-gray-500">${new Date(p.published_at).toLocaleDateString('id-ID',{month:'short',day:'numeric',year:'numeric'})}</span></div><h3 class="text-xl font-bold text-gray-900 mb-3">${p.title}</h3><p class="text-gray-600 mb-4 line-clamp-3">${p.excerpt||''}</p><div class="flex items-center justify-between"><div class="flex items-center space-x-2"><img src="${p.author_avatar||'https://i.pravatar.cc/40'}" alt="Author" class="w-8 h-8 rounded-full"><span class="text-sm font-medium">${p.author||'Author'}</span></div><span class="text-sm text-gray-500">${p.read_time||5} min read</span></div></div>`;}
+
+  async function loadTimeline(){
+    loadEl.classList.remove('hidden');errEl.classList.add('hidden');emptyEl.classList.add('hidden');containerEl.classList.add('hidden');
+    try{
+      const res=await fetch(`/api/blog/posts?limit=${LIMIT}&page=1`);
+      if(!res.ok)throw new Error();
+      const data=await res.json();
+      const posts=data.posts||data.data||[];
+      if(!posts.length){emptyEl.classList.remove('hidden');return;}
+      const timelinePosts=posts.slice(0,3);
+      const restPosts=posts.slice(3);
+      itemsEl.innerHTML=timelinePosts.map((p,i)=>timelineItem(p,i)).join('');
+      containerEl.classList.remove('hidden');
+      // expose rest posts for More Posts section
+      window.PBS_REST_POSTS=restPosts;
+      document.dispatchEvent(new CustomEvent('pbsRestPostsReady'));
+    }catch(e){console.error(e);errEl.classList.remove('hidden');}
+    finally{loadEl.classList.add('hidden');}
+  }
+
+  document.addEventListener('DOMContentLoaded',loadTimeline);
+})();
+</script>
+
+<!-- Sidebar Content -->
+<section class="py-16 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+      <div class="lg:col-span-2">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8">More Posts</h2>
+        <div id="posts-loading" class="flex justify-center py-12"><div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-600"></div></div>
+        <div id="posts-error" class="text-center py-12 hidden"><p class="text-gray-600">Failed to load posts.</p></div>
+        <div id="posts-empty" class="text-center py-12 hidden"><p class="text-gray-600">No posts found.</p></div>
+        <div id="posts-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8 hidden"></div>
+
+        <div id="pagination-container" class="flex justify-center mt-12 hidden"></div>
+
+        <script>
+        (function(){
+          // Updated More Posts logic to use leftover posts from timeline
+          const loading=document.getElementById('posts-loading');
+          const error=document.getElementById('posts-error');
+          const empty=document.getElementById('posts-empty');
+          const grid=document.getElementById('posts-grid');
+
+          const fallbackImg="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23f3f4f6'/%3E%3Ctext x='200' y='100' text-anchor='middle' dy='0.3em' font-family='Arial' font-size='16' fill='%23374151'%3ENo Image%3C/text%3E%3C/svg%3E";
+
+          function pbsPostsCard(p){const img=p.featured_image||fallbackImg;return `<article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"><div class="relative h-48"><img src="${img}" alt="${p.title}" class="w-full h-full object-cover"><div class="absolute top-4 left-4"><span class="bg-emerald-600 text-white px-3 py-1 rounded-full text-xs font-semibold">${p.category||'Post'}</span></div></div><div class="p-6"><div class="flex items-center space-x-4 mb-3 text-sm text-gray-500"><span>${new Date(p.published_at).toLocaleDateString('id-ID',{month:'short',day:'numeric',year:'numeric'})}</span><span>&bull;</span><span>${p.read_time||5} min read</span></div><h3 class="text-xl font-bold text-gray-900 mb-3 line-clamp-2">${p.title}</h3><p class="text-gray-600 mb-4 line-clamp-3">${p.excerpt||''}</p><a href="/post/${p.slug}" class="text-emerald-600 hover:text-emerald-800 font-semibold text-sm">Read More →</a></div></article>`;}
+
+          function render(rest){loading.classList.add('hidden');if(!rest.length){empty.classList.remove('hidden');return;}grid.innerHTML=rest.map(pbsPostsCard).join('');grid.classList.remove('hidden');}
+
+          function init(){loading.classList.remove('hidden');error.classList.add('hidden');empty.classList.add('hidden');grid.classList.add('hidden');
+            if(window.PBS_REST_POSTS!==undefined){render(window.PBS_REST_POSTS);}else{
+              document.addEventListener('pbsRestPostsReady',()=>render(window.PBS_REST_POSTS));
+            }
+          }
+
+          document.addEventListener('DOMContentLoaded',init);
+        })();
+        </script>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="space-y-8">
+        <div class="bg-white rounded-2xl p-6 shadow-lg">
+          <h3 class="text-xl font-bold text-gray-900 mb-6">Popular Posts</h3>
+          <!-- States -->
+          <div id="popular-loading" class="flex justify-center py-4"><div class="inline-block animate-spin rounded-full h-6 w-6 border-b-2 border-emerald-600"></div></div>
+          <div id="popular-error" class="text-center py-4 hidden"><p class="text-gray-600">Failed to load popular posts.</p></div>
+          <div id="popular-empty" class="text-center py-4 hidden"><p class="text-gray-600">No popular posts.</p></div>
+
+          <!-- List -->
+          <div id="popular-list" class="space-y-4 hidden"></div>
+
+          <script>
+          (function(){
+            const loading=document.getElementById('popular-loading');
+            const error=document.getElementById('popular-error');
+            const empty=document.getElementById('popular-empty');
+            const list=document.getElementById('popular-list');
+
+            const fallbackImg="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23f3f4f6'/%3E%3Ctext x='200' y='100' text-anchor='middle' dy='0.3em' font-family='Arial' font-size='14' fill='%23666'%3ENo Image%3C/text%3E%3C/svg%3E";
+
+            function itemTemplate(p){const img=p.featured_image||fallbackImg;return `<div class=\"flex items-start space-x-3\"><img src=\"${img}\" alt=\"${p.title}\" class=\"w-16 h-16 object-cover rounded-lg flex-shrink-0\"><div><h4 class=\"font-semibold text-gray-900 mb-1 line-clamp-2\">${p.title}</h4><p class=\"text-sm text-gray-600\">${new Date(p.published_at).toLocaleDateString('id-ID',{month:'short',day:'numeric',year:'numeric'})} • ${p.read_time||5} min read</p></div></div>`;}
+
+            async function loadPopular(){loading.classList.remove('hidden');error.classList.add('hidden');empty.classList.add('hidden');list.classList.add('hidden');try{const res=await fetch('/api/blog/posts/popular?limit=6');if(!res.ok)throw new Error();const data=await res.json();const posts=data.posts||data||[];loading.classList.add('hidden');if(!posts.length){empty.classList.remove('hidden');return;}list.innerHTML=posts.map(itemTemplate).join('');list.classList.remove('hidden');}catch(err){console.error('popular posts error',err);loading.classList.add('hidden');error.classList.remove('hidden');}}
+
+            document.addEventListener('DOMContentLoaded',loadPopular);
+          })();
+          </script>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-lg">
+          <h3 class="text-xl font-bold text-gray-900 mb-6">About the Author</h3>
+          <div class="text-center">
+            <img
+              src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=200"
+              alt="Alexandra Rivera" class="w-20 h-20 rounded-full mx-auto mb-4">
+            <h4 class="font-bold text-gray-900 mb-2">Alexandra Rivera</h4>
+            <p class="text-gray-600 text-sm mb-4">Brand Strategist & Creative Director with 8+ years of experience
+              helping businesses build authentic connections.</p>
+            <div class="flex justify-center space-x-4">
+              <a href="#" class="text-emerald-600 hover:text-emerald-800">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                </svg>
+              </a>
+              <a href="#" class="text-emerald-600 hover:text-emerald-800">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

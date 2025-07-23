@@ -1,0 +1,38 @@
+<!-- Recent Posts -->
+<section class="py-12 sm:py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between mb-8 sm:mb-12">
+      <h2 class="section-title text-2xl sm:text-3xl font-bold text-gray-900">Recent Posts</h2>
+      <a href="/blog" class="text-emerald-600 hover:text-emerald-800 font-semibold text-sm sm:text-base">View All Posts
+        →</a>
+    </div>
+
+    <div id="recent-loading" class="flex justify-center py-12"><div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-600"></div></div>
+    <div id="recent-error" class="text-center py-12 hidden"><p class="text-gray-600">Failed to load posts.</p></div>
+    <div id="recent-empty" class="text-center py-12 hidden"><p class="text-gray-600">No posts found.</p></div>
+    <div id="recent-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 hidden"></div>
+
+    <script>
+    (function(){
+      const loading=document.getElementById('recent-loading');
+      const error=document.getElementById('recent-error');
+      const empty=document.getElementById('recent-empty');
+      const grid=document.getElementById('recent-grid');
+
+      const fallbackImg="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23f3f4f6'/%3E%3Ctext x='200' y='100' text-anchor='middle' dy='0.3em' font-family='Arial' font-size='16' fill='%23374151'%3ENo Image%3C/text%3E%3C/svg%3E";
+
+      function recentCardPBS(p){
+        const img=p.featured_image||fallbackImg;
+        return `<article class=\"bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300\"><div class=\"relative h-48\"><img src=\"${img}\" alt=\"${p.title}\" class=\"w-full h-full object-cover\"><div class=\"absolute top-4 left-4\"><span class=\"bg-emerald-600 text-white px-3 py-1 rounded-full text-xs font-semibold\">${p.category||'Post'}</span></div></div><div class=\"card-padding p-4 sm:p-6\"><div class=\"flex items-center space-x-4 mb-3 text-sm text-gray-500\"><span>${new Date(p.published_at).toLocaleDateString('id-ID',{month:'short',day:'numeric',year:'numeric'})}</span><span>&bull;</span><span>${p.read_time||5} min read</span></div><h3 class=\"text-lg sm:text-xl font-bold text-gray-900 mb-3 line-clamp-2\">${p.title}</h3><p class=\"text-gray-600 mb-4 text-sm sm:text-base line-clamp-3\">${p.excerpt||''}</p><a href=\"/post/${p.slug}\" class=\"text-emerald-600 hover:text-emerald-800 font-semibold text-sm\">Read More →</a></div></article>`;
+      }
+
+      fetch('/api/blog/posts/recent?limit=6').then(r=>r.ok?r.json():Promise.reject()).then(posts=>{
+        loading.classList.add('hidden');
+        if(!posts.length){empty.classList.remove('hidden'); return;}
+        grid.innerHTML=posts.map(recentCardPBS).join('');
+        grid.classList.remove('hidden');
+      }).catch(err=>{console.error('recent posts error',err);loading.classList.add('hidden');error.classList.remove('hidden');});
+    })();
+    </script>
+  </div>
+</section>

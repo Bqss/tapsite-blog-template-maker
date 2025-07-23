@@ -1,396 +1,424 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Posts - {{blog_title}}</title>
-    <meta name="description" content="Personal blog posts and insights from {{author.name}}">
-    <link rel="icon" href="{{blog_logo}}" type="image/png">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '{{color_scheme.primary}}',
-                        secondary: '{{color_scheme.secondary}}',
-                        accent: '{{color_scheme.accent}}',
-                        neutral: '{{color_scheme.neutral}}',
-                        background: '{{color_scheme.background}}',
-                        text: '{{color_scheme.text}}'
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        .timeline-item:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-        .timeline-item:nth-child(even) .timeline-content {
-            text-align: right;
-        }
-        .timeline-line {
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, #e5e7eb, #d1d5db);
-            transform: translateX(-50%);
-        }
-        .timeline-dot {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #059669, #0d9488);
-            border: 3px solid white;
-            box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.2);
-        }
-        @media (max-width: 768px) {
-            .timeline-item:nth-child(even) {
-                flex-direction: row;
-            }
-            .timeline-item:nth-child(even) .timeline-content {
-                text-align: left;
-            }
-            .timeline-line {
-                left: 2rem;
-            }
-            .timeline-dot {
-                left: 2rem;
-            }
-        }
-    </style>
-</head>
-<body class="bg-background text-text">
-    <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex items-center">
-                    <img src="https://tapsite.ai/favicon-96x96.png" alt="Personal Brand Studio" class="h-8 w-8 rounded-full">
-                    <span class="ml-3 text-xl font-bold text-emerald-600">Personal Brand Studio</span>
-                </div>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="/" class="text-gray-700 hover:text-emerald-600 transition-colors duration-200 font-medium">Home</a>
-                    <a href="/about" class="text-gray-700 hover:text-emerald-600 transition-colors duration-200 font-medium">About</a>
-                    <a href="/blog" class="text-gray-700 hover:text-emerald-600 transition-colors duration-200 font-medium">Blog</a>
-                    <a href="/portfolio" class="text-gray-700 hover:text-emerald-600 transition-colors duration-200 font-medium">Portfolio</a>
-                    <a href="/contact" class="text-gray-700 hover:text-emerald-600 transition-colors duration-200 font-medium">Contact</a>
-                </div>
-            </div>
+<style>
+  .timeline-item:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+
+  .timeline-item:nth-child(even) .timeline-content {
+    text-align: right;
+  }
+
+  .timeline-line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, #e5e7eb, #d1d5db);
+    transform: translateX(-50%);
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #059669, #0d9488);
+    border: 3px solid white;
+    box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.2);
+  }
+
+  @media (max-width: 768px) {
+    .timeline-item:nth-child(even) {
+      flex-direction: row;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content {
+      text-align: left;
+    }
+
+    .timeline-line {
+      left: 2rem;
+    }
+
+    .timeline-dot {
+      left: 2rem;
+    }
+  }
+</style>
+<nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <div class="flex items-center">
+        <img src="https://tapsite.ai/favicon-96x96.png" alt="Personal Brand Studio" class="h-8 w-8 rounded-full">
+        <span class="ml-3 text-xl font-bold text-emerald-600">Personal Brand Studio</span>
+      </div>
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="/" class="text-gray-700 hover:text-emerald-600 transition-colors duration-200 font-medium">Home</a>
+        <a href="/about"
+          class="text-gray-700 hover:text-emerald-600 transition-colors duration-200 font-medium">About</a>
+        <a href="/blog" class="text-gray-700 hover:text-emerald-600 transition-colors duration-200 font-medium">Blog</a>
+        <a href="/portfolio"
+          class="text-gray-700 hover:text-emerald-600 transition-colors duration-200 font-medium">Portfolio</a>
+        <a href="/contact"
+          class="text-gray-700 hover:text-emerald-600 transition-colors duration-200 font-medium">Contact</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Page Header -->
+<section class="pt-24 pb-16 bg-gradient-to-br from-emerald-600/10 to-teal-600/10">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <h1 class="text-5xl font-bold text-gray-900 mb-6">All Posts</h1>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">Explore my journey through brand strategy, creative
+        direction, and professional insights.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Author Introduction -->
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="text-3xl font-bold text-gray-900 mb-4">Welcome to My Blog</h2>
+        <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+          Here, I share my thoughts on brand strategy, creative direction, and the evolving landscape of design.
+          Each post is crafted from real-world experience and insights gained from working with diverse clients
+          across various industries.
+        </p>
+        <div class="flex items-center space-x-4">
+          <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=100"
+            alt="Alexandra Rivera" class="w-16 h-16 rounded-full">
+          <div>
+            <div class="font-semibold text-lg">Alexandra Rivera</div>
+            <div class="text-gray-600">Brand Strategist & Creative Director</div>
+          </div>
         </div>
-    </nav>
-
-    <!-- Page Header -->
-    <section class="pt-24 pb-16 bg-gradient-to-br from-emerald-600/10 to-teal-600/10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <h1 class="text-5xl font-bold text-gray-900 mb-6">All Posts</h1>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Explore my journey through brand strategy, creative direction, and professional insights.</p>
-            </div>
+      </div>
+      <div class="relative">
+        <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600"
+          alt="Creative Process" class="w-full h-80 object-cover rounded-2xl shadow-lg">
+        <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-2xl shadow-xl">
+          <div class="text-2xl font-bold text-emerald-600">45+</div>
+          <div class="text-sm text-gray-600">Articles Published</div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Author Introduction -->
-    <section class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Welcome to My Blog</h2>
-                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
-                        Here, I share my thoughts on brand strategy, creative direction, and the evolving landscape of design. 
-                        Each post is crafted from real-world experience and insights gained from working with diverse clients 
-                        across various industries.
-                    </p>
-                    <div class="flex items-center space-x-4">
-                        <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=100" 
-                             alt="Alexandra Rivera" class="w-16 h-16 rounded-full">
-                        <div>
-                            <div class="font-semibold text-lg">Alexandra Rivera</div>
-                            <div class="text-gray-600">Brand Strategist & Creative Director</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="relative">
-                    <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=600" 
-                         alt="Creative Process" class="w-full h-80 object-cover rounded-2xl shadow-lg">
-                    <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-2xl shadow-xl">
-                        <div class="text-2xl font-bold text-emerald-600">45+</div>
-                        <div class="text-sm text-gray-600">Articles Published</div>
-                    </div>
-                </div>
-            </div>
+<!-- Filter and Search -->
+<section class="py-8 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
+      <div class="flex items-center space-x-4">
+        <button class="bg-emerald-600 text-white px-4 py-2 rounded-full text-sm font-medium">All Posts</button>
+        <button
+          class="bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors">Brand
+          Strategy</button>
+        <button
+          class="bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors">Creative
+          Direction</button>
+        <button
+          class="bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors">Digital
+          Marketing</button>
+      </div>
+      <div class="flex items-center space-x-4">
+        <div class="relative">
+          <input type="text" placeholder="Search posts..."
+            class="pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-emerald-500 focus:border-transparent">
+          <svg class="absolute left-3 top-2.5 h-5 w-5 text-gray-400" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
         </div>
-    </section>
+        <select class="border border-gray-300 rounded-lg px-4 py-2 text-sm">
+          <option>Latest First</option>
+          <option>Oldest First</option>
+          <option>Most Popular</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Filter and Search -->
-    <section class="py-8 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row gap-4 items-center justify-between">
-                <div class="flex items-center space-x-4">
-                    <button class="bg-emerald-600 text-white px-4 py-2 rounded-full text-sm font-medium">All Posts</button>
-                    <button class="bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors">Brand Strategy</button>
-                    <button class="bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors">Creative Direction</button>
-                    <button class="bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors">Digital Marketing</button>
+<!-- Posts Timeline -->
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="relative">
+      <!-- Timeline Line -->
+      <div
+        class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-emerald-600 to-teal-600 rounded-full">
+      </div>
+
+      <!-- Timeline Posts -->
+      <div class="space-y-16">
+        <!-- Post 1 - Left Side -->
+        <div class="flex items-center">
+          <div class="w-1/2 pr-8">
+            <div
+              class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+              <div class="flex items-center space-x-4 mb-4">
+                <span class="bg-emerald-600 text-white px-3 py-1 rounded-full text-sm font-semibold">Brand
+                  Strategy</span>
+                <span class="text-sm text-gray-500">Dec 15, 2024</span>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">The Complete Guide to Brand Strategy Framework</h3>
+              <p class="text-gray-600 mb-4">A comprehensive framework for developing brand strategies that drive
+                business growth and create lasting customer connections.</p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                  <img
+                    src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=100"
+                    alt="Author" class="w-8 h-8 rounded-full">
+                  <span class="text-sm font-medium">Alexandra Rivera</span>
                 </div>
-                <div class="flex items-center space-x-4">
-                    <div class="relative">
-                        <input type="text" placeholder="Search posts..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-emerald-500 focus:border-transparent">
-                        <svg class="absolute left-3 top-2.5 h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                        </svg>
-                    </div>
-                    <select class="border border-gray-300 rounded-lg px-4 py-2 text-sm">
-                        <option>Latest First</option>
-                        <option>Oldest First</option>
-                        <option>Most Popular</option>
-                    </select>
-                </div>
+                <span class="text-sm text-gray-500">12 min read</span>
+              </div>
             </div>
+          </div>
+          <div class="w-12 h-12 bg-emerald-600 rounded-full flex items-center justify-center z-10">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+            </svg>
+          </div>
+          <div class="w-1/2 pl-8">
+            <img
+              src="https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=400"
+              alt="Featured Image" class="w-full h-48 object-cover rounded-2xl shadow-lg">
+          </div>
         </div>
-    </section>
 
-    <!-- Posts Timeline -->
-    <section class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="relative">
-                <!-- Timeline Line -->
-                <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-emerald-600 to-teal-600 rounded-full"></div>
-                
-                <!-- Timeline Posts -->
-                <div class="space-y-16">
-                    <!-- Post 1 - Left Side -->
-                    <div class="flex items-center">
-                        <div class="w-1/2 pr-8">
-                            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100">
-                                <div class="flex items-center space-x-4 mb-4">
-                                    <span class="bg-emerald-600 text-white px-3 py-1 rounded-full text-sm font-semibold">Brand Strategy</span>
-                                    <span class="text-sm text-gray-500">Dec 15, 2024</span>
-                                </div>
-                                <h3 class="text-xl font-bold text-gray-900 mb-3">The Complete Guide to Brand Strategy Framework</h3>
-                                <p class="text-gray-600 mb-4">A comprehensive framework for developing brand strategies that drive business growth and create lasting customer connections.</p>
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center space-x-2">
-                                        <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=100" 
-                                             alt="Author" class="w-8 h-8 rounded-full">
-                                        <span class="text-sm font-medium">Alexandra Rivera</span>
-                                    </div>
-                                    <span class="text-sm text-gray-500">12 min read</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w-12 h-12 bg-emerald-600 rounded-full flex items-center justify-center z-10">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
-                            </svg>
-                        </div>
-                        <div class="w-1/2 pl-8">
-                            <img src="https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=400" 
-                                 alt="Featured Image" class="w-full h-48 object-cover rounded-2xl shadow-lg">
-                        </div>
-                    </div>
-
-                    <!-- Post 2 - Right Side -->
-                    <div class="flex items-center">
-                        <div class="w-1/2 pr-8">
-                            <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400" 
-                                 alt="Featured Image" class="w-full h-48 object-cover rounded-2xl shadow-lg">
-                        </div>
-                        <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center z-10">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z"/>
-                            </svg>
-                        </div>
-                        <div class="w-1/2 pl-8">
-                            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100">
-                                <div class="flex items-center space-x-4 mb-4">
-                                    <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-semibold">Creative Direction</span>
-                                    <span class="text-sm text-gray-500">Dec 10, 2024</span>
-                                </div>
-                                <h3 class="text-xl font-bold text-gray-900 mb-3">Creative Process: From Concept to Launch</h3>
-                                <p class="text-gray-600 mb-4">A deep dive into my creative methodology and how I bring brand visions to life through strategic design thinking.</p>
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center space-x-2">
-                                        <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=100" 
-                                             alt="Author" class="w-8 h-8 rounded-full">
-                                        <span class="text-sm font-medium">Alexandra Rivera</span>
-                                    </div>
-                                    <span class="text-sm text-gray-500">8 min read</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Post 3 - Left Side -->
-                    <div class="flex items-center">
-                        <div class="w-1/2 pr-8">
-                            <div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100">
-                                <div class="flex items-center space-x-4 mb-4">
-                                    <span class="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold">Digital Marketing</span>
-                                    <span class="text-sm text-gray-500">Dec 5, 2024</span>
-                                </div>
-                                <h3 class="text-xl font-bold text-gray-900 mb-3">Building Authentic Brand Connections</h3>
-                                <p class="text-gray-600 mb-4">How to create meaningful relationships between brands and their audiences in the digital age.</p>
-                                <div class="flex items-center justify-between">
-                                    <div class="flex items-center space-x-2">
-                                        <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=100" 
-                                             alt="Author" class="w-8 h-8 rounded-full">
-                                        <span class="text-sm font-medium">Alexandra Rivera</span>
-                                    </div>
-                                    <span class="text-sm text-gray-500">6 min read</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center z-10">
-                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                            </svg>
-                        </div>
-                        <div class="w-1/2 pl-8">
-                            <img src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=400" 
-                                 alt="Featured Image" class="w-full h-48 object-cover rounded-2xl shadow-lg">
-                        </div>
-                    </div>
+        <!-- Post 2 - Right Side -->
+        <div class="flex items-center">
+          <div class="w-1/2 pr-8">
+            <img
+              src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400"
+              alt="Featured Image" class="w-full h-48 object-cover rounded-2xl shadow-lg">
+          </div>
+          <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center z-10">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z" />
+            </svg>
+          </div>
+          <div class="w-1/2 pl-8">
+            <div
+              class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+              <div class="flex items-center space-x-4 mb-4">
+                <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-semibold">Creative
+                  Direction</span>
+                <span class="text-sm text-gray-500">Dec 10, 2024</span>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">Creative Process: From Concept to Launch</h3>
+              <p class="text-gray-600 mb-4">A deep dive into my creative methodology and how I bring brand visions to
+                life through strategic design thinking.</p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                  <img
+                    src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=100"
+                    alt="Author" class="w-8 h-8 rounded-full">
+                  <span class="text-sm font-medium">Alexandra Rivera</span>
                 </div>
+                <span class="text-sm text-gray-500">8 min read</span>
+              </div>
             </div>
+          </div>
         </div>
-    </section>
 
-    <!-- Sidebar Content -->
-    <section class="py-16 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                <div class="lg:col-span-2">
-                    <h2 class="text-3xl font-bold text-gray-900 mb-8">More Posts</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <!-- Additional Posts -->
-                        <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                            <div class="relative h-48">
-                                <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=400" 
-                                     alt="Article" class="w-full h-full object-cover">
-                                <div class="absolute top-4 left-4">
-                                    <span class="bg-orange-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Personal Growth</span>
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <div class="flex items-center space-x-4 mb-3">
-                                    <span class="text-sm text-gray-500">Dec 1, 2024</span>
-                                    <span class="text-sm text-gray-500">•</span>
-                                    <span class="text-sm text-gray-500">5 min read</span>
-                                </div>
-                                <h3 class="text-xl font-bold text-gray-900 mb-3">The Psychology of Color in Brand Design</h3>
-                                <p class="text-gray-600 mb-4">Understanding how color choices impact brand perception and customer behavior.</p>
-                                <a href="#" class="text-emerald-600 hover:text-emerald-800 font-semibold text-sm">Read More →</a>
-                            </div>
-                        </article>
-
-                        <article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                            <div class="relative h-48">
-                                <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400" 
-                                     alt="Article" class="w-full h-full object-cover">
-                                <div class="absolute top-4 left-4">
-                                    <span class="bg-emerald-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Brand Strategy</span>
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <div class="flex items-center space-x-4 mb-3">
-                                    <span class="text-sm text-gray-500">Nov 28, 2024</span>
-                                    <span class="text-sm text-gray-500">•</span>
-                                    <span class="text-sm text-gray-500">7 min read</span>
-                                </div>
-                                <h3 class="text-xl font-bold text-gray-900 mb-3">Minimalism vs. Maximalism in Modern Design</h3>
-                                <p class="text-gray-600 mb-4">Exploring the balance between simplicity and complexity in contemporary brand design.</p>
-                                <a href="#" class="text-emerald-600 hover:text-emerald-800 font-semibold text-sm">Read More →</a>
-                            </div>
-                        </article>
-                    </div>
+        <!-- Post 3 - Left Side -->
+        <div class="flex items-center">
+          <div class="w-1/2 pr-8">
+            <div
+              class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+              <div class="flex items-center space-x-4 mb-4">
+                <span class="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold">Digital
+                  Marketing</span>
+                <span class="text-sm text-gray-500">Dec 5, 2024</span>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">Building Authentic Brand Connections</h3>
+              <p class="text-gray-600 mb-4">How to create meaningful relationships between brands and their audiences
+                in the digital age.</p>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                  <img
+                    src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=100"
+                    alt="Author" class="w-8 h-8 rounded-full">
+                  <span class="text-sm font-medium">Alexandra Rivera</span>
                 </div>
-
-                <!-- Sidebar -->
-                <div class="space-y-8">
-                    <div class="bg-white rounded-2xl p-6 shadow-lg">
-                        <h3 class="text-xl font-bold text-gray-900 mb-6">Popular Posts</h3>
-                        <div class="space-y-4">
-                            <div class="flex items-start space-x-3">
-                                <img src="https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=100" 
-                                     alt="Popular Post" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-semibold text-gray-900 mb-1">The Complete Guide to Brand Strategy Framework</h4>
-                                    <p class="text-sm text-gray-600">Dec 15, 2024 • 12 min read</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start space-x-3">
-                                <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=100" 
-                                     alt="Popular Post" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
-                                <div>
-                                    <h4 class="font-semibold text-gray-900 mb-1">Creative Process: From Concept to Launch</h4>
-                                    <p class="text-sm text-gray-600">Dec 10, 2024 • 8 min read</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-white rounded-2xl p-6 shadow-lg">
-                        <h3 class="text-xl font-bold text-gray-900 mb-6">About the Author</h3>
-                        <div class="text-center">
-                            <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=200" 
-                                 alt="Alexandra Rivera" class="w-20 h-20 rounded-full mx-auto mb-4">
-                            <h4 class="font-bold text-gray-900 mb-2">Alexandra Rivera</h4>
-                            <p class="text-gray-600 text-sm mb-4">Brand Strategist & Creative Director with 8+ years of experience helping businesses build authentic connections.</p>
-                            <div class="flex justify-center space-x-4">
-                                <a href="#" class="text-emerald-600 hover:text-emerald-800">
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                                    </svg>
-                                </a>
-                                <a href="#" class="text-emerald-600 hover:text-emerald-800">
-                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <span class="text-sm text-gray-500">6 min read</span>
+              </div>
             </div>
+          </div>
+          <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center z-10">
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <div class="w-1/2 pl-8">
+            <img
+              src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=400"
+              alt="Featured Image" class="w-full h-48 object-cover rounded-2xl shadow-lg">
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div class="md:col-span-2">
-                    <div class="flex items-center mb-4">
-                        <img src="https://tapsite.ai/favicon-96x96.png" alt="Personal Brand Studio" class="h-8 w-8 rounded-full">
-                        <span class="ml-3 text-xl font-bold">Personal Brand Studio</span>
-                    </div>
-                    <p class="text-gray-300 mb-4">Helping businesses create authentic connections through compelling visual storytelling and strategic design.</p>
-                    <p class="text-gray-400 text-sm">© 2024 Personal Brand Studio. All rights reserved.</p>
-                </div>
-                <div>
-                    <h3 class="font-bold mb-4">Quick Links</h3>
-                    <ul class="space-y-2 text-gray-300">
-                        <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
-                        <li><a href="/about" class="hover:text-white transition-colors">About</a></li>
-                        <li><a href="/blog" class="hover:text-white transition-colors">Blog</a></li>
-                        <li><a href="/portfolio" class="hover:text-white transition-colors">Portfolio</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="font-bold mb-4">Categories</h3>
-                    <ul class="space-y-2 text-gray-300">
-                        <li><a href="/category/brand-strategy" class="hover:text-white transition-colors">Brand Strategy</a></li>
-                        <li><a href="/category/creative-direction" class="hover:text-white transition-colors">Creative Direction</a></li>
-                        <li><a href="/category/digital-marketing" class="hover:text-white transition-colors">Digital Marketing</a></li>
-                        <li><a href="/category/personal-growth" class="hover:text-white transition-colors">Personal Growth</a></li>
-                    </ul>
-                </div>
+<!-- Sidebar Content -->
+<section class="py-16 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+      <div class="lg:col-span-2">
+        <h2 class="text-3xl font-bold text-gray-900 mb-8">More Posts</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Additional Posts -->
+          <article
+            class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <div class="relative h-48">
+              <img
+                src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=400"
+                alt="Article" class="w-full h-full object-cover">
+              <div class="absolute top-4 left-4">
+                <span class="bg-orange-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Personal
+                  Growth</span>
+              </div>
             </div>
+            <div class="p-6">
+              <div class="flex items-center space-x-4 mb-3">
+                <span class="text-sm text-gray-500">Dec 1, 2024</span>
+                <span class="text-sm text-gray-500">•</span>
+                <span class="text-sm text-gray-500">5 min read</span>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">The Psychology of Color in Brand Design</h3>
+              <p class="text-gray-600 mb-4">Understanding how color choices impact brand perception and customer
+                behavior.</p>
+              <a href="#" class="text-emerald-600 hover:text-emerald-800 font-semibold text-sm">Read More →</a>
             </div>
-</footer> 
+          </article>
+
+          <article
+            class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <div class="relative h-48">
+              <img
+                src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400"
+                alt="Article" class="w-full h-full object-cover">
+              <div class="absolute top-4 left-4">
+                <span class="bg-emerald-600 text-white px-3 py-1 rounded-full text-xs font-semibold">Brand
+                  Strategy</span>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center space-x-4 mb-3">
+                <span class="text-sm text-gray-500">Nov 28, 2024</span>
+                <span class="text-sm text-gray-500">•</span>
+                <span class="text-sm text-gray-500">7 min read</span>
+              </div>
+              <h3 class="text-xl font-bold text-gray-900 mb-3">Minimalism vs. Maximalism in Modern Design</h3>
+              <p class="text-gray-600 mb-4">Exploring the balance between simplicity and complexity in contemporary
+                brand design.</p>
+              <a href="#" class="text-emerald-600 hover:text-emerald-800 font-semibold text-sm">Read More →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="space-y-8">
+        <div class="bg-white rounded-2xl p-6 shadow-lg">
+          <h3 class="text-xl font-bold text-gray-900 mb-6">Popular Posts</h3>
+          <div class="space-y-4">
+            <div class="flex items-start space-x-3">
+              <img
+                src="https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=100"
+                alt="Popular Post" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-1">The Complete Guide to Brand Strategy Framework</h4>
+                <p class="text-sm text-gray-600">Dec 15, 2024 • 12 min read</p>
+              </div>
+            </div>
+            <div class="flex items-start space-x-3">
+              <img
+                src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=100"
+                alt="Popular Post" class="w-16 h-16 object-cover rounded-lg flex-shrink-0">
+              <div>
+                <h4 class="font-semibold text-gray-900 mb-1">Creative Process: From Concept to Launch</h4>
+                <p class="text-sm text-gray-600">Dec 10, 2024 • 8 min read</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl p-6 shadow-lg">
+          <h3 class="text-xl font-bold text-gray-900 mb-6">About the Author</h3>
+          <div class="text-center">
+            <img
+              src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=200"
+              alt="Alexandra Rivera" class="w-20 h-20 rounded-full mx-auto mb-4">
+            <h4 class="font-bold text-gray-900 mb-2">Alexandra Rivera</h4>
+            <p class="text-gray-600 text-sm mb-4">Brand Strategist & Creative Director with 8+ years of experience
+              helping businesses build authentic connections.</p>
+            <div class="flex justify-center space-x-4">
+              <a href="#" class="text-emerald-600 hover:text-emerald-800">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                </svg>
+              </a>
+              <a href="#" class="text-emerald-600 hover:text-emerald-800">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div class="md:col-span-2">
+        <div class="flex items-center mb-4">
+          <img src="https://tapsite.ai/favicon-96x96.png" alt="Personal Brand Studio" class="h-8 w-8 rounded-full">
+          <span class="ml-3 text-xl font-bold">Personal Brand Studio</span>
+        </div>
+        <p class="text-gray-300 mb-4">Helping businesses create authentic connections through compelling visual
+          storytelling and strategic design.</p>
+        <p class="text-gray-400 text-sm">© 2024 Personal Brand Studio. All rights reserved.</p>
+      </div>
+      <div>
+        <h3 class="font-bold mb-4">Quick Links</h3>
+        <ul class="space-y-2 text-gray-300">
+          <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
+          <li><a href="/about" class="hover:text-white transition-colors">About</a></li>
+          <li><a href="/blog" class="hover:text-white transition-colors">Blog</a></li>
+          <li><a href="/portfolio" class="hover:text-white transition-colors">Portfolio</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="font-bold mb-4">Categories</h3>
+        <ul class="space-y-2 text-gray-300">
+          <li><a href="/category/brand-strategy" class="hover:text-white transition-colors">Brand Strategy</a></li>
+          <li><a href="/category/creative-direction" class="hover:text-white transition-colors">Creative Direction</a>
+          </li>
+          <li><a href="/category/digital-marketing" class="hover:text-white transition-colors">Digital Marketing</a>
+          </li>
+          <li><a href="/category/personal-growth" class="hover:text-white transition-colors">Personal Growth</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,521 +1,620 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{category_name}} - {{blog_title}}</title>
-    <meta name="description" content="{{category_description}}">
-    <link rel="icon" href="{{blog_logo}}" type="image/png">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '{{color_scheme.primary}}',
-                        secondary: '{{color_scheme.secondary}}',
-                        accent: '{{color_scheme.accent}}',
-                        neutral: '{{color_scheme.neutral}}',
-                        background: '{{color_scheme.background}}',
-                        text: '{{color_scheme.text}}'
-                    }
-                }
-            }
-        }
-    </script>
-</head>
-<body class="bg-background text-text">
-    <!-- Navigation -->
-    <nav class="bg-white/95 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <a href="/" class="flex items-center space-x-3">
-                    <div class="flex-shrink-0">
-                        <img src="https://tapsite.ai/favicon-96x96.png" alt="Personal Brand Studio" class="h-10 w-10 rounded-xl object-cover">
-                    </div>
-                    <span class="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">Personal Brand Studio</span>
-                </a>
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="/" class="text-gray-700 hover:text-emerald-600 font-medium transition-colors">Home</a>
-                    <a href="/about" class="text-gray-700 hover:text-emerald-600 font-medium transition-colors">About</a>
-                    <a href="/blog" class="text-gray-700 hover:text-emerald-600 font-medium transition-colors">Blog</a>
-                    <a href="/portfolio" class="text-gray-700 hover:text-emerald-600 font-medium transition-colors">Portfolio</a>
-                    <a href="/contact" class="text-gray-700 hover:text-emerald-600 font-medium transition-colors">Contact</a>
-                </div>
-                <div class="flex items-center space-x-4">
-                    <div class="relative hidden sm:block">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4">
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <path d="m21 21-4.3-4.3"></path>
-                        </svg>
-                        <input type="text" placeholder="Search articles..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all w-64">
-                    </div>
-                    <!-- Mobile menu button -->
-                    <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors">
-                        <svg id="hamburger-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
-                            <line x1="4" x2="20" y1="6" y2="6"></line>
-                            <line x1="4" x2="20" y1="12" y2="12"></line>
-                            <line x1="4" x2="20" y1="18" y2="18"></line>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-            <!-- Mobile menu -->
-            <div id="mobile-menu" class="md:hidden border-t border-gray-200 py-4 space-y-4 hidden">
-                <div class="relative mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <path d="m21 21-4.3-4.3"></path>
-                    </svg>
-                    <input type="text" placeholder="Search articles..." class="pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all w-full">
-                </div>
-                <a href="/" class="block text-gray-700 hover:text-blue-600 font-medium py-2">Home</a>
-                <a href="/about" class="block text-gray-700 hover:text-blue-600 font-medium py-2">About</a>
-                <a href="/blog" class="block text-gray-700 hover:text-blue-600 font-medium py-2">Blog</a>
-                <a href="/portfolio" class="block text-gray-700 hover:text-blue-600 font-medium py-2">Portfolio</a>
-                <a href="/contact" class="block text-gray-700 hover:text-blue-600 font-medium py-2">Contact</a>
-            </div>
+<nav class="bg-white/95 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      <a href="/" class="flex items-center space-x-3">
+        <div class="flex-shrink-0">
+          <img src="https://tapsite.ai/favicon-96x96.png" alt="Personal Brand Studio"
+            class="h-10 w-10 rounded-xl object-cover">
         </div>
-    </nav>
-
-    <!-- Category Header -->
-    <section class="bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700 text-white py-20">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <nav class="flex justify-center mb-6" aria-label="Breadcrumb">
-                    <ol class="flex items-center space-x-2 text-emerald-200">
-                        <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
-                        <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right">
-                                <path d="m9 18 6-6-6-6"></path>
-                            </svg></li>
-                        <li><a href="/blog" class="hover:text-white transition-colors">Blog</a></li>
-                        <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right">
-                                <path d="m9 18 6-6-6-6"></path>
-                            </svg></li>
-                        <li class="text-white font-medium">Brand Strategy</li>
-                    </ol>
-                </nav>
-                <div class="inline-flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder-open mr-2">
-                        <path d="m6 14 1.45-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5L20 17H4a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h3.93a2 2 0 0 1 1.66.9l.82 1.2a2 2 0 0 0 1.66.9H18a2 2 0 0 1 2 2v2">
-                        </path>
-                    </svg>
-                    <span class="text-sm font-medium">Category</span>
-                </div>
-                <h1 class="text-4xl lg:text-5xl font-bold mb-4">Brand Strategy</h1>
-                <p class="text-xl text-emerald-100 mb-8 max-w-2xl mx-auto">Strategic insights and methodologies for building powerful brands that resonate with your target audience and drive business growth.</p>
-                <div class="flex items-center justify-center space-x-6 text-emerald-200">
-                    <span class="flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text mr-2">
-                            <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
-                            <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
-                            <path d="M10 9H8"></path>
-                            <path d="M16 13H8"></path>
-                            <path d="M16 17v-2a2 2 0 0 0-2-2H8"></path>
-                        </svg>
-                        <span>18</span> Articles
-                    </span>
-                    <span class="flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock mr-2">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <polyline points="12 6 12 12 16 14"></polyline>
-                        </svg>
-                        <span>142</span> min total read
-                    </span>
-                </div>
-            </div>
+        <span
+          class="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">Personal
+          Brand Studio</span>
+      </a>
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="/" class="text-gray-700 hover:text-emerald-600 font-medium transition-colors">Home</a>
+        <a href="/about" class="text-gray-700 hover:text-emerald-600 font-medium transition-colors">About</a>
+        <a href="/blog" class="text-gray-700 hover:text-emerald-600 font-medium transition-colors">Blog</a>
+        <a href="/portfolio" class="text-gray-700 hover:text-emerald-600 font-medium transition-colors">Portfolio</a>
+        <a href="/contact" class="text-gray-700 hover:text-emerald-600 font-medium transition-colors">Contact</a>
+      </div>
+      <div class="flex items-center space-x-4">
+        <div class="relative hidden sm:block">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.3-4.3"></path>
+          </svg>
+          <input type="text" placeholder="Search articles..."
+            class="pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all w-64">
         </div>
-    </section>
+        <!-- Mobile menu button -->
+        <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors">
+          <svg id="hamburger-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="h-6 w-6">
+            <line x1="4" x2="20" y1="6" y2="6"></line>
+            <line x1="4" x2="20" y1="12" y2="12"></line>
+            <line x1="4" x2="20" y1="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="md:hidden border-t border-gray-200 py-4 space-y-4 hidden">
+      <div class="relative mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.3-4.3"></path>
+        </svg>
+        <input type="text" placeholder="Search articles..."
+          class="pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all w-full">
+      </div>
+      <a href="/" class="block text-gray-700 hover:text-blue-600 font-medium py-2">Home</a>
+      <a href="/about" class="block text-gray-700 hover:text-blue-600 font-medium py-2">About</a>
+      <a href="/blog" class="block text-gray-700 hover:text-blue-600 font-medium py-2">Blog</a>
+      <a href="/portfolio" class="block text-gray-700 hover:text-blue-600 font-medium py-2">Portfolio</a>
+      <a href="/contact" class="block text-gray-700 hover:text-blue-600 font-medium py-2">Contact</a>
+    </div>
+  </div>
+</nav>
 
-    <!-- Category Navigation -->
-    <section class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-wrap justify-center gap-4 mb-12">
-                <a href="/category/brand-strategy" class="px-6 py-3 rounded-full font-semibold transition-all transform hover:scale-105 bg-emerald-600 text-white shadow-lg">
-                    Brand Strategy
-                </a>
-                <a href="/category/creative-direction" class="px-6 py-3 rounded-full font-semibold transition-all transform hover:scale-105 bg-gray-100 text-gray-700 hover:bg-gray-200">
-                    Creative Direction
-                </a>
-                <a href="/category/digital-marketing" class="px-6 py-3 rounded-full font-semibold transition-all transform hover:scale-105 bg-gray-100 text-gray-700 hover:bg-gray-200">
-                    Digital Marketing
-                </a>
-                <a href="/category/personal-growth" class="px-6 py-3 rounded-full font-semibold transition-all transform hover:scale-105 bg-gray-100 text-gray-700 hover:bg-gray-200">
-                    Personal Growth
-                </a>
-                <a href="/category/entrepreneurship" class="px-6 py-3 rounded-full font-semibold transition-all transform hover:scale-105 bg-gray-100 text-gray-700 hover:bg-gray-200">
-                    Entrepreneurship
-                </a>
+<!-- Category Header -->
+<section class="bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-700 text-white py-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <nav class="flex justify-center mb-6" aria-label="Breadcrumb">
+        <ol class="flex items-center space-x-2 text-emerald-200">
+          <li><a href="/" class="hover:text-white transition-colors">Home</a></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-chevron-right">
+              <path d="m9 18 6-6-6-6"></path>
+            </svg></li>
+          <li><a href="/blog" class="hover:text-white transition-colors">Blog</a></li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-chevron-right">
+              <path d="m9 18 6-6-6-6"></path>
+            </svg></li>
+          <li class="text-white font-medium">Brand Strategy</li>
+        </ol>
+      </nav>
+      <div class="inline-flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          class="lucide lucide-folder-open mr-2">
+          <path
+            d="m6 14 1.45-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5L20 17H4a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h3.93a2 2 0 0 1 1.66.9l.82 1.2a2 2 0 0 0 1.66.9H18a2 2 0 0 1 2 2v2">
+          </path>
+        </svg>
+        <span class="text-sm font-medium">Category</span>
+      </div>
+      <h1 class="text-4xl lg:text-5xl font-bold mb-4">Brand Strategy</h1>
+      <p class="text-xl text-emerald-100 mb-8 max-w-2xl mx-auto">Strategic insights and methodologies for building
+        powerful brands that resonate with your target audience and drive business growth.</p>
+      <div class="flex items-center justify-center space-x-6 text-emerald-200">
+        <span class="flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-file-text mr-2">
+            <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
+            <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+            <path d="M10 9H8"></path>
+            <path d="M16 13H8"></path>
+            <path d="M16 17v-2a2 2 0 0 0-2-2H8"></path>
+          </svg>
+          <span>18</span> Articles
+        </span>
+        <span class="flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-clock mr-2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <span>142</span> min total read
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Category Navigation -->
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-wrap justify-center gap-4 mb-12">
+      <a href="/category/brand-strategy"
+        class="px-6 py-3 rounded-full font-semibold transition-all transform hover:scale-105 bg-emerald-600 text-white shadow-lg">
+        Brand Strategy
+      </a>
+      <a href="/category/creative-direction"
+        class="px-6 py-3 rounded-full font-semibold transition-all transform hover:scale-105 bg-gray-100 text-gray-700 hover:bg-gray-200">
+        Creative Direction
+      </a>
+      <a href="/category/digital-marketing"
+        class="px-6 py-3 rounded-full font-semibold transition-all transform hover:scale-105 bg-gray-100 text-gray-700 hover:bg-gray-200">
+        Digital Marketing
+      </a>
+      <a href="/category/personal-growth"
+        class="px-6 py-3 rounded-full font-semibold transition-all transform hover:scale-105 bg-gray-100 text-gray-700 hover:bg-gray-200">
+        Personal Growth
+      </a>
+      <a href="/category/entrepreneurship"
+        class="px-6 py-3 rounded-full font-semibold transition-all transform hover:scale-105 bg-gray-100 text-gray-700 hover:bg-gray-200">
+        Entrepreneurship
+      </a>
+    </div>
+
+    <!-- Articles Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Article 1 -->
+      <article
+        class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 overflow-hidden border border-gray-100">
+        <div class="relative overflow-hidden">
+          <a href="/post/complete-brand-strategy-framework" class="relative">
+            <img
+              src="https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=400"
+              alt="Complete Brand Strategy Framework" class="w-full h-48 object-cover">
+          </a>
+          <div class="absolute top-4 right-4">
+            <div class="flex flex-wrap gap-1">
+              <a href="/tag/strategy"
+                class="bg-black/20 backdrop-blur-sm text-white px-2 py-1 rounded-full text-xs font-medium">#strategy</a>
+              <a href="/tag/branding"
+                class="bg-black/20 backdrop-blur-sm text-white px-2 py-1 rounded-full text-xs font-medium">#branding</a>
             </div>
-
-            <!-- Articles Grid -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Article 1 -->
-                <article class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 overflow-hidden border border-gray-100">
-                    <div class="relative overflow-hidden">
-                        <a href="/post/complete-brand-strategy-framework" class="relative">
-                            <img src="https://images.pexels.com/photos/3184339/pexels-photo-3184339.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Complete Brand Strategy Framework" class="w-full h-48 object-cover">
-                        </a>
-                        <div class="absolute top-4 right-4">
-                            <div class="flex flex-wrap gap-1">
-                                <a href="/tag/strategy" class="bg-black/20 backdrop-blur-sm text-white px-2 py-1 rounded-full text-xs font-medium">#strategy</a>
-                                <a href="/tag/branding" class="bg-black/20 backdrop-blur-sm text-white px-2 py-1 rounded-full text-xs font-medium">#branding</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <a href="/post/complete-brand-strategy-framework" class="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-blue-600 transition-colors">
-                            The Complete Guide to Brand Strategy Framework
-                        </a>
-                        <p class="text-gray-600 mb-4 leading-relaxed line-clamp-3">A comprehensive framework for developing brand strategies that drive business growth and create lasting customer connections.</p>
-                        <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
-                            <div class="flex items-center space-x-4">
-                                <span class="flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user h-4 w-4 mr-1">
-                                        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                                        <circle cx="12" cy="7" r="4"></circle>
-                                    </svg>
-                                    Alexandra Rivera
-                                </span>
-                            </div>
-                        </div>
-                        <span class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock h-4 w-4 mr-1">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <polyline points="12 6 12 12 16 14"></polyline>
-                            </svg>
-                            12 min read
-                        </span>
-                    </div>
-                    <a href="/post/complete-brand-strategy-framework" class="inline-flex items-center text-emerald-600 font-semibold hover:text-emerald-700 transition-colors">
-                        Read More
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right ml-1 h-4 w-4">
-                            <path d="m9 18 6-6-6-6"></path>
-                        </svg>
-                    </a>
-                </article>
-
-                <!-- Article 2 -->
-                <article class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 overflow-hidden border border-gray-100">
-                    <div class="relative overflow-hidden">
-                        <a href="/post/brand-positioning-market-space" class="relative">
-                            <img src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Brand Positioning" class="w-full h-48 object-cover">
-                        </a>
-                        <div class="absolute top-4 right-4">
-                            <div class="flex flex-wrap gap-1">
-                                <a href="/tag/positioning" class="bg-black/20 backdrop-blur-sm text-white px-2 py-1 rounded-full text-xs font-medium">#positioning</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <a href="/post/brand-positioning-market-space" class="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-blue-600 transition-colors">
-                            Brand Positioning: Finding Your Unique Market Space
-                        </a>
-                        <p class="text-gray-600 mb-4 leading-relaxed line-clamp-3">Learn how to identify and establish a unique position in your market that resonates with your target audience and differentiates you from competitors.</p>
-                        <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
-                            <div class="flex items-center space-x-4">
-                                <span class="flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user h-4 w-4 mr-1">
-                                        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                                        <circle cx="12" cy="7" r="4"></circle>
-                                    </svg>
-                                    Alexandra Rivera
-                                </span>
-                            </div>
-                        </div>
-                        <span class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock h-4 w-4 mr-1">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <polyline points="12 6 12 12 16 14"></polyline>
-                            </svg>
-                            8 min read
-                        </span>
-                    </div>
-                    <a href="/post/brand-positioning-market-space" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors">
-                        Read More
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right ml-1 h-4 w-4">
-                            <path d="m9 18 6-6-6-6"></path>
-                        </svg>
-                    </a>
-                </article>
-
-                <!-- Article 3 -->
-                <article class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 overflow-hidden border border-gray-100">
-                    <div class="relative overflow-hidden">
-                        <a href="/post/brand-identity-visual-system" class="relative">
-                            <img src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Brand Identity" class="w-full h-48 object-cover">
-                        </a>
-                        <div class="absolute top-4 right-4">
-                            <div class="flex flex-wrap gap-1">
-                                <a href="/tag/identity" class="bg-black/20 backdrop-blur-sm text-white px-2 py-1 rounded-full text-xs font-medium">#identity</a>
-                                <a href="/tag/design" class="bg-black/20 backdrop-blur-sm text-white px-2 py-1 rounded-full text-xs font-medium">#design</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <a href="/post/brand-identity-visual-system" class="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-blue-600 transition-colors">
-                            Building a Cohesive Brand Identity System
-                        </a>
-                        <p class="text-gray-600 mb-4 leading-relaxed line-clamp-3">Creating visual consistency across all touchpoints through strategic design systems that reinforce your brand values and messaging.</p>
-                        <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
-                            <div class="flex items-center space-x-4">
-                                <span class="flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user h-4 w-4 mr-1">
-                                        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                                        <circle cx="12" cy="7" r="4"></circle>
-                                    </svg>
-                                    Alexandra Rivera
-                                </span>
-                            </div>
-                        </div>
-                        <span class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock h-4 w-4 mr-1">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <polyline points="12 6 12 12 16 14"></polyline>
-                            </svg>
-                            10 min read
-                        </span>
-                    </div>
-                    <a href="/post/brand-identity-visual-system" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors">
-                        Read More
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right ml-1 h-4 w-4">
-                            <path d="m9 18 6-6-6-6"></path>
-                        </svg>
-                    </a>
-                </article>
-
-                <!-- Article 4 -->
-                <article class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 overflow-hidden border border-gray-100">
-                    <div class="relative overflow-hidden">
-                        <a href="/post/brand-storytelling-emotional-connection" class="relative">
-                            <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Brand Storytelling" class="w-full h-48 object-cover">
-                        </a>
-                        <div class="absolute top-4 right-4">
-                            <div class="flex flex-wrap gap-1">
-                                <a href="/tag/storytelling" class="bg-black/20 backdrop-blur-sm text-white px-2 py-1 rounded-full text-xs font-medium">#storytelling</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <a href="/post/brand-storytelling-emotional-connection" class="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-blue-600 transition-colors">
-                            The Power of Brand Storytelling in Building Emotional Connections
-                        </a>
-                        <p class="text-gray-600 mb-4 leading-relaxed line-clamp-3">Discover how authentic storytelling can transform your brand from a product into a meaningful experience that resonates with your audience.</p>
-                        <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
-                            <div class="flex items-center space-x-4">
-                                <span class="flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user h-4 w-4 mr-1">
-                                        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                                        <circle cx="12" cy="7" r="4"></circle>
-                                    </svg>
-                                    Alexandra Rivera
-                                </span>
-                            </div>
-                        </div>
-                        <span class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock h-4 w-4 mr-1">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <polyline points="12 6 12 12 16 14"></polyline>
-                            </svg>
-                            9 min read
-                        </span>
-                    </div>
-                    <a href="/post/brand-storytelling-emotional-connection" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors">
-                        Read More
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right ml-1 h-4 w-4">
-                            <path d="m9 18 6-6-6-6"></path>
-                        </svg>
-                    </a>
-                </article>
-
-                <!-- Article 5 -->
-                <article class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 overflow-hidden border border-gray-100">
-                    <div class="relative overflow-hidden">
-                        <a href="/post/brand-voice-tone-consistency" class="relative">
-                            <img src="https://images.pexels.com/photos/3184394/pexels-photo-3184394.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Brand Voice" class="w-full h-48 object-cover">
-                        </a>
-                        <div class="absolute top-4 right-4">
-                            <div class="flex flex-wrap gap-1">
-                                <a href="/tag/voice" class="bg-black/20 backdrop-blur-sm text-white px-2 py-1 rounded-full text-xs font-medium">#voice</a>
-                                <a href="/tag/communication" class="bg-black/20 backdrop-blur-sm text-white px-2 py-1 rounded-full text-xs font-medium">#communication</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <a href="/post/brand-voice-tone-consistency" class="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-blue-600 transition-colors">
-                            Developing Your Brand Voice and Tone for Consistent Communication
-                        </a>
-                        <p class="text-gray-600 mb-4 leading-relaxed line-clamp-3">Learn how to create a distinctive brand voice that maintains consistency across all communication channels and platforms.</p>
-                        <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
-                            <div class="flex items-center space-x-4">
-                                <span class="flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user h-4 w-4 mr-1">
-                                        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                                        <circle cx="12" cy="7" r="4"></circle>
-                                    </svg>
-                                    Alexandra Rivera
-                                </span>
-                            </div>
-                        </div>
-                        <span class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock h-4 w-4 mr-1">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <polyline points="12 6 12 12 16 14"></polyline>
-                            </svg>
-                            7 min read
-                        </span>
-                    </div>
-                    <a href="/post/brand-voice-tone-consistency" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors">
-                        Read More
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right ml-1 h-4 w-4">
-                            <path d="m9 18 6-6-6-6"></path>
-                        </svg>
-                    </a>
-                </article>
-
-                <!-- Article 6 -->
-                <article class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 overflow-hidden border border-gray-100">
-                    <div class="relative overflow-hidden">
-                        <a href="/post/brand-audit-comprehensive-analysis" class="relative">
-                            <img src="https://images.pexels.com/photos/3184416/pexels-photo-3184416.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Brand Audit" class="w-full h-48 object-cover">
-                        </a>
-                        <div class="absolute top-4 right-4">
-                            <div class="flex flex-wrap gap-1">
-                                <a href="/tag/audit" class="bg-black/20 backdrop-blur-sm text-white px-2 py-1 rounded-full text-xs font-medium">#audit</a>
-                                <a href="/tag/analysis" class="bg-black/20 backdrop-blur-sm text-white px-2 py-1 rounded-full text-xs font-medium">#analysis</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <a href="/post/brand-audit-comprehensive-analysis" class="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-blue-600 transition-colors">
-                            Conducting a Comprehensive Brand Audit: A Step-by-Step Guide
-                        </a>
-                        <p class="text-gray-600 mb-4 leading-relaxed line-clamp-3">Master the art of brand auditing with this comprehensive guide that covers everything from competitor analysis to brand perception assessment.</p>
-                        <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
-                            <div class="flex items-center space-x-4">
-                                <span class="flex items-center">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user h-4 w-4 mr-1">
-                                        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                                        <circle cx="12" cy="7" r="4"></circle>
-                                    </svg>
-                                    Alexandra Rivera
-                                </span>
-                            </div>
-                        </div>
-                        <span class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock h-4 w-4 mr-1">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <polyline points="12 6 12 12 16 14"></polyline>
-                            </svg>
-                            15 min read
-                        </span>
-                    </div>
-                    <a href="/post/brand-audit-comprehensive-analysis" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors">
-                        Read More
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right ml-1 h-4 w-4">
-                            <path d="m9 18 6-6-6-6"></path>
-                        </svg>
-                    </a>
-                </article>
-            </div>
-
-            <!-- Load More Button -->
-            <div class="text-center mt-12">
-                <button class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors">
-                    Load More Articles
-                </button>
-            </div>
+          </div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="lg:col-span-2">
-                    <div class="flex items-center space-x-3 mb-6">
-                        <div class="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-xl">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user h-6 w-6 text-white">
-                                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="12" cy="7" r="4"></circle>
-                            </svg>
-                        </div>
-                        <span class="text-2xl font-bold">Personal Brand Studio</span>
-                    </div>
-                    <p class="text-gray-400 mb-6 leading-relaxed max-w-md">
-                        Empowering creative professionals to build authentic personal brands that drive business success and meaningful connections.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="bg-gray-800 p-3 rounded-full hover:bg-blue-600 transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-facebook h-5 w-5">
-                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
-                            </svg>
-                        </a>
-                        <a href="#" class="bg-gray-800 p-3 rounded-full hover:bg-blue-600 transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-twitter h-5 w-5">
-                                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
-                            </svg>
-                        </a>
-                        <a href="#" class="bg-gray-800 p-3 rounded-full hover:bg-blue-600 transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram h-5 w-5">
-                                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
-                            </svg>
-                        </a>
-                        <a href="#" class="bg-gray-800 p-3 rounded-full hover:bg-blue-600 transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin h-5 w-5">
-                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                                <rect width="4" height="12" x="2" y="9"></rect>
-                                <circle cx="4" cy="4" r="2"></circle>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold mb-6">Quick Links</h3>
-                    <ul class="space-y-3">
-                        <li><a href="/" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
-                        <li><a href="/about" class="text-gray-400 hover:text-white transition-colors">About</a></li>
-                        <li><a href="/blog" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
-                        <li><a href="/portfolio" class="text-gray-400 hover:text-white transition-colors">Portfolio</a></li>
-                        <li><a href="/contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold mb-6">Categories</h3>
-                    <ul class="space-y-3">
-                        <li><a href="/category/brand-strategy" class="text-gray-400 hover:text-white transition-colors">Brand Strategy</a></li>
-                        <li><a href="/category/creative-direction" class="text-gray-400 hover:text-white transition-colors">Creative Direction</a></li>
-                        <li><a href="/category/digital-marketing" class="text-gray-400 hover:text-white transition-colors">Digital Marketing</a></li>
-                        <li><a href="/category/personal-growth" class="text-gray-400 hover:text-white transition-colors">Personal Growth</a></li>
-                        <li><a href="/category/entrepreneurship" class="text-gray-400 hover:text-white transition-colors">Entrepreneurship</a></li>
-                    </ul>
-                </div>
+        <div class="p-6">
+          <a href="/post/complete-brand-strategy-framework"
+            class="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-blue-600 transition-colors">
+            The Complete Guide to Brand Strategy Framework
+          </a>
+          <p class="text-gray-600 mb-4 leading-relaxed line-clamp-3">A comprehensive framework for developing brand
+            strategies that drive business growth and create lasting customer connections.</p>
+          <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+            <div class="flex items-center space-x-4">
+              <span class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-user h-4 w-4 mr-1">
+                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                Alexandra Rivera
+              </span>
             </div>
+          </div>
+          <span class="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-clock h-4 w-4 mr-1">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            12 min read
+          </span>
         </div>
-        <div class="border-t border-gray-800">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-                <div class="flex flex-col md:flex-row justify-between items-center">
-                    <p class="text-gray-400 text-sm">© 2024 Personal Brand Studio. All rights reserved.</p>
-                    <p class="text-gray-400 text-sm mt-2 md:mt-0">Built with passion for personal branding excellence</p>
-                </div>
+        <a href="/post/complete-brand-strategy-framework"
+          class="inline-flex items-center text-emerald-600 font-semibold hover:text-emerald-700 transition-colors">
+          Read More
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-chevron-right ml-1 h-4 w-4">
+            <path d="m9 18 6-6-6-6"></path>
+          </svg>
+        </a>
+      </article>
+
+      <!-- Article 2 -->
+      <article
+        class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 overflow-hidden border border-gray-100">
+        <div class="relative overflow-hidden">
+          <a href="/post/brand-positioning-market-space" class="relative">
+            <img
+              src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=400"
+              alt="Brand Positioning" class="w-full h-48 object-cover">
+          </a>
+          <div class="absolute top-4 right-4">
+            <div class="flex flex-wrap gap-1">
+              <a href="/tag/positioning"
+                class="bg-black/20 backdrop-blur-sm text-white px-2 py-1 rounded-full text-xs font-medium">#positioning</a>
             </div>
+          </div>
         </div>
-    </footer>
+        <div class="p-6">
+          <a href="/post/brand-positioning-market-space"
+            class="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-blue-600 transition-colors">
+            Brand Positioning: Finding Your Unique Market Space
+          </a>
+          <p class="text-gray-600 mb-4 leading-relaxed line-clamp-3">Learn how to identify and establish a unique
+            position in your market that resonates with your target audience and differentiates you from competitors.
+          </p>
+          <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+            <div class="flex items-center space-x-4">
+              <span class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-user h-4 w-4 mr-1">
+                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                Alexandra Rivera
+              </span>
+            </div>
+          </div>
+          <span class="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-clock h-4 w-4 mr-1">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            8 min read
+          </span>
+        </div>
+        <a href="/post/brand-positioning-market-space"
+          class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+          Read More
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-chevron-right ml-1 h-4 w-4">
+            <path d="m9 18 6-6-6-6"></path>
+          </svg>
+        </a>
+      </article>
 
-    <script>
-        // Mobile menu toggle
-        document.addEventListener('DOMContentLoaded', function () {
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const hamburgerIcon = document.getElementById('hamburger-icon');
+      <!-- Article 3 -->
+      <article
+        class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 overflow-hidden border border-gray-100">
+        <div class="relative overflow-hidden">
+          <a href="/post/brand-identity-visual-system" class="relative">
+            <img
+              src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=400"
+              alt="Brand Identity" class="w-full h-48 object-cover">
+          </a>
+          <div class="absolute top-4 right-4">
+            <div class="flex flex-wrap gap-1">
+              <a href="/tag/identity"
+                class="bg-black/20 backdrop-blur-sm text-white px-2 py-1 rounded-full text-xs font-medium">#identity</a>
+              <a href="/tag/design"
+                class="bg-black/20 backdrop-blur-sm text-white px-2 py-1 rounded-full text-xs font-medium">#design</a>
+            </div>
+          </div>
+        </div>
+        <div class="p-6">
+          <a href="/post/brand-identity-visual-system"
+            class="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-blue-600 transition-colors">
+            Building a Cohesive Brand Identity System
+          </a>
+          <p class="text-gray-600 mb-4 leading-relaxed line-clamp-3">Creating visual consistency across all touchpoints
+            through strategic design systems that reinforce your brand values and messaging.</p>
+          <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+            <div class="flex items-center space-x-4">
+              <span class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-user h-4 w-4 mr-1">
+                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                Alexandra Rivera
+              </span>
+            </div>
+          </div>
+          <span class="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-clock h-4 w-4 mr-1">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            10 min read
+          </span>
+        </div>
+        <a href="/post/brand-identity-visual-system"
+          class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+          Read More
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-chevron-right ml-1 h-4 w-4">
+            <path d="m9 18 6-6-6-6"></path>
+          </svg>
+        </a>
+      </article>
 
-            mobileMenuButton.addEventListener('click', function () {
-                mobileMenu.classList.toggle('hidden');
-                hamburgerIcon.classList.toggle('rotate-90');
-            });
-        });
-    </script>
-</body>
-</html> 
+      <!-- Article 4 -->
+      <article
+        class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 overflow-hidden border border-gray-100">
+        <div class="relative overflow-hidden">
+          <a href="/post/brand-storytelling-emotional-connection" class="relative">
+            <img
+              src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=400"
+              alt="Brand Storytelling" class="w-full h-48 object-cover">
+          </a>
+          <div class="absolute top-4 right-4">
+            <div class="flex flex-wrap gap-1">
+              <a href="/tag/storytelling"
+                class="bg-black/20 backdrop-blur-sm text-white px-2 py-1 rounded-full text-xs font-medium">#storytelling</a>
+            </div>
+          </div>
+        </div>
+        <div class="p-6">
+          <a href="/post/brand-storytelling-emotional-connection"
+            class="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-blue-600 transition-colors">
+            The Power of Brand Storytelling in Building Emotional Connections
+          </a>
+          <p class="text-gray-600 mb-4 leading-relaxed line-clamp-3">Discover how authentic storytelling can transform
+            your brand from a product into a meaningful experience that resonates with your audience.</p>
+          <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+            <div class="flex items-center space-x-4">
+              <span class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-user h-4 w-4 mr-1">
+                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                Alexandra Rivera
+              </span>
+            </div>
+          </div>
+          <span class="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-clock h-4 w-4 mr-1">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            9 min read
+          </span>
+        </div>
+        <a href="/post/brand-storytelling-emotional-connection"
+          class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+          Read More
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-chevron-right ml-1 h-4 w-4">
+            <path d="m9 18 6-6-6-6"></path>
+          </svg>
+        </a>
+      </article>
+
+      <!-- Article 5 -->
+      <article
+        class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 overflow-hidden border border-gray-100">
+        <div class="relative overflow-hidden">
+          <a href="/post/brand-voice-tone-consistency" class="relative">
+            <img
+              src="https://images.pexels.com/photos/3184394/pexels-photo-3184394.jpeg?auto=compress&cs=tinysrgb&w=400"
+              alt="Brand Voice" class="w-full h-48 object-cover">
+          </a>
+          <div class="absolute top-4 right-4">
+            <div class="flex flex-wrap gap-1">
+              <a href="/tag/voice"
+                class="bg-black/20 backdrop-blur-sm text-white px-2 py-1 rounded-full text-xs font-medium">#voice</a>
+              <a href="/tag/communication"
+                class="bg-black/20 backdrop-blur-sm text-white px-2 py-1 rounded-full text-xs font-medium">#communication</a>
+            </div>
+          </div>
+        </div>
+        <div class="p-6">
+          <a href="/post/brand-voice-tone-consistency"
+            class="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-blue-600 transition-colors">
+            Developing Your Brand Voice and Tone for Consistent Communication
+          </a>
+          <p class="text-gray-600 mb-4 leading-relaxed line-clamp-3">Learn how to create a distinctive brand voice that
+            maintains consistency across all communication channels and platforms.</p>
+          <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+            <div class="flex items-center space-x-4">
+              <span class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-user h-4 w-4 mr-1">
+                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                Alexandra Rivera
+              </span>
+            </div>
+          </div>
+          <span class="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-clock h-4 w-4 mr-1">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            7 min read
+          </span>
+        </div>
+        <a href="/post/brand-voice-tone-consistency"
+          class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+          Read More
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-chevron-right ml-1 h-4 w-4">
+            <path d="m9 18 6-6-6-6"></path>
+          </svg>
+        </a>
+      </article>
+
+      <!-- Article 6 -->
+      <article
+        class="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 overflow-hidden border border-gray-100">
+        <div class="relative overflow-hidden">
+          <a href="/post/brand-audit-comprehensive-analysis" class="relative">
+            <img
+              src="https://images.pexels.com/photos/3184416/pexels-photo-3184416.jpeg?auto=compress&cs=tinysrgb&w=400"
+              alt="Brand Audit" class="w-full h-48 object-cover">
+          </a>
+          <div class="absolute top-4 right-4">
+            <div class="flex flex-wrap gap-1">
+              <a href="/tag/audit"
+                class="bg-black/20 backdrop-blur-sm text-white px-2 py-1 rounded-full text-xs font-medium">#audit</a>
+              <a href="/tag/analysis"
+                class="bg-black/20 backdrop-blur-sm text-white px-2 py-1 rounded-full text-xs font-medium">#analysis</a>
+            </div>
+          </div>
+        </div>
+        <div class="p-6">
+          <a href="/post/brand-audit-comprehensive-analysis"
+            class="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-blue-600 transition-colors">
+            Conducting a Comprehensive Brand Audit: A Step-by-Step Guide
+          </a>
+          <p class="text-gray-600 mb-4 leading-relaxed line-clamp-3">Master the art of brand auditing with this
+            comprehensive guide that covers everything from competitor analysis to brand perception assessment.</p>
+          <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+            <div class="flex items-center space-x-4">
+              <span class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-user h-4 w-4 mr-1">
+                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                Alexandra Rivera
+              </span>
+            </div>
+          </div>
+          <span class="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-clock h-4 w-4 mr-1">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            15 min read
+          </span>
+        </div>
+        <a href="/post/brand-audit-comprehensive-analysis"
+          class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+          Read More
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-chevron-right ml-1 h-4 w-4">
+            <path d="m9 18 6-6-6-6"></path>
+          </svg>
+        </a>
+      </article>
+    </div>
+
+    <!-- Load More Button -->
+    <div class="text-center mt-12">
+      <button class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors">
+        Load More Articles
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="lg:col-span-2">
+        <div class="flex items-center space-x-3 mb-6">
+          <div class="bg-gradient-to-r from-blue-600 to-purple-600 p-2 rounded-xl">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-user h-6 w-6 text-white">
+              <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </div>
+          <span class="text-2xl font-bold">Personal Brand Studio</span>
+        </div>
+        <p class="text-gray-400 mb-6 leading-relaxed max-w-md">
+          Empowering creative professionals to build authentic personal brands that drive business success and
+          meaningful connections.
+        </p>
+        <div class="flex space-x-4">
+          <a href="#" class="bg-gray-800 p-3 rounded-full hover:bg-blue-600 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-facebook h-5 w-5">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </svg>
+          </a>
+          <a href="#" class="bg-gray-800 p-3 rounded-full hover:bg-blue-600 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-twitter h-5 w-5">
+              <path
+                d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z">
+              </path>
+            </svg>
+          </a>
+          <a href="#" class="bg-gray-800 p-3 rounded-full hover:bg-blue-600 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-instagram h-5 w-5">
+              <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="#" class="bg-gray-800 p-3 rounded-full hover:bg-blue-600 transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-linkedin h-5 w-5">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect width="4" height="12" x="2" y="9"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-6">Quick Links</h3>
+        <ul class="space-y-3">
+          <li><a href="/" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+          <li><a href="/about" class="text-gray-400 hover:text-white transition-colors">About</a></li>
+          <li><a href="/blog" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+          <li><a href="/portfolio" class="text-gray-400 hover:text-white transition-colors">Portfolio</a></li>
+          <li><a href="/contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold mb-6">Categories</h3>
+        <ul class="space-y-3">
+          <li><a href="/category/brand-strategy" class="text-gray-400 hover:text-white transition-colors">Brand
+              Strategy</a></li>
+          <li><a href="/category/creative-direction" class="text-gray-400 hover:text-white transition-colors">Creative
+              Direction</a></li>
+          <li><a href="/category/digital-marketing" class="text-gray-400 hover:text-white transition-colors">Digital
+              Marketing</a></li>
+          <li><a href="/category/personal-growth" class="text-gray-400 hover:text-white transition-colors">Personal
+              Growth</a></li>
+          <li><a href="/category/entrepreneurship"
+              class="text-gray-400 hover:text-white transition-colors">Entrepreneurship</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <p class="text-gray-400 text-sm">© 2024 Personal Brand Studio. All rights reserved.</p>
+        <p class="text-gray-400 text-sm mt-2 md:mt-0">Built with passion for personal branding excellence</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  document.addEventListener('DOMContentLoaded', function () {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+
+    mobileMenuButton.addEventListener('click', function () {
+      mobileMenu.classList.toggle('hidden');
+      hamburgerIcon.classList.toggle('rotate-90');
+    });
+  });
+</script>

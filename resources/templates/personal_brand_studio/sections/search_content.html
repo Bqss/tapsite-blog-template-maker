@@ -1,0 +1,108 @@
+<!-- Search Header -->
+<section class="pt-24 pb-16 bg-gradient-to-br from-emerald-600/10 to-teal-600/10">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h1 id="search-title" class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Search Blog</h1>
+    <p class="text-xl text-gray-600 mb-8">Find articles, insights, and resources on brand strategy and creative
+      direction</p>
+
+    <!-- Main Search -->
+    <div class="relative max-w-2xl mx-auto">
+      <input id="search-input" type="text" placeholder="Search for articles, topics, or keywords..."
+        class="w-full px-6 py-4 text-lg border border-gray-300 rounded-2xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent shadow-lg">
+      <button id="search-btn"
+        class="absolute right-2 top-2 bg-emerald-600 text-white p-3 rounded-xl hover:bg-emerald-700 transition-colors">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Search Filters -->
+<section class="py-8 bg-white border-b border-gray-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row gap-6 items-center justify-between">
+      <div id="category-filters" class="flex flex-wrap gap-3">
+        <span class="text-sm text-gray-500 font-medium">Filter by:</span>
+        <!-- chips injected -->
+      </div>
+      <div class="flex items-center space-x-4">
+        <span class="text-sm text-gray-500">Sort by:</span>
+        <select class="border border-gray-300 rounded-lg px-4 py-2 text-sm">
+          <option>Most Relevant</option>
+          <option>Latest First</option>
+          <option>Oldest First</option>
+          <option>Most Popular</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Search Results -->
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="mb-8">
+      <h2 id="results-heading" class="text-2xl font-bold text-gray-900 mb-2">Search Results</h2>
+      <p id="results-count" class="text-gray-600">Found 0 articles</p>
+    </div>
+
+    <!-- Dynamic Results -->
+    <div id="results-loading" class="flex justify-center py-12"><div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-emerald-600"></div></div>
+    <div id="results-error" class="text-center py-12 hidden"><p class="text-gray-600">Failed to load results.</p></div>
+    <div id="results-empty" class="text-center py-12 hidden"><p class="text-gray-600">No results found.</p></div>
+    <div id="results-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 hidden"></div>
+
+    <div id="pagination-container" class="flex justify-center mt-12 hidden"></div>
+
+    <script>
+    (function(){
+      const LIMIT=6;let currentPage=1,totalPages=1,totalPosts=0;
+      const urlParams=new URLSearchParams(window.location.search);let query=urlParams.get('q');const categoryParam=urlParams.get('category');if(!query){const parts=window.location.pathname.split('/');query=decodeURIComponent(parts[parts.length-1]||'');}
+
+      const inputEl=document.getElementById('search-input');const btnEl=document.getElementById('search-btn');inputEl.value=query;
+
+      const loading=document.getElementById('results-loading');const error=document.getElementById('results-error');const empty=document.getElementById('results-empty');const grid=document.getElementById('results-grid');const pag=document.getElementById('pagination-container');
+      document.getElementById('search-title').textContent=`Search: ${query}`;
+      const headingEl=document.getElementById('results-heading');const countEl=document.getElementById('results-count');
+
+      const fallbackImg="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23f3f4f6'/%3E%3Ctext x='200' y='100' text-anchor='middle' dy='0.3em' font-family='Arial' font-size='16' fill='%23374151'%3ENo Image%3C/text%3E%3C/svg%3E";
+
+      function card(p){const img=p.featured_image||fallbackImg;return `<article class=\"bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100\"><div class=\"relative h-48\"><a href=\"/post/${p.slug}\"><img src=\"${img}\" alt=\"${p.title}\" class=\"w-full h-full object-cover\"></a><div class=\"absolute top-4 left-4\"><span class=\"bg-emerald-600 text-white px-3 py-1 rounded-full text-xs font-semibold\">${(p.category||'').substring(0,20)}</span></div></div><div class=\"p-6\"><div class=\"flex items-center space-x-4 mb-3 text-sm text-gray-500\"><span>${p.created_at?new Date(p.created_at).toLocaleDateString():''}</span><span>•</span><span>${p.read_time||5} min read</span></div><a href=\"/post/${p.slug}\" class=\"text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-emerald-600 transition-colors block line-clamp-2\">${p.title}</a><p class=\"text-gray-600 mb-4 leading-relaxed line-clamp-3\">${p.excerpt||''}</p><div class=\"flex items-center justify-between\"><div class=\"flex items-center space-x-2\"><img src=\"${p.author_avatar||'https://ui-avatars.com/api/?name='+encodeURIComponent(p.author||'A')}&size=100\" alt=\"${p.author||''}\" class=\"w-8 h-8 rounded-full\"><span class=\"text-sm font-medium text-gray-900\">${p.author||''}</span></div><a href=\"/post/${p.slug}\" class=\"text-emerald-600 hover:text-emerald-800 font-semibold text-sm\">Read More →</a></div></div></article>`;}
+
+      function renderPagination(){if(totalPages<=1){pag.classList.add('hidden');return;}let html=`<button ${currentPage===1?'disabled':''} data-page='prev' class='px-4 py-2 text-gray-500 hover:text-emerald-600 disabled:opacity-40'>&laquo;</button>`;for(let i=1;i<=totalPages;i++){html+=`<button data-page='${i}' class='px-4 py-2 ${i===currentPage?'bg-emerald-600 text-white':'text-gray-500 hover:text-emerald-600'} rounded-lg'>${i}</button>`;}html+=`<button ${currentPage===totalPages?'disabled':''} data-page='next' class='px-4 py-2 text-gray-500 hover:text-emerald-600 disabled:opacity-40'>&raquo;</button>`;pag.innerHTML=html;pag.classList.remove('hidden');pag.querySelectorAll('button').forEach(b=>b.addEventListener('click',e=>{const v=e.currentTarget.dataset.page;if(v==='prev')load(currentPage-1);else if(v==='next')load(currentPage+1);else load(parseInt(v));}));}
+
+      async function load(page=1){currentPage=page;loading.classList.remove('hidden');error.classList.add('hidden');empty.classList.add('hidden');grid.classList.add('hidden');try{let apiUrl=`/api/blog/posts/search/${encodeURIComponent(query)}?limit=${LIMIT}&page=${page}`;if(categoryParam)apiUrl+=`&category=${encodeURIComponent(categoryParam)}`;const res=await fetch(apiUrl);if(!res.ok)throw new Error();let data=await res.json();if(Array.isArray(data)){data={posts:data,pagination:{current_page:1,total_pages:1,total_posts:data.length}};}const posts=data.posts||[];totalPages=data.pagination.total_pages;totalPosts=data.pagination.total_posts;headingEl.textContent=`Search Results for \"${query}\"`;countEl.textContent=`Found ${totalPosts} articles`;if(!posts.length){empty.classList.remove('hidden');renderPagination();return;}grid.innerHTML=posts.map(card).join('');grid.classList.remove('hidden');renderPagination();}catch(err){console.error('search load error',err);error.classList.remove('hidden');}finally{loading.classList.add('hidden');}}
+
+      btnEl.addEventListener('click',()=>{const q=inputEl.value.trim();if(q)window.location.href=`/search?q=${encodeURIComponent(q)}`;});
+      inputEl.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();btnEl.click();}});
+
+      document.addEventListener('DOMContentLoaded',()=>{if(query)load(1);});
+
+      /* Load categories for filters */
+      (async function(){const container=document.getElementById('category-filters');if(!container)return;try{const res=await fetch('/api/blog/categories');if(!res.ok)throw new Error();const cats=await res.json();render(cats);}catch(e){console.error('cat filters error',e);render([]);}function render(cats){const make=(label)=>{const btn=document.createElement('button');btn.textContent=label;btn.className='bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-200 transition-colors';if(label=== (categoryParam||'All'))btn.className='bg-emerald-600 text-white px-4 py-2 rounded-full text-sm font-medium';btn.onclick=()=>{const params=new URLSearchParams(window.location.search);if(label==='All'){params.delete('category');}else{params.set('category',label);}window.location.search=params.toString();};return btn;};container.querySelectorAll('[data-chip]')?.forEach(n=>n.remove());container.appendChild(make('All'));cats.forEach(c=>{const name=c.name||c.category||'Unknown';container.appendChild(make(name));});}}
+      )();
+    })();
+    </script>
+  </div>
+</section>
+
+<!-- Newsletter Signup -->
+<section class="py-16 bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 class="text-3xl font-bold mb-4">Stay Updated</h2>
+    <p class="text-xl text-emerald-100 mb-8 max-w-2xl mx-auto">
+      Get notified when I publish new articles about brand strategy and creative direction.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+      <input type="email" placeholder="Enter your email"
+        class="flex-1 px-6 py-3 rounded-full text-gray-900 focus:outline-none focus:ring-2 focus:ring-white/50">
+      <button
+        class="bg-white text-emerald-600 px-8 py-3 rounded-full font-semibold hover:bg-emerald-50 transition-colors">
+        Subscribe
+      </button>
+    </div>
+  </div>
+</section>
