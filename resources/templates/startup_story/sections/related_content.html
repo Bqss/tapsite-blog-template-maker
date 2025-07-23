@@ -1,0 +1,107 @@
+<!-- Related Articles -->
+<section class="bg-gray-50 py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Related Success Stories</h2>
+    <div class="grid md:grid-cols-3 gap-8" id="related-grid">
+      <div id="related-loading" class="col-span-full flex justify-center py-12"><div class="inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-blue-500"></div></div>
+      <div id="related-error" class="col-span-full text-center py-12 text-red-500 hidden">Failed to load related stories.</div>
+      <!-- Related Story 1 -->
+      <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=250&fit=crop" alt="Airbnb Story"
+            class="w-full h-48 object-cover">
+          <div class="absolute top-4 left-4">
+            <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">Travel Tech</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Airbnb's Pivot Strategy: How They Survived the 2008 Crisis
+          </h3>
+          <p class="text-gray-600 mb-4">The untold story of how Airbnb's founders used creative marketing and
+            persistence to build a billion-dollar company.</p>
+          <div class="flex items-center gap-3">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face"
+              alt="Michael Chen" class="w-8 h-8 rounded-full">
+            <div>
+              <div class="font-semibold text-gray-900 text-sm">Michael Chen</div>
+              <div class="text-xs text-gray-600">15 min read</div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Related Story 2 -->
+      <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=250&fit=crop" alt="Stripe Story"
+            class="w-full h-48 object-cover">
+          <div class="absolute top-4 left-4">
+            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Fintech</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Stripe's Developer-First Approach to Fintech Disruption</h3>
+          <p class="text-gray-600 mb-4">How the Collison brothers built Stripe by focusing on developer experience and
+            simplifying payments.</p>
+          <div class="flex items-center gap-3">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
+              alt="Emma Rodriguez" class="w-8 h-8 rounded-full">
+            <div>
+              <div class="font-semibold text-gray-900 text-sm">Emma Rodriguez</div>
+              <div class="text-xs text-gray-600">10 min read</div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Related Story 3 -->
+      <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+        <div class="relative">
+          <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&h=250&fit=crop" alt="SaaS Story"
+            class="w-full h-48 object-cover">
+          <div class="absolute top-4 left-4">
+            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">SaaS</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold text-gray-900 mb-3">Building a $50M SaaS Empire: The Slack Revolution</h3>
+          <p class="text-gray-600 mb-4">How a gaming company's internal tool became the workplace communication platform
+            that transformed remote work.</p>
+          <div class="flex items-center gap-3">
+            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face"
+              alt="Sarah Mitchell" class="w-8 h-8 rounded-full">
+            <div>
+              <div class="font-semibold text-gray-900 text-sm">Sarah Mitchell</div>
+              <div class="text-xs text-gray-600">8 min read</div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+<script>
+(function(){
+  const grid=document.getElementById('related-grid');
+  const loadEl=document.getElementById('related-loading');
+  const errEl=document.getElementById('related-error');
+  const fallbackImg="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23f3f4f6'/%3E%3Ctext x='200' y='100' text-anchor='middle' font-family='Arial' font-size='16' fill='%23666'%3ENo Image%3C/text%3E%3C/svg%3E";
+  function slug(){const parts=window.location.pathname.split('/');const idx=parts.indexOf('post');return (idx>-1&&idx+1<parts.length)?parts[idx+1]:'';}
+  function card(p){return `<article class='bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300'>
+    <a href='/post/${p.slug}' class='block relative'>
+      <img src='${p.featured_image||fallbackImg}' alt='${p.title}' class='w-full h-48 object-cover' onerror="this.src='${fallbackImg}'">
+      <div class='absolute top-4 left-4'><span class='bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium'>${p.category||''}</span></div>
+    </a>
+    <div class='p-6'>
+      <h3 class='text-xl font-bold text-gray-900 mb-3 line-clamp-2'>${p.title}</h3>
+      <p class='text-gray-600 mb-4 line-clamp-3'>${p.excerpt||''}</p>
+      <div class='flex items-center gap-3'>
+        <img src='${p.author_avatar||'/images/default-avatar.png'}' class='w-8 h-8 rounded-full'>
+        <div><div class='font-semibold text-gray-900 text-sm'>${p.author||''}</div><div class='text-xs text-gray-600'>${p.read_time||''} min read</div></div>
+      </div>
+    </div>
+  </article>`;}
+  async function load(){try{const s=slug();if(!s) return;const res=await fetch(`/api/blog/posts/related/${s}?limit=6`);if(!res.ok) throw new Error();const posts=await res.json();grid.innerHTML=posts.length?posts.map(card).join(''):`<div class='col-span-full text-center py-12 text-gray-500'>No related stories.</div>`;}catch(e){console.error(e);errEl.classList.remove('hidden');}finally{loadEl.classList.add('hidden');}}
+  document.addEventListener('DOMContentLoaded',load);
+})();
+</script>

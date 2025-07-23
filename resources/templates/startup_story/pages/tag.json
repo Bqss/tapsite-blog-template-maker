@@ -1,52 +1,33 @@
 {
-  "title": "{{tag.name}} Startup Stories - Business Success Stories | StartupStory",
-  "description": "Discover startup success stories tagged with {{tag.name}}. Learn from entrepreneurs and business leaders who achieved {{tag.name}} success.",
-  "keywords": ["{{tag.name}} startups", "{{tag.name}} success stories", "{{tag.name}} business", "{{tag.name}} entrepreneurs", "startup {{tag.name}}", "business {{tag.name}}"],
-  "canonical_url": "/tag/{{tag.slug}}",
-  "og_type": "website",
-  "og_title": "{{tag.name}} Startup Stories - Business Success Stories | StartupStory",
-  "og_description": "Discover startup success stories tagged with {{tag.name}}. Learn from entrepreneurs and business leaders.",
-  "og_image": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&h=630&fit=crop",
-  "twitter_card": "summary_large_image",
-  "twitter_title": "{{tag.name}} Startup Stories - Business Success Stories",
-  "twitter_description": "Discover startup success stories tagged with {{tag.name}}.",
-  "twitter_image": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&h=630&fit=crop",
-  "structured_data": {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "{{tag.name}} Startup Stories",
-    "description": "Startup success stories related to {{tag.name}}",
-    "url": "https://startupstory.com/tag/{{tag.slug}}",
-    "publisher": {
-      "@type": "Organization",
-      "name": "StartupStory",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=200&h=80&fit=crop"
-      }
+  "title": "StartupStory - Where Entrepreneurs Share Their Journey",
+  "description": "Discover inspiring success stories, business insights, and lessons learned from successful entrepreneurs and startups around the world",
+  "sections": [
+    {
+      "title": "styles",
+      "id": "styles",
+      "type": "template",
+      "resetable": true
     },
-    "mainEntity": {
-      "@type": "ItemList",
-      "numberOfItems": "{{tag.story_count}}",
-      "itemListElement": [
-        {
-          "@type": "BlogPosting",
-          "headline": "{{tag.name}} Success Stories",
-          "description": "Learn from {{tag.name}} startup success stories",
-          "author": {
-            "@type": "Person",
-            "name": "StartupStory Team"
-          }
-        }
-      ]
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": ["site.name", "site.logo", "navigation"]
     },
-    "about": {
-      "@type": "Thing",
-      "name": "{{tag.name}}",
-      "description": "Startup success stories related to {{tag.name}}",
-      "sameAs": [
-        "https://en.wikipedia.org/wiki/{{tag.name}}"
-      ]
+    {
+      "title": "tag_content",
+      "id": "tag_content",
+      "type": "template",
+      "resetable": true,
+      "data": []
+    },
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": ["site.name", "site.description", "navigation", "social_links"]
     }
-  }
-} 
+  ]
+}

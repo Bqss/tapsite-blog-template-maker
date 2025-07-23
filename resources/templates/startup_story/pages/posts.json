@@ -1,45 +1,33 @@
 {
-  "title": "Startup Success Stories - Latest Entrepreneurial Journeys | StartupStory",
-  "description": "Browse the latest startup success stories, business insights, and entrepreneurial journeys. Learn from unicorn companies and successful IPOs.",
-  "keywords": ["startup stories", "business success", "entrepreneurial journeys", "unicorn companies", "startup funding", "venture capital", "IPO stories", "business insights"],
-  "canonical_url": "/posts",
-  "og_type": "website",
-  "og_title": "Startup Success Stories - Latest Entrepreneurial Journeys | StartupStory",
-  "og_description": "Browse the latest startup success stories, business insights, and entrepreneurial journeys. Learn from unicorn companies and successful IPOs.",
-  "og_image": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&h=630&fit=crop",
-  "twitter_card": "summary_large_image",
-  "twitter_title": "Startup Success Stories - Latest Entrepreneurial Journeys",
-  "twitter_description": "Browse the latest startup success stories, business insights, and entrepreneurial journeys.",
-  "twitter_image": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&h=630&fit=crop",
-  "structured_data": {
-    "@context": "https://schema.org",
-    "@type": "Blog",
-    "name": "StartupStory Blog",
-    "description": "Startup success stories and entrepreneurial journeys",
-    "url": "https://startupstory.com/posts",
-    "publisher": {
-      "@type": "Organization",
-      "name": "StartupStory",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=200&h=80&fit=crop"
-      }
+  "title": "StartupStory - Where Entrepreneurs Share Their Journey",
+  "description": "Discover inspiring success stories, business insights, and lessons learned from successful entrepreneurs and startups around the world",
+  "sections": [
+    {
+      "title": "styles",
+      "id": "styles",
+      "type": "template",
+      "resetable": true
     },
-    "mainEntity": {
-      "@type": "ItemList",
-      "itemListElement": [
-        {
-          "@type": "BlogPosting",
-          "headline": "From Zero to $10M ARR: The Shopify Success Story",
-          "description": "How three friends built one of the world's largest e-commerce platforms",
-          "author": {
-            "@type": "Person",
-            "name": "Sarah Mitchell"
-          },
-          "datePublished": "2024-12-15T10:00:00Z",
-          "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop"
-        }
-      ]
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": ["site.name", "site.logo", "navigation"]
+    },
+    {
+      "title": "posts_content",
+      "id": "posts_content",
+      "type": "template",
+      "resetable": true,
+      "data": []
+    },
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": ["site.name", "site.description", "navigation", "social_links"]
     }
-  }
-} 
+  ]
+}

@@ -1,0 +1,214 @@
+<!-- Search Header -->
+<header class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-16">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h1 class="text-4xl font-bold mb-4">Search Startup Stories</h1>
+    <p class="text-xl text-blue-100 mb-8">Find inspiring success stories, funding insights, and entrepreneurial journeys
+    </p>
+
+    <!-- Search Form -->
+    <div class="max-w-2xl mx-auto">
+      <div class="relative">
+        <input type="text" placeholder="Search for startups, founders, or industries..."
+          class="w-full px-6 py-4 text-gray-900 text-lg rounded-full border-0 focus:ring-4 focus:ring-blue-300 focus:outline-none shadow-lg"
+          id="search-input">
+        <button id="search-btn"
+          class="absolute right-2 top-2 bottom-2 px-6 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Search Filters -->
+<div class="bg-gray-50 py-6">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-wrap gap-3 justify-center" id="search-filter"></div>
+
+  </div>
+</div>
+
+<!-- Search Results -->
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <!-- Search Stats -->
+  <div class="mb-8">
+    <p class="text-gray-600">Found <span class="font-semibold text-gray-900" id="search-count">0 results</span> for
+      <span class="font-semibold text-blue-600" id="search-query-text"></span> in <span class="text-gray-500"
+        id="search-time"></span></p>
+  </div>
+
+  <!-- Search Results Grid -->
+  <div class="space-y-8" id="search-grid">
+    <div id="search-loading" class="flex justify-center py-12">
+      <div class="inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-blue-500"></div>
+    </div>
+    <div id="search-error" class="text-center py-12 text-red-500 hidden">Failed to load results.</div>
+  </div>
+
+  <!-- Search Tips -->
+  <div class="mt-12 bg-white rounded-xl shadow-lg p-8">
+    <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Search Tips</h2>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-4">What you can search for:</h3>
+        <ul class="space-y-2 text-gray-700">
+          <li class="flex items-start gap-2">
+            <span class="text-blue-600 mt-1">•</span>
+            <span>Company names (e.g., "Shopify", "Airbnb", "Stripe")</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-blue-600 mt-1">•</span>
+            <span>Founder names (e.g., "Elon Musk", "Brian Chesky")</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-blue-600 mt-1">•</span>
+            <span>Industries (e.g., "fintech", "e-commerce", "SaaS")</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-blue-600 mt-1">•</span>
+            <span>Funding stages (e.g., "Series A", "IPO", "unicorn")</span>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900 mb-4">Search operators:</h3>
+        <ul class="space-y-2 text-gray-700">
+          <li class="flex items-start gap-2">
+            <span class="text-purple-600 mt-1">•</span>
+            <span>Use quotes for exact phrases: "pivot strategy"</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-purple-600 mt-1">•</span>
+            <span>Use OR for multiple terms: Shopify OR Stripe</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-purple-600 mt-1">•</span>
+            <span>Use - to exclude terms: startup -crypto</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="text-purple-600 mt-1">•</span>
+            <span>Use category: to filter: category:fintech</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <div class="flex justify-center mt-12">
+    <nav class="flex items-center gap-2">
+      <button
+        class="px-4 py-2 text-gray-600 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">Previous</button>
+      <button class="px-4 py-2 text-white bg-blue-600 border border-blue-600 rounded-lg">1</button>
+      <button
+        class="px-4 py-2 text-gray-600 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">2</button>
+      <button
+        class="px-4 py-2 text-gray-600 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">3</button>
+      <button
+        class="px-4 py-2 text-gray-600 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">Next</button>
+    </nav>
+  </div>
+</main>
+
+<script>
+  (function () {
+    const input = document.getElementById('search-input');
+    const btn = document.getElementById('search-btn');
+    const grid = document.getElementById('search-grid');
+    const loadEl = document.getElementById('search-loading');
+    const errEl = document.getElementById('search-error');
+    const countEl = document.getElementById('search-count');
+    const queryTextEl = document.getElementById('search-query-text');
+    const timeEl = document.getElementById('search-time');
+    const fallbackImg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23f3f4f6'/%3E%3Ctext x='200' y='100' text-anchor='middle' font-family='Arial' font-size='16' fill='%23666'%3ENo Image%3C/text%3E%3C/svg%3E";
+
+    function getQueryFromURL() {
+      const parts = window.location.pathname.split('/');
+      const idx = parts.indexOf('search');
+      if (idx > -1 && idx + 1 < parts.length) { return decodeURIComponent(parts.slice(idx + 1).join('/')); }
+      return '';
+    }
+
+    function card(p) {
+      return `<article class='bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300'>
+      <div class='flex items-start gap-6'>
+        <img src='${p.featured_image || fallbackImg}' alt='${p.title}' class='w-32 h-24 object-cover rounded-lg flex-shrink-0' onerror="this.src='${fallbackImg}'">
+        <div class='flex-1'>
+          <div class='flex items-center gap-3 mb-2'>
+            <span class='bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium'>${p.category || ''}</span>
+            <span class='bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium'>${p.funding_stage || ''}</span>
+          </div>
+          <h3 class='text-xl font-bold text-gray-900 mb-2 line-clamp-2'>${p.title}</h3>
+          <p class='text-gray-600 mb-4 line-clamp-3'>${p.excerpt || ''}</p>
+          <div class='flex items-center justify-between'>
+            <div class='flex items-center gap-3'>
+              <img src='${p.author_avatar || '/images/default-avatar.png'}' class='w-8 h-8 rounded-full'>
+              <div><div class='font-semibold text-gray-900 text-sm'>${p.author || ''}</div><div class='text-xs text-gray-600'>${p.read_time || ''} min read • ${new Date(p.published_at).toLocaleDateString('id-ID', { month: 'short', day: 'numeric', year: 'numeric' })}</div></div>
+            </div>
+            <div class='text-sm font-semibold text-blue-600'>${p.valuation || ''}</div>
+          </div>
+        </div>
+      </div>
+    </article>`;
+    }
+
+    async function loadsearch() {
+      const q = getQueryFromURL();
+      if (q) input.value = q;
+      queryTextEl.textContent = `"${q}"`;
+      const start = performance.now();
+      try {
+        errEl.classList.add('hidden');
+        loadEl.classList.remove('hidden');
+        const res = await fetch(`/api/blog/posts/search/${encodeURIComponent(q)}?limit=50`);
+        if (!res.ok) throw new Error();
+        const posts = await res.json();
+        const elapsed = ((performance.now() - start) / 1000).toFixed(2) + ' seconds';
+        timeEl.textContent = elapsed;
+        countEl.textContent = `${posts.length} results`;
+        grid.innerHTML = posts.length ? posts.map(card).join('') : `<div class='text-center py-12 text-gray-500 w-full'>No results found.</div>`;
+      } catch (e) {
+        console.error(e);
+        errEl.classList.remove('hidden');
+      } finally {
+        loadEl.classList.add('hidden');
+      }
+    }
+
+    // Submit handler
+    btn.addEventListener('click', (e) => { e.preventDefault(); const q = input.value.trim(); if (q) { window.location.href = `/search/${encodeURIComponent(q)}`; } });
+    input.addEventListener('keypress', e => { if (e.key === 'Enter') { e.preventDefault(); btn.click(); } });
+
+    document.addEventListener('DOMContentLoaded', loadsearch);
+  })();
+</script>
+
+<script>
+  (function () {
+    const container = document.getElementById('search-filter');
+    if (!container) return;
+    const icons = { 'Fintech': '💳', 'E-commerce': '🛒', 'SaaS': '☁️', 'Travel Tech': '✈️', 'HealthTech': '🏥', 'EdTech': '📚' };
+    async function load() {
+      try {
+        const res = await fetch('/api/blog/categories');
+        if (!res.ok) throw new Error();
+        const cats = await res.json();
+        const allBtn = `<button class='bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium' data-cat=''>All Results</button>`;
+        const catBtns = cats.map(c => `<button class='bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors flex items-center space-x-1' data-cat='${c.name}'><span>${icons[c.name] || '🚀'}</span><span>${c.name}</span></button>`).join('');
+        container.innerHTML = allBtn + catBtns;
+
+        // Optional: hook filtering on click (client-side)
+        container.querySelectorAll('button').forEach(btn => btn.addEventListener('click', e => {
+          const cat = e.currentTarget.dataset.cat || '';
+          const queryInput = document.getElementById('search-input');
+          const q = queryInput ? queryInput.value.trim() : '';
+          if (q) { window.location.href = cat ? `/search/${encodeURIComponent(q)}?cat=${encodeURIComponent(cat)}` : `/search/${encodeURIComponent(q)}`; }
+        }));
+      } catch (err) { console.error(err); }
+    }
+    document.addEventListener('DOMContentLoaded', load);
+  })();
+</script>

@@ -1,52 +1,33 @@
 {
-  "title": "{{category.name}} Startup Stories - Success Stories & Business Insights | StartupStory",
-  "description": "Discover inspiring {{category.name}} startup success stories, business insights, and entrepreneurial journeys. Learn from billion-dollar companies in {{category.name}}.",
-  "keywords": ["{{category.name}} startups", "{{category.name}} success stories", "{{category.name}} business", "{{category.name}} entrepreneurs", "{{category.name}} unicorns", "{{category.name}} funding"],
-  "canonical_url": "/category/{{category.slug}}",
-  "og_type": "website",
-  "og_title": "{{category.name}} Startup Stories - Success Stories & Business Insights",
-  "og_description": "Discover inspiring {{category.name}} startup success stories, business insights, and entrepreneurial journeys.",
-  "og_image": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&h=630&fit=crop",
-  "twitter_card": "summary_large_image",
-  "twitter_title": "{{category.name}} Startup Stories - Success Stories & Business Insights",
-  "twitter_description": "Discover inspiring {{category.name}} startup success stories and business insights.",
-  "twitter_image": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=1200&h=630&fit=crop",
-  "structured_data": {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "{{category.name}} Startup Stories",
-    "description": "{{category.description}}",
-    "url": "https://startupstory.com/category/{{category.slug}}",
-    "publisher": {
-      "@type": "Organization",
-      "name": "StartupStory",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=200&h=80&fit=crop"
-      }
+  "title": "StartupStory - Where Entrepreneurs Share Their Journey",
+  "description": "Discover inspiring success stories, business insights, and lessons learned from successful entrepreneurs and startups around the world",
+  "sections": [
+    {
+      "title": "styles",
+      "id": "styles",
+      "type": "template",
+      "resetable": true
     },
-    "mainEntity": {
-      "@type": "ItemList",
-      "numberOfItems": "{{category.story_count}}",
-      "itemListElement": [
-        {
-          "@type": "BlogPosting",
-          "headline": "Featured {{category.name}} Success Story",
-          "description": "Learn from successful {{category.name}} companies",
-          "author": {
-            "@type": "Person",
-            "name": "StartupStory Team"
-          }
-        }
-      ]
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": ["site.name", "site.logo", "navigation"]
     },
-    "about": {
-      "@type": "Thing",
-      "name": "{{category.name}}",
-      "description": "{{category.description}}",
-      "sameAs": [
-        "https://en.wikipedia.org/wiki/{{category.name}}"
-      ]
+    {
+      "title": "category_content",
+      "id": "category_content",
+      "type": "template",
+      "resetable": true,
+      "data": []
+    },
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": ["site.name", "site.description", "navigation", "social_links"]
     }
-  }
-} 
+  ]
+}

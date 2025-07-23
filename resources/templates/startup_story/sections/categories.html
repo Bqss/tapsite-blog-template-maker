@@ -1,0 +1,28 @@
+<!-- Categories Section -->
+<section class="py-16 pitch-section">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="font-display text-3xl lg:text-4xl font-bold text-startup-gray mb-4">Explore by Industry</h2>
+      <p class="text-xl text-gray-600">
+        Discover success stories across different industries and business models
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="startup-cat-grid">
+      <div id="startup-cat-loading" class="col-span-full flex justify-center py-12"><div class="inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-blue-500"></div></div>
+      <div id="startup-cat-error" class="col-span-full text-center py-12 text-red-500 hidden">Failed to load categories.</div>
+    </div>
+
+    <script>
+    (function(){
+      const grid=document.getElementById('startup-cat-grid');
+      const loadEl=document.getElementById('startup-cat-loading');
+      const errEl=document.getElementById('startup-cat-error');
+      const colors=['startup-blue','startup-green','startup-violet','startup-orange','startup-red'];
+      function card(cat,i){const color=colors[i%colors.length];return `<div class='metric-card bg-white rounded-2xl p-8 shadow-lg transition-all duration-300 border border-gray-100 hover:shadow-xl'> <div class='w-16 h-16 bg-${color}-100 rounded-2xl flex items-center justify-center mb-6'><span class='text-2xl'>🚀</span></div><h3 class='font-display text-xl font-bold text-startup-gray mb-2'>${cat.name}</h3><p class='text-gray-600 mb-4'>${cat.description||''}</p><div class='flex items-center justify-between'><span class='text-${color} font-semibold'>${cat.posts||0} stories</span><span class='text-gray-500 text-sm'>explore</span></div></div>`;}
+      async function load(){try{const res=await fetch('/api/blog/categories');if(!res.ok) throw new Error();const cats=await res.json();loadEl.remove();grid.innerHTML=cats.length?cats.map(card).join(''):`<div class='col-span-full text-center py-12 text-gray-500'>No categories.</div>`;}catch(e){console.error(e);loadEl.classList.add('hidden');errEl.classList.remove('hidden');}}
+      document.addEventListener('DOMContentLoaded',load);
+    })();
+    </script>
+  </div>
+</section>

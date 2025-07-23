@@ -1,0 +1,76 @@
+<!-- Success Metrics Banner -->
+<div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-6">
+      <h1 class="text-3xl font-bold mb-2">Startup Success Stories</h1>
+      <p class="text-blue-100">Discover inspiring journeys from zero to unicorn status</p>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+      <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+        <div class="text-2xl font-bold">$2.4T</div>
+        <div class="text-sm text-blue-100">Total Valuation</div>
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+        <div class="text-2xl font-bold">500K+</div>
+        <div class="text-sm text-blue-100">Jobs Created</div>
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+        <div class="text-2xl font-bold">50+</div>
+        <div class="text-sm text-blue-100">Countries</div>
+      </div>
+      <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4">
+        <div class="text-2xl font-bold">78%</div>
+        <div class="text-sm text-blue-100">Success Rate</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Filter Categories -->
+<div class="bg-gray-50 py-6">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-wrap gap-3 justify-center" id="story-filter"></div>
+    <script>
+    (function(){const container=document.getElementById('story-filter');const icons={'Fintech':'💳','E-commerce':'🛒','SaaS':'☁️','Travel Tech':'✈️','HealthTech':'❤️','EdTech':'📚'};async function load(){try{const res=await fetch('/api/blog/categories');if(!res.ok) throw new Error();const cats=await res.json();container.innerHTML=`<a href='/posts' class='bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium'>All Stories</a>`+cats.map(c=>`<a href='/category/${encodeURIComponent(c.name)}' class='bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors flex items-center space-x-1'><span>${icons[c.name]||'🚀'}</span><span>${c.name}</span></a>`).join('');}catch(e){console.error(e);} }document.addEventListener('DOMContentLoaded',load);})();
+    </script>
+  </div>
+</div>
+
+<!-- Main Content -->
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <!-- Featured Story -->
+  <div id="featured-story" class="mb-12"></div>
+
+  <!-- Stories Grid -->
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="stories-grid">
+      <div id="stories-loading" class="col-span-full flex justify-center py-12"><div class="inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-blue-500"></div></div>
+      <div id="stories-error" class="col-span-full text-center py-12 text-red-500 hidden">Failed to load stories.</div>
+    </div>
+    <div id="stories-pagination" class="flex justify-center mt-12 hidden"></div>
+
+    <script>
+    (function(){
+      const LIMIT=9;let currentPage=1,totalPages=1;
+      const grid=document.getElementById('stories-grid');
+      const loadEl=document.getElementById('stories-loading');
+      const errEl=document.getElementById('stories-error');
+      const pagEl=document.getElementById('stories-pagination');
+      const fallbackImg="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23f3f4f6'/%3E%3Ctext x='200' y='100' text-anchor='middle' font-family='Arial' font-size='16' fill='%23666'%3ENo Image%3C/text%3E%3C/svg%3E";
+      const featuredContainer=document.getElementById('featured-story');
+      let featuredSlug=null;
+
+      // Build featured story markup
+      function featuredMarkup(p){return `<div class='bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 border border-blue-200'><div class='flex items-center gap-3 mb-4'><span class='bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium'>Featured Story</span><span class='bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium'>${p.category||''}</span></div><div class='grid md:grid-cols-2 gap-8 items-center'><div><h2 class='text-3xl font-bold text-gray-900 mb-4'>${p.title}</h2><p class='text-gray-600 mb-6'>${p.excerpt||''}</p><div class='flex items-center gap-4 mb-6'><img src='${p.author_avatar||'/images/default-avatar.png'}' alt='${p.author||""}' class='w-10 h-10 rounded-full'><div><div class='font-semibold text-gray-900'>${p.author||''}</div><div class='text-sm text-gray-600'>${p.read_time||5} min read • ${new Date(p.published_at).toLocaleDateString('id-ID',{month:'short',day:'numeric',year:'numeric'})}</div></div></div></div><div><img src='${p.featured_image||fallbackImg}' alt='${p.title}' class='w-full h-64 object-cover rounded-xl' onerror="this.src='${fallbackImg}'"></div></div></div>`;}
+
+      async function loadFeatured(){
+        try{const res=await fetch('/api/blog/posts/trending?limit=1');if(!res.ok) throw new Error();const data=await res.json();if(data&&data.length){const p=data[0];featuredSlug=p.slug;featuredContainer.innerHTML=featuredMarkup(p);}else{featuredContainer.classList.add('hidden');}}
+        catch(e){console.error(e);featuredContainer.classList.add('hidden');}
+      }
+
+      function card(p){return `<article class='bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300'><a href='/post/${p.slug}' class='block relative'><img src='${p.featured_image||fallbackImg}' alt='${p.title}' class='w-full h-48 object-cover' onerror="this.src='${fallbackImg}'"><div class='absolute top-4 left-4'><span class='bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium'>${p.category||''}</span></div></a><div class='p-6'><h3 class='text-xl font-bold text-gray-900 mb-3 line-clamp-2'>${p.title}</h3><p class='text-gray-600 mb-4 line-clamp-3'>${p.excerpt||''}</p><div class='flex items-center gap-3 mb-4'><img src='${p.author_avatar||'/images/default-avatar.png'}' class='w-8 h-8 rounded-full'><div><div class='font-semibold text-gray-900 text-sm'>${p.author||''}</div></div></div><div class='flex justify-between items-center text-sm text-gray-600'><span>${p.read_time||5} min read</span><span>${new Date(p.published_at).toLocaleDateString('id-ID',{month:'short',day:'numeric',year:'numeric'})}</span></div></div></article>`;}
+      function pagination(){if(totalPages<=1){pagEl.classList.add('hidden');return;}let html=`<button ${currentPage===1?'disabled':''} data-page='prev' class='px-4 py-2 text-gray-500 bg-white rounded-lg border hover:bg-gray-50 transition-colors'>Prev</button>`;for(let i=1;i<=totalPages;i++){html+=`<button data-page='${i}' class='px-4 py-2 ${i===currentPage?'bg-blue-600 text-white':'text-gray-700 bg-white'} rounded-lg border hover:bg-gray-50 transition-colors'>${i}</button>`;}html+=`<button ${currentPage===totalPages?'disabled':''} data-page='next' class='px-4 py-2 text-gray-500 bg-white rounded-lg border hover:bg-gray-50 transition-colors'>Next</button>`;pagEl.innerHTML=html;pagEl.classList.remove('hidden');pagEl.querySelectorAll('button').forEach(btn=>btn.addEventListener('click',e=>{const val=e.currentTarget.dataset.page;if(val==='prev') load(currentPage-1);else if(val==='next') load(currentPage+1);else load(parseInt(val));}));}
+      async function load(page=1){currentPage=page;loadEl.classList.remove('hidden');errEl.classList.add('hidden');try{const res=await fetch(`/api/blog/posts?limit=${LIMIT}&page=${page}`);if(!res.ok) throw new Error();const data=await res.json();let posts=data.posts||[];totalPages=data.pagination?data.pagination.total_pages:1;if(featuredSlug){posts=posts.filter(p=>p.slug!==featuredSlug);}grid.innerHTML=posts.length?posts.map(card).join(''):`<div class='col-span-full text-center py-12 text-gray-500'>No stories.</div>`;pagination();}catch(e){console.error(e);errEl.classList.remove('hidden');}finally{loadEl.classList.add('hidden');}}
+      document.addEventListener('DOMContentLoaded',()=>{loadFeatured().then(()=>load());});
+    })();
+    </script>
+</main>

@@ -1,0 +1,93 @@
+<!-- Breadcrumb -->
+<div class="bg-gray-50 py-4">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <nav class="flex items-center space-x-2 text-sm text-gray-600">
+          <a href="/" class="hover:text-blue-600 transition-colors">Home</a>
+          <span>/</span>
+          <a href="/posts" class="hover:text-blue-600 transition-colors">Stories</a>
+          <span>/</span>
+          <a href="/category/{{it.post.category}}" class="hover:text-blue-600 transition-colors" id="breadcrumb-category-link">{{it.post.category}}</a>
+          <span>/</span>
+          <span class="text-gray-900" id="breadcrumb-post-title">{{it.post.title}}</span>
+      </nav>
+  </div>
+</div>
+
+<!-- Article Header -->
+<header class="bg-gradient-to-r from-blue-50 to-purple-50 py-12">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-3 mb-6">
+          <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium" id="badge-category">{{it.post.category}}</span>
+          <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium" id="badge-funding">{{it.post.funding_stage}}</span>
+          <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium" id="badge-valuation">{{it.post.valuation}} Valuation</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight" id="post-title">{{it.post.title}}</h1>
+      <p class="text-xl text-gray-600 mb-8 leading-relaxed" id="post-excerpt">{{it.post.excerpt}}</p>
+      
+      <!-- Author & Meta Info -->
+      <div class="flex items-center justify-between flex-wrap gap-4">
+          <div class="flex items-center gap-4">
+              <img src="{{it.author.avatar}}" alt="{{it.author.name}}" class="w-12 h-12 rounded-full" id="author-avatar">
+              <div>
+                  <div class="font-semibold text-gray-900" id="author-name">{{it.author.name}}</div>
+                  <div class="text-sm text-gray-600" id="author-meta">{{it.author.role}} • {{it.post.read_time}} min read</div>
+              </div>
+          </div>
+          <div class="flex items-center gap-6 text-sm text-gray-600">
+              <div class="flex items-center gap-1">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                  </svg>
+                  <span id="post-date">{{it.post.published_at}}</span>
+              </div>
+              <div class="flex items-center gap-1">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                  </svg>
+                  <span id="post-views">{{it.post.view_count}} views</span>
+              </div>
+          </div>
+      </div>
+  </div>
+</header>
+
+<!-- Featured Image -->
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  {{@if(it.post.featured_image)}}
+  <img src="{{it.post.featured_image}}" alt="{{it.post.title}}" class="w-full h-96 object-cover rounded-xl shadow-lg" id="featured-image">
+  {{/if}}
+</div>
+
+<!-- Article Content -->
+<article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+
+  <div class="ProseMirror focus:outline-none max-w-full space-y-4 leading-relaxed">
+      {{* it.post.content}}
+  </div>
+
+  <!-- Tags -->
+  <div class="mt-12 pt-8 border-t border-gray-200">
+      <h3 class="text-lg font-semibold text-gray-900 mb-4">Tags</h3>
+      <div class="flex flex-wrap gap-2">
+          {{@each(it.post.tags)=>tag}}
+          <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">{{tag}}</span>
+          {{/each}}
+      </div>
+  </div>
+
+  <!-- Author Bio -->
+  <div class="mt-12 pt-8 border-t border-gray-200">
+      <div class="flex items-start gap-4">
+          <img src="{{it.author.avatar}}" alt="{{it.author.name}}" class="w-16 h-16 rounded-full">
+          <div>
+              <h3 class="text-lg font-semibold text-gray-900">{{it.author.name}}</h3>
+              <p class="text-gray-600 mb-2">{{it.author.role}}</p>
+              <p class="text-gray-600">{{it.author.bio}}</p>
+          </div>
+      </div>
+  </div>
+</article>
+
+<!-- Data rendered at build/runtime via Squirrelly templating; client JS removed -->

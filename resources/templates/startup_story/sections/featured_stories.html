@@ -1,98 +1,83 @@
-<!-- Featured Success Stories -->
 <section class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <h2 class="font-display text-3xl lg:text-4xl font-bold text-startup-gray mb-4">{{it.featured.title}}</h2>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                {{it.featured.description}}
-            </p>
-        </div>
-        
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <!-- Main Featured Story -->
-            <div class="lg:col-span-2">
-                <article class="story-card bg-white rounded-2xl shadow-xl overflow-hidden transition-all duration-500 border border-gray-100">
-                    <div class="relative">
-                        <img src="{{it.featured.main.image}}" 
-                             alt="{{it.featured.main.title}}" 
-                             class="w-full h-64 object-cover">
-                        <div class="absolute top-4 left-4">
-                            <span class="bg-startup-green text-white px-3 py-1 rounded-full text-sm font-medium">{{it.featured.main.badge}}</span>
-                        </div>
-                        <div class="absolute top-4 right-4">
-                            <span class="bg-white text-startup-gray px-3 py-1 rounded-full text-sm font-medium">{{it.featured.main.valuation}}</span>
-                        </div>
-                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-                        <div class="absolute bottom-4 left-4 right-4 text-white">
-                            <div class="flex items-center space-x-2 mb-2">
-                                <span class="bg-{{it.featured.main.category.color}} px-2 py-1 rounded text-xs">{{it.featured.main.category.name}}</span>
-                                <span class="text-sm">{{it.featured.main.read_time}} min read</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="font-display text-2xl font-bold text-startup-gray mb-3">
-                            {{it.featured.main.title}}
-                        </h3>
-                        <p class="text-gray-600 mb-6 text-lg leading-relaxed">
-                            {{it.featured.main.excerpt}}
-                        </p>
-                        
-                        <!-- Metrics Grid -->
-                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                            {{@each(it.featured.main.metrics)=>metric}}
-                            <div class="text-center p-3 bg-gray-50 rounded-lg">
-                                <div class="font-bold text-startup-{{metric.color}}">{{metric.value}}</div>
-                                <div class="text-xs text-gray-600">{{metric.label}}</div>
-                            </div>
-                            {{/each}}
-                        </div>
-                        
-                        <div class="flex items-center justify-between">
-                            <div class="flex items-center space-x-3">
-                                <img src="{{it.featured.main.author.avatar}}" 
-                                     alt="{{it.featured.main.author.name}}" 
-                                     class="w-10 h-10 rounded-full">
-                                <div>
-                                    <div class="font-medium text-startup-gray">{{it.featured.main.author.name}}</div>
-                                    <div class="text-sm text-gray-500">{{it.featured.main.author.title}}</div>
-                                </div>
-                            </div>
-                            <a href="{{it.featured.main.url}}" class="bg-gradient-startup text-white px-6 py-3 rounded-lg font-medium hover:opacity-90 transition-opacity">
-                                {{it.featured.main.cta_text}}
-                            </a>
-                        </div>
-                    </div>
-                </article>
-            </div>
-
-            <!-- Secondary Stories -->
-            <div class="space-y-8">
-                {{@each(it.featured.secondary)=>story}}
-                <article class="story-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-500 border border-gray-100">
-                    <div class="relative">
-                        <img src="{{story.image}}" 
-                             alt="{{story.title}}" 
-                             class="w-full h-40 object-cover">
-                        <div class="absolute top-3 left-3">
-                            <span class="bg-startup-{{story.badge.color}} text-white px-2 py-1 rounded-full text-xs">{{story.badge.text}}</span>
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="font-display text-lg font-bold text-startup-gray mb-2">
-                            {{story.title}}
-                        </h3>
-                        <p class="text-gray-600 text-sm mb-4">
-                            {{story.excerpt}}
-                        </p>
-                        <div class="flex items-center justify-between text-sm">
-                            <span class="text-gray-500">{{story.read_time}} min read</span>
-                            <span class="text-startup-{{story.valuation.color}} font-medium">{{story.valuation.text}}</span>
-                        </div>
-                    </div>
-                </article>
-                {{/each}}
-            </div>
-        </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="font-display text-3xl lg:text-4xl font-bold text-startup-gray mb-4">Success at Every Stage</h2>
+      <p class="text-xl text-gray-600">
+        From pre-seed to IPO, discover stories from every funding stage
+      </p>
     </div>
-</section> 
+
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+      <div class="text-center p-6 bg-gray-50 rounded-2xl hover:bg-gray-100 transition-colors">
+        <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center mx-auto mb-4">
+          <span class="text-white font-bold">PS</span>
+        </div>
+        <h3 class="font-semibold text-startup-gray mb-2">Pre-Seed</h3>
+        <p class="text-sm text-gray-600 mb-2">$50K - $500K</p>
+        <p class="text-startup-purple font-medium">45 stories</p>
+      </div>
+
+      <div class="text-center p-6 bg-yellow-50 rounded-2xl hover:bg-yellow-100 transition-colors">
+        <div class="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center mx-auto mb-4">
+          <span class="text-white font-bold">S</span>
+        </div>
+        <h3 class="font-semibold text-startup-gray mb-2">Seed</h3>
+        <p class="text-sm text-gray-600 mb-2">$500K - $2M</p>
+        <p class="text-yellow-600 font-medium">38 stories</p>
+      </div>
+
+      <div class="text-center p-6 bg-blue-50 rounded-2xl hover:bg-blue-100 transition-colors">
+        <div class="w-12 h-12 bg-startup-blue rounded-full flex items-center justify-center mx-auto mb-4">
+          <span class="text-white font-bold">A</span>
+        </div>
+        <h3 class="font-semibold text-startup-gray mb-2">Series A</h3>
+        <p class="text-sm text-gray-600 mb-2">$2M - $15M</p>
+        <p class="text-startup-blue font-medium">29 stories</p>
+      </div>
+
+      <div class="text-center p-6 bg-purple-50 rounded-2xl hover:bg-purple-100 transition-colors">
+        <div class="w-12 h-12 bg-startup-violet rounded-full flex items-center justify-center mx-auto mb-4">
+          <span class="text-white font-bold">B+</span>
+        </div>
+        <h3 class="font-semibold text-startup-gray mb-2">Series B+</h3>
+        <p class="text-sm text-gray-600 mb-2">$15M+</p>
+        <p class="text-startup-violet font-medium">22 stories</p>
+      </div>
+
+      <div class="text-center p-6 bg-green-50 rounded-2xl hover:bg-green-100 transition-colors">
+        <div class="w-12 h-12 bg-startup-green rounded-full flex items-center justify-center mx-auto mb-4">
+          <span class="text-white font-bold">IPO</span>
+        </div>
+        <h3 class="font-semibold text-startup-gray mb-2">IPO</h3>
+        <p class="text-sm text-gray-600 mb-2">Public</p>
+        <p class="text-startup-green font-medium">12 stories</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Latest Stories -->
+<section class="py-16 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="font-display text-3xl lg:text-4xl font-bold text-startup-gray mb-4">Latest Founder Stories</h2>
+      <p class="text-xl text-gray-600">Freshly published startup journeys and insights</p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="latest-grid">
+      <div id="latest-loading" class="col-span-full flex justify-center py-12"><div class="inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-startup-blue"></div></div>
+      <div id="latest-error" class="col-span-full text-center py-12 text-red-500 hidden">Failed to load stories.</div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  const grid=document.getElementById('latest-grid');
+  const loadEl=document.getElementById('latest-loading');
+  const errEl=document.getElementById('latest-error');
+  const fallbackImg="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23f3f4f6'/%3E%3Ctext x='200' y='100' text-anchor='middle' font-family='Arial' font-size='16' fill='%23666'%3ENo Image%3C/text%3E%3C/svg%3E";
+  function card(p){return `<article class='bg-white rounded-2xl shadow-lg overflow-hidden transition-all hover:shadow-xl'><a href='/post/${p.slug}' class='block'><img src='${p.featured_image||fallbackImg}' alt='${p.title}' class='w-full h-48 object-cover' onerror="this.src='${fallbackImg}'"></a><div class='p-6'><h3 class='font-display text-xl font-bold text-startup-gray mb-3 line-clamp-2'>${p.title}</h3><p class='text-gray-600 text-sm mb-4 line-clamp-3'>${p.excerpt||''}</p><div class='flex items-center justify-between text-xs text-gray-500'><span>${new Date(p.published_at).toLocaleDateString('id-ID',{month:'short',day:'numeric',year:'numeric'})}</span><span>👁️ ${p.view_count||0}</span></div></div></article>`;}
+  async function load(){try{const res=await fetch('/api/blog/posts/recent?limit=6');if(!res.ok) throw new Error();const data=await res.json();const posts=data.posts||data||[];loadEl.remove();grid.innerHTML=posts.length?posts.map(card).join(''):`<div class='col-span-full text-center py-12 text-gray-500'>No stories.</div>`;}catch(e){console.error(e);loadEl.classList.add('hidden');errEl.classList.remove('hidden');}}
+  document.addEventListener('DOMContentLoaded',load);
+})();
+</script>
