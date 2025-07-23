@@ -14,7 +14,7 @@
     {
       "title": "search_result",
       "id": "search_result",
-      "type": "html",
+      "type": "template",
       "resetable": true,
       "data": []
     },

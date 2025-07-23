@@ -1,274 +1,121 @@
-<!-- Category Header -->
-<div class="bg-gradient-to-r from-red-600 to-red-700 text-white py-12 mb-8">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center">
-      <h1 class="text-4xl font-bold mb-4">Technology</h1>
-      <p class="text-xl text-red-100 mb-6">Latest technology news and insights</p>
-      <div class="flex items-center justify-center space-x-8 text-red-100">
-        <div class="text-center">
-          <div class="text-2xl font-bold">15</div>
-          <div class="text-sm">Total Articles</div>
-        </div>
-        <div class="text-center">
-          <div class="text-2xl font-bold">1.2K</div>
-          <div class="text-sm">Total Views</div>
-        </div>
-        <div class="text-center">
-          <div class="text-2xl font-bold">Active</div>
-          <div class="text-sm">Status</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<!-- Dynamic Category Header -->
+<div id="cat-header" class="bg-gradient-to-r from-red-600 to-red-700 text-white py-12 mb-8 hidden"></div>
 
+<!-- Dynamic Category Main -->
+<main id="cat-main" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 hidden"></main>
 
+<script>
+  (function () {
+    const headerEl = document.getElementById('cat-header');
+    const mainEl = document.getElementById('cat-main');
+    const slug = (function () {
+      const parts = window.location.pathname.split('/');
+      const idx = parts.indexOf('category');
+      return idx !== -1 && parts[idx + 1] ? decodeURIComponent(parts[idx + 1]) : null;
+    })();
+    if (!slug) return;
 
-<!-- Main Content -->
-<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-    <!-- Main Content -->
-    <div class="lg:col-span-2">
-      <!-- Featured Article -->
+    function formatDate(str) {
+      const d = new Date(str); return d.toLocaleDateString('id-ID', { year: 'numeric', month: 'short', day: 'numeric' });
+    }
+
+    const badgeColor = {
+      Technology: 'bg-blue-100 text-blue-800',
+      Business: 'bg-green-100 text-green-800',
+      Design: 'bg-purple-100 text-purple-800',
+      Parenting: 'bg-orange-100 text-orange-800',
+      default: 'bg-red-100 text-red-800'
+    };
+
+    async function loadCategory(page = 1) {
+      // --- LOADING STATE ---
+      headerEl.innerHTML = `<div class="text-center py-12"><svg class="animate-spin h-8 w-8 text-white mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4l3-3-3-3v4A8 8 0 004 12z"></path></svg><p>Loading...</p></div>`;
+      headerEl.classList.remove('hidden');
+      mainEl.innerHTML = "";
+      mainEl.classList.add('hidden');
+
+      try {
+        const postRes = await fetch(`/api/blog/posts/category/${slug}?page=${page}`);
+        if (!postRes.ok) throw new Error();
+        const postData = await postRes.json();
+
+        const cat = postData.category || { name: slug, description: '' };
+        const posts = Array.isArray(postData) ? postData : (postData.posts || []);
+        const totalCount = cat.total_posts ?? postData.pagination?.total_items ?? posts.length;
+
+        // EMPTY STATE
+        if (posts.length === 0) {
+          headerEl.innerHTML = `<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="text-center"><h1 class="text-4xl font-bold mb-4">${cat.name}</h1><p class="text-xl text-red-100">Tidak ada artikel ditemukan.</p></div></div>`;
+          mainEl.innerHTML = "";
+          mainEl.classList.add('hidden');
+          return;
+        }
+
+        // Build header (SUCCESS STATE)
+        headerEl.innerHTML = `
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"><div class="text-center">
+          <h1 class="text-4xl font-bold mb-4">${cat.name}</h1>
+          ${cat.description ? `<p class="text-xl text-red-100 mb-6">${cat.description}</p>` : ''}
+          <div class="flex items-center justify-center space-x-8 text-red-100">
+            <div class="text-center"><div class="text-2xl font-bold">${totalCount}</div><div class="text-sm">Total Articles</div></div>
+            ${cat.total_views ? `<div class="text-center"><div class="text-2xl font-bold">${cat.total_views}</div><div class="text-sm">Total Views</div></div>` : ''}
+          </div>
+        </div></div>`;
+        headerEl.classList.remove('hidden');
+
+        // Featured
+        const featured = posts[0];
+        const others = posts.slice(1);
+
+        const featuredHTML = featured ? `
       <article class="bg-white rounded-lg shadow-lg overflow-hidden mb-8 hover:shadow-xl transition-shadow">
-        <div class="relative">
-          <img
-            src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
-            alt="Featured Technology Article" class="w-full h-64 object-cover">
-          <div class="absolute top-4 left-4">
-            <span class="bg-red-600 text-white px-3 py-1 text-xs font-bold rounded-full">FEATURED</span>
-          </div>
-        </div>
+        ${featured.featured_image ? `<div class="relative"><img src="${featured.featured_image}" alt="${featured.title}" class="w-full h-64 object-cover"><div class="absolute top-4 left-4"><span class="bg-red-600 text-white px-3 py-1 text-xs font-bold rounded-full">FEATURED</span></div></div>` : ''}
         <div class="p-6">
-          <h2 class="text-2xl font-bold text-gray-900 mb-3 leading-tight">
-            <a href="/post/ai-breakthrough-2024" class="hover:text-red-600 transition-colors">
-              Revolutionary AI Breakthrough Transforms Industry Standards
-            </a>
-          </h2>
-          <p class="text-gray-600 mb-4">Latest technological breakthrough promises to revolutionize how we approach
-            digital transformation in business and everyday life.</p>
+          <h2 class="text-2xl font-bold text-gray-900 mb-3 leading-tight"><a href="/post/${featured.slug}" class="hover:text-red-600 transition-colors">${featured.title}</a></h2>
+          ${featured.excerpt ? `<p class="text-gray-600 mb-4">${featured.excerpt}</p>` : ''}
           <div class="flex items-center justify-between text-sm text-gray-500">
-            <div class="flex items-center space-x-4">
-              <span>John Smith</span>
-              <span>March 20, 2024</span>
-            </div>
-            <div class="flex items-center space-x-4">
-              <span>5 min read</span>
-              <span>1.2K views</span>
-            </div>
+            <div class="flex items-center space-x-4"><span>${featured.author || ''}</span><span>${formatDate(featured.published_at)}</span></div>
+            <div class="flex items-center space-x-4">${featured.read_time ? `<span>${featured.read_time} min read</span>` : ''}${(() => { const v = featured.view_count ?? featured.views; return v ? `<span>${v} views</span>` : '' })()}</div>
           </div>
         </div>
-      </article>
+      </article>`: '';
 
-      <!-- Article List -->
-      <div class="space-y-6">
-        <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-          <div class="md:flex">
-            <div class="md:w-1/3">
-              <img
-                src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                alt="Tech Innovation" class="w-full h-48 md:h-full object-cover">
-            </div>
-            <div class="md:w-2/3 p-6">
-              <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight">
-                <a href="/post/quantum-computing-advances" class="hover:text-red-600 transition-colors">
-                  Quantum Computing Advances Promise New Era of Processing Power
-                </a>
-              </h3>
-              <p class="text-gray-600 mb-4">Recent breakthroughs in quantum computing technology are bringing us
-                closer to practical applications that could revolutionize multiple industries.</p>
-              <div class="flex items-center justify-between text-sm text-gray-500">
-                <div class="flex items-center space-x-4">
-                  <span>Sarah Johnson</span>
-                  <span>March 19, 2024</span>
-                </div>
-                <div class="flex items-center space-x-4">
-                  <span>7 min read</span>
-                  <span>856 views</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
+        const listHTML = others.map(a => {
+          const color = badgeColor[a.category] || badgeColor.default;
+          return `<article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"><div class="md:flex">${a.featured_image ? `<div class="md:w-1/3"><img src="${a.featured_image}" alt="${a.title}" class="w-full h-48 md:h-full object-cover"></div>` : ''}<div class="${a.featured_image ? 'md:w-2/3' : 'w-full'} p-6"><h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight"><a href="/post/${a.slug}" class="hover:text-red-600 transition-colors">${a.title}</a></h3>${a.excerpt ? `<p class="text-gray-600 mb-4 line-clamp-3">${a.excerpt}</p>` : ''}<div class="flex items-center justify-between text-sm text-gray-500"><div class="flex items-center space-x-4"><span class="${color} px-3 py-1 rounded-full text-xs font-medium">${a.category}</span><span>${formatDate(a.published_at)}</span></div><div class="flex items-center space-x-4">${(() => { const v = a.view_count ?? a.views; return v ? `${v} views` : '' })()}</div></div></div></div></article>`;
+        }).join('');
 
-        <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-          <div class="md:flex">
-            <div class="md:w-1/3">
-              <img
-                src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                alt="Space Technology" class="w-full h-48 md:h-full object-cover">
-            </div>
-            <div class="md:w-2/3 p-6">
-              <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight">
-                <a href="/post/space-technology-innovations" class="hover:text-red-600 transition-colors">
-                  Space Technology Innovations Drive Earth-Based Solutions
-                </a>
-              </h3>
-              <p class="text-gray-600 mb-4">Technologies developed for space exploration are finding new applications
-                in solving everyday problems on Earth.</p>
-              <div class="flex items-center justify-between text-sm text-gray-500">
-                <div class="flex items-center space-x-4">
-                  <span>Michael Chen</span>
-                  <span>March 18, 2024</span>
-                </div>
-                <div class="flex items-center space-x-4">
-                  <span>6 min read</span>
-                  <span>654 views</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
+        const paginationHTML = (function (p) {
+          if (!p || p.total_pages <= 1) return '';
+          const btn = (label, pidx, disabled) => `<a href="#" class="px-3 py-2 text-sm mx-1 rounded ${disabled ? 'bg-gray-200 text-gray-500 cursor-not-allowed' : 'bg-red-600 text-white hover:bg-red-700'}" data-page="${pidx}">${label}</a>`;
+          let html = btn('Prev', p.current_page - 1, p.current_page === 1);
+          for (let i = 1; i <= p.total_pages; i++) { if (i <= 5) html += btn(i, i, false); } html += btn('Next', p.current_page + 1, p.current_page === p.total_pages);
+          return `<div class="mt-8 flex justify-center">${html}</div>`;
+        })(postData.pagination);
 
-        <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-          <div class="md:flex">
-            <div class="md:w-1/3">
-              <img
-                src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                alt="Green Technology" class="w-full h-48 md:h-full object-cover">
-            </div>
-            <div class="md:w-2/3 p-6">
-              <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight">
-                <a href="/post/green-technology-sustainable-future" class="hover:text-red-600 transition-colors">
-                  Green Technology Solutions for a Sustainable Future
-                </a>
-              </h3>
-              <p class="text-gray-600 mb-4">Innovative green technologies are paving the way for more sustainable
-                practices across various industries.</p>
-              <div class="flex items-center justify-between text-sm text-gray-500">
-                <div class="flex items-center space-x-4">
-                  <span>Emma Wilson</span>
-                  <span>March 16, 2024</span>
-                </div>
-                <div class="flex items-center space-x-4">
-                  <span>5 min read</span>
-                  <span>745 views</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-      </div>
+        mainEl.innerHTML = `
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div class="lg:col-span-2">${featuredHTML}<div class="space-y-6">${listHTML}</div>${paginationHTML}</div>
+          <div class="lg:col-span-1 hidden lg:block">${'' /* keep sidebar static placeholder */}</div>
+        </div>`;
+        mainEl.classList.remove('hidden');
 
-      <!-- Pagination -->
-      <div class="mt-8 flex justify-center">
-        <nav class="flex items-center space-x-2">
-          <button
-            class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
-            Previous
-          </button>
-          <button class="px-3 py-2 text-sm font-medium text-white bg-red-600 border border-red-600 rounded-md">
-            1
-          </button>
-          <button
-            class="px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
-            2
-          </button>
-          <button
-            class="px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
-            3
-          </button>
-          <button
-            class="px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
-            Next
-          </button>
-        </nav>
-      </div>
-    </div>
+        // attach pagination click handlers
+        mainEl.querySelectorAll('[data-page]').forEach(a => {
+          a.addEventListener('click', e => { e.preventDefault(); const p = parseInt(a.dataset.page); if (p > 0) { loadCategory(p); window.scrollTo({ top: 0, behavior: 'smooth' }); } });
+        });
 
-    <!-- Sidebar -->
-    <div class="lg:col-span-1">
-      <!-- Most Popular -->
-      <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-        <h3 class="text-xl font-bold text-gray-900 mb-4">Most Popular</h3>
-        <div class="space-y-4">
-          <div class="flex items-start space-x-3">
-            <span
-              class="flex-shrink-0 w-8 h-8 bg-red-600 text-white rounded-full flex items-center justify-center text-sm font-bold">1</span>
-            <div>
-              <h4 class="font-semibold text-gray-900 leading-tight">
-                <a href="/post/ai-breakthrough-2024" class="hover:text-red-600">
-                  Revolutionary AI Breakthrough Transforms Industry
-                </a>
-              </h4>
-              <p class="text-xs text-gray-500 mt-1">1.2K views</p>
-            </div>
-          </div>
-          <div class="flex items-start space-x-3">
-            <span
-              class="flex-shrink-0 w-8 h-8 bg-red-600 text-white rounded-full flex items-center justify-center text-sm font-bold">2</span>
-            <div>
-              <h4 class="font-semibold text-gray-900 leading-tight">
-                <a href="/post/cybersecurity-trends-2024" class="hover:text-red-600">
-                  Cybersecurity Trends: Protecting Digital Assets
-                </a>
-              </h4>
-              <p class="text-xs text-gray-500 mt-1">923 views</p>
-            </div>
-          </div>
-          <div class="flex items-start space-x-3">
-            <span
-              class="flex-shrink-0 w-8 h-8 bg-red-600 text-white rounded-full flex items-center justify-center text-sm font-bold">3</span>
-            <div>
-              <h4 class="font-semibold text-gray-900 leading-tight">
-                <a href="/post/quantum-computing-advances" class="hover:text-red-600">
-                  Quantum Computing Advances Promise New Era
-                </a>
-              </h4>
-              <p class="text-xs text-gray-500 mt-1">856 views</p>
-            </div>
-          </div>
-        </div>
-      </div>
+        // Hide legacy static markup
+        const legacy = document.querySelectorAll('body > *:not(script):not(#cat-header):not(#cat-main)');
+        // (keeping global layout) so we ignore
+      } catch (e) {
+        console.error('load category error', e);
+        headerEl.innerHTML = `<div class="text-center py-12"><p class="text-xl text-white">Terjadi kesalahan saat memuat kategori. Silakan coba lagi nanti.</p></div>`;
+        mainEl.innerHTML = "";
+        mainEl.classList.add('hidden');
+      }
+    }
 
-      <!-- Related Categories -->
-      <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-        <h3 class="text-xl font-bold text-gray-900 mb-4">Related Categories</h3>
-        <div class="space-y-3">
-          <a href="/category/Business"
-            class="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-            <span class="font-medium text-gray-900">Business</span>
-            <span class="text-sm text-gray-500">8 articles</span>
-          </a>
-          <a href="/category/Design"
-            class="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-            <span class="font-medium text-gray-900">Design</span>
-            <span class="text-sm text-gray-500">5 articles</span>
-          </a>
-          <a href="/category/Parenting"
-            class="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-            <span class="font-medium text-gray-900">Parenting</span>
-            <span class="text-sm text-gray-500">12 articles</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Popular Tags -->
-      <div class="bg-white rounded-lg shadow-lg p-6">
-        <h3 class="text-xl font-bold text-gray-900 mb-4">Popular Tags</h3>
-        <div class="flex flex-wrap gap-2">
-          <a href="/tag/AI"
-            class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium hover:bg-blue-200 transition-colors">
-            #AI
-          </a>
-          <a href="/tag/Teknologi"
-            class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium hover:bg-blue-200 transition-colors">
-            #Teknologi
-          </a>
-          <a href="/tag/Digitalisasi"
-            class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium hover:bg-blue-200 transition-colors">
-            #Digitalisasi
-          </a>
-          <a href="/tag/Innovation"
-            class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium hover:bg-blue-200 transition-colors">
-            #Innovation
-          </a>
-          <a href="/tag/Future"
-            class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium hover:bg-blue-200 transition-colors">
-            #Future
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</main>
+    document.addEventListener('DOMContentLoaded', () => loadCategory());
+  })();
+</script>

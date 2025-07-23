@@ -3,25 +3,25 @@
   <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
     <!-- Main Content -->
     <div class="lg:col-span-3">
-      <!-- Search Header -->
-      <div class="mb-8">
+      <!-- Dynamic Search Header -->
+      <div id="search-header" class="mb-8 hidden">
         <h1 class="text-3xl font-bold text-gray-900 mb-2">Search Results</h1>
-        <p class="text-gray-600">Found <span class="font-semibold">3 articles</span> for "<span
-            class="font-semibold text-red-600">parenting tips</span>"</p>
+        <p class="text-gray-600">Found <span id="search-count" class="font-semibold">0 articles</span> for "<span
+            id="search-query" class="font-semibold text-red-600"></span>"</p>
       </div>
 
       <!-- Advanced Search -->
-      <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+      <div class="bg-white rounded-lg shadow-lg p-6 mb-8" id="adv-search-container">
         <h2 class="text-xl font-bold text-gray-900 mb-4">Advanced Search</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <div>
             <label class="block text-sm font-medium text-gray-700 mb-2">Search Term</label>
-            <input type="text" value="parenting tips"
+            <input type="text" id="adv-query"
               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent">
           </div>
           <div>
             <label class="block text-sm font-medium text-gray-700 mb-2">Category</label>
-            <select
+            <select id="adv-category"
               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent">
               <option value="">All Categories</option>
               <option value="Technology">Technology</option>
@@ -32,7 +32,7 @@
           </div>
           <div>
             <label class="block text-sm font-medium text-gray-700 mb-2">Sort By</label>
-            <select
+            <select id="adv-sort"
               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent">
               <option value="relevance">Relevance</option>
               <option value="date">Date</option>
@@ -41,116 +41,21 @@
           </div>
         </div>
         <div class="mt-4">
-          <button class="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors">
+          <button id="adv-update" class="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition-colors">
             Update Search
           </button>
         </div>
       </div>
 
       <!-- Search Results -->
-      <div class="space-y-6">
-        <!-- Result 1 -->
-        <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-          <div class="md:flex">
-            <div class="md:w-1/3">
-              <img
-                src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                alt="Search Result" class="w-full h-48 md:h-full object-cover">
-            </div>
-            <div class="md:w-2/3 p-6">
-              <div class="flex items-center space-x-4 mb-3">
-                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Parenting</span>
-                <span class="text-sm text-gray-500">March 20, 2024</span>
-              </div>
-              <h2 class="text-xl font-bold text-gray-900 mb-3 leading-tight">
-                <a href="/post/mendidik-anak-tanpa-gadget-mengembalikan-masa-kecil-yang-sesungguhnya"
-                  class="hover:text-red-600 transition-colors">
-                  Mendidik Anak Tanpa Gadget: Mengembalikan Masa Kecil yang Sesungguhnya
-                </a>
-              </h2>
-              <p class="text-gray-600 mb-4">
-                Pelajari cara mendidik anak tanpa ketergantungan gadget. Temukan alternatif kegiatan seru dan edukatif
-                untuk mendukung perkembangan anak secara holistik. <mark class="bg-yellow-200">Parenting tips</mark>
-                yang praktis dan mudah diterapkan.
-              </p>
-              <div class="flex items-center justify-between text-sm text-gray-500">
-                <div class="flex items-center space-x-4">
-                  <span>Maulana Shalihin</span>
-                  <span>8 min read</span>
-                </div>
-                <span>1.2K views</span>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Result 2 -->
-        <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-          <div class="md:flex">
-            <div class="md:w-1/3">
-              <img
-                src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                alt="Search Result" class="w-full h-48 md:h-full object-cover">
-            </div>
-            <div class="md:w-2/3 p-6">
-              <div class="flex items-center space-x-4 mb-3">
-                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Parenting</span>
-                <span class="text-sm text-gray-500">March 17, 2024</span>
-              </div>
-              <h2 class="text-xl font-bold text-gray-900 mb-3 leading-tight">
-                <a href="/post/parenting-tips-modern-families" class="hover:text-red-600 transition-colors">
-                  <mark class="bg-yellow-200">Parenting Tips</mark> for Modern Families
-                </a>
-              </h2>
-              <p class="text-gray-600 mb-4">
-                Essential <mark class="bg-yellow-200">parenting</mark> strategies for raising children in today's
-                digital world. Learn effective communication techniques and relationship building <mark
-                  class="bg-yellow-200">tips</mark>.
-              </p>
-              <div class="flex items-center justify-between text-sm text-gray-500">
-                <div class="flex items-center space-x-4">
-                  <span>David Rodriguez</span>
-                  <span>6 min read</span>
-                </div>
-                <span>934 views</span>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Result 3 -->
-        <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-          <div class="md:flex">
-            <div class="md:w-1/3">
-              <img
-                src="https://images.unsplash.com/photo-1516627145497-ae4151c4e0ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                alt="Search Result" class="w-full h-48 md:h-full object-cover">
-            </div>
-            <div class="md:w-2/3 p-6">
-              <div class="flex items-center space-x-4 mb-3">
-                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Parenting</span>
-                <span class="text-sm text-gray-500">March 15, 2024</span>
-              </div>
-              <h2 class="text-xl font-bold text-gray-900 mb-3 leading-tight">
-                <a href="/post/building-strong-family-bonds" class="hover:text-red-600 transition-colors">
-                  Building Strong Family Bonds: A <mark class="bg-yellow-200">Parenting</mark> Guide
-                </a>
-              </h2>
-              <p class="text-gray-600 mb-4">
-                Discover effective ways to strengthen family relationships and create lasting memories. Practical <mark
-                  class="bg-yellow-200">tips</mark> for busy parents to connect with their children.
-              </p>
-              <div class="flex items-center justify-between text-sm text-gray-500">
-                <div class="flex items-center space-x-4">
-                  <span>Sarah Johnson</span>
-                  <span>5 min read</span>
-                </div>
-                <span>756 views</span>
-              </div>
-            </div>
-          </div>
-        </article>
+      <div class="space-y-6" id="search-results">
+        
       </div>
+
+      <!-- Dynamic Helpers -->
+      <div id="search-pagination" class="mt-8 flex justify-center hidden"></div>
+      <div id="search-loading" class="py-12 text-center hidden"><div class="inline-block animate-spin rounded-full h-12 w-12 border-4 border-red-600 border-t-transparent"></div><p class="text-gray-400 mt-4">Searching articles...</p></div>
+      <div id="search-error" class="py-12 text-center hidden text-red-600">Failed to fetch search results<button id="search-retry" class="ml-3 px-4 py-2 bg-red-600 text-white rounded">Retry</button></div>
 
       <!-- Pagination -->
       <div class="mt-8 flex justify-center">
@@ -216,29 +121,154 @@
       <!-- Popular Categories -->
       <div class="bg-white rounded-lg shadow-lg p-6">
         <h3 class="text-xl font-bold text-gray-900 mb-4">Popular Categories</h3>
-        <div class="space-y-3">
-          <a href="/category/Parenting"
-            class="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-            <span class="font-medium text-gray-900">Parenting</span>
-            <span class="text-sm text-gray-500">12 articles</span>
-          </a>
-          <a href="/category/Technology"
-            class="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-            <span class="font-medium text-gray-900">Technology</span>
-            <span class="text-sm text-gray-500">15 articles</span>
-          </a>
-          <a href="/category/Business"
-            class="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-            <span class="font-medium text-gray-900">Business</span>
-            <span class="text-sm text-gray-500">8 articles</span>
-          </a>
-          <a href="/category/Design"
-            class="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-            <span class="font-medium text-gray-900">Design</span>
-            <span class="text-sm text-gray-500">5 articles</span>
-          </a>
-        </div>
+        <div id="popular-categories" class="space-y-3"></div>
       </div>
     </div>
   </div>
 </main>
+
+<script>
+    (function () {
+      const catSelect = document.getElementById('adv-category');
+      const queryInput = document.getElementById('adv-query');
+      const sortSelect = document.getElementById('adv-sort');
+      const updateBtn = document.getElementById('adv-update');
+
+      async function loadCategories() {
+        try {
+          const cats = await fetch('/api/blog/categories').then(r => r.json());
+          catSelect.innerHTML = '<option value="">All Categories</option>' + cats.map(c => `<option value="${c.slug || c.name}">${c.name}</option>`).join('');
+          // preselect if url has cat
+          const url = new URL(window.location.href); const cat = url.searchParams.get('cat'); if (cat) { catSelect.value = cat; }
+        } catch (e) { console.error('cat fetch fail', e); }
+      }
+
+      updateBtn.addEventListener('click', e => { e.preventDefault(); const q = queryInput.value.trim(); const cat = catSelect.value; const sort = sortSelect.value; const params = new URLSearchParams(); if (q) params.append('q', q); if (cat) params.append('cat', cat); if (sort && sort !== 'relevance') params.append('sort', sort); window.location.href = `/search?${params.toString()}`; });
+
+      document.addEventListener('DOMContentLoaded', loadCategories);
+    })();
+</script>
+
+<script>
+    (function () {
+      const headerEl = document.getElementById('search-header');
+      const countEl = document.getElementById('search-count');
+      const queryEl = document.getElementById('search-query');
+      const resultsEl = document.getElementById('search-results');
+      const pagEl = document.getElementById('search-pagination');
+      const loadEl = document.getElementById('search-loading');
+      const errEl = document.getElementById('search-error');
+      const retryBtn = document.getElementById('search-retry');
+
+      let currentPage = 1;
+      let query = '';
+
+      const badgeColor = {
+        Technology: 'bg-blue-100 text-blue-800',
+        Business: 'bg-green-100 text-green-800',
+        Design: 'bg-purple-100 text-purple-800',
+        Parenting: 'bg-orange-100 text-orange-800',
+        default: 'bg-red-100 text-red-800'
+      };
+
+      function getQuery() {
+        const url = new URL(window.location.href);
+        const q = url.searchParams.get('q');
+        if (q) return q;
+        // fallback /search/:query
+        const parts = url.pathname.split('/');
+        const idx = parts.indexOf('search');
+        return idx !== -1 && parts[idx + 1] ? decodeURIComponent(parts[idx + 1]) : '';
+      }
+
+      function show(state) {
+        headerEl.classList.toggle('hidden', state !== 'content');
+        resultsEl.classList.toggle('hidden', state !== 'content');
+        pagEl.classList.toggle('hidden', state !== 'content');
+        loadEl.classList.toggle('hidden', state !== 'loading');
+        errEl.classList.toggle('hidden', state !== 'error');
+      }
+
+      function cardHTML(a) {
+        const color = badgeColor[a.category] || badgeColor.default;
+        return `<article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"><div class="md:flex">${a.featured_image ? `<div class="md:w-1/3"><img src="${a.featured_image}" alt="${a.title}" class="w-full h-48 md:h-full object-cover"></div>` : ''}<div class="${a.featured_image ? 'md:w-2/3' : 'w-full'} p-6"><div class="flex items-center space-x-4 mb-3"><span class="${color} px-3 py-1 rounded-full text-sm font-medium">${a.category}</span><span class="text-sm text-gray-500">${new Date(a.published_at).toLocaleDateString('id-ID')}</span></div><h2 class="text-xl font-bold text-gray-900 mb-3 leading-tight"><a href="/post/${a.slug}" class="hover:text-red-600 transition-colors">${a.title}</a></h2>${a.excerpt ? `<p class="text-gray-600 mb-4 line-clamp-3">${a.excerpt}</p>` : ''}<div class="flex items-center justify-between text-sm text-gray-500"><div class="flex items-center space-x-4"><span>${a.author || ''}</span>${a.read_time ? `<span>${a.read_time} min read</span>` : ''}</div>${(() => { const v = a.view_count ?? a.views; return v ? `${v} views` : '' })()}</div></div></div></article>`;
+      }
+
+      function renderPagination(p) {
+        pagEl.innerHTML = '';
+        if (!p || p.total_pages <= 1) return;
+        const btn = (label, page, disabled) => `<a href="#" class="px-3 py-2 text-sm mx-1 rounded ${disabled ? 'bg-gray-200 text-gray-500 cursor-not-allowed' : 'bg-red-600 text-white hover:bg-red-700'}" data-page="${page}">${label}</a>`;
+        let html = btn('Prev', p.current_page - 1, p.current_page === 1);
+        for (let i = 1; i <= p.total_pages; i++) {
+          if (i <= 5) html += btn(i, i, false);
+        }
+        html += btn('Next', p.current_page + 1, p.current_page === p.total_pages);
+        pagEl.innerHTML = html;
+        pagEl.querySelectorAll('[data-page]').forEach(a => {
+          a.addEventListener('click', e => {
+            e.preventDefault();
+            const pg = parseInt(a.dataset.page);
+            if (pg > 0) {
+              currentPage = pg;
+              loadResults();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+          });
+        });
+      }
+
+      const loadResults = async () => {
+        show('loading');
+        try {
+          const res = await fetch(`/api/blog/posts/search/${encodeURIComponent(query)}?page=${currentPage}`);
+          if (!res.ok) throw new Error();
+          const data = await res.json();
+          const posts = Array.isArray(data) ? data : (data.posts || []);
+          const pag = data.pagination || null;
+          countEl.textContent = `${posts.length} articles`;
+          queryEl.textContent = query;
+          resultsEl.innerHTML = posts.map(cardHTML).join('');
+          renderPagination(pag);
+          show('content');
+        } catch (e) {
+          console.error('search error', e);
+          show('error');
+        }
+      };
+
+      if (retryBtn) retryBtn.addEventListener('click', loadResults);
+
+      // Remove legacy static pagination nav by adding style via DOMContentLoaded hide
+      document.addEventListener('DOMContentLoaded', () => {
+        query = getQuery();
+        loadResults();
+        const staticPagination = document.querySelector('.mt-8.flex.justify-center');
+        if (staticPagination) {
+          staticPagination.style.display = 'none';
+        }
+      });
+    })();
+</script>
+
+<script>
+(function(){
+  const popCatEl=document.getElementById('popular-categories');
+  if(!popCatEl) return;
+
+  const render = cats => {
+    if(!cats.length){
+      popCatEl.innerHTML='<p class="text-sm text-gray-500">No categories yet</p>';
+      return;
+    }
+    const html=cats.map(c=>`<a href="/category/${encodeURIComponent(c.slug||c.name)}" class="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"><span class="font-medium text-gray-900">${c.name}</span><span class="text-sm text-gray-500">${c.total_posts||0} articles</span></a>`).join('');
+    popCatEl.innerHTML=html;
+  };
+
+  document.addEventListener('DOMContentLoaded',()=>{
+    fetch('/api/blog/categories')
+      .then(r=>r.json())
+      .then(c=>{if(!Array.isArray(c)) return render([]);c.sort((a,b)=>(b.total_posts||0)-(a.total_posts||0));render(c.slice(0,6));})
+      .catch(e=>{console.error('categories sidebar err',e);render([]);});
+  });
+})();
+</script>

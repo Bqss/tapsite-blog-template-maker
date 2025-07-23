@@ -1,305 +1,75 @@
-<!-- Tag Header -->
-<div class="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-12 mb-8">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center">
-      <h1 class="text-4xl font-bold mb-4">#Parenting</h1>
-      <p class="text-xl text-blue-100 mb-6">Articles tagged with parenting</p>
-      <div class="flex items-center justify-center space-x-8 text-blue-100">
-        <div class="text-center">
-          <div class="text-2xl font-bold">12</div>
-          <div class="text-sm">Articles</div>
-        </div>
-        <div class="text-center">
-          <div class="text-2xl font-bold">3.2K</div>
-          <div class="text-sm">Total Views</div>
-        </div>
-        <div class="text-center">
-          <div class="text-2xl font-bold">Popular</div>
-          <div class="text-sm">Tag Status</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<!-- Dynamic Tag Header -->
+<div id="tag-header" class="bg-gradient-to-r from-blue-600 to-blue-700 text-white py-12 mb-8 hidden"></div>
 
+<!-- Dynamic Tag Main -->
+<main id="tag-main" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 hidden"></main>
 
+<script>
+(function(){
+  const headerEl=document.getElementById('tag-header');
+  const mainEl=document.getElementById('tag-main');
+  const slug=(function(){const parts=window.location.pathname.split('/');const idx=parts.indexOf('tag');return idx!==-1&&parts[idx+1]?decodeURIComponent(parts[idx+1]):null;})();
+  if(!slug) return;
 
-<!-- Main Content -->
-<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-    <!-- Main Content -->
-    <div class="lg:col-span-2">
-      <!-- Featured Story -->
-      <article class="bg-white rounded-lg shadow-lg overflow-hidden mb-8 hover:shadow-xl transition-shadow">
-        <div class="relative">
-          <img
-            src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
-            alt="Featured Parenting Article" class="w-full h-64 object-cover">
-          <div class="absolute top-4 left-4">
-            <span class="bg-blue-600 text-white px-3 py-1 text-xs font-bold rounded-full">FEATURED</span>
-          </div>
-        </div>
-        <div class="p-6">
-          <h2 class="text-2xl font-bold text-gray-900 mb-3 leading-tight">
-            <a href="/post/mendidik-anak-tanpa-gadget-mengembalikan-masa-kecil-yang-sesungguhnya"
-              class="hover:text-red-600 transition-colors">
-              Mendidik Anak Tanpa Gadget: Mengembalikan Masa Kecil yang Sesungguhnya
-            </a>
-          </h2>
-          <p class="text-gray-600 mb-4">Pelajari cara mendidik anak tanpa ketergantungan gadget. Temukan alternatif
-            kegiatan seru dan edukatif untuk mendukung perkembangan anak secara holistik.</p>
-          <div class="flex items-center justify-between text-sm text-gray-500">
-            <div class="flex items-center space-x-4">
-              <span>Maulana Shalihin</span>
-              <span>March 20, 2024</span>
-            </div>
-            <div class="flex items-center space-x-4">
-              <span>8 min read</span>
-              <span>1.2K views</span>
-            </div>
-          </div>
-        </div>
-      </article>
+  function formatDate(s){return new Date(s).toLocaleDateString('id-ID',{year:'numeric',month:'short',day:'numeric'});}
+  const badgeColor={Technology:'bg-blue-100 text-blue-800',Business:'bg-green-100 text-green-800',Design:'bg-purple-100 text-purple-800',Parenting:'bg-orange-100 text-orange-800',default:'bg-red-100 text-red-800'};
 
-      <!-- Tag Articles -->
-      <div class="space-y-6">
-        <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-          <div class="md:flex">
-            <div class="md:w-1/3">
-              <img
-                src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                alt="Parenting Article" class="w-full h-48 md:h-full object-cover">
-            </div>
-            <div class="md:w-2/3 p-6">
-              <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight">
-                <a href="/post/parenting-tips-modern-families" class="hover:text-red-600 transition-colors">
-                  Parenting Tips for Modern Families
-                </a>
-              </h3>
-              <p class="text-gray-600 mb-4">Essential parenting strategies for raising children in today's digital
-                world. Learn effective communication techniques and relationship building.</p>
-              <div class="flex items-center justify-between text-sm text-gray-500">
-                <div class="flex items-center space-x-4">
-                  <span>David Rodriguez</span>
-                  <span>March 17, 2024</span>
-                </div>
-                <div class="flex items-center space-x-4">
-                  <span>6 min read</span>
-                  <span>934 views</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
+  let currentPage=1;
+  async function loadTag(page=1){
+    // --- LOADING STATE ---
+    headerEl.innerHTML=`<div class=\"text-center py-12\"><svg class=\"animate-spin h-8 w-8 text-white mx-auto mb-4\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\"><circle class=\"opacity-25\" cx=\"12\" cy=\"12\" r=\"10\" stroke=\"currentColor\" stroke-width=\"4\"></circle><path class=\"opacity-75\" fill=\"currentColor\" d=\"M4 12a8 8 0 018-8v4l3-3-3-3v4A8 8 0 004 12z\"></path></svg><p>Loading...</p></div>`;
+    headerEl.classList.remove('hidden');
+    mainEl.innerHTML="";
+    mainEl.classList.add('hidden');
 
-        <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-          <div class="md:flex">
-            <div class="md:w-1/3">
-              <img
-                src="https://images.unsplash.com/photo-1516627145497-ae4151c4e0ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                alt="Family Bonding" class="w-full h-48 md:h-full object-cover">
-            </div>
-            <div class="md:w-2/3 p-6">
-              <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight">
-                <a href="/post/building-strong-family-bonds" class="hover:text-red-600 transition-colors">
-                  Building Strong Family Bonds: A Parenting Guide
-                </a>
-              </h3>
-              <p class="text-gray-600 mb-4">Discover effective ways to strengthen family relationships and create
-                lasting memories. Practical tips for busy parents to connect with their children.</p>
-              <div class="flex items-center justify-between text-sm text-gray-500">
-                <div class="flex items-center space-x-4">
-                  <span>Sarah Johnson</span>
-                  <span>March 15, 2024</span>
-                </div>
-                <div class="flex items-center space-x-4">
-                  <span>5 min read</span>
-                  <span>756 views</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
+    try{
+      const res=await fetch(`/api/blog/posts/tag/${slug}?page=${page}`);
+      if(!res.ok) throw new Error();
+      const data=await res.json();
+      const tag=data.tag||{name:slug,description:''};
 
-        <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-          <div class="md:flex">
-            <div class="md:w-1/3">
-              <img
-                src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                alt="Child Development" class="w-full h-48 md:h-full object-cover">
-            </div>
-            <div class="md:w-2/3 p-6">
-              <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight">
-                <a href="/post/child-development-milestones" class="hover:text-red-600 transition-colors">
-                  Understanding Child Development Milestones
-                </a>
-              </h3>
-              <p class="text-gray-600 mb-4">A comprehensive guide to understanding your child's developmental stages and
-                how to support their growth at each phase.</p>
-              <div class="flex items-center justify-between text-sm text-gray-500">
-                <div class="flex items-center space-x-4">
-                  <span>Dr. Emily Chen</span>
-                  <span>March 12, 2024</span>
-                </div>
-                <div class="flex items-center space-x-4">
-                  <span>9 min read</span>
-                  <span>1.1K views</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
+      const posts=Array.isArray(data)?data:(data.posts||[]);
+      const totalCount=tag.total_posts??data.pagination?.total_items??posts.length;
 
-        <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-          <div class="md:flex">
-            <div class="md:w-1/3">
-              <img
-                src="https://images.unsplash.com/photo-1489710437720-ebb67ec84dd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                alt="Educational Activities" class="w-full h-48 md:h-full object-cover">
-            </div>
-            <div class="md:w-2/3 p-6">
-              <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight">
-                <a href="/post/educational-activities-home" class="hover:text-red-600 transition-colors">
-                  Fun Educational Activities to Do at Home
-                </a>
-              </h3>
-              <p class="text-gray-600 mb-4">Creative and engaging activities that promote learning while having fun.
-                Perfect for parents looking to enrich their children's education at home.</p>
-              <div class="flex items-center justify-between text-sm text-gray-500">
-                <div class="flex items-center space-x-4">
-                  <span>Maria Garcia</span>
-                  <span>March 10, 2024</span>
-                </div>
-                <div class="flex items-center space-x-4">
-                  <span>7 min read</span>
-                  <span>892 views</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-      </div>
+      // EMPTY STATE
+      if(posts.length===0){
+        headerEl.innerHTML=`<div class=\"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8\"><div class=\"text-center\"><h1 class=\"text-4xl font-bold mb-4\">#${tag.name}</h1><p class=\"text-xl text-blue-100\">Tidak ada artikel ditemukan.</p></div></div>`;
+        mainEl.innerHTML="";
+        mainEl.classList.add('hidden');
+        return;
+      }
 
-      <!-- Pagination -->
-      <div class="mt-8 flex justify-center">
-        <nav class="flex items-center space-x-2">
-          <button
-            class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
-            Previous
-          </button>
-          <button class="px-3 py-2 text-sm font-medium text-white bg-red-600 border border-red-600 rounded-md">
-            1
-          </button>
-          <button
-            class="px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
-            2
-          </button>
-          <button
-            class="px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50">
-            Next
-          </button>
-        </nav>
-      </div>
-    </div>
+      // Header (SUCCESS)
+      headerEl.innerHTML=`<div class=\"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8\"><div class=\"text-center\"><h1 class=\"text-4xl font-bold mb-4\">#${tag.name}</h1>${tag.description?`<p class=\"text-xl text-blue-100 mb-6\">${tag.description}</p>`:''}<div class=\"flex items-center justify-center space-x-8 text-blue-100\"><div class=\"text-center\"><div class=\"text-2xl font-bold\">${totalCount}</div><div class=\"text-sm\">Articles</div></div>${tag.total_views?`<div class=\"text-center\"><div class=\"text-2xl font-bold\">${tag.total_views}</div><div class=\"text-sm\">Total Views</div></div>`:''}</div></div></div>`;
+      headerEl.classList.remove('hidden');
 
-    <!-- Sidebar -->
-    <div class="lg:col-span-1">
-      <!-- Related Tags -->
-      <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-        <h3 class="text-xl font-bold text-gray-900 mb-4">Related Tags</h3>
-        <div class="flex flex-wrap gap-2">
-          <a href="/tag/Anak"
-            class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium hover:bg-blue-200 transition-colors">
-            #Anak
-          </a>
-          <a href="/tag/Keluarga"
-            class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium hover:bg-blue-200 transition-colors">
-            #Keluarga
-          </a>
-          <a href="/tag/Ayah"
-            class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium hover:bg-blue-200 transition-colors">
-            #Ayah
-          </a>
-          <a href="/tag/Kasih-Sayang"
-            class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium hover:bg-blue-200 transition-colors">
-            #Kasih Sayang
-          </a>
-          <a href="/tag/Kebahagiaan"
-            class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium hover:bg-blue-200 transition-colors">
-            #Kebahagiaan
-          </a>
-          <a href="/tag/Waktu-Berkualitas"
-            class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium hover:bg-blue-200 transition-colors">
-            #Waktu Berkualitas
-          </a>
-        </div>
-      </div>
+      const featured = posts[0];
+      const others = posts.slice(1);
 
-      <!-- Popular in Parenting -->
-      <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
-        <h3 class="text-xl font-bold text-gray-900 mb-4">Popular in Parenting</h3>
-        <div class="space-y-4">
-          <div class="flex items-start space-x-3">
-            <span
-              class="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">1</span>
-            <div>
-              <h4 class="font-semibold text-gray-900 leading-tight">
-                <a href="/post/mendidik-anak-tanpa-gadget-mengembalikan-masa-kecil-yang-sesungguhnya"
-                  class="hover:text-red-600">
-                  Mendidik Anak Tanpa Gadget
-                </a>
-              </h4>
-              <p class="text-xs text-gray-500 mt-1">1.2K views</p>
-            </div>
-          </div>
-          <div class="flex items-start space-x-3">
-            <span
-              class="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">2</span>
-            <div>
-              <h4 class="font-semibold text-gray-900 leading-tight">
-                <a href="/post/child-development-milestones" class="hover:text-red-600">
-                  Child Development Milestones
-                </a>
-              </h4>
-              <p class="text-xs text-gray-500 mt-1">1.1K views</p>
-            </div>
-          </div>
-          <div class="flex items-start space-x-3">
-            <span
-              class="flex-shrink-0 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">3</span>
-            <div>
-              <h4 class="font-semibold text-gray-900 leading-tight">
-                <a href="/post/parenting-tips-modern-families" class="hover:text-red-600">
-                  Parenting Tips for Modern Families
-                </a>
-              </h4>
-              <p class="text-xs text-gray-500 mt-1">934 views</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      const featuredHTML=featured?`<article class="bg-white rounded-lg shadow-lg overflow-hidden mb-8 hover:shadow-xl transition-shadow">${featured.featured_image?`<div class="relative"><img src="${featured.featured_image}" alt="${featured.title}" class="w-full h-64 object-cover"><div class="absolute top-4 left-4"><span class="bg-blue-600 text-white px-3 py-1 text-xs font-bold rounded-full">FEATURED</span></div></div>`:''}<div class="p-6"><h2 class="text-2xl font-bold text-gray-900 mb-3 leading-tight"><a href="/post/${featured.slug}" class="hover:text-red-600 transition-colors">${featured.title}</a></h2>${featured.excerpt?`<p class="text-gray-600 mb-4">${featured.excerpt}</p>`:''}<div class="flex items-center justify-between text-sm text-gray-500"><div class="flex items-center space-x-4"><span>${featured.author||''}</span><span>${formatDate(featured.published_at)}</span></div><div class="flex items-center space-x-4">${featured.read_time?`<span>${featured.read_time} min read</span>`:''}${(()=>{const v=featured.view_count??featured.views;return v?`<span>${v} views</span>`:''})()}</div></div></div></article>`:'';
 
-      <!-- Other Categories -->
-      <div class="bg-white rounded-lg shadow-lg p-6">
-        <h3 class="text-xl font-bold text-gray-900 mb-4">Other Categories</h3>
-        <div class="space-y-3">
-          <a href="/category/Technology"
-            class="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-            <span class="font-medium text-gray-900">Technology</span>
-            <span class="text-sm text-gray-500">15 articles</span>
-          </a>
-          <a href="/category/Business"
-            class="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-            <span class="font-medium text-gray-900">Business</span>
-            <span class="text-sm text-gray-500">8 articles</span>
-          </a>
-          <a href="/category/Design"
-            class="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-            <span class="font-medium text-gray-900">Design</span>
-            <span class="text-sm text-gray-500">5 articles</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</main>
+      const listHTML=others.map(a=>{const col=badgeColor[a.category]||badgeColor.default;return `<article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"><div class="md:flex">${a.featured_image?`<div class="md:w-1/3"><img src="${a.featured_image}" alt="${a.title}" class="w-full h-48 md:h-full object-cover"></div>`:''}<div class="${a.featured_image?'md:w-2/3':'w-full'} p-6"><h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight"><a href="/post/${a.slug}" class="hover:text-red-600 transition-colors">${a.title}</a></h3>${a.excerpt?`<p class="text-gray-600 mb-4 line-clamp-3">${a.excerpt}</p>`:''}<div class="flex items-center justify-between text-sm text-gray-500"><div class="flex items-center space-x-4"><span class="${col} px-3 py-1 rounded-full text-xs font-medium">${a.category}</span><span>${formatDate(a.published_at)}</span></div>${(()=>{const v=a.view_count??a.views;return v?`${v} views`:''})()}</div></div></div></article>`;}).join('');
+
+      const paginationHTML=(function(p){const pg=data.pagination||null;p=pg; if(!p||p.total_pages<=1) return '';const btn=(l,pi,d)=>`<a href="#" class="px-3 py-2 text-sm mx-1 rounded ${d?'bg-gray-200 text-gray-500 cursor-not-allowed':'bg-blue-600 text-white hover:bg-blue-700'}" data-page="${pi}">${l}</a>`;let h=btn('Prev',p.current_page-1,p.current_page===1);for(let i=1;i<=p.total_pages;i++) if(i<=5) h+=btn(i,i,false);h+=btn('Next',p.current_page+1,p.current_page===p.total_pages);return `<div class="mt-8 flex justify-center">${h}</div>`;})(data.pagination);
+
+      const relatedTagsHTML=(tag.related||[]).slice(0,10).map(t=>`<a href="/tag/${encodeURIComponent(t.slug||t.name)}" class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium hover:bg-blue-200 transition-colors">#${t.name}</a>`).join('');
+
+      mainEl.innerHTML=`<div class="grid grid-cols-1 lg:grid-cols-3 gap-8"><div class="lg:col-span-2">${featuredHTML}<div class="space-y-6">${listHTML}</div>${paginationHTML}</div><aside class="lg:col-span-1"><div class="bg-white rounded-lg shadow-lg p-6"><h3 class="text-xl font-bold text-gray-900 mb-4">Related Tags</h3><div class="flex flex-wrap gap-2">${relatedTagsHTML||'<p class="text-sm text-gray-500">No related tags</p>'}</div></div></aside></div>`;
+      mainEl.classList.remove('hidden');
+
+      // pagination click
+      mainEl.querySelectorAll('[data-page]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const p=parseInt(a.dataset.page);if(p>0){currentPage=p;loadTag(p);window.scrollTo({top:0,behavior:'smooth'});} }));
+
+      // hide static
+      const legacy=document.querySelectorAll('body > *:not(script):not(#tag-header):not(#tag-main)');
+    }catch(e){
+      console.error('tag load error',e);
+      headerEl.innerHTML=`<div class=\"text-center py-12\"><p class=\"text-xl text-white\">Terjadi kesalahan saat memuat tag. Silakan coba lagi nanti.</p></div>`;
+      mainEl.innerHTML="";
+      mainEl.classList.add('hidden');
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded',()=>loadTag());
+})();
+</script>

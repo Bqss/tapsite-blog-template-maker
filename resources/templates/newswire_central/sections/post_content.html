@@ -225,47 +225,11 @@
   <!-- Related Articles -->
   <section class="mb-8">
     <h2 class="text-2xl font-bold text-gray-900 mb-6">Related Articles</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-        <img
-          src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-          alt="Related Article" class="w-full h-48 object-cover">
-        <div class="p-6">
-          <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Parenting</span>
-          <h3 class="text-xl font-bold text-gray-900 mt-3 mb-2">
-            <a href="/post/parenting-tips-modern-families" class="hover:text-red-600 transition-colors">
-              Parenting Tips for Modern Families
-            </a>
-          </h3>
-          <p class="text-gray-600 text-sm mb-4">Essential parenting strategies for raising children in today's digital
-            world.</p>
-          <div class="flex items-center justify-between text-sm text-gray-500">
-            <span>David Rodriguez</span>
-            <span>6 min read</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-        <img
-          src="https://images.unsplash.com/photo-1516627145497-ae4151c4e0ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-          alt="Related Article" class="w-full h-48 object-cover">
-        <div class="p-6">
-          <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Parenting</span>
-          <h3 class="text-xl font-bold text-gray-900 mt-3 mb-2">
-            <a href="/post/building-strong-family-bonds" class="hover:text-red-600 transition-colors">
-              Building Strong Family Bonds
-            </a>
-          </h3>
-          <p class="text-gray-600 text-sm mb-4">Discover effective ways to strengthen family relationships and create
-            lasting memories.</p>
-          <div class="flex items-center justify-between text-sm text-gray-500">
-            <span>Sarah Johnson</span>
-            <span>5 min read</span>
-          </div>
-        </div>
-      </article>
+    <div id="related-loading" class="py-8 text-center hidden">
+      <div class="inline-block animate-spin rounded-full h-10 w-10 border-4 border-red-600 border-t-transparent"></div>
     </div>
+    <div id="related-error" class="py-8 text-center hidden text-red-600">Failed to load related articles</div>
+    <div id="related-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6 hidden"></div>
   </section>
 
   <!-- Author Bio -->
@@ -289,3 +253,25 @@
     </div>
   </section>
 </main>
+
+<script>
+(function(){
+  const grid=document.getElementById('related-grid');
+  const loading=document.getElementById('related-loading');
+  const errorEl=document.getElementById('related-error');
+
+  function getSlug(){const parts=window.location.pathname.split('/');const idx=parts.indexOf('post');return idx!==-1&&parts[idx+1]?decodeURIComponent(parts[idx+1]):null;}
+  const slug=getSlug();
+  if(!slug) return;
+
+  function cardHTML(a){return `<article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow"><img src="${a.featured_image||''}" alt="${a.title}" class="w-full h-48 object-cover"><div class="p-6"><span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">${a.category||''}</span><h3 class="text-xl font-bold text-gray-900 mt-3 mb-2"><a href="/post/${a.slug}" class="hover:text-red-600 transition-colors">${a.title}</a></h3>${a.excerpt?`<p class="text-gray-600 text-sm mb-4 line-clamp-2">${a.excerpt}</p>`:''}<div class="flex items-center justify-between text-sm text-gray-500"><span>${a.author||''}</span>${a.read_time?`<span>${a.read_time} min read</span>`:''}</div></div></article>`;}
+
+  async function loadRelated(){loading.classList.remove('hidden');try{const res=await fetch(`/api/blog/posts/related/${slug}?limit=3`);if(!res.ok) throw new Error();const posts=await res.json();grid.innerHTML=posts.map(cardHTML).join('');grid.classList.remove('hidden');}catch(e){console.error('related err',e);errorEl.classList.remove('hidden');}finally{loading.classList.add('hidden');}}
+
+  document.addEventListener('DOMContentLoaded',()=>{loadRelated();
+    // hide static old related articles content
+    const old=document.querySelectorAll('#related-grid ~ article');
+    old.forEach(el=>el.style.display='none');
+  });
+})();
+</script>

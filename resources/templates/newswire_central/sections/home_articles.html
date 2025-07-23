@@ -10,7 +10,7 @@
                     
                     <!-- Featured Main Story -->
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-                        <article class="lg:col-span-1">
+                        <article class="lg:col-span-1" id="top-featured">
                             <div class="relative mb-4">
                                 <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Main News Story" class="w-full h-64 object-cover rounded-lg">
                                 <div class="absolute top-3 left-3">
@@ -49,7 +49,7 @@
                         </article>
                         
                         <!-- Secondary Headlines -->
-                        <div class="space-y-4">
+                        <div class="space-y-4" id="top-secondary">
                             <article class="border-b border-gray-200 pb-4">
                                 <div class="flex space-x-4">
                                     <img src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="Tech News" class="w-24 h-16 object-cover rounded flex-shrink-0">
@@ -124,10 +124,10 @@
                 <!-- Technology Section -->
                 <section class="mb-8">
                     <div class="border-b-2 border-blue-600 pb-2 mb-6">
-                        <h2 class="text-xl font-bold text-gray-900 uppercase tracking-wide">Technology</h2>
+                        <h2 class="text-xl font-bold text-gray-900 uppercase tracking-wide" id="prog-title">Programming</h2>
                     </div>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="tech-grid">
                         <article class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
                             <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="International News" class="w-full h-48 object-cover">
                             <div class="p-4">
@@ -184,7 +184,7 @@
                         <h2 class="text-xl font-bold text-gray-900 uppercase tracking-wide">Latest Articles</h2>
                     </div>
                     
-                    <div class="space-y-4">
+                    <div class="space-y-4" id="latest-list">
                         <article class="flex space-x-4 p-4 bg-white border border-gray-200 rounded-lg hover:shadow-md transition-shadow">
                             <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="News" class="w-20 h-16 object-cover rounded flex-shrink-0">
                             <div class="flex-1 min-w-0">
@@ -315,7 +315,7 @@
                 <!-- Most Read -->
                 <div class="bg-white border border-gray-200 rounded-lg p-4 mb-6">
                     <h3 class="text-lg font-bold text-gray-900 mb-4">Most Read</h3>
-                    <div class="space-y-3">
+                    <div class="space-y-3" id="most-read-list">
                         <div class="flex items-start space-x-3">
                             <div class="bg-red-600 text-white text-xs font-bold px-2 py-1 rounded flex-shrink-0">1</div>
                             <div>
@@ -400,3 +400,57 @@
             </div>
         </div>
     </main>
+
+<script>
+(function(){
+  // Utility
+  const fmtDate = ts => new Date(ts).toLocaleDateString('id-ID',{month:'short',day:'numeric'});
+
+  // refs
+  const featuredEl = document.getElementById('top-featured');
+  const secondaryEl = document.getElementById('top-secondary');
+  const techGrid = document.getElementById('tech-grid');
+  const mostReadEl = document.getElementById('most-read-list');
+  const latestEl = document.getElementById('latest-list');
+
+  // card builders
+  const smallCard = a => `<article class="border-b border-gray-200 pb-4 flex space-x-4">
+      ${a.featured_image?`<img src="${a.featured_image}" alt="${a.title}" class="w-24 h-16 object-cover rounded flex-shrink-0">`:''}
+      <div class="flex-1 min-w-0"><div class="flex items-center text-xs text-gray-500 space-x-2 mb-1"><span class="font-medium text-red-600">${a.category}</span><span>•</span><span>${fmtDate(a.published_at)}</span></div><h3 class="text-lg font-bold text-gray-900 mb-2 leading-tight hover:text-red-600 transition-colors"><a href="/post/${a.slug}">${a.title}</a></h3><p class="text-sm text-gray-600 line-clamp-2">${a.excerpt||''}</p></div></article>`;
+
+  const techCard = a => `<article class="bg-white border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow"><img src="${a.featured_image||''}" alt="${a.title}" class="w-full h-48 object-cover"><div class="p-4"><div class="flex items-center text-xs text-gray-500 space-x-2 mb-2"><span class="font-medium text-blue-600">TECHNOLOGY</span><span>•</span><span>${fmtDate(a.published_at)}</span></div><h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-red-600 transition-colors"><a href="/post/${a.slug}">${a.title}</a></h3><p class="text-gray-600 mb-3 line-clamp-3">${a.excerpt||''}</p><div class="flex items-center justify-between text-sm text-gray-500"><span>${a.author||''}</span></div></div></article>`;
+
+  const mostReadItem = (a,idx) => `<div class="flex items-start space-x-3"><div class="${idx===0?'bg-red-600':'bg-gray-600'} text-white text-xs font-bold px-2 py-1 rounded flex-shrink-0">${idx+1}</div><div><a href="/post/${a.slug}" class="text-sm font-medium text-gray-900 hover:text-red-600 transition-colors leading-tight">${a.title}</a><div class="text-xs text-gray-500 mt-1">${a.views||0} views</div></div></div>`;
+
+  const latestCard = smallCard; // same style
+
+  async function init(){
+    try{
+      // headlines
+      const headlineRes = await fetch('/api/blog/posts/trending?limit=5');
+      const posts = await headlineRes.json();
+      if(posts.length){
+        const featured=posts[0];
+        featuredEl.innerHTML = `<div class="relative mb-4">${featured.featured_image?`<img src="${featured.featured_image}" alt="${featured.title}" class="w-full h-64 object-cover rounded-lg">`:''}<div class="absolute top-3 left-3"><span class="bg-red-600 text-white px-2 py-1 text-xs font-bold uppercase rounded">Breaking</span></div></div><div class="space-y-3"><div class="flex items-center text-sm text-gray-500 space-x-2"><span class="font-medium text-red-600">${featured.category}</span><span>•</span><span>${fmtDate(featured.published_at)}</span></div><h1 class="text-3xl font-bold text-gray-900 leading-tight hover:text-red-600 transition-colors"><a href="/post/${featured.slug}">${featured.title}</a></h1><p class="text-gray-600 text-lg leading-relaxed line-clamp-3">${featured.excerpt||''}</p></div>`;
+        secondaryEl.innerHTML = posts.slice(1).map(smallCard).join('');
+      }
+
+      // tech section
+      const techRes = await fetch('/api/blog/posts/category/Programming?limit=2');
+      const techPosts=await techRes.json();
+      techGrid.innerHTML=techPosts.map(techCard).join('');
+
+      // most read trending
+      const popularRes=await fetch('/api/blog/posts/popular?limit=5');
+      const popular= await popularRes.json();
+      mostReadEl.innerHTML=popular.map((a,i)=>mostReadItem(a,i)).join('');
+
+      // latest
+      const recentRes=await fetch('/api/blog/posts/recent?limit=8');
+      const recent=await recentRes.json();
+      latestEl.innerHTML=recent.map(latestCard).join('');
+    }catch(e){console.error('home dynamic err',e);}
+  }
+  document.addEventListener('DOMContentLoaded',init);
+})();
+</script>

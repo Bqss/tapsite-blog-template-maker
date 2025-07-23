@@ -9,336 +9,195 @@
         <p class="text-gray-600">Browse through our complete collection of articles and insights</p>
       </div>
 
-      <!-- Category Filter Tabs -->
-      <div class="mb-8">
-        <div class="flex flex-wrap gap-2 border-b border-gray-200">
-          <button class="px-4 py-2 text-sm font-medium text-red-600 border-b-2 border-red-600 bg-red-50 rounded-t-lg">
-            All Categories
-          </button>
-          <button
-            class="px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded-t-lg transition-colors">
-            Technology
-          </button>
-          <button
-            class="px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded-t-lg transition-colors">
-            Business
-          </button>
-          <button
-            class="px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded-t-lg transition-colors">
-            Design
-          </button>
-          <button
-            class="px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-600 hover:bg-gray-50 rounded-t-lg transition-colors">
-            Parenting
-          </button>
+      <!-- Dynamic Category Filters -->
+      <div id="cat-filters" class="flex flex-wrap gap-2 border-b border-gray-200"></div>
+
+      <!-- Loading, Error, Content Containers -->
+      <div id="posts-loading" class="py-12 text-center hidden">
+        <div class="inline-block animate-spin rounded-full h-12 w-12 border-4 border-red-600 border-t-transparent"></div>
+        <p class="text-gray-400 mt-4">Loading articles...</p>
+      </div>
+
+      <div id="posts-error" class="py-12 text-center hidden">
+        <p class="text-red-600 font-semibold mb-4">Failed to load articles</p>
+        <button id="retry-btn" class="px-4 py-2 bg-red-600 text-white rounded">Retry</button>
+      </div>
+
+      <div id="posts-content" class="space-y-8 hidden"></div>
+      <div id="pagination" class="flex justify-center mt-8"></div>
+
+<script>
+(function(){
+  const catFiltersEl = document.getElementById('cat-filters');
+  const loadingEl = document.getElementById('posts-loading');
+  const errorEl = document.getElementById('posts-error');
+  const contentEl = document.getElementById('posts-content');
+  const paginationEl = document.getElementById('pagination');
+  const retryBtn = document.getElementById('retry-btn');
+
+  let currentPage = 1;
+  let currentCategory = null;
+
+  const badgeColor = {
+    Technology:'bg-blue-100 text-blue-800',
+    Business:'bg-green-100 text-green-800',
+    Design:'bg-purple-100 text-purple-800',
+    Parenting:'bg-orange-100 text-orange-800',
+    default:'bg-red-100 text-red-800'
+  };
+
+  function show(state){
+    loadingEl.classList.toggle('hidden', state!=='loading');
+    errorEl.classList.toggle('hidden', state!=='error');
+    contentEl.classList.toggle('hidden', state!=='content');
+    paginationEl.classList.toggle('hidden', state!=='content');
+  }
+
+  async function fetchCategories(){
+    try{
+      const res = await fetch('/api/blog/categories');
+      if(!res.ok) throw new Error();
+      const cats = await res.json();
+      catFiltersEl.innerHTML = '';
+      const allBtn = createFilterBtn('All Categories', null, true);
+      catFiltersEl.appendChild(allBtn);
+      cats.forEach(c=>{
+        const btn = createFilterBtn(c.name, c.slug, false);
+        catFiltersEl.appendChild(btn);
+      });
+    }catch(e){
+      console.error('cat fetch error',e);
+    }
+  }
+
+  function createFilterBtn(label, slug, active){
+    const btn = document.createElement('button');
+    btn.textContent = label;
+    btn.className = `px-4 py-2 text-sm font-medium rounded-t-lg transition-colors ${active?'text-red-600 bg-red-50 border-b-2 border-red-600':'text-gray-700 hover:text-red-600 hover:bg-gray-50'}`;
+    btn.onclick = () => {
+      currentCategory = slug;
+      currentPage = 1;
+      updateActiveBtn(btn);
+      loadPosts();
+    };
+    return btn;
+  }
+
+  function updateActiveBtn(activeBtn){
+    catFiltersEl.querySelectorAll('button').forEach(b=>{
+      b.classList.remove('text-red-600','bg-red-50','border-red-600','border-b-2');
+      b.classList.add('text-gray-700');
+    });
+    activeBtn.classList.remove('text-gray-700');
+    activeBtn.classList.add('text-red-600','bg-red-50','border-b-2','border-red-600');
+  }
+
+  function cardHTML(a){
+    const color = badgeColor[a.category]||badgeColor.default;
+    return `<article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+      <div class="md:flex">
+        ${a.featured_image?`<div class="md:w-1/3"><img src="${a.featured_image}" alt="${a.title}" class="w-full h-48 md:h-full object-cover"></div>`:''}
+        <div class="${a.featured_image?'md:w-2/3':'w-full'} p-6">
+          <div class="flex items-center space-x-4 mb-3">
+            <span class="${color} px-3 py-1 rounded-full text-sm font-medium">${a.category}</span>
+            <span class="text-sm text-gray-500">${new Date(a.published_at).toLocaleDateString('id-ID')}</span>
+          </div>
+          <h2 class="text-xl font-bold text-gray-900 mb-3 leading-tight"><a href="/post/${a.slug}" class="hover:text-red-600 transition-colors">${a.title}</a></h2>
+          ${a.excerpt?`<p class="text-gray-600 mb-4 line-clamp-3">${a.excerpt}</p>`:''}
+          <div class="flex items-center justify-between text-sm text-gray-500">
+            <div class="flex items-center space-x-4">
+              <span>${a.author||''}</span>
+              ${a.read_time?`<span>${a.read_time} min read</span>`:''}
+            </div>
+            ${(()=>{const v=a.view_count??a.views;return v?`${v} views`:''})()}
+          </div>
         </div>
       </div>
+    </article>`;
+  }
 
-      <!-- Articles Timeline -->
-      <div class="space-y-8">
-        <!-- Article 1 -->
-        <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-          <div class="md:flex">
-            <div class="md:w-1/3">
-              <img
-                src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                alt="Parenting Article" class="w-full h-48 md:h-full object-cover">
-            </div>
-            <div class="md:w-2/3 p-6">
-              <div class="flex items-center space-x-4 mb-3">
-                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium">Parenting</span>
-                <span class="text-sm text-gray-500">March 20, 2024</span>
-              </div>
-              <h2 class="text-xl font-bold text-gray-900 mb-3 leading-tight">
-                <a href="/post/mendidik-anak-tanpa-gadget-mengembalikan-masa-kecil-yang-sesungguhnya"
-                  class="hover:text-red-600 transition-colors">
-                  Mendidik Anak Tanpa Gadget: Mengembalikan Masa Kecil yang Sesungguhnya
-                </a>
-              </h2>
-              <p class="text-gray-600 mb-4">Pelajari cara mendidik anak tanpa ketergantungan gadget. Temukan alternatif
-                kegiatan seru dan edukatif untuk mendukung perkembangan anak secara holistik.</p>
-              <div class="flex items-center justify-between text-sm text-gray-500">
-                <div class="flex items-center space-x-4">
-                  <span>Maulana Shalihin</span>
-                  <span>8 min read</span>
-                </div>
-                <span>1.2K views</span>
-              </div>
-            </div>
-          </div>
-        </article>
+  function renderPosts(data){
+    contentEl.innerHTML = data.posts.map(cardHTML).join('');
 
-        <!-- Article 2 -->
-        <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-          <div class="md:flex">
-            <div class="md:w-1/3">
-              <img
-                src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                alt="Technology Article" class="w-full h-48 md:h-full object-cover">
-            </div>
-            <div class="md:w-2/3 p-6">
-              <div class="flex items-center space-x-4 mb-3">
-                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Technology</span>
-                <span class="text-sm text-gray-500">March 19, 2024</span>
-              </div>
-              <h2 class="text-xl font-bold text-gray-900 mb-3 leading-tight">
-                <a href="/post/ai-breakthrough-2024" class="hover:text-red-600 transition-colors">
-                  Revolutionary AI Breakthrough Transforms Industry Standards
-                </a>
-              </h2>
-              <p class="text-gray-600 mb-4">Latest technological breakthrough promises to revolutionize how we approach
-                digital transformation in business and everyday life.</p>
-              <div class="flex items-center justify-between text-sm text-gray-500">
-                <div class="flex items-center space-x-4">
-                  <span>John Smith</span>
-                  <span>5 min read</span>
-                </div>
-                <span>856 views</span>
-              </div>
-            </div>
-          </div>
-        </article>
+    // pagination
+    renderPagination(data.pagination);
+  }
 
-        <!-- Article 3 -->
-        <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-          <div class="md:flex">
-            <div class="md:w-1/3">
-              <img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                alt="Business Article" class="w-full h-48 md:h-full object-cover">
-            </div>
-            <div class="md:w-2/3 p-6">
-              <div class="flex items-center space-x-4 mb-3">
-                <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">Business</span>
-                <span class="text-sm text-gray-500">March 18, 2024</span>
-              </div>
-              <h2 class="text-xl font-bold text-gray-900 mb-3 leading-tight">
-                <a href="/post/business-growth-strategies-2024" class="hover:text-red-600 transition-colors">
-                  Business Growth Strategies for Small Enterprises in 2024
-                </a>
-              </h2>
-              <p class="text-gray-600 mb-4">Essential strategies for growing your business in competitive markets,
-                focusing on digital transformation and customer engagement.</p>
-              <div class="flex items-center justify-between text-sm text-gray-500">
-                <div class="flex items-center space-x-4">
-                  <span>Sarah Johnson</span>
-                  <span>6 min read</span>
-                </div>
-                <span>743 views</span>
-              </div>
-            </div>
-          </div>
-        </article>
+  function renderPagination(p){
+    paginationEl.innerHTML='';
+    if(!p||p.total_pages<=1) return;
+    const createBtn = (label,page,disabled)=>{
+      const a=document.createElement('a');
+      a.href="#";
+      a.textContent=label;
+      a.className=`px-4 py-2 mx-1 rounded ${disabled?'bg-gray-200 text-gray-500 cursor-not-allowed':'bg-red-600 text-white hover:bg-red-700'}`;
+      if(!disabled){
+        a.onclick=e=>{e.preventDefault();currentPage=page;loadPosts();};
+      }
+      return a;
+    };
+    paginationEl.appendChild(createBtn('Prev',p.current_page-1,p.current_page===1));
+    for(let i=1;i<=p.total_pages;i++) if(i<=5){
+      paginationEl.appendChild(createBtn(i,i,false));
+    }
+    paginationEl.appendChild(createBtn('Next',p.current_page+1,p.current_page===p.total_pages));
+  }
 
-        <!-- Article 4 -->
-        <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-          <div class="md:flex">
-            <div class="md:w-1/3">
-              <img
-                src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                alt="Design Article" class="w-full h-48 md:h-full object-cover">
-            </div>
-            <div class="md:w-2/3 p-6">
-              <div class="flex items-center space-x-4 mb-3">
-                <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm font-medium">Design</span>
-                <span class="text-sm text-gray-500">March 17, 2024</span>
-              </div>
-              <h2 class="text-xl font-bold text-gray-900 mb-3 leading-tight">
-                <a href="/post/design-trends-2024" class="hover:text-red-600 transition-colors">
-                  Design Trends 2024: What's Shaping the Creative Landscape
-                </a>
-              </h2>
-              <p class="text-gray-600 mb-4">Explore the latest design trends that are defining the creative landscape
-                this year, from minimalism to bold experimental approaches.</p>
-              <div class="flex items-center justify-between text-sm text-gray-500">
-                <div class="flex items-center space-x-4">
-                  <span>Michael Chen</span>
-                  <span>4 min read</span>
-                </div>
-                <span>623 views</span>
-              </div>
-            </div>
-          </div>
-        </article>
+  async function loadPosts(){
+    show('loading');
+    try{
+      const url = currentCategory?`/api/blog/posts/category/${currentCategory}?page=${currentPage}`:`/api/blog/posts?page=${currentPage}`;
+      const res = await fetch(url);
+      if(!res.ok) throw new Error();
+      const data = await res.json(); // expecting {posts:[], pagination:{}}
+      renderPosts(data);
+      show('content');
+    }catch(e){
+      console.error('post fetch',e);
+      show('error');
+    }
+  }
 
-        <!-- Article 5 -->
-        <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-          <div class="md:flex">
-            <div class="md:w-1/3">
-              <img
-                src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                alt="Technology Article" class="w-full h-48 md:h-full object-cover">
-            </div>
-            <div class="md:w-2/3 p-6">
-              <div class="flex items-center space-x-4 mb-3">
-                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Technology</span>
-                <span class="text-sm text-gray-500">March 16, 2024</span>
-              </div>
-              <h2 class="text-xl font-bold text-gray-900 mb-3 leading-tight">
-                <a href="/post/green-technology-sustainable-future" class="hover:text-red-600 transition-colors">
-                  Green Technology Solutions for a Sustainable Future
-                </a>
-              </h2>
-              <p class="text-gray-600 mb-4">Innovative green technologies are paving the way for more sustainable
-                practices across various industries and everyday life.</p>
-              <div class="flex items-center justify-between text-sm text-gray-500">
-                <div class="flex items-center space-x-4">
-                  <span>Emma Wilson</span>
-                  <span>7 min read</span>
-                </div>
-                <span>892 views</span>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Article 6 -->
-        <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-          <div class="md:flex">
-            <div class="md:w-1/3">
-              <img
-                src="https://images.unsplash.com/photo-1556761175-4b46a572b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                alt="Business Article" class="w-full h-48 md:h-full object-cover">
-            </div>
-            <div class="md:w-2/3 p-6">
-              <div class="flex items-center space-x-4 mb-3">
-                <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium">Business</span>
-                <span class="text-sm text-gray-500">March 15, 2024</span>
-              </div>
-              <h2 class="text-xl font-bold text-gray-900 mb-3 leading-tight">
-                <a href="/post/digital-transformation-small-business" class="hover:text-red-600 transition-colors">
-                  Digital Transformation Guide for Small Businesses
-                </a>
-              </h2>
-              <p class="text-gray-600 mb-4">A comprehensive guide to implementing digital transformation strategies that
-                can help small businesses compete in the modern marketplace.</p>
-              <div class="flex items-center justify-between text-sm text-gray-500">
-                <div class="flex items-center space-x-4">
-                  <span>David Rodriguez</span>
-                  <span>9 min read</span>
-                </div>
-                <span>567 views</span>
-              </div>
-            </div>
-          </div>
-        </article>
-      </div>
-
-      <!-- Pagination -->
-      <div class="mt-12 flex justify-center">
-        <nav class="flex items-center space-x-2">
-          <button
-            class="px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
-            Previous
-          </button>
-          <button class="px-4 py-2 text-sm font-medium text-white bg-red-600 border border-red-600 rounded-lg">
-            1
-          </button>
-          <button
-            class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
-            2
-          </button>
-          <button
-            class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
-            3
-          </button>
-          <button
-            class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
-            Next
-          </button>
-        </nav>
-      </div>
+  retryBtn.addEventListener('click',loadPosts);
+  document.addEventListener('DOMContentLoaded',()=>{
+    fetchCategories();
+    loadPosts();
+  });
+})();
+</script>
     </div>
 
     <!-- Sidebar -->
-    <div class="lg:col-span-1">
+    <div class="hidden lg:block space-y-8">
       <!-- Popular Posts -->
-      <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+      <div class="bg-white rounded-lg shadow-lg p-6">
         <h3 class="text-xl font-bold text-gray-900 mb-4">Popular Posts</h3>
-        <div class="space-y-4">
-          <div class="flex items-start space-x-3">
-            <img
-              src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
-              alt="Popular post" class="w-16 h-16 rounded-lg object-cover">
-            <div class="flex-1">
-              <h4 class="font-semibold text-gray-900 leading-tight text-sm">
-                <a href="/post/mendidik-anak-tanpa-gadget-mengembalikan-masa-kecil-yang-sesungguhnya"
-                  class="hover:text-red-600">
-                  Mendidik Anak Tanpa Gadget
-                </a>
-              </h4>
-              <p class="text-xs text-gray-500 mt-1">1.2K views</p>
-            </div>
-          </div>
-          <div class="flex items-start space-x-3">
-            <img
-              src="https://images.unsplash.com/photo-1518186285589-2f7649de83e0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
-              alt="Popular post" class="w-16 h-16 rounded-lg object-cover">
-            <div class="flex-1">
-              <h4 class="font-semibold text-gray-900 leading-tight text-sm">
-                <a href="/post/ai-breakthrough-2024" class="hover:text-red-600">
-                  AI Breakthrough 2024
-                </a>
-              </h4>
-              <p class="text-xs text-gray-500 mt-1">856 views</p>
-            </div>
-          </div>
-          <div class="flex items-start space-x-3">
-            <img
-              src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
-              alt="Popular post" class="w-16 h-16 rounded-lg object-cover">
-            <div class="flex-1">
-              <h4 class="font-semibold text-gray-900 leading-tight text-sm">
-                <a href="/post/green-technology-sustainable-future" class="hover:text-red-600">
-                  Green Technology Solutions
-                </a>
-              </h4>
-              <p class="text-xs text-gray-500 mt-1">892 views</p>
-            </div>
-          </div>
-        </div>
+        <div id="popular-container" class="space-y-4 text-sm"></div>
       </div>
-
-      <!-- Categories -->
-      <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+      <!-- Categories list -->
+      <div class="bg-white rounded-lg shadow-lg p-6">
         <h3 class="text-xl font-bold text-gray-900 mb-4">Categories</h3>
-        <div class="space-y-3">
-          <a href="/category/Technology"
-            class="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-            <span class="font-medium text-gray-900">Technology</span>
-            <span class="text-sm text-gray-500">15 articles</span>
-          </a>
-          <a href="/category/Parenting"
-            class="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-            <span class="font-medium text-gray-900">Parenting</span>
-            <span class="text-sm text-gray-500">12 articles</span>
-          </a>
-          <a href="/category/Business"
-            class="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-            <span class="font-medium text-gray-900">Business</span>
-            <span class="text-sm text-gray-500">8 articles</span>
-          </a>
-          <a href="/category/Design"
-            class="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-            <span class="font-medium text-gray-900">Design</span>
-            <span class="text-sm text-gray-500">5 articles</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Newsletter Signup -->
-      <div class="bg-gradient-to-r from-red-600 to-red-700 text-white p-6 rounded-lg">
-        <h3 class="text-lg font-bold mb-2">Stay Updated</h3>
-        <p class="text-red-100 mb-4 text-sm">Get the latest articles delivered to your inbox</p>
-        <div class="space-y-3">
-          <input type="email" placeholder="Enter your email"
-            class="w-full px-4 py-2 rounded-lg text-gray-900 focus:ring-2 focus:ring-red-300 focus:outline-none">
-          <button
-            class="w-full bg-white text-red-600 px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition-colors">
-            Subscribe
-          </button>
-        </div>
+        <div id="sidebar-categories" class="space-y-3"></div>
       </div>
     </div>
   </div>
 </main>
+
+<script>
+(function(){
+  const popularEl=document.getElementById('popular-container');
+  const sideCatEl=document.getElementById('sidebar-categories');
+
+  function popularItem(a,idx){return `<div class="flex items-start space-x-3"><span class="flex-shrink-0 w-8 h-8 ${idx===0?'bg-red-600':'bg-gray-600'} text-white rounded-full flex items-center justify-center text-sm font-bold">${idx+1}</span><div><h4 class="font-semibold text-gray-900 leading-tight"><a href="/post/${a.slug}" class="hover:text-red-600">${a.title}</a></h4><p class="text-xs text-gray-500 mt-1">${a.views||0} views</p></div></div>`;}
+
+  function categoryItem(c){return `<a href="/category/${encodeURIComponent(c.slug||c.name)}" class="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"><span class="font-medium text-gray-900">${c.name}</span><span class="text-sm text-gray-500">${c.total_posts||''} articles</span></a>`;}
+
+  async function loadSidebar(){try{
+    const trend=await fetch('/api/blog/posts/trending?limit=4').then(r=>r.json());
+    popularEl.innerHTML=trend.map(popularItem).join('');
+    const cats=await fetch('/api/blog/categories').then(r=>r.json());
+    sideCatEl.innerHTML=cats.map(categoryItem).join('');
+  }catch(e){console.error('sidebar load err',e);} }
+  document.addEventListener('DOMContentLoaded',loadSidebar);
+})();
+</script>
