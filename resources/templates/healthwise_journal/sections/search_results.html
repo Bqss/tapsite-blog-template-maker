@@ -53,9 +53,9 @@
 <section class="py-16 bg-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Search Stats -->
-    <div class="mb-8">
+    <div class="mb-8" id="search-stats" class="hidden">
       <h2 class="text-2xl font-bold text-health-dark mb-2">Search Results</h2>
-      <p class="text-gray-600">Found 8 articles matching your search criteria</p>
+      <p class="text-gray-600">Found <span id="search-count" class="font-semibold">0</span> articles for "<span id="search-query"></span>"</p>
     </div>
 
     <!-- Filters -->
@@ -74,153 +74,20 @@
         class="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-health-light transition-colors">Parenting</button>
     </div>
 
-    <!-- Search Results Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Result 1 -->
-      <article
-        class="article-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
-        <div class="relative">
-          <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=250&fit=crop" alt="AI Healthcare"
-            class="w-full h-48 object-cover">
-          <div class="absolute top-4 left-4">
-            <span class="bg-health-green text-white px-3 py-1 rounded-full text-sm font-medium">Technology</span>
-          </div>
-          <div class="absolute bottom-4 right-4 bg-white bg-opacity-90 rounded-full px-3 py-1">
-            <div class="flex items-center space-x-1 text-sm text-gray-600">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-              </svg>
-              <span>2.5K</span>
-            </div>
-          </div>
-        </div>
-        <div class="p-6">
-          <div class="flex items-center space-x-4 mb-3">
-            <div class="flex items-center space-x-2">
-              <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=32&h=32&fit=crop&crop=face"
-                alt="Dr. Sarah" class="w-8 h-8 rounded-full">
-              <span class="text-sm text-gray-600">Dr. Sarah Mitchell</span>
-            </div>
-            <span class="text-sm text-gray-500">•</span>
-            <span class="text-sm text-gray-500">8 min read</span>
-          </div>
-          <h3 class="font-display text-xl font-bold text-health-dark mb-3 leading-tight">
-            AI in Healthcare: Transforming Patient Care
-          </h3>
-          <p class="text-gray-600 mb-4 leading-relaxed">
-            Discover how artificial intelligence is revolutionizing healthcare delivery, from diagnosis to treatment
-            planning.
-          </p>
-          <div class="flex items-center justify-between">
-            <div class="flex items-center space-x-2">
-              <span class="text-sm text-gray-500">Dec 15, 2024</span>
-            </div>
-            <a href="/post/ai-healthcare-patient-care"
-              class="text-health-green hover:text-health-emerald font-medium text-sm">Read More →</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Result 2 -->
-      <article
-        class="article-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
-        <div class="relative">
-          <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&h=250&fit=crop" alt="Telemedicine"
-            class="w-full h-48 object-cover">
-          <div class="absolute top-4 left-4">
-            <span class="bg-health-green text-white px-3 py-1 rounded-full text-sm font-medium">Technology</span>
-          </div>
-          <div class="absolute bottom-4 right-4 bg-white bg-opacity-90 rounded-full px-3 py-1">
-            <div class="flex items-center space-x-1 text-sm text-gray-600">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-              </svg>
-              <span>5.7K</span>
-            </div>
-          </div>
-        </div>
-        <div class="p-6">
-          <div class="flex items-center space-x-4 mb-3">
-            <div class="flex items-center space-x-2">
-              <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=32&h=32&fit=crop&crop=face"
-                alt="Dr. Maria" class="w-8 h-8 rounded-full">
-              <span class="text-sm text-gray-600">Dr. Maria Rodriguez</span>
-            </div>
-            <span class="text-sm text-gray-500">•</span>
-            <span class="text-sm text-gray-500">9 min read</span>
-          </div>
-          <h3 class="font-display text-xl font-bold text-health-dark mb-3 leading-tight">
-            Telemedicine Revolution: Remote Healthcare
-          </h3>
-          <p class="text-gray-600 mb-4 leading-relaxed">
-            Explore how telemedicine is transforming healthcare delivery and improving access to medical care.
-          </p>
-          <div class="flex items-center justify-between">
-            <div class="flex items-center space-x-2">
-              <span class="text-sm text-gray-500">Dec 11, 2024</span>
-            </div>
-            <a href="/post/telemedicine-remote-healthcare"
-              class="text-health-green hover:text-health-emerald font-medium text-sm">Read More →</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Result 3 -->
-      <article
-        class="article-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
-        <div class="relative">
-          <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=250&fit=crop"
-            alt="Healthcare Apps" class="w-full h-48 object-cover">
-          <div class="absolute top-4 left-4">
-            <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">Design</span>
-          </div>
-          <div class="absolute bottom-4 right-4 bg-white bg-opacity-90 rounded-full px-3 py-1">
-            <div class="flex items-center space-x-1 text-sm text-gray-600">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-              </svg>
-              <span>1.8K</span>
-            </div>
-          </div>
-        </div>
-        <div class="p-6">
-          <div class="flex items-center space-x-4 mb-3">
-            <div class="flex items-center space-x-2">
-              <img src="https://images.unsplash.com/photo-1594824604989-b57a8b5ce969?w=32&h=32&fit=crop&crop=face"
-                alt="Dr. Jennifer" class="w-8 h-8 rounded-full">
-              <span class="text-sm text-gray-600">Dr. Jennifer Thompson</span>
-            </div>
-            <span class="text-sm text-gray-500">•</span>
-            <span class="text-sm text-gray-500">10 min read</span>
-          </div>
-          <h3 class="font-display text-xl font-bold text-health-dark mb-3 leading-tight">
-            Designing User-Friendly Healthcare Apps
-          </h3>
-          <p class="text-gray-600 mb-4 leading-relaxed">
-            Explore the principles of UX design that make healthcare applications effective and accessible.
-          </p>
-          <div class="flex items-center justify-between">
-            <div class="flex items-center space-x-2">
-              <span class="text-sm text-gray-500">Dec 13, 2024</span>
-            </div>
-            <a href="/post/healthcare-app-design"
-              class="text-health-green hover:text-health-emerald font-medium text-sm">Read More →</a>
-          </div>
-        </div>
-      </article>
+    <!-- Loading -->
+    <div id="search-loading" class="py-12 text-center">
+      <div class="inline-block animate-spin rounded-full h-12 w-12 border-4 border-health-green border-t-transparent"></div>
+      <p class="text-gray-500 mt-4">Searching articles...</p>
     </div>
 
+    <!-- Error -->
+    <div id="search-error" class="py-12 text-center hidden"><p class="text-red-500">Failed to load results.</p></div>
+
+    <!-- Dynamic Grid -->
+    <div id="search-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 hidden"></div>
+
     <!-- No Results State (Hidden by default) -->
-    <div class="hidden text-center py-16">
+    <div id="no-results" class="hidden text-center py-16">
       <div class="max-w-md mx-auto">
         <svg class="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -242,21 +109,7 @@
     </div>
 
     <!-- Pagination -->
-    <div class="mt-16 flex justify-center">
-      <nav class="flex items-center space-x-2">
-        <button
-          class="px-4 py-2 text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
-          Previous
-        </button>
-        <button class="px-4 py-2 text-white bg-health-green border border-health-green rounded-lg">1</button>
-        <button
-          class="px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">2</button>
-        <button
-          class="px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
-          Next
-        </button>
-      </nav>
-    </div>
+    <div id="search-pagination" class="mt-16 flex justify-center"></div>
   </div>
 </section>
 
@@ -305,3 +158,32 @@
     </div>
   </div>
 </section>
+
+<script>
+(function(){
+  const loading=document.getElementById('search-loading');
+  const error=document.getElementById('search-error');
+  const grid=document.getElementById('search-grid');
+  const stats=document.getElementById('search-stats');
+  const countEl=document.getElementById('search-count');
+  const queryEl=document.getElementById('search-query');
+  const noRes=document.getElementById('no-results');
+  const pagEl=document.getElementById('search-pagination');
+
+  function getQuery(){const parts=window.location.pathname.split('/');const idx=parts.indexOf('search');return idx!==-1&&parts[idx+1]?decodeURIComponent(parts[idx+1]):'';}
+
+  function card(p){return `<article class="article-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100"><div class="relative"><img src="${p.featured_image||''}" alt="${p.title}" class="w-full h-48 object-cover"><div class="absolute top-4 left-4"><span class="bg-health-green text-white px-3 py-1 rounded-full text-sm font-medium">${p.category||'Health'}</span></div></div><div class="p-6"><div class="flex items-center space-x-4 mb-3 text-sm text-gray-600"><span>${p.author||'HealthWise'}</span></div><h3 class="font-display text-xl font-bold text-health-dark mb-3 leading-tight line-clamp-2"><a href="/post/${p.slug}">${p.title}</a></h3><p class="text-gray-600 mb-4 leading-relaxed line-clamp-3">${p.excerpt||''}</p><div class="flex items-center justify-between"><span class="text-sm text-gray-500">${new Date(p.published_at||Date.now()).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}</span><a href="/post/${p.slug}" class="text-health-green hover:text-health-emerald font-medium text-sm">Read More →</a></div></div></article>`;}
+
+  async function search(q){if(!q){noRes.classList.add('hidden');return;}loading.classList.remove('hidden');error.classList.add('hidden');grid.classList.add('hidden');noRes.classList.add('hidden');pagEl.innerHTML='';
+    try{
+      const res=await fetch(`/api/blog/posts/search/${encodeURIComponent(q)}?limit=50`);
+      if(!res.ok)throw new Error('http');const data=await res.json();
+      countEl.textContent=data.length;queryEl.textContent=q;stats.classList.remove('hidden');
+      if(data.length===0){noRes.classList.remove('hidden');}else{grid.innerHTML=data.map(card).join('');grid.classList.remove('hidden');}
+    }catch(e){error.classList.remove('hidden');}
+    finally{loading.classList.add('hidden');}
+  }
+
+  document.addEventListener('DOMContentLoaded',()=>{const q=getQuery();document.querySelector('input[type="text"]').value=q;search(q);});
+})();
+</script>

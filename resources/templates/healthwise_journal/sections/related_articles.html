@@ -2,78 +2,21 @@
 <section class="py-16 bg-health-light">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <h2 class="font-display text-3xl font-bold text-health-dark mb-8 text-center">Related Articles</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      <!-- Related Article 1 -->
-      <article
-        class="article-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
-        <div class="relative">
-          <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=400&h=200&fit=crop" alt="Telemedicine"
-            class="w-full h-40 object-cover">
-          <div class="absolute top-3 left-3">
-            <span class="bg-health-green text-white px-2 py-1 rounded-full text-xs font-medium">Technology</span>
-          </div>
-        </div>
-        <div class="p-4">
-          <h3 class="font-display text-lg font-bold text-health-dark mb-2 leading-tight">
-            Telemedicine Revolution: The Future of Remote Healthcare
-          </h3>
-          <p class="text-gray-600 text-sm mb-3">
-            Explore how telemedicine is transforming healthcare delivery and improving access to medical care.
-          </p>
-          <div class="flex items-center justify-between text-xs text-gray-500">
-            <span>Dec 11, 2024</span>
-            <span>9 min read</span>
-          </div>
-        </div>
-      </article>
+    <!-- Loading -->
+    <div id="rel-loading" class="py-12 text-center"><div class="inline-block animate-spin rounded-full h-12 w-12 border-4 border-health-green border-t-transparent"></div><p class="text-gray-500 mt-4">Loading related articles...</p></div>
+    <div id="rel-error" class="py-12 text-center hidden"><p class="text-red-500">Failed to load related.</p></div>
+    <div id="rel-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8 hidden"></div>
 
-      <!-- Related Article 2 -->
-      <article
-        class="article-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
-        <div class="relative">
-          <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=200&fit=crop"
-            alt="Digital Health" class="w-full h-40 object-cover">
-          <div class="absolute top-3 left-3">
-            <span class="bg-purple-600 text-white px-2 py-1 rounded-full text-xs font-medium">Business</span>
-          </div>
-        </div>
-        <div class="p-4">
-          <h3 class="font-display text-lg font-bold text-health-dark mb-2 leading-tight">
-            Healthcare Startups: Innovation in Digital Health
-          </h3>
-          <p class="text-gray-600 text-sm mb-3">
-            Discover the latest trends in healthcare entrepreneurship and digital health innovation.
-          </p>
-          <div class="flex items-center justify-between text-xs text-gray-500">
-            <span>Dec 10, 2024</span>
-            <span>11 min read</span>
-          </div>
-        </div>
-      </article>
+    <script>
+    (function(){
+      const slug=(()=>{const parts=window.location.pathname.split('/');const idx=parts.indexOf('post');return idx!==-1?decodeURIComponent(parts[idx+1]):'';})();
+      const loading=document.getElementById('rel-loading');const error=document.getElementById('rel-error');const grid=document.getElementById('rel-grid');
 
-      <!-- Related Article 3 -->
-      <article
-        class="article-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
-        <div class="relative">
-          <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=200&fit=crop"
-            alt="Healthcare Apps" class="w-full h-40 object-cover">
-          <div class="absolute top-3 left-3">
-            <span class="bg-blue-600 text-white px-2 py-1 rounded-full text-xs font-medium">Design</span>
-          </div>
-        </div>
-        <div class="p-4">
-          <h3 class="font-display text-lg font-bold text-health-dark mb-2 leading-tight">
-            Designing User-Friendly Healthcare Apps
-          </h3>
-          <p class="text-gray-600 text-sm mb-3">
-            Explore the principles of UX design that make healthcare applications effective and accessible.
-          </p>
-          <div class="flex items-center justify-between text-xs text-gray-500">
-            <span>Dec 13, 2024</span>
-            <span>10 min read</span>
-          </div>
-        </div>
-      </article>
-    </div>
+      function card(p){return `<article class='article-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100'><div class='relative'><img src='${p.featured_image||''}' alt='${p.title}' class='w-full h-40 object-cover'><div class='absolute top-3 left-3'><span class='bg-health-green text-white px-2 py-1 rounded-full text-xs font-medium'>${p.category||'Health'}</span></div></div><div class='p-4'><h3 class='font-display text-lg font-bold text-health-dark mb-2 leading-tight line-clamp-2'><a href='/post/${p.slug}'>${p.title}</a></h3><p class='text-gray-600 text-sm mb-3 line-clamp-3'>${p.excerpt||''}</p><div class='flex items-center justify-between text-xs text-gray-500'><span>${new Date(p.published_at||Date.now()).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}</span><span>${p.read_time||'5'} min read</span></div></div></article>`;}
+
+      async function load(){try{const res=await fetch(`/api/blog/posts/related/${encodeURIComponent(slug)}?limit=3`);if(!res.ok)throw new Error('http');const data=await res.json();grid.innerHTML=data.map(card).join('');grid.classList.remove('hidden');}catch(e){error.classList.remove('hidden');}finally{loading.classList.add('hidden');}}
+      document.addEventListener('DOMContentLoaded',load);
+    })();
+    </script>
   </div>
 </section>
