@@ -93,7 +93,8 @@
       <div class="bg-red-900/50 rounded-xl p-6 max-w-md mx-auto border border-red-500/20">
         <span class="text-6xl mb-4 block">⚠️</span>
         <p class="text-red-400 mb-4 font-gaming">Failed to load gaming posts</p>
-        <button onclick="loadPosts()" class="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white px-6 py-2 rounded-lg font-semibold transition-all font-gaming">
+        <button onclick="loadPosts()"
+          class="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white px-6 py-2 rounded-lg font-semibold transition-all font-gaming">
           Try Again
         </button>
       </div>
@@ -102,118 +103,118 @@
     <!-- Content Container -->
     <div id="posts-content" class="hidden">
       <!-- Articles Grid -->
-       <div id="posts-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          <!-- Dynamic posts will be loaded here -->
-        </div>
-
-        <!-- Pagination -->
-        <div id="pagination" class="flex justify-center mb-12"></div>
+      <div id="posts-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        <!-- Dynamic posts will be loaded here -->
       </div>
+
+      <!-- Pagination -->
+      <div id="pagination" class="flex justify-center mb-12"></div>
     </div>
+  </div>
 
-    <!-- Load More Button (fallback for no JS) -->
-    <noscript>
-      <div class="text-center">
-        <button
-          class="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white px-8 py-4 rounded-lg font-semibold transition-all font-gaming">
-          <span>🎮</span>
-          <span class="ml-2">Load More Articles</span>
-        </button>
-      </div>
-    </noscript>
+  <!-- Load More Button (fallback for no JS) -->
+  <noscript>
+    <div class="text-center">
+      <button
+        class="bg-gradient-to-r from-cyan-500 to-purple-500 hover:from-cyan-600 hover:to-purple-600 text-white px-8 py-4 rounded-lg font-semibold transition-all font-gaming">
+        <span>🎮</span>
+        <span class="ml-2">Load More Articles</span>
+      </button>
+    </div>
+  </noscript>
   </div>
 </main>
 
 <script>
-let currentPage = 1;
-let currentCategory = null;
-let currentSort = 'latest';
+  let currentPage = 1;
+  let currentCategory = null;
+  let currentSort = 'latest';
 
-// Gaming category mapping for styling
-const gamingCategoryMapping = {
-  'Game Reviews': {
-    border: 'border-cyan-500/20 hover:border-cyan-500/40',
-    gradient: 'from-cyan-500/20 to-purple-500/20',
-    badgeGradient: 'from-cyan-500/80 to-purple-500/80',
-    hoverColor: 'group-hover:text-cyan-400',
-    emoji: '🎮'
-  },
-  'Esports': {
-    border: 'border-purple-500/20 hover:border-purple-500/40',
-    gradient: 'from-purple-500/20 to-pink-500/20',
-    badgeGradient: 'from-purple-500/80 to-pink-500/80',
-    hoverColor: 'group-hover:text-purple-400',
-    emoji: '🏆'
-  },
-  'Gaming News': {
-    border: 'border-red-500/20 hover:border-red-500/40',
-    gradient: 'from-red-500/20 to-pink-500/20',
-    badgeGradient: 'from-red-500/80 to-pink-500/80',
-    hoverColor: 'group-hover:text-red-400',
-    emoji: '📢'
-  },
-  'Indie Games': {
-    border: 'border-green-500/20 hover:border-green-500/40',
-    gradient: 'from-green-500/20 to-emerald-500/20',
-    badgeGradient: 'from-green-500/80 to-emerald-500/80',
-    hoverColor: 'group-hover:text-green-400',
-    emoji: '🎲'
-  },
-  'Community': {
-    border: 'border-yellow-500/20 hover:border-yellow-500/40',
-    gradient: 'from-yellow-500/20 to-orange-500/20',
-    badgeGradient: 'from-yellow-500/80 to-orange-500/80',
-    hoverColor: 'group-hover:text-yellow-400',
-    emoji: '👥'
-  },
-  'Reviews': {
-    border: 'border-blue-500/20 hover:border-blue-500/40',
-    gradient: 'from-blue-500/20 to-cyan-500/20',
-    badgeGradient: 'from-blue-500/80 to-cyan-500/80',
-    hoverColor: 'group-hover:text-blue-400',
-    emoji: '🎮'
-  },
-  'default': {
-    border: 'border-cyan-500/20 hover:border-cyan-500/40',
-    gradient: 'from-cyan-500/20 to-purple-500/20',
-    badgeGradient: 'from-cyan-500/80 to-purple-500/80',
-    hoverColor: 'group-hover:text-cyan-400',
-    emoji: '🎮'
+  // Gaming category mapping for styling
+  const gamingCategoryMapping = {
+    'Game Reviews': {
+      border: 'border-cyan-500/20 hover:border-cyan-500/40',
+      gradient: 'from-cyan-500/20 to-purple-500/20',
+      badgeGradient: 'from-cyan-500/80 to-purple-500/80',
+      hoverColor: 'group-hover:text-cyan-400',
+      emoji: '🎮'
+    },
+    'Esports': {
+      border: 'border-purple-500/20 hover:border-purple-500/40',
+      gradient: 'from-purple-500/20 to-pink-500/20',
+      badgeGradient: 'from-purple-500/80 to-pink-500/80',
+      hoverColor: 'group-hover:text-purple-400',
+      emoji: '🏆'
+    },
+    'Gaming News': {
+      border: 'border-red-500/20 hover:border-red-500/40',
+      gradient: 'from-red-500/20 to-pink-500/20',
+      badgeGradient: 'from-red-500/80 to-pink-500/80',
+      hoverColor: 'group-hover:text-red-400',
+      emoji: '📢'
+    },
+    'Indie Games': {
+      border: 'border-green-500/20 hover:border-green-500/40',
+      gradient: 'from-green-500/20 to-emerald-500/20',
+      badgeGradient: 'from-green-500/80 to-emerald-500/80',
+      hoverColor: 'group-hover:text-green-400',
+      emoji: '🎲'
+    },
+    'Community': {
+      border: 'border-yellow-500/20 hover:border-yellow-500/40',
+      gradient: 'from-yellow-500/20 to-orange-500/20',
+      badgeGradient: 'from-yellow-500/80 to-orange-500/80',
+      hoverColor: 'group-hover:text-yellow-400',
+      emoji: '👥'
+    },
+    'Reviews': {
+      border: 'border-blue-500/20 hover:border-blue-500/40',
+      gradient: 'from-blue-500/20 to-cyan-500/20',
+      badgeGradient: 'from-blue-500/80 to-cyan-500/80',
+      hoverColor: 'group-hover:text-blue-400',
+      emoji: '🎮'
+    },
+    'default': {
+      border: 'border-cyan-500/20 hover:border-cyan-500/40',
+      gradient: 'from-cyan-500/20 to-purple-500/20',
+      badgeGradient: 'from-cyan-500/80 to-purple-500/80',
+      hoverColor: 'group-hover:text-cyan-400',
+      emoji: '🎮'
+    }
+  };
+
+  // Format date function
+  function formatDate(timestamp) {
+    const date = new Date(timestamp);
+    const now = new Date();
+    const diffTime = Math.abs(now - date);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    if (diffDays === 1) return 'yesterday';
+    if (diffDays < 7) return `${diffDays} days ago`;
+    if (diffDays < 30) return `${Math.floor(diffDays / 7)} weeks ago`;
+    return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
   }
-};
 
-// Format date function
-function formatDate(timestamp) {
-  const date = new Date(timestamp);
-  const now = new Date();
-  const diffTime = Math.abs(now - date);
-  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-  
-  if (diffDays === 1) return 'yesterday';
-  if (diffDays < 7) return `${diffDays} days ago`;
-  if (diffDays < 30) return `${Math.floor(diffDays / 7)} weeks ago`;
-  return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-}
+  // Get fallback image
+  function getFallbackImage() {
+    return 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDQwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjMTExODI3Ii8+Cjx0ZXh0IHg9IjIwMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iNDgiIGZpbGw9IiM2Mzc0OGYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj7wn46uPC90ZXh0Pgo8L3N2Zz4=';
+  }
 
-// Get fallback image
-function getFallbackImage() {
-  return 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDQwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjMTExODI3Ii8+Cjx0ZXh0IHg9IjIwMCIgeT0iMTAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iNDgiIGZpbGw9IiM2Mzc0OGYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj7wn46uPC90ZXh0Pgo8L3N2Zz4=';
-}
+  // Create post HTML
+  function createPostHTML(post) {
+    const imageUrl = post.featured_image || getFallbackImage();
+    const postUrl = `/post/${post.slug}`;
+    const category = post.category || 'Gaming';
+    const categoryStyle = gamingCategoryMapping[category] || gamingCategoryMapping['default'];
 
-// Create post HTML
-function createPostHTML(post) {
-  const imageUrl = post.featured_image || getFallbackImage();
-  const postUrl = `/post/${post.slug}`;
-  const category = post.category || 'Gaming';
-  const categoryStyle = gamingCategoryMapping[category] || gamingCategoryMapping['default'];
-  
-  // Generate tags HTML
-  const tagsArray = post.tags ? post.tags.split(',').map(tag => tag.trim()) : [];
-  const tagsHTML = tagsArray.slice(0, 3).map(tag => 
-    `<span class="bg-gray-800 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-700">#${tag}</span>`
-  ).join('');
-  
-  return `
+    // Generate tags HTML
+    const tagsArray = post.tags ? post.tags.split(',').map(tag => tag.trim()) : [];
+    const tagsHTML = tagsArray.slice(0, 3).map(tag =>
+      `<span class="bg-gray-800 text-gray-300 px-2 py-1 rounded-md text-xs border border-gray-700">#${tag}</span>`
+    ).join('');
+
+    return `
     <article class="bg-gray-900/50 rounded-xl border ${categoryStyle.border} overflow-hidden transition-all duration-300 group">
       <div class="relative overflow-hidden">
         <div class="w-full h-48 bg-gradient-to-br ${categoryStyle.gradient} flex items-center justify-center" style="background-image: url('${imageUrl}'); background-size: cover; background-position: center;">
@@ -261,231 +262,262 @@ function createPostHTML(post) {
       </div>
     </article>
   `;
-}
-
-// Load posts function
-async function loadPosts(page = 1, category = null, sort = 'latest') {
-  const postsLoading = document.getElementById('posts-loading');
-  const postsError = document.getElementById('posts-error');
-  const postsContent = document.getElementById('posts-content');
-  
-  try {
-    postsLoading.classList.remove('hidden');
-    postsError.classList.add('hidden');
-    postsContent.classList.add('hidden');
-    
-    // Build API URL
-    let apiUrl = `/api/blog/posts?page=${page}&limit=9`;
-    if (category && category !== 'All Posts') {
-      apiUrl = `/api/blog/posts/category/${encodeURIComponent(category)}?page=${page}&limit=9`;
-    }
-    if (sort && sort !== 'latest') {
-      apiUrl += `&sort=${sort}`;
-    }
-    
-    const response = await fetch(apiUrl);
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    
-    const data = await response.json();
-    const posts = data.posts || data.data || [];
-    
-    // Render posts
-    renderPosts(posts);
-    
-    // Handle pagination
-    const paginationInfo = data.pagination || {
-      current_page: data.current_page || page,
-      total_pages: data.total_pages || 1
-    };
-    renderPagination(paginationInfo);
-    
-    // Update current state
-    currentPage = page;
-    currentCategory = category;
-    currentSort = sort;
-    
-    postsLoading.classList.add('hidden');
-    postsContent.classList.remove('hidden');
-    
-  } catch (error) {
-    console.error('Failed to load posts:', error);
-    postsLoading.classList.add('hidden');
-    postsError.classList.remove('hidden');
   }
-}
 
-// Render posts
-function renderPosts(posts) {
-  const grid = document.getElementById('posts-grid');
-  grid.innerHTML = '';
-  
-  if (posts.length === 0) {
-    grid.innerHTML = `
+  // Load posts function
+  async function loadPosts(page = 1, category = null, sort = 'latest') {
+    const postsLoading = document.getElementById('posts-loading');
+    const postsError = document.getElementById('posts-error');
+    const postsContent = document.getElementById('posts-content');
+
+    try {
+      postsLoading.classList.remove('hidden');
+      postsError.classList.add('hidden');
+      postsContent.classList.add('hidden');
+
+      // Build API URL
+      let apiUrl = `/api/blog/posts?page=${page}&limit=9`;
+      if (category && category !== 'All Posts') {
+        apiUrl = `/api/blog/posts/category/${encodeURIComponent(category)}?page=${page}&limit=9`;
+      }
+      if (sort && sort !== 'latest') {
+        apiUrl += `&sort=${sort}`;
+      }
+
+      const response = await fetch(apiUrl);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      const posts = data.posts || data.data || [];
+
+      // Render posts
+      renderPosts(posts);
+
+      // Handle pagination
+      const paginationInfo = data.pagination || {
+        current_page: data.current_page || page,
+        total_pages: data.total_pages || 1
+      };
+      renderPagination(paginationInfo);
+
+      // Update current state
+      currentPage = page;
+      currentCategory = category;
+      currentSort = sort;
+
+      postsLoading.classList.add('hidden');
+      postsContent.classList.remove('hidden');
+
+    } catch (error) {
+      console.error('Failed to load posts:', error);
+      postsLoading.classList.add('hidden');
+      postsError.classList.remove('hidden');
+    }
+  }
+
+  // Render posts
+  function renderPosts(posts) {
+    const grid = document.getElementById('posts-grid');
+    grid.innerHTML = '';
+
+    if (posts.length === 0) {
+      grid.innerHTML = `
       <div class="col-span-full text-center py-12">
         <span class="text-6xl mb-4 block">🎮</span>
         <p class="text-gray-400 font-gaming">No gaming posts found</p>
       </div>
     `;
-    return;
-  }
-  
-  posts.forEach(post => {
-    const article = document.createElement('div');
-    article.innerHTML = createPostHTML(post);
-    grid.appendChild(article.firstElementChild);
-  });
-}
+      return;
+    }
 
-// Render pagination
-function renderPagination(pagination) {
-  const container = document.getElementById('pagination');
-  container.innerHTML = '';
-  
-  if (!pagination || pagination.total_pages <= 1) return;
-  
-  const nav = document.createElement('nav');
-  nav.className = 'flex items-center space-x-2';
-  
-  // Previous button
-  if (pagination.current_page > 1) {
-    const prevButton = document.createElement('a');
-    prevButton.href = '#';
-    prevButton.className = 'px-4 py-2 bg-cyan-500/20 text-cyan-400 rounded-lg border border-cyan-500/30 hover:bg-cyan-500/30 transition-colors font-gaming';
-    prevButton.textContent = '← Previous';
-    prevButton.onclick = (e) => {
-      e.preventDefault();
-      loadPosts(pagination.current_page - 1, currentCategory, currentSort);
-    };
-    nav.appendChild(prevButton);
+    posts.forEach(post => {
+      const article = document.createElement('div');
+      article.innerHTML = createPostHTML(post);
+      grid.appendChild(article.firstElementChild);
+    });
   }
-  
-  // Page numbers (show max 5 pages)
-  const startPage = Math.max(1, pagination.current_page - 2);
-  const endPage = Math.min(pagination.total_pages, startPage + 4);
-  
-  for (let i = startPage; i <= endPage; i++) {
-    const pageLink = document.createElement(i === pagination.current_page ? 'span' : 'a');
-    pageLink.className = i === pagination.current_page
-      ? 'px-4 py-2 bg-gradient-to-r from-cyan-500 to-purple-500 text-white rounded-lg font-gaming'
-      : 'px-4 py-2 bg-gray-800 text-gray-300 rounded-lg border border-gray-700 hover:border-cyan-500/30 transition-colors font-gaming';
-    pageLink.textContent = i;
-    if (i !== pagination.current_page) {
-      pageLink.href = '#';
-      pageLink.onclick = (e) => {
+
+  // Render pagination
+  function renderPagination(pagination) {
+    const container = document.getElementById('pagination');
+    container.innerHTML = '';
+
+    if (!pagination || pagination.total_pages <= 1) return;
+
+    const nav = document.createElement('nav');
+    nav.className = 'flex items-center space-x-2';
+
+    // Previous button
+    if (pagination.current_page > 1) {
+      const prevButton = document.createElement('a');
+      prevButton.href = '#';
+      prevButton.className = 'px-4 py-2 bg-cyan-500/20 text-cyan-400 rounded-lg border border-cyan-500/30 hover:bg-cyan-500/30 transition-colors font-gaming';
+      prevButton.textContent = '← Previous';
+      prevButton.onclick = (e) => {
         e.preventDefault();
-        loadPosts(i, currentCategory, currentSort);
+        loadPosts(pagination.current_page - 1, currentCategory, currentSort);
       };
+      nav.appendChild(prevButton);
     }
-    nav.appendChild(pageLink);
-  }
-  
-  // Next button
-  if (pagination.current_page < pagination.total_pages) {
-    const nextButton = document.createElement('a');
-    nextButton.href = '#';
-    nextButton.className = 'px-4 py-2 bg-cyan-500/20 text-cyan-400 rounded-lg border border-cyan-500/30 hover:bg-cyan-500/30 transition-colors font-gaming';
-    nextButton.textContent = 'Next →';
-    nextButton.onclick = (e) => {
-      e.preventDefault();
-      loadPosts(pagination.current_page + 1, currentCategory, currentSort);
-    };
-    nav.appendChild(nextButton);
-  }
-  
-  container.appendChild(nav);
-}
 
-// Load categories from API
-async function loadCategories() {
-  try {
-    const response = await fetch('/api/blog/categories');
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+    // Page numbers (show max 5 pages)
+    const startPage = Math.max(1, pagination.current_page - 2);
+    const endPage = Math.min(pagination.total_pages, startPage + 4);
+
+    for (let i = startPage; i <= endPage; i++) {
+      const pageLink = document.createElement(i === pagination.current_page ? 'span' : 'a');
+      pageLink.className = i === pagination.current_page
+        ? 'px-4 py-2 bg-gradient-to-r from-cyan-500 to-purple-500 text-white rounded-lg font-gaming'
+        : 'px-4 py-2 bg-gray-800 text-gray-300 rounded-lg border border-gray-700 hover:border-cyan-500/30 transition-colors font-gaming';
+      pageLink.textContent = i;
+      if (i !== pagination.current_page) {
+        pageLink.href = '#';
+        pageLink.onclick = (e) => {
+          e.preventDefault();
+          loadPosts(i, currentCategory, currentSort);
+        };
+      }
+      nav.appendChild(pageLink);
     }
-    
-    const data = await response.json();
-    const categories =  data || data.data || [];
-    
-    renderCategoryFilters(categories);
-  } catch (error) {
-    console.error('Failed to load categories:', error);
-    // Fallback to default categories
-    renderCategoryFilters([
-      { name: 'Reviews', slug: 'reviews' },
-      { name: 'Esports', slug: 'esports' },
-      { name: 'Gaming News', slug: 'gaming-news' },
-      { name: 'Indie Games', slug: 'indie-games' }
-    ]);
+
+    // Next button
+    if (pagination.current_page < pagination.total_pages) {
+      const nextButton = document.createElement('a');
+      nextButton.href = '#';
+      nextButton.className = 'px-4 py-2 bg-cyan-500/20 text-cyan-400 rounded-lg border border-cyan-500/30 hover:bg-cyan-500/30 transition-colors font-gaming';
+      nextButton.textContent = 'Next →';
+      nextButton.onclick = (e) => {
+        e.preventDefault();
+        loadPosts(pagination.current_page + 1, currentCategory, currentSort);
+      };
+      nav.appendChild(nextButton);
+    }
+
+    container.appendChild(nav);
   }
-}
 
-// Render category filters
-function renderCategoryFilters(categories) {
-  const container = document.getElementById('category-filters');
-  container.innerHTML = '';
-  
-  // Add "All Posts" button
-  const allButton = document.createElement('button');
-  allButton.className = 'bg-cyan-500/20 text-cyan-400 px-4 py-2 rounded-lg border border-cyan-500/30 hover:bg-cyan-500/30 transition-colors font-gaming';
-  allButton.textContent = 'All Posts';
-  allButton.setAttribute('data-category', 'All Posts');
-  container.appendChild(allButton);
-  
-  // Add category buttons
-  categories.forEach(category => {
-    const button = document.createElement('button');
-    button.className = 'bg-gray-800 text-gray-300 px-4 py-2 rounded-lg border border-gray-700 hover:border-cyan-500/30 transition-colors font-gaming';
-    button.textContent = category.name;
-    button.setAttribute('data-category', category.name);
-    container.appendChild(button);
-  });
-  
-  // Initialize category filter handlers
-  handleCategoryFilter();
-}
+  // Load categories from API
+  async function loadCategories() {
+    try {
+      const response = await fetch('/api/blog/categories');
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
 
-// Handle category filter clicks
-function handleCategoryFilter() {
-  const filterButtons = document.querySelectorAll('[data-category]');
-  filterButtons.forEach(button => {
-    button.addEventListener('click', (e) => {
-      e.preventDefault();
-      const category = button.getAttribute('data-category');
-      
-      // Update button states
-      filterButtons.forEach(btn => {
-        btn.className = btn.className.replace('bg-cyan-500/20 text-cyan-400', 'bg-gray-800 text-gray-300');
+      const data = await response.json();
+      const categories = Array.isArray(data) ? data : (data.categories || data.data || []);
+
+      renderCategoryFilters(categories);
+    } catch (error) {
+      console.error('Failed to load categories:', error);
+      // Fallback to default categories
+      renderCategoryFilters([
+        { name: 'Reviews', slug: 'reviews' },
+        { name: 'Esports', slug: 'esports' },
+        { name: 'Gaming News', slug: 'gaming-news' },
+        { name: 'Indie Games', slug: 'indie-games' }
+      ]);
+    }
+  }
+
+  // Render category filters
+  function renderCategoryFilters(categories) {
+    const container = document.getElementById('category-filters');
+    container.innerHTML = '';
+
+    // Add "All Posts" button
+    const allButton = document.createElement('button');
+    allButton.className = 'bg-cyan-500/20 text-cyan-400 px-4 py-2 rounded-lg border border-cyan-500/30 hover:bg-cyan-500/30 transition-colors font-gaming';
+    allButton.textContent = 'All Posts';
+    allButton.setAttribute('data-category', 'All Posts');
+    container.appendChild(allButton);
+
+    // Add category buttons
+    categories.forEach(cat => {
+      const name = cat.name || cat.category || cat.title || 'Unknown';
+      const button = document.createElement('button');
+      button.className = 'bg-gray-800 text-gray-300 px-4 py-2 rounded-lg border border-gray-700 hover:border-cyan-500/30 transition-colors font-gaming';
+      button.textContent = name;
+      button.setAttribute('data-category', name);
+      container.appendChild(button);
+    });
+
+    // Initialize category filter handlers
+    handleCategoryFilter();
+  }
+
+  // Handle category filter clicks
+  function handleCategoryFilter() {
+    const filterButtons = document.querySelectorAll('[data-category]');
+    filterButtons.forEach(button => {
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+        const category = button.getAttribute('data-category');
+
+        // Update button states
+        filterButtons.forEach(btn => {
+          btn.className = btn.className.replace('bg-cyan-500/20 text-cyan-400', 'bg-gray-800 text-gray-300');
+        });
+        button.className = button.className.replace('bg-gray-800 text-gray-300', 'bg-cyan-500/20 text-cyan-400');
+
+        // Load posts for category
+        loadPosts(1, category, currentSort);
       });
-      button.className = button.className.replace('bg-gray-800 text-gray-300', 'bg-cyan-500/20 text-cyan-400');
-      
-      // Load posts for category
-      loadPosts(1, category, currentSort);
-    });
-  });
-}
-
-// Handle sort change
-function handleSortChange() {
-  const sortSelect = document.querySelector('select');
-  if (sortSelect) {
-    sortSelect.addEventListener('change', (e) => {
-      const sortValue = e.target.value.toLowerCase().replace(' ', '_');
-      loadPosts(1, currentCategory, sortValue);
     });
   }
-}
 
-// Initialize
-document.addEventListener('DOMContentLoaded', async () => {
-  // Load categories first
-  await loadCategories();
-  
-  // Initialize event handlers
-  handleSortChange();
-  
-  // Load initial posts
-  loadPosts();
-});
+  // Handle sort change
+  function handleSortChange() {
+    const sortSelect = document.querySelector('select');
+    if (sortSelect) {
+      sortSelect.addEventListener('change', (e) => {
+        const sortValue = e.target.value.toLowerCase().replace(' ', '_');
+        loadPosts(1, currentCategory, sortValue);
+      });
+    }
+  }
+
+  // Initialize
+  document.addEventListener('DOMContentLoaded', async () => {
+    // Load categories first
+    await loadCategories();
+
+    // Initialize event handlers
+    handleSortChange();
+
+    // Load initial posts
+    loadPosts();
+
+    // Load popular posts
+    (function () {
+      const container = document.getElementById('popular-grid');
+      if (!container) return;
+      const loading = document.getElementById('popular-loading');
+      const error = document.getElementById('popular-error');
+      const fallbackImg = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="200" viewBox="0 0 400 200"%3E%3Crect width="400" height="200" fill="%23262626"/%3E%3Ctext x="200" y="100" text-anchor="middle" dy="0.3em" font-family="Arial" font-size="16" fill="%23cccccc"%3ENo Image%3C/text%3E%3C/svg%3E';
+      function card(p) { const img = p.featured_image || fallbackImg; return `<div class=\"transform hover:scale-105 transition-transform duration-300\"><article class=\"bg-gray-800/50 rounded-xl border border-gray-700/50 overflow-hidden hover:border-cyan-500/40 transition-all duration-300 group\"><div class=\"relative\"><a href=\"/post/${p.slug}\"><img src=\"${img}\" alt=\"${p.title}\" class=\"w-full h-40 object-cover\"></a></div><div class=\"p-4\"><h3 class=\"text-lg font-bold text-white group-hover:text-cyan-400 transition-colors mb-2 font-gaming\"><a href=\"/post/${p.slug}\">${p.title}</a></h3><div class=\"flex items-center justify-between text-xs text-gray-500\"><span>${p.read_time || 5} min</span><span>👁️ ${p.view_count || 0}</span></div></div></article></div>`; }
+      fetch('/api/blog/posts/popular?limit=6').then(r => r.ok ? r.json() : Promise.reject()).then(posts => { loading.classList.add('hidden'); if (!posts.length) { document.getElementById('popular-empty').classList.remove('hidden'); return; } container.innerHTML = posts.map(card).join(''); container.classList.remove('hidden'); }).catch(() => { loading.classList.add('hidden'); error.classList.remove('hidden'); });
+    })();
+  });
+
 </script>
+
+<!-- Popular Posts Section -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+  <div class="flex items-center space-x-2 mb-6">
+    <span class="text-2xl">🔥</span>
+    <h2 class="text-2xl font-bold text-white font-gaming">Popular Posts</h2>
+  </div>
+  <div id="popular-loading" class="flex justify-center py-8">
+    <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-cyan-400"></div>
+  </div>
+  <div id="popular-error" class="text-center py-8 hidden">
+    <p class="text-cyan-400">Failed to load popular posts.</p>
+  </div>
+  <div id="popular-empty" class="text-center py-8 hidden">
+    <p class="text-gray-400">No popular posts available.</p>
+  </div>
+  <div id="popular-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 hidden"></div>
+</div>

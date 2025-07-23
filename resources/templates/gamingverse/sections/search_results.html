@@ -262,25 +262,10 @@
 <section class="bg-gray-900/30 py-6 border-b border-gray-800">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex flex-wrap items-center justify-between gap-4">
-      <!-- Filter Categories -->
-      <div class="flex flex-wrap items-center gap-3">
+      <!-- Dynamic Category Filters -->
+      <div id="category-filters" class="flex flex-wrap items-center gap-3">
         <span class="text-gray-400 text-sm font-semibold">Filter by:</span>
-        <button
-          class="bg-cyan-500/20 text-cyan-400 px-4 py-2 rounded-lg text-sm border border-cyan-500/30 hover:bg-cyan-500/30 transition-colors">
-          All Types
-        </button>
-        <button
-          class="bg-gray-800/50 text-gray-400 px-4 py-2 rounded-lg text-sm border border-gray-700 hover:bg-gray-700 transition-colors">
-          Reviews
-        </button>
-        <button
-          class="bg-gray-800/50 text-gray-400 px-4 py-2 rounded-lg text-sm border border-gray-700 hover:bg-gray-700 transition-colors">
-          News
-        </button>
-        <button
-          class="bg-gray-800/50 text-gray-400 px-4 py-2 rounded-lg text-sm border border-gray-700 hover:bg-gray-700 transition-colors">
-          Guides
-        </button>
+        <!-- Buttons will be injected here -->
       </div>
 
       <!-- Sort Options -->
@@ -297,6 +282,25 @@
     </div>
   </div>
 </section>
+
+<script>
+// Load categories for search filter
+(async function(){
+  const container=document.getElementById('category-filters');if(!container) return;
+  try{
+    const res=await fetch('/api/blog/categories');if(!res.ok) throw new Error();const cats=await res.json();
+    renderCats(cats||[]);
+  }catch(e){console.error('cat filter load error',e);renderCats([]);} 
+
+  function renderCats(cats){container.querySelectorAll('[data-cat-btn]')?.forEach(b=>b.remove());
+    const allBtn=createBtn('All','All');container.appendChild(allBtn);
+    cats.forEach(c=>{const name=c.name||c.category||'Unknown';container.appendChild(createBtn(name,name));});
+  }
+  function createBtn(label,name){const btn=document.createElement('button');btn.textContent=label;btn.className='bg-gray-800/50 text-gray-400 px-4 py-2 rounded-lg text-sm border border-gray-700 hover:bg-gray-700 transition-colors';btn.setAttribute('data-cat-btn',name);btn.onclick=e=>{e.preventDefault();filterByCat(name);};return btn;}
+
+  function filterByCat(cat){const queryParam=new URLSearchParams(window.location.search);if(cat!=='All')queryParam.set('category',cat);else queryParam.delete('category');const newUrl=`/search/${encodeURIComponent(getSearchQueryFromURL()||'')}?${queryParam.toString()}`;history.pushState({},'',newUrl);performSearch();}
+})();
+</script>
 
 <!-- Gaming Search Results -->
 <section class="py-16 bg-gradient-to-b from-gray-900/50 to-black">

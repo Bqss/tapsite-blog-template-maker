@@ -43,7 +43,7 @@
         </div>
         <h1 id="tag-title"
           class="text-4xl md:text-5xl font-bold text-transparent bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text font-gaming">
-          Gaming Tag: RPG
+          Gaming Tag: <span id="tag-name-placeholder">Loading…</span>
         </h1>
       </div>
 
@@ -166,6 +166,15 @@
         <h2 class="text-2xl font-bold text-white font-gaming">Tagged Gaming Posts</h2>
       </div>
 
+      <!-- Dynamic Grid -->
+      <div id="tag-loading" class="flex justify-center py-12"><div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-cyan-400"></div></div>
+      <div id="tag-error" class="text-center py-12 hidden"><p class="text-cyan-400">Failed to load posts.</p></div>
+      <div id="tag-empty" class="text-center py-12 hidden"><p class="text-gray-400">No posts found.</p></div>
+      <div id="tag-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 hidden"></div>
+
+      <div id="pagination-container" class="flex justify-center mt-12 hidden"></div>
+
+      <!-- Static fallback grid -->
       <div id="tag-results-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Article 1 -->
         <div class="transform hover:scale-105 transition-transform duration-300">
@@ -360,88 +369,42 @@
     <!-- Related Tags -->
     <div class="mt-16">
       <h3 class="text-2xl font-bold text-white mb-6 font-gaming">Related Tags</h3>
-      <div class="flex flex-wrap gap-3">
-        <a href="/blog/tag/action-rpg"
-          class="bg-gray-800/50 text-cyan-400 px-4 py-2 rounded-full text-sm border border-gray-700/50 hover:bg-cyan-500/20 hover:border-cyan-500/40 transition-colors">#action-rpg</a>
-        <a href="/blog/tag/jrpg"
-          class="bg-gray-800/50 text-purple-400 px-4 py-2 rounded-full text-sm border border-gray-700/50 hover:bg-purple-500/20 hover:border-purple-500/40 transition-colors">#jrpg</a>
-        <a href="/blog/tag/western-rpg"
-          class="bg-gray-800/50 text-cyan-400 px-4 py-2 rounded-full text-sm border border-gray-700/50 hover:bg-cyan-500/20 hover:border-cyan-500/40 transition-colors">#western-rpg</a>
-        <a href="/blog/tag/indie-rpg"
-          class="bg-gray-800/50 text-purple-400 px-4 py-2 rounded-full text-sm border border-gray-700/50 hover:bg-purple-500/20 hover:border-purple-500/40 transition-colors">#indie-rpg</a>
-        <a href="/blog/tag/turn-based"
-          class="bg-gray-800/50 text-cyan-400 px-4 py-2 rounded-full text-sm border border-gray-700/50 hover:bg-cyan-500/20 hover:border-cyan-500/40 transition-colors">#turn-based</a>
-        <a href="/blog/tag/real-time"
-          class="bg-gray-800/50 text-purple-400 px-4 py-2 rounded-full text-sm border border-gray-700/50 hover:bg-purple-500/20 hover:border-purple-500/40 transition-colors">#real-time</a>
-      </div>
+      <div id="tags-loading" class="flex justify-center py-8"><div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-cyan-400"></div></div>
+      <div id="tags-error" class="text-center py-8 hidden"><p class="text-cyan-400">Failed to load tags.</p></div>
+      <div id="tags-container" class="flex flex-wrap gap-3 hidden"></div>
+      <script>
+      (async function(){
+        const currentTag=tagName;
+        const loading=document.getElementById('tags-loading');const error=document.getElementById('tags-error');const cont=document.getElementById('tags-container');
+        try{
+          const res=await fetch('/api/blog/tags');if(!res.ok) throw new Error();const tags=await res.json();
+          cont.innerHTML=tags.slice(0,20).map(t=>{
+            const active=t===currentTag;const cls=active?'bg-cyan-500/20 text-cyan-400':'bg-gray-800/50 text-gray-400';
+            return `<a href="/tag/${encodeURIComponent(t)}" class="${cls} px-4 py-2 rounded-full text-sm border border-gray-700/50 hover:bg-cyan-500/20 hover:border-cyan-500/40 transition-colors">#${t}</a>`;}).join('');
+          cont.classList.remove('hidden');
+        }catch(e){console.error('tags load error',e);error.classList.remove('hidden');}
+        finally{loading.classList.add('hidden');}
+      })();
+      </script>
     </div>
   </div>
 </section>
 <script>
-(function () {
-  function getTagFromURL() {
-    const parts = window.location.pathname.split('/');
-    const idx = parts.indexOf('tag');
-    return idx !== -1 && parts[idx + 1] ? decodeURIComponent(parts[idx + 1]) : null;
-  }
+(function(){
+  const LIMIT=6;let currentPage=1,totalPages=1,totalPosts=0;
+  const parts=window.location.pathname.split('/');const tagName=decodeURIComponent(parts[parts.length-1]||parts[parts.length-2]);
+  document.getElementById('tag-name-placeholder').textContent=tagName;
 
-  function createArticleHTML(article, tag) {
-    const defaultImage = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23374151'/%3E%3Ctext x='200' y='100' text-anchor='middle' dy='0.3em' font-family='Arial, sans-serif' font-size='16' fill='%23ffffff'%3E🎮%3C/text%3E%3C/svg%3E";
+  const load=document.getElementById('tag-loading');const err=document.getElementById('tag-error');const empty=document.getElementById('tag-empty');const grid=document.getElementById('tag-grid');const pag=document.getElementById('pagination-container');
 
-    return `
-      <div class="transform hover:scale-105 transition-transform duration-300">
-        <article class="bg-gray-800/50 rounded-xl border border-gray-700/50 overflow-hidden hover:border-cyan-500/40 transition-all duration-300 group">
-          <div class="relative">
-            <img src="${article.featured_image || defaultImage}" alt="${article.title}" class="w-full h-48 object-cover">
-            <div class="absolute top-2 left-2 bg-gradient-to-r from-cyan-500 to-purple-500 backdrop-blur-sm rounded-lg px-2 py-1">
-              <span class="text-white text-xs font-semibold">${article.category}</span>
-            </div>
-          </div>
-          <div class="p-6">
-            <h3 class="text-xl font-bold text-white group-hover:text-cyan-400 transition-colors mb-3 font-gaming">
-              <a href="/post/${article.slug}">${article.title}</a>
-            </h3>
-            ${article.excerpt ? `<p class=\"text-gray-400 text-sm mb-4 line-clamp-3 font-gaming-body\">${article.excerpt}</p>` : ''}
-            <div class="flex items-center justify-between text-sm text-gray-500">
-              <span>${article.published_at ? new Date(article.published_at).toLocaleDateString() : ''}</span>
-              ${(() => {const v = article.view_count ?? article.views; return v ? `<span>${v} views</span>` : ''})()}
-            </div>
-          </div>
-        </article>
-      </div>
-    `;
-  }
+  const fallbackImg='data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="200" viewBox="0 0 400 200"%3E%3Crect width="400" height="200" fill="%23262626"/%3E%3Ctext x="200" y="100" text-anchor="middle" dy="0.3em" font-family="Arial" font-size="16" fill="%23cccccc"%3ENo Image%3C/text%3E%3C/svg%3E';
 
-  async function init() {
-    const tag = getTagFromURL();
-    const titleEl = document.getElementById('tag-title');
-    if (titleEl) titleEl.textContent = `Gaming Tag: ${tag}`;
+  function card(p){const img=p.featured_image||fallbackImg;return `<div class=\"transform hover:scale-105 transition-transform duration-300\"><article class=\"bg-gray-800/50 rounded-xl border border-gray-700/50 overflow-hidden hover:border-cyan-500/40 transition-all duration-300 group\"><div class=\"relative\"><a href=\"/post/${p.slug}\"><img src=\"${img}\" alt=\"${p.title}\" class=\"w-full h-48 object-cover\"></a><div class=\"absolute top-2 left-2 bg-gradient-to-r from-cyan-500 to-purple-500 backdrop-blur-sm rounded-lg px-2 py-1\"><span class=\"text-white text-xs font-semibold\">${p.category||''}</span></div></div><div class=\"p-6\"><h3 class=\"text-xl font-bold text-white group-hover:text-cyan-400 transition-colors mb-3 font-gaming\"><a href=\"/post/${p.slug}\">${p.title}</a></h3><p class=\"text-gray-400 text-sm mb-4 line-clamp-3 font-gaming-body\">${p.excerpt||''}</p><div class=\"flex items-center justify-between text-sm text-gray-500\"><span>${p.created_at?new Date(p.created_at).toLocaleDateString():''}</span><span>${p.view_count||0} views</span></div></div></article></div>`;}
 
-    const grid = document.getElementById('tag-results-grid');
-    if (!grid) return;
-    grid.innerHTML = '<p class="col-span-full text-gray-400 text-center">Loading...</p>';
-    try {
-      const res = await fetch(`/api/blog/posts/tag/${encodeURIComponent(tag)}`);
-      if (!res.ok) throw new Error('Network response was not ok');
-      const data = await res.json();
-      if (!Array.isArray(data) || data.length === 0) {
-        grid.innerHTML = '<p class="col-span-full text-gray-400 text-center">No articles found.</p>';
-        return;
-      }
-      grid.innerHTML = data.map(post => createArticleHTML(post, tag)).join('');
+  function renderPagination(){if(totalPages<=1){pag.classList.add('hidden');return;}let html=`<button ${currentPage===1?'disabled':''} data-page='prev' class='px-3 py-2 text-gray-400 hover:text-cyan-400 disabled:opacity-40'>&laquo;</button>`;for(let i=1;i<=totalPages;i++){html+=`<button data-page='${i}' class='px-3 py-2 ${i===currentPage?'bg-cyan-500 text-white':'text-gray-400 hover:text-cyan-400'} rounded'>${i}</button>`;}html+=`<button ${currentPage===totalPages?'disabled':''} data-page='next' class='px-3 py-2 text-gray-400 hover:text-cyan-400 disabled:opacity-40'>&raquo;</button>`;pag.innerHTML=html;pag.classList.remove('hidden');pag.querySelectorAll('button').forEach(b=>b.addEventListener('click',e=>{const v=e.currentTarget.dataset.page;if(v==='prev')load(currentPage-1);else if(v==='next')load(currentPage+1);else load(parseInt(v));}));}
 
-      const postsCountEl = document.getElementById('posts-count');
-      if (postsCountEl) postsCountEl.textContent = `${data.length} posts`;
-    } catch (err) {
-      console.error(err);
-      grid.innerHTML = '<p class="col-span-full text-red-500 text-center">Error loading articles.</p>';
-    }
-  }
+  async function load(page=1){currentPage=page;load.classList.remove('hidden');err.classList.add('hidden');empty.classList.add('hidden');grid.classList.add('hidden');try{const res=await fetch(`/api/blog/posts/tag/${encodeURIComponent(tagName)}?limit=${LIMIT}&page=${page}`);if(!res.ok)throw new Error();let data=await res.json();if(Array.isArray(data)){data={posts:data,pagination:{current_page:1,total_pages:1,total_posts:data.length}};}const posts=data.posts||[];totalPages=data.pagination.total_pages;totalPosts=data.pagination.total_posts;document.getElementById('posts-count').textContent=`${totalPosts} posts`;if(!posts.length){empty.classList.remove('hidden');renderPagination();return;}grid.innerHTML=posts.map(card).join('');grid.classList.remove('hidden');renderPagination();}catch(e){console.error('tag error',e);err.classList.remove('hidden');}finally{load.classList.add('hidden');}}
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
+  document.addEventListener('DOMContentLoaded',()=>load(1));
 })();
 </script>

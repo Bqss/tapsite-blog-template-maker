@@ -51,27 +51,8 @@
     <!-- Filter & Sort -->
     <div class="bg-gray-900/50 rounded-xl p-6 border border-gray-800 mb-12">
       <div class="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0">
-        <div class="flex flex-wrap gap-2">
-          <button
-            class="bg-cyan-500/20 text-cyan-400 px-4 py-2 rounded-lg border border-cyan-500/30 hover:bg-cyan-500/30 transition-colors font-gaming">
-            All Reviews
-          </button>
-          <button
-            class="bg-gray-800 text-gray-300 px-4 py-2 rounded-lg border border-gray-700 hover:border-cyan-500/30 transition-colors font-gaming">
-            RPG
-          </button>
-          <button
-            class="bg-gray-800 text-gray-300 px-4 py-2 rounded-lg border border-gray-700 hover:border-cyan-500/30 transition-colors font-gaming">
-            Action
-          </button>
-          <button
-            class="bg-gray-800 text-gray-300 px-4 py-2 rounded-lg border border-gray-700 hover:border-cyan-500/30 transition-colors font-gaming">
-            Indie
-          </button>
-          <button
-            class="bg-gray-800 text-gray-300 px-4 py-2 rounded-lg border border-gray-700 hover:border-cyan-500/30 transition-colors font-gaming">
-            Strategy
-          </button>
+        <div id="top-category-list" class="flex flex-wrap gap-2">
+          <!-- dynamic buttons -->
         </div>
         <div class="flex items-center space-x-4">
           <select
@@ -140,7 +121,15 @@
       </div>
     </div>
 
-    <!-- Reviews Grid -->
+    <!-- Dynamic Reviews Grid -->
+    <div id="cat-loading" class="flex justify-center py-12"><div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-cyan-400"></div></div>
+    <div id="cat-error" class="text-center py-12 hidden"><p class="text-cyan-400">Failed to load reviews.</p></div>
+    <div id="cat-empty" class="text-center py-12 hidden"><p class="text-gray-400">No reviews found.</p></div>
+    <div id="cat-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12 hidden"></div>
+
+    <div id="pagination-container" class="flex justify-center mb-12 hidden"></div>
+
+    <!-- Static fallback grid kept below -->
     <div id="category-results-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
       <!-- Review 1 -->
       <article
@@ -556,5 +545,14 @@
   } else {
     init();
   }
+})();
+</script>
+
+<script>
+(async function(){
+  const container=document.getElementById('top-category-list');if(!container) return;
+  try{const res=await fetch('/api/blog/categories');if(!res.ok) throw new Error();const cats=await res.json();render(cats||[]);}catch(e){console.error('top cat list error',e);render([]);} 
+  function createBtn(label){const btn=document.createElement('button');btn.className='bg-gray-800 text-gray-300 px-4 py-2 rounded-lg border border-gray-700 hover:border-cyan-500/30 transition-colors font-gaming';btn.textContent=label;btn.onclick=()=>{window.location.href=`/category/${encodeURIComponent(label)}`;};return btn;}
+  function render(cats){container.innerHTML='';container.appendChild(createBtn('All Reviews'));cats.slice(0,5).forEach(c=>{const name=c.name||c.category;container.appendChild(createBtn(name));});}
 })();
 </script>
