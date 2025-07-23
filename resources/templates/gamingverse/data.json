@@ -1,47 +1,14 @@
 {
-  "blog_logo": "/assets/logo.png",
+  "blog_logo": "https://tapsite.ai/favicon-96x96.png",
   "blog_title": "GamingVerse",
-  "blog_tagline": "Your Ultimate Gaming Universe",
-  "blog_description": "Dive into the world of gaming with reviews, guides, news, and community discussions. From indie gems to AAA blockbusters, we cover it all.",
-  "site": {
-    "name": "GamingVerse",
-    "logo": "/assets/logo.png",
-    "tagline": "Your Ultimate Gaming Universe",
-    "description": "Dive into the world of gaming with reviews, guides, news, and community discussions. From indie gems to AAA blockbusters, we cover it all.",
-    "url": "https://gamingverse.com",
-    "email": "contact@gamingverse.com",
-    "phone": "+1 (555) 123-4567"
-  },
   "navigation": [
     {
-      "title": "Home",
-      "url": "/",
-      "icon": "home"
+      "name": "Home",
+      "url": "/"
     },
     {
-      "title": "Reviews",
-      "url": "/category/reviews",
-      "icon": "star"
-    },
-    {
-      "title": "Guides",
-      "url": "/category/guides",
-      "icon": "book"
-    },
-    {
-      "title": "News",
-      "url": "/category/news",
-      "icon": "newspaper"
-    },
-    {
-      "title": "Esports",
-      "url": "/category/esports",
-      "icon": "trophy"
-    },
-    {
-      "title": "Community",
-      "url": "/category/community",
-      "icon": "users"
+      "name": "Blog",
+      "url": "/blog"
     }
   ],
   "post": {
@@ -56,39 +23,13 @@
     "tags": ["webdev", "technology", "trends", "ai", "css", "performance"]
   },
   "author": {
-    "id": "alex-chen",
-    "name": "Alex Chen",
-    "bio": "Gaming enthusiast and tech reviewer with over 8 years of experience in the gaming industry. Passionate about helping gamers find their perfect setup and discover amazing games.",
-    "avatar": "/assets/author-avatar.jpg",
-    "role": "Senior Gaming Editor",
-    "location": "San Francisco, CA",
-    "gaming_stats": {
-      "favorite_genre": "RPG",
-      "current_game": "Baldur's Gate 3",
-      "gaming_platform": "PC & Console",
-      "years_gaming": 15
-    },
-    "social_links": [
-      {
-        "platform": "Twitter",
-        "url": "https://twitter.com/alexchen_gaming",
-        "icon": "twitter"
-      },
-      {
-        "platform": "YouTube",
-        "url": "https://youtube.com/alexchengaming",
-        "icon": "youtube"
-      },
-      {
-        "platform": "Twitch",
-        "url": "https://twitch.tv/alexchengaming",
-        "icon": "twitch"
-      }
-    ],
-    "achievements": [
-      "500+ Game Reviews Published",
-      "Gaming Industry Expert",
-      "Tech Conference Speaker"
-    ]
+    "name": "Sarah Johnson",
+    "role": "Senior Frontend Developer",
+    "bio": "Sarah is a passionate frontend developer with over 8 years of experience building modern web applications. She specializes in React, Vue.js, and performance optimization techniques.",
+    "social": {
+      "twitter": "https://twitter.com/sarahjohnson",
+      "linkedin": "https://linkedin.com/in/sarahjohnson",
+      "website": "https://sarahjohnson.dev"
+    }
   }
 }

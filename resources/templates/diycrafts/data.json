@@ -1,26 +1,14 @@
 {
-  "site": {
-    "name": "DIY Crafts",
-    "tagline": "Create, Inspire, Share",
-    "description": "Step-by-step tutorials, creative projects, and crafting inspiration for makers of all skill levels",
-    "logo": "/images/diycrafts-logo.png"
-  },
+  "blog_logo": "https://tapsite.ai/favicon-96x96.png",
+  "blog_title": "DIY Crafts",
   "navigation": [
     {
       "name": "Home",
       "url": "/"
     },
     {
-      "name": "Posts",
-      "url": "/posts"
-    },
-    {
-      "name": "Categories",
-      "url": "/categories"
-    },
-    {
-      "name": "Tags",
-      "url": "/tags"
+      "name": "Blog",
+      "url": "/blog"
     }
   ],
   "post": {
@@ -34,7 +22,6 @@
     "view_count": 1247,
     "tags": ["webdev", "technology", "trends", "ai", "css", "performance"]
   },
-
   "author": {
     "name": "Sarah Johnson",
     "role": "Senior Frontend Developer",

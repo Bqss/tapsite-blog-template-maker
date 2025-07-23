@@ -1,27 +1,16 @@
 {
-  "site": {
-    "name": "LifestyleLux",
-    "tagline": "Curating Luxury Living",
-    "description": "Discover the finest in luxury lifestyle, fashion, and exclusive experiences",
-    "logo": "https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=200&h=80&fit=crop"
-  },
+  "blog_logo": "https://tapsite.ai/favicon-96x96.png",
+  "blog_title": "LifestyleLux",
   "navigation": [
-    { "name": "Latest", "url": "/" },
-    { "name": "Fashion", "url": "/category/fashion" },
-    { "name": "Travel", "url": "/category/travel" },
-    { "name": "Dining", "url": "/category/dining" },
-    { "name": "Wellness", "url": "/category/wellness" }
-  ],
-  "author": {
-    "name": "Sarah Johnson",
-    "role": "Senior Frontend Developer",
-    "bio": "Sarah is a passionate frontend developer with over 8 years of experience building modern web applications. She specializes in React, Vue.js, and performance optimization techniques.",
-    "social": {
-      "twitter": "https://twitter.com/sarahjohnson",
-      "linkedin": "https://linkedin.com/in/sarahjohnson",
-      "website": "https://sarahjohnson.dev"
+    {
+      "name": "Home",
+      "url": "/"
+    },
+    {
+      "name": "Blog",
+      "url": "/blog"
     }
-  },
+  ],
   "post": {
     "title": "Mendidik Anak Tanpa Gadget: Mengembalikan Masa Kecil yang Sesungguhnya",
     "excerpt": "Pelajari cara mendidik anak tanpa ketergantungan gadget. Temukan alternatif kegiatan seru dan edukatif untuk mendukung perkembangan anak secara holistik.",
@@ -32,5 +21,15 @@
     "read_time": 8,
     "view_count": 1247,
     "tags": ["webdev", "technology", "trends", "ai", "css", "performance"]
+  },
+  "author": {
+    "name": "Sarah Johnson",
+    "role": "Senior Frontend Developer",
+    "bio": "Sarah is a passionate frontend developer with over 8 years of experience building modern web applications. She specializes in React, Vue.js, and performance optimization techniques.",
+    "social": {
+      "twitter": "https://twitter.com/sarahjohnson",
+      "linkedin": "https://linkedin.com/in/sarahjohnson",
+      "website": "https://sarahjohnson.dev"
+    }
   }
 }

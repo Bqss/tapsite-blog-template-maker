@@ -1,28 +1,14 @@
 {
-  "site": {
-    "name": "Creative Studio",
-    "tagline": "Where Creativity Finds Expression",
-    "description": "A vibrant community blog where artists, designers, and creative minds share their processes, insights, tutorials, and inspiration to fuel creativity and foster artistic growth.",
-    "logo": "/images/creativestudio-logo.png",
-    "badge": "Creative Blog & Inspiration Hub"
-  },
-
+  "blog_logo": "https://tapsite.ai/favicon-96x96.png",
+  "blog_title": "Creative Studio",
   "navigation": [
     {
       "name": "Home",
       "url": "/"
     },
     {
-      "name": "Posts",
-      "url": "/posts"
-    },
-    {
-      "name": "Categories",
-      "url": "/categories"
-    },
-    {
-      "name": "Tags",
-      "url": "/tags"
+      "name": "Blog",
+      "url": "/blog"
     }
   ],
   "post": {
@@ -36,7 +22,6 @@
     "view_count": 1247,
     "tags": ["webdev", "technology", "trends", "ai", "css", "performance"]
   },
-
   "author": {
     "name": "Sarah Johnson",
     "role": "Senior Frontend Developer",

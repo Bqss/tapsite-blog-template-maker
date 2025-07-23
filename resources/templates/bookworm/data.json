@@ -1,28 +1,14 @@
 {
-  "blog_logo": "📚",
-  "blog_title": "The BookWorm",
-  "blog_tagline": "Literary Chronicles",
-  "blog_description": "A literary blog featuring book reviews, reading lists, and author spotlights",
+  "blog_logo": "https://tapsite.ai/favicon-96x96.png",
+  "blog_title": "Bookworm",
   "navigation": [
     {
-      "name": "Latest Posts",
-      "url": "/posts"
+      "name": "Home",
+      "url": "/"
     },
     {
-      "name": "Book Lists",
-      "url": "/book-lists"
-    },
-    {
-      "name": "Author Spotlights",
-      "url": "/author-spotlights"
-    },
-    {
-      "name": "Reading Journal",
-      "url": "/reading-journal"
-    },
-    {
-      "name": "About",
-      "url": "/about"
+      "name": "Blog",
+      "url": "/blog"
     }
   ],
   "post": {
@@ -36,25 +22,14 @@
     "view_count": 1247,
     "tags": ["webdev", "technology", "trends", "ai", "css", "performance"]
   },
-
   "author": {
-    "section_title": "Author Spotlight",
-    "section_description": "Celebrating the voices that shape our literary landscape",
-    "name": "Kazuo Ishiguro",
-    "title": "Nobel Prize Winner, 2017",
-    "avatar": null,
-    "featured_image": null,
-    "quote": "Memory, I realize, can be an unreliable thing; often it is heavily coloured by the circumstances in which one remembers.",
-    "bio": "From \"The Remains of the Day\" to \"Never Let Me Go,\" Ishiguro masterfully explores themes of memory, identity, and the human condition through his subtle, elegant prose. His ability to blend reality with the surreal has earned him a place among literature's most celebrated voices.",
-    "featured_books": [
-      "The Remains of the Day",
-      "Never Let Me Go",
-      "Klara and the Sun"
-    ],
-    "profile_url": "/author/kazuo-ishiguro",
+    "name": "Sarah Johnson",
+    "role": "Senior Frontend Developer",
+    "bio": "Sarah is a passionate frontend developer with over 8 years of experience building modern web applications. She specializes in React, Vue.js, and performance optimization techniques.",
     "social": {
-      "twitter": "https://twitter.com/kazuoishiguro",
-      "website": "https://kazuoishiguro.com"
+      "twitter": "https://twitter.com/sarahjohnson",
+      "linkedin": "https://linkedin.com/in/sarahjohnson",
+      "website": "https://sarahjohnson.dev"
     }
   }
 }

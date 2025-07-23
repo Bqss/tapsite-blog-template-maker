@@ -1,10 +1,16 @@
 {
-  "site": {
-    "name": "FinanceWise",
-    "tagline": "Smart Money, Smarter Decisions",
-    "description": "Your comprehensive guide to financial education, investment strategies, and wealth building with expert analysis and practical advice",
-    "logo": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=200&h=80&fit=crop"
-  },
+  "blog_logo": "https://tapsite.ai/favicon-96x96.png",
+  "blog_title": "FinanceWise",
+  "navigation": [
+    {
+      "name": "Home",
+      "url": "/"
+    },
+    {
+      "name": "Blog",
+      "url": "/blog"
+    }
+  ],
   "post": {
     "title": "Mendidik Anak Tanpa Gadget: Mengembalikan Masa Kecil yang Sesungguhnya",
     "excerpt": "Pelajari cara mendidik anak tanpa ketergantungan gadget. Temukan alternatif kegiatan seru dan edukatif untuk mendukung perkembangan anak secara holistik.",
@@ -16,24 +22,6 @@
     "view_count": 1247,
     "tags": ["webdev", "technology", "trends", "ai", "css", "performance"]
   },
-  "navigation": [
-    {
-      "name": "Home",
-      "url": "/"
-    },
-    {
-      "name": "Posts",
-      "url": "/posts"
-    },
-    {
-      "name": "Categories",
-      "url": "/categories"
-    },
-    {
-      "name": "Tags",
-      "url": "/tags"
-    }
-  ],
   "author": {
     "name": "Sarah Johnson",
     "role": "Senior Frontend Developer",
