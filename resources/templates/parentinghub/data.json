@@ -1,239 +1,52 @@
 {
   "site": {
-    "name": "ParentingHub",
-    "tagline": "Nurturing Families, Growing Together",
-    "description": "Your trusted parenting companion featuring expert advice, child development insights, and family-friendly activities for every stage of parenthood",
-    "logo": "https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=200&h=80&fit=crop"
+    "name": "HealthWise Journal",
+    "tagline": "Your Guide to Wellness & Healthy Living",
+    "description": "Comprehensive health and wellness blog featuring expert advice, medical insights, and evidence-based wellness content",
+    "logo": "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=200&h=80&fit=crop"
   },
-  "posts": [
+  "navigation": [
+    { "name": "Home", "url": "/blog" },
+    { "name": "Posts", "url": "/blog/posts" },
+    { "name": "Categories", "url": "/blog/categories" },
+    { "name": "Search", "url": "/blog/search" }
+  ],
+  "social_links": [
     {
-      "id": 1,
-      "title": "Complete Guide to Toddler Sleep Training: Gentle Methods That Work",
-      "slug": "complete-guide-toddler-sleep-training-gentle-methods",
-      "excerpt": "Evidence-based sleep training techniques for toddlers aged 1-3 years with gentle, family-friendly approaches that respect your child's needs.",
-      "content": "Sleep training doesn't have to be stressful for parents or children. This comprehensive guide covers gentle, effective methods that help toddlers develop healthy sleep habits while maintaining the parent-child bond.",
-      "category": "Sleep & Rest",
-      "age_group": "Toddlers (1-3 years)",
-      "author": "Dr. Sarah Parent",
-      "read_time": 12,
-      "difficulty": "Intermediate",
-      "safety_rating": "High",
-      "featured_image": "https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=800&h=600&fit=crop",
-      "gallery": [
-        "https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=600&h=400&fit=crop",
-        "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&h=400&fit=crop",
-        "https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=600&h=400&fit=crop"
-      ],
-      "tags": ["Sleep Training", "Toddlers", "Bedtime Routine", "Gentle Parenting"],
-      "milestones": ["Independent Sleep", "Bedtime Routine", "Night Weaning"],
-      "activities": ["Bedtime Stories", "Calming Music", "Sleep Ritual"],
-      "safety_tips": ["Safe sleep environment", "Age-appropriate bedding", "Room temperature control"],
-      "published_at": "2024-12-15T10:00:00Z"
+      "platform": "Twitter",
+      "url": "https://twitter.com/healthwise",
+      "icon": "🐦"
     },
     {
-      "id": 2,
-      "title": "Positive Discipline Strategies for Preschoolers: Building Character Without Punishment",
-      "slug": "positive-discipline-strategies-preschoolers-building-character",
-      "excerpt": "Learn effective positive discipline techniques that teach preschoolers self-control, empathy, and problem-solving skills without resorting to punishment.",
-      "content": "Positive discipline focuses on teaching rather than punishing. This guide provides practical strategies for guiding preschooler behavior while building their emotional intelligence and self-esteem.",
-      "category": "Behavior & Discipline",
-      "age_group": "Preschoolers (3-5 years)",
-      "author": "Maria Montessori",
-      "read_time": 15,
-      "difficulty": "Intermediate",
-      "safety_rating": "High",
-      "featured_image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&h=600&fit=crop",
-      "gallery": [
-        "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&h=400&fit=crop",
-        "https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=600&h=400&fit=crop",
-        "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=600&h=400&fit=crop"
-      ],
-      "tags": ["Positive Discipline", "Preschoolers", "Behavior Management", "Emotional Intelligence"],
-      "milestones": ["Self-Control", "Empathy Development", "Problem Solving"],
-      "activities": ["Emotion Cards", "Problem-Solving Games", "Calm Down Corner"],
-      "safety_tips": ["Emotional safety", "Consistent boundaries", "Age-appropriate expectations"],
-      "published_at": "2024-12-14T14:30:00Z"
+      "platform": "Instagram",
+      "url": "https://instagram.com/healthwise",
+      "icon": "📸"
     },
     {
-      "id": 3,
-      "title": "Baby's First Year Milestones: What to Expect and When to Celebrate",
-      "slug": "baby-first-year-milestones-what-expect-celebrate",
-      "excerpt": "Comprehensive guide to infant development milestones in the first year, including physical, cognitive, and social-emotional growth markers.",
-      "content": "Every baby develops at their own pace, but understanding typical milestones helps parents support their child's growth and recognize when to seek additional support.",
-      "category": "Development",
-      "age_group": "Infants (0-12 months)",
-      "author": "Dr. Emma Pediatric",
-      "read_time": 18,
-      "difficulty": "Beginner",
-      "safety_rating": "High",
-      "featured_image": "https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=800&h=600&fit=crop",
-      "gallery": [
-        "https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=600&h=400&fit=crop",
-        "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=600&h=400&fit=crop",
-        "https://images.unsplash.com/photo-1519689680058-324335c77eba?w=600&h=400&fit=crop"
-      ],
-      "tags": ["Baby Development", "Milestones", "Infant Growth", "First Year"],
-      "milestones": ["Rolling Over", "Sitting Up", "First Words", "Walking"],
-      "activities": ["Tummy Time", "Peek-a-Boo", "Sensory Play", "Reading Together"],
-      "safety_tips": ["Safe sleep practices", "Babyproofing", "Age-appropriate toys"],
-      "published_at": "2024-12-13T09:15:00Z"
-    },
-    {
-      "id": 4,
-      "title": "Screen Time Guidelines for Kids: Healthy Digital Habits for Modern Families",
-      "slug": "screen-time-guidelines-kids-healthy-digital-habits",
-      "excerpt": "Expert recommendations for managing screen time across different age groups, plus tips for creating healthy digital habits and family media plans.",
-      "content": "In our digital world, teaching children healthy screen time habits is essential. This guide provides age-appropriate guidelines and practical strategies for balanced technology use.",
-      "category": "Digital Wellness",
-      "age_group": "All Ages",
-      "author": "Dr. Tech Balance",
-      "read_time": 10,
-      "difficulty": "Beginner",
-      "safety_rating": "High",
-      "featured_image": "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&h=600&fit=crop",
-      "gallery": [
-        "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=600&h=400&fit=crop",
-        "https://images.unsplash.com/photo-1519689680058-324335c77eba?w=600&h=400&fit=crop",
-        "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=600&h=400&fit=crop"
-      ],
-      "tags": ["Screen Time", "Digital Wellness", "Technology", "Family Rules"],
-      "milestones": ["Digital Literacy", "Self-Regulation", "Healthy Boundaries"],
-      "activities": ["Family Media Plan", "Tech-Free Time", "Educational Apps"],
-      "safety_tips": ["Content filtering", "Privacy settings", "Online safety education"],
-      "published_at": "2024-12-12T16:45:00Z"
-    },
-    {
-      "id": 5,
-      "title": "Fun Educational Activities for School-Age Kids: Learning Through Play",
-      "slug": "fun-educational-activities-school-age-kids-learning-play",
-      "excerpt": "Creative and engaging educational activities that make learning fun for elementary school children while supporting academic and social development.",
-      "content": "Learning doesn't stop when school ends. These engaging activities help school-age children continue learning while having fun, building confidence, and developing new skills.",
-      "category": "Learning & Education",
-      "age_group": "School Age (6-12 years)",
-      "author": "Teacher Lisa",
-      "read_time": 14,
-      "difficulty": "Easy",
-      "safety_rating": "High",
-      "featured_image": "https://images.unsplash.com/photo-1519689680058-324335c77eba?w=800&h=600&fit=crop",
-      "gallery": [
-        "https://images.unsplash.com/photo-1519689680058-324335c77eba?w=600&h=400&fit=crop",
-        "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=600&h=400&fit=crop",
-        "https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=600&h=400&fit=crop"
-      ],
-      "tags": ["Educational Activities", "School Age", "Learning Through Play", "STEM"],
-      "milestones": ["Academic Skills", "Critical Thinking", "Creativity"],
-      "activities": ["Science Experiments", "Math Games", "Reading Challenges", "Art Projects"],
-      "safety_tips": ["Supervised activities", "Age-appropriate materials", "Clear instructions"],
-      "published_at": "2024-12-11T11:20:00Z"
+      "platform": "Facebook",
+      "url": "https://facebook.com/healthwise",
+      "icon": "👍"
     }
   ],
-  "age_groups": [
-    {
-      "name": "Infants (0-12 months)",
-      "description": "Newborn and infant care, feeding, sleep, and early development",
-      "icon": "👶",
-      "article_count": 25,
-      "color": "#F59E0B",
-      "key_topics": ["Feeding", "Sleep", "Development", "Safety", "Bonding"]
-    },
-    {
-      "name": "Toddlers (1-3 years)",
-      "description": "Toddler behavior, potty training, language development, and activities",
-      "icon": "🧒",
-      "article_count": 32,
-      "color": "#10B981",
-      "key_topics": ["Potty Training", "Tantrums", "Language", "Independence", "Safety"]
-    },
-    {
-      "name": "Preschoolers (3-5 years)",
-      "description": "Preschool readiness, social skills, and early learning activities",
-      "icon": "👧",
-      "article_count": 28,
-      "color": "#8B5CF6",
-      "key_topics": ["School Readiness", "Social Skills", "Discipline", "Learning", "Creativity"]
-    },
-    {
-      "name": "School Age (6-12 years)",
-      "description": "School support, homework help, friendships, and extracurricular activities",
-      "icon": "🎒",
-      "article_count": 35,
-      "color": "#3B82F6",
-      "key_topics": ["Education", "Friendships", "Activities", "Responsibility", "Growth"]
-    },
-    {
-      "name": "Teenagers (13+ years)",
-      "description": "Teen communication, independence, and preparing for adulthood",
-      "icon": "🧑‍🎓",
-      "article_count": 22,
-      "color": "#EF4444",
-      "key_topics": ["Communication", "Independence", "Peer Pressure", "Future Planning", "Identity"]
-    },
-    {
-      "name": "All Ages",
-      "description": "General parenting advice, family activities, and universal tips",
-      "icon": "👨‍👩‍👧‍👦",
-      "article_count": 18,
-      "color": "#059669",
-      "key_topics": ["Family Time", "Values", "Health", "Safety", "Traditions"]
+  "author": {
+    "name": "Sarah Johnson",
+    "role": "Senior Frontend Developer",
+    "bio": "Sarah is a passionate frontend developer with over 8 years of experience building modern web applications. She specializes in React, Vue.js, and performance optimization techniques.",
+    "social": {
+      "twitter": "https://twitter.com/sarahjohnson",
+      "linkedin": "https://linkedin.com/in/sarahjohnson",
+      "website": "https://sarahjohnson.dev"
     }
-  ],
-  "parenting_experts": [
-    {
-      "name": "Dr. Sarah Parent",
-      "title": "Pediatric Sleep Specialist",
-      "expertise": "Sleep training, bedtime routines, infant sleep",
-      "bio": "Board-certified pediatrician specializing in children's sleep health with 15+ years experience",
-      "articles": 18,
-      "credentials": "MD, Board Certified Pediatrics",
-      "avatar": "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=100&h=100&fit=crop&crop=face"
-    },
-    {
-      "name": "Maria Montessori",
-      "title": "Child Development Expert",
-      "expertise": "Positive discipline, emotional development, early childhood education",
-      "bio": "Child development specialist and certified Montessori educator with expertise in gentle parenting approaches",
-      "articles": 25,
-      "credentials": "PhD Child Development, Montessori Certified",
-      "avatar": "https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=100&h=100&fit=crop&crop=face"
-    },
-    {
-      "name": "Dr. Emma Pediatric",
-      "title": "Developmental Pediatrician",
-      "expertise": "Child milestones, developmental delays, early intervention",
-      "bio": "Developmental pediatrician helping families understand and support their children's growth and development",
-      "articles": 22,
-      "credentials": "MD, Developmental Pediatrics",
-      "avatar": "https://images.unsplash.com/photo-1594824604989-b57a8b5ce969?w=100&h=100&fit=crop&crop=face"
-    }
-  ],
-  "family_activities": [
-    {
-      "title": "Family Game Night",
-      "description": "Weekly board game sessions that build family bonds and teach valuable skills",
-      "age_group": "All Ages",
-      "duration": "1-2 hours",
-      "materials": ["Board games", "Snacks", "Comfortable seating"]
-    },
-    {
-      "title": "Nature Scavenger Hunt",
-      "description": "Outdoor exploration activity that encourages observation and physical activity",
-      "age_group": "Toddlers & Up",
-      "duration": "30-60 minutes",
-      "materials": ["Scavenger hunt list", "Collection bag", "Camera"]
-    },
-    {
-      "title": "Cooking Together",
-      "description": "Age-appropriate cooking activities that teach life skills and nutrition",
-      "age_group": "Preschoolers & Up",
-      "duration": "45-90 minutes",
-      "materials": ["Simple recipes", "Child-safe utensils", "Ingredients"]
-    },
-    {
-      "title": "Story Time & Discussion",
-      "description": "Reading together followed by meaningful conversations about the story",
-      "age_group": "All Ages",
-      "duration": "20-30 minutes",
-      "materials": ["Age-appropriate books", "Comfortable reading space"]
-    }
-  ]
-} 
+  },
+  "post": {
+    "title": "Mendidik Anak Tanpa Gadget: Mengembalikan Masa Kecil yang Sesungguhnya",
+    "excerpt": "Pelajari cara mendidik anak tanpa ketergantungan gadget. Temukan alternatif kegiatan seru dan edukatif untuk mendukung perkembangan anak secara holistik.",
+    "content": "<h1>Mendidik Anak Tanpa Gadget: Mengembalikan Masa Kecil yang Sesungguhnya</h1><p></p><p>Di era digital ini, gadget seolah menjadi bagian tak terpisahkan dari kehidupan kita, termasuk anak-anak. Namun, tahukah Anda bahwa penggunaan gadget yang berlebihan dapat berdampak negatif pada perkembangan buah hati kita? Mari kita telaah lebih dalam mengenai dampak buruk ini dan bagaimana kita bisa mendidik anak tanpa ketergantungan gadget, mengembalikan masa kecil yang penuh kreativitas dan interaksi.</p><p></p><h2>Dampak Negatif Gadget pada Perkembangan Anak</h2><p></p><p> Penggunaan gadget yang berlebihan pada anak usia dini dan sekolah dasar dapat memicu berbagai masalah, baik secara fisik, sosial, emosional, maupun kognitif. Beberapa dampak negatif tersebut antara lain:</p><ul><li><strong>Fisik:</strong> Gangguan penglihatan (mata lelah, mata minus), masalah postur tubuh (sakit punggung, leher), obesitas akibat kurang gerak, dan gangguan tidur.</li><li><strong>Sosial:</strong> Kurangnya interaksi sosial langsung, kesulitan membangun empati, dan penurunan kemampuan berkomunikasi secara efektif.</li><li><strong>Emosional:</strong> Perubahan suasana hati yang cepat, kecemasan, depresi, dan ketergantungan emosional pada gadget.</li><li><strong>Kognitif:</strong> Kesulitan fokus dan konsentrasi, penurunan kemampuan memecahkan masalah, dan keterlambatan perkembangan bahasa.</li></ul><p></p><p>Dengan memahami dampak negatif ini, kita sebagai orang tua dapat lebih bijak dalam mengelola penggunaan gadget pada anak.</p><p></p><h2>Alternatif Kegiatan Seru dan Edukatif Tanpa Gadget</h2><p></p><p>Untungnya, ada banyak kegiatan seru dan edukatif yang bisa menggantikan gadget dan mendukung perkembangan anak secara holistik. Berikut beberapa ide yang bisa Anda coba:</p><ul><li><strong>Bermain di Luar:</strong> Ajak anak bermain di taman, halaman rumah, atau alam terbuka. Biarkan mereka berlari, melompat, memanjat, dan berinteraksi dengan lingkungan sekitar. Ini sangat baik untuk perkembangan motorik dan sensorik mereka.</li><li><strong>Membaca Buku:</strong> Bacakan cerita untuk anak-anak, atau ajak mereka membaca sendiri jika sudah bisa. Membaca buku dapat meningkatkan imajinasi, kosakata, dan kemampuan berpikir kritis.</li><li><strong>Kerajinan Tangan:</strong> Sediakan bahan-bahan sederhana seperti kertas, gunting, lem, pensil warna, dan biarkan anak berkreasi membuat berbagai macam kerajinan. Ini melatih kreativitas dan kemampuan motorik halus.</li><li><strong>Permainan Tradisional:</strong> Kenalkan anak pada permainan tradisional seperti petak umpet, congklak, engklek, atau layang-layang. Permainan ini tidak hanya menyenangkan, tetapi juga melatih kerja sama tim dan keterampilan sosial.</li><li><strong>Berkebun:</strong> Ajak anak menanam bunga atau sayuran di halaman rumah. Ini mengajarkan mereka tentang siklus kehidupan, tanggung jawab, dan pentingnya menjaga lingkungan.</li></ul><p></p><p></p><h2>Mengelola Penggunaan Gadget Anak Secara Efektif</h2><p></p><p>Menghilangkan gadget sepenuhnya mungkin sulit dilakukan, tetapi kita bisa mengelola penggunaannya secara efektif. Berikut beberapa tips:</p><ul><li><strong>Buat Jadwal:</strong> Tentukan waktu-waktu tertentu di mana anak boleh menggunakan gadget. Pastikan ada batasan waktu yang jelas dan konsisten.</li><li><strong>Tetapkan Aturan:</strong> Buat aturan yang jelas mengenai jenis konten yang boleh diakses anak. Hindari konten yang mengandung kekerasan, pornografi, atau ujaran kebencian.</li><li><strong>Jadilah Contoh yang Baik:</strong> Orang tua adalah panutan bagi anak. Kurangi penggunaan gadget di depan anak dan tunjukkan bahwa Anda juga bisa menikmati kegiatan lain.</li><li><strong>Ajak Anak Berdiskusi:</strong> Libatkan anak dalam pembuatan aturan penggunaan gadget. Jelaskan mengapa aturan tersebut penting dan dengarkan pendapat mereka.</li></ul><p></p><p></p><h2>Manfaat Interaksi Langsung dan Komunikasi Berkualitas</h2><p></p><p>Interaksi langsung dan komunikasi berkualitas antara orang tua dan anak sangat penting untuk perkembangan emosional, sosial, dan kognitif anak. Luangkan waktu untuk berbicara dengan anak, mendengarkan cerita mereka, dan memberikan dukungan emosional. Ini akan mempererat hubungan Anda dengan anak dan membantu mereka tumbuh menjadi pribadi yang percaya diri dan bahagia.</p><p></p><h2>Menciptakan Lingkungan yang Mendukung</h2><p></p><p>Untuk mendukung perkembangan anak tanpa gadget, ciptakan lingkungan yang merangsang kreativitas dan rasa ingin tahu mereka. Tata ruang bermain yang menarik, sediakan bahan-bahan kreatif seperti cat, kuas, kertas, dan balok kayu. Libatkan anak dalam kegiatan rumah tangga seperti memasak, membersihkan rumah, atau berkebun. Ini akan membuat mereka merasa dihargai dan bertanggung jawab.</p><p>Mari bersama-sama mengembalikan masa kecil yang sesungguhnya bagi anak-anak kita. Dengan mengurangi ketergantungan pada gadget dan memberikan alternatif kegiatan yang seru dan edukatif, kita dapat membantu mereka tumbuh menjadi generasi yang kreatif, cerdas, dan bahagia.</p><p><strong>Bagikan artikel ini kepada orang tua lain yang peduli dengan perkembangan anak! Coba terapkan tips-tips di atas dan ceritakan pengalaman Anda di kolom komentar.</strong>        </p>",
+    "category": "Technology",
+    "featured_image": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    "published_at": "March 15, 2024",
+    "read_time": 8,
+    "view_count": 1247,
+    "tags": ["webdev", "technology", "trends", "ai", "css", "performance"]
+  }
+}

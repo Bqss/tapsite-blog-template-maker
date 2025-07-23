@@ -17,19 +17,15 @@
         </svg>
         <span class="text-sm font-medium">Search</span>
       </div>
-      <h1 class="font-display text-4xl lg:text-5xl font-bold mb-4">
-        Cari Artikel Parenting
-      </h1>
-      <p class="text-xl text-green-100 mb-8 max-w-2xl mx-auto">
-        Temukan artikel parenting yang sesuai dengan kebutuhan Anda
-      </p>
+      <h1 id="search-title" class="font-display text-4xl lg:text-5xl font-bold mb-4">Loading…</h1>
+      <p id="search-desc" class="text-xl text-green-100 mb-8 max-w-2xl mx-auto"></p>
 
       <!-- Search Form -->
       <div class="max-w-2xl mx-auto">
         <div class="relative">
-          <input type="text" placeholder="Cari artikel parenting..." value="tips parenting"
+          <input id="search-input" type="text" placeholder="Cari artikel parenting..."
             class="w-full px-6 py-4 text-lg rounded-2xl text-family-dark focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50 pr-16">
-          <button
+          <button id="search-btn"
             class="absolute right-2 top-2 bg-family-green text-white p-3 rounded-xl hover:bg-family-emerald transition-colors">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -48,10 +44,8 @@
     <!-- Search Results -->
     <div class="lg:col-span-3">
       <div class="flex items-center justify-between mb-8">
-        <h2 class="text-2xl font-bold text-family-dark">Search Results</h2>
-        <div class="flex items-center space-x-4">
-          <span class="text-sm text-gray-500">Ditemukan 3 artikel untuk "tips parenting"</span>
-        </div>
+        <h2 id="results-heading" class="text-2xl font-bold text-family-dark">Loading…</h2>
+        <div class="flex items-center space-x-4"><span id="results-count" class="text-sm text-gray-500"></span></div>
       </div>
 
       <!-- Search Filters -->
@@ -91,125 +85,47 @@
         </div>
       </div>
 
-      <!-- Search Results -->
-      <div class="space-y-8">
-        <!-- Result 1 -->
-        <article
-          class="family-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
-          <div class="md:flex">
-            <div class="md:w-1/3">
-              <img
-                src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                alt="Search Result" class="w-full h-48 md:h-full object-cover">
-            </div>
-            <div class="md:w-2/3 p-6">
-              <div class="flex items-center space-x-4 mb-3">
-                <span class="bg-family-green text-white px-3 py-1 rounded-full text-sm font-medium">Parenting</span>
-                <span class="text-sm text-gray-500">March 20, 2024</span>
-              </div>
-              <h3 class="font-display text-xl font-bold text-family-dark mb-3 leading-tight">
-                <a href="/post/mendidik-anak-tanpa-gadget" class="hover:text-family-green transition-colors">
-                  Mendidik Anak Tanpa Gadget: Mengembalikan Masa Kecil yang Sesungguhnya
-                </a>
-              </h3>
-              <p class="text-gray-600 mb-4 line-clamp-3">
-                Pelajari cara mendidik anak tanpa ketergantungan gadget. Temukan alternatif kegiatan seru dan edukatif
-                untuk mendukung perkembangan anak secara holistik.
-              </p>
-              <div class="flex items-center justify-between text-sm text-gray-500">
-                <div class="flex items-center space-x-2">
-                  <img
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
-                    alt="Author" class="w-6 h-6 rounded-full">
-                  <span>Maulana Shalihin</span>
-                </div>
-                <div class="flex items-center space-x-4">
-                  <span>8 min read</span>
-                  <span>1,247 views</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
+      <!-- Loading -->
+      <div id="posts-loading" class="flex justify-center py-12"><div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-family-green"></div></div>
+      <!-- Error -->
+      <div id="posts-error" class="text-center py-12 hidden"><p class="text-family-dark">Failed to load results.</p></div>
+      <!-- Empty -->
+      <div id="posts-empty" class="text-center py-12 hidden"><p class="text-gray-600">No results found.</p></div>
 
-        <!-- Result 2 -->
-        <article
-          class="family-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
-          <div class="md:flex">
-            <div class="md:w-1/3">
-              <img
-                src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                alt="Search Result" class="w-full h-48 md:h-full object-cover">
-            </div>
-            <div class="md:w-2/3 p-6">
-              <div class="flex items-center space-x-4 mb-3">
-                <span class="bg-family-orange text-white px-3 py-1 rounded-full text-sm font-medium">Parenting</span>
-                <span class="text-sm text-gray-500">March 19, 2024</span>
-              </div>
-              <h3 class="font-display text-xl font-bold text-family-dark mb-3 leading-tight">
-                <a href="/post/membangun-kebahagiaan-keluarga" class="hover:text-family-green transition-colors">
-                  Membangun Kebahagiaan Keluarga di Era Digital
-                </a>
-              </h3>
-              <p class="text-gray-600 mb-4 line-clamp-3">
-                Tips praktis untuk menciptakan waktu berkualitas bersama anak dan membangun hubungan yang harmonis dalam
-                keluarga modern.
-              </p>
-              <div class="flex items-center justify-between text-sm text-gray-500">
-                <div class="flex items-center space-x-2">
-                  <img
-                    src="https://images.unsplash.com/photo-1494790108755-2616c2e20d8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
-                    alt="Author" class="w-6 h-6 rounded-full">
-                  <span>Dr. Sarah Pratiwi</span>
-                </div>
-                <div class="flex items-center space-x-4">
-                  <span>6 min read</span>
-                  <span>2,156 views</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
+      <!-- Results List -->
+      <div id="results-list" class="space-y-8 hidden"></div>
 
-        <!-- Result 3 -->
-        <article
-          class="family-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
-          <div class="md:flex">
-            <div class="md:w-1/3">
-              <img
-                src="https://images.unsplash.com/photo-1476703993599-0035a21b17a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-                alt="Search Result" class="w-full h-48 md:h-full object-cover">
-            </div>
-            <div class="md:w-2/3 p-6">
-              <div class="flex items-center space-x-4 mb-3">
-                <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium">Parenting</span>
-                <span class="text-sm text-gray-500">March 18, 2024</span>
-              </div>
-              <h3 class="font-display text-xl font-bold text-family-dark mb-3 leading-tight">
-                <a href="/post/komunikasi-efektif-dengan-anak" class="hover:text-family-green transition-colors">
-                  Komunikasi Efektif dengan Anak: Membangun Hubungan yang Kuat
-                </a>
-              </h3>
-              <p class="text-gray-600 mb-4 line-clamp-3">
-                Strategi komunikasi yang tepat untuk membangun hubungan yang kuat dan saling percaya antara orang tua
-                dan anak.
-              </p>
-              <div class="flex items-center justify-between text-sm text-gray-500">
-                <div class="flex items-center space-x-2">
-                  <img
-                    src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
-                    alt="Author" class="w-6 h-6 rounded-full">
-                  <span>Rina Sari</span>
-                </div>
-                <div class="flex items-center space-x-4">
-                  <span>7 min read</span>
-                  <span>3,421 views</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-      </div>
+      <!-- Pagination -->
+      <div id="pagination-container" class="flex justify-center mt-12 hidden"></div>
+
+      <script>
+      (function(){
+        const LIMIT=6; let currentPage=1,totalPages=1,totalPosts=0;
+
+        // get query param q
+        const urlParams=new URLSearchParams(window.location.search); let query=urlParams.get('q'); if(!query){const parts=window.location.pathname.split('/'); query=decodeURIComponent(parts[parts.length-1]||'');}
+
+        // elements
+        const titleEl=document.getElementById('search-title'); const descEl=document.getElementById('search-desc');
+        const inputEl=document.getElementById('search-input'); const btnEl=document.getElementById('search-btn');
+        const headingEl=document.getElementById('results-heading'); const countEl=document.getElementById('results-count');
+        const loadEl=document.getElementById('posts-loading'); const errorEl=document.getElementById('posts-error'); const emptyEl=document.getElementById('posts-empty'); const listEl=document.getElementById('results-list'); const pagEl=document.getElementById('pagination-container');
+
+        inputEl.value=query;
+        function cardHTML(p){const img=p.featured_image||fallbackImg;return `<article class="family-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100 hover:shadow-xl hover:-translate-y-1"><div class="md:flex"><div class="md:w-1/3"><img src="${img}" alt="${p.title}" class="w-full h-48 md:h-full object-cover" onerror="this.src='${fallbackImg}'"></div><div class="md:w-2/3 p-6"><div class="flex items-center space-x-4 mb-3"><span class="bg-family-green text-white px-3 py-1 rounded-full text-sm font-medium">${p.category}</span><span class="text-sm text-gray-500">${new Date(p.published_at).toLocaleDateString('id-ID')}</span></div><h3 class="font-display text-xl font-bold text-family-dark mb-3 leading-tight"><a href="/post/${p.slug}" class="hover:text-family-green transition-colors">${p.title}</a></h3><p class="text-gray-600 mb-4 line-clamp-3">${p.excerpt||''}</p><div class="flex items-center justify-between text-sm text-gray-500"><span>${p.author||'Anonymous'}</span>${p.read_time?`<span>${p.read_time} min read</span>`:''}</div></div></div></article>`;}
+
+        const fallbackImg="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23f3f4f6'/%3E%3Ctext x='200' y='100' text-anchor='middle' dy='0.3em' font-family='Arial' font-size='16' fill='%23374151'%3ENo Image%3C/text%3E%3C/svg%3E";
+
+        function renderPagination(){ if(totalPages<=1){pagEl.classList.add('hidden');return;} let html=`<button ${currentPage===1?'disabled':''} data-page="prev" class="px-4 py-2 text-gray-500 hover:text-family-green transition-colors disabled:opacity-40">&laquo;</button>`; for(let i=1;i<=totalPages;i++){ html+=`<button data-page="${i}" class="px-4 py-2 ${i===currentPage?'bg-family-green text-white':'text-gray-500 hover:text-family-green'} rounded-lg transition-colors">${i}</button>`;} html+=`<button ${currentPage===totalPages?'disabled':''} data-page="next" class="px-4 py-2 text-gray-500 hover:text-family-green transition-colors disabled:opacity-40">&raquo;</button>`; pagEl.innerHTML=html; pagEl.classList.remove('hidden'); pagEl.querySelectorAll('button').forEach(b=>b.addEventListener('click',e=>{const v=e.currentTarget.dataset.page;if(v==='prev')loadPage(currentPage-1);else if(v==='next')loadPage(currentPage+1);else loadPage(parseInt(v));})); }
+
+        async function loadPage(page=1){ currentPage=page; loadEl.classList.remove('hidden'); errorEl.classList.add('hidden'); emptyEl.classList.add('hidden'); listEl.classList.add('hidden'); try{ const res=await fetch(`/api/blog/posts/search/${encodeURIComponent(query)}?limit=${LIMIT}&page=${page}`); if(!res.ok) throw new Error(); const data=await res.json(); const posts=data.posts||data||[]; totalPages=data.pagination?.total_pages||1; totalPosts=data.pagination?.total_posts||posts.length; headingEl.textContent=`Search Results` ; countEl.textContent=`${totalPosts} results for "${query}"`; if(posts.length===0){emptyEl.classList.remove('hidden');} else {listEl.innerHTML=posts.map(cardHTML).join(''); listEl.classList.remove('hidden');} renderPagination(); }catch(err){console.error(err); errorEl.classList.remove('hidden'); }finally{ loadEl.classList.add('hidden'); } }
+
+        btnEl.addEventListener('click',()=>{const q=inputEl.value.trim(); if(q) window.location.href=`/search?q=${encodeURIComponent(q)}`;});
+        inputEl.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault(); btnEl.click();}});
+
+        document.addEventListener('DOMContentLoaded',()=>{titleEl.textContent=`Hasil untuk: ${query}`; loadPage(1);});
+      })();
+      </script>
     </div>
 
     <!-- Sidebar -->
@@ -218,50 +134,15 @@
         <!-- Popular Searches -->
         <div class="bg-white rounded-2xl shadow-lg p-6">
           <h3 class="font-display text-xl font-bold text-family-dark mb-4">Popular Searches</h3>
-          <div class="space-y-3">
-            <a href="/search?q=tips parenting" class="block text-gray-700 hover:text-family-green transition-colors">
-              tips parenting
-            </a>
-            <a href="/search?q=mendidik anak" class="block text-gray-700 hover:text-family-green transition-colors">
-              mendidik anak
-            </a>
-            <a href="/search?q=keluarga bahagia" class="block text-gray-700 hover:text-family-green transition-colors">
-              keluarga bahagia
-            </a>
-            <a href="/search?q=komunikasi anak" class="block text-gray-700 hover:text-family-green transition-colors">
-              komunikasi anak
-            </a>
-            <a href="/search?q=perkembangan anak" class="block text-gray-700 hover:text-family-green transition-colors">
-              perkembangan anak
-            </a>
-          </div>
+          <div id="popular-searches" class="space-y-3"></div>
+          <script>fetch('/api/blog/posts/popular?limit=5').then(r=>r.ok?r.json():[]).then(posts=>{const list=document.getElementById('popular-searches'); if(list){list.innerHTML=(posts||[]).map(p=>`<a href="/search?q=${encodeURIComponent(p.title.split(' ')[0])}" class="block text-gray-700 hover:text-family-green transition-colors">${p.title}</a>`).join('');}});</script>
         </div>
 
         <!-- Search Suggestions -->
         <div class="bg-white rounded-2xl shadow-lg p-6">
           <h3 class="font-display text-xl font-bold text-family-dark mb-4">Search Suggestions</h3>
-          <div class="flex flex-wrap gap-2">
-            <a href="/tag/Parenting"
-              class="bg-family-light text-family-green px-3 py-1 rounded-full text-sm font-medium hover:bg-family-green hover:text-white transition-colors">
-              #Parenting
-            </a>
-            <a href="/tag/Anak"
-              class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium hover:bg-family-green hover:text-white transition-colors">
-              #Anak
-            </a>
-            <a href="/tag/Keluarga"
-              class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium hover:bg-family-green hover:text-white transition-colors">
-              #Keluarga
-            </a>
-            <a href="/tag/Ayah"
-              class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium hover:bg-family-green hover:text-white transition-colors">
-              #Ayah
-            </a>
-            <a href="/tag/Kasih-Sayang"
-              class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium hover:bg-family-green hover:text-white transition-colors">
-              #Kasih Sayang
-            </a>
-          </div>
+          <div data-suggest-tags class="flex flex-wrap gap-2"></div>
+          <script>fetch('/api/blog/tags').then(r=>r.ok?r.json():[]).then(tags=>{const el=document.querySelector('[data-suggest-tags]'); if(el){el.innerHTML=(tags||[]).slice(0,10).map(t=>`<a href="/tag/${encodeURIComponent(t)}" class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium hover:bg-family-green hover:text-white transition-colors">#${t}</a>`).join('');}});</script>
         </div>
 
         <!-- Categories -->

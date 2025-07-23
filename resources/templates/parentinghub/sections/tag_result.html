@@ -19,12 +19,8 @@
         </svg>
         <span class="text-sm font-medium">Tag</span>
       </div>
-      <h1 class="font-display text-4xl lg:text-5xl font-bold mb-4">
-        Artikel dengan Tag "Parenting"
-      </h1>
-      <p class="text-xl text-green-100 mb-8 max-w-2xl mx-auto">
-        Temukan artikel terbaik tentang parenting dengan tips dan panduan dari para ahli
-      </p>
+      <h1 id="tag-title" class="font-display text-4xl lg:text-5xl font-bold mb-4">Loading…</h1>
+      <p id="tag-desc" class="text-xl text-green-100 mb-8 max-w-2xl mx-auto"></p>
     </div>
   </div>
 </section>
@@ -35,175 +31,102 @@
     <!-- Articles Grid -->
     <div class="lg:col-span-3">
       <div class="flex items-center justify-between mb-8">
-        <h2 class="text-2xl font-bold text-family-dark">Artikel dengan Tag "Parenting"</h2>
+        <h2 id="article-heading" class="text-2xl font-bold text-family-dark">Loading…</h2>
         <div class="flex items-center space-x-4">
-          <span class="text-sm text-gray-500">15 artikel ditemukan</span>
+          <span id="article-count" class="text-sm text-gray-500"></span>
         </div>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- Article 1 -->
-        <article
-          class="family-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
-          <div class="relative">
-            <img
-              src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-              alt="Parenting Article" class="w-full h-48 object-cover">
-            <div class="absolute top-4 left-4">
-              <span class="bg-family-green text-white px-3 py-1 rounded-full text-sm font-medium">Parenting</span>
-            </div>
-          </div>
-          <div class="p-6">
-            <h3 class="font-display text-xl font-bold text-family-dark mb-3 leading-tight">
-              <a href="/post/mendidik-anak-tanpa-gadget" class="hover:text-family-green transition-colors">
-                Mendidik Anak Tanpa Gadget: Mengembalikan Masa Kecil yang Sesungguhnya
-              </a>
-            </h3>
-            <p class="text-gray-600 mb-4 line-clamp-3">
-              Pelajari cara mendidik anak tanpa ketergantungan gadget. Temukan alternatif kegiatan seru dan edukatif
-              untuk mendukung perkembangan anak secara holistik.
-            </p>
-            <div class="flex items-center justify-between text-sm text-gray-500">
-              <div class="flex items-center space-x-2">
-                <img
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
-                  alt="Author" class="w-6 h-6 rounded-full">
-                <span>Maulana Shalihin</span>
-              </div>
-              <div class="flex items-center space-x-4">
-                <span>8 min read</span>
-                <span>1,247 views</span>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Article 2 -->
-        <article
-          class="family-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
-          <div class="relative">
-            <img
-              src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-              alt="Parenting Article" class="w-full h-48 object-cover">
-            <div class="absolute top-4 left-4">
-              <span class="bg-family-orange text-white px-3 py-1 rounded-full text-sm font-medium">Parenting</span>
-            </div>
-          </div>
-          <div class="p-6">
-            <h3 class="font-display text-xl font-bold text-family-dark mb-3 leading-tight">
-              <a href="/post/membangun-kebahagiaan-keluarga" class="hover:text-family-green transition-colors">
-                Membangun Kebahagiaan Keluarga di Era Digital
-              </a>
-            </h3>
-            <p class="text-gray-600 mb-4 line-clamp-3">
-              Tips praktis untuk menciptakan waktu berkualitas bersama anak dan membangun hubungan yang harmonis dalam
-              keluarga modern.
-            </p>
-            <div class="flex items-center justify-between text-sm text-gray-500">
-              <div class="flex items-center space-x-2">
-                <img
-                  src="https://images.unsplash.com/photo-1494790108755-2616c2e20d8e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
-                  alt="Author" class="w-6 h-6 rounded-full">
-                <span>Dr. Sarah Pratiwi</span>
-              </div>
-              <div class="flex items-center space-x-4">
-                <span>6 min read</span>
-                <span>2,156 views</span>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Article 3 -->
-        <article
-          class="family-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
-          <div class="relative">
-            <img
-              src="https://images.unsplash.com/photo-1476703993599-0035a21b17a9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-              alt="Parenting Article" class="w-full h-48 object-cover">
-            <div class="absolute top-4 left-4">
-              <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-sm font-medium">Parenting</span>
-            </div>
-          </div>
-          <div class="p-6">
-            <h3 class="font-display text-xl font-bold text-family-dark mb-3 leading-tight">
-              <a href="/post/komunikasi-efektif-dengan-anak" class="hover:text-family-green transition-colors">
-                Komunikasi Efektif dengan Anak: Membangun Hubungan yang Kuat
-              </a>
-            </h3>
-            <p class="text-gray-600 mb-4 line-clamp-3">
-              Strategi komunikasi yang tepat untuk membangun hubungan yang kuat dan saling percaya antara orang tua dan
-              anak.
-            </p>
-            <div class="flex items-center justify-between text-sm text-gray-500">
-              <div class="flex items-center space-x-2">
-                <img
-                  src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
-                  alt="Author" class="w-6 h-6 rounded-full">
-                <span>Rina Sari</span>
-              </div>
-              <div class="flex items-center space-x-4">
-                <span>7 min read</span>
-                <span>3,421 views</span>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- Article 4 -->
-        <article
-          class="family-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100">
-          <div class="relative">
-            <img
-              src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80"
-              alt="Parenting Article" class="w-full h-48 object-cover">
-            <div class="absolute top-4 left-4">
-              <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">Parenting</span>
-            </div>
-          </div>
-          <div class="p-6">
-            <h3 class="font-display text-xl font-bold text-family-dark mb-3 leading-tight">
-              <a href="/post/mengembangkan-kreativitas-anak" class="hover:text-family-green transition-colors">
-                Mengembangkan Kreativitas Anak Melalui Permainan Edukatif
-              </a>
-            </h3>
-            <p class="text-gray-600 mb-4 line-clamp-3">
-              Panduan lengkap untuk mengembangkan kreativitas dan imajinasi anak melalui berbagai permainan edukatif
-              yang menyenangkan.
-            </p>
-            <div class="flex items-center justify-between text-sm text-gray-500">
-              <div class="flex items-center space-x-2">
-                <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80"
-                  alt="Author" class="w-6 h-6 rounded-full">
-                <span>Ahmad Fauzi</span>
-              </div>
-              <div class="flex items-center space-x-4">
-                <span>5 min read</span>
-                <span>1,890 views</span>
-              </div>
-            </div>
-          </div>
-        </article>
+      <!-- Loading -->
+      <div id="posts-loading" class="flex justify-center py-12">
+        <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-family-green"></div>
       </div>
+      <!-- Error -->
+      <div id="posts-error" class="text-center py-12 hidden">
+        <p class="text-family-dark">Failed to load posts.</p>
+      </div>
+      <!-- Empty -->
+      <div id="posts-empty" class="text-center py-12 hidden">
+        <p class="text-gray-600">No posts found.</p>
+      </div>
+
+      <!-- Posts Grid -->
+      <div id="posts-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8 hidden"></div>
 
       <!-- Pagination -->
-      <div class="flex justify-center mt-12">
-        <nav class="flex items-center space-x-2">
-          <button class="px-4 py-2 text-gray-500 hover:text-family-green transition-colors">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-          <button class="px-4 py-2 bg-family-green text-white rounded-lg font-medium">1</button>
-          <button class="px-4 py-2 text-gray-500 hover:text-family-green transition-colors">2</button>
-          <button class="px-4 py-2 text-gray-500 hover:text-family-green transition-colors">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-        </nav>
-      </div>
+      <div id="pagination-container" class="flex justify-center mt-12 hidden"></div>
+
+      <script>
+        (function () {
+          const LIMIT = 6;
+          let currentPage = 1, totalPages = 1, totalPosts = 0;
+
+          // derive tag from URL
+          const path = window.location.pathname.split('/');
+          const tagName = decodeURIComponent(path[path.length - 1] || path[path.length - 2]);
+
+          // elements
+          const titleEl = document.getElementById('tag-title');
+          const descEl = document.getElementById('tag-desc');
+          const headingEl = document.getElementById('article-heading');
+          const countEl = document.getElementById('article-count');
+
+          const loadEl = document.getElementById('posts-loading');
+          const errorEl = document.getElementById('posts-error');
+          const emptyEl = document.getElementById('posts-empty');
+          const gridEl = document.getElementById('posts-grid');
+          const pagEl = document.getElementById('pagination-container');
+
+          const fallbackImg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23f3f4f6'/%3E%3Ctext x='200' y='100' text-anchor='middle' dy='0.3em' font-family='Arial' font-size='16' fill='%23374151'%3ENo Image%3C/text%3E%3C/svg%3E";
+
+          function tagCardHTML(p) {
+            const img = p.featured_image || fallbackImg;
+            return `<article class="family-card bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 border border-gray-100 hover:-translate-y-1 hover:shadow-xl">
+                    <div class="relative"><img src="${img}" alt="${p.title}" class="w-full h-48 object-cover" onerror="this.src='${fallbackImg}'">
+                      <div class="absolute top-4 left-4"><span class="bg-family-green text-white px-3 py-1 rounded-full text-sm font-medium">${p.category}</span></div></div>
+                    <div class="p-6"><h3 class="font-display text-xl font-bold text-family-dark mb-3 leading-tight"><a href="/post/${p.slug}" class="hover:text-family-green transition-colors">${p.title}</a></h3><p class="text-gray-600 mb-4 line-clamp-3">${p.excerpt || ''}</p><div class="flex items-center justify-between text-sm text-gray-500"><span>${p.author || 'Anonymous'}</span>${p.read_time ? `<span>${p.read_time} min read</span>` : ''}</div></div></article>`;
+          }
+
+          function renderPagination() {
+            if (totalPages <= 1) { pagEl.classList.add('hidden'); return; }
+            let html = `<button ${currentPage === 1 ? 'disabled' : ''} data-page="prev" class="px-4 py-2 text-gray-500 hover:text-family-green transition-colors disabled:opacity-40">&laquo;</button>`;
+            for (let i = 1; i <= totalPages; i++) html += `<button data-page="${i}" class="px-4 py-2 ${i === currentPage ? 'bg-family-green text-white' : 'text-gray-500 hover:text-family-green'} rounded-lg transition-colors">${i}</button>`;
+            html += `<button ${currentPage === totalPages ? 'disabled' : ''} data-page="next" class="px-4 py-2 text-gray-500 hover:text-family-green transition-colors disabled:opacity-40">&raquo;</button>`;
+            pagEl.innerHTML = html; pagEl.classList.remove('hidden');
+            pagEl.querySelectorAll('button').forEach(b => b.addEventListener('click', e => { const v = e.currentTarget.dataset.page; if (v === 'prev') loadPage(currentPage - 1); else if (v === 'next') loadPage(currentPage + 1); else loadPage(parseInt(v)); }));
+          }
+
+          async function loadPage(page = 1) {
+            currentPage = page; loadEl.classList.remove('hidden'); errorEl.classList.add('hidden'); emptyEl.classList.add('hidden'); gridEl.classList.add('hidden');
+            try {
+              const res = await fetch(`/api/blog/posts/tag/${encodeURIComponent(tagName)}?limit=${LIMIT}&page=${page}`);
+              if (!res.ok) throw new Error();
+              const data = await res.json();
+              const posts = data.posts || data || [];
+              totalPages = data.pagination?.total_pages || 1; totalPosts = data.pagination?.total_posts || posts.length;
+              headingEl.textContent = `Artikel dengan Tag "${tagName}"`;
+              countEl.textContent = `${totalPosts} artikel ditemukan`;
+              if (posts.length === 0) { emptyEl.classList.remove('hidden'); } else { gridEl.innerHTML = posts.map(tagCardHTML).join(''); gridEl.classList.remove('hidden'); }
+              renderPagination();
+            } catch (err) { console.error(err); errorEl.classList.remove('hidden'); }
+            finally { loadEl.classList.add('hidden'); }
+          }
+
+          // Load sidebar tags after DOM ready
+          function loadRelatedTags() {
+            const relatedContainer = document.querySelector('[data-related-tags]');
+            if (!relatedContainer) return;
+            fetch('/api/blog/tags').then(r => r.ok ? r.json() : []).then(tags => {
+              relatedContainer.innerHTML = (tags || []).filter(t => t !== tagName).slice(0, 10).map(t => `<a href="/tag/${encodeURIComponent(t)}" class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium hover:bg-family-green hover:text-white transition-colors">#${t}</a>`).join('');
+            }).catch(err => console.error('Related tags error', err));
+          }
+
+          // Sidebar categories dynamic (reuse logic)
+          function loadSidebarCats() { const loadEl = document.getElementById('sidebar-categories-loading'); const errEl = document.getElementById('sidebar-categories-error'); const listEl = document.getElementById('sidebar-categories'); if (!loadEl) return; fetch('/api/blog/categories').then(r => r.ok ? r.json() : Promise.reject(r.statusText)).then(cats => { listEl.innerHTML = (cats || []).map(cat => { const name = cat.name || cat.category; const total = cat.posts || cat.post_count || 0; return `<a href="/category/${encodeURIComponent(name)}" class="flex items-center justify-between py-2 px-3 rounded-lg hover:bg-family-light transition-colors"><span class="text-gray-700">${name}</span><span class="text-sm text-gray-500">${total}</span></a>`; }).join(''); console.log('Loaded categories', cats); listEl.classList.remove('hidden'); listEl.parentElement.classList.remove('hidden'); }).catch(err => { console.error('Sidebar categories error', err); errEl.classList.remove('hidden'); }).finally(() => loadEl.classList.add('hidden')); }
+
+          document.addEventListener('DOMContentLoaded', () => { titleEl.textContent = `Tag: ${tagName}`; loadPage(1); loadRelatedTags(); loadSidebarCats(); });
+        })();
+      </script>
     </div>
 
     <!-- Sidebar -->
@@ -212,59 +135,19 @@
         <!-- Related Tags -->
         <div class="bg-white rounded-2xl shadow-lg p-6">
           <h3 class="font-display text-xl font-bold text-family-dark mb-4">Related Tags</h3>
-          <div class="flex flex-wrap gap-2">
-            <a href="/tag/Anak"
-              class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium hover:bg-family-green hover:text-white transition-colors">
-              #Anak
-            </a>
-            <a href="/tag/Keluarga"
-              class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium hover:bg-family-green hover:text-white transition-colors">
-              #Keluarga
-            </a>
-            <a href="/tag/Ayah"
-              class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium hover:bg-family-green hover:text-white transition-colors">
-              #Ayah
-            </a>
-            <a href="/tag/Kasih-Sayang"
-              class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium hover:bg-family-green hover:text-white transition-colors">
-              #Kasih Sayang
-            </a>
-            <a href="/tag/Kebahagiaan"
-              class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium hover:bg-family-green hover:text-white transition-colors">
-              #Kebahagiaan
-            </a>
-            <a href="/tag/Waktu-Berkualitas"
-              class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-medium hover:bg-family-green hover:text-white transition-colors">
-              #Waktu Berkualitas
-            </a>
-          </div>
+          <div data-related-tags class="flex flex-wrap gap-2"></div>
         </div>
 
         <!-- Categories -->
         <div class="bg-white rounded-2xl shadow-lg p-6">
           <h3 class="font-display text-xl font-bold text-family-dark mb-4">Categories</h3>
-          <div class="space-y-3">
-            <a href="/category/Technology"
-              class="flex items-center justify-between py-2 px-3 rounded-lg hover:bg-family-light transition-colors">
-              <span class="text-gray-700">Technology</span>
-              <span class="text-sm text-gray-500">12</span>
-            </a>
-            <a href="/category/Business"
-              class="flex items-center justify-between py-2 px-3 rounded-lg hover:bg-family-light transition-colors">
-              <span class="text-gray-700">Business</span>
-              <span class="text-sm text-gray-500">8</span>
-            </a>
-            <a href="/category/Design"
-              class="flex items-center justify-between py-2 px-3 rounded-lg hover:bg-family-light transition-colors">
-              <span class="text-gray-700">Design</span>
-              <span class="text-sm text-gray-500">6</span>
-            </a>
-            <a href="/category/Parenting"
-              class="flex items-center justify-between py-2 px-3 rounded-lg bg-family-light">
-              <span class="text-family-green font-medium">Parenting</span>
-              <span class="text-sm text-family-green">24</span>
-            </a>
+          <div id="sidebar-categories-loading" class="flex justify-center py-4">
+            <div class="inline-block animate-spin rounded-full h-6 w-6 border-b-2 border-family-green"></div>
           </div>
+          <div id="sidebar-categories-error" class="text-center py-4 hidden">
+            <p class="text-sm text-family-dark">Failed to load categories.</p>
+          </div>
+          <div id="sidebar-categories" class="space-y-3 hidden"></div>
         </div>
       </div>
     </div>
