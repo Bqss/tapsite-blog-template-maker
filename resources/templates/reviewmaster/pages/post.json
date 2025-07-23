@@ -1,64 +1,40 @@
 {
-  "title": "{{post.title}} - ReviewMaster",
-  "description": "{{post.excerpt}}",
-  "keywords": "{{post.tags}}, product review, buying guide, tech review",
-  "author": "{{post.author}}",
-  "canonical": "/post/{{post.slug}}",
-  "og": {
-    "title": "{{post.title}}",
-    "description": "{{post.excerpt}}",
-    "image": "{{post.featured_image}}",
-    "url": "/post/{{post.slug}}",
-    "type": "article",
-    "article": {
-      "author": "{{post.author}}",
-      "published_time": "{{post.published_at}}",
-      "modified_time": "{{post.updated_at}}",
-      "section": "{{post.category}}",
-      "tag": "{{post.tags}}"
+  "title": "ReviewMaster - Tech Reviews & Comparisons",
+  "description": "Expert tech reviews, in-depth comparisons, and buying guides to help you make informed tech decisions",
+  "sections": [
+    {
+      "title": "styles",
+      "id": "styles",
+      "type": "template",
+      "resetable": true
+    },
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": ["site.name", "site.logo", "site.tagline", "navigation"]
+    },
+    {
+      "title": "post_content",
+      "id": "post_content",
+      "type": "template",
+      "resetable": true,
+      "data": []
+    },
+    {
+      "title": "related_posts",
+      "id": "related_posts",
+      "type": "template",
+      "resetable": true,
+      "data": []
+    },
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": ["site.name", "site.description", "navigation", "social_links"]
     }
-  },
-  "twitter": {
-    "card": "summary_large_image",
-    "title": "{{post.title}}",
-    "description": "{{post.excerpt}}",
-    "image": "{{post.featured_image}}"
-  },
-  "schema": {
-    "@context": "https://schema.org",
-    "@type": "Review",
-    "headline": "{{post.title}}",
-    "description": "{{post.excerpt}}",
-    "image": "{{post.featured_image}}",
-    "url": "/post/{{post.slug}}",
-    "datePublished": "{{post.published_at}}",
-    "dateModified": "{{post.updated_at}}",
-    "author": {
-      "@type": "Person",
-      "name": "{{post.author}}"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "ReviewMaster",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "/images/reviewmaster-logo.png"
-      }
-    },
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "/post/{{post.slug}}"
-    },
-    "reviewBody": "{{post.content}}",
-    "itemReviewed": {
-      "@type": "Product",
-      "name": "{{post.title}}",
-      "category": "{{post.category}}"
-    },
-    "reviewRating": {
-      "@type": "Rating",
-      "ratingValue": "4.5",
-      "bestRating": "5"
-    }
-  }
-} 
+  ]
+}

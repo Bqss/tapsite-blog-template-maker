@@ -1,0 +1,66 @@
+<!-- Page Header -->
+<section class="bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <div class="inline-flex items-center bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 mb-6 shadow-lg">
+        <span class="text-blue-600 font-semibold">📝 All Product Reviews</span>
+      </div>
+      <h1 class="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+        Comprehensive Product <span
+          class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Reviews</span>
+      </h1>
+      <p class="text-xl text-gray-600 mb-8 leading-relaxed max-w-3xl mx-auto">
+        In-depth reviews, comparisons, and buying guides to help you make informed decisions about your next tech
+        purchase.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Filter Categories -->
+<section class="py-8 bg-white border-b">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-wrap gap-3 justify-center" id="review-filter"></div>
+
+    <script>
+    (function(){
+      const filterEl=document.getElementById('review-filter');
+      function link(cat){return `<a href="/category/${encodeURIComponent(cat.name)}" class="bg-white text-blue-600 border-2 border-blue-500 hover:bg-blue-50 px-6 py-3 rounded-lg font-semibold transition-all">${cat.emoji||'📦'} ${cat.name}</a>`;}
+      async function load(){
+        try{const res=await fetch('/api/blog/categories');if(!res.ok) throw new Error();const cats=await res.json();filterEl.innerHTML=`<a href='/posts' class='bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold transition-all transform hover:scale-105 shadow-lg'>All Reviews</a>`+cats.map(link).join('');}catch(e){console.error(e);}}
+      document.addEventListener('DOMContentLoaded',load);
+    })();
+    </script>
+  </div>
+</section>
+
+<!-- Reviews Grid -->
+<section class="py-16 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="posts-grid-wrapper">
+      <div id="posts-loading" class="col-span-full flex justify-center py-12"><div class="inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-blue-500"></div></div>
+      <div id="posts-error" class="col-span-full text-center py-12 text-red-500 hidden">Failed to load reviews.</div>
+    </div>
+
+    <div id="posts-pagination" class="mt-12 flex justify-center hidden"></div>
+
+    <script>
+    (function(){
+      const LIMIT=9;let currentPage=1,totalPages=1;
+      const grid=document.getElementById('posts-grid-wrapper');
+      const loadEl=document.getElementById('posts-loading');
+      const errEl=document.getElementById('posts-error');
+      const pagEl=document.getElementById('posts-pagination');
+      const fallbackImg="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23e5e7eb'/%3E%3Ctext x='200' y='100' text-anchor='middle' dy='0.3em' font-family='Arial' font-size='16' fill='%23666'%3ENo Image%3C/text%3E%3C/svg%3E";
+
+      function card(p){return `<article class=\"bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 cursor-pointer group\"><a href=\"/post/${p.slug}\" class=\"block relative\"><img src=\"${p.featured_image||fallbackImg}\" alt=\"${p.title}\" class=\"w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300\" onerror=\"this.src='${fallbackImg}'\"><div class=\"absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-lg text-sm font-semibold\">${p.category||''}</div><div class=\"absolute bottom-4 right-4 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-1 text-sm font-semibold text-gray-700\">${p.read_time||5} min read</div></a><div class=\"p-6\"><h3 class=\"text-xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors\">${p.title}</h3><p class=\"text-gray-600 mb-4 line-clamp-2\">${p.excerpt||''}</p><div class=\"flex items-center justify-between\"><div class=\"flex items-center space-x-2\"><img src=\"${p.author_avatar||'/images/default-avatar.png'}\" class=\"w-8 h-8 rounded-full\"><span class=\"text-sm font-medium text-gray-700\">${p.author||''}</span></div><div class=\"flex items-center space-x-1 text-orange-500\"><span class=\"text-sm\">👁️</span><span class=\"text-sm font-medium\">${p.view_count||0}</span></div></div></div></article>`;}
+
+      function pagination(){if(totalPages<=1){pagEl.classList.add('hidden');return;}let html=`<button ${currentPage===1?'disabled':''} data-page='prev' class='px-4 py-2 text-gray-500 bg-white rounded-lg border hover:bg-gray-50 transition-colors'>Prev</button>`;for(let i=1;i<=totalPages;i++){html+=`<button data-page='${i}' class='px-4 py-2 ${i===currentPage?'bg-blue-600 text-white':'text-gray-700 bg-white'} rounded-lg border hover:bg-gray-50 transition-colors'>${i}</button>`;}html+=`<button ${currentPage===totalPages?'disabled':''} data-page='next' class='px-4 py-2 text-gray-500 bg-white rounded-lg border hover:bg-gray-50 transition-colors'>Next</button>`;pagEl.innerHTML=html;pagEl.classList.remove('hidden');pagEl.querySelectorAll('button').forEach(b=>b.addEventListener('click',e=>{const v=e.currentTarget.dataset.page;if(v==='prev') load(currentPage-1);else if(v==='next') load(currentPage+1);else load(parseInt(v));}));}
+
+      async function load(page=1){currentPage=page;loadEl.classList.remove('hidden');errEl.classList.add('hidden');try{const res=await fetch(`/api/blog/posts?limit=${LIMIT}&page=${page}`);if(!res.ok) throw new Error();const data=await res.json();const posts=data.posts||[];totalPages=data.pagination?data.pagination.total_pages:1;grid.innerHTML=posts.length?posts.map(card).join(''):`<div class='col-span-full text-center py-12 text-gray-500'>No reviews found.</div>`;pagination();}catch(e){console.error(e);errEl.classList.remove('hidden');}finally{loadEl.classList.add('hidden');}}
+
+      document.addEventListener('DOMContentLoaded',()=>load());
+    })();
+    </script>
+  </div>
+</section>

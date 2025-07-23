@@ -1,0 +1,47 @@
+
+<!-- Tech Categories -->
+<section class="py-16 bg-gray-900">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+          <h2 class="text-4xl font-bold text-white mb-4 tech-font">Browse by Category</h2>
+          <p class="text-xl text-gray-400 tech-font">Explore reviews by your favorite tech categories</p>
+      </div>
+
+      <!-- Dynamic Categories Grid -->
+      <div id="cat-loading" class="flex justify-center py-12"><div class="inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-blue-500"></div></div>
+      <div id="cat-error" class="text-center py-12 hidden"><p class="text-red-500">Failed to load categories.</p></div>
+      <div id="cat-grid" class="grid grid-cols-2 md:grid-cols-4 gap-6 hidden"></div>
+
+      <script>
+      (function(){
+        const loadEl=document.getElementById('cat-loading');
+        const errEl=document.getElementById('cat-error');
+        const gridEl=document.getElementById('cat-grid');
+        const icons=['📱','💻','🎧','🎮','🖥️','⌚'];
+        const colors=['blue','purple','green','orange','pink','yellow'];
+        function card(cat){
+          const idx=Math.floor(Math.random()*icons.length);
+          const icon=icons[idx];
+          const color=colors[idx%colors.length];
+          return `<a href="/category/${encodeURIComponent(cat.name)}" class="hologram-card rounded-2xl p-8 text-center hover:shadow-2xl transition-all transform hover:-translate-y-2 cursor-pointer group">
+              <div class="text-5xl mb-4 group-hover:scale-110 transition-transform tech-icon">${icon}</div>
+              <h3 class="font-bold text-white mb-2 tech-font">${cat.name}</h3>
+              <p class="text-${color}-400 font-semibold mono-font">${cat.posts||0} reviews</p>
+              <div class="mt-3 text-xs text-gray-400 tech-font">${cat.description||''}</div>
+          </a>`;
+        }
+        async function load(){
+          try{
+            const res=await fetch('/api/blog/categories');
+            if(!res.ok) throw new Error();
+            const cats=await res.json();
+            gridEl.innerHTML=cats.map(card).join('');
+            gridEl.classList.remove('hidden');
+          }catch(e){console.error(e);errEl.classList.remove('hidden');}
+          finally{loadEl.classList.add('hidden');}
+        }
+        document.addEventListener('DOMContentLoaded',load);
+      })();
+      </script>
+  </div>
+</section>

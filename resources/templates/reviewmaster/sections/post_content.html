@@ -1,0 +1,94 @@
+<!-- Data will be injected via Squirrelly templating; no client fetch needed -->
+<!-- Article Header -->
+<section class="py-12 bg-white">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-8">
+      <div class="inline-flex items-center bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-semibold mb-4">
+        <span class="mr-2">📱</span>
+        {{it.post.category}}
+      </div>
+      <h1 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4 leading-tight">
+        {{it.post.title}}
+      </h1>
+      <p class="text-xl text-gray-600 mb-6">
+        {{it.post.excerpt}}
+      </p>
+
+      <div class="flex items-center justify-center space-x-8 text-sm text-gray-500 mb-6">
+        <div class="flex items-center space-x-2">
+          <img src="{{it.author.avatar}}" alt="{{it.author.name}}" class="w-10 h-10 rounded-full">
+          <div class="text-left">
+            <p class="font-semibold text-gray-900">{{it.author.name}}</p>
+            <p class="text-gray-500">{{it.author.role}}</p>
+          </div>
+        </div>
+        <div class="flex items-center space-x-4">
+          <span>{{it.post.published_at}}</span>
+          <span>⏱️ {{it.post.read_time}} min read</span>
+          <span>👁️ {{it.post.view_count}} views</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="relative rounded-2xl overflow-hidden shadow-lg mb-8">
+      {{@if(it.post.featured_image)}}
+      <img src="{{it.post.featured_image}}" alt="{{it.post.title}}"
+        class="w-full h-64 lg:h-80 object-cover">
+      {{/if}}
+      <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Review Content -->
+<article class="py-8 bg-white">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="ProseMirror focus:outline-none max-w-full space-y-4 leading-relaxed">
+      {{* it.post.content}}
+    </div>
+  </div>
+</article>
+
+
+<!-- Tags -->
+<section class="py-6 bg-white border-t">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-wrap gap-2">
+      <span class="text-sm text-gray-600 mr-2">Tags:</span>
+      <a href="/tag/iPhone"
+        class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium hover:bg-blue-200 transition-colors">
+        iPhone
+      </a>
+      <a href="/tag/Samsung"
+        class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm font-medium hover:bg-purple-200 transition-colors">
+        Samsung
+      </a>
+      <a href="/tag/Flagship"
+        class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-medium hover:bg-green-200 transition-colors">
+        Flagship
+      </a>
+      <a href="/tag/Comparison"
+        class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm font-medium hover:bg-yellow-200 transition-colors">
+        Comparison
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Author Bio -->
+<section class="py-8 bg-gray-50 border-t">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-start space-x-4 p-6 bg-white rounded-2xl shadow-lg">
+      <img src="{{it.author.avatar}}" alt="{{it.author.name}}" class="w-16 h-16 rounded-full">
+      <div class="flex-1">
+        <h3 class="text-lg font-bold text-gray-900">Tech Review Team</h3>
+        <p class="text-blue-600 font-medium mb-2">Senior Technology Reviewers</p>
+        <p class="text-gray-600">
+          Our expert team of technology reviewers has over 15 years of combined experience testing and reviewing the
+          latest smartphones, laptops, and consumer electronics. We pride ourselves on providing honest, in-depth
+          analysis to help you make informed purchasing decisions.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

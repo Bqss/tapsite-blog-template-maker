@@ -1,73 +1,321 @@
-<!-- Featured Reviews -->
-<section class="py-20 bg-gray-900 circuit-pattern">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-            <h2 class="text-3xl lg:text-4xl font-bold text-white mb-4 tech-font">{{it.featured.title}}</h2>
-            <p class="text-xl text-gray-300 max-w-3xl mx-auto tech-font">{{it.featured.description}}</p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {{@each(it.featured.reviews)=>review}}
-            <article class="comparison-card rounded-2xl overflow-hidden transform hover:-translate-y-2 transition-all duration-300">
-                <div class="relative">
-                    <img src="{{review.image}}" 
-                         alt="{{review.title}}" 
-                         class="w-full h-48 object-cover">
-                    <div class="absolute top-4 left-4">
-                        <span class="bg-{{review.category.color}}-500/80 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm font-medium tech-font">
-                            {{review.category.name}}
-                        </span>
-                    </div>
-                    <div class="absolute top-4 right-4">
-                        <div class="review-score">
-                            <span class="text-lg tech-font">{{review.score}}</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="p-6">
-                    <div class="flex items-center space-x-4 mb-4">
-                        <img src="{{review.author.avatar}}" 
-                             alt="{{review.author.name}}" 
-                             class="w-10 h-10 rounded-full ring-2 ring-blue-500/30">
-                        <div>
-                            <h4 class="text-sm font-medium text-gray-300 tech-font">{{review.author.name}}</h4>
-                            <p class="text-xs text-gray-500 mono-font">{{review.author.title}}</p>
-                        </div>
-                    </div>
-                    
-                    <h3 class="text-xl font-bold text-white mb-2 tech-font">{{review.title}}</h3>
-                    <p class="text-gray-400 mb-4 line-clamp-2">{{review.excerpt}}</p>
-                    
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center space-x-4 text-sm text-gray-400">
-                            <span class="flex items-center space-x-1">
-                                <span>{{review.tech_type.icon}}</span>
-                                <span class="mono-font">{{review.tech_type.name}}</span>
-                            </span>
-                            <span>•</span>
-                            <span class="mono-font">{{review.read_time}} min read</span>
-                        </div>
-                        <a href="{{review.url}}" class="text-blue-400 hover:text-blue-300 font-medium tech-font flex items-center space-x-1">
-                            <span>Read Review</span>
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </article>
-            {{/each}}
-        </div>
-        
-        {{@if(it.featured.cta_button)}}
-        <div class="text-center mt-12">
-            <a href="{{it.featured.cta_button.url}}" 
-               class="inline-flex items-center space-x-2 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-4 rounded-full font-bold tech-font transition-all transform hover:scale-105 shadow-xl">
-                <span>{{it.featured.cta_button.text}}</span>
-                <span>{{it.featured.cta_button.icon}}</span>
-            </a>
-        </div>
-        {{/if}}
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+  .tech-font {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .mono-font {
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .circuit-pattern {
+    background-image:
+      radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(147, 51, 234, 0.1) 0%, transparent 50%),
+      linear-gradient(45deg, transparent 24%, rgba(59, 130, 246, 0.05) 25%, rgba(59, 130, 246, 0.05) 26%, transparent 27%, transparent 74%, rgba(147, 51, 234, 0.05) 75%, rgba(147, 51, 234, 0.05) 76%, transparent 77%);
+    background-size: 60px 60px, 60px 60px, 30px 30px;
+  }
+
+  .glitch-effect {
+    position: relative;
+    animation: glitch 2s infinite;
+  }
+
+  @keyframes glitch {
+
+    0%,
+    100% {
+      transform: translate(0);
+    }
+
+    20% {
+      transform: translate(-2px, 2px);
+    }
+
+    40% {
+      transform: translate(-2px, -2px);
+    }
+
+    60% {
+      transform: translate(2px, 2px);
+    }
+
+    80% {
+      transform: translate(2px, -2px);
+    }
+  }
+
+  .hologram-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hologram-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: rotate(45deg);
+    animation: hologram-shine 3s infinite;
+  }
+
+  @keyframes hologram-shine {
+    0% {
+      transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+
+    100% {
+      transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
+  }
+
+  .rating-glow {
+    position: relative;
+  }
+
+  .rating-glow::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    border-radius: inherit;
+    filter: blur(8px);
+    opacity: 0.3;
+    z-index: -1;
+  }
+
+  .tech-gradient {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+
+  .neon-border {
+    position: relative;
+    border: 2px solid transparent;
+    background: linear-gradient(45deg, #3b82f6, #8b5cf6) border-box;
+    background-clip: border-box;
+  }
+
+  .neon-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask-composite: xor;
+  }
+
+  .pulse-glow {
+    animation: pulse-glow 2s infinite;
+  }
+
+  @keyframes pulse-glow {
+
+    0%,
+    100% {
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+    }
+
+    50% {
+      box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
+    }
+  }
+
+  .tech-hero-bg {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #334155 50%, #475569 75%, #64748b 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tech-hero-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%233b82f6' fill-opacity='0.1'%3E%3Cpath d='M10 10h10v10H10zM30 30h10v10H30zM50 50h10v10H50zM70 70h10v10H70zM90 10h10v10H90zM70 30h10v10H70zM50 70h10v10H50zM30 90h10v10H30z'/%3E%3C/g%3E%3C/svg%3E") repeat;
+    opacity: 0.5;
+  }
+
+  .floating-tech {
+    animation: float-tech 4s ease-in-out infinite;
+  }
+
+  @keyframes float-tech {
+
+    0%,
+    100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+      transform: translateY(-20px) rotate(2deg);
+    }
+  }
+
+  .review-score {
+    background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .review-score::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transform: rotate(45deg);
+    animation: score-shine 2s infinite;
+  }
+
+  @keyframes score-shine {
+    0% {
+      transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+
+    100% {
+      transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
+  }
+
+  .comparison-card {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .comparison-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.2), transparent);
+    animation: scan 3s infinite;
+  }
+
+  @keyframes scan {
+    0% {
+      left: -100%;
+    }
+
+    100% {
+      left: 100%;
+    }
+  }
+
+  .tech-icon {
+    transition: all 0.3s ease;
+  }
+
+  .tech-icon:hover {
+    transform: scale(1.1) rotate(5deg);
+    filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.5));
+  }
+</style>
+<!-- Latest Reviews -->
+<section class="py-16 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold text-gray-900 mb-4 tech-font">Latest Tech Reviews</h2>
+      <p class="text-xl text-gray-600 tech-font">Fresh insights on the newest tech products</p>
     </div>
-</section> 
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="reviews-grid-wrapper">
+      <!-- Loading / error / grid inserted by JS -->
+      <div id="reviews-loading" class="col-span-full flex justify-center py-12">
+        <div class="inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-blue-500"></div>
+      </div>
+      <div id="reviews-error" class="col-span-full text-center py-12 text-red-500 hidden">Failed to load reviews.</div>
+    </div>
+
+    <script>
+      (function () {
+        const grid = document.getElementById('reviews-grid-wrapper');
+        const loadEl = document.getElementById('reviews-loading');
+        const errEl = document.getElementById('reviews-error');
+        const fallbackImg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23e5e7eb'/%3E%3Ctext x='200' y='100' text-anchor='middle' dy='0.3em' font-family='Arial' font-size='16' fill='%23666'%3ENo Image%3C/text%3E%3C/svg%3E";
+
+        function stars() { return `<div class=\"flex items-center space-x-1\">${'★'.repeat(5).split('').map(s => `<span class=\\"text-yellow-400 text-lg\\">${s}</span>`).join('')}</div>`; }
+
+        function card(p) {
+          const img = p.featured_image || fallbackImg;
+          const views = p.view_count || 0;
+          const category = p.category || '';
+          const read = p.read_time || 5;
+          return `<article class=\"bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2 neon-border\">
+          <a href=\"/post/${p.slug}\" class=\"block relative\">
+            <img src=\"${img}\" alt=\"${p.title}\" class=\"w-full h-48 object-cover\" onerror=\"this.src='${fallbackImg}'\">
+            <div class=\"absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-bold mono-font\">${category.toUpperCase()}</div>
+            <div class=\"absolute bottom-4 right-4 bg-green-600 text-white px-3 py-1 rounded-full text-xs font-bold mono-font\">${views.toLocaleString()} VIEWS</div>
+          </a>
+          <div class=\"p-6\">
+            <h3 class=\"text-xl font-bold text-gray-900 mb-3 tech-font\">${p.title}</h3>
+            <p class=\"text-gray-600 mb-4 tech-font\">${p.excerpt || ''}</p>
+            <div class=\"flex items-center justify-between text-sm text-gray-500 mb-4\">
+              <div class=\"flex items-center space-x-2\">
+                <span class=\"tech-font\">${p.author || 'Reviewer'}</span>
+                <span class=\"mono-font\">•</span>
+                <span class=\"mono-font\">${read} min read</span>
+              </div>
+              <span class=\"text-blue-600 font-semibold mono-font\">${views.toLocaleString()} views</span>
+            </div>
+            <div class=\"flex items-center space-x-4\">
+              ${stars()}<span class=\"text-sm text-gray-500 mono-font\">${category}</span>
+            </div>
+          </div>
+        </article>`;
+        }
+
+        async function load() {
+          try {
+            const res = await fetch('/api/blog/posts/recent?limit=6');
+            if (!res.ok) throw new Error();
+            const data = await res.json();
+            const posts = data.posts || data || [];
+            loadEl.remove();
+            if (!posts.length) { return; }
+            grid.innerHTML = posts.map(card).join('');
+          } catch (e) { console.error(e); loadEl.classList.add('hidden'); errEl.classList.remove('hidden'); }
+        }
+        document.addEventListener('DOMContentLoaded', load);
+      })();
+    </script>
+
+    <div class="text-center mt-12">
+      <button
+        class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-4 rounded-full font-bold tech-font transition-all transform hover:scale-105 shadow-lg">
+        View All Reviews 📊
+      </button>
+    </div>
+  </div>
+</section>

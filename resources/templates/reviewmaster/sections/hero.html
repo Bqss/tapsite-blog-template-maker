@@ -1,67 +1,108 @@
 <!-- Hero Section -->
 <section class="tech-hero-bg py-20 relative overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="grid lg:grid-cols-2 gap-12 items-center">
-            <div class="text-center lg:text-left">
-                <div class="inline-flex items-center bg-blue-500/10 backdrop-blur-sm rounded-full px-4 py-2 mb-6 bounce-in">
-                    <span class="text-blue-400 font-semibold tech-font">{{it.hero.badge}}</span>
-                </div>
-                <h1 class="text-4xl lg:text-6xl font-bold text-white mb-6 tech-font leading-tight">
-                    {{it.hero.title_line1}}
-                    <span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                        {{it.hero.highlighted_text}}
-                    </span>
-                    <br>{{it.hero.title_line2}}
-                </h1>
-                <p class="text-xl text-gray-300 mb-8 leading-relaxed tech-font">
-                    {{it.hero.description}}
-                </p>
-                
-                <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
-                    {{@each(it.hero.buttons)=>button}}
-                    <button class="{{button.primary ? 'bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white' : 'bg-gray-800 text-blue-400 hover:bg-gray-700'}} px-8 py-4 rounded-full font-bold tech-font transition-all transform hover:scale-105 shadow-xl flex items-center justify-center space-x-2">
-                        <span>{{button.icon}} {{button.text}}</span>
-                    </button>
-                    {{/each}}
-                </div>
-                
-                <!-- Tech Categories -->
-                <div class="flex flex-wrap gap-3 justify-center lg:justify-start">
-                    {{@each(it.hero.categories)=>category}}
-                    <div class="bg-gray-800/80 backdrop-blur-sm rounded-full px-4 py-2 flex items-center space-x-2 tech-icon cursor-pointer">
-                        <span class="text-{{category.color}}-400">{{category.icon}}</span>
-                        <span class="text-sm font-semibold text-gray-300 tech-font">{{category.name}}</span>
-                    </div>
-                    {{/each}}
-                </div>
-            </div>
-            
-            <!-- Featured Review Showcase -->
-            <div class="relative">
-                <div class="relative w-full h-96 hologram-card rounded-3xl overflow-hidden shadow-2xl">
-                    <img src="{{it.hero.featured_review.image}}" 
-                         alt="{{it.hero.featured_review.title}}" 
-                         class="w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 to-transparent"></div>
-                    
-                    <!-- Review Stats -->
-                    {{@each(it.hero.featured_review.stats)=>stat}}
-                    <div class="absolute {{stat.position}} bg-gray-900/90 backdrop-blur-sm rounded-2xl p-4 shadow-lg">
-                        <div class="text-center">
-                            <div class="text-2xl font-bold text-{{stat.color}}-400 tech-font">{{stat.value}}</div>
-                            <div class="text-xs text-gray-400 mono-font">{{stat.label}}</div>
-                        </div>
-                    </div>
-                    {{/each}}
-                    
-                    <!-- Review Score -->
-                    <div class="absolute bottom-4 right-4">
-                        <div class="review-score">
-                            <span class="text-2xl font-bold tech-font">{{it.hero.featured_review.score}}</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="text-center lg:text-left">
+        <div
+          class="inline-flex items-center bg-blue-500/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6 border border-blue-500/30">
+          <span class="text-blue-400 font-semibold tech-font">🔥 Latest Tech Reviews</span>
         </div>
+        <h1 class="text-4xl lg:text-6xl font-bold text-white mb-6 tech-font leading-tight">
+          Decode the
+          <span class="bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent relative">
+            Future
+            <div class="absolute -bottom-2 left-0 w-full h-3 bg-blue-500 opacity-30 rounded-full"></div>
+          </span>
+          <br>of Technology
+        </h1>
+        <p class="text-xl text-gray-300 mb-8 leading-relaxed tech-font">
+          Unbiased reviews, in-depth analysis, and expert insights on the latest tech products.
+          Make informed decisions with data-driven reviews! 🚀
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
+          <button
+            class="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-4 rounded-full font-bold tech-font transition-all transform hover:scale-105 shadow-xl flex items-center justify-center space-x-2">
+            <span>📊 Browse Reviews</span>
+          </button>
+          <button
+            class="bg-white/10 backdrop-blur-sm text-white border-2 border-blue-500/50 hover:bg-blue-500/20 px-8 py-4 rounded-full font-bold tech-font transition-all flex items-center justify-center space-x-2">
+            <span>🎯 Compare Products</span>
+          </button>
+        </div>
+
+        <!-- Tech Categories Quick Access -->
+        <div class="flex flex-wrap gap-3 justify-center lg:justify-start">
+          <div class="hologram-card rounded-full px-4 py-2 flex items-center space-x-2 tech-icon cursor-pointer">
+            <span class="text-2xl">📱</span>
+            <span class="text-sm font-semibold text-white tech-font">Smartphones</span>
+          </div>
+          <div class="hologram-card rounded-full px-4 py-2 flex items-center space-x-2 tech-icon cursor-pointer">
+            <span class="text-2xl">💻</span>
+            <span class="text-sm font-semibold text-white tech-font">Laptops</span>
+          </div>
+          <div class="hologram-card rounded-full px-4 py-2 flex items-center space-x-2 tech-icon cursor-pointer">
+            <span class="text-2xl">🎧</span>
+            <span class="text-sm font-semibold text-white tech-font">Audio</span>
+          </div>
+          <div class="hologram-card rounded-full px-4 py-2 flex items-center space-x-2 tech-icon cursor-pointer">
+            <span class="text-2xl">🎮</span>
+            <span class="text-sm font-semibold text-white tech-font">Gaming</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Tech Showcase -->
+      <div class="relative">
+        <div class="relative w-full h-96 hologram-card rounded-3xl overflow-hidden shadow-2xl">
+          <img
+            src="https://images.unsplash.com/photo-1518717758536-85ae29035b6d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+            alt="Latest tech products" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+
+          <!-- Floating Review Scores -->
+          <div class="absolute top-4 right-4 review-score">
+            <span class="text-lg font-bold mono-font relative z-10">9.2</span>
+          </div>
+
+          <div class="absolute bottom-4 left-4 review-score"
+            style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+            <span class="text-lg font-bold mono-font relative z-10">8.7</span>
+          </div>
+
+          <!-- Tech Specs Display -->
+          <div class="absolute top-1/2 left-4 transform -translate-y-1/2 space-y-2">
+            <div class="hologram-card px-3 py-2 rounded-lg">
+              <div class="text-xs text-gray-300 mono-font">CPU</div>
+              <div class="text-sm font-bold text-white tech-font">A17 Pro</div>
+            </div>
+            <div class="hologram-card px-3 py-2 rounded-lg">
+              <div class="text-xs text-gray-300 mono-font">RAM</div>
+              <div class="text-sm font-bold text-white tech-font">8GB</div>
+            </div>
+            <div class="hologram-card px-3 py-2 rounded-lg">
+              <div class="text-xs text-gray-300 mono-font">SCORE</div>
+              <div class="text-sm font-bold text-green-400 tech-font">9.2/10</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Floating Tech Elements -->
+        <div
+          class="absolute -top-4 -left-4 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center shadow-lg floating-tech">
+          <span class="text-sm text-white">⚡</span>
+        </div>
+        <div
+          class="absolute -bottom-4 -right-4 w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center shadow-lg floating-tech"
+          style="animation-delay: 1s;">
+          <span class="text-sm text-white">🚀</span>
+        </div>
+        <div
+          class="absolute top-10 -right-8 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center shadow-lg floating-tech"
+          style="animation-delay: 2s;">
+          <span class="text-xs text-white">✨</span>
+        </div>
+      </div>
     </div>
-</section> 
+  </div>
+</section>

@@ -13,89 +13,42 @@
       "id": "navigation",
       "type": "template",
       "resetable": true,
-      "data": [
-        "site.name",
-        "site.logo",
-        "site.tagline",
-        "navigation",
-        "search",
-        "cta_button"
-      ]
+      "data": ["site.name", "site.logo", "site.tagline", "navigation"]
     },
     {
       "title": "hero",
       "id": "hero",
       "type": "template",
       "resetable": true,
-      "data": [
-        "hero"
-      ]
+      "data": []
     },
     {
       "title": "featured reviews",
       "id": "featured_reviews",
       "type": "template",
       "resetable": true,
-      "data": [
-        "featured"
-      ]
+      "data": []
     },
     {
-      "title": "comparison tool",
-      "id": "comparison_tool",
+      "title": "categories",
+      "id": "categories",
       "type": "template",
       "resetable": true,
-      "data": [
-        "comparison"
-      ]
-    },
-    {
-      "title": "tech news",
-      "id": "tech_news",
-      "type": "template",
-      "resetable": true,
-      "data": [
-        "news"
-      ]
-    },
-    {
-      "title": "buying guides",
-      "id": "buying_guides",
-      "type": "template",
-      "resetable": true,
-      "data": [
-        "guides"
-      ]
-    },
-    {
-      "title": "review categories",
-      "id": "review_categories",
-      "type": "template",
-      "resetable": true,
-      "data": [
-        "categories"
-      ]
+      "data": []
     },
     {
       "title": "newsletter",
       "id": "newsletter",
       "type": "template",
       "resetable": true,
-      "data": [
-        "newsletter"
-      ]
+      "data": []
     },
     {
       "title": "footer",
       "id": "footer",
       "type": "template",
       "resetable": true,
-      "data": [
-        "site.name",
-        "site.description",
-        "navigation",
-        "social_links"
-      ]
+      "data": ["site.name", "site.description", "navigation", "social_links"]
     }
   ]
-} 
+}

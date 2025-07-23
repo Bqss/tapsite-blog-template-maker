@@ -1,0 +1,21 @@
+<!-- Related Reviews -->
+<section class="py-12 bg-white">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <h2 class="text-2xl font-bold text-gray-900 mb-8 text-center">Related Reviews</h2>
+
+    <div class="grid md:grid-cols-2 gap-6" id="related-grid"><div id="related-loading" class="col-span-full flex justify-center py-8"><div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div></div><div id="related-error" class="col-span-full text-center py-8 text-red-500 hidden">Failed to load.</div></div>
+
+<script>
+(function(){
+  const slug=decodeURIComponent(window.location.pathname.split('/').pop());
+  const grid=document.getElementById('related-grid');
+  const loadEl=document.getElementById('related-loading');
+  const errEl=document.getElementById('related-error');
+  const fallbackImg="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200' viewBox='0 0 400 200'%3E%3Crect width='400' height='200' fill='%23e5e7eb'/%3E%3Ctext x='200' y='100' text-anchor='middle' font-family='Arial' font-size='16' fill='%23666'%3ENo Image%3C/text%3E%3C/svg%3E";
+  function card(p){return `<article class='bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-2 cursor-pointer group border'><a href='/post/${p.slug}' class='block relative'><img src='${p.featured_image||fallbackImg}' alt='${p.title}' class='w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300' onerror="this.src='${fallbackImg}'"><div class='absolute top-3 left-3 bg-blue-600 text-white px-2 py-1 rounded-lg text-xs font-semibold'>${p.category||''}</div></a><div class='p-4'><h3 class='text-lg font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors'>${p.title}</h3><p class='text-gray-600 text-sm mb-3 line-clamp-2'>${p.excerpt||''}</p><div class='flex items-center justify-between text-xs text-gray-500'><span>${p.author||''}</span><span>${p.read_time||5} min read</span></div></div></article>`;}
+  async function load(){try{const res=await fetch(`/api/blog/posts/related/${encodeURIComponent(slug)}`);if(!res.ok) throw new Error();const posts=await res.json();loadEl.remove();grid.innerHTML=posts.length?posts.map(card).join(''):`<div class='col-span-full text-center py-8 text-gray-500'>No related reviews.</div>`;}catch(e){console.error(e);loadEl.classList.add('hidden');errEl.classList.remove('hidden');}}
+  document.addEventListener('DOMContentLoaded',load);
+})();
+</script>
+  </div>
+</section>
