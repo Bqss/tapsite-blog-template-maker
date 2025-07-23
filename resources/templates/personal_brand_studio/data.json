@@ -1,140 +1,35 @@
 {
-    "blog_logo": "https://tapsite.ai/favicon-96x96.png",
-    "blog_title": "Personal Brand Studio",
-    "blog_description": "Professional identity and expertise showcase",
-    "navigation": [
-        {
-            "name": "Home",
-            "url": "/"
-        },
-        {
-            "name": "Technology",
-            "url": "/category/Technology"
-        },
-        {
-            "name": "Business",
-            "url": "/category/Business"
-        },
-        {
-            "name": "Design",
-            "url": "/category/Design"
-        },
-        {
-            "name": "Parenting",
-            "url": "/category/Parenting"
-        }
-    ],
-    "author": {
-        "name": "Maulana Shalihin",
-        "role": "Personal Brand Strategist & Creative Director",
-        "bio": "Berpengalaman lebih dari 8 tahun dalam strategi personal branding dan creative direction. Membantu profesional dan entrepreneur Indonesia membangun identitas personal yang autentik dan berpengaruh di era digital.",
-        "avatar": "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80",
-        "expertise": [
-            "Personal Branding",
-            "Creative Direction",
-            "Digital Marketing",
-            "Content Strategy",
-            "Visual Identity",
-            "Brand Positioning"
-        ],
-        "social": {
-            "twitter": "https://twitter.com/maulanashalihin",
-            "linkedin": "https://linkedin.com/in/maulanashalihin",
-            "instagram": "https://instagram.com/maulanashalihin",
-            "website": "https://maulanashalihin.com"
-        }
+  "blog_logo": "https://tapsite.ai/favicon-96x96.png",
+  "blog_title": "Personal Brand Studio",
+  "navigation": [
+    {
+      "name": "Home",
+      "url": "/"
     },
-    "hero": {
-        "title": "Membangun Personal Brand yang Autentik dan Berpengaruh",
-        "subtitle": "Strategi personal branding dan creative direction untuk profesional dan entrepreneur Indonesia",
-        "cta_primary": "Lihat Karya Saya",
-        "cta_secondary": "Hubungi Saya",
-        "background_image": "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80"
-    },
-    "expertise_showcase": {
-        "title": "Bidang Keahlian",
-        "subtitle": "Solusi personal branding yang komprehensif untuk kebutuhan unik Anda",
-        "areas": [
-            {
-                "title": "Personal Branding Strategy",
-                "description": "Mengembangkan strategi personal branding yang komprehensif untuk membangun reputasi dan kredibilitas profesional.",
-                "icon": "strategy"
-            },
-            {
-                "title": "Creative Direction",
-                "description": "Memimpin visi kreatif dan memastikan konsistensi ekspresi brand di semua platform digital dan offline.",
-                "icon": "creative"
-            },
-            {
-                "title": "Digital Marketing",
-                "description": "Merancang strategi digital marketing yang memperkuat presence online dan mendorong engagement yang bermakna.",
-                "icon": "digital"
-            },
-            {
-                "title": "Content Strategy",
-                "description": "Menciptakan strategi konten yang menarik untuk menceritakan story personal brand dan terhubung dengan audience.",
-                "icon": "content"
-            }
-        ]
-    },
-    "post": {
-        "title": "Membangun Personal Brand yang Kuat di Era Digital: Panduan Lengkap untuk Profesional Indonesia",
-        "excerpt": "Pelajari strategi membangun personal brand yang autentik dan berpengaruh di era digital. Temukan cara memposisikan diri sebagai thought leader di industri Anda.",
-        "content": "<h1>Membangun Personal Brand yang Kuat di Era Digital: Panduan Lengkap untuk Profesional Indonesia</h1><p>Di era digital saat ini, personal branding bukan lagi pilihan, tetapi kebutuhan. Setiap profesional perlu membangun identitas yang kuat dan autentik untuk dapat bersaing dan berkembang di pasar yang semakin kompetitif.</p><h2>Mengapa Personal Brand Penting?</h2><p>Personal brand adalah persepsi yang dimiliki orang lain tentang Anda. Ini mencakup reputasi, kredibilitas, dan nilai unik yang Anda tawarkan. Dalam dunia yang terhubung secara digital, personal brand Anda dapat menjadi aset paling berharga.</p><h3>Manfaat Personal Brand yang Kuat</h3><p><strong>Kredibilitas Profesional:</strong> Personal brand yang kuat membantu membangun kepercayaan dan kredibilitas di mata klien, rekan kerja, dan industri.</p><p><strong>Peluang Karir:</strong> Profesional dengan personal brand yang baik cenderung mendapatkan lebih banyak peluang karir, promosi, dan proyek menarik.</p><p><strong>Network yang Luas:</strong> Personal brand membantu Anda terhubung dengan orang-orang yang tepat dalam industri Anda.</p><h2>Langkah-langkah Membangun Personal Brand</h2><p>Berikut adalah panduan praktis untuk membangun personal brand yang efektif:</p><ol><li><strong>Definisikan Nilai Unik Anda:</strong> Apa yang membuat Anda berbeda dari yang lain? Identifikasi keahlian, pengalaman, dan perspektif unik Anda.</li><li><strong>Tentukan Target Audience:</strong> Siapa yang ingin Anda jangkau? Pahami kebutuhan dan preferensi audience Anda.</li><li><strong>Konsisten di Semua Platform:</strong> Pastikan pesan dan visual brand Anda konsisten di semua platform digital.</li><li><strong>Buat Konten Berkualitas:</strong> Bagikan insight, tips, dan pengalaman yang memberikan nilai kepada audience Anda.</li><li><strong>Bangun Hubungan Autentik:</strong> Engage dengan audience secara genuine dan bangun relationship yang bermakna.</li></ol><h2>Platform Digital untuk Personal Branding</h2><p>Pilih platform yang sesuai dengan target audience dan industri Anda:</p><ul><li>LinkedIn untuk networking profesional</li><li>Instagram untuk visual storytelling</li><li>Twitter untuk thought leadership</li><li>Personal website sebagai hub utama</li><li>YouTube untuk video content</li></ul><p>Remember, konsistensi adalah kunci. Lebih baik fokus pada beberapa platform dan mengelolanya dengan baik daripada tersebar di banyak platform tanpa strategi yang jelas.</p>",
-        "category": "Business",
-        "featured_image": "https://images.unsplash.com/photo-1541701494587-cb58502866ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80",
-        "published_at": "20 Maret 2024",
-        "read_time": 10,
-        "view_count": 2847,
-        "tags": [
-            "Bisnis",
-            "Teknologi",
-            "Indonesia",
-            "UMKM",
-            "Digitalisasi",
-            "Ekonomi"
-        ]
-    },
-    "testimonials": [
-        {
-            "name": "Sari Wijaya",
-            "role": "CEO, TechStart Indonesia",
-            "content": "Maulana membantu saya membangun personal brand yang kuat sebagai tech entrepreneur. Strategi yang diberikan sangat praktis dan hasilnya terlihat dalam waktu singkat. Sekarang saya lebih percaya diri dalam public speaking dan networking.",
-            "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
-        },
-        {
-            "name": "Budi Santoso",
-            "role": "Founder, Creative Studio Jakarta",
-            "content": "Bekerja dengan Maulana adalah game-changer untuk karir saya. Dia membantu saya mengidentifikasi unique value proposition dan mengkomunikasikannya dengan efektif. Personal brand saya sekarang lebih dikenal di industri kreatif.",
-            "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"
-        }
-    ],
-    "portfolio_highlights": [
-        {
-            "title": "Personal Branding for Tech Leader",
-            "description": "Membangun personal brand untuk CEO startup teknologi, termasuk strategi content LinkedIn dan positioning sebagai thought leader.",
-            "image": "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
-            "category": "Personal Branding"
-        },
-        {
-            "title": "Creative Professional Brand Strategy",
-            "description": "Strategi personal branding untuk creative director, fokus pada visual storytelling dan portfolio presentation.",
-            "image": "https://images.unsplash.com/photo-1542744094-3a31f272c490?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
-            "category": "Brand Strategy"
-        },
-        {
-            "title": "Digital Entrepreneur Brand Launch",
-            "description": "Peluncuran personal brand untuk entrepreneur e-commerce, termasuk website, social media strategy, dan content planning.",
-            "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
-            "category": "Digital Branding"
-        }
-    ],
-    "color_scheme": {
-        "primary": "#059669",
-        "secondary": "#0d9488",
-        "accent": "#f97316",
-        "neutral": "#6b7280",
-        "background": "#f9fafb",
-        "text": "#111827"
+    {
+      "name": "Blog",
+      "url": "/blog"
     }
-} 
+  ],
+  "post": {
+    "title": "Mendidik Anak Tanpa Gadget: Mengembalikan Masa Kecil yang Sesungguhnya",
+    "excerpt": "Pelajari cara mendidik anak tanpa ketergantungan gadget. Temukan alternatif kegiatan seru dan edukatif untuk mendukung perkembangan anak secara holistik.",
+    "content": "<h1>Mendidik Anak Tanpa Gadget: Mengembalikan Masa Kecil yang Sesungguhnya</h1><p></p><p>Di era digital ini, gadget seolah menjadi bagian tak terpisahkan dari kehidupan kita, termasuk anak-anak. Namun, tahukah Anda bahwa penggunaan gadget yang berlebihan dapat berdampak negatif pada perkembangan buah hati kita? Mari kita telaah lebih dalam mengenai dampak buruk ini dan bagaimana kita bisa mendidik anak tanpa ketergantungan gadget, mengembalikan masa kecil yang penuh kreativitas dan interaksi.</p><p></p><h2>Dampak Negatif Gadget pada Perkembangan Anak</h2><p></p><p> Penggunaan gadget yang berlebihan pada anak usia dini dan sekolah dasar dapat memicu berbagai masalah, baik secara fisik, sosial, emosional, maupun kognitif. Beberapa dampak negatif tersebut antara lain:</p><ul><li><strong>Fisik:</strong> Gangguan penglihatan (mata lelah, mata minus), masalah postur tubuh (sakit punggung, leher), obesitas akibat kurang gerak, dan gangguan tidur.</li><li><strong>Sosial:</strong> Kurangnya interaksi sosial langsung, kesulitan membangun empati, dan penurunan kemampuan berkomunikasi secara efektif.</li><li><strong>Emosional:</strong> Perubahan suasana hati yang cepat, kecemasan, depresi, dan ketergantungan emosional pada gadget.</li><li><strong>Kognitif:</strong> Kesulitan fokus dan konsentrasi, penurunan kemampuan memecahkan masalah, dan keterlambatan perkembangan bahasa.</li></ul><p></p><p>Dengan memahami dampak negatif ini, kita sebagai orang tua dapat lebih bijak dalam mengelola penggunaan gadget pada anak.</p><p></p><h2>Alternatif Kegiatan Seru dan Edukatif Tanpa Gadget</h2><p></p><p>Untungnya, ada banyak kegiatan seru dan edukatif yang bisa menggantikan gadget dan mendukung perkembangan anak secara holistik. Berikut beberapa ide yang bisa Anda coba:</p><ul><li><strong>Bermain di Luar:</strong> Ajak anak bermain di taman, halaman rumah, atau alam terbuka. Biarkan mereka berlari, melompat, memanjat, dan berinteraksi dengan lingkungan sekitar. Ini sangat baik untuk perkembangan motorik dan sensorik mereka.</li><li><strong>Membaca Buku:</strong> Bacakan cerita untuk anak-anak, atau ajak mereka membaca sendiri jika sudah bisa. Membaca buku dapat meningkatkan imajinasi, kosakata, dan kemampuan berpikir kritis.</li><li><strong>Kerajinan Tangan:</strong> Sediakan bahan-bahan sederhana seperti kertas, gunting, lem, pensil warna, dan biarkan anak berkreasi membuat berbagai macam kerajinan. Ini melatih kreativitas dan kemampuan motorik halus.</li><li><strong>Permainan Tradisional:</strong> Kenalkan anak pada permainan tradisional seperti petak umpet, congklak, engklek, atau layang-layang. Permainan ini tidak hanya menyenangkan, tetapi juga melatih kerja sama tim dan keterampilan sosial.</li><li><strong>Berkebun:</strong> Ajak anak menanam bunga atau sayuran di halaman rumah. Ini mengajarkan mereka tentang siklus kehidupan, tanggung jawab, dan pentingnya menjaga lingkungan.</li></ul><p></p><p></p><h2>Mengelola Penggunaan Gadget Anak Secara Efektif</h2><p></p><p>Menghilangkan gadget sepenuhnya mungkin sulit dilakukan, tetapi kita bisa mengelola penggunaannya secara efektif. Berikut beberapa tips:</p><ul><li><strong>Buat Jadwal:</strong> Tentukan waktu-waktu tertentu di mana anak boleh menggunakan gadget. Pastikan ada batasan waktu yang jelas dan konsisten.</li><li><strong>Tetapkan Aturan:</strong> Buat aturan yang jelas mengenai jenis konten yang boleh diakses anak. Hindari konten yang mengandung kekerasan, pornografi, atau ujaran kebencian.</li><li><strong>Jadilah Contoh yang Baik:</strong> Orang tua adalah panutan bagi anak. Kurangi penggunaan gadget di depan anak dan tunjukkan bahwa Anda juga bisa menikmati kegiatan lain.</li><li><strong>Ajak Anak Berdiskusi:</strong> Libatkan anak dalam pembuatan aturan penggunaan gadget. Jelaskan mengapa aturan tersebut penting dan dengarkan pendapat mereka.</li></ul><p></p><p></p><h2>Manfaat Interaksi Langsung dan Komunikasi Berkualitas</h2><p></p><p>Interaksi langsung dan komunikasi berkualitas antara orang tua dan anak sangat penting untuk perkembangan emosional, sosial, dan kognitif anak. Luangkan waktu untuk berbicara dengan anak, mendengarkan cerita mereka, dan memberikan dukungan emosional. Ini akan mempererat hubungan Anda dengan anak dan membantu mereka tumbuh menjadi pribadi yang percaya diri dan bahagia.</p><p></p><h2>Menciptakan Lingkungan yang Mendukung</h2><p></p><p>Untuk mendukung perkembangan anak tanpa gadget, ciptakan lingkungan yang merangsang kreativitas dan rasa ingin tahu mereka. Tata ruang bermain yang menarik, sediakan bahan-bahan kreatif seperti cat, kuas, kertas, dan balok kayu. Libatkan anak dalam kegiatan rumah tangga seperti memasak, membersihkan rumah, atau berkebun. Ini akan membuat mereka merasa dihargai dan bertanggung jawab.</p><p>Mari bersama-sama mengembalikan masa kecil yang sesungguhnya bagi anak-anak kita. Dengan mengurangi ketergantungan pada gadget dan memberikan alternatif kegiatan yang seru dan edukatif, kita dapat membantu mereka tumbuh menjadi generasi yang kreatif, cerdas, dan bahagia.</p><p><strong>Bagikan artikel ini kepada orang tua lain yang peduli dengan perkembangan anak! Coba terapkan tips-tips di atas dan ceritakan pengalaman Anda di kolom komentar.</strong>        </p>",
+    "category": "Technology",
+    "featured_image": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    "published_at": "March 15, 2024",
+    "read_time": 8,
+    "view_count": 1247,
+    "tags": ["webdev", "technology", "trends", "ai", "css", "performance"]
+  },
+  "author": {
+    "name": "Sarah Johnson",
+    "role": "Senior Frontend Developer",
+    "bio": "Sarah is a passionate frontend developer with over 8 years of experience building modern web applications. She specializes in React, Vue.js, and performance optimization techniques.",
+    "social": {
+      "twitter": "https://twitter.com/sarahjohnson",
+      "linkedin": "https://linkedin.com/in/sarahjohnson",
+      "website": "https://sarahjohnson.dev"
+    }
+  }
+}
