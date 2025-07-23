@@ -1,0 +1,193 @@
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          'terminal-green': '#00ff00',
+          'terminal-blue': '#0099ff',
+          'terminal-yellow': '#ffff00',
+          'code-bg': '#1e1e1e',
+          'code-border': '#333333'
+        },
+        fontFamily: {
+          'mono': ['JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', 'monospace']
+        }
+      }
+    }
+  }
+</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+
+  .terminal-cursor::after {
+    content: '|';
+    animation: blink 1s infinite;
+    color: #00ff00;
+  }
+
+  @keyframes blink {
+
+    0%,
+    50% {
+      opacity: 1;
+    }
+
+    51%,
+    100% {
+      opacity: 0;
+    }
+  }
+
+  .tag-card {
+    background: #0d1117;
+    border: 1px solid #30363d;
+    transition: all 0.3s ease;
+  }
+
+  .tag-card:hover {
+    border-color: #f7df1e;
+    box-shadow: 0 0 20px rgba(247, 223, 30, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .language-tag {
+    background: linear-gradient(45deg, #f7df1e, #f9e71e);
+    color: #000;
+    font-weight: 600;
+  }
+
+  .related-tag {
+    background: #1f2937;
+    border: 1px solid #374151;
+    transition: all 0.2s ease;
+  }
+
+  .related-tag:hover {
+    background: #374151;
+    border-color: #00ff00;
+    color: #00ff00;
+  }
+</style>
+
+<div class="bg-black text-white font-mono min-h-screen">
+  <!-- Main Content -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+      <!-- Table of Contents -->
+      <aside class="lg:col-span-1">
+        <div class="sticky top-8">
+          <div class="bg-gray-900 rounded-lg p-6 border border-gray-800">
+
+            <div class="border-t border-gray-800">
+              <h4 class="text-white font-semibold mb-3">Tech Stack</h4>
+              <div class="flex flex-wrap gap-2">
+                {{@each(it.post.tags)=>tag}}
+                <a href="/tag/{{tag}}"
+                  class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm hover:bg-blue-200 transition-colors">#{{tag}}</a>
+                {{/each}}
+              </div>
+            </div>
+
+            <div class="mt-6">
+              <h4 class="text-white font-semibold mb-3">Resources</h4>
+              <div class="space-y-2">
+                <a href="#" class="block text-terminal-blue hover:text-blue-400 text-sm">📁 Download Code</a>
+                <a href="#" class="block text-terminal-blue hover:text-blue-400 text-sm">🔗 GitHub Repo</a>
+                <a href="#" class="block text-terminal-blue hover:text-blue-400 text-sm">📖 MDN Docs</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Article Content -->
+      <main class="lg:col-span-3">
+        <!-- Article Header -->
+        <header class="mb-8">
+          <div class="flex items-center space-x-3 mb-4">
+            <span class="bg-yellow-600 text-black px-2 py-1 rounded text-xs"
+              id="post-category">{{it.post.category}}</span>
+            <span class="bg-green-600 text-white px-3 py-1 rounded-full text-sm"
+              id="post-level">{{it.post.difficulty}}</span>
+            <div class="flex items-center space-x-1 text-gray-400 text-sm">👁️<span
+                id="post-views">{{it.post.view_count}} views</span></div>
+          </div>
+
+          <h1 id="post-title" class="text-4xl font-extrabold text-white mb-6 leading-tight">{{it.post.title}}</h1>
+
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center space-x-4">
+              <div class="w-10 h-10 bg-yellow-600 rounded-full flex items-center justify-center">
+                <span class="text-black font-bold" id="author-initial">A</span>
+              </div>
+              <div>
+                <div class="text-white font-medium" id="author-name">{{it.author.name}}</div>
+                <div class="text-gray-400 text-sm" id="post-date">Published</div>
+              </div>
+            </div>
+            <div class="text-right">
+              <div class="text-gray-400 text-sm" id="post-read">0 min read</div>
+              <div class="text-terminal-green text-sm" id="post-rating">⭐</div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Article Content -->
+        <article class="ProseMirror focus:outline-none max-w-full space-y-4 leading-relaxed" id="post-content">
+          <section id="introduction" class="space-y-6">
+            {{* it.post.content}}
+          </section>
+        </article>
+
+        <!-- Related Tutorials -->
+        <section class="mt-12 pt-8 border-t border-gray-800">
+          <h3 class="text-2xl font-bold text-white mt-12 mb-6">Related Tutorials</h3>
+          <div class="grid md:grid-cols-2 gap-6" id="related-grid">
+            <div id="related-loading" class="col-span-full flex justify-center py-12">
+              <div class="inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-terminal-green"></div>
+            </div>
+            <div id="related-error" class="col-span-full text-center py-12 text-red-500 hidden">Failed to load related
+              tutorials.</div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- Data rendered server-side via Squirrelly; script removed -->
+  <script>
+      (function () {
+        const slug = decodeURIComponent(window.location.pathname.split('/').pop());
+        const grid = document.getElementById('related-grid');
+        const loadEl = document.getElementById('related-loading');
+        const errEl = document.getElementById('related-error');
+        const abbrev = c => c ? c.split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase() : '';
+        const colors = { JavaScript: 'yellow-600', Python: 'green-600', DevOps: 'purple-600', Tutorials: 'blue-600' };
+        const card = p => {
+          const color = colors[p.category] || 'yellow-600';
+          return `<article class='bg-gray-900 rounded-lg p-6 border border-gray-800 hover:border-${color} transition-colors group'>
+  <a href='/post/${p.slug}' class='block'>
+    <div class='flex items-start space-x-4'>
+      <div class='w-12 h-12 bg-${color} rounded-lg flex items-center justify-center flex-shrink-0'>
+        <span class='${color.startsWith('yellow') ? 'text-black' : 'text-white'} font-bold'>${abbrev(p.category)}</span>
+      </div>
+      <div class='flex-1 min-w-0'>
+        <h4 class='text-lg font-bold text-white mb-2 group-hover:text-terminal-green transition-colors line-clamp-2'>${p.title}</h4>
+        <p class='text-gray-400 text-sm line-clamp-2'>${p.excerpt || ''}</p>
+      </div>
+    </div>
+  </a>
+</article>`};
+        async function load() {
+          try {
+            const res = await fetch(`/api/blog/posts/related/${encodeURIComponent(slug)}?limit=4`);
+            if (!res.ok) throw new Error();
+            const posts = await res.json();
+            grid.innerHTML = posts.length ? posts.map(card).join('') : `<div class='col-span-full text-center py-12 text-gray-400'>No related tutorials.</div>`;
+          } catch (e) { console.error(e); errEl.classList.remove('hidden'); }
+          finally { loadEl.classList.add('hidden'); }
+        }
+        document.addEventListener('DOMContentLoaded', load);
+      })();
+  </script>

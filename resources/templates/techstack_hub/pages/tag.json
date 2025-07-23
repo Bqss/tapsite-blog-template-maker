@@ -1,86 +1,34 @@
 {
+  "title": "TechStackHub - Modern Development Tutorials & Code Snippets",
+  "description": "Your ultimate destination for modern development tutorials, tech trends, and code snippets. From frontend frameworks to backend architectures.",
   "sections": [
+    {
+      "title": "styles",
+      "id": "styles",
+      "type": "template",
+      "resetable": true
+    },
     {
       "title": "navigation",
       "id": "navigation",
       "type": "template",
       "resetable": true,
-      "data": [
-        "blog_title",
-        "blog_logo",
-        "navigation"
-      ]
+      "data": ["site.name", "site.logo", "site.domain", "navigation"]
     },
     {
-      "title": "tag_header",
-      "id": "tag_header",
-      "type": "html",
-      "resetable": true,
-      "data": [
-        "tag",
-        "programming_languages"
-      ]
-    },
-    {
-      "title": "github_style_tags",
-      "id": "github_style_tags",
-      "type": "html",
-      "resetable": true,
-      "data": [
-        "tag",
-        "tech_stack"
-      ]
-    },
-    {
-      "title": "language_indicators",
-      "id": "language_indicators",
-      "type": "html",
-      "resetable": true,
-      "data": [
-        "programming_languages",
-        "tag"
-      ]
-    },
-    {
-      "title": "tag_posts_grid",
-      "id": "tag_posts_grid",
-      "type": "html",
-      "resetable": true,
-      "data": [
-        "posts",
-        "tag"
-      ]
-    },
-    {
-      "title": "related_tech_tags",
-      "id": "related_tech_tags",
-      "type": "html",
-      "resetable": true,
-      "data": [
-        "tech_stack",
-        "programming_languages"
-      ]
-    },
-    {
-      "title": "developer_stats",
-      "id": "developer_stats",
-      "type": "html",
-      "resetable": true,
-      "data": [
-        "code_stats",
-        "author"
-      ]
-    },
-    {
-      "title": "dark_footer",
-      "id": "dark_footer",
+      "title": "tag_content",
+      "id": "tag_content",
       "type": "template",
       "resetable": true,
-      "data": [
-        "author",
-        "social_media",
-        "color_scheme"
-      ]
+      "data": []
+    },
+
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": ["site.name", "site.description", "navigation", "social_links"]
     }
   ]
-} 
+}

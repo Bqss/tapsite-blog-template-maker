@@ -1,0 +1,215 @@
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          'terminal-green': '#00ff00',
+          'terminal-blue': '#0099ff',
+          'terminal-yellow': '#ffff00',
+          'code-bg': '#1e1e1e',
+          'code-border': '#333333'
+        },
+        fontFamily: {
+          'mono': ['JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', 'monospace']
+        }
+      }
+    }
+  }
+</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+
+  .terminal-cursor::after {
+    content: '|';
+    animation: blink 1s infinite;
+    color: #00ff00;
+  }
+
+  @keyframes blink {
+
+    0%,
+    50% {
+      opacity: 1;
+    }
+
+    51%,
+    100% {
+      opacity: 0;
+    }
+  }
+
+  .tag-card {
+    background: #0d1117;
+    border: 1px solid #30363d;
+    transition: all 0.3s ease;
+  }
+
+  .tag-card:hover {
+    border-color: #f7df1e;
+    box-shadow: 0 0 20px rgba(247, 223, 30, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .language-tag {
+    background: linear-gradient(45deg, #f7df1e, #f9e71e);
+    color: #000;
+    font-weight: 600;
+  }
+
+  .related-tag {
+    background: #1f2937;
+    border: 1px solid #374151;
+    transition: all 0.2s ease;
+  }
+
+  .related-tag:hover {
+    background: #374151;
+    border-color: #00ff00;
+    color: #00ff00;
+  }
+</style>
+
+<div class="bg-black text-white font-mono min-h-screen">
+
+<!-- Tag Header -->
+<section class="py-12 bg-gradient-to-br from-yellow-900/20 to-black">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+      <div class="text-terminal-yellow text-sm mb-4">$ git tag --list | grep javascript</div>
+      <div class="flex items-center justify-center space-x-4 mb-6">
+        <span class="language-tag px-6 py-3 rounded-full text-lg font-bold" id="tag-name">JavaScript</span>
+        <div class="w-2 h-2 bg-terminal-green rounded-full animate-pulse"></div>
+        <span class="text-terminal-green text-sm">Active Language</span>
+      </div>
+      <h1 class="text-4xl lg:text-6xl font-bold text-white mb-6">JavaScript Tutorials</h1>
+      <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+        Comprehensive collection of JavaScript tutorials covering fundamentals, frameworks, and modern development
+        practices.
+      </p>
+      <div class="flex items-center justify-center space-x-8 text-sm">
+        <div class="text-center">
+          <div class="text-2xl font-bold text-terminal-yellow" id="stat-tutorials">...</div>
+          <div class="text-gray-400">Tutorials</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl font-bold text-terminal-green" id="stat-views">...</div>
+          <div class="text-gray-400">Total Views</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl font-bold text-terminal-blue" id="stat-rating">...</div>
+          <div class="text-gray-400">Avg Rating</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Main Content -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+  <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+    <!-- Sidebar -->
+    <aside class="lg:col-span-1">
+      <!-- Related Tags -->
+      <div class="bg-gray-900 rounded-lg p-6 border border-gray-800 mb-8">
+        <h3 class="text-lg font-bold text-white mb-4">$ ls ./related_tags/</h3>
+        <div class="space-y-3" data-related-tags>
+          <div>
+            <h4 class="text-terminal-green text-sm font-semibold mb-2">Frameworks & Libraries</h4>
+            <div class="flex flex-wrap gap-2">
+              <a href="/tag/react" class="related-tag px-3 py-1 rounded text-sm">React</a>
+              <a href="/tag/vue" class="related-tag px-3 py-1 rounded text-sm">Vue.js</a>
+              <a href="/tag/angular" class="related-tag px-3 py-1 rounded text-sm">Angular</a>
+              <a href="/tag/nodejs" class="related-tag px-3 py-1 rounded text-sm">Node.js</a>
+            </div>
+          </div>
+          <div>
+            <h4 class="text-terminal-blue text-sm font-semibold mb-2">Core Concepts</h4>
+            <div class="flex flex-wrap gap-2">
+              <a href="/tag/async" class="related-tag px-3 py-1 rounded text-sm">Async/Await</a>
+              <a href="/tag/promises" class="related-tag px-3 py-1 rounded text-sm">Promises</a>
+              <a href="/tag/es6" class="related-tag px-3 py-1 rounded text-sm">ES6+</a>
+              <a href="/tag/dom" class="related-tag px-3 py-1 rounded text-sm">DOM</a>
+            </div>
+          </div>
+          <div>
+            <h4 class="text-terminal-yellow text-sm font-semibold mb-2">Tools & Build</h4>
+            <div class="flex flex-wrap gap-2">
+              <a href="/tag/webpack" class="related-tag px-3 py-1 rounded text-sm">Webpack</a>
+              <a href="/tag/babel" class="related-tag px-3 py-1 rounded text-sm">Babel</a>
+              <a href="/tag/npm" class="related-tag px-3 py-1 rounded text-sm">NPM</a>
+              <a href="/tag/typescript" class="related-tag px-3 py-1 rounded text-sm">TypeScript</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- Main Content -->
+    <main class="lg:col-span-3">
+      <!-- Filter Options -->
+      <div class="flex items-center justify-between mb-8">
+        <div class="flex items-center space-x-4">
+          <span class="text-gray-400 text-sm">$ sort --by</span>
+          <select class="bg-gray-800 border border-gray-700 rounded px-3 py-2 text-sm">
+            <option>Latest</option>
+            <option>Most Popular</option>
+            <option>Highest Rated</option>
+            <option>Difficulty</option>
+          </select>
+        </div>
+        <div class="text-gray-400 text-sm" id="tag-count">0 tutorials found</div>
+      </div>
+
+      <!-- Tutorials Grid -->
+      <div class="space-y-6" id="tag-grid">
+        <div id="tag-loading" class="flex justify-center py-12"><div class="inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-terminal-yellow"></div></div>
+        <div id="tag-error" class="text-center py-12 text-red-500 hidden">Failed to load tutorials.</div>
+      </div>
+
+      <!-- Load More -->
+      <div class="text-center mt-12">
+        <button
+          class="bg-terminal-yellow text-black px-8 py-3 rounded font-semibold hover:bg-yellow-400 transition-colors">
+          $ git log --oneline | tail -n +4
+        </button>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script>
+(function(){
+  const grid=document.getElementById('tag-grid');
+  const loadEl=document.getElementById('tag-loading');
+  const errEl=document.getElementById('tag-error');
+  const tagNameEl=document.getElementById('tag-name');
+  const countEl=document.getElementById('tag-count');
+  const relatedContainer=document.querySelector('[data-related-tags]');
+  const colors=['yellow-500','green-500','blue-500','purple-500','red-500'];
+  const statTutorials=document.getElementById('stat-tutorials');
+  const statViews=document.getElementById('stat-views');
+  const statRating=document.getElementById('stat-rating');
+  function abbrev(cat){return cat?cat.split(/\s+/).map(w=>w[0]).join('').slice(0,2).toUpperCase():'';}
+  function card(p,i){const color=colors[i%colors.length];return `<article class='tech-card rounded-lg overflow-hidden group p-6 flex items-start space-x-4'>
+      <div class='w-12 h-12 bg-${color} rounded-lg flex items-center justify-center flex-shrink-0'><span class='${color==='yellow-500'?'text-black':'text-white'} font-bold'>${abbrev(p.category)}</span></div>
+      <div class='flex-1 min-w-0'>
+        <h3 class='text-xl font-bold text-white mb-2 group-hover:text-terminal-yellow transition-colors'><a href='/post/${p.slug}'>${p.title}</a></h3>
+        <p class='text-gray-400 mb-3 text-sm line-clamp-3'>${p.excerpt||''}</p>
+        <div class='flex items-center space-x-4 text-xs text-gray-500'><span>${p.author||''}</span><span>•</span><span>${new Date(p.published_at).toLocaleDateString('id-ID',{month:'short',day:'numeric'})}</span><span>•</span><span>${p.read_time||''} min</span></div>
+      </div>
+    </article>`;}
+  function getTag(){const parts=window.location.pathname.split('/');const idx=parts.indexOf('tag');return (idx>-1&&idx+1<parts.length)?decodeURIComponent(parts[idx+1]):'';}
+  async function loadPosts(){try{const tag=getTag();tagNameEl.textContent=tag;const res=await fetch(`/api/blog/posts/tag/${encodeURIComponent(tag)}?limit=50`);if(!res.ok) throw new Error();const posts=await res.json();
+    // stats
+    if(statTutorials) statTutorials.textContent=posts.length;
+    if(statViews) statViews.textContent=posts.reduce((sum,p)=>sum+(p.view_count||0),0);
+    if(statRating) statRating.textContent=(posts.reduce((sum,p)=>sum+(p.rating||0),0)/(posts.length||1)).toFixed(1);
+
+    countEl.textContent=`${posts.length} tutorials found`;
+    grid.innerHTML=posts.length?posts.map(card).join(''):`<div class='text-center py-12 text-gray-400'>No tutorials.</div>`;}catch(e){console.error(e);errEl.classList.remove('hidden');}finally{loadEl.classList.add('hidden');}}
+  async function loadRelated(){try{const tag=getTag();const res=await fetch(`/api/blog/tags/related/${encodeURIComponent(tag)}`);if(!res.ok) throw new Error();const tags=await res.json();relatedContainer.innerHTML=`<h4 class='text-terminal-green text-sm font-semibold mb-2'>Related Tags</h4><div class='flex flex-wrap gap-2'>${tags.map(t=>`<a href='/tag/${encodeURIComponent(t)}' class='related-tag px-3 py-1 rounded text-sm'>${t}</a>`).join('')}</div>`;}catch(e){console.error(e);} }
+  document.addEventListener('DOMContentLoaded',()=>{loadPosts();loadRelated();});
+})();
+</script>

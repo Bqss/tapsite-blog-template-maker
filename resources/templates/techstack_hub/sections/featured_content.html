@@ -1,0 +1,55 @@
+ <!-- Featured Tutorials -->
+ <section class="py-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between mb-12">
+      <div>
+        <h2 class="text-3xl font-bold text-white mb-2">Featured Tutorials</h2>
+        <p class="text-gray-400">$ ls -la ./featured-tutorials/</p>
+      </div>
+      <a href="/posts" class="text-terminal-green hover:text-green-400 font-medium flex items-center">
+        View All
+        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="featured-grid">
+      <div id="featured-loading" class="col-span-full flex justify-center py-12"><div class="inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-terminal-green"></div></div>
+      <div id="featured-error" class="col-span-full text-center py-12 text-red-500 hidden">Failed to load featured tutorials.</div>
+    </div>
+    <script>
+    (function(){
+      const grid=document.getElementById('featured-grid');
+      const loadEl=document.getElementById('featured-loading');
+      const errEl=document.getElementById('featured-error');
+      const colors=['blue-600','yellow-600','green-600','purple-600','red-600'];
+      function abbrev(cat){return cat?cat.split(/\s+/).map(w=>w[0]).join('').slice(0,2).toUpperCase():'??';}
+      function card(p,i){const color=colors[i%colors.length];const textColor=color==='yellow-600'?'text-black':'text-white';return `<article class='tech-card rounded-lg p-6 group'>
+  <div class='flex items-center justify-between mb-4'>
+    <span class='bg-${color} ${textColor} px-3 py-1 rounded text-sm font-medium'>${p.category||'Tech'}</span>
+    <div class='flex items-center space-x-2 text-gray-400 text-sm'>👁️<span>${p.view_count||0}</span></div>
+  </div>
+  <h3 class='text-xl font-bold text-white mb-3 group-hover:text-terminal-green transition-colors'>
+    <a href='/post/${p.slug}'>${p.title}</a>
+  </h3>
+  <p class='text-gray-400 mb-4 text-sm line-clamp-3'>${p.excerpt||''}</p>
+  <div class='flex items-center justify-between'>
+    <div class='flex items-center space-x-3'>
+      <div class='w-8 h-8 bg-${color} rounded-full flex items-center justify-center'>
+        <span class='${textColor} text-sm font-bold'>${(p.author||'A')[0]}</span>
+      </div>
+      <div>
+        <div class='text-white text-sm font-medium'>${p.author||''}</div>
+        <div class='text-gray-500 text-xs'>${new Date(p.published_at).toLocaleDateString('id-ID',{month:'short',day:'numeric',year:'numeric'})}</div>
+      </div>
+    </div>
+    <span class='text-gray-500 text-sm'>${p.read_time||5} min read</span>
+  </div>
+</article>`;}
+      async function load(){try{const res=await fetch('/api/blog/posts/trending?limit=4');if(!res.ok) throw new Error();const data=await res.json();const posts=data.posts||data||[];grid.innerHTML=posts.length?posts.map(card).join(''):`<div class='col-span-full text-center py-12 text-gray-400'>No featured tutorials.</div>`;}catch(e){console.error(e);errEl.classList.remove('hidden');}finally{loadEl.classList.add('hidden');}}
+      document.addEventListener('DOMContentLoaded',load);
+    })();
+    </script>
+  </div>
+</section>

@@ -1,0 +1,191 @@
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          'terminal-green': '#00ff00',
+          'terminal-blue': '#0099ff',
+          'terminal-yellow': '#ffff00',
+          'code-bg': '#1e1e1e',
+          'code-border': '#333333'
+        },
+        fontFamily: {
+          'mono': ['JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', 'monospace']
+        }
+      }
+    }
+  }
+</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+
+  .terminal-cursor::after {
+    content: '|';
+    animation: blink 1s infinite;
+    color: #00ff00;
+  }
+
+  @keyframes blink {
+
+    0%,
+    50% {
+      opacity: 1;
+    }
+
+    51%,
+    100% {
+      opacity: 0;
+    }
+  }
+
+  .tag-card {
+    background: #0d1117;
+    border: 1px solid #30363d;
+    transition: all 0.3s ease;
+  }
+
+  .tag-card:hover {
+    border-color: #f7df1e;
+    box-shadow: 0 0 20px rgba(247, 223, 30, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .language-tag {
+    background: linear-gradient(45deg, #f7df1e, #f9e71e);
+    color: #000;
+    font-weight: 600;
+  }
+
+  .related-tag {
+    background: #1f2937;
+    border: 1px solid #374151;
+    transition: all 0.2s ease;
+  }
+
+  .related-tag:hover {
+    background: #374151;
+    border-color: #00ff00;
+    color: #00ff00;
+  }
+</style>
+
+<div class="bg-black text-white font-mono min-h-screen">
+  <!-- Category Header -->
+  <section class="py-12 bg-gradient-to-br from-yellow-900/20 to-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <div class="text-terminal-yellow text-sm mb-4">$ cd ./categories/javascript</div>
+        <div class="flex items-center justify-center space-x-4 mb-6">
+          <div class="w-16 h-16 bg-yellow-500 rounded-lg flex items-center justify-center">
+            <span class="text-black font-bold text-2xl">JS</span>
+          </div>
+          <h1 class="text-4xl lg:text-6xl font-bold text-white">JavaScript</h1>
+        </div>
+        <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+          Master modern JavaScript with our comprehensive tutorials covering ES6+, frameworks, and best practices for
+          web development.
+        </p>
+        <div class="flex items-center justify-center space-x-8 text-sm">
+          <div class="text-center"><div class="text-2xl font-bold text-terminal-yellow" id="stat-count">...</div><div class="text-gray-400">Tutorials</div></div>
+          <div class="text-center"><div class="text-2xl font-bold text-terminal-green" id="stat-views">...</div><div class="text-gray-400">Views</div></div>
+          <div class="text-center"><div class="text-2xl font-bold text-terminal-blue" id="stat-rating">...</div><div class="text-gray-400">Rating</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Programming Language Tabs -->
+  <section class="py-8 bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center space-x-1 overflow-x-auto pb-2" id="category-tabs"></div>
+      <script>
+      (function(){
+        const container=document.getElementById('category-tabs');if(!container) return;
+        function getCurrent(){const parts=window.location.pathname.split('/');const idx=parts.indexOf('category');return idx>-1?decodeURIComponent(parts[idx+1]):'';}
+        async function load(){try{const res=await fetch('/api/blog/categories');if(!res.ok) throw new Error();const cats=await res.json();const cur=getCurrent();container.innerHTML=cats.map(c=>`<a href='/category/${encodeURIComponent(c.name)}' class='tab-btn px-4 py-2 rounded-t font-semibold whitespace-nowrap ${c.name===cur?'bg-yellow-600 text-black':'bg-gray-800 text-gray-300 hover:bg-gray-700'}'>${c.name}</a>`).join('');}catch(e){console.error(e);} }
+        document.addEventListener('DOMContentLoaded',load);
+      })();
+      </script>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Filters -->
+    <div class="mb-8">
+      <div class="flex flex-wrap items-center gap-4">
+        <div class="flex items-center space-x-2">
+          <span class="text-gray-400 text-sm">$ filter --difficulty</span>
+          <select class="bg-gray-800 border border-gray-700 rounded px-3 py-1 text-sm">
+            <option>All Levels</option>
+            <option>Beginner</option>
+            <option>Intermediate</option>
+            <option>Advanced</option>
+          </select>
+        </div>
+        <div class="flex items-center space-x-2">
+          <span class="text-gray-400 text-sm">$ sort --by</span>
+          <select class="bg-gray-800 border border-gray-700 rounded px-3 py-1 text-sm">
+            <option>Latest</option>
+            <option>Most Popular</option>
+            <option>Difficulty</option>
+            <option>Duration</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tutorial Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8" id="cat-grid">
+      <div id="cat-loading" class="col-span-full flex justify-center py-12">
+        <div class="inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-terminal-yellow"></div>
+      </div>
+      <div id="cat-error" class="col-span-full text-center py-12 text-red-500 hidden">Failed to load tutorials.</div>
+    </div>
+
+    <!-- Load More -->
+    <div class="text-center mt-12">
+      <button
+        class="bg-terminal-yellow text-black px-8 py-3 rounded font-semibold hover:bg-yellow-400 transition-colors">
+        $ load --more tutorials
+      </button>
+    </div>
+  </main>
+
+  <script>
+      (function () {
+        const grid = document.getElementById('cat-grid');
+        const loadEl = document.getElementById('cat-loading');
+        const errEl = document.getElementById('cat-error');
+        const colors = { 'JavaScript': 'yellow-500', 'Python': 'green-500', 'React': 'blue-500', 'Node.js': 'green-700', 'DevOps': 'purple-500' };
+        const statCount=document.getElementById('stat-count');
+        const statViews=document.getElementById('stat-views');
+        const statRating=document.getElementById('stat-rating');
+        function abbrev(cat) { return cat ? cat.split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase() : ''; }
+        function card(p) {
+          const color = colors[p.category] || 'yellow-500'; return `<article class='tech-card rounded-lg overflow-hidden group'>
+    <div class='p-6'>
+      <div class='flex items-center justify-between mb-4'>
+        <div class='flex items-center space-x-3'>
+          <span class='difficulty-badge beginner text-white px-3 py-1 rounded-full text-sm font-medium'>${p.level || 'All'}</span>
+          <span class='bg-${color} ${color === 'yellow-500' ? 'text-black' : 'text-white'} px-3 py-1 rounded text-sm font-medium'>${p.category || ''}</span>
+        </div>
+        <div class='flex items-center space-x-2 text-gray-400 text-sm'>👁️ <span>${p.view_count || 0}</span></div>
+      </div>
+      <h3 class='text-xl font-bold text-white mb-3 group-hover:text-terminal-yellow transition-colors'><a href='/post/${p.slug}'>${p.title}</a></h3>
+      <p class='text-gray-400 mb-4 text-sm line-clamp-3'>${p.excerpt || ''}</p>
+    </div>
+  </article>`;
+        }
+        function getCategory() { const parts = window.location.pathname.split('/'); const idx = parts.indexOf('category'); return (idx > -1 && idx + 1 < parts.length) ? decodeURIComponent(parts[idx + 1]) : ''; }
+        async function load() { try { const name = getCategory(); if (!name) { throw new Error('No category'); } const res = await fetch(`/api/blog/posts/category/${encodeURIComponent(name)}?limit=30`); if (!res.ok) throw new Error(); const posts = await res.json();
+          // stats
+          if(statCount) statCount.textContent=posts.length;
+          if(statViews) statViews.textContent=posts.reduce((s,p)=>s+(p.view_count||0),0);
+          if(statRating) statRating.textContent=(posts.reduce((s,p)=>s+(p.rating||0),0)/(posts.length||1)).toFixed(1);
+
+          grid.innerHTML = posts.length ? posts.map(card).join('') : `<div class='col-span-full text-center py-12 text-gray-400'>No tutorials.</div>`; } catch (e) { console.error(e); errEl.classList.remove('hidden'); } finally { loadEl.classList.add('hidden'); } }
+        document.addEventListener('DOMContentLoaded', load);
+      })();
+  </script>

@@ -1,0 +1,229 @@
+<!-- Terminal Header -->
+<!-- Terminal Header -->
+
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          'terminal-green': '#00ff00',
+          'terminal-blue': '#0099ff',
+          'terminal-yellow': '#ffff00',
+          'code-bg': '#1e1e1e',
+          'code-border': '#333333'
+        },
+        fontFamily: {
+          'mono': ['JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', 'monospace']
+        }
+      }
+    }
+  }
+</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+
+  .terminal-cursor::after {
+    content: '|';
+    animation: blink 1s infinite;
+    color: #00ff00;
+  }
+
+  @keyframes blink {
+
+    0%,
+    50% {
+      opacity: 1;
+    }
+
+    51%,
+    100% {
+      opacity: 0;
+    }
+  }
+
+  .tag-card {
+    background: #0d1117;
+    border: 1px solid #30363d;
+    transition: all 0.3s ease;
+  }
+
+  .tag-card:hover {
+    border-color: #f7df1e;
+    box-shadow: 0 0 20px rgba(247, 223, 30, 0.2);
+    transform: translateY(-2px);
+  }
+
+  .language-tag {
+    background: linear-gradient(45deg, #f7df1e, #f9e71e);
+    color: #000;
+    font-weight: 600;
+  }
+
+  .related-tag {
+    background: #1f2937;
+    border: 1px solid #374151;
+    transition: all 0.2s ease;
+  }
+
+  .related-tag:hover {
+    background: #374151;
+    border-color: #00ff00;
+    color: #00ff00;
+  }
+</style>
+
+<div class="bg-black text-white font-mono min-h-screen">
+  <!-- Page Header -->
+  <section class="py-12 bg-gradient-to-br from-gray-900 to-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center">
+        <div class="text-terminal-green text-sm mb-4">$ ls -la ./tutorials/</div>
+        <h1 class="text-4xl lg:text-6xl font-bold text-white mb-6">All Tutorials</h1>
+        <p class="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+          Comprehensive collection of programming tutorials, code examples, and tech guides for modern development.
+        </p>
+        <div class="flex items-center justify-center space-x-8 text-sm">
+          <div class="text-center">
+            <div class="text-2xl font-bold text-terminal-green" id="stat-total">...</div>
+            <div class="text-gray-400">Total Tutorials</div>
+          </div>
+          <div class="text-center">
+            <div class="text-2xl font-bold text-terminal-blue" id="stat-stacks">...</div>
+            <div class="text-gray-400">Tech Stacks</div>
+          </div>
+          <div class="text-center">
+            <div class="text-2xl font-bold text-terminal-yellow" id="stat-views">...</div>
+            <div class="text-gray-400">Total Views</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filters & Sort -->
+  <section class="py-8 bg-gray-900 border-b border-gray-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div class="flex flex-wrap items-center gap-4">
+          <div class="flex items-center space-x-2">
+            <span class="text-gray-400 text-sm">$ filter --tech</span>
+            <select class="bg-gray-800 border border-gray-700 rounded px-3 py-2 text-sm">
+              <option>All Technologies</option>
+              <option>JavaScript</option>
+              <option>Python</option>
+              <option>React</option>
+              <option>Node.js</option>
+              <option>DevOps</option>
+            </select>
+          </div>
+          <div class="flex items-center space-x-2">
+            <span class="text-gray-400 text-sm">$ sort --by</span>
+            <select class="bg-gray-800 border border-gray-700 rounded px-3 py-2 text-sm">
+              <option>Latest</option>
+              <option>Most Popular</option>
+              <option>Difficulty</option>
+              <option>Duration</option>
+            </select>
+          </div>
+        </div>
+        <div class="text-gray-400 text-sm" id="showing-info"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <!-- Tutorial List -->
+    <div class="space-y-6" id="posts-grid">
+      <div id="posts-loading" class="flex justify-center py-12">
+        <div class="inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-terminal-green"></div>
+      </div>
+      <div id="posts-error" class="text-center py-12 text-red-500 hidden">Failed to load tutorials.</div>
+    </div>
+    <div id="posts-pagination" class="flex justify-center mt-12 hidden"></div>
+
+    <!-- Footer Info -->
+    <div class="flex items-center justify-between mt-12 pt-8 border-t border-gray-800">
+      <div class="text-gray-400 text-sm">$ git log --oneline | head -10</div>
+    </div>
+  </main>
+
+  <script>
+      (function () {
+        const LIMIT = 9; let currentPage = 1, totalPages = 1;
+        const grid = document.getElementById('posts-grid');
+        const loadEl = document.getElementById('posts-loading');
+        const errEl = document.getElementById('posts-error');
+        const pagEl = document.getElementById('posts-pagination');
+        const colors = ['yellow-500', 'green-500', 'blue-500', 'purple-500', 'red-500'];
+        const statTotal=document.getElementById('stat-total');
+        const statStacks=document.getElementById('stat-stacks');
+        const statViews=document.getElementById('stat-views');
+        const showingInfo=document.getElementById('showing-info');
+        function abbrev(cat) { return cat ? cat.split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase() : '??'; }
+        function card(p, i) {
+          const color = colors[i % colors.length]; return `<article class='github-card rounded-lg p-6 group'>
+    <div class='flex items-start space-x-4'>
+      <div class='w-12 h-12 bg-${color} rounded-lg flex items-center justify-center flex-shrink-0'>
+        <span class='${color === 'yellow-500' ? 'text-black' : 'text-white'} font-bold text-lg'>${abbrev(p.category)}</span>
+      </div>
+      <div class='flex-1 min-w-0'>
+        <div class='flex items-center space-x-3 mb-2'>
+          <span class='tech-badge javascript px-3 py-1 rounded-full text-sm font-medium'>${p.category || ''}</span>
+          <span class='bg-green-600 text-white px-2 py-1 rounded text-xs'>${p.level || 'All'}</span>
+          <div class='flex items-center space-x-1 text-gray-400 text-sm'>👁️<span>${p.view_count || 0}</span></div>
+        </div>
+        <h3 class='text-xl font-bold text-white mb-2 group-hover:text-terminal-blue transition-colors'>
+          <a href='/post/${p.slug}'>${p.title}</a>
+        </h3>
+        <p class='text-gray-400 mb-3 text-sm line-clamp-3'>${p.excerpt || ''}</p>
+        <div class='flex items-center justify-between'>
+          <div class='flex items-center space-x-4'>
+            <div class='flex items-center space-x-2'>
+              <div class='w-6 h-6 bg-${color} rounded-full flex items-center justify-center'>
+                <span class='${color === 'yellow-500' ? 'text-black' : 'text-white'} text-xs font-bold'>${(p.author || '')[0] || 'A'}</span>
+              </div>
+              <span class='text-gray-300 text-sm'>${p.author || ''}</span>
+            </div>
+            <span class='text-gray-500 text-sm'>${new Date(p.published_at).toLocaleDateString('id-ID', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+          </div>
+          <div class='flex items-center space-x-4 text-sm'>
+            <span class='text-gray-500'>${p.read_time || ''} min read</span>
+            <span class='text-terminal-green'>⭐ ${p.rating || ''}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>`;
+        }
+        function renderPagination() { if (totalPages <= 1) { pagEl.classList.add('hidden'); return; } let html = `<button ${currentPage === 1 ? 'disabled' : ''} data-page='prev' class='px-4 py-2 text-gray-400 hover:text-white'>Prev</button>`; for (let i = 1; i <= totalPages; i++) { html += `<button data-page='${i}' class='px-3 py-2 ${i === currentPage ? 'text-terminal-green' : 'text-gray-400'} hover:text-white'>${i}</button>`; } html += `<button ${currentPage === totalPages ? 'disabled' : ''} data-page='next' class='px-4 py-2 text-gray-400 hover:text-white'>Next</button>`; pagEl.innerHTML = html; pagEl.classList.remove('hidden'); pagEl.querySelectorAll('button').forEach(btn => btn.addEventListener('click', e => { const val = e.currentTarget.dataset.page; if (val === 'prev') load(currentPage - 1); else if (val === 'next') load(currentPage + 1); else load(parseInt(val)); })); }
+        async function load(page = 1) {
+          currentPage = page; errEl.classList.add('hidden'); loadEl.classList.remove('hidden');
+          try {
+            const res = await fetch(`/api/blog/posts?limit=${LIMIT}&page=${page}`);
+            if (!res.ok) throw new Error();
+            const data = await res.json();
+            const posts = data.posts || [];
+            totalPages = data.pagination ? data.pagination.total_pages : 1;
+
+            // update stats
+            if(statTotal && data.pagination){statTotal.textContent=data.pagination.total_posts;}
+            // fetch categories once for stacks
+            if(statStacks){fetch('/api/blog/categories').then(r=>r.json()).then(cats=>{statStacks.textContent=cats.length;}).catch(()=>{});}
+            if(statViews){statViews.textContent='—';}
+
+            // showing info
+            if(showingInfo){const start=(currentPage-1)*LIMIT+1;const end=start+posts.length-1;showingInfo.textContent=`Showing ${start}-${end} of ${data.pagination?data.pagination.total_posts:posts.length} tutorials`;}
+
+            grid.innerHTML = posts.length ? posts.map(card).join('') : `<div class='text-center py-12 text-gray-400'>No tutorials.</div>`;
+            renderPagination();
+          } catch (e) {
+            console.error(e); errEl.classList.remove('hidden');
+          } finally {
+            loadEl.classList.add('hidden');
+          }
+        }
+        document.addEventListener('DOMContentLoaded', () => load());
+      })();
+  </script>

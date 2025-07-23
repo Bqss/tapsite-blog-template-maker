@@ -1,0 +1,39 @@
+<!-- Recent Posts -->
+<section class="py-16 bg-gray-900">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between mb-8">
+      <h2 class="text-2xl font-bold text-white">Recent Posts</h2>
+      <a href="/posts" class="text-terminal-green hover:text-green-400 font-medium">View All</a>
+    </div>
+
+    <div class="space-y-4" id="recent-grid">
+      <div id="recent-loading" class="flex justify-center py-12"><div class="inline-block animate-spin rounded-full h-10 w-10 border-b-2 border-terminal-green"></div></div>
+      <div id="recent-error" class="text-center py-12 text-red-500 hidden">Failed to load posts.</div>
+    </div>
+  </div>
+</section>
+<script>
+(function(){
+  const grid=document.getElementById('recent-grid');
+  const loadEl=document.getElementById('recent-loading');
+  const errEl=document.getElementById('recent-error');
+  const colors=['blue-600','green-600','purple-600','yellow-500','red-600'];
+  function abbrev(cat){return cat?cat.split(/\s+/).map(w=>w[0]).join('').slice(0,2).toUpperCase():'??';}
+  function card(p,i){const color=colors[i%colors.length];return `<div class='tech-card rounded-lg p-4 flex items-center space-x-4'>
+    <div class='w-12 h-12 bg-${color} rounded flex items-center justify-center flex-shrink-0'>
+      <span class='text-white font-bold'>${abbrev(p.category)}</span>
+    </div>
+    <div class='flex-1'>
+      <h4 class='text-white font-semibold mb-1'>
+        <a href='/post/${p.slug}' class='hover:text-terminal-green transition-colors'>${p.title}</a>
+      </h4>
+      <p class='text-gray-400 text-sm line-clamp-2'>${p.excerpt||''}</p>
+      <div class='flex items-center space-x-4 text-xs text-gray-500 mt-2'>
+        <span>${p.author||''}</span><span>•</span><span>${new Date(p.published_at).toLocaleDateString('id-ID',{month:'short',day:'numeric'})}</span><span>•</span><span>${p.read_time||''} min read</span>
+      </div>
+    </div>
+  </div>`;}
+  async function load(){try{const res=await fetch('/api/blog/posts/recent?limit=6');if(!res.ok) throw new Error();const data=await res.json();const posts=data.posts||data||[];grid.innerHTML=posts.length?posts.map(card).join(''):`<div class='text-center py-12 text-gray-400 w-full'>No recent posts.</div>`;}catch(e){console.error(e);errEl.classList.remove('hidden');}finally{loadEl.classList.add('hidden');}}
+  document.addEventListener('DOMContentLoaded',load);
+})();
+</script>
