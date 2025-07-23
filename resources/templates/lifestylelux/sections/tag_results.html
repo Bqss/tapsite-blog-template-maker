@@ -39,7 +39,7 @@
     <span class="mx-2 text-gray-400">/</span>
     <a href="#" class="text-gray-500 hover:text-luxury-gold transition-colors">Tags</a>
     <span class="mx-2 text-gray-400">/</span>
-    <span class="text-luxury-gold font-medium">Luxury</span>
+    <span id="breadcrumb-current" class="text-luxury-gold font-medium">Luxury</span>
   </nav>
 </div>
 
@@ -51,11 +51,11 @@
     <div class="text-center text-white px-4">
       <div class="inline-flex items-center space-x-3 mb-4">
         <span class="text-luxury-gold text-2xl">#</span>
-        <h1 class="font-serif text-4xl lg:text-6xl font-light">Luxury</h1>
+        <h1 id="tag-title" class="font-serif text-4xl lg:text-6xl font-light">Luxury</h1>
       </div>
-      <p class="text-xl font-light opacity-90 mb-4">Curated content showcasing the finest in luxury lifestyle</p>
+      <p id="tag-desc" class="text-xl font-light opacity-90 mb-4">Curated content showcasing the finest in luxury lifestyle</p>
       <div class="w-24 h-px bg-luxury-gold mx-auto"></div>
-      <p class="text-sm font-light mt-4 opacity-80">47 articles featuring this tag</p>
+      <p id="tag-count" class="text-sm font-light mt-4 opacity-80">0 articles featuring this tag</p>
     </div>
   </div>
 </section>
@@ -95,46 +95,7 @@
     <div class="w-16 h-px bg-luxury-gold mx-auto"></div>
   </div>
 
-  <div class="flex flex-wrap justify-center gap-3">
-    <span class="tag-cloud-item bg-luxury-gold text-white px-6 py-3 rounded-full font-medium cursor-pointer">
-      #luxury
-    </span>
-    <span
-      class="tag-cloud-item bg-white text-luxury-dark px-6 py-3 rounded-full font-medium elegant-border hover:bg-luxury-gold hover:text-white hover:border-luxury-gold transition-all cursor-pointer">
-      #elegance
-    </span>
-    <span
-      class="tag-cloud-item bg-white text-luxury-dark px-6 py-3 rounded-full font-medium elegant-border hover:bg-luxury-gold hover:text-white hover:border-luxury-gold transition-all cursor-pointer">
-      #premium
-    </span>
-    <span
-      class="tag-cloud-item bg-white text-luxury-dark px-6 py-3 rounded-full font-medium elegant-border hover:bg-luxury-gold hover:text-white hover:border-luxury-gold transition-all cursor-pointer">
-      #exclusive
-    </span>
-    <span
-      class="tag-cloud-item bg-white text-luxury-dark px-6 py-3 rounded-full font-medium elegant-border hover:bg-luxury-gold hover:text-white hover:border-luxury-gold transition-all cursor-pointer">
-      #sophisticated
-    </span>
-    <span
-      class="tag-cloud-item bg-white text-luxury-dark px-6 py-3 rounded-full font-medium elegant-border hover:bg-luxury-gold hover:text-white hover:border-luxury-gold transition-all cursor-pointer">
-      #haute-couture
-    </span>
-    <span
-      class="tag-cloud-item bg-white text-luxury-dark px-6 py-3 rounded-full font-medium elegant-border hover:bg-luxury-gold hover:text-white hover:border-luxury-gold transition-all cursor-pointer">
-      #craftsmanship
-    </span>
-    <span
-      class="tag-cloud-item bg-white text-luxury-dark px-6 py-3 rounded-full font-medium elegant-border hover:bg-luxury-gold hover:text-white hover:border-luxury-gold transition-all cursor-pointer">
-      #artisanal
-    </span>
-    <span
-      class="tag-cloud-item bg-white text-luxury-dark px-6 py-3 rounded-full font-medium elegant-border hover:bg-luxury-gold hover:text-white hover:border-luxury-gold transition-all cursor-pointer">
-      #bespoke
-    </span>
-    <span
-      class="tag-cloud-item bg-white text-luxury-dark px-6 py-3 rounded-full font-medium elegant-border hover:bg-luxury-gold hover:text-white hover:border-luxury-gold transition-all cursor-pointer">
-      #curated
-    </span>
+  <div id="related-tags" class="flex flex-wrap justify-center gap-3">
   </div>
 </section>
 
@@ -145,36 +106,7 @@
     <div class="w-16 h-px bg-luxury-gold mx-auto"></div>
   </div>
 
-  <article class="luxury-hover cursor-pointer">
-    <div class="bg-white rounded-lg elegant-border overflow-hidden">
-      <div class="relative h-64 lg:h-96">
-        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200&h=800&fit=crop"
-          alt="Featured Luxury Article" class="w-full h-full object-cover">
-        <div class="absolute inset-0 featured-overlay">
-          <div class="absolute bottom-8 left-8 right-8 text-white">
-            <div class="flex items-center space-x-2 mb-4">
-              <span class="bg-luxury-gold text-white px-3 py-1 rounded-full text-sm font-medium">FEATURED</span>
-              <span class="bg-white bg-opacity-20 text-white px-3 py-1 rounded-full text-sm">Interior Design</span>
-            </div>
-            <h3 class="font-serif text-2xl lg:text-4xl font-light mb-4">
-              The Art of Luxury Living: Timeless Elegance in Modern Homes
-            </h3>
-            <p class="text-lg opacity-90 mb-4 max-w-3xl">
-              Explore how contemporary luxury interiors blend classic sophistication with modern innovation, creating
-              spaces that epitomize refined living and timeless elegance.
-            </p>
-            <div class="flex items-center space-x-6 text-sm">
-              <span>By Isabella Rossi</span>
-              <span>•</span>
-              <span>8 min read</span>
-              <span>•</span>
-              <span>2,847 views</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </article>
+  <div id="featured-container" class="min-h-[200px] flex items-center justify-center py-12 text-gray-500">Loading...</div>
 </section>
 
 <!-- Articles Grid -->
@@ -192,173 +124,8 @@
     </div>
   </div>
 
-  <div class="curated-grid">
-    <!-- Article 1 -->
-    <article class="luxury-hover cursor-pointer group">
-      <div class="bg-white rounded-lg elegant-border overflow-hidden h-full">
-        <div class="relative h-48">
-          <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400&h=300&fit=crop"
-            alt="Fashion Article"
-            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-          <div class="absolute top-4 left-4">
-            <span class="bg-luxury-gold text-white px-3 py-1 rounded-full text-xs font-medium">Fashion</span>
-          </div>
-        </div>
-        <div class="p-6">
-          <h3
-            class="font-serif text-lg font-medium text-luxury-dark mb-3 group-hover:text-luxury-gold transition-colors line-clamp-2">
-            Haute Couture Spring Collection: Fashion's New Renaissance
-          </h3>
-          <p class="text-gray-600 text-sm mb-4 line-clamp-3">
-            This season's haute couture collections showcase a return to artisanal craftsmanship and sustainable luxury
-            in fashion.
-          </p>
-          <div class="flex items-center justify-between text-xs text-gray-500">
-            <span>Victoria Sterling</span>
-            <span>6 min read</span>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <!-- Article 2 -->
-    <article class="luxury-hover cursor-pointer group">
-      <div class="bg-white rounded-lg elegant-border overflow-hidden h-full">
-        <div class="relative h-48">
-          <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400&h=300&fit=crop" alt="Dining Article"
-            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-          <div class="absolute top-4 left-4">
-            <span class="bg-luxury-gold text-white px-3 py-1 rounded-full text-xs font-medium">Dining</span>
-          </div>
-        </div>
-        <div class="p-6">
-          <h3
-            class="font-serif text-lg font-medium text-luxury-dark mb-3 group-hover:text-luxury-gold transition-colors line-clamp-2">
-            Michelin-Starred Experiences: A Culinary Journey Through Excellence
-          </h3>
-          <p class="text-gray-600 text-sm mb-4 line-clamp-3">
-            Discover the world's most exclusive dining experiences where culinary artistry meets unparalleled service
-            and ambiance.
-          </p>
-          <div class="flex items-center justify-between text-xs text-gray-500">
-            <span>Chef Alexandre Dubois</span>
-            <span>10 min read</span>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <!-- Article 3 -->
-    <article class="luxury-hover cursor-pointer group">
-      <div class="bg-white rounded-lg elegant-border overflow-hidden h-full">
-        <div class="relative h-48">
-          <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop"
-            alt="Wellness Article"
-            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-          <div class="absolute top-4 left-4">
-            <span class="bg-luxury-gold text-white px-3 py-1 rounded-full text-xs font-medium">Wellness</span>
-          </div>
-        </div>
-        <div class="p-6">
-          <h3
-            class="font-serif text-lg font-medium text-luxury-dark mb-3 group-hover:text-luxury-gold transition-colors line-clamp-2">
-            Wellness Retreats: Luxury Sanctuaries for Mind, Body & Soul
-          </h3>
-          <p class="text-gray-600 text-sm mb-4 line-clamp-3">
-            Escape to the world's most exclusive wellness destinations where luxury meets holistic healing and personal
-            transformation.
-          </p>
-          <div class="flex items-center justify-between text-xs text-gray-500">
-            <span>Dr. Seraphina Wilde</span>
-            <span>7 min read</span>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <!-- Article 4 -->
-    <article class="luxury-hover cursor-pointer group">
-      <div class="bg-white rounded-lg elegant-border overflow-hidden h-full">
-        <div class="relative h-48">
-          <img src="https://images.unsplash.com/photo-1523170335258-f5c54a6b4a2b?w=400&h=300&fit=crop"
-            alt="Timepieces Article"
-            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-          <div class="absolute top-4 left-4">
-            <span class="bg-luxury-gold text-white px-3 py-1 rounded-full text-xs font-medium">Accessories</span>
-          </div>
-        </div>
-        <div class="p-6">
-          <h3
-            class="font-serif text-lg font-medium text-luxury-dark mb-3 group-hover:text-luxury-gold transition-colors line-clamp-2">
-            Timepiece Mastery: The Art of Luxury Watchmaking
-          </h3>
-          <p class="text-gray-600 text-sm mb-4 line-clamp-3">
-            Delve into the intricate world of haute horlogerie where centuries-old traditions meet cutting-edge
-            innovation.
-          </p>
-          <div class="flex items-center justify-between text-xs text-gray-500">
-            <span>Marcus Zimmermann</span>
-            <span>9 min read</span>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <!-- Article 5 -->
-    <article class="luxury-hover cursor-pointer group">
-      <div class="bg-white rounded-lg elegant-border overflow-hidden h-full">
-        <div class="relative h-48">
-          <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&h=300&fit=crop"
-            alt="Travel Article"
-            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-          <div class="absolute top-4 left-4">
-            <span class="bg-luxury-gold text-white px-3 py-1 rounded-full text-xs font-medium">Travel</span>
-          </div>
-        </div>
-        <div class="p-6">
-          <h3
-            class="font-serif text-lg font-medium text-luxury-dark mb-3 group-hover:text-luxury-gold transition-colors line-clamp-2">
-            Private Jet Lifestyle: The Ultimate in Luxury Travel
-          </h3>
-          <p class="text-gray-600 text-sm mb-4 line-clamp-3">
-            Experience the epitome of luxury travel with exclusive access to private aviation and bespoke journey
-            experiences.
-          </p>
-          <div class="flex items-center justify-between text-xs text-gray-500">
-            <span>Captain James Morrison</span>
-            <span>8 min read</span>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <!-- Article 6 -->
-    <article class="luxury-hover cursor-pointer group">
-      <div class="bg-white rounded-lg elegant-border overflow-hidden h-full">
-        <div class="relative h-48">
-          <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=300&fit=crop"
-            alt="Luxury Handbags"
-            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-          <div class="absolute top-4 left-4">
-            <span class="bg-luxury-gold text-white px-3 py-1 rounded-full text-xs font-medium">Accessories</span>
-          </div>
-        </div>
-        <div class="p-6">
-          <h3
-            class="font-serif text-lg font-medium text-luxury-dark mb-3 group-hover:text-luxury-gold transition-colors line-clamp-2">
-            Handbag Investment Guide: The Art of Collecting Luxury Accessories
-          </h3>
-          <p class="text-gray-600 text-sm mb-4 line-clamp-3">
-            From Hermès Birkin to Chanel 2.55, explore the world of luxury handbags as both fashion statements and
-            investment pieces.
-          </p>
-          <div class="flex items-center justify-between text-xs text-gray-500">
-            <span>Sophia Laurent</span>
-            <span>7 min read</span>
-          </div>
-        </div>
-      </div>
-    </article>
+  <div id="tag-grid" class="curated-grid">
+    <!-- dynamic cards will be injected here -->
   </div>
 
   <!-- Load More -->
@@ -427,3 +194,79 @@
     </div>
   </div>
 </section>
+
+<script>
+(function () {
+  const crumb = document.getElementById('breadcrumb-current');
+  const titleEl = document.getElementById('tag-title');
+  const descEl = document.getElementById('tag-desc');
+  const countEl = document.getElementById('tag-count');
+  const relatedWrap = document.getElementById('related-tags');
+  const featContainer = document.getElementById('featured-container');
+  const grid = document.getElementById('tag-grid');
+
+  if (!grid || !featContainer) return;
+
+  grid.innerHTML = '';
+  relatedWrap.innerHTML = '';
+
+  const parts = window.location.pathname.split('/');
+  const idx = parts.indexOf('tag');
+  const slug = idx !== -1 ? decodeURIComponent(parts[idx + 1] || '') : '';
+
+  const pretty = slug.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+  titleEl.textContent = pretty;
+  crumb.textContent = pretty;
+
+  Promise.all([
+    fetch(`/api/blog/posts/tag/${encodeURIComponent(slug)}?limit=30`).then(r => r.json()).catch(() => []),
+    fetch(`/api/blog/tags/related/${encodeURIComponent(slug)}`).then(r => r.json()).catch(() => [])
+  ]).then(([posts, related]) => {
+    const list = Array.isArray(posts) ? posts : (posts.posts || []);
+    if (countEl) countEl.textContent = `${list.length} articles featuring this tag`;
+
+    if (list.length) {
+      renderFeatured(list[0]);
+      list.slice(1).forEach(p => grid.insertAdjacentHTML('beforeend', createCardHTML(p)));
+    } else {
+      featContainer.textContent = 'No articles yet.';
+    }
+
+    if (relatedWrap) {
+      related.forEach(t => {
+        relatedWrap.insertAdjacentHTML('beforeend', `<span class="tag-cloud-item bg-white text-luxury-dark px-6 py-3 rounded-full font-medium elegant-border hover:bg-luxury-gold hover:text-white hover:border-luxury-gold transition-all cursor-pointer">#${t}</span>`);
+      });
+    }
+  }).catch(err => {
+    console.error(err);
+    featContainer.textContent = 'Failed to load content.';
+  });
+
+  function createFeaturedHTML(a) {
+    const img = a.featured_image || '';
+    const cat = a.category || 'Luxury';
+    const date = new Date(a.published_at || Date.now()).toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'});
+    return `
+    <article class="luxury-hover cursor-pointer">
+      <div class="bg-white rounded-lg elegant-border overflow-hidden">
+        <div class="relative h-64 lg:h-96">${img ? `<img src="${img}" alt="${a.title}" class="w-full h-full object-cover">` : ''}<div class="absolute inset-0 featured-overlay"><div class="absolute bottom-8 left-8 right-8 text-white"><div class="flex items-center space-x-2 mb-4"><span class="bg-luxury-gold text-white px-3 py-1 rounded-full text-sm font-medium">FEATURED</span><span class="bg-white bg-opacity-20 text-white px-3 py-1 rounded-full text-sm">${cat}</span></div><h3 class="font-serif text-2xl lg:text-4xl font-light mb-4">${a.title}</h3><p class="text-sm md:text-base">${a.excerpt || ''}</p><div class="flex items-center space-x-4 text-xs mt-4"><span>By ${a.author || 'Editor'}</span><span>${date}</span></div></div></div></div>
+      </div>
+    </article>`;
+  }
+
+  function renderFeatured(a) { featContainer.innerHTML = createFeaturedHTML(a); }
+
+  function createCardHTML(a) {
+    const img = a.featured_image || '';
+    const cat = a.category || 'Luxury';
+    const read = a.read_time || 5;
+    return `
+    <article class="luxury-hover cursor-pointer group">
+      <div class="bg-white rounded-lg elegant-border overflow-hidden h-full">
+        <div class="relative h-48">${img ? `<img src="${img}" alt="${a.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">` : ''}<div class="absolute top-4 left-4"><span class="bg-luxury-gold text-white px-3 py-1 rounded-full text-xs font-medium">${cat}</span></div></div>
+        <div class="p-6"><h3 class="font-serif text-lg font-medium text-luxury-dark mb-3 group-hover:text-luxury-gold transition-colors line-clamp-2">${a.title}</h3><p class="text-gray-600 text-sm mb-4 line-clamp-3">${a.excerpt || ''}</p><div class="flex items-center justify-between text-xs text-gray-500"><span>${a.author || 'Editor'}</span><span>${read} min read</span></div></div>
+      </div>
+    </article>`;
+  }
+})();
+</script>

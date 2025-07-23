@@ -3,42 +3,40 @@
   <nav class="text-sm">
     <a href="#" class="text-gray-500 hover:text-luxury-gold transition-colors">Home</a>
     <span class="mx-2 text-gray-400">/</span>
-    <a href="#" class="text-gray-500 hover:text-luxury-gold transition-colors">Fashion</a>
+    <a href="/category/{{it.post.category}}" class="text-gray-500 hover:text-luxury-gold transition-colors">{{it.post.category}}</a>
     <span class="mx-2 text-gray-400">/</span>
-    <span class="text-luxury-gold font-medium">Haute Couture Spring Collection</span>
+    <span class="text-luxury-gold font-medium">{{it.post.title}}</span>
   </nav>
 </div>
 
 <!-- Article Header -->
 <header class="max-w-4xl mx-auto px-4 lg:px-8 py-8 text-center">
   <div class="mb-6">
-    <span class="bg-luxury-gold text-white px-4 py-2 rounded-full text-sm font-medium">FASHION</span>
+    <span class="bg-luxury-gold text-white px-4 py-2 rounded-full text-sm font-medium">{{it.post.category}}</span>
   </div>
   <h1 class="font-serif text-4xl lg:text-6xl font-light text-luxury-dark mb-6 leading-tight">
-    Haute Couture Spring Collection: Fashion's New Renaissance
+    {{it.post.title}}
   </h1>
   <p class="text-xl text-gray-600 mb-8 leading-relaxed max-w-3xl mx-auto">
-    This season's haute couture collections showcase a return to artisanal craftsmanship and sustainable luxury in
-    fashion, redefining elegance for the modern era.
+    {{it.post.excerpt}}
   </p>
 
   <!-- Article Meta -->
   <div
     class="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8 text-sm text-gray-500 mb-8">
     <div class="flex items-center space-x-3">
-      <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=40&h=40&fit=crop&crop=face"
-        alt="Victoria Sterling" class="w-10 h-10 rounded-full object-cover">
+      {{@if(it.author.avatar)}}<img src="{{it.author.avatar}}" alt="{{it.author.name}}" class="w-10 h-10 rounded-full object-cover">{{#else}}<div class="w-10 h-10 rounded-full bg-luxury-gold flex items-center justify-center text-white font-semibold">{{it.author.name.charAt(0).toUpperCase()}}</div>{{/if}}
       <div class="text-left">
-        <p class="font-medium text-luxury-dark">Victoria Sterling</p>
-        <p class="text-xs">Fashion Editor</p>
+        <p class="font-medium text-luxury-dark">{{it.author.name}}</p>
+        <p class="text-xs">{{it.author.role}}</p>
       </div>
     </div>
     <div class="flex items-center space-x-6">
-      <span>December 14, 2024</span>
+      <span>{{it.post.published_at}}</span>
       <span>•</span>
-      <span>6 min read</span>
+      <span>{{it.post.read_time}} min read</span>
       <span>•</span>
-      <span>1,923 views</span>
+      <span>{{it.post.view_count}} views</span>
     </div>
   </div>
 
@@ -78,8 +76,7 @@
 <!-- Featured Image -->
 <section class="mb-12">
   <div class="max-w-6xl mx-auto px-4 lg:px-8">
-    <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=1200&h=800&fit=crop"
-      alt="Haute Couture Fashion Show" class="w-full h-96 lg:h-[500px] object-cover rounded-lg shadow-lg">
+    {{@if(it.post.featured_image)}}<img src="{{it.post.featured_image}}" alt="{{it.post.title}}" class="w-full h-96 lg:h-[500px] object-cover rounded-lg shadow-lg">{{/if}}
     <p class="text-sm text-gray-500 text-center mt-3 italic">
       Models showcase the latest haute couture designs during Paris Fashion Week
     </p>
@@ -116,18 +113,9 @@
         <div class="bg-white rounded-lg elegant-border p-6">
           <h3 class="font-serif text-lg font-medium text-luxury-dark mb-4">Tags</h3>
           <div class="flex flex-wrap gap-2">
-            <span
-              class="bg-luxury-light text-luxury-dark px-3 py-1 rounded-full text-xs border elegant-border">#Teknologi</span>
-            <span
-              class="bg-luxury-light text-luxury-dark px-3 py-1 rounded-full text-xs border elegant-border">#Bisnis</span>
-            <span
-              class="bg-luxury-light text-luxury-dark px-3 py-1 rounded-full text-xs border elegant-border">#AI</span>
-            <span
-              class="bg-luxury-light text-luxury-dark px-3 py-1 rounded-full text-xs border elegant-border">#Indonesia</span>
-            <span
-              class="bg-luxury-light text-luxury-dark px-3 py-1 rounded-full text-xs border elegant-border">#UMKM</span>
-            <span
-              class="bg-luxury-light text-luxury-dark px-3 py-1 rounded-full text-xs border elegant-border">#Digitalisasi</span>
+            {{@each(it.post.tags)=>tag}}
+            <a href="/tag/{{tag}}" class="bg-luxury-light text-luxury-dark px-3 py-1 rounded-full text-xs border elegant-border hover:bg-luxury-gold hover:text-white transition-colors">#{{tag}}</a>
+            {{/each}}
           </div>
         </div>
       </div>
@@ -266,42 +254,9 @@
         </div>
 
         <!-- Related Articles -->
-        <div class="bg-white rounded-lg elegant-border p-6">
+        <div class="bg-white rounded-lg elegant-border p-6" id="related-box">
           <h3 class="font-serif text-lg font-medium text-luxury-dark mb-4">Related Articles</h3>
-          <div class="space-y-4">
-            <article class="group cursor-pointer">
-              <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=300&h=200&fit=crop"
-                alt="Related Article"
-                class="w-full h-24 object-cover rounded-lg mb-2 group-hover:opacity-90 transition-opacity">
-              <h4
-                class="font-serif text-sm font-medium text-luxury-dark group-hover:text-luxury-gold transition-colors line-clamp-2">
-                Building a Capsule Wardrobe: Luxury Essentials for the Modern Woman
-              </h4>
-              <p class="text-xs text-gray-500 mt-1">6 min read</p>
-            </article>
-
-            <article class="group cursor-pointer">
-              <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=300&h=200&fit=crop"
-                alt="Related Article"
-                class="w-full h-24 object-cover rounded-lg mb-2 group-hover:opacity-90 transition-opacity">
-              <h4
-                class="font-serif text-sm font-medium text-luxury-dark group-hover:text-luxury-gold transition-colors line-clamp-2">
-                Precious Statements: The Return of Bold Jewelry in High Fashion
-              </h4>
-              <p class="text-xs text-gray-500 mt-1">9 min read</p>
-            </article>
-
-            <article class="group cursor-pointer">
-              <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=300&h=200&fit=crop"
-                alt="Related Article"
-                class="w-full h-24 object-cover rounded-lg mb-2 group-hover:opacity-90 transition-opacity">
-              <h4
-                class="font-serif text-sm font-medium text-luxury-dark group-hover:text-luxury-gold transition-colors line-clamp-2">
-                Timeless Icons: How Vintage Luxury Pieces Influence Contemporary Fashion
-              </h4>
-              <p class="text-xs text-gray-500 mt-1">10 min read</p>
-            </article>
-          </div>
+          <div id="related-list" class="space-y-4 text-center text-gray-500">Loading...</div>
         </div>
 
         <!-- Newsletter Signup -->
@@ -384,3 +339,31 @@
     </div>
   </div>
 </section>
+
+<!-- No client-side fetch: data provided via templating -->
+<script>
+ (function(){
+   const relList=document.getElementById('related-list');
+   if(!relList) return;
+
+   const parts=window.location.pathname.split('/');
+   const slugIdx=parts.indexOf('post');
+   const slug=slugIdx!==-1?parts[slugIdx+1]:'';
+
+   fetch(`/api/blog/posts/related/${encodeURIComponent(slug)}?limit=3`)
+     .then(r=>r.json())
+     .then(list=>{
+        const posts=Array.isArray(list)?list:list.posts||[];
+        if(!posts.length){relList.textContent='No related articles.';return;}
+        relList.innerHTML='';
+        posts.forEach(p=>relList.insertAdjacentHTML('beforeend',createRelHTML(p)));
+     })
+     .catch(err=>{console.error(err);relList.textContent='Failed to load.';});
+
+   function createRelHTML(a){
+      const img=a.featured_image||'';
+      const read=a.read_time||5;
+      return `<article class="group cursor-pointer text-left">${img?`<img src="${img}" alt="${a.title}" class="w-full h-24 object-cover rounded-lg mb-2 group-hover:opacity-90 transition-opacity">`:''}<h4 class="font-serif text-sm font-medium text-luxury-dark group-hover:text-luxury-gold transition-colors line-clamp-2">${a.title}</h4><p class="text-xs text-gray-500 mt-1">${read} min read</p></article>`;
+   }
+ })();
+</script>

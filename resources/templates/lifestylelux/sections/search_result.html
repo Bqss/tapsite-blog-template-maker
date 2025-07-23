@@ -2,6 +2,7 @@
 <section class="bg-white py-16 border-b elegant-border">
   <div class="max-w-4xl mx-auto px-4 lg:px-8 text-center">
     <h1 class="font-serif text-4xl lg:text-6xl font-light text-luxury-dark mb-6">Discover Luxury</h1>
+    <p id="search-stats" class="text-lg text-gray-600 mb-4 hidden"></p>
     <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
       Search through our curated collection of luxury lifestyle content, from haute couture to fine dining experiences
     </p>
@@ -203,183 +204,83 @@
         </div>
 
         <!-- Search Results Grid -->
-        <div class="space-y-8">
-          <!-- Result 1 -->
-          <article class="luxury-hover cursor-pointer">
-            <div class="bg-white rounded-lg elegant-border overflow-hidden">
-              <div class="md:flex">
-                <div class="md:w-1/3">
-                  <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400&h=300&fit=crop"
-                    alt="Haute Couture Fashion" class="w-full h-48 md:h-full object-cover">
-                </div>
-                <div class="p-6 md:w-2/3">
-                  <div class="flex items-center space-x-2 mb-3">
-                    <span class="bg-luxury-gold text-white px-3 py-1 rounded-full text-xs font-medium">Fashion</span>
-                    <span class="text-xs text-gray-500">6 min read</span>
-                  </div>
-                  <h3
-                    class="font-serif text-xl font-medium text-luxury-dark mb-3 hover:text-luxury-gold transition-colors">
-                    <span class="search-highlight">Haute Couture</span> Spring Collection: Fashion's New Renaissance
-                  </h3>
-                  <p class="text-gray-600 text-sm mb-4 line-clamp-3">
-                    This season's <span class="search-highlight">haute couture</span> collections showcase a return to
-                    artisanal craftsmanship and sustainable luxury in fashion, redefining elegance for the modern era.
-                  </p>
-                  <div class="flex items-center justify-between text-xs text-gray-500">
-                    <span>By Victoria Sterling</span>
-                    <span>December 14, 2024</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- Result 2 -->
-          <article class="luxury-hover cursor-pointer">
-            <div class="bg-white rounded-lg elegant-border overflow-hidden">
-              <div class="md:flex">
-                <div class="md:w-1/3">
-                  <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=400&h=300&fit=crop"
-                    alt="Sustainable Fashion" class="w-full h-48 md:h-full object-cover">
-                </div>
-                <div class="p-6 md:w-2/3">
-                  <div class="flex items-center space-x-2 mb-3">
-                    <span class="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-medium">Sustainable</span>
-                    <span class="text-xs text-gray-500">5 min read</span>
-                  </div>
-                  <h3
-                    class="font-serif text-xl font-medium text-luxury-dark mb-3 hover:text-luxury-gold transition-colors">
-                    The Rise of Sustainable Luxury: Eco-Conscious Fashion That Doesn't Compromise
-                  </h3>
-                  <p class="text-gray-600 text-sm mb-4 line-clamp-3">
-                    Luxury fashion houses are embracing sustainability without sacrificing craftsmanship or elegance.
-                    Discover how brands are revolutionizing their practices while maintaining <span
-                      class="search-highlight">haute couture</span> standards.
-                  </p>
-                  <div class="flex items-center justify-between text-xs text-gray-500">
-                    <span>By Emma Thompson</span>
-                    <span>December 12, 2024</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- Result 3 -->
-          <article class="luxury-hover cursor-pointer">
-            <div class="bg-white rounded-lg elegant-border overflow-hidden">
-              <div class="md:flex">
-                <div class="md:w-1/3">
-                  <img src="https://images.unsplash.com/photo-1506629905607-d60b2d1e8887?w=400&h=300&fit=crop"
-                    alt="Fashion Week" class="w-full h-48 md:h-full object-cover">
-                </div>
-                <div class="p-6 md:w-2/3">
-                  <div class="flex items-center space-x-2 mb-3">
-                    <span class="bg-red-600 text-white px-3 py-1 rounded-full text-xs font-medium">Runway</span>
-                    <span class="text-xs text-gray-500">8 min read</span>
-                  </div>
-                  <h3
-                    class="font-serif text-xl font-medium text-luxury-dark mb-3 hover:text-luxury-gold transition-colors">
-                    Paris Fashion Week Highlights: The Shows That Defined This Season
-                  </h3>
-                  <p class="text-gray-600 text-sm mb-4 line-clamp-3">
-                    From Saint Laurent's rock-chic elegance to Valentino's romantic femininity, discover the standout
-                    moments from Paris Fashion Week, including exclusive <span class="search-highlight">haute
-                      couture</span> presentations.
-                  </p>
-                  <div class="flex items-center justify-between text-xs text-gray-500">
-                    <span>By Antoine Dubois</span>
-                    <span>December 10, 2024</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- Result 4 -->
-          <article class="luxury-hover cursor-pointer">
-            <div class="bg-white rounded-lg elegant-border overflow-hidden">
-              <div class="md:flex">
-                <div class="md:w-1/3">
-                  <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=400&h=300&fit=crop"
-                    alt="Vintage Fashion" class="w-full h-48 md:h-full object-cover">
-                </div>
-                <div class="p-6 md:w-2/3">
-                  <div class="flex items-center space-x-2 mb-3">
-                    <span class="bg-indigo-600 text-white px-3 py-1 rounded-full text-xs font-medium">Heritage</span>
-                    <span class="text-xs text-gray-500">10 min read</span>
-                  </div>
-                  <h3
-                    class="font-serif text-xl font-medium text-luxury-dark mb-3 hover:text-luxury-gold transition-colors">
-                    Timeless Icons: How Vintage Luxury Pieces Influence Contemporary Fashion
-                  </h3>
-                  <p class="text-gray-600 text-sm mb-4 line-clamp-3">
-                    Explore the enduring influence of vintage luxury pieces and how fashion houses honor their heritage
-                    while innovating for the future, bridging classic <span class="search-highlight">haute
-                      couture</span> with modern sensibilities.
-                  </p>
-                  <div class="flex items-center justify-between text-xs text-gray-500">
-                    <span>By Catherine Moreau</span>
-                    <span>December 8, 2024</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <!-- Result 5 -->
-          <article class="luxury-hover cursor-pointer">
-            <div class="bg-white rounded-lg elegant-border overflow-hidden">
-              <div class="md:flex">
-                <div class="md:w-1/3">
-                  <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=400&h=300&fit=crop"
-                    alt="Luxury Accessories" class="w-full h-48 md:h-full object-cover">
-                </div>
-                <div class="p-6 md:w-2/3">
-                  <div class="flex items-center space-x-2 mb-3">
-                    <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-xs font-medium">Accessories</span>
-                    <span class="text-xs text-gray-500">7 min read</span>
-                  </div>
-                  <h3
-                    class="font-serif text-xl font-medium text-luxury-dark mb-3 hover:text-luxury-gold transition-colors">
-                    Handbag Investment Guide: The Art of Collecting Luxury Accessories
-                  </h3>
-                  <p class="text-gray-600 text-sm mb-4 line-clamp-3">
-                    From Hermès Birkin to Chanel 2.55, explore the world of luxury handbags as both fashion statements
-                    and investment pieces, crafted with the same attention to detail as <span
-                      class="search-highlight">haute couture</span> garments.
-                  </p>
-                  <div class="flex items-center justify-between text-xs text-gray-500">
-                    <span>By Sophia Laurent</span>
-                    <span>December 6, 2024</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
-        </div>
-
-        <!-- Pagination -->
+        <div id="search-grid" class="space-y-8"></div>
         <div class="flex justify-center mt-12">
-          <nav class="flex items-center space-x-2">
-            <button class="px-3 py-2 text-gray-500 hover:text-luxury-gold transition-colors">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-            <button class="px-4 py-2 bg-luxury-gold text-white rounded font-medium">1</button>
-            <button class="px-4 py-2 text-gray-600 hover:text-luxury-gold transition-colors">2</button>
-            <button class="px-4 py-2 text-gray-600 hover:text-luxury-gold transition-colors">3</button>
-            <span class="px-2 text-gray-400">...</span>
-            <button class="px-4 py-2 text-gray-600 hover:text-luxury-gold transition-colors">8</button>
-            <button class="px-3 py-2 text-gray-600 hover:text-luxury-gold transition-colors">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-          </nav>
+          <button id="search-loadmore" class="bg-luxury-gold text-white px-6 py-3 rounded-full font-medium hover:bg-opacity-90 transition-all hidden">Load More</button>
         </div>
       </main>
     </div>
   </div>
 </section>
+
+<script>
+(function () {
+  const grid = document.getElementById('search-grid');
+  const statsEl = document.getElementById('search-stats');
+  const loadBtn = document.getElementById('search-loadmore');
+  if (!grid) return;
+
+  let page = 1;
+  const limit = 10;
+
+  const parts = window.location.pathname.split('/');
+  const idx = parts.indexOf('search');
+  const query = idx !== -1 ? decodeURIComponent(parts[idx + 1] || '') : '';
+
+  document.getElementById('main-search').value = query;
+
+  function fetchResults() {
+    loadBtn && (loadBtn.disabled = true);
+    fetch(`/api/blog/posts/search/${encodeURIComponent(query)}?page=${page}&limit=${limit}`)
+      .then(r => r.json())
+      .then(res => {
+        const results = Array.isArray(res) ? res : (res.posts || res || []);
+        if (page === 1) {
+          grid.innerHTML = '';
+          if (statsEl) {
+            statsEl.classList.remove('hidden');
+            statsEl.textContent = `Found ${results.length} results for "${query}"`;
+          }
+        }
+        results.forEach(a => grid.insertAdjacentHTML('beforeend', createResultHTML(a)));
+        if (results.length < limit) {
+          loadBtn && (loadBtn.style.display = 'none');
+        } else {
+          loadBtn && (loadBtn.style.display = 'inline-block');
+        }
+        page += 1;
+        loadBtn && (loadBtn.disabled = false);
+      })
+      .catch(err => {
+        console.error(err);
+        loadBtn && (loadBtn.disabled = false);
+      });
+  }
+
+  function createResultHTML(a) {
+    const img = a.featured_image || '';
+    const cat = a.category || 'Luxury';
+    const read = a.read_time || 5;
+    const date = new Date(a.published_at || Date.now()).toLocaleDateString(undefined,{year:'numeric',month:'long',day:'numeric'});
+    return `
+    <article class="luxury-hover cursor-pointer">
+      <div class="bg-white rounded-lg elegant-border overflow-hidden">
+        <div class="md:flex">
+          <div class="md:w-1/3 flex-shrink-0">${img ? `<img src="${img}" alt="${a.title}" class="w-full h-48 md:h-full object-cover">` : ''}</div>
+          <div class="p-6 md:w-2/3">
+            <div class="flex items-center space-x-2 mb-3"><span class="bg-luxury-gold text-white px-3 py-1 rounded-full text-xs font-medium">${cat}</span><span class="text-xs text-gray-500">${read} min read</span></div>
+            <h3 class="font-serif text-xl font-medium text-luxury-dark mb-3 hover:text-luxury-gold transition-colors">${a.title}</h3>
+            <p class="text-gray-600 text-sm mb-4 line-clamp-3">${a.excerpt || ''}</p>
+            <div class="flex items-center justify-between text-xs text-gray-500"><span>By ${a.author || 'Editor'}</span><span>${date}</span></div>
+          </div>
+        </div>
+      </div>
+    </article>`;
+  }
+
+  loadBtn && loadBtn.addEventListener('click', fetchResults);
+
+  // initial load
+  fetchResults();
+})();
+</script>

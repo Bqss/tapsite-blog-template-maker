@@ -4,10 +4,10 @@
     class="w-full h-full object-cover">
   <div class="absolute inset-0 featured-overlay flex items-center justify-center">
     <div class="text-center text-white px-4">
-      <h1 class="font-serif text-4xl lg:text-6xl font-light mb-4">Fashion</h1>
-      <p class="text-xl font-light opacity-90 mb-4">Haute couture, luxury brands, and style inspiration</p>
+      <h1 id="category-title" class="font-serif text-4xl lg:text-6xl font-light mb-4">Fashion</h1>
+      <p id="category-desc" class="text-xl font-light opacity-90 mb-4">Haute couture, luxury brands, and style inspiration</p>
       <div class="w-24 h-px bg-luxury-gold mx-auto"></div>
-      <p class="text-sm font-light mt-4 opacity-80">18 curated articles</p>
+      <p id="category-count" class="text-sm font-light mt-4 opacity-80">0 curated articles</p>
     </div>
   </div>
 </section>
@@ -17,7 +17,7 @@
   <nav class="text-sm">
     <a href="#" class="text-gray-500 hover:text-luxury-gold transition-colors">Home</a>
     <span class="mx-2 text-gray-400">/</span>
-    <span class="text-luxury-gold font-medium">Fashion</span>
+    <span id="breadcrumb-current" class="text-luxury-gold font-medium">Fashion</span>
   </nav>
 </div>
 
@@ -28,40 +28,7 @@
     <div class="w-16 h-px bg-luxury-gold"></div>
   </div>
 
-  <article class="luxury-hover cursor-pointer group">
-    <div class="magazine-layout bg-white rounded-lg elegant-border overflow-hidden">
-      <div class="relative h-64 lg:h-80">
-        <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=800&h=600&fit=crop"
-          alt="Featured Fashion Article"
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-        <div class="absolute top-4 left-4">
-          <span class="bg-luxury-gold text-white px-3 py-1 rounded-full text-xs font-medium">FEATURED</span>
-        </div>
-      </div>
-      <div class="p-8 flex flex-col justify-center">
-        <div class="mb-4">
-          <span class="text-luxury-gold text-sm font-medium">HAUTE COUTURE</span>
-        </div>
-        <h3
-          class="font-serif text-2xl lg:text-3xl font-medium text-luxury-dark mb-4 group-hover:text-luxury-gold transition-colors">
-          Haute Couture Spring Collection: Fashion's New Renaissance
-        </h3>
-        <p class="text-gray-600 mb-6 leading-relaxed">
-          This season's haute couture collections showcase a return to artisanal craftsmanship and sustainable luxury in
-          fashion. From Chanel's ethereal florals to Dior's architectural silhouettes, discover how the world's most
-          prestigious fashion houses are redefining elegance for the modern era.
-        </p>
-        <div class="flex items-center justify-between text-sm text-gray-500">
-          <div class="flex items-center space-x-4">
-            <span>By Victoria Sterling</span>
-            <span>•</span>
-            <span>December 14, 2024</span>
-          </div>
-          <span>6 min read</span>
-        </div>
-      </div>
-    </div>
-  </article>
+  <div id="featured-container" class="min-h-[200px] flex items-center justify-center py-12 text-gray-500">Loading featured...</div>
 </section>
 
 <!-- Filter & Sort -->
@@ -97,191 +64,8 @@
 
 <!-- Articles Grid -->
 <section class="max-w-7xl mx-auto px-4 lg:px-8 pb-16">
-  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-    <!-- Article 1 -->
-    <article class="luxury-hover cursor-pointer group">
-      <div class="bg-white rounded-lg elegant-border overflow-hidden">
-        <div class="relative h-48">
-          <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=600&h=400&fit=crop"
-            alt="Sustainable Luxury Fashion"
-            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-          <div class="absolute top-4 left-4">
-            <span class="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-medium">SUSTAINABLE</span>
-          </div>
-        </div>
-        <div class="p-6">
-          <div class="mb-3">
-            <span class="text-luxury-gold text-sm font-medium">SUSTAINABLE FASHION</span>
-          </div>
-          <h3
-            class="font-serif text-xl font-medium text-luxury-dark mb-3 group-hover:text-luxury-gold transition-colors">
-            The Rise of Sustainable Luxury: Eco-Conscious Fashion That Doesn't Compromise
-          </h3>
-          <p class="text-gray-600 text-sm mb-4 leading-relaxed">
-            Luxury fashion houses are embracing sustainability without sacrificing craftsmanship or elegance. Discover
-            how brands are revolutionizing their practices.
-          </p>
-          <div class="flex items-center justify-between text-xs text-gray-500">
-            <span>Emma Thompson</span>
-            <span>5 min read</span>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <!-- Article 2 -->
-    <article class="luxury-hover cursor-pointer group">
-      <div class="bg-white rounded-lg elegant-border overflow-hidden">
-        <div class="relative h-48">
-          <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&h=400&fit=crop"
-            alt="Luxury Accessories"
-            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-          <div class="absolute top-4 left-4">
-            <span class="bg-purple-600 text-white px-3 py-1 rounded-full text-xs font-medium">ACCESSORIES</span>
-          </div>
-        </div>
-        <div class="p-6">
-          <div class="mb-3">
-            <span class="text-luxury-gold text-sm font-medium">LUXURY ACCESSORIES</span>
-          </div>
-          <h3
-            class="font-serif text-xl font-medium text-luxury-dark mb-3 group-hover:text-luxury-gold transition-colors">
-            Handbag Investment Guide: The Art of Collecting Luxury Accessories
-          </h3>
-          <p class="text-gray-600 text-sm mb-4 leading-relaxed">
-            From Hermès Birkin to Chanel 2.55, explore the world of luxury handbags as both fashion statements and
-            investment pieces.
-          </p>
-          <div class="flex items-center justify-between text-xs text-gray-500">
-            <span>Sophia Laurent</span>
-            <span>7 min read</span>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <!-- Article 3 -->
-    <article class="luxury-hover cursor-pointer group">
-      <div class="bg-white rounded-lg elegant-border overflow-hidden">
-        <div class="relative h-48">
-          <img src="https://images.unsplash.com/photo-1506629905607-d60b2d1e8887?w=600&h=400&fit=crop"
-            alt="Fashion Week"
-            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-          <div class="absolute top-4 left-4">
-            <span class="bg-red-600 text-white px-3 py-1 rounded-full text-xs font-medium">RUNWAY</span>
-          </div>
-        </div>
-        <div class="p-6">
-          <div class="mb-3">
-            <span class="text-luxury-gold text-sm font-medium">FASHION WEEK</span>
-          </div>
-          <h3
-            class="font-serif text-xl font-medium text-luxury-dark mb-3 group-hover:text-luxury-gold transition-colors">
-            Paris Fashion Week Highlights: The Shows That Defined This Season
-          </h3>
-          <p class="text-gray-600 text-sm mb-4 leading-relaxed">
-            From Saint Laurent's rock-chic elegance to Valentino's romantic femininity, discover the standout moments
-            from Paris Fashion Week.
-          </p>
-          <div class="flex items-center justify-between text-xs text-gray-500">
-            <span>Antoine Dubois</span>
-            <span>8 min read</span>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <!-- Article 4 -->
-    <article class="luxury-hover cursor-pointer group">
-      <div class="bg-white rounded-lg elegant-border overflow-hidden">
-        <div class="relative h-48">
-          <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&h=400&fit=crop"
-            alt="Personal Styling"
-            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-          <div class="absolute top-4 left-4">
-            <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-xs font-medium">STYLING</span>
-          </div>
-        </div>
-        <div class="p-6">
-          <div class="mb-3">
-            <span class="text-luxury-gold text-sm font-medium">PERSONAL STYLING</span>
-          </div>
-          <h3
-            class="font-serif text-xl font-medium text-luxury-dark mb-3 group-hover:text-luxury-gold transition-colors">
-            Building a Capsule Wardrobe: Luxury Essentials for the Modern Woman
-          </h3>
-          <p class="text-gray-600 text-sm mb-4 leading-relaxed">
-            Discover how to curate a sophisticated wardrobe with timeless pieces that transcend seasons and trends.
-          </p>
-          <div class="flex items-center justify-between text-xs text-gray-500">
-            <span>Isabella Chen</span>
-            <span>6 min read</span>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <!-- Article 5 -->
-    <article class="luxury-hover cursor-pointer group">
-      <div class="bg-white rounded-lg elegant-border overflow-hidden">
-        <div class="relative h-48">
-          <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600&h=400&fit=crop"
-            alt="Jewelry Trends"
-            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-          <div class="absolute top-4 left-4">
-            <span class="bg-yellow-600 text-white px-3 py-1 rounded-full text-xs font-medium">JEWELRY</span>
-          </div>
-        </div>
-        <div class="p-6">
-          <div class="mb-3">
-            <span class="text-luxury-gold text-sm font-medium">FINE JEWELRY</span>
-          </div>
-          <h3
-            class="font-serif text-xl font-medium text-luxury-dark mb-3 group-hover:text-luxury-gold transition-colors">
-            Precious Statements: The Return of Bold Jewelry in High Fashion
-          </h3>
-          <p class="text-gray-600 text-sm mb-4 leading-relaxed">
-            From Cartier's architectural designs to Bulgari's colorful gemstones, explore how jewelry is making a
-            powerful fashion statement.
-          </p>
-          <div class="flex items-center justify-between text-xs text-gray-500">
-            <span>Margot Rousseau</span>
-            <span>9 min read</span>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <!-- Article 6 -->
-    <article class="luxury-hover cursor-pointer group">
-      <div class="bg-white rounded-lg elegant-border overflow-hidden">
-        <div class="relative h-48">
-          <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=600&h=400&fit=crop"
-            alt="Fashion History"
-            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-          <div class="absolute top-4 left-4">
-            <span class="bg-indigo-600 text-white px-3 py-1 rounded-full text-xs font-medium">HERITAGE</span>
-          </div>
-        </div>
-        <div class="p-6">
-          <div class="mb-3">
-            <span class="text-luxury-gold text-sm font-medium">FASHION HERITAGE</span>
-          </div>
-          <h3
-            class="font-serif text-xl font-medium text-luxury-dark mb-3 group-hover:text-luxury-gold transition-colors">
-            Timeless Icons: How Vintage Luxury Pieces Influence Contemporary Fashion
-          </h3>
-          <p class="text-gray-600 text-sm mb-4 leading-relaxed">
-            Explore the enduring influence of vintage luxury pieces and how fashion houses honor their heritage while
-            innovating for the future.
-          </p>
-          <div class="flex items-center justify-between text-xs text-gray-500">
-            <span>Catherine Moreau</span>
-            <span>10 min read</span>
-          </div>
-        </div>
-      </div>
-    </article>
+  <div id="category-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <!-- dynamic cards will be inserted here -->
   </div>
 
   <!-- Load More -->
@@ -352,3 +136,93 @@
     </div>
   </div>
 </section>
+
+<script>
+(function () {
+  const titleEl = document.getElementById('category-title');
+  const descEl = document.getElementById('category-desc');
+  const countEl = document.getElementById('category-count');
+  const crumbEl = document.getElementById('breadcrumb-current');
+  const featContainer = document.getElementById('featured-container');
+  const grid = document.getElementById('category-grid');
+
+  if (!grid || !featContainer) return;
+
+  // clear any leftover static articles
+  grid.innerHTML = '';
+
+  const parts = window.location.pathname.split('/');
+  const idx = parts.indexOf('category');
+  const slug = idx !== -1 ? decodeURIComponent(parts[idx + 1] || '') : '';
+
+  titleEl.textContent = slug.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+  crumbEl.textContent = titleEl.textContent;
+
+  // fetch category data & posts
+  Promise.all([
+    fetch(`/api/blog/categories/${encodeURIComponent(slug)}`).then(r => r.json()).catch(() => null),
+    fetch(`/api/blog/posts/category/${encodeURIComponent(slug)}?limit=20`).then(r => r.json()).catch(() => [])
+  ]).then(([catInfo, posts]) => {
+    if (catInfo && descEl) descEl.textContent = catInfo.description || '';
+    if (countEl) countEl.textContent = `${posts.length} curated articles`;
+
+    if (posts.length) {
+      renderFeatured(posts[0]);
+      posts.slice(1).forEach(p => grid.insertAdjacentHTML('beforeend', createCardHTML(p)));
+    } else {
+      featContainer.textContent = 'No articles yet.';
+    }
+  }).catch(err => {
+    console.error(err);
+    featContainer.textContent = 'Failed to load articles.';
+  });
+
+  function initials(name = '') { return name.split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2); }
+
+  function renderFeatured(a) {
+    featContainer.innerHTML = createFeaturedHTML(a);
+  }
+
+  function createFeaturedHTML(a) {
+    const img = a.featured_image || '';
+    const read = a.read_time || 5;
+    const date = new Date(a.published_at || Date.now()).toLocaleDateString(undefined, {year:'numeric',month:'long',day:'numeric'});
+    return `
+    <article class="luxury-hover cursor-pointer group">
+      <div class="magazine-layout bg-white rounded-lg elegant-border overflow-hidden">
+        <div class="relative h-64 lg:h-80">
+          ${img ? `<img src="${img}" alt="${a.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">` : ''}
+          <div class="absolute top-4 left-4"><span class="bg-luxury-gold text-white px-3 py-1 rounded-full text-xs font-medium">FEATURED</span></div>
+        </div>
+        <div class="p-8 flex flex-col justify-center">
+          <div class="mb-4"><span class="text-luxury-gold text-sm font-medium">${a.category || ''}</span></div>
+          <h3 class="font-serif text-2xl lg:text-3xl font-medium text-luxury-dark mb-4 group-hover:text-luxury-gold transition-colors">${a.title}</h3>
+          <p class="text-gray-600 mb-6 leading-relaxed">${a.excerpt || ''}</p>
+          <div class="flex items-center justify-between text-sm text-gray-500"><div class="flex items-center space-x-4"><span>By ${a.author || 'Editor'}</span><span>•</span><span>${date}</span></div><span>${read} min read</span></div>
+        </div>
+      </div>
+    </article>`;
+  }
+
+  function createCardHTML(a) {
+    const img = a.featured_image || '';
+    const cat = a.category || 'Luxury';
+    const read = a.read_time || 5;
+    return `
+    <article class="luxury-hover cursor-pointer group">
+      <div class="bg-white rounded-lg elegant-border overflow-hidden">
+        <div class="relative h-48">
+          ${img ? `<img src="${img}" alt="${a.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">` : ''}
+          <div class="absolute top-4 left-4"><span class="bg-luxury-gold text-white px-3 py-1 rounded-full text-xs font-medium">${cat}</span></div>
+        </div>
+        <div class="p-6">
+          <div class="mb-3"><span class="text-luxury-gold text-sm font-medium">${cat.toUpperCase()}</span></div>
+          <h3 class="font-serif text-xl font-medium text-luxury-dark mb-3 group-hover:text-luxury-gold transition-colors">${a.title}</h3>
+          <p class="text-gray-600 text-sm mb-4 leading-relaxed line-clamp-3">${a.excerpt || ''}</p>
+          <div class="flex items-center justify-between text-xs text-gray-500"><span>${a.author || 'Editor'}</span><span>${read} min read</span></div>
+        </div>
+      </div>
+    </article>`;
+  }
+})();
+</script>

@@ -5,147 +5,6 @@
     "description": "Discover the finest in luxury lifestyle, fashion, and exclusive experiences",
     "logo": "https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=200&h=80&fit=crop"
   },
-  "posts": [
-    {
-      "id": 1,
-      "title": "The Art of Luxury Living: Timeless Elegance in Modern Homes",
-      "slug": "art-luxury-living-timeless-elegance",
-      "excerpt": "Explore how contemporary luxury interiors blend classic sophistication with modern innovation, creating spaces that epitomize refined living.",
-      "content": "Luxury living is not merely about expensive items; it's about creating an environment that reflects refined taste, quality craftsmanship, and timeless elegance...",
-      "category": "Interior Design",
-      "author": "Isabella Rossi",
-      "read_time": 8,
-      "featured_image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop",
-      "tags": ["luxury", "interior design", "elegance", "modern homes"],
-      "published_at": "2024-12-15T10:00:00Z",
-      "views": 2847
-    },
-    {
-      "id": 2,
-      "title": "Haute Couture Spring Collection: Fashion's New Renaissance",
-      "slug": "haute-couture-spring-fashion-renaissance",
-      "excerpt": "This season's haute couture collections showcase a return to artisanal craftsmanship and sustainable luxury in fashion.",
-      "content": "The latest haute couture presentations have unveiled a fascinating narrative of renewal and innovation...",
-      "category": "Fashion",
-      "author": "Victoria Sterling",
-      "read_time": 6,
-      "featured_image": "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=800&h=600&fit=crop",
-      "tags": ["haute couture", "fashion", "luxury", "sustainability"],
-      "published_at": "2024-12-14T14:30:00Z",
-      "views": 1923
-    },
-    {
-      "id": 3,
-      "title": "Michelin-Starred Experiences: A Culinary Journey Through Excellence",
-      "slug": "michelin-starred-culinary-journey-excellence",
-      "excerpt": "Discover the world's most exclusive dining experiences where culinary artistry meets unparalleled service and ambiance.",
-      "content": "Fine dining has evolved into an art form that transcends mere sustenance...",
-      "category": "Dining",
-      "author": "Chef Alexandre Dubois",
-      "read_time": 10,
-      "featured_image": "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=800&h=600&fit=crop",
-      "tags": ["fine dining", "michelin", "culinary", "luxury"],
-      "published_at": "2024-12-13T18:00:00Z",
-      "views": 3156
-    },
-    {
-      "id": 4,
-      "title": "Wellness Retreats: Luxury Sanctuaries for Mind, Body & Soul",
-      "slug": "luxury-wellness-retreats-sanctuaries",
-      "excerpt": "Escape to the world's most exclusive wellness destinations where luxury meets holistic healing and personal transformation.",
-      "content": "In our fast-paced world, luxury wellness retreats offer more than just relaxation...",
-      "category": "Wellness",
-      "author": "Dr. Seraphina Wilde",
-      "read_time": 7,
-      "featured_image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop",
-      "tags": ["wellness", "luxury", "retreat", "mindfulness"],
-      "published_at": "2024-12-12T09:15:00Z",
-      "views": 1674
-    },
-    {
-      "id": 5,
-      "title": "Timepiece Mastery: The Art of Luxury Watchmaking",
-      "slug": "luxury-watchmaking-timepiece-mastery",
-      "excerpt": "Delve into the intricate world of haute horlogerie where centuries-old traditions meet cutting-edge innovation.",
-      "content": "Swiss watchmaking represents the pinnacle of precision engineering and artistic expression...",
-      "category": "Accessories",
-      "author": "Marcus Zimmermann",
-      "read_time": 9,
-      "featured_image": "https://images.unsplash.com/photo-1523170335258-f5c54a6b4a2b?w=800&h=600&fit=crop",
-      "tags": ["watches", "luxury", "craftsmanship", "heritage"],
-      "published_at": "2024-12-11T16:45:00Z",
-      "views": 2234
-    },
-    {
-      "id": 6,
-      "title": "Private Jet Lifestyle: The Ultimate in Luxury Travel",
-      "slug": "private-jet-luxury-travel-lifestyle",
-      "excerpt": "Experience the epitome of luxury travel with exclusive access to private aviation and bespoke journey experiences.",
-      "content": "Private aviation represents more than transportation; it's a lifestyle choice that prioritizes time, comfort, and exclusivity...",
-      "category": "Travel",
-      "author": "Captain James Morrison",
-      "read_time": 8,
-      "featured_image": "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&h=600&fit=crop",
-      "tags": ["private jet", "luxury travel", "aviation", "exclusive"],
-      "published_at": "2024-12-10T12:20:00Z",
-      "views": 2891
-    }
-  ],
-  "categories": [
-    {
-      "name": "Interior Design",
-      "slug": "interior-design",
-      "description": "Luxury home design and sophisticated living spaces",
-      "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop",
-      "post_count": 12
-    },
-    {
-      "name": "Fashion",
-      "slug": "fashion",
-      "description": "Haute couture, luxury brands, and style inspiration",
-      "image": "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=400&h=300&fit=crop",
-      "post_count": 18
-    },
-    {
-      "name": "Dining",
-      "slug": "dining",
-      "description": "Fine dining experiences and culinary excellence",
-      "image": "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=400&h=300&fit=crop",
-      "post_count": 8
-    },
-    {
-      "name": "Wellness",
-      "slug": "wellness",
-      "description": "Luxury wellness and holistic lifestyle experiences",
-      "image": "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop",
-      "post_count": 15
-    },
-    {
-      "name": "Travel",
-      "slug": "travel",
-      "description": "Exclusive destinations and luxury travel experiences",
-      "image": "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=400&h=300&fit=crop",
-      "post_count": 22
-    },
-    {
-      "name": "Accessories",
-      "slug": "accessories",
-      "description": "Luxury accessories, jewelry, and timepieces",
-      "image": "https://images.unsplash.com/photo-1523170335258-f5c54a6b4a2b?w=400&h=300&fit=crop",
-      "post_count": 9
-    }
-  ],
-  "tags": [
-    "luxury", "elegance", "premium", "exclusive", "sophisticated", 
-    "haute couture", "craftsmanship", "artisanal", "bespoke", "curated",
-    "wellness", "mindfulness", "fine dining", "travel", "fashion",
-    "interior design", "watches", "jewelry", "art", "culture"
-  ],
-  "featured": {
-    "hero_image": "https://images.unsplash.com/photo-1594736797933-d0401ba2fe65?w=1920&h=1080&fit=crop",
-    "hero_title": "Curating the Finest in Luxury Living",
-    "hero_subtitle": "Discover exclusive experiences, timeless elegance, and sophisticated lifestyle inspirations"
-  },
   "navigation": [
     { "name": "Latest", "url": "/" },
     { "name": "Fashion", "url": "/category/fashion" },
@@ -153,55 +12,25 @@
     { "name": "Dining", "url": "/category/dining" },
     { "name": "Wellness", "url": "/category/wellness" }
   ],
-  "search_placeholder": "Search luxury...",
-  "subscribe_button": "Subscribe",
-  "hero": {
-    "badge_text": "✨ CURATED LUXURY LIFESTYLE",
-    "title_primary": "Luxury",
-    "title_secondary": "Redefined",
-    "subtitle": "Discover the pinnacle of sophisticated living through our curated collection of luxury fashion, exclusive travel destinations, fine dining, and premium lifestyle trends that define modern elegance.",
-    "cta_primary": { "label": "Explore Luxury Collection", "url": "/posts" },
-    "cta_secondary": { "label": "View Exclusives", "url": "/exclusive" },
-    "stats": [
-      { "number": "500+", "label": "Luxury Brands" },
-      { "number": "50+", "label": "Countries" },
-      { "number": "1M+", "label": "Elite Readers" },
-      { "number": "24/7", "label": "Luxury Access" }
-    ]
-  },
-  "social_links": [
-    { "label": "Instagram", "url": "https://instagram.com", "emoji": "📸" },
-    { "label": "Twitter", "url": "https://twitter.com", "emoji": "🐦" },
-    { "label": "Facebook", "url": "https://facebook.com", "emoji": "📘" }
-  ],
-  "footer_columns": [
-    {
-      "title": "Luxury Content",
-      "links": [
-        { "label": "High Fashion", "url": "/tag/high-fashion" },
-        { "label": "Luxury Travel", "url": "/tag/luxury-travel" },
-        { "label": "Fine Dining", "url": "/tag/fine-dining" },
-        { "label": "Exclusive Reviews", "url": "/tag/exclusive-reviews" }
-      ]
-    },
-    {
-      "title": "Luxury Collections",
-      "links": [
-        { "label": "Luxury Watches", "url": "/tag/luxury-watches" },
-        { "label": "Designer Fashion", "url": "/tag/designer-fashion" },
-        { "label": "Luxury Cars", "url": "/tag/luxury-cars" },
-        { "label": "Premium Homes", "url": "/tag/premium-homes" }
-      ]
-    },
-    {
-      "title": "Exclusive Access",
-      "links": [
-        { "label": "VIP Events", "url": "/vip-events" },
-        { "label": "Private Sales", "url": "/private-sales" },
-        { "label": "Elite Membership", "url": "/membership" },
-        { "label": "Concierge Service", "url": "/concierge" }
-      ]
+  "author": {
+    "name": "Sarah Johnson",
+    "role": "Senior Frontend Developer",
+    "bio": "Sarah is a passionate frontend developer with over 8 years of experience building modern web applications. She specializes in React, Vue.js, and performance optimization techniques.",
+    "social": {
+      "twitter": "https://twitter.com/sarahjohnson",
+      "linkedin": "https://linkedin.com/in/sarahjohnson",
+      "website": "https://sarahjohnson.dev"
     }
-  ],
-  "current_year": 2024
-} 
+  },
+  "post": {
+    "title": "Mendidik Anak Tanpa Gadget: Mengembalikan Masa Kecil yang Sesungguhnya",
+    "excerpt": "Pelajari cara mendidik anak tanpa ketergantungan gadget. Temukan alternatif kegiatan seru dan edukatif untuk mendukung perkembangan anak secara holistik.",
+    "content": "<h1>Mendidik Anak Tanpa Gadget: Mengembalikan Masa Kecil yang Sesungguhnya</h1><p></p><p>Di era digital ini, gadget seolah menjadi bagian tak terpisahkan dari kehidupan kita, termasuk anak-anak. Namun, tahukah Anda bahwa penggunaan gadget yang berlebihan dapat berdampak negatif pada perkembangan buah hati kita? Mari kita telaah lebih dalam mengenai dampak buruk ini dan bagaimana kita bisa mendidik anak tanpa ketergantungan gadget, mengembalikan masa kecil yang penuh kreativitas dan interaksi.</p><p></p><h2>Dampak Negatif Gadget pada Perkembangan Anak</h2><p></p><p> Penggunaan gadget yang berlebihan pada anak usia dini dan sekolah dasar dapat memicu berbagai masalah, baik secara fisik, sosial, emosional, maupun kognitif. Beberapa dampak negatif tersebut antara lain:</p><ul><li><strong>Fisik:</strong> Gangguan penglihatan (mata lelah, mata minus), masalah postur tubuh (sakit punggung, leher), obesitas akibat kurang gerak, dan gangguan tidur.</li><li><strong>Sosial:</strong> Kurangnya interaksi sosial langsung, kesulitan membangun empati, dan penurunan kemampuan berkomunikasi secara efektif.</li><li><strong>Emosional:</strong> Perubahan suasana hati yang cepat, kecemasan, depresi, dan ketergantungan emosional pada gadget.</li><li><strong>Kognitif:</strong> Kesulitan fokus dan konsentrasi, penurunan kemampuan memecahkan masalah, dan keterlambatan perkembangan bahasa.</li></ul><p></p><p>Dengan memahami dampak negatif ini, kita sebagai orang tua dapat lebih bijak dalam mengelola penggunaan gadget pada anak.</p><p></p><h2>Alternatif Kegiatan Seru dan Edukatif Tanpa Gadget</h2><p></p><p>Untungnya, ada banyak kegiatan seru dan edukatif yang bisa menggantikan gadget dan mendukung perkembangan anak secara holistik. Berikut beberapa ide yang bisa Anda coba:</p><ul><li><strong>Bermain di Luar:</strong> Ajak anak bermain di taman, halaman rumah, atau alam terbuka. Biarkan mereka berlari, melompat, memanjat, dan berinteraksi dengan lingkungan sekitar. Ini sangat baik untuk perkembangan motorik dan sensorik mereka.</li><li><strong>Membaca Buku:</strong> Bacakan cerita untuk anak-anak, atau ajak mereka membaca sendiri jika sudah bisa. Membaca buku dapat meningkatkan imajinasi, kosakata, dan kemampuan berpikir kritis.</li><li><strong>Kerajinan Tangan:</strong> Sediakan bahan-bahan sederhana seperti kertas, gunting, lem, pensil warna, dan biarkan anak berkreasi membuat berbagai macam kerajinan. Ini melatih kreativitas dan kemampuan motorik halus.</li><li><strong>Permainan Tradisional:</strong> Kenalkan anak pada permainan tradisional seperti petak umpet, congklak, engklek, atau layang-layang. Permainan ini tidak hanya menyenangkan, tetapi juga melatih kerja sama tim dan keterampilan sosial.</li><li><strong>Berkebun:</strong> Ajak anak menanam bunga atau sayuran di halaman rumah. Ini mengajarkan mereka tentang siklus kehidupan, tanggung jawab, dan pentingnya menjaga lingkungan.</li></ul><p></p><p></p><h2>Mengelola Penggunaan Gadget Anak Secara Efektif</h2><p></p><p>Menghilangkan gadget sepenuhnya mungkin sulit dilakukan, tetapi kita bisa mengelola penggunaannya secara efektif. Berikut beberapa tips:</p><ul><li><strong>Buat Jadwal:</strong> Tentukan waktu-waktu tertentu di mana anak boleh menggunakan gadget. Pastikan ada batasan waktu yang jelas dan konsisten.</li><li><strong>Tetapkan Aturan:</strong> Buat aturan yang jelas mengenai jenis konten yang boleh diakses anak. Hindari konten yang mengandung kekerasan, pornografi, atau ujaran kebencian.</li><li><strong>Jadilah Contoh yang Baik:</strong> Orang tua adalah panutan bagi anak. Kurangi penggunaan gadget di depan anak dan tunjukkan bahwa Anda juga bisa menikmati kegiatan lain.</li><li><strong>Ajak Anak Berdiskusi:</strong> Libatkan anak dalam pembuatan aturan penggunaan gadget. Jelaskan mengapa aturan tersebut penting dan dengarkan pendapat mereka.</li></ul><p></p><p></p><h2>Manfaat Interaksi Langsung dan Komunikasi Berkualitas</h2><p></p><p>Interaksi langsung dan komunikasi berkualitas antara orang tua dan anak sangat penting untuk perkembangan emosional, sosial, dan kognitif anak. Luangkan waktu untuk berbicara dengan anak, mendengarkan cerita mereka, dan memberikan dukungan emosional. Ini akan mempererat hubungan Anda dengan anak dan membantu mereka tumbuh menjadi pribadi yang percaya diri dan bahagia.</p><p></p><h2>Menciptakan Lingkungan yang Mendukung</h2><p></p><p>Untuk mendukung perkembangan anak tanpa gadget, ciptakan lingkungan yang merangsang kreativitas dan rasa ingin tahu mereka. Tata ruang bermain yang menarik, sediakan bahan-bahan kreatif seperti cat, kuas, kertas, dan balok kayu. Libatkan anak dalam kegiatan rumah tangga seperti memasak, membersihkan rumah, atau berkebun. Ini akan membuat mereka merasa dihargai dan bertanggung jawab.</p><p>Mari bersama-sama mengembalikan masa kecil yang sesungguhnya bagi anak-anak kita. Dengan mengurangi ketergantungan pada gadget dan memberikan alternatif kegiatan yang seru dan edukatif, kita dapat membantu mereka tumbuh menjadi generasi yang kreatif, cerdas, dan bahagia.</p><p><strong>Bagikan artikel ini kepada orang tua lain yang peduli dengan perkembangan anak! Coba terapkan tips-tips di atas dan ceritakan pengalaman Anda di kolom komentar.</strong>        </p>",
+    "category": "Technology",
+    "featured_image": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    "published_at": "March 15, 2024",
+    "read_time": 8,
+    "view_count": 1247,
+    "tags": ["webdev", "technology", "trends", "ai", "css", "performance"]
+  }
+}
