@@ -1,9 +1,9 @@
 {
-  "title" : "PetCareCentral",
-  "description" : "Pet Care & Training blog with animal imagery and natural colors",
-  "template_id" : "petcarecentral",
-  "creator_name" : "Maulana Shalihin",
-  "creator_website" : "https://tapsite.ai",
-  "version" : "1.0.0",
-  "thumbnail" : "/templates/petcarecentral/thumbnail.webp"
+  "title": "PetCareCentral",
+  "description": "Template blog perawatan hewan dengan desain yang ramah dan informatif",
+  "template_id": "petcarecentral",
+  "creator_name": "bsfrswt",
+  "creator_website": "https://basofi.tech",
+  "version": "1.0.0",
+  "thumbnail": "/templates/petcarecentral/thumbnail.webp"
 }

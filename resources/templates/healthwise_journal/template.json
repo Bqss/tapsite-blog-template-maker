@@ -1,9 +1,9 @@
 {
-  "title" : "HealthWise Journal",
-  "description" : "Health & Wellness blog with medical-friendly layouts and expert content",
-  "template_id" : "healthwise_journal",
-  "creator_name" : "Basofi",
-  "creator_website" : "https://tapsite.ai",
-  "version" : "1.0.0",
-  "thumbnail" : "/templates/healthwise_journal/thumbnail.webp"
+  "title": "HealthWise Journal",
+  "description": "Template blog kesehatan dengan desain yang menenangkan untuk tips kesehatan dan wellness",
+  "template_id": "healthwise_journal",
+  "creator_name": "bsfrswt",
+  "creator_website": "https://basofi.tech",
+  "version": "1.0.0",
+  "thumbnail": "/templates/healthwise_journal/thumbnail.webp"
 }

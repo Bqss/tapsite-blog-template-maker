@@ -1,9 +1,9 @@
 {
-    "title": "NewsWire Central",
-    "description": "News & magazine template with breaking news ticker and newspaper-style columns. Perfect for news organizations, magazines, and content publishers looking for urgent, priority-based content presentation.",
-    "template_id": "newswire_central",
-    "creator_name": "Maulana Shalihin",
-    "creator_website": "https://tapsite.ai",
-    "version": "1.0.0",
-    "thumbnail": "/templates/newswire_central/thumbnail.webp"
-} 
+  "title": "NewsWire Central",
+  "description": "Template blog berita dengan tata letak yang bersih dan profesional untuk jurnalisme digital",
+  "template_id": "newswire_central",
+  "creator_name": "bsfrswt",
+  "creator_website": "https://basofi.tech",
+  "version": "1.0.0",
+  "thumbnail": "/templates/newswire_central/thumbnail.webp"
+}

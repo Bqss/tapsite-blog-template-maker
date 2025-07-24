@@ -1,10 +1,9 @@
-
 {
-  "title" : "TravelTales",
-  "description" : "Travel blog with destination discovery and travel content showcase",
-  "template_id" : "traveltales",
-  "creator_name" : "Maulana Shalihin",
-  "creator_website" : "https://tapsite.ai",
-  "version" : "1.0.0",
-  "thumbnail" : "/templates/traveltales/thumbnail.webp"
+  "title": "TravelTales",
+  "description": "Template blog travel dengan desain yang menginspirasi untuk cerita perjalanan dan tips wisata",
+  "template_id": "traveltales",
+  "creator_name": "bsfrswt",
+  "creator_website": "https://basofi.tech",
+  "version": "1.0.0",
+  "thumbnail": "/templates/traveltales/thumbnail.webp"
 }

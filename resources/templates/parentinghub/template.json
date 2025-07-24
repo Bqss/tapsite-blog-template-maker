@@ -1,9 +1,9 @@
 {
-  "title" : "ParentingHub",
-  "description" : "Parenting blog with age-based content organization and resource discovery",
-  "template_id" : "parentinghub",
-  "creator_name" : "Maulana Shalihin",
-  "creator_website" : "https://tapsite.ai",
-  "version" : "1.0.0",
-  "thumbnail" : "/templates/parentinghub/thumbnail.webp"
+  "title": "ParentingHub",
+  "description": "Template blog parenting dengan desain yang mendukung untuk tips dan saran mengasuh anak",
+  "template_id": "parentinghub",
+  "creator_name": "bsfrswt",
+  "creator_website": "https://basofi.tech",
+  "version": "1.0.0",
+  "thumbnail": "/templates/parentinghub/thumbnail.webp"
 }

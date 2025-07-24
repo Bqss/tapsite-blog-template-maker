@@ -1,9 +1,9 @@
 {
-    "title": "TechStack Hub",
-    "description": "Technology blog template with terminal-inspired design and code-friendly layouts. Perfect for developers, tech enthusiasts, and programming communities looking for a modern, developer-centric blog experience.",
-    "template_id": "techstack_hub",
-    "creator_name": "Maulana Shalihin",
-    "creator_website": "https://tapsite.ai",
-    "version": "1.0.0",
-    "thumbnail": "/templates/techstack_hub/thumbnail.webp"
-} 
+  "title": "TechStack Hub",
+  "description": "Template blog teknologi dengan desain terinspirasi terminal dan tata letak ramah kode. Sempurna untuk developer, penggemar teknologi, dan komunitas programming yang mencari pengalaman blog modern dan berpusat pada developer.",
+  "template_id": "techstack_hub",
+  "creator_name": "bsfrswt",
+  "creator_website": "https://basofi.tech",
+  "version": "1.0.0",
+  "thumbnail": "/templates/techstack_hub/thumbnail.webp"
+}

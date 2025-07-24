@@ -1,10 +1,9 @@
-
 {
-  "title" : "StartupStory",
-  "description" : "Startup blog with business insights and success story showcase",
-  "template_id" : "startup_story",
-  "creator_name" : "Maulana Shalihin",
-  "creator_website" : "https://tapsite.ai",
-  "version" : "1.0.0",
-  "thumbnail" : "/templates/startup_story/thumbnail.webp"
+  "title": "StartupStory",
+  "description": "Template blog startup dengan desain modern untuk berbagi cerita dan tips bisnis",
+  "template_id": "startup_story",
+  "creator_name": "bsfrswt",
+  "creator_website": "https://basofi.tech",
+  "version": "1.0.0",
+  "thumbnail": "/templates/startup_story/thumbnail.webp"
 }

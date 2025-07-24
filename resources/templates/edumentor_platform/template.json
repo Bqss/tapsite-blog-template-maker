@@ -1,9 +1,9 @@
 {
-  "title" : "EduMentor Platform",
-  "description" : "Template blog pendidikan dengan fokus pada artikel pembelajaran, tips akademik, dan konten edukatif",
-  "template_id" : "edumentor_platform",
-  "creator_name" : "Maulana Shalihin",
-  "creator_website" : "https://tapsite.ai",
-  "version" : "1.0.0",
-  "thumbnail" : "/templates/edumentor_platform/thumbnail.webp"
+  "title": "EduMentor Platform",
+  "description": "Platform blog pendidikan dengan tata letak yang bersih dan fokus pada konten edukatif",
+  "template_id": "edumentor_platform",
+  "creator_name": "bsfrswt",
+  "creator_website": "https://basofi.tech",
+  "version": "1.0.0",
+  "thumbnail": "/templates/edumentor_platform/thumbnail.webp"
 }

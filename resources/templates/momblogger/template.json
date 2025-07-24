@@ -1,9 +1,9 @@
 {
-  "title" : "MomBlogger",
-  "description" : "Mom Life & Family blog with warm colors and lifestyle content",
-  "template_id" : "momblogger",
-  "creator_name" : "Maulana Shalihin",
-  "creator_website" : "https://tapsite.ai",
-  "version" : "1.0.0",
-  "thumbnail" : "/templates/momblogger/thumbnail.webp"
+  "title": "MomBlogger",
+  "description": "Template blog untuk ibu dengan desain hangat dan ramah keluarga",
+  "template_id": "momblogger",
+  "creator_name": "bsfrswt",
+  "creator_website": "https://basofi.tech",
+  "version": "1.0.0",
+  "thumbnail": "/templates/momblogger/thumbnail.webp"
 }

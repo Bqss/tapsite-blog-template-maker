@@ -1,9 +1,9 @@
 {
-  "title" : "CreativeStudio",
-  "description" : "A vibrant blog template for artists, designers, and creative professionals to showcase their work and share inspiration",
-  "template_id" : "creativestudio",
-  "creator_name" : "Maulana Shalihin",
-  "creator_website" : "https://tapsite.ai",
-  "version" : "1.0.0",
-  "thumbnail" : "/templates/creativestudio/thumbnail.webp"
+  "title": "CreativeStudio",
+  "description": "Template blog kreatif dengan desain modern untuk studio kreatif, desainer, dan seniman",
+  "template_id": "creativestudio",
+  "creator_name": "bsfrswt",
+  "creator_website": "https://basofi.tech",
+  "version": "1.0.0",
+  "thumbnail": "/templates/creativestudio/thumbnail.webp"
 }

@@ -1,9 +1,9 @@
 {
-  "title" : "GamingVerse",
-  "description" : "Gaming Community blog with dark themes and neon accents",
-  "template_id" : "gamingverse",
-  "creator_name" : "Maulana Shalihin",
-  "creator_website" : "https://tapsite.ai",
-  "version" : "1.0.0",
-  "thumbnail" : "/templates/gamingverse/thumbnail.webp"
+  "title": "GamingVerse",
+  "description": "Template blog gaming dengan desain futuristik untuk review game dan berita gaming",
+  "template_id": "gamingverse",
+  "creator_name": "bsfrswt",
+  "creator_website": "https://basofi.tech",
+  "version": "1.0.0",
+  "thumbnail": "/templates/gamingverse/thumbnail.webp"
 }

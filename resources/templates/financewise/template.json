@@ -1,9 +1,9 @@
 {
-  "title" : "FinanceWise",
-  "description" : "Template untuk finance blog dengan investment content dan financial education showcase",
-  "template_id" : "financewise",
-  "creator_name" : "Maulana Shalihin",
-  "creator_website" : "https://tapsite.ai",
-  "version" : "1.0.0",
-  "thumbnail" : "/templates/financewise/thumbnail.webp"
+  "title": "FinanceWise",
+  "description": "Template blog keuangan dengan desain profesional untuk tips investasi dan manajemen keuangan",
+  "template_id": "financewise",
+  "creator_name": "bsfrswt",
+  "creator_website": "https://basofi.tech",
+  "version": "1.0.0",
+  "thumbnail": "/templates/financewise/thumbnail.webp"
 }

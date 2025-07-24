@@ -1,9 +1,9 @@
 {
-  "title" : "DIY Crafts",
-  "description" : "Craft Tutorials & Projects blog with bright colors and step-by-step guides",
-  "template_id" : "diycrafts",
-  "creator_name" : "Maulana Shalihin",
-  "creator_website" : "https://tapsite.ai",
-  "version" : "1.0.0",
-  "thumbnail" : "/templates/diycrafts/thumbnail.webp"
+  "title": "DIY Crafts",
+  "description": "Template blog tutorial kerajinan dan proyek DIY dengan warna-warna cerah dan panduan langkah demi langkah",
+  "template_id": "diycrafts",
+  "creator_name": "bsfrswt",
+  "creator_website": "https://basofi.tech",
+  "version": "1.0.0",
+  "thumbnail": "/templates/diycrafts/thumbnail.webp"
 }

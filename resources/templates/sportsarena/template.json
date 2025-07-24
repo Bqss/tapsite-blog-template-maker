@@ -1,9 +1,9 @@
 {
-  "title" : "SportsArena",
-  "description" : "Sports blog with match analysis and sports content discovery",
-  "template_id" : "sportsarena",
-  "creator_name" : "Maulana Shalihin",
-  "creator_website" : "https://tapsite.ai",
-  "version" : "1.0.0",
-  "thumbnail" : "/templates/sportsarena/thumbnail.webp"
+  "title": "SportsArena",
+  "description": "Template blog olahraga dengan desain dinamis untuk berita dan analisis olahraga",
+  "template_id": "sportsarena",
+  "creator_name": "bsfrswt",
+  "creator_website": "https://basofi.tech",
+  "version": "1.0.0",
+  "thumbnail": "/templates/sportsarena/thumbnail.webp"
 }

@@ -1,9 +1,9 @@
 {
-  "title" : "ReviewMaster",
-  "description" : "Product Reviews blog with rating systems and comparison layouts",
-  "template_id" : "reviewmaster",
-  "creator_name" : "Maulana Shalihin",
-  "creator_website" : "https://tapsite.ai",
-  "version" : "1.0.0",
-  "thumbnail" : "/templates/reviewmaster/thumbnail.webp"
+  "title": "ReviewMaster",
+  "description": "Template blog review dengan tata letak yang terstruktur untuk berbagai jenis ulasan produk",
+  "template_id": "reviewmaster",
+  "creator_name": "bsfrswt",
+  "creator_website": "https://basofi.tech",
+  "version": "1.0.0",
+  "thumbnail": "/templates/reviewmaster/thumbnail.webp"
 }
