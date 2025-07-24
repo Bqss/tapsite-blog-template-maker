@@ -1,0 +1,34 @@
+{
+  "title": "TechStackHub - Modern Development Tutorials & Code Snippets",
+  "description": "Your ultimate destination for modern development tutorials, tech trends, and code snippets. From frontend frameworks to backend architectures.",
+  "sections": [
+    {
+      "title": "styles",
+      "id": "styles",
+      "type": "template",
+      "resetable": true
+    },
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": ["blog_title", "blog_logo", "navigation"]
+    },
+    {
+      "title": "posts_content",
+      "id": "posts_content",
+      "type": "template",
+      "resetable": true,
+      "data": []
+    },
+
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": ["blog_title", "blog_logo", "navigation"]
+    }
+  ]
+}

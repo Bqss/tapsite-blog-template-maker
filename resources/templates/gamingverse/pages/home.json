@@ -5,8 +5,9 @@
     {
       "title": "styles",
       "id": "styles",
-      "type": "template",
-      "resetable": true
+      "type": "html",
+      "resetable": true,
+      "data": []
     },
     {
       "title": "navigation",
@@ -22,37 +23,37 @@
     {
       "title": "hero",
       "id": "hero",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": ["hero"]
+      "data": []
     },
     {
       "title": "featured articles",
       "id": "featured_articles",
       "type": "template",
       "resetable": true,
-      "data": ["blog"]
+      "data": []
     },
     {
       "title": "gaming_categories",
       "id": "gaming_categories",
       "type": "template",
       "resetable": true,
-      "data": ["gaming_categories"]
+      "data": []
     },
     {
       "title": "newsletter",
       "id": "newsletter",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": ["newsletter"]
+      "data": []
     },
     {
       "title": "footer",
       "id": "footer",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": ["blog_title", "blog_logo", "navigation"]
+      "data": []
     }
   ]
 }

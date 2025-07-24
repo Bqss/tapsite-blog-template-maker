@@ -1,0 +1,50 @@
+{
+  "title": "All Craft Tutorials - DIY Crafts Workshop",
+  "description": "Explore hundreds of step-by-step DIY craft tutorials for every skill level and category. From home decor to jewelry making, find your perfect project.",
+  "keywords": "DIY crafts, tutorials, handmade, home decor, paper crafts, upcycling, jewelry making, kids crafts, seasonal crafts",
+  "sections": [
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "blog_title",
+        "blog_logo",
+        "navigation"
+      ]
+    },
+    {
+      "title": "posts hero",
+      "id": "posts_hero",
+      "type": "template",
+      "resetable": true,
+      "data": []
+    },
+    {
+      "title": "posts grid",
+      "id": "posts_grid",
+      "type": "template",
+      "resetable": true,
+      "data": []
+    },
+    {
+      "title": "join banner",
+      "id": "join_banner",
+      "type": "template",
+      "resetable": true,
+      "data": []
+    },
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "blog_title",
+        "blog_logo",
+        "navigation"
+      ]
+    }
+  ]
+} 

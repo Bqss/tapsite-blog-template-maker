@@ -1,23 +1,8 @@
 {
   "sections": [
-   
     {
       "title": "navigation",
       "id": "navigation",
-      "type": "template",
-      "resetable": true,
-      "data": ["blog_title", "blog_logo", "navigation"]
-    },
-    {
-      "title": "posts_items",
-      "id": "posts_items",
-      "type": "html",
-      "resetable": true,
-      "data": []
-    },
-    {
-      "title": "footer",
-      "id": "footer",
       "type": "template",
       "resetable": true,
       "data": [
@@ -25,6 +10,20 @@
         "blog_logo",
         "navigation"
       ]
+    },
+    {
+      "title": "posts_items",
+      "id": "posts_items",
+      "type": "template",
+      "resetable": true,
+      "data": []
+    },
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "html",
+      "resetable": true,
+      "data": []
     }
   ]
 }

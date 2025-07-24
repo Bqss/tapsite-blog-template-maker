@@ -5,8 +5,9 @@
     {
       "title": "styles",
       "id": "styles",
-      "type": "template",
-      "resetable": true
+      "type": "html",
+      "resetable": true,
+      "data": []
     },
     {
       "title": "navigation",
@@ -22,31 +23,23 @@
     {
       "title": "hero",
       "id": "hero",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": [
-        "hero"
-      ]
+      "data": []
     },
     {
       "title": "featured articles",
       "id": "featured_articles",
       "type": "template",
       "resetable": true,
-      "data": [
-        "featured"
-      ]
+      "data": []
     },
     {
       "title": "footer",
       "id": "footer",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": [
-        "blog_title",
-        "blog_logo",
-        "navigation"
-      ]
+      "data": []
     }
   ]
-} 
+}

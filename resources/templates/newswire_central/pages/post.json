@@ -5,25 +5,28 @@
       "id": "navigation",
       "type": "template",
       "resetable": true,
-      "data": ["blog_title", "blog_logo", "navigation"]
+      "data": [
+        "blog_title",
+        "blog_logo",
+        "navigation"
+      ]
     },
     {
       "title": "post_content",
       "id": "post_content",
       "type": "template",
       "resetable": true,
-      "data": ["post", "author"]
+      "data": [
+        "post",
+        "author"
+      ]
     },
     {
       "title": "footer",
       "id": "footer",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": [
-        "blog_title",
-        "blog_logo",
-        "navigation"
-      ]
+      "data": []
     }
   ]
 }

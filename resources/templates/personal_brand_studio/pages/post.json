@@ -11,27 +11,19 @@
         "navigation"
       ]
     },
- 
     {
       "title": "post_detail",
       "id": "post_detail",
       "type": "template",
       "resetable": true,
-      "data": [
-        "post",
-        "author"
-      ]
+      "data": []
     },
     {
       "title": "footer",
       "id": "footer",
       "type": "html",
       "resetable": true,
-      "data": [
-        "blog_title",
-        "blog_logo",
-        "navigation"
-      ]
+      "data": []
     }
   ]
 }

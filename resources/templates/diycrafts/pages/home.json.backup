@@ -1,0 +1,71 @@
+{
+  "title": "DIY Crafts Workshop - Creative DIY Projects and Tutorials",
+  "description": "Discover amazing DIY craft projects, step-by-step tutorials, and creative inspiration for all skill levels",
+  "sections": [
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "blog_title",
+        "blog_logo",
+        "navigation"
+      ]
+    },
+    {
+      "title": "hero",
+      "id": "hero",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "hero"
+      ]
+    },
+    {
+      "title": "categories showcase",
+      "id": "categories_showcase",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "categories"
+      ]
+    },
+    {
+      "title": "featured tutorial",
+      "id": "featured_tutorial",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "featured"
+      ]
+    },
+    {
+      "title": "project gallery",
+      "id": "latest_project",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "gallery"
+      ]
+    },
+    {
+      "title": "community banner",
+      "id": "community_banner",
+      "type": "template",
+      "resetable": true,
+      "data": []
+    },
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "blog_title",
+        "blog_logo",
+        "navigation"
+      ]
+    }
+  ]
+} 

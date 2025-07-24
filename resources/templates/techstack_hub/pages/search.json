@@ -5,15 +5,21 @@
     {
       "title": "styles",
       "id": "styles",
-      "type": "template",
-      "resetable": true
+      "type": "html",
+      "resetable": true,
+      "data": []
     },
     {
       "title": "navigation",
       "id": "navigation",
       "type": "template",
       "resetable": true,
-      "data": ["site.name", "site.description", "navigation", "social_links"]
+      "data": [
+        "site.name",
+        "site.description",
+        "navigation",
+        "social_links"
+      ]
     },
     {
       "title": "search_content",
@@ -22,13 +28,12 @@
       "resetable": true,
       "data": []
     },
-
     {
       "title": "footer",
       "id": "footer",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": ["blog_title", "blog_logo", "navigation"]
+      "data": []
     }
   ]
 }

@@ -16,7 +16,7 @@
     {
       "title": "posts_header",
       "id": "posts_header",
-      "type": "template",
+      "type": "html",
       "resetable": true,
       "data": []
     },
@@ -25,20 +25,14 @@
       "id": "post_items",
       "type": "template",
       "resetable": true,
-      "data": [
-      ]
+      "data": []
     },
-  
     {
       "title": "footer",
       "id": "footer",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": [
-        "blog_title",
-        "blog_logo",
-        "navigation"
-      ]
+      "data": []
     }
   ]
-} 
+}

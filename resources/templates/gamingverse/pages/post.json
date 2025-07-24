@@ -5,7 +5,7 @@
     {
       "title": "styles",
       "id": "styles",
-      "type": "template",
+      "type": "html",
       "resetable": true,
       "data": []
     },
@@ -33,9 +33,9 @@
     {
       "title": "footer",
       "id": "footer",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": ["blog_title", "blog_logo", "navigation"]
+      "data": []
     }
   ]
 }

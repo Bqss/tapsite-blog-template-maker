@@ -19,28 +19,21 @@
       "id": "search_results",
       "type": "template",
       "resetable": true,
-      "data": [
-        "search_results"
-      ]
+      "data": []
     },
     {
       "title": "newsletter",
       "id": "join_banner",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": [
-      ]
+      "data": []
     },
     {
       "title": "footer",
       "id": "footer",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": [
-        "blog_title",
-        "blog_logo",
-        "navigation"
-      ]
+      "data": []
     }
   ]
-} 
+}

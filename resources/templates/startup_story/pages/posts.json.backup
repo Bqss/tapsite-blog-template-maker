@@ -1,0 +1,33 @@
+{
+  "title": "StartupStory - Where Entrepreneurs Share Their Journey",
+  "description": "Discover inspiring success stories, business insights, and lessons learned from successful entrepreneurs and startups around the world",
+  "sections": [
+    {
+      "title": "styles",
+      "id": "styles",
+      "type": "template",
+      "resetable": true
+    },
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": ["blog_title", "blog_logo", "navigation"]
+    },
+    {
+      "title": "posts_content",
+      "id": "posts_content",
+      "type": "template",
+      "resetable": true,
+      "data": []
+    },
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": ["blog_title", "blog_logo", "navigation"]
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "title": "ReviewMaster - Tech Reviews & Comparisons",
+  "description": "Expert tech reviews, in-depth comparisons, and buying guides to help you make informed tech decisions",
+  "sections": [
+    {
+      "title": "styles",
+      "id": "styles",
+      "type": "template",
+      "resetable": true
+    },
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": ["blog_title", "blog_logo", "navigation"] 
+    },
+    {
+      "title": "tag_content",
+      "id": "tag_content",
+      "type": "template",
+      "resetable": true,
+      "data": []
+    },
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": ["blog_title", "blog_logo", "navigation"]
+    }
+  ]
+}

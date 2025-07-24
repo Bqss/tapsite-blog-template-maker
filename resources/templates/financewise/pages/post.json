@@ -5,43 +5,50 @@
     {
       "title": "styles",
       "id": "styles",
-      "type": "template",
-      "resetable": true
+      "type": "html",
+      "resetable": true,
+      "data": []
     },
     {
       "title": "navigation",
       "id": "navigation",
       "type": "template",
       "resetable": true,
-      "data": ["site", "navigation"]
+      "data": [
+        "site",
+        "navigation"
+      ]
     },
     {
       "title": "post_content",
       "id": "post_content",
       "type": "template",
       "resetable": true,
-      "data": ["author","post"]
+      "data": [
+        "author",
+        "post"
+      ]
     },
     {
       "title": "related_articles",
       "id": "related_articles",
-      "type": "template",
+      "type": "html",
       "resetable": true,
       "data": []
     },
     {
       "title": "newsletter",
       "id": "newsletter",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": ["newsletter"]
+      "data": []
     },
     {
       "title": "footer",
       "id": "footer",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": ["site.name", "site.description", "navigation", "social_links"]
+      "data": []
     }
   ]
 }

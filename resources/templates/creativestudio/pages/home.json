@@ -14,39 +14,39 @@
       "id": "navigation",
       "type": "template",
       "resetable": true,
-      "data": ["navigation", "blog_title", "blog_logo"]
+      "data": [
+        "navigation",
+        "blog_title",
+        "blog_logo"
+      ]
     },
     {
       "title": "Hero Section",
       "id": "hero",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": ["featuredPost"]
+      "data": []
     },
     {
       "title": "Latest Posts",
       "id": "latest_posts",
       "type": "template",
       "resetable": true,
-      "data": {
-        "posts": "posts"
-      }
+      "data": []
     },
     {
       "title": "Popular Posts",
       "id": "popular_posts",
       "type": "template",
       "resetable": true,
-      "data": {
-        "popularPosts": "popularPosts"
-      }
+      "data": []
     },
     {
       "title": "Footer",
       "id": "footer",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": ["navigation", "blog_title", "blog_logo"]
+      "data": []
     }
   ],
   "meta": {

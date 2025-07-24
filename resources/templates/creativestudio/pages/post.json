@@ -25,20 +25,24 @@
       "id": "post_content",
       "type": "template",
       "resetable": true,
-      "data": ["post", "author"]
+      "data": [
+        "post",
+        "author"
+      ]
     },
     {
       "title": "Related Posts",
       "id": "related_posts",
       "type": "template",
-      "resetable": true
+      "resetable": true,
+      "data": []
     },
     {
       "title": "Footer",
       "id": "footer",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": ["navigation", "blog_title", "blog_logo"]
+      "data": []
     }
   ],
   "meta": {

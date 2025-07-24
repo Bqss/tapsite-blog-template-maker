@@ -5,12 +5,16 @@
       "id": "navigation",
       "type": "template",
       "resetable": true,
-      "data": ["blog_title", "blog_logo", "navigation"]
+      "data": [
+        "blog_title",
+        "blog_logo",
+        "navigation"
+      ]
     },
     {
       "title": "category_result",
       "id": "category_result",
-      "type": "html",
+      "type": "template",
       "resetable": true,
       "data": []
     },
@@ -19,7 +23,7 @@
       "id": "footer",
       "type": "html",
       "resetable": true,
-      "data": ["blog_title", "blog_logo", "navigation"]
+      "data": []
     }
   ]
 }

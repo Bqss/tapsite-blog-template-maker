@@ -1,0 +1,55 @@
+{
+  "title": "ParentingHub - Expert Parenting Advice & Community",
+  "description": "Find expert parenting advice, child development insights, and family-friendly activities to support your parenting journey",
+  "sections": [
+    {
+      "title": "styles",
+      "id": "styles",
+      "type": "template",
+      "resetable": true
+    },
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": ["blog_title", "blog_logo", "navigation"]
+    },
+    {
+      "title": "hero",
+      "id": "hero",
+      "type": "template",
+      "resetable": true,
+      "data": ["hero"]
+    },
+    {
+      "title": "featured articles",
+      "id": "featured_articles",
+      "type": "template",
+      "resetable": true,
+      "data": ["featured"]
+    },
+    {
+      "title": "explore categories",
+      "id": "explore_categories",
+      "type": "template",
+      "resetable": true,
+      "data": ["explore_categories"]
+    },
+    {
+      "title": "newsletter",
+      "id": "newsletter",
+      "type": "template",
+      "resetable": true,
+      "data": []
+    },
+
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": ["blog_title", "blog_logo", "navigation"]
+    }
+  ]
+}

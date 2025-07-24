@@ -14,7 +14,7 @@
     {
       "title": "tag_result",
       "id": "tag_result",
-      "type": "html",
+      "type": "template",
       "resetable": true,
       "data": []
     },
@@ -23,11 +23,7 @@
       "id": "footer",
       "type": "html",
       "resetable": true,
-      "data": [
-        "blog_title",
-        "blog_logo",
-        "navigation"
-      ]
+      "data": []
     }
   ]
-} 
+}

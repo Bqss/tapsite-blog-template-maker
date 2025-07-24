@@ -7,43 +7,49 @@
       "id": "navigation",
       "type": "template",
       "resetable": true,
-      "data": ["navigation", "blog_title", "blog_logo"]
+      "data": [
+        "navigation",
+        "blog_title",
+        "blog_logo"
+      ]
     },
     {
       "title": "breadcrumb",
       "id": "breadcrumb",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": ["post.title"]
+      "data": []
     },
     {
       "title": "post content",
       "id": "post_content",
       "type": "template",
       "resetable": true,
-      "data": ["post", "author"]
+      "data": [
+        "post",
+        "author"
+      ]
     },
     {
       "title": "related posts",
       "id": "related_posts",
       "type": "template",
       "resetable": true,
-      "data": ["related_posts"]
+      "data": []
     },
-
     {
       "title": "community banner",
       "id": "community_banner",
-      "type": "template",
+      "type": "html",
       "resetable": true,
       "data": []
     },
     {
       "title": "footer",
       "id": "footer",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": ["blog_title", "blog_logo", "navigation"]
+      "data": []
     }
   ]
 }

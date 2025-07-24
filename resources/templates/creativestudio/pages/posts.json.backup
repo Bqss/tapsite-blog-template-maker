@@ -1,0 +1,83 @@
+{
+  "title": "All Posts - Creative Studio",
+  "description": "Discover tutorials, inspiration, and creative insights from our community of artists and designers.",
+  "keywords": ["creative blog", "design tutorials", "digital art", "creative inspiration", "design process"],
+  "page_type": "posts",
+  "sections": [
+    {
+      "title": "Navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "blog_title",
+        "blog_logo",
+        "navigation"
+      ]
+    },
+    {
+      "title": "Posts Header",
+      "id": "posts_header",
+      "type": "template",
+      "resetable": true,
+      "data": {
+        "site": "site"
+      }
+    },
+    {
+      "title": "Posts Filter",
+      "id": "posts_filter",
+      "type": "template",
+      "resetable": true,
+      "data": {
+        "categories": "categories"
+      }
+    },
+    {
+      "title": "Posts Grid",
+      "id": "posts_grid",
+      "type": "template",
+      "resetable": true,
+      "data": []
+    },
+    {
+      "title": "Community Banner",
+      "id": "community_banner",
+      "type": "template",
+      "resetable": true,
+      "data": []
+    },
+    {
+      "title": "Footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "blog_title",
+        "blog_logo",
+        "navigation"
+      ]
+    }
+  ],
+  "meta": {
+    "robots": "index, follow",
+    "canonical": "https://creativestudio.com/posts",
+    "author": "Creative Studio Team",
+    "published_time": "2024-01-01T00:00:00Z",
+    "modified_time": "2024-01-01T00:00:00Z"
+  },
+  "structured_data": {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "All Posts - Creative Studio",
+    "description": "Discover tutorials, inspiration, and creative insights from our community of artists and designers.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Creative Studio",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{site.logo}}"
+      }
+    }
+  }
+} 

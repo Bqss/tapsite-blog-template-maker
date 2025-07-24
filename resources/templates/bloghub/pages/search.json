@@ -1,27 +1,29 @@
 {
-    "sections": [
-        {
-            "title": "navigation",
-            "id": "navigation",
-            "type": "template",
-            "resetable": true,
-            "data": [
-                "blog_title",
-                "blog_logo",
-                "navigation"
-            ]
-        },
-        {
-            "title": "search_results",
-            "id": "search_results",
-            "type": "html",
-            "resetable": true
-        },
-        {
-            "title": "footer",
-            "id": "footer",
-            "type": "html",
-            "resetable": true
-        }
-    ]
+  "sections": [
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "blog_title",
+        "blog_logo",
+        "navigation"
+      ]
+    },
+    {
+      "title": "search_results",
+      "id": "search_results",
+      "type": "template",
+      "resetable": true,
+      "data": []
+    },
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "html",
+      "resetable": true,
+      "data": []
+    }
+  ]
 }

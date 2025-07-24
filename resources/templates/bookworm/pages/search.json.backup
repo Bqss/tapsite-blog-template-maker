@@ -1,0 +1,47 @@
+{
+    "sections": [
+        {
+            "title": "navigation",
+            "id": "navigation",
+            "type": "template",
+            "resetable": true,
+            "data": [
+                "blog_title",
+                "blog_logo",
+                "navigation"
+            ]
+        },
+        {
+            "title": "search_results",
+            "id": "search_results",
+            "type": "template",
+            "resetable": true,
+            "data": [
+                "search_query",
+                "search_results",
+                "pagination"
+            ]
+        },
+        {
+            "title": "popular_categories",
+            "id": "popular_categories",
+            "type": "template",
+            "resetable": true,
+            "data": [
+                "categories",
+                "tags"
+            ]
+        },
+        {
+            "title": "footer",
+            "id": "footer",
+            "type": "template",
+            "resetable": true,
+            "data": [
+                "blog_title",
+                "blog_logo",
+                "navigation"
+            ]
+        }
+    ]
+} 

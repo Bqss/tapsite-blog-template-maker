@@ -17,7 +17,7 @@
     {
       "title": "posts hero",
       "id": "posts_hero",
-      "type": "template",
+      "type": "html",
       "resetable": true,
       "data": []
     },
@@ -31,20 +31,16 @@
     {
       "title": "join banner",
       "id": "join_banner",
-      "type": "template",
+      "type": "html",
       "resetable": true,
       "data": []
     },
     {
       "title": "footer",
       "id": "footer",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": [
-        "blog_title",
-        "blog_logo",
-        "navigation"
-      ]
+      "data": []
     }
   ]
-} 
+}

@@ -7,49 +7,53 @@
       "id": "navigation",
       "type": "template",
       "resetable": true,
-      "data": ["blog_title", "blog_logo", "navigation"]
+      "data": [
+        "blog_title",
+        "blog_logo",
+        "navigation"
+      ]
     },
     {
       "title": "hero",
       "id": "hero",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": ["hero"]
+      "data": []
     },
     {
       "title": "latest_posts",
       "id": "latest_posts",
       "type": "template",
       "resetable": true,
-      "data": ["stages"]
+      "data": []
     },
     {
       "title": "explore_categories",
       "id": "explore_categories",
       "type": "template",
       "resetable": true,
-      "data": ["featured"]
+      "data": []
     },
     {
       "title": "fav_recipes",
       "id": "fav_recipes",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": ["categories"]
+      "data": []
     },
     {
       "title": "author",
       "id": "author",
-      "type": "template",
+      "type": "html",
       "resetable": true,
       "data": []
     },
     {
       "title": "footer",
       "id": "footer",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": ["blog_title", "blog_logo", "navigation"]
+      "data": []
     }
   ]
 }

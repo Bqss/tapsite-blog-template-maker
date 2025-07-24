@@ -4,7 +4,7 @@
       "title": "navigation",
       "id": "navigation",
       "type": "template",
-      "resetable" : true,
+      "resetable": true,
       "data": [
         "blog_title",
         "blog_logo",
@@ -15,19 +15,22 @@
       "title": "hero",
       "id": "hero",
       "type": "html",
-      "resetable" : true
+      "resetable": true,
+      "data": []
     },
     {
       "title": "home_articles",
       "id": "home_articles",
-      "type": "html",
-      "resetable" : true
+      "type": "template",
+      "resetable": true,
+      "data": []
     },
     {
       "title": "footer",
       "id": "footer",
       "type": "html",
-      "resetable" : true
+      "resetable": true,
+      "data": []
     }
   ]
 }

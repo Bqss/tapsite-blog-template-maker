@@ -1,0 +1,36 @@
+{
+  "title": "#{{tag.name}} Craft Tutorials - DIY Crafts Workshop",
+  "description": "Discover craft tutorials tagged with {{tag.name}}. Perfect projects for {{tag.description}}.",
+  "sections": [
+    {
+      "title": "Navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "blog_title",
+        "blog_logo",
+        "navigation"
+      ]
+    },
+    {
+      "title": "tag_results",
+      "id": "tag_results",
+      "type": "template",
+      "resetable": true,
+      "data": [
+      ]
+    },
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "blog_title",
+        "blog_logo",
+        "navigation"
+      ]
+    }
+  ]
+} 

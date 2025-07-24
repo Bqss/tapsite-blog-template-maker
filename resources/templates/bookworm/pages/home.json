@@ -7,53 +7,53 @@
       "id": "navigation",
       "type": "template",
       "resetable": true,
-      "data": ["blog_title", "blog_logo", "navigation"]
+      "data": [
+        "blog_title",
+        "blog_logo",
+        "navigation"
+      ]
     },
     {
       "title": "hero",
       "id": "hero",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": ["hero_content", "currently_reading"]
+      "data": []
     },
     {
       "title": "featured_quote",
       "id": "featured_quote",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": ["featured_quote"]
+      "data": []
     },
     {
       "title": "popular posts",
       "id": "popular_posts",
       "type": "template",
       "resetable": true,
-      "data": ["popular_posts"]
+      "data": []
     },
     {
       "title": "reading_lists",
       "id": "reading_lists",
       "type": "template",
       "resetable": true,
-      "data": ["reading_lists"]
+      "data": []
     },
     {
       "title": "author_spotlight",
       "id": "author_spotlight",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": ["author"]
+      "data": []
     },
     {
       "title": "footer",
       "id": "footer",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": [
-        "blog_title",
-        "blog_logo",
-        "navigation"
-      ]
+      "data": []
     }
   ]
 }

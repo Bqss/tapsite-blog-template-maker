@@ -5,22 +5,27 @@
     {
       "title": "styles",
       "id": "styles",
-      "type": "template",
-      "resetable": true
+      "type": "html",
+      "resetable": true,
+      "data": []
     },
     {
       "title": "navigation",
       "id": "navigation",
       "type": "template",
       "resetable": true,
-      "data": ["blog_title", "blog_logo", "navigation"]
+      "data": [
+        "blog_title",
+        "blog_logo",
+        "navigation"
+      ]
     },
     {
       "title": "hero",
       "id": "hero",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": ["hero"]
+      "data": []
     },
     {
       "title": "categories",
@@ -34,21 +39,21 @@
       "id": "featured_stories",
       "type": "template",
       "resetable": true,
-      "data": ["featured"]
+      "data": []
     },
     {
       "title": "stats",
       "id": "stats",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": ["stats"]
+      "data": []
     },
     {
       "title": "footer",
       "id": "footer",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": ["blog_title", "blog_logo", "navigation"]
+      "data": []
     }
   ]
 }

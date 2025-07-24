@@ -1,7 +1,12 @@
 {
   "title": "{{it.category.name}} - Creative Studio",
   "description": "{{it.category.description}}",
-  "keywords": ["creative blog", "{{it.category.name}}", "design tutorials", "creative inspiration"],
+  "keywords": [
+    "creative blog",
+    "{{it.category.name}}",
+    "design tutorials",
+    "creative inspiration"
+  ],
   "page_type": "category",
   "sections": [
     {
@@ -20,22 +25,14 @@
       "id": "category_posts",
       "type": "template",
       "resetable": true,
-      "data": [
-        "posts",
-        "pagination",
-        "category"
-      ]
+      "data": []
     },
     {
       "title": "Footer",
       "id": "footer",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": [
-        "blog_title",
-        "blog_logo",
-        "navigation"
-      ]
+      "data": []
     }
   ],
   "meta": {
@@ -59,4 +56,4 @@
       }
     }
   }
-} 
+}

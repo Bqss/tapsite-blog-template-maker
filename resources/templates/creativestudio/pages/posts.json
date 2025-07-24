@@ -1,7 +1,13 @@
 {
   "title": "All Posts - Creative Studio",
   "description": "Discover tutorials, inspiration, and creative insights from our community of artists and designers.",
-  "keywords": ["creative blog", "design tutorials", "digital art", "creative inspiration", "design process"],
+  "keywords": [
+    "creative blog",
+    "design tutorials",
+    "digital art",
+    "creative inspiration",
+    "design process"
+  ],
   "page_type": "posts",
   "sections": [
     {
@@ -18,20 +24,16 @@
     {
       "title": "Posts Header",
       "id": "posts_header",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": {
-        "site": "site"
-      }
+      "data": []
     },
     {
       "title": "Posts Filter",
       "id": "posts_filter",
       "type": "template",
       "resetable": true,
-      "data": {
-        "categories": "categories"
-      }
+      "data": []
     },
     {
       "title": "Posts Grid",
@@ -43,20 +45,16 @@
     {
       "title": "Community Banner",
       "id": "community_banner",
-      "type": "template",
+      "type": "html",
       "resetable": true,
       "data": []
     },
     {
       "title": "Footer",
       "id": "footer",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": [
-        "blog_title",
-        "blog_logo",
-        "navigation"
-      ]
+      "data": []
     }
   ],
   "meta": {
@@ -80,4 +78,4 @@
       }
     }
   }
-} 
+}

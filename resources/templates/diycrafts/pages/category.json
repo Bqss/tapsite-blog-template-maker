@@ -14,29 +14,19 @@
         "navigation"
       ]
     },
-  
     {
       "title": "category_results",
       "id": "category_results",
       "type": "template",
       "resetable": true,
-      "data": [
-        "category",
-        "posts",
-        "pagination",
-        "categories"
-      ]
+      "data": []
     },
     {
       "title": "footer",
       "id": "footer",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": [
-        "blog_title",
-        "blog_logo",
-        "navigation"
-      ]
+      "data": []
     }
   ]
-} 
+}

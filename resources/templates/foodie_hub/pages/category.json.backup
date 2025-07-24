@@ -1,0 +1,41 @@
+{
+  "title": "FoodieHub - Discover Amazing Culinary Adventures",
+  "description": "Your ultimate destination for delicious recipes, cooking tips, and culinary inspiration",
+  "sections": [
+    {
+      "title": "styles",
+      "id": "style",
+      "type": "template",
+      "resetable": true
+    },
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "blog_title",
+        "blog_logo",
+        "navigation"
+      ]
+    },
+    {
+      "title": "category_results",
+      "id": "category_results",
+      "type": "template",
+      "resetable": true,
+      "data": ["search_results"]
+    },
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "blog_title",
+        "blog_logo",
+        "navigation"
+      ]
+    }
+  ]
+} 

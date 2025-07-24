@@ -14,33 +14,33 @@
     {
       "title": "breadcrumb",
       "id": "breadcrumb",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": [
-        "post"
-      ]
+      "data": []
     },
     {
       "title": "post content",
       "id": "post_content",
+      "type": "template",
       "resetable": true,
       "data": [
         "author",
         "post"
-      ],
-      "type": "template"
+      ]
     },
     {
       "title": "related content",
       "id": "related_content",
-      "type": "html",
-      "resetable": true
+      "type": "template",
+      "resetable": true,
+      "data": []
     },
     {
       "title": "footer",
       "id": "footer",
       "type": "html",
-      "resetable": true
+      "resetable": true,
+      "data": []
     }
   ]
 }

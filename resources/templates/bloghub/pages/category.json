@@ -14,14 +14,16 @@
     {
       "title": "category_articles",
       "id": "category_articles",
-      "type": "html",
-      "resetable": true
+      "type": "template",
+      "resetable": true,
+      "data": []
     },
     {
       "title": "footer",
       "id": "footer",
       "type": "html",
-      "resetable": true
+      "resetable": true,
+      "data": []
     }
   ]
 }

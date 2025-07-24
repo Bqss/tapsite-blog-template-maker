@@ -1,0 +1,34 @@
+{
+  "title": "{{post.title}} - MomBlogger",
+  "description": "{{post.excerpt}}",
+  "sections": [
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": ["blog_title", "blog_logo", "navigation"]
+    },
+    {
+      "title": "post_content",
+      "id": "post_content",
+      "type": "template",
+      "resetable": true,
+      "data": ["post", "author"]
+    },
+    {
+      "title": "related_posts",
+      "id": "related_posts",
+      "type": "template",
+      "resetable": true,
+      "data": []
+    },
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": ["blog_title", "blog_logo", "navigation"]
+    }
+  ]
+}

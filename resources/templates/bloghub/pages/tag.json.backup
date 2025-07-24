@@ -1,0 +1,27 @@
+{
+  "sections": [
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "blog_title",
+        "blog_logo",
+        "navigation"
+      ]
+    },
+    {
+      "title": "tag_articles",
+      "id": "tag_articles",
+      "type": "html",
+      "resetable": true
+    },
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "html",
+      "resetable": true
+    }
+  ]
+}

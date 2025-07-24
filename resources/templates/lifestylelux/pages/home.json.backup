@@ -1,0 +1,59 @@
+{
+  "title": "LifestyleLux - Luxury Redefined",
+  "description": "Discover the pinnacle of sophisticated living through our curated collection of luxury lifestyle content",
+  "sections": [
+    {
+      "title": "styles",
+      "id": "styles",
+      "type": "template",
+      "resetable": true
+    },
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": ["blog_title", "blog_logo", "navigation"]
+    },
+    {
+      "title": "hero",
+      "id": "hero",
+      "type": "template",
+      "resetable": true,
+      "data": []
+    },
+    {
+      "title": "home article",
+      "id": "home_articles",
+      "type": "template",
+      "resetable": true,
+      "data": []
+    },
+    {
+      "title": "exclusive_spotlight",
+      "id": "exclusive_spotlight",
+      "type": "template",
+      "resetable": true,
+      "data": []
+    },
+    {
+      "title": "newsletter",
+      "id": "newsletter",
+      "type": "template",
+      "resetable": true,
+      "data": []
+    },
+    
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "blog_title",
+        "blog_logo",
+        "navigation"
+      ]
+    }
+  ]
+}

@@ -5,7 +5,11 @@
       "id": "navigation",
       "type": "template",
       "resetable": true,
-      "data": ["navigation", "blog_title", "blog_logo"]
+      "data": [
+        "navigation",
+        "blog_title",
+        "blog_logo"
+      ]
     },
     {
       "title": "posts listing",
@@ -17,20 +21,16 @@
     {
       "title": "community banner",
       "id": "community_banner",
-      "type": "template",
+      "type": "html",
       "resetable": true,
       "data": []
     },
     {
       "title": "footer",
       "id": "footer",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": [
-        "blog_title",
-        "blog_logo",
-        "navigation"
-      ]
+      "data": []
     }
   ]
 }

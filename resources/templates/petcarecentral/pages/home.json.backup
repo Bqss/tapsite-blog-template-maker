@@ -1,0 +1,54 @@
+{
+  "title": "PetCare Central - Where Pet Stories Come to Life",
+  "description": "Join our community of pet lovers sharing heartwarming stories, expert advice, and unforgettable moments with our furry friends",
+  "sections": [
+    {
+      "title": "styles",
+      "id": "styles",
+      "type": "template",
+      "resetable": true
+    },
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": ["blog_title", "blog_logo", "navigation"]
+    },
+    {
+      "title": "hero",
+      "id": "hero",
+      "type": "template",
+      "resetable": true,
+      "data": ["hero"]
+    },
+    {
+      "title": "categories",
+      "id": "categories",
+      "type": "template",
+      "resetable": true,
+      "data": []
+    },
+    {
+      "title": "featured stories",
+      "id": "featured_stories",
+      "type": "template",
+      "resetable": true,
+      "data": ["featured"]
+    },
+    {
+      "title": "stats",
+      "id": "stats",
+      "type": "template",
+      "resetable": true,
+      "data": ["stats"]
+    },
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": ["blog_title", "blog_logo", "navigation"]
+    }
+  ]
+}

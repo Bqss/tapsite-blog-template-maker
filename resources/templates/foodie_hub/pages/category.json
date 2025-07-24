@@ -5,8 +5,9 @@
     {
       "title": "styles",
       "id": "style",
-      "type": "template",
-      "resetable": true
+      "type": "html",
+      "resetable": true,
+      "data": []
     },
     {
       "title": "navigation",
@@ -24,18 +25,14 @@
       "id": "category_results",
       "type": "template",
       "resetable": true,
-      "data": ["search_results"]
+      "data": []
     },
     {
       "title": "footer",
       "id": "footer",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": [
-        "blog_title",
-        "blog_logo",
-        "navigation"
-      ]
+      "data": []
     }
   ]
-} 
+}

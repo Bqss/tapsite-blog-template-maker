@@ -1,0 +1,59 @@
+{
+  "title": "Search Results - Creative Studio",
+  "description": "Search results for creative articles, tutorials, and inspiration",
+  "keywords": ["creative blog", "search", "design tutorials", "creative inspiration"],
+  "page_type": "search",
+  "sections": [
+    {
+      "title": "Navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": {
+        "site": "site",
+        "navigation": "navigation"
+      }
+    },
+    {
+      "title": "Search Results",
+      "id": "search_results",
+      "type": "template",
+      "resetable": true,
+      "data": {
+        "query": "query",
+        "searchResults": "searchResults",
+        "pagination": "pagination"
+      }
+    },
+    {
+      "title": "Footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": {
+        "site": "site",
+        "footer": "footer",
+        "newsletter": "newsletter"
+      }
+    }
+  ],
+  "meta": {
+    "robots": "noindex, follow",
+    "canonical": "https://creativestudio.com/search",
+    "author": "Creative Studio Team"
+  },
+  "structured_data": {
+    "@context": "https://schema.org",
+    "@type": "SearchResultsPage",
+    "name": "Search Results - Creative Studio",
+    "description": "Search results for creative articles, tutorials, and inspiration",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Creative Studio",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{site.logo}}"
+      }
+    }
+  }
+} 

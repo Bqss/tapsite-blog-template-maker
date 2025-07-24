@@ -1,0 +1,55 @@
+{
+  "title": "MomBlogger - Embracing the Beautiful Chaos of Motherhood",
+  "description": "Real stories, practical tips, and heartfelt moments from the journey of motherhood",
+  "sections": [
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": ["blog_title", "blog_logo", "navigation"]
+    },
+    {
+      "title": "hero",
+      "id": "hero",
+      "type": "template",
+      "resetable": true,
+      "data": ["hero"]
+    },
+    {
+      "title": "latest_posts",
+      "id": "latest_posts",
+      "type": "template",
+      "resetable": true,
+      "data": ["stages"]
+    },
+    {
+      "title": "explore_categories",
+      "id": "explore_categories",
+      "type": "template",
+      "resetable": true,
+      "data": ["featured"]
+    },
+    {
+      "title": "fav_recipes",
+      "id": "fav_recipes",
+      "type": "template",
+      "resetable": true,
+      "data": ["categories"]
+    },
+    {
+      "title": "author",
+      "id": "author",
+      "type": "template",
+      "resetable": true,
+      "data": []
+    },
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": ["blog_title", "blog_logo", "navigation"]
+    }
+  ]
+}

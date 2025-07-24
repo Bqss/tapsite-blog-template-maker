@@ -1,7 +1,12 @@
 {
   "title": "Search Results - Creative Studio",
   "description": "Search results for creative articles, tutorials, and inspiration",
-  "keywords": ["creative blog", "search", "design tutorials", "creative inspiration"],
+  "keywords": [
+    "creative blog",
+    "search",
+    "design tutorials",
+    "creative inspiration"
+  ],
   "page_type": "search",
   "sections": [
     {
@@ -19,22 +24,14 @@
       "id": "search_results",
       "type": "template",
       "resetable": true,
-      "data": {
-        "query": "query",
-        "searchResults": "searchResults",
-        "pagination": "pagination"
-      }
+      "data": []
     },
     {
       "title": "Footer",
       "id": "footer",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": {
-        "site": "site",
-        "footer": "footer",
-        "newsletter": "newsletter"
-      }
+      "data": []
     }
   ],
   "meta": {
@@ -56,4 +53,4 @@
       }
     }
   }
-} 
+}

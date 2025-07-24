@@ -1,0 +1,62 @@
+{
+  "title": "{{it.category.name}} - Creative Studio",
+  "description": "{{it.category.description}}",
+  "keywords": ["creative blog", "{{it.category.name}}", "design tutorials", "creative inspiration"],
+  "page_type": "category",
+  "sections": [
+    {
+      "title": "Navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "blog_title",
+        "blog_logo",
+        "navigation"
+      ]
+    },
+    {
+      "title": "Category Posts",
+      "id": "category_posts",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "posts",
+        "pagination",
+        "category"
+      ]
+    },
+    {
+      "title": "Footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "blog_title",
+        "blog_logo",
+        "navigation"
+      ]
+    }
+  ],
+  "meta": {
+    "robots": "index, follow",
+    "canonical": "/category/{{it.category.slug}}",
+    "author": "Creative Studio Team",
+    "published_time": "{{it.category.created_at}}",
+    "modified_time": "{{it.category.updated_at}}"
+  },
+  "structured_data": {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "headline": "{{it.category.name}} - Creative Studio",
+    "description": "{{it.category.description}}",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Creative Studio",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{it.site.logo}}"
+      }
+    }
+  }
+} 

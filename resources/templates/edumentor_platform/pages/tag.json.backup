@@ -1,0 +1,39 @@
+{
+  "title": "Tag Articles - EduMentor Platform",
+  "description": "Browse educational articles for a specific tag.",
+  "sections": [
+    {
+      "title": "styles",
+      "id": "styles",
+      "type": "template",
+      "resetable": true
+    },
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": ["blog_title", "blog_logo", "navigation"]
+    },
+    {
+      "title": "tag posts",
+      "id": "tag_posts",
+      "type": "template",
+      "resetable": true,
+      "data": ["posts", "pagination", "tag"]
+    },
+    {
+      "title": "newsletter",
+      "id": "newsletter",
+      "type": "template",
+      "resetable": true
+    },
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": ["blog_title", "blog_logo", "navigation"]
+    }
+  ]
+}

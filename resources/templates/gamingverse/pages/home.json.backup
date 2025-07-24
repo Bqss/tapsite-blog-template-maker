@@ -1,0 +1,58 @@
+{
+  "title": "GamingVerse - Your Ultimate Gaming Universe",
+  "description": "Dive into the world of gaming with reviews, guides, news, and community discussions. From indie gems to AAA blockbusters, we cover it all.",
+  "sections": [
+    {
+      "title": "styles",
+      "id": "styles",
+      "type": "template",
+      "resetable": true
+    },
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": [
+        "blog_title",
+        "blog_logo",
+        "navigation"
+      ]
+    },
+    {
+      "title": "hero",
+      "id": "hero",
+      "type": "template",
+      "resetable": true,
+      "data": ["hero"]
+    },
+    {
+      "title": "featured articles",
+      "id": "featured_articles",
+      "type": "template",
+      "resetable": true,
+      "data": ["blog"]
+    },
+    {
+      "title": "gaming_categories",
+      "id": "gaming_categories",
+      "type": "template",
+      "resetable": true,
+      "data": ["gaming_categories"]
+    },
+    {
+      "title": "newsletter",
+      "id": "newsletter",
+      "type": "template",
+      "resetable": true,
+      "data": ["newsletter"]
+    },
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": ["blog_title", "blog_logo", "navigation"]
+    }
+  ]
+}

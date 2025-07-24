@@ -5,29 +5,34 @@
     {
       "title": "styles",
       "id": "styles",
-      "type": "template",
-      "resetable": true
+      "type": "html",
+      "resetable": true,
+      "data": []
     },
     {
       "title": "navigation",
       "id": "navigation",
       "type": "template",
       "resetable": true,
-      "data": ["blog_title", "blog_logo", "navigation"]
+      "data": [
+        "blog_title",
+        "blog_logo",
+        "navigation"
+      ]
     },
     {
       "title": "hero",
       "id": "hero",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": ["hero"]
+      "data": []
     },
     {
       "title": "about",
       "id": "about",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": ["about"]
+      "data": []
     },
     {
       "title": "featured_posts",
@@ -39,30 +44,30 @@
     {
       "title": "skills",
       "id": "skills",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": ["skills"]
+      "data": []
     },
     {
       "title": "newsletter",
       "id": "newsletter",
-      "type": "template",
+      "type": "html",
       "resetable": true,
       "data": []
     },
     {
       "title": "contact",
       "id": "contact",
-      "type": "template",
+      "type": "html",
       "resetable": true,
       "data": []
     },
     {
       "title": "footer",
       "id": "footer",
-      "type": "template",
+      "type": "html",
       "resetable": true,
-      "data": ["blog_title", "blog_logo", "navigation"]
+      "data": []
     }
   ]
 }

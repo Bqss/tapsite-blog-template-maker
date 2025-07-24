@@ -1,0 +1,40 @@
+{
+  "title": "TravelTales - Explore the World One Story at a Time",
+  "description": "Join us on incredible journeys around the globe. Discover hidden gems, cultural treasures, and unforgettable adventures through our detailed travel guides and inspiring stories",
+  "sections": [
+    {
+      "title": "styles",
+      "id": "styles",
+      "type": "template",
+      "resetable": true
+    },
+    {
+      "title": "navigation",
+      "id": "navigation",
+      "type": "template",
+      "resetable": true,
+      "data": ["blog_title", "blog_logo", "navigation"]
+    },
+    {
+      "title": "posts content",
+      "id": "posts_content",
+      "type": "template",
+      "resetable": true,
+      "data": []
+    },
+    {
+      "title": "newsletter2",
+      "id": "newsletter2",
+      "type": "template",
+      "resetable": true,
+      "data": []
+    },
+    {
+      "title": "footer",
+      "id": "footer",
+      "type": "template",
+      "resetable": true,
+      "data": ["blog_title", "blog_logo", "navigation"]
+    }
+  ]
+}
